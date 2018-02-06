@@ -8,7 +8,7 @@
     = csrf_meta_tag
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
-    = favicon_link_tag 'favicon.png', rel: 'shortcut icon', type: 'image/png'
+    -# = favicon_link_tag 'favicon.png', rel: 'shortcut icon', type: 'image/png'
   %body{class: "#{controller_name} #{action_name}"}
     - unless flash.empty?
       .container
@@ -18,4 +18,4 @@
 
     %footer.footer
       .container
-        %span.text-muted Social Health Online
+        %small.text-muted &copy; #{Date.today.year} Social Health Online
