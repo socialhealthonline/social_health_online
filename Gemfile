@@ -5,6 +5,9 @@ ruby '2.5.0'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootstrap'
+gem 'hamlit'
+gem 'jquery-rails'
 gem 'pg', '< 1.0' # Use postgresql as the database for Active Record
 gem 'puma'
 gem 'rails', '~> 5.2.0.rc1'
