@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'public#index'
 
+  # Contact
+  get 'contact' => 'contact#new'
+  post 'contact' => 'contact#create'
+
   # Authentication vanity routes
   get 'login' => 'sessions#new', as: 'login'
   delete 'logout' => 'sessions#destroy', as: 'logout'

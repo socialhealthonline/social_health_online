@@ -14,6 +14,8 @@
           = link_to 'Our Partners', '#', class: 'nav-link'
         %li.nav-item{class: "#{active_nav('')}"}
           = link_to 'About Us', '#', class: 'nav-link'
+        %li.nav-item{class: "#{active_nav('')}"}
+          = link_to 'Contact Us', contact_path, class: 'nav-link'
         - if authenticated_user
           %li.nav-item.dropdown
             %a.nav-link.dropdown-toggle#navbarDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
