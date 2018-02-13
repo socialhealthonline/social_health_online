@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   post 'contact' => 'contact#create'
 
   # Authentication vanity routes
-  get 'login' => 'sessions#new', as: 'login'
-  delete 'logout' => 'sessions#destroy', as: 'logout'
+  get 'signin' => 'sessions#new', as: 'signin'
+  delete 'signout' => 'sessions#destroy', as: 'signout'
 
   # Sessions
   resources :sessions, only: [:new, :create, :destroy]
