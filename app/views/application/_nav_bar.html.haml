@@ -14,7 +14,7 @@
           = link_to 'Our Partners', '#', class: 'nav-link'
         %li.nav-item{class: "#{active_nav('')}"}
           = link_to 'About Us', '#', class: 'nav-link'
-        %li.nav-item{class: "#{active_nav('')}"}
+        %li.nav-item{class: "#{active_nav('contact')}"}
           = link_to 'Contact Us', contact_path, class: 'nav-link'
         - if authenticated_user
           %li.nav-item.dropdown
