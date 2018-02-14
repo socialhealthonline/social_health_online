@@ -10,8 +10,7 @@ RSpec.describe 'Contact us' do
     click_button 'Send'
     expect(page).to have_content 'Thanks for contacting us'
     expect(current_path).to eq contact_path
-    expect(unread_emails_for('james.quillen@gmail.com').size).to eq 1
-    expect(unread_emails_for('alex.a.ulbricht@gmail.com').size).to eq 1
+    expect(unread_emails_for('info@socialhealthonline.com').size).to eq 1
   end
 
 end
