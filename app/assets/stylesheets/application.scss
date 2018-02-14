@@ -23,13 +23,29 @@ body {
   color: $brand-primary;
 }
 
-.footer {
-  height: 65px;
-  line-height: 65px;
-}
-
 #hero {
   height: 800px;
   background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.35)), image-url('hero.jpg') no-repeat;
   color: #eee;
+}
+
+.footer {
+  padding-top: 1em;
+}
+
+#social-links {
+  list-style-type: none;
+}
+
+#social-links li {
+  display: inline;
+  margin-right: 12px;
+}
+
+#social-links li:last-child {
+  margin-right: 0;
+}
+
+#social-links a:hover {
+  text-decoration: none;
 }

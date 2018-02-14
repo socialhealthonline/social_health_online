@@ -18,5 +18,23 @@
 
     %footer.footer.bg-dark
       .container
-        %p
-          %small.text-muted Copyright &copy; #{Date.today.year} Social Health, LLC. All rights reserved.
+        .row
+          .col-md
+            %small.text-muted Copyright &copy; #{Date.today.year} Social Health, LLC. All rights reserved.
+          .col-md.text-center
+            %small
+              = link_to 'Terms of Use', terms_path, class: 'text-muted'
+            %span.px-2.text-muted &middot;
+            %small
+              = link_to 'Privacy', privacy_path, class: 'text-muted'
+          .col-md
+            %ul.text-right#social-links
+              %li
+                = link_to '#', target: '_blank' do
+                  = image_tag 'twitter.svg', class: 'img-fluid', alt: 'Twitter', style: 'height: 25px'
+              %li
+                = link_to '#', target: '_blank' do
+                  = image_tag 'facebook.svg', class: 'img-fluid', alt: 'Facebook', style: 'height: 25px'
+              %li
+                = link_to '#', target: '_blank' do
+                  = image_tag 'instagram.svg', class: 'img-fluid', alt: 'Instagram', style: 'height: 25px'
