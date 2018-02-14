@@ -12,8 +12,7 @@
   %body{class: "#{controller_name} #{action_name}"}
     = render 'nav_bar'
     - unless flash.empty?
-      .container
-        = render partial: 'flash', locals: { flash: flash }
+      = render partial: 'flash', locals: { flash: flash }
 
     = yield
 
