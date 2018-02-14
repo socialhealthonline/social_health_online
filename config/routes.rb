@@ -16,6 +16,12 @@ Rails.application.routes.draw do
   # News
   get 'news' => 'public#news'
 
+  # Terms
+  get 'terms' => 'public#terms'
+
+  # Privacy
+  get 'privacy' => 'public#privacy'
+
   # Contact
   get 'contact' => 'contact#new'
   post 'contact' => 'contact#create'
