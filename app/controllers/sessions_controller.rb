@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to root_url, success: 'You have successfully logged out!'
+    redirect_to root_url, success: 'You have successfully signed out!'
   end
 
 end
