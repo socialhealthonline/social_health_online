@@ -11,11 +11,16 @@
  * It is generally better to create a new file per style scope.
  *
  */
+@import "variables";
 @import "bootstrap";
 
 body {
   padding-top: 56px;
   margin-bottom: 80px;
+}
+
+.brand-primary {
+  color: $brand-primary;
 }
 
 .footer {
@@ -24,7 +29,7 @@ body {
 }
 
 #hero {
-  height: 600px;
+  height: 800px;
   background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.35)), image-url('hero.jpg') no-repeat;
   color: #eee;
 }
