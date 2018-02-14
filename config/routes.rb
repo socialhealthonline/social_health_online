@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   # Partners
   get 'partners' => 'public#partners'
 
+  # News
+  get 'news' => 'public#news'
+
   # Contact
   get 'contact' => 'contact#new'
   post 'contact' => 'contact#create'
