@@ -12,6 +12,7 @@ gem 'pg', '< 1.0' # Use postgresql as the database for Active Record
 gem 'puma'
 gem 'rails', '~> 5.2.0.rc1'
 gem 'sass-rails', '~> 5.0'
+gem 'sendgrid-ruby'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
