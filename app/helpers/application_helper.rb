@@ -1,7 +1,11 @@
 module ApplicationHelper
 
   def active_nav(nav_item)
-    controller_name == nav_item ? 'active' : nil
+    if controller_name == 'public'
+      action_name == nav_item ? 'active' : nil
+    else
+      controller_name == nav_item ? 'active' : nil
+    end
   end
 
   def bootstrap_class_for(flash_type)
