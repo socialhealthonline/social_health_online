@@ -1,7 +1,7 @@
-%nav.navbar.navbar-expand-lg.fixed-top.navbar-dark.bg-primary#main-nav
+%nav.navbar.navbar-expand-lg.fixed-top.navbar-dark.bg-secondary#main-nav
   .container
     = link_to root_path, class: 'navbar-brand' do
-      Social Health Online
+      = image_tag 'logo.png', alt: 'Social Health Online', height: '50'
     %button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarToggler' aria-controls='navbarToggler' aria-expanded='false' aria-label='Toggle navigation')
       %span.navbar-toggler-icon
     .collapse.navbar-collapse#navbarToggler

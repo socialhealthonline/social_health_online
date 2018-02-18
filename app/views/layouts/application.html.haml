@@ -16,17 +16,17 @@
 
     = yield
 
-    %footer.footer.bg-dark
+    %footer.footer.bg-secondary
       .container
         .row
           .col-md
-            %small.text-muted Copyright &copy; #{Date.today.year} Social Health, LLC. All rights reserved.
+            %small.text-white Copyright &copy; #{Date.today.year} Social Health, LLC. All rights reserved.
           .col-md.text-center
             %small
-              = link_to 'Terms &amp; Conditions of Use'.html_safe, terms_path, class: 'text-muted'
-            %span.px-2.text-muted &middot;
+              = link_to 'Terms &amp; Conditions of Use'.html_safe, terms_path, class: 'text-white'
+            %span.px-2.text-white &middot;
             %small
-              = link_to 'Privacy Policy', privacy_path, class: 'text-muted'
+              = link_to 'Privacy Policy', privacy_path, class: 'text-white'
           .col-md
             %ul.text-right#social-links
               %li

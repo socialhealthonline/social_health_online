@@ -22,10 +22,29 @@ body {
   color: $brand-primary;
 }
 
+// #main-nav {
+//   box-shadow: 0 2px 4px rgba(0,0,0,0.24);
+// }
+
+// #main-nav .navbar-nav .nav-link {
+//   color: $brand-primary;
+//   &:hover {
+//     color: darken( $brand-primary, 15% )
+//   }
+// }
+
+// #main-nav .navbar-nav .active > .nav-link {
+//   color: darken( $brand-primary, 15% )
+// }
+
 #hero {
   height: 800px;
-  background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.35)), image-url('hero.jpg') no-repeat;
+  background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.25)), image-url('hero.jpg') no-repeat;
   color: #eee;
+}
+
+#hero-copy {
+  padding-top: 8em;
 }
 
 .footer {
