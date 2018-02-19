@@ -26,12 +26,13 @@ body {
 //   box-shadow: 0 2px 4px rgba(0,0,0,0.24);
 // }
 
-// #main-nav .navbar-nav .nav-link {
-//   color: $brand-primary;
-//   &:hover {
-//     color: darken( $brand-primary, 15% )
-//   }
-// }
+#main-nav .navbar-nav .nav-link {
+  // color: $brand-primary;
+  // &:hover {
+  //   color: darken( $brand-primary, 15% )
+  // }
+  font-size: 1.2em;
+}
 
 // #main-nav .navbar-nav .active > .nav-link {
 //   color: darken( $brand-primary, 15% )
