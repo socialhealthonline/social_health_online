@@ -8,7 +8,7 @@ gem 'bootsnap', require: false
 gem 'bootstrap'
 gem 'hamlit'
 gem 'jquery-rails' # bootstrap dependency
-gem 'pg', '< 1.0'
+gem 'pg'
 gem 'puma'
 gem 'rails', '~> 5.2.0.rc1'
 gem 'sass-rails', '~> 5.0'
