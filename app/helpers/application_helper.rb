@@ -26,4 +26,8 @@ module ApplicationHelper
     field_with_error?(model, attribute) ? 'is-invalid' : nil
   end
 
+  def short_date(date)
+    date.blank? ? nil : date.strftime('%Y-%m-%d')
+  end
+
 end

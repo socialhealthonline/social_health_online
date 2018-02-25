@@ -1,4 +1,5 @@
 class ContactController < ApplicationController
+  layout 'public'
 
   def new
   end

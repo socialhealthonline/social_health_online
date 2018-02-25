@@ -1,0 +1,25 @@
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+  %h1.h3 Customers
+  = link_to new_console_customer_path, class: 'btn btn-outline-primary' do
+    %i.fas.fa-plus-circle
+    Add Customer
+
+- if @customers.any?
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %th Name
+          %th Contact Name
+          %th Contact Email
+          %th Account Start Date
+      %tbody
+        - @customers.each_with_index do |customer, i|
+          %tr
+            %td= link_to "#{i+1}. #{customer.name}", console_customer_path(customer)
+            %td= customer.contact_name
+            %td= customer.contact_email
+            %td= short_date customer.account_start_date
+- else
+  %p.text-muted
+    %em No customers were found.

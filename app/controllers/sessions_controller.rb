@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  layout 'public'
 
   def new
     redirect_to root_url if authenticated_user
@@ -13,7 +14,7 @@ class SessionsController < ApplicationController
       session[:auth_token] = user.auth_token
       user.touch(:last_sign_in_at)
       flash[:success] = authentication_attempt.flash
-      redirect_to intended_url.blank? ? root_url : intended_url
+      redirect_to intended_url.blank? ? landing_path : intended_url
     else
       flash.now[:error] = authentication_attempt.flash
       render :new
@@ -22,7 +23,14 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to root_url, success: 'You have successfully signed out!'
+    redirect_to root_url
+  end
+
+  private
+
+  def landing_path
+    return console_root_url if authenticated_user.admin?
+    return root_url
   end
 
 end

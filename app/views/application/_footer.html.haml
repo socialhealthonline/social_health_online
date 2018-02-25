@@ -1,0 +1,19 @@
+%footer.footer.bg-secondary
+  .container
+    .row
+      .col-md
+        %small.text-white Copyright &copy; #{Date.today.year} Social Health, LLC. All rights reserved.
+      .col-md.text-center
+        %small
+          = link_to 'Terms &amp; Conditions of Use'.html_safe, terms_path, class: 'text-white'
+        %span.px-2.text-white &middot;
+        %small
+          = link_to 'Privacy Policy', privacy_path, class: 'text-white'
+      .col-md
+        %ul.text-right#social-links
+          %li
+            = link_to '#', target: '_blank' do
+              = image_tag 'youtube.svg', class: 'img-fluid', alt: 'Youtube', style: 'height: 25px'
+          %li
+            = link_to 'https://www.facebook.com/socialhealthonline', target: '_blank' do
+              = image_tag 'facebook.svg', class: 'img-fluid', alt: 'Facebook', style: 'height: 25px'

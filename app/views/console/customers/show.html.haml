@@ -1,0 +1,36 @@
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+  %h1.h3= @customer.name
+  %div
+    = link_to edit_console_customer_path(@customer), class: 'btn btn-outline-primary' do
+      %i.fas.fa-edit
+      Edit
+    &nbsp;
+    = link_to console_customers_path, class: 'btn btn-outline-secondary' do
+      %i.fas.fa-arrow-alt-circle-left
+      Back
+
+%p= @customer.full_address
+
+%p
+  %strong Contact Name:
+  = @customer.contact_name
+
+%p
+  %strong Contact Email:
+  = @customer.contact_email
+
+%p
+  %strong Contact Phone:
+  = number_to_phone @customer.contact_phone
+
+%p
+  %strong Service Capacity:
+  = @customer.service_capacity
+
+%p
+  %strong Account Start Date:
+  = short_date @customer.account_start_date
+
+%p
+  %strong Account End Date:
+  = short_date @customer.account_end_date
