@@ -1,5 +1,5 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
-  %h1.h3= @customer.name
+  %h1.h3= 'Customers - ' + @customer.name
   %div
     = link_to edit_console_customer_path(@customer), class: 'btn btn-outline-primary' do
       %i.fas.fa-edit

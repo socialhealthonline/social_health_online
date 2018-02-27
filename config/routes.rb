@@ -30,8 +30,9 @@ Rails.application.routes.draw do
   get 'signin' => 'sessions#new', as: 'signin'
   delete 'signout' => 'sessions#destroy', as: 'signout'
 
-  # Sessions
+  # Authentication
   resources :sessions, only: [:new, :create, :destroy]
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
   # Console
   get 'console' => 'console#index'
