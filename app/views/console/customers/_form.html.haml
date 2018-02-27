@@ -60,4 +60,7 @@
         = model_error_display(@customer, :account_end_date)
 
   = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
-  = link_to 'Cancel', console_customers_path, class: 'btn btn-outline-secondary'
+  - if @customer.persisted?
+    = link_to 'Cancel', console_customer_path(@customer), class: 'btn btn-outline-secondary'
+  - else
+    = link_to 'Cancel', console_customers_path, class: 'btn btn-outline-secondary'
