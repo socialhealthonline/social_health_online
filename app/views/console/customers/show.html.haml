@@ -34,3 +34,7 @@
 %p
   %strong Account End Date:
   = short_date @customer.account_end_date
+
+%p
+  %strong Suspended:
+  = @customer.suspended? ? 'Yes' : 'No'

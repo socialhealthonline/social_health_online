@@ -58,6 +58,9 @@
         %label(for="customer_account_end_date") Account End Date
         = f.text_field :account_end_date, class: "form-control #{form_error_class(@customer, :account_end_date)}"
         = model_error_display(@customer, :account_end_date)
+  .form-check.mb-3
+    = f.check_box :suspended, class: 'form-check-input'
+    %label.form-check-label(for="customer_suspended") Suspended
 
   = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
   - if @customer.persisted?

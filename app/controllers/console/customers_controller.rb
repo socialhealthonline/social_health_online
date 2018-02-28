@@ -43,7 +43,20 @@ class Console::CustomersController < ConsoleController
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :address, :city, :state, :zip, :contact_name, :contact_email, :contact_phone, :service_capacity, :account_start_date, :account_end_date)
+    params.require(:customer).permit(
+      :name,
+      :address,
+      :city,
+      :state,
+      :zip,
+      :contact_name,
+      :contact_email,
+      :contact_phone,
+      :service_capacity,
+      :account_start_date,
+      :account_end_date,
+      :suspended
+    )
   end
 
 end
