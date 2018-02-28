@@ -42,10 +42,9 @@ body {
   height: 600px;
   background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.25)), image-url('hero.jpg') no-repeat;
   color: #eee;
-}
-
-#hero-copy {
-  padding-top: 7.5em;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
 }
 
 .footer {
@@ -108,8 +107,3 @@ body {
   font-size: .75rem;
   text-transform: uppercase;
 }
-
-p.h3.mb-4{line-height:102% !important; color:#b1e1ed; text-shadow: 1px 1px 0 black;}
-p.h5.mb-4{line-height:100% !important; font-weight:bold; text-shadow: 1px 1px 0 black; }
-.nav-link{font-weight:bold !important;}
-.row.py-5{padding-top:24px; padding-bottom:24px;}
