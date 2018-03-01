@@ -1,0 +1,38 @@
+%nav(aria-label="breadcrumb")
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to 'Customers', console_customers_path
+    %li.breadcrumb-item= link_to @customer.name, console_customer_path(@customer)
+    %li.breadcrumb-item.active(aria-current="page") Users
+
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+  %h1.h3 Users
+  = link_to new_console_customer_user_path(@customer), class: 'btn btn-outline-primary' do
+    %i.fas.fa-plus-circle
+    Add User
+
+- if @users.any?
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %th Name
+          %th Username
+          %th Email
+          %th Last Sign In
+          %th
+      %tbody
+        - @users.each_with_index do |user, i|
+          %tr
+            %td= link_to "#{i+1}. #{user.name}", console_customer_user_path(@customer, user)
+            %td= user.username
+            %td= user.email
+            %td= short_date user.last_sign_in_at
+            %td
+              = link_to edit_console_customer_user_path(@customer, user), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
+                %i.far.fa-edit
+              &nbsp;
+              = link_to console_customer_user_path(@customer, user), title: 'Delete', class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this user. Press OK to continue.' } do
+                %i.far.fa-trash-alt
+- else
+  %p.text-muted
+    %em No users were found.

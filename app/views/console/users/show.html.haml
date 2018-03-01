@@ -1,0 +1,52 @@
+%nav(aria-label="breadcrumb")
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to 'Customers', console_customers_path
+    %li.breadcrumb-item= link_to @customer.name, console_customer_path(@customer)
+    %li.breadcrumb-item= link_to 'Users', console_customer_users_path(@customer)
+    %li.breadcrumb-item.active(aria-current="page")= @user.name
+
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+  %h1.h3= @user.name
+
+%p= @user.full_address
+
+%p
+  %strong Username:
+  = @user.username
+
+%p
+  %strong Email:
+  = @user.email
+
+%p
+  %strong Phone:
+  = number_to_phone @user.phone
+
+%p
+  %strong Birthdate:
+  = short_date @user.birthdate
+
+%p
+  %strong Gender:
+  = @user.gender
+
+%p
+  %strong Ethnicity:
+  = @user.ethnicity
+
+%p
+  %strong Timezone:
+  = @user.time_zone
+
+%p
+  %strong Enabled:
+  = @user.enabled? ? 'Yes' : 'No'
+
+%p
+  = link_to edit_console_customer_user_path(@customer, @user), class: 'btn btn-outline-primary' do
+    %i.far.fa-edit
+    Edit
+  &nbsp;
+  = link_to console_customer_user_path(@customer, @user), method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'Please confirm that you wish to delete this user. Press OK to continue.' } do
+    %i.far.fa-trash-alt
+    Delete

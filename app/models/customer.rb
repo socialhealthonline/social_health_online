@@ -1,5 +1,7 @@
 class Customer < ApplicationRecord
 
+  has_many :users, inverse_of: :customer, dependent: :destroy
+
   validates :name, :address, :city, :state, :contact_name, :service_capacity, presence: true
   validates_uniqueness_of :name, case_sensitive: false
   validates :state, inclusion: US_STATES.values

@@ -16,3 +16,10 @@
 //= require popper
 //= require bootstrap
 //= require fontawesome-all
+//= require flatpickr/dist/flatpickr.min
+
+$(document).ready(function() {
+  $(".flatpickr-date").flatpickr({
+    dateFormat: 'Y-m-d'
+  });
+});

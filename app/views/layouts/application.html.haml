@@ -16,13 +16,19 @@
         %nav.col-md-2.d-none.d-md-block.bg-light.sidebar
           .sidebar-sticky
             %ul.nav.flex-column
-              %li.nav-item
-              = link_to console_customers_path, class: 'nav-link' do
-                %i.fas.fa-users
-                Customers
+              %li.nav-item.py-1
+                = link_to console_customers_path, class: 'nav-link' do
+                  %i.fas.fa-users
+                  Customers
+              %li.nav-item.py-1
+                = link_to '#', class: 'nav-link' do
+                  %i.far.fa-handshake
+                  Partners
+              %li.nav-item.py-1
+                = link_to '#', class: 'nav-link' do
+                  %i.far.fa-newspaper
+                  News
         %main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4
           - unless flash.empty?
             = render partial: 'flash', locals: { flash: flash }
           = yield
-    :javascript
-      feather.replace();

@@ -1,0 +1,11 @@
+%nav(aria-label="breadcrumb")
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to 'Customers', console_customers_path
+    %li.breadcrumb-item= link_to @customer.name, console_customer_path(@customer)
+    %li.breadcrumb-item= link_to 'Users', console_customer_users_path(@customer)
+    %li.breadcrumb-item.active(aria-current="page") Edit User
+
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+  %h1.h3 Edit Customer
+
+= render 'form'

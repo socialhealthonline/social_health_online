@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require flatpickr/dist/flatpickr.min
  */
 @import "variables";
 @import "bootstrap";
@@ -91,7 +92,7 @@ body {
 }
 
 .sidebar .nav-link {
-  font-weight: 500;
+  font-size: 1.1em;
   color: #999;
 }
 
@@ -100,7 +101,11 @@ body {
 }
 
 .sidebar .nav-link:hover {
-  color: #333;
+  color: $brand-primary;
+}
+
+.sidebar .nav-item:hover {
+  background-color: darken(#f8f9fa, 5%);
 }
 
 .sidebar-heading {

@@ -19,7 +19,7 @@ class Console::CustomersController < ConsoleController
   def create
     @customer = Customer.new(customer_params)
     if @customer.save
-      redirect_to console_customers_url, success: 'The customer was successfully created!'
+      redirect_to console_customer_url(@customer), success: 'The customer was successfully created!'
     else
       render :new
     end

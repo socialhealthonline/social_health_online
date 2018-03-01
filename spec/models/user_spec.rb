@@ -2,10 +2,14 @@ require 'rails_helper'
 
 RSpec.describe User do
 
-  it { should have_db_index :enabled }
   it { should have_db_index :auth_token }
+  it { should have_db_index :customer_id }
+  it { should have_db_index :enabled }
   it { should have_db_index :email }
   it { should have_db_index :password_reset_token }
+  it { should have_db_index :username }
+
+  it { should belong_to :customer }
 
   it { should have_secure_password }
 
@@ -18,7 +22,7 @@ RSpec.describe User do
   end
 
   describe 'required fields' do
-    %i(name email).each do |field|
+    %i(name email username address city gender ethnicity birthdate time_zone).each do |field|
       it { should validate_presence_of field }
     end
   end
@@ -32,6 +36,16 @@ RSpec.describe User do
   describe 'valid email address' do
     it { should_not allow_values('me@example','@example.com','example.com').for(:email) }
     it { should allow_values('me@example.com','ME@example.COM').for(:email) }
+  end
+
+  describe 'valid gender' do
+    it { should_not allow_values('cat','').for(:gender) }
+    it { should allow_values('Female', 'Other', 'Male').for(:gender) }
+  end
+
+  describe 'valid ethnicity' do
+    it { should_not allow_values('blue','').for(:ethnicity) }
+    it { should allow_values('White', 'Black', 'Hispanic').for(:ethnicity) }
   end
 
   describe 'generates an auth_token on creation' do

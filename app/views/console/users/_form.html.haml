@@ -1,0 +1,77 @@
+= form_for [:console, @customer, @user] do |f|
+  .row
+    .col
+      .form-group
+        %label(for="user_name") Name
+        = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@user, :name)}"
+        = model_error_display(@user, :name)
+    .col
+      .form-group
+        %label(for="user_username") Username
+        = f.text_field :username, class: "form-control #{form_error_class(@user, :username)}"
+        = model_error_display(@user, :username)
+  .row
+    .col
+      .form-group
+        %label(for="user_email") Email
+        = f.email_field :email, class: "form-control #{form_error_class(@user, :email)}"
+        = model_error_display(@user, :email)
+    .col
+      .form-group
+        %label(for="user_phone") Phone
+        = f.text_field :phone, class: "form-control #{form_error_class(@user, :phone)}"
+        = model_error_display(@user, :phone)
+  .row
+    .col
+      .form-group
+        %label(for="user_address") Address
+        = f.text_field :address, class: "form-control #{form_error_class(@user, :address)}"
+        = model_error_display(@user, :address)
+    .col
+      .form-group
+        %label(for="user_city") City
+        = f.text_field :city, class: "form-control #{form_error_class(@user, :city)}"
+        = model_error_display(@user, :city)
+  .row
+    .col
+      .form-group
+        %label(for="user_state") State
+        = f.select :state, US_STATES, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :state)}" }
+        = model_error_display(@user, :state)
+    .col
+      .form-group
+        %label(for="user_zip") Zip
+        = f.text_field :zip, class: "form-control #{form_error_class(@user, :zip)}"
+        = model_error_display(@user, :zip)
+  .row
+    .col
+      .form-group
+        %label(for="user_time_zone") Timezone
+        -# = f.time_zone_select(:time_zone, [ActiveSupport::TimeZone['Alaska'], ActiveSupport::TimeZone['Hawaii'], ActiveSupport::TimeZone['Pacific Time (US & Canada)'], ActiveSupport::TimeZone['Mountain Time (US & Canada)'], ActiveSupport::TimeZone['Central Time (US & Canada)'], ActiveSupport::TimeZone['Eastern Time (US & Canada)']], {}, { class: 'custom-select form-control' })
+        = f.select(:time_zone, ['Alaska', 'Hawaii', 'Pacific Time (US & Canada)', 'Mountain Time (US & Canada)', 'Central Time (US & Canada)', 'Eastern Time (US & Canada)'].sort, {}, { class: 'custom-select form-control' })
+        = model_error_display(@user, :time_zone)
+    .col
+      .form-group
+        %label(for="user_birthdate") Birthdate
+        = f.text_field :birthdate, class: "flatpickr-date form-control #{form_error_class(@user, :birthdate)}"
+        = model_error_display(@user, :birthdate)
+  .row
+    .col
+      .form-group
+        %label(for="user_gender") Gender
+        = f.select :gender, User::GENDER, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :gender)}" }
+        = model_error_display(@user, :gender)
+    .col
+      .form-group
+        %label(for="user_ethnicity") Race/Ethnicity
+        = f.select :ethnicity, User::ETHNICITY, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
+        = model_error_display(@user, :ethnicity)
+  .form-check.mb-3
+    = f.check_box :enabled, class: 'form-check-input'
+    %label.form-check-label(for="user_enabled") Enabled
+
+  = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
+  - if @user.persisted?
+    = link_to 'Cancel', console_customer_user_path(@customer, @user), class: 'btn btn-outline-secondary'
+  - else
+    = link_to 'Cancel', console_customer_users_path(@customer), class: 'btn btn-outline-secondary'

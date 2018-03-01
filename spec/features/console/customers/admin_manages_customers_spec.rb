@@ -23,7 +23,7 @@ RSpec.describe 'Admin mananges customer accounts' do
     fill_in 'customer_account_start_date', with: Date.today.to_s
     click_button 'Save'
     expect(page).to have_content 'The customer was successfully created'
-    expect(current_path).to eq console_customers_path
+    expect(current_path).to eq console_customer_path(Customer.last)
     expect(Customer.count).to eq 1
   end
 

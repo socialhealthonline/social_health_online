@@ -12,14 +12,21 @@
           %th Name
           %th Contact Name
           %th Contact Email
-          %th Account Start Date
+          %th State
+          %th
       %tbody
         - @customers.each_with_index do |customer, i|
           %tr
             %td= link_to "#{i+1}. #{customer.name}", console_customer_path(customer)
             %td= customer.contact_name
             %td= customer.contact_email
-            %td= short_date customer.account_start_date
+            %td= customer.state
+            %td
+              = link_to edit_console_customer_path(customer), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
+                %i.far.fa-edit
+              &nbsp;
+              = link_to console_customer_path(customer), title: 'Delete', class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this customer. Press OK to continue.' } do
+                %i.far.fa-trash-alt
 - else
   %p.text-muted
     %em No customers were found.

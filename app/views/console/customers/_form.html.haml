@@ -19,7 +19,7 @@
     .col
       .form-group
         %label(for="customer_state") State
-        = f.select :state, US_STATES, { include_blank: true }, { class: 'form-control' }
+        = f.select :state, US_STATES, { include_blank: true }, { class: 'form-control custom-select' }
         = model_error_display(@customer, :state)
     .col
       .form-group
@@ -35,7 +35,7 @@
     .col
       .form-group
         %label(for="customer_contact_email") Contact Email
-        = f.text_field :contact_email, class: "form-control #{form_error_class(@customer, :contact_email)}"
+        = f.email_field :contact_email, class: "form-control #{form_error_class(@customer, :contact_email)}"
         = model_error_display(@customer, :contact_email)
     .col
       .form-group
@@ -51,12 +51,12 @@
     .col
       .form-group
         %label(for="customer_account_start") Account Start Date
-        = f.text_field :account_start_date, class: "form-control #{form_error_class(@customer, :account_start_date)}"
+        = f.text_field :account_start_date, class: "flatpickr-date form-control #{form_error_class(@customer, :account_start_date)}"
         = model_error_display(@customer, :service_capacity)
     .col
       .form-group
         %label(for="customer_account_end_date") Account End Date
-        = f.text_field :account_end_date, class: "form-control #{form_error_class(@customer, :account_end_date)}"
+        = f.text_field :account_end_date, class: "flatpickr-date form-control #{form_error_class(@customer, :account_end_date)}"
         = model_error_display(@customer, :account_end_date)
   .form-check.mb-3
     = f.check_box :suspended, class: 'form-check-input'
