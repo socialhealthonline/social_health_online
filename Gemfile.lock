@@ -82,7 +82,7 @@ GEM
     factory_bot_rails (4.8.2)
       factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
-    ffi (1.9.21)
+    ffi (1.9.23)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hamlit (2.8.7)
@@ -130,7 +130,7 @@ GEM
     rack (2.0.4)
     rack-protection (2.0.1)
       rack
-    rack-test (0.8.2)
+    rack-test (0.8.3)
       rack (>= 1.0, < 3)
     rails (5.2.0.rc1)
       actioncable (= 5.2.0.rc1)
