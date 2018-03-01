@@ -30,7 +30,7 @@
               = link_to '#', class: 'dropdown-item' do
                 %i.fas.fa-user-circle
                 Profile
-              = link_to signout_path, method: :delete, class: 'dropdown-item', id: 'nav-signout', data: { confirm: 'Are you sure you would like to sign out?' } do
+              = link_to signout_path, method: :delete, class: 'dropdown-item', id: 'nav-signout', data: { confirm: 'Are you sure you would like to sign out? Press OK to continue.' } do
                 %i.fas.fa-sign-out-alt
                 Sign Out
         - else
