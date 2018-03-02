@@ -66,9 +66,21 @@
         %label(for="user_ethnicity") Race/Ethnicity
         = f.select :ethnicity, User::ETHNICITY, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
         = model_error_display(@user, :ethnicity)
-  .form-check.mb-3
-    = f.check_box :enabled, class: 'form-check-input'
-    %label.form-check-label(for="user_enabled") Enabled
+  .row.mb-3
+    .col
+      .card
+        .card-body
+          .form-check.mb-3
+            = f.check_box :manager, class: 'form-check-input'
+            %label.form-check-label(for="user_manager") Account Manager
+          %small Manager for their customer account and community
+    .col
+      .card
+        .card-body
+          .form-check.mb-3
+            = f.check_box :enabled, class: 'form-check-input'
+            %label.form-check-label(for="user_enabled") Enabled
+          %small Enabled to sign in
 
   = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
   - if @user.persisted?

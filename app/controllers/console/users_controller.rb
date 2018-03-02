@@ -62,7 +62,8 @@ class Console::UsersController < ConsoleController
       :ethnicity,
       :birthdate,
       :time_zone,
-      :enabled
+      :enabled,
+      :manager
     )
   end
 
