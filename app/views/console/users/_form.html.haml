@@ -52,7 +52,7 @@
         = model_error_display(@user, :time_zone)
     .col
       .form-group
-        %label(for="user_birthdate") Birthdate
+        %label(for="user_birthdate") Birthdate (YYYY-MM-DD)
         = f.text_field :birthdate, class: "flatpickr-date form-control #{form_error_class(@user, :birthdate)}"
         = model_error_display(@user, :birthdate)
   .row

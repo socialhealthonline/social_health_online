@@ -20,6 +20,7 @@
 
 $(document).ready(function() {
   $(".flatpickr-date").flatpickr({
+    allowInput: true,
     dateFormat: 'Y-m-d'
   });
 });
