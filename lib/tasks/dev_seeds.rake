@@ -2,15 +2,15 @@ namespace :db do
   desc 'Load development data'
   task dev_seed: :environment do
     Customer.find_or_create_by({
-      name: 'ACME',
+      name: 'Social Health LLC',
       address: '123 Main St.',
       city: 'Hometown',
       state: 'AL',
       zip: '55555',
-      contact_name: 'Tom Jones',
-      contact_email: 'tom@example.com',
+      contact_name: 'James Quillen',
+      contact_email: 'james.quillen@gmail.com',
       contact_phone: '555-555-5555',
-      service_capacity: 50
+      service_capacity: 100
     })
 
     User.create({
