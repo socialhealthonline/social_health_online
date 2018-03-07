@@ -7,7 +7,6 @@ RSpec.describe User do
   it { should have_db_index :enabled }
   it { should have_db_index :email }
   it { should have_db_index :password_reset_token }
-  it { should have_db_index :username }
 
   it { should belong_to :customer }
 
@@ -22,7 +21,7 @@ RSpec.describe User do
   end
 
   describe 'required fields' do
-    %i(name email username address city gender ethnicity birthdate time_zone).each do |field|
+    %i(name email address city gender ethnicity birthdate time_zone).each do |field|
       it { should validate_presence_of field }
     end
   end

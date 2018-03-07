@@ -52,7 +52,7 @@ class Console::UsersController < ConsoleController
     params.require(:user).permit(
       :name,
       :email,
-      :username,
+      :display_name,
       :address,
       :city,
       :state,

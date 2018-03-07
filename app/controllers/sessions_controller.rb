@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  layout 'public'
 
   def new
     redirect_to root_url if authenticated_user

@@ -6,7 +6,7 @@
         .card-body
           %p.text-muted
             Enter your email address and we'll send you a link to reset your password.
-          = form_tag [:password_resets], method: :post, role: 'form' do
+          = form_with url: [:password_resets], method: :post, local: true do
             .form-group
               %label(for='email') Email
               = email_field_tag :email, params[:email], autofocus: true, class: 'form-control', required: true

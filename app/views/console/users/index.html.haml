@@ -5,7 +5,7 @@
     %li.breadcrumb-item.active(aria-current="page") Users
 
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
-  %h1.h3 Users
+  %h1.h3.brand-primary Users
   = link_to new_console_customer_user_path(@customer), class: 'btn btn-outline-primary' do
     %i.fas.fa-plus-circle
     Add User
@@ -16,7 +16,7 @@
       %thead
         %tr
           %th Name
-          %th Username
+          %th Display Name
           %th Email
           %th Manager
           %th Last Sign In
@@ -25,7 +25,7 @@
         - @users.each_with_index do |user, i|
           %tr
             %td= link_to "#{i+1}. #{user.name}", console_customer_user_path(@customer, user)
-            %td= user.username
+            %td= user.display_name
             %td= user.email
             %td
               - if user.manager?

@@ -1,38 +1,30 @@
 Rails.application.routes.draw do
   root 'public#index'
 
-  # About
+  # Public pages
   get 'about-us' => 'public#about'
-
-  # Join
-  get 'join' => 'public#join'
-
-  # Service
-  get 'service' => 'public#service'
-
-  # Partners
+  get 'join'     => 'public#join'
+  get 'service'  => 'public#service'
   get 'partners' => 'public#partners'
-
-  # News
-  get 'news' => 'public#news'
-
-  # Terms
-  get 'terms' => 'public#terms'
-
-  # Privacy
-  get 'privacy' => 'public#privacy'
+  get 'news'     => 'public#news'
+  get 'terms'    => 'public#terms'
+  get 'privacy'  => 'public#privacy'
 
   # Contact
-  get 'contact' => 'contact#new'
+  get 'contact'  => 'contact#new'
   post 'contact' => 'contact#create'
 
   # Authentication vanity routes
-  get 'signin' => 'sessions#new', as: 'signin'
+  get 'signin'     => 'sessions#new', as: 'signin'
   delete 'signout' => 'sessions#destroy', as: 'signout'
 
   # Authentication
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
+
+  # My profile
+  get 'my-profile' => 'profile#edit', as: 'profile'
+  patch 'profile' => 'profile#update', as: 'update_profile'
 
   # Console
   get 'console' => 'console#index'

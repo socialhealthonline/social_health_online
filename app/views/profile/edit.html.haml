@@ -1,0 +1,90 @@
+.container
+  .row.pt-5
+    .col
+      %h2.brand-primary My Profile
+  .row.mb-5
+    .col
+      = form_with model: @user, url: update_profile_url, method: :patch, local: true do |f|
+        .row
+          .col
+            .form-group
+              %label(for="user_name") Name
+              = f.text_field :name, autofocus: true, required: true, class: "form-control #{form_error_class(@user, :name)}"
+              = model_error_display(@user, :name)
+          .col
+            .form-group
+              %label(for="user_display_name") Display Name
+              = f.text_field :display_name, class: "form-control #{form_error_class(@user, :display_name)}"
+              = model_error_display(@user, :display_name)
+        .row
+          .col
+            .form-group
+              %label(for="user_email") Email
+              = f.email_field :email, required: true, class: "form-control #{form_error_class(@user, :email)}"
+              = model_error_display(@user, :email)
+          .col
+            .form-group
+              %label(for="user_phone") Phone
+              = f.text_field :phone, class: "form-control #{form_error_class(@user, :phone)}"
+              = model_error_display(@user, :phone)
+        .row
+          .col
+            .form-group
+              %label(for="user_address") Address
+              = f.text_field :address, class: "form-control #{form_error_class(@user, :address)}"
+              = model_error_display(@user, :address)
+          .col
+            .form-group
+              %label(for="user_city") City
+              = f.text_field :city, class: "form-control #{form_error_class(@user, :city)}"
+              = model_error_display(@user, :city)
+        .row
+          .col
+            .form-group
+              %label(for="user_state") State
+              = f.select :state, US_STATES, {}, { class: "form-control custom-select #{form_error_class(@user, :state)}" }
+              = model_error_display(@user, :state)
+          .col
+            .form-group
+              %label(for="user_zip") Zip
+              = f.text_field :zip, class: "form-control #{form_error_class(@user, :zip)}"
+              = model_error_display(@user, :zip)
+        .row
+          .col
+            .form-group
+              %label(for="user_time_zone") Timezone
+              = f.select(:time_zone, ['Alaska', 'Hawaii', 'Pacific Time (US & Canada)', 'Mountain Time (US & Canada)', 'Central Time (US & Canada)', 'Eastern Time (US & Canada)'].sort, {}, { class: 'custom-select form-control' })
+              = model_error_display(@user, :time_zone)
+          .col
+            .form-group
+              %label(for="user_birthdate") Birthdate (YYYY-MM-DD)
+              = f.text_field :birthdate, class: "flatpickr-date form-control #{form_error_class(@user, :birthdate)}"
+              = model_error_display(@user, :birthdate)
+        .row
+          .col
+            .form-group
+              %label(for="user_gender") Gender
+              = f.select :gender, User::GENDER, {}, { class: "form-control custom-select #{form_error_class(@user, :gender)}" }
+              = model_error_display(@user, :gender)
+          .col
+            .form-group
+              %label(for="user_ethnicity") Race/Ethnicity
+              = f.select :ethnicity, User::ETHNICITY, {}, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
+              = model_error_display(@user, :ethnicity)
+        %hr
+        .row
+          .col
+            %p.text-muted Optionally change your password:
+        .row
+          .col
+            .form-group
+              %label(for="user_password") New Password
+              = f.password_field :password, class: "form-control #{form_error_class(@user, :password)}"
+              = model_error_display(@user, :password)
+          .col
+            .form-group
+              %label(for="user_password_confirmation") Confirm New Password
+              = f.password_field :password_confirmation, class: "form-control #{form_error_class(@user, :password_confirmation)}"
+              = model_error_display(@user, :password_confirmation)
+
+        = f.submit 'Update', class: 'btn btn-primary', data: { disable_with: 'Updating...' }

@@ -19,7 +19,7 @@
     .col-md-8
       .card
         .card-body
-          = form_tag contact_url, method: :post, role: 'form' do
+          = form_with url: contact_url, method: :post, local: true do
             = hidden_field_tag :subject, ''
             .form-group
               %label(for="name") Name

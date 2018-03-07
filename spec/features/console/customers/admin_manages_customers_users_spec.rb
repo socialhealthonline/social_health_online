@@ -13,7 +13,7 @@ RSpec.describe 'Admin mananges customers users' do
   it 'successfully creates a new user' do
     click_link 'Add User'
     fill_in 'user_name', with: 'Bob Smith'
-    fill_in 'user_username', with: 'bsmith'
+    fill_in 'user_display_name', with: 'Bobby'
     fill_in 'user_email', with: 'bob@example.com'
     fill_in 'user_phone', with: '5555555555'
     fill_in 'user_address', with: '123 Main St.'
