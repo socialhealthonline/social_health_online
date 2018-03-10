@@ -71,10 +71,49 @@
               %label(for="user_ethnicity") Race/Ethnicity
               = f.select :ethnicity, User::ETHNICITY, {}, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
               = model_error_display(@user, :ethnicity)
+        .row
+          .col
+            .form-group
+              %label(for="user_relationship_status") Relationship Status
+              = f.select :relationship_status, User::RELATIONSHIP_STATUS, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :relationship_status)}" }
+              = model_error_display(@user, :relationship_status)
+          .col
+            .form-group
+              %label(for="user_education_level") Education Level
+              = f.select :education_level, User::EDUCATION_LEVEL, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :education_level)}" }
+              = model_error_display(@user, :education_level)
+        .row
+          .col
+            .form-group
+              %label(for="user_occupation") Occupation
+              = f.text_field :occupation, class: "form-control #{form_error_class(@user, :occupation)}"
+              = model_error_display(@user, :occupation)
+          .col
+            .form-group
+              %label(for="user_languages") Languages
+              = f.text_field :languages, class: "form-control #{form_error_class(@user, :languages)}"
+              = model_error_display(@user, :languages)
+        .row
+          .col
+            .form-group
+              %label(for="user_hobbies") Hobbies
+              = f.text_field :hobbies, class: "form-control #{form_error_class(@user, :hobbies)}"
+              = model_error_display(@user, :hobbies)
+          .col
+            .form-group
+              %label(for="user_pet_peeves") Pet Peeves
+              = f.text_field :pet_peeves, class: "form-control #{form_error_class(@user, :pet_peeves)}"
+              = model_error_display(@user, :pet_peeves)
+        .row
+          .col
+            .form-group
+              %label(for="user_bio") Bio
+              = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@user, :bio)}"
+              = model_error_display(@user, :bio)
         %hr
         .row
           .col
-            %p.text-muted Optionally change your password:
+            %p.text-muted Change your password:
         .row
           .col
             .form-group

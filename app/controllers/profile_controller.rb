@@ -20,17 +20,24 @@ class ProfileController < ApplicationController
   def user_params
     params.require(:user).permit(
       :name,
-      :email,
       :display_name,
+      :email,
+      :phone,
       :address,
       :city,
       :state,
       :zip,
-      :phone,
+      :time_zone,
+      :birthdate,
       :gender,
       :ethnicity,
-      :birthdate,
-      :time_zone,
+      :relationship_status,
+      :education_level,
+      :occupation,
+      :languages,
+      :hobbies,
+      :pet_peeves,
+      :bio,
       :password,
       :password_confirmation
     )

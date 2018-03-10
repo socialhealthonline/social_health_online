@@ -2,6 +2,8 @@ class User < ApplicationRecord
 
   ETHNICITY = ['Black', 'White', 'Hispanic', 'Asian', 'American Indian', 'Pacific Islander', 'Other']
   GENDER = ['Male', 'Female', 'Other']
+  RELATIONSHIP_STATUS = ['Single', 'In a relationship', 'Married', 'Other']
+  EDUCATION_LEVEL = ['High School', 'College', 'Advanced Graduate', 'Other']
 
   belongs_to :customer, inverse_of: :users, optional: true
 
@@ -15,6 +17,8 @@ class User < ApplicationRecord
   validates :zip, format: { with: %r{\A[\d]{5}(-[\d]{4})?\z} }
   validates_inclusion_of :gender, in: GENDER
   validates_inclusion_of :ethnicity, in: ETHNICITY
+  validates_inclusion_of :relationship_status, in: RELATIONSHIP_STATUS, allow_blank: true
+  validates_inclusion_of :education_level, in: EDUCATION_LEVEL, allow_blank: true
 
   before_save { |user| user.email.downcase! }
   before_validation { |user| user.phone.gsub!(/\D/,'') if user.phone? }

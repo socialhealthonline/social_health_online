@@ -47,6 +47,16 @@ RSpec.describe User do
     it { should allow_values('White', 'Black', 'Hispanic').for(:ethnicity) }
   end
 
+  describe 'valid relationship status' do
+    it { should_not allow_values('blue').for(:relationship_status) }
+    it { should allow_values('Single', 'Married').for(:relationship_status) }
+  end
+
+  describe 'valid education level' do
+    it { should_not allow_values('freshman').for(:education_level) }
+    it { should allow_values('High School', 'College').for(:education_level) }
+  end
+
   describe 'generates an auth_token on creation' do
     subject { create(:user) }
     specify { expect(subject.auth_token).to_not be_nil }
