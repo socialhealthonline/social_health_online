@@ -30,4 +30,6 @@ RSpec.describe 'Admin mananges customers users' do
     expect(customer.users.count).to eq 1
   end
 
+  pending 'successfully edits a user'
+
 end

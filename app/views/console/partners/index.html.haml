@@ -1,0 +1,28 @@
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+  %h1.h3.brand-primary Partners
+  = link_to new_console_partner_path, class: 'btn btn-outline-primary' do
+    %i.fas.fa-plus-circle
+    Add Partner
+
+- if @partners.any?
+  .table-responsive
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Name
+          %th State
+          %th
+      %tbody
+        - @partners.each_with_index do |partner, i|
+          %tr
+            %td= link_to "#{i+1}. #{partner.name}", console_partner_path(partner)
+            %td= partner.state
+            %td
+              = link_to edit_console_partner_path(partner), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
+                %i.far.fa-edit
+              &nbsp;
+              = link_to console_partner_path(partner), title: 'Delete', class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this partner. Press OK to continue.' } do
+                %i.far.fa-trash-alt
+- else
+  %p.text-muted
+    %em No partners were found.

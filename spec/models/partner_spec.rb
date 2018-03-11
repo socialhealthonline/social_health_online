@@ -1,17 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe Customer do
+RSpec.describe Partner do
 
   it { should validate_presence_of :name }
   it { should validate_presence_of :address }
   it { should validate_presence_of :city }
   it { should validate_presence_of :state }
-  it { should validate_presence_of :contact_name }
-  it { should validate_presence_of :contact_email }
-  it { should validate_presence_of :contact_phone }
+  it { should validate_presence_of :zip }
 
-  context 'with an existing customer' do
-    before { create(:customer, name: 'Acme') }
+  context 'with an existing partner' do
+    before { create(:partner, name: 'Acme') }
     specify do
       should validate_uniqueness_of(:name).case_insensitive
       should_not allow_values('acme', 'ACME').for(:name)
@@ -25,8 +23,8 @@ RSpec.describe Customer do
   end
 
   describe 'valid phone number' do
-    it { should allow_value('2055551234').for(:contact_phone) }
-    it { should_not allow_values('345645', '20555512342').for(:contact_phone) }
+    it { should allow_value('2055551234').for(:phone) }
+    it { should_not allow_values('345645', '20555512342').for(:phone) }
   end
 
   describe 'valid US state' do
@@ -35,7 +33,7 @@ RSpec.describe Customer do
   end
 
   describe '#full_address' do
-    subject { build(:customer, address: '123 Main St', city: 'Hometown', state: 'AL', zip: '35210') }
+    subject { build(:partner, address: '123 Main St', city: 'Hometown', state: 'AL', zip: '35210') }
     specify { expect(subject.full_address).to eq '123 Main St, Hometown, AL, 35210' }
   end
 

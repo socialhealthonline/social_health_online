@@ -27,4 +27,6 @@ RSpec.describe 'Admin mananges customer accounts' do
     expect(Customer.count).to eq 1
   end
 
+  pending 'successfully edits a customer'
+
 end

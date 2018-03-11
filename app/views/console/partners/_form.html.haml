@@ -1,0 +1,46 @@
+= form_with model: @partner, url: [:console, @partner], local: true do |f|
+  .row
+    .col-lg-6
+      .form-group
+        %label(for="partner_name") Name
+        = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@partner, :name)}"
+        = model_error_display(@partner, :name)
+    .col-lg-6
+      .form-group
+        %label(for="partner_address") Address
+        = f.text_field :address, class: "form-control #{form_error_class(@partner, :address)}"
+        = model_error_display(@partner, :address)
+  .row
+    .col-lg-4
+      .form-group
+        %label(for="partner_city") City
+        = f.text_field :city, class: "form-control #{form_error_class(@partner, :city)}"
+        = model_error_display(@partner, :city)
+    .col-lg-4
+      .form-group
+        %label(for="partner_state") State
+        = f.select :state, US_STATES, {}, { class: 'form-control custom-select' }
+        = model_error_display(@partner, :state)
+    .col-lg-4
+      .form-group
+        %label(for="partner_zip") Zip
+        = f.text_field :zip, class: "form-control #{form_error_class(@partner, :zip)}"
+        = model_error_display(@partner, :zip)
+  .row
+    .col-lg-6
+      .form-group
+        %label(for="partner_phone") Phone
+        = f.text_field :phone, class: "form-control #{form_error_class(@partner, :phone)}"
+        = model_error_display(@partner, :phone)
+    .col-lg-6
+      .form-group
+        %label(for="partner_url") Website
+        = f.text_field :url, class: "form-control #{form_error_class(@partner, :url)}"
+        = model_error_display(@partner, :url)
+
+  .mb-5
+    = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
+    - if @partner.persisted?
+      = link_to 'Cancel', console_partner_path(@partner), class: 'btn btn-outline-secondary'
+    - else
+      = link_to 'Cancel', console_partners_path, class: 'btn btn-outline-secondary'

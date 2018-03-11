@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get 'console' => 'console#index'
   namespace :console do
     root to: 'console#index', as: 'root'
+    resources :partners
     resources :customers do
       resources :users
     end

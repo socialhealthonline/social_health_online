@@ -1,4 +1,4 @@
-= form_with scope: :customer, url: [:console, @customer], local: true do |f|
+= form_with model: @customer, url: [:console, @customer], local: true do |f|
   .row
     .col-lg-6
       .form-group
@@ -52,7 +52,7 @@
       .form-group
         %label(for="customer_account_start_date") Account Start Date
         = f.text_field :account_start_date, class: "flatpickr-date form-control #{form_error_class(@customer, :account_start_date)}"
-        = model_error_display(@customer, :service_capacity)
+        = model_error_display(@customer, :account_start_date)
     .col-lg-4
       .form-group
         %label(for="customer_account_end_date") Account End Date
