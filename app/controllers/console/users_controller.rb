@@ -21,6 +21,7 @@ class Console::UsersController < ConsoleController
     @user = @customer.users.new(user_params)
     @user.set_random_password
     if @user.save
+      UserMailer.welcome(@user).deliver_now if @user.manager?
       redirect_to console_customer_user_url(@customer, @user), success: 'The user was successfully created!'
     else
       render :new

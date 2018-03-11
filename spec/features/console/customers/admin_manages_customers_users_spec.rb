@@ -25,10 +25,13 @@ RSpec.describe 'Admin mananges customers users' do
       fill_in 'user_birthdate', with: '1970-1-1'
       select 'Female', from: 'user_gender'
       select 'Asian', from: 'user_ethnicity'
+      check 'user_manager'
       click_button 'Save'
       expect(page).to have_content 'The user was successfully created'
       expect(current_path).to eq console_customer_user_path(customer, User.last)
+      expect(User.last.manager).to eq true
       expect(customer.users.count).to eq 1
+      expect(unread_emails_for(User.last.email).size).to eq 1
     end
 
     it 'unsuccessfully' do
