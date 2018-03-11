@@ -35,4 +35,5 @@ group :test do
   gem 'email_spec'
   gem 'launchy'
   gem 'shoulda-matchers'
+  gem 'simplecov', require: false
 end

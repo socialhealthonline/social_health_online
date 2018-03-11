@@ -16,3 +16,4 @@
 .byebug_history
 /config/master.key
 /config/database.yml
+/coverage

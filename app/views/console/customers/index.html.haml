@@ -25,7 +25,7 @@
               = link_to edit_console_customer_path(customer), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
                 %i.far.fa-edit
               &nbsp;
-              = link_to console_customer_path(customer), title: 'Delete', class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this customer. Press OK to continue.' } do
+              = link_to console_customer_path(customer), title: 'Delete', id: "delete_customer_#{customer.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this customer. Press OK to continue.' } do
                 %i.far.fa-trash-alt
 - else
   %p.text-muted
