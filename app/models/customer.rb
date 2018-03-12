@@ -1,5 +1,6 @@
 class Customer < ApplicationRecord
 
+  has_one :primary_manager, class_name: 'User', primary_key: :primary_manager_id
   has_many :users, inverse_of: :customer, dependent: :destroy
 
   validates :name, :address, :city, :state, :zip, :contact_name, :contact_email, :contact_phone, :service_capacity, presence: true
@@ -10,9 +11,16 @@ class Customer < ApplicationRecord
   validates_format_of :contact_email, with: /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
 
   before_validation { |customer| customer.contact_phone.gsub!(/\D/,'') if customer.contact_phone? }
+  before_validation :add_protocol_to_url
 
   def full_address
     [address, city, state, zip].compact.join(', ')
+  end
+
+  private
+
+  def add_protocol_to_url
+    self.url = "http://#{url}" if url.present? && url !~ /\Ahttp/
   end
 
 end

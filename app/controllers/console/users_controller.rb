@@ -24,6 +24,7 @@ class Console::UsersController < ConsoleController
       UserMailer.welcome(@user).deliver_now if @user.manager?
       redirect_to console_customer_user_url(@customer, @user), success: 'The user was successfully created!'
     else
+      flash.now[:error] = 'Please correct the errors to continue.'
       render :new
     end
   end
@@ -33,6 +34,7 @@ class Console::UsersController < ConsoleController
     if @user.update(user_params)
       redirect_to console_customer_user_url(@customer, @user), success: 'The user was successfully updated!'
     else
+      flash.now[:error] = 'Please correct the errors to continue.'
       render :edit
     end
   end

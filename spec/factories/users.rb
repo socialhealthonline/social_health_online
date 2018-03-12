@@ -18,6 +18,10 @@ FactoryBot.define do
       admin true
     end
 
+    trait :manager do
+      manager true
+    end
+
     trait :disabled do
       enabled false
     end

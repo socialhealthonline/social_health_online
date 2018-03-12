@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Customer do
 
+  it { should have_many(:users).dependent(:destroy) }
+  it { should have_one(:primary_manager) }
+
   it { should validate_presence_of :name }
   it { should validate_presence_of :address }
   it { should validate_presence_of :city }

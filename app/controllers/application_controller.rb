@@ -21,4 +21,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_manager
+    if authenticated_user.blank? || !authenticated_user.manager?
+      redirect_to root_url and return
+    end
+  end
+
 end

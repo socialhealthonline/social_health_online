@@ -26,6 +26,12 @@ Rails.application.routes.draw do
   get 'my-profile' => 'profile#edit', as: 'profile'
   patch 'profile' => 'profile#update', as: 'update_profile'
 
+  # Manage
+  namespace :manage do
+    get 'customer' => 'customer#edit', as: 'edit_customer'
+    patch 'customer' => 'customer#update', as: 'update_customer'
+  end
+
   # Console
   get 'console' => 'console#index'
   namespace :console do

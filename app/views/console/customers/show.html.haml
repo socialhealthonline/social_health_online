@@ -41,6 +41,18 @@
   = short_date @customer.account_end_date
 
 %p
+  %strong Primary Manager:
+  = @customer.primary_manager&.name
+
+%p
+  %strong Website:
+  = link_to @customer.url, @customer.url, target: '_blank'
+
+%p
+  %strong Bio:
+  = truncate(@customer.bio, length: 100)
+
+%p
   %strong Suspended:
   = @customer.suspended? ? 'Yes' : 'No'
 

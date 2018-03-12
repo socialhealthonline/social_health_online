@@ -21,6 +21,7 @@ class Console::PartnersController < ConsoleController
     if @partner.save
       redirect_to console_partner_url(@partner), success: 'The partner was successfully created!'
     else
+      flash.now[:error] = 'Please correct the errors to continue.'
       render :new
     end
   end
@@ -30,6 +31,7 @@ class Console::PartnersController < ConsoleController
     if @partner.update(partner_params)
       redirect_to console_partner_url(@partner), success: 'The partner was successfully updated!'
     else
+      flash.now[:error] = 'Please correct the errors to continue.'
       render :edit
     end
   end

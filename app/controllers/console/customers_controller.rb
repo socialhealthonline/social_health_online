@@ -21,6 +21,7 @@ class Console::CustomersController < ConsoleController
     if @customer.save
       redirect_to console_customer_url(@customer), success: 'The customer was successfully created!'
     else
+      flash.now[:error] = 'Please correct the errors to continue.'
       render :new
     end
   end
@@ -55,6 +56,8 @@ class Console::CustomersController < ConsoleController
       :service_capacity,
       :account_start_date,
       :account_end_date,
+      :bio,
+      :url,
       :suspended
     )
   end
