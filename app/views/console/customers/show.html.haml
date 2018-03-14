@@ -46,7 +46,8 @@
 
 %p
   %strong Website:
-  = link_to @customer.url, @customer.url, target: '_blank'
+  - if @customer.url.present?
+    = link_to @customer.url, @customer.url, target: '_blank'
 
 %p
   %strong Bio:
