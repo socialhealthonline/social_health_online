@@ -1,0 +1,46 @@
+= form_with model: @affiliate, url: [:console, @affiliate], local: true do |f|
+  .row
+    .col-lg-6
+      .form-group
+        %label(for="affiliate_name") Name
+        = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@affiliate, :name)}"
+        = model_error_display(@affiliate, :name)
+    .col-lg-6
+      .form-group
+        %label(for="affiliate_address") Address
+        = f.text_field :address, class: "form-control #{form_error_class(@affiliate, :address)}"
+        = model_error_display(@affiliate, :address)
+  .row
+    .col-lg-4
+      .form-group
+        %label(for="affiliate_city") City
+        = f.text_field :city, class: "form-control #{form_error_class(@affiliate, :city)}"
+        = model_error_display(@affiliate, :city)
+    .col-lg-4
+      .form-group
+        %label(for="affiliate_state") State
+        = f.select :state, US_STATES, {}, { class: 'form-control custom-select' }
+        = model_error_display(@affiliate, :state)
+    .col-lg-4
+      .form-group
+        %label(for="affiliate_zip") Zip
+        = f.text_field :zip, class: "form-control #{form_error_class(@affiliate, :zip)}"
+        = model_error_display(@affiliate, :zip)
+  .row
+    .col-lg-6
+      .form-group
+        %label(for="affiliate_phone") Phone
+        = f.text_field :phone, class: "form-control #{form_error_class(@affiliate, :phone)}"
+        = model_error_display(@affiliate, :phone)
+    .col-lg-6
+      .form-group
+        %label(for="affiliate_url") Website
+        = f.text_field :url, class: "form-control #{form_error_class(@affiliate, :url)}"
+        = model_error_display(@affiliate, :url)
+
+  .mb-5
+    = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
+    - if @affiliate.persisted?
+      = link_to 'Cancel', console_affiliate_path(@affiliate), class: 'btn btn-outline-secondary'
+    - else
+      = link_to 'Cancel', console_affiliates_path, class: 'btn btn-outline-secondary'

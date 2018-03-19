@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Partner do
+RSpec.describe Affiliate do
 
   it { should validate_presence_of :name }
   it { should validate_presence_of :address }
@@ -8,8 +8,8 @@ RSpec.describe Partner do
   it { should validate_presence_of :state }
   it { should validate_presence_of :zip }
 
-  context 'with an existing partner' do
-    before { create(:partner, name: 'Acme') }
+  context 'with an existing affiliate' do
+    before { create(:affiliate, name: 'Acme') }
     specify do
       should validate_uniqueness_of(:name).case_insensitive
       should_not allow_values('acme', 'ACME').for(:name)
@@ -33,7 +33,7 @@ RSpec.describe Partner do
   end
 
   describe '#full_address' do
-    subject { build(:partner, address: '123 Main St', city: 'Hometown', state: 'AL', zip: '35210') }
+    subject { build(:affiliate, address: '123 Main St', city: 'Hometown', state: 'AL', zip: '35210') }
     specify { expect(subject.full_address).to eq '123 Main St, Hometown, AL, 35210' }
   end
 

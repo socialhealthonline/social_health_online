@@ -1,4 +1,4 @@
-class Partner < ApplicationRecord
+class Affiliate < ApplicationRecord
 
   validates :name, :address, :city, :state, :zip, presence: true
   validates_uniqueness_of :name, case_sensitive: false
@@ -6,7 +6,7 @@ class Partner < ApplicationRecord
   validates :zip, format: { with: %r{\A[\d]{5}(-[\d]{4})?\z} }
   validates :phone, format: { with: /\A\d{10}\z/, message: 'must be 10 digits including area code', allow_blank: true }
 
-  before_validation { |partner| partner.phone.gsub!(/\D/,'') if partner.phone? }
+  before_validation { |affiliate| affiliate.phone.gsub!(/\D/,'') if affiliate.phone? }
   before_validation :add_protocol_to_url
 
   def full_address

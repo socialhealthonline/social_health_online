@@ -1,0 +1,28 @@
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+  %h1.h3.brand-primary Affiliates
+  = link_to new_console_affiliate_path, class: 'btn btn-outline-primary' do
+    %i.fas.fa-plus-circle
+    Add Affiliate
+
+- if @affiliates.any?
+  .table-responsive
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Name
+          %th State
+          %th
+      %tbody
+        - @affiliates.each_with_index do |affiliate, i|
+          %tr
+            %td= link_to "#{i+1}. #{affiliate.name}", console_affiliate_path(affiliate)
+            %td= affiliate.state
+            %td
+              = link_to edit_console_affiliate_path(affiliate), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
+                %i.far.fa-edit
+              &nbsp;
+              = link_to console_affiliate_path(affiliate), title: 'Delete', id: "delete_affiliate_#{affiliate.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this affiliate. Press OK to continue.' } do
+                %i.far.fa-trash-alt
+- else
+  %p.text-muted
+    %em No affiliates were found.

@@ -1,0 +1,26 @@
+%nav(aria-label="breadcrumb")
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to 'Affiliates', console_affiliates_path
+    %li.breadcrumb-item.active(aria-current="page")= @affiliate.name
+
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+  %h1.h3.brand-primary= @affiliate.name
+
+%p= @affiliate.full_address
+
+%p
+  %strong Phone:
+  = number_to_phone @affiliate.phone
+
+%p
+  %strong Website:
+  = link_to @affiliate.url, @affiliate.url, target: '_blank' if @affiliate.url.present?
+
+%p
+  = link_to edit_console_affiliate_path(@affiliate), class: 'btn btn-outline-primary' do
+    %i.far.fa-edit
+    Edit
+  &nbsp;
+  = link_to console_affiliate_path(@affiliate), method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'Please confirm that you wish to delete this affiliate. Press OK to continue.' } do
+    %i.far.fa-trash-alt
+    Delete

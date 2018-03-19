@@ -12,7 +12,7 @@ class PublicController < ApplicationController
   def service
   end
 
-  def partners
+  def affiliates
   end
 
 end

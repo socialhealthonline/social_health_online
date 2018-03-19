@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'about-us' => 'public#about'
   get 'join'     => 'public#join'
   get 'service'  => 'public#service'
-  get 'partners' => 'public#partners'
+  get 'affiliates' => 'public#affiliates'
   get 'news'     => 'public#news'
   get 'terms'    => 'public#terms'
   get 'privacy'  => 'public#privacy'
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   get 'console' => 'console#index'
   namespace :console do
     root to: 'console#index', as: 'root'
-    resources :partners
+    resources :affiliates
     resources :customers do
       resources :users
     end

@@ -27,10 +27,10 @@ RSpec.describe 'Public pages' do
   end
 
   describe 'visitor' do
-    it 'views partners page successfully' do
-      visit partners_path
-      expect(current_path).to eq partners_path
-      expect(page).to have_content 'Our Partners'
+    it 'views affiliates page successfully' do
+      visit affiliates_path
+      expect(current_path).to eq affiliates_path
+      expect(page).to have_content 'Our Affiliates'
     end
   end
 
