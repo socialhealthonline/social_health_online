@@ -50,6 +50,10 @@
     = link_to @customer.url, @customer.url, target: '_blank'
 
 %p
+  %strong Events Website:
+  - if @customer.events_url.present?
+    = link_to @customer.events_url, @customer.events_url, target: '_blank'
+%p
   %strong Bio:
   = truncate(@customer.bio, length: 100)
 

@@ -26,11 +26,9 @@ class Manage::CustomerController < ApplicationController
       :city,
       :state,
       :zip,
-      :contact_name,
-      :contact_email,
-      :contact_phone,
       :bio,
       :url,
+      :events_url,
       :primary_manager_id
     )
   end

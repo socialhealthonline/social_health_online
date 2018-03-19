@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_11_231514) do
+ActiveRecord::Schema.define(version: 2018_03_19_200939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2018_03_11_231514) do
     t.text "bio"
     t.string "url"
     t.integer "primary_manager_id"
+    t.string "events_url"
   end
 
   create_table "partners", force: :cascade do |t|

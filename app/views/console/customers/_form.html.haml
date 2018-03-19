@@ -59,11 +59,16 @@
         = f.text_field :account_end_date, class: "flatpickr-date form-control #{form_error_class(@customer, :account_end_date)}"
         = model_error_display(@customer, :account_end_date)
   .row
-    .col
+    .col-lg-6
       .form-group
         %label(for="customer_url") Website
         = f.text_field :url, class: "form-control #{form_error_class(@customer, :url)}"
         = model_error_display(@customer, :url)
+    .col-lg-6
+      .form-group
+        %label(for="customer_events_url") Events Website
+        = f.text_field :events_url, class: "form-control #{form_error_class(@customer, :events_url)}"
+        = model_error_display(@customer, :events_url)
   .row
     .col
       .form-group

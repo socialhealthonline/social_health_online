@@ -58,6 +58,7 @@ class Console::CustomersController < ConsoleController
       :account_end_date,
       :bio,
       :url,
+      :events_url,
       :suspended
     )
   end

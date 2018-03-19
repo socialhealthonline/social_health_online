@@ -22,6 +22,8 @@ RSpec.describe 'Admin mananges customer accounts' do
       fill_in 'customer_contact_phone', with: '5555555555'
       fill_in 'customer_service_capacity', with: 30
       fill_in 'customer_account_start_date', with: Date.today.to_s
+      fill_in 'customer_url', with: 'example.com'
+      fill_in 'customer_events_url', with: 'events.example.com'
       click_button 'Save'
       expect(page).to have_content 'The customer was successfully created'
       expect(current_path).to eq console_customer_path(Customer.last)
