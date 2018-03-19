@@ -5,12 +5,15 @@
         %small.text-white Copyright &copy; #{Date.today.year} Social Health, LLC. All rights reserved.
       .col-md.text-center
         %small
-          = link_to 'Terms &amp; Conditions of Use'.html_safe, terms_path, class: 'text-white'
+          = link_to 'Terms &amp; Conditions of Use'.html_safe, 'https://docs.google.com/document/d/e/2PACX-1vRCNcisGQv58Gt8Y799gFDLvydg1DNIXX_IfNkRRd6fc1KQvvxxvhwGsRe0kISy5vwiKB0IXf7NUssP/pub', class: 'text-white', target: '_blank'
         %span.px-2.text-white &middot;
         %small
-          = link_to 'Privacy Policy', privacy_path, class: 'text-white'
+          = link_to 'Privacy Policy', 'https://docs.google.com/document/d/e/2PACX-1vQRgQpvflp4NkDfZJW7VGwUZSTmWtp6VYK3qqqSaSPBkz-epF4pQ7ldoaRNd88-_22w-38iEmMty7T9/pub', class: 'text-white', target: '_blank'
       .col-md
         %ul.text-right#social-links
+          %li
+            = link_to 'https://www.instagram.com/socialhealthonline', target: '_blank' do
+              = image_tag 'instagram.svg', class: 'img-fluid', alt: 'Instagram', style: 'height: 25px'
           %li
             = link_to '#', target: '_blank' do
               = image_tag 'youtube.svg', class: 'img-fluid', alt: 'Youtube', style: 'height: 25px'
