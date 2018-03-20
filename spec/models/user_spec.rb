@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe User do
 
   it { should have_db_index :auth_token }
-  it { should have_db_index :customer_id }
+  it { should have_db_index :member_id }
   it { should have_db_index :enabled }
   it { should have_db_index :email }
   it { should have_db_index :password_reset_token }
 
-  it { should belong_to :customer }
+  it { should belong_to :member }
 
   it { should have_secure_password }
 

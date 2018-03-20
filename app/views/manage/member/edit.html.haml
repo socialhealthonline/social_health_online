@@ -1,0 +1,60 @@
+.container
+  .row.pt-5
+    .col
+      %h2.brand-primary My Community
+
+  .row
+    .col
+      = form_with model: @member, url: [:manage, :update, @member], local: true do |f|
+        .row
+          .col-lg-6
+            .form-group
+              %label(for="member_name") Name
+              = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@member, :name)}"
+              = model_error_display(@member, :name)
+          .col-lg-6
+            .form-group
+              %label(for="member_address") Address
+              = f.text_field :address, class: "form-control #{form_error_class(@member, :address)}"
+              = model_error_display(@member, :address)
+        .row
+          .col-lg-4
+            .form-group
+              %label(for="member_city") City
+              = f.text_field :city, class: "form-control #{form_error_class(@member, :city)}"
+              = model_error_display(@member, :city)
+          .col-lg-4
+            .form-group
+              %label(for="member_state") State
+              = f.select :state, US_STATES, {}, { class: 'form-control custom-select' }
+              = model_error_display(@member, :state)
+          .col-lg-4
+            .form-group
+              %label(for="member_zip") Zip
+              = f.text_field :zip, class: "form-control #{form_error_class(@member, :zip)}"
+              = model_error_display(@member, :zip)
+        .row
+          .col-lg-6
+            .form-group
+              %label(for="member_url") Website
+              = f.text_field :url, class: "form-control #{form_error_class(@member, :url)}"
+              = model_error_display(@member, :url)
+          .col-lg-6
+            .form-group
+              %label(for="member_events_url") Events Website
+              = f.text_field :events_url, class: "form-control #{form_error_class(@member, :events_url)}"
+              = model_error_display(@member, :events_url)
+        .row
+          .col-lg-6
+            .form-group
+              %label(for="member_primary_manager_id") Primary Manager
+              = f.select :primary_manager_id, options_from_collection_for_select(@managers, 'id', 'name', @member.primary_manager_id), { include_blank: true }, { class: 'form-control custom-select' }
+              = model_error_display(@member, :primary_manager_id)
+        .row
+          .col
+            .form-group
+              %label(for="member_bio") Bio
+              = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@member, :bio)}"
+              = model_error_display(@member, :bio)
+        .mb-5
+          = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }

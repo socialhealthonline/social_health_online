@@ -1,0 +1,71 @@
+%nav(aria-label="breadcrumb")
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to 'Members', console_members_path
+    %li.breadcrumb-item.active(aria-current="page")= @member.name
+
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+  %h1.h3.brand-primary= @member.name
+  .dropdown
+    %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+      %i.fas.fa-cog
+      Manage
+    .dropdown-menu.dropdown-menu-right
+      = link_to console_member_users_path(@member), class: 'dropdown-item' do
+        %i.fas.fa-user-circle
+        Users
+
+%p= @member.full_address
+
+%p
+  %strong Contact Name:
+  = @member.contact_name
+
+%p
+  %strong Contact Email:
+  = @member.contact_email
+
+%p
+  %strong Contact Phone:
+  = number_to_phone @member.contact_phone
+
+%p
+  %strong Service Capacity:
+  = @member.service_capacity
+
+%p
+  %strong Account Start Date:
+  = short_date @member.account_start_date
+
+%p
+  %strong Account End Date:
+  = short_date @member.account_end_date
+
+%p
+  %strong Primary Manager:
+  = @member.primary_manager&.name
+
+%p
+  %strong Website:
+  - if @member.url.present?
+    = link_to @member.url, @member.url, target: '_blank'
+
+%p
+  %strong Events Website:
+  - if @member.events_url.present?
+    = link_to @member.events_url, @member.events_url, target: '_blank'
+%p
+  %strong Bio:
+  = truncate(@member.bio, length: 100)
+
+%p
+  %strong Suspended:
+  = @member.suspended? ? 'Yes' : 'No'
+
+%p
+  = link_to edit_console_member_path(@member), class: 'btn btn-outline-primary' do
+    %i.far.fa-edit
+    Edit
+  &nbsp;
+  = link_to console_member_path(@member), method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'Please confirm that you wish to delete this member. Press OK to continue.' } do
+    %i.far.fa-trash-alt
+    Delete

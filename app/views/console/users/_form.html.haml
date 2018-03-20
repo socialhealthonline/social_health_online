@@ -1,4 +1,4 @@
-= form_with model: @user, url: [:console, @customer, @user], local: true do |f|
+= form_with model: @user, url: [:console, @member, @user], local: true do |f|
   .row
     .col
       .form-group
@@ -72,7 +72,7 @@
           .form-check.mb-3
             = f.check_box :manager, class: 'form-check-input'
             %label.form-check-label(for="user_manager") Account Manager
-          %small Manager for their customer account and community
+          %small Manager for their member account and community
     .col
       .card
         .card-body
@@ -84,6 +84,6 @@
   .mb-5
     = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
     - if @user.persisted?
-      = link_to 'Cancel', console_customer_user_path(@customer, @user), class: 'btn btn-outline-secondary'
+      = link_to 'Cancel', console_member_user_path(@member, @user), class: 'btn btn-outline-secondary'
     - else
-      = link_to 'Cancel', console_customer_users_path(@customer), class: 'btn btn-outline-secondary'
+      = link_to 'Cancel', console_member_users_path(@member), class: 'btn btn-outline-secondary'

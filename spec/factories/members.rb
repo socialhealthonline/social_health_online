@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :customer do
+  factory :member do
     name 'ACME'
     address '123 Main St.'
     city 'Hometown'

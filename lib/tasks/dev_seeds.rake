@@ -1,7 +1,7 @@
 namespace :db do
   desc 'Load development data'
   task dev_seed: :environment do
-    Customer.find_or_create_by({
+    Member.find_or_create_by({
       name: 'Social Health LLC',
       address: '123 Main St.',
       city: 'Hometown',

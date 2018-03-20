@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_19_211248) do
+ActiveRecord::Schema.define(version: 2018_03_20_022751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2018_03_19_211248) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "customers", force: :cascade do |t|
+  create_table "members", force: :cascade do |t|
     t.string "name", null: false
     t.string "address", null: false
     t.string "city", null: false
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2018_03_19_211248) do
     t.datetime "last_sign_in_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "customer_id"
+    t.integer "member_id"
     t.string "display_name"
     t.string "address", null: false
     t.string "city", null: false
@@ -80,9 +80,9 @@ ActiveRecord::Schema.define(version: 2018_03_19_211248) do
     t.text "pet_peeves"
     t.text "bio"
     t.index ["auth_token"], name: "index_users_on_auth_token"
-    t.index ["customer_id"], name: "index_users_on_customer_id"
     t.index ["email"], name: "index_users_on_email"
     t.index ["enabled"], name: "index_users_on_enabled"
+    t.index ["member_id"], name: "index_users_on_member_id"
     t.index ["password_reset_token"], name: "index_users_on_password_reset_token"
   end
 

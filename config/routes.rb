@@ -28,8 +28,8 @@ Rails.application.routes.draw do
 
   # Manage
   namespace :manage do
-    get 'customer' => 'customer#edit', as: 'edit_customer'
-    patch 'customer' => 'customer#update', as: 'update_customer'
+    get 'member' => 'member#edit', as: 'edit_member'
+    patch 'member' => 'member#update', as: 'update_member'
   end
 
   # Console
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   namespace :console do
     root to: 'console#index', as: 'root'
     resources :affiliates
-    resources :customers do
+    resources :members do
       resources :users
     end
   end

@@ -1,12 +1,12 @@
 %nav(aria-label="breadcrumb")
   %ol.breadcrumb
-    %li.breadcrumb-item= link_to 'Customers', console_customers_path
-    %li.breadcrumb-item= link_to @customer.name, console_customer_path(@customer)
+    %li.breadcrumb-item= link_to 'Members', console_members_path
+    %li.breadcrumb-item= link_to @member.name, console_member_path(@member)
     %li.breadcrumb-item.active(aria-current="page") Users
 
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
   %h1.h3.brand-primary Users
-  = link_to new_console_customer_user_path(@customer), class: 'btn btn-outline-primary' do
+  = link_to new_console_member_user_path(@member), class: 'btn btn-outline-primary' do
     %i.fas.fa-plus-circle
     Add User
 
@@ -24,7 +24,7 @@
       %tbody
         - @users.each_with_index do |user, i|
           %tr
-            %td= link_to "#{i+1}. #{user.name}", console_customer_user_path(@customer, user)
+            %td= link_to "#{i+1}. #{user.name}", console_member_user_path(@member, user)
             %td= user.display_name
             %td= user.email
             %td
@@ -33,10 +33,10 @@
 
             %td= short_date user.last_sign_in_at
             %td
-              = link_to edit_console_customer_user_path(@customer, user), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
+              = link_to edit_console_member_user_path(@member, user), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
                 %i.far.fa-edit
               &nbsp;
-              = link_to console_customer_user_path(@customer, user), title: 'Delete', id: "delete_user_#{user.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this user. Press OK to continue.' } do
+              = link_to console_member_user_path(@member, user), title: 'Delete', id: "delete_user_#{user.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this user. Press OK to continue.' } do
                 %i.far.fa-trash-alt
 - else
   %p.text-muted

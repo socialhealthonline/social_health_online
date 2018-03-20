@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe 'Admin mananges customers users' do
+RSpec.describe 'Admin mananges members users' do
 
   let!(:admin) { create(:user, :admin) }
-  let!(:customer) { create(:customer) }
+  let!(:member) { create(:member) }
 
   describe 'creates a new user' do
     before do
       sign_in admin
-      visit console_customer_users_path(customer)
+      visit console_member_users_path(member)
       click_link 'Add User'
     end
 
@@ -28,25 +28,25 @@ RSpec.describe 'Admin mananges customers users' do
       check 'user_manager'
       click_button 'Save'
       expect(page).to have_content 'The user was successfully created'
-      expect(current_path).to eq console_customer_user_path(customer, User.last)
+      expect(current_path).to eq console_member_user_path(member, User.last)
       expect(User.last.manager).to eq true
-      expect(customer.users.count).to eq 1
+      expect(member.users.count).to eq 1
       expect(unread_emails_for(User.last.email).size).to eq 1
     end
 
     it 'unsuccessfully' do
       fill_in 'user_name', with: ''
       click_button 'Save'
-      expect(customer.users.count).to eq 0
+      expect(member.users.count).to eq 0
     end
   end
 
   describe 'edits a user' do
-    let!(:user) { create(:user, customer: customer) }
+    let!(:user) { create(:user, member: member) }
 
     before do
       sign_in admin
-      visit edit_console_customer_user_path(customer, user)
+      visit edit_console_member_user_path(member, user)
     end
 
     it 'successfully' do
@@ -67,16 +67,16 @@ RSpec.describe 'Admin mananges customers users' do
   end
 
   describe 'deletes a user' do
-    let!(:user) { create(:user, customer: customer) }
+    let!(:user) { create(:user, member: member) }
 
     before do
       sign_in admin
-      visit console_customer_users_path(customer)
+      visit console_member_users_path(member)
     end
 
     it 'successfully' do
       expect { click_link "delete_user_#{user.id}" }.to change{ User.count }.by(-1)
-      expect(current_path).to eq console_customer_users_path(customer)
+      expect(current_path).to eq console_member_users_path(member)
     end
   end
 
