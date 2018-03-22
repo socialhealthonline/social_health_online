@@ -23,4 +23,8 @@ $(document).ready(function() {
     allowInput: true,
     dateFormat: 'Y-m-d'
   });
+  $(".flatpickr-date-time").flatpickr({
+    enableTime: true,
+    dateFormat: 'Y-m-d h:i K'
+  });
 });

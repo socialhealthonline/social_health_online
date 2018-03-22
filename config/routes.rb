@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   namespace :manage do
     get 'member' => 'member#edit', as: 'edit_member'
     patch 'member' => 'member#update', as: 'update_member'
+    resources :events
   end
 
   # Console

@@ -30,4 +30,8 @@ module ApplicationHelper
     date.blank? ? nil : date.strftime('%Y-%m-%d')
   end
 
+  def short_date_time(datetime, time_zone)
+    datetime.blank? ? nil : datetime.in_time_zone(time_zone).strftime('%b %d %Y, %l:%M %p %Z')
+  end
+
 end

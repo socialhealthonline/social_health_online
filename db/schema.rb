@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_20_022751) do
+ActiveRecord::Schema.define(version: 2018_03_22_011716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,27 @@ ActiveRecord::Schema.define(version: 2018_03_20_022751) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.string "title", null: false
+    t.datetime "start_at", null: false
+    t.string "time_zone", default: "Central Time (US & Canada)", null: false
+    t.string "event_type", null: false
+    t.string "state"
+    t.string "city"
+    t.string "location"
+    t.string "url"
+    t.text "details"
+    t.boolean "private", default: false, null: false
+    t.integer "rsvp_limit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_type"], name: "index_events_on_event_type"
+    t.index ["member_id"], name: "index_events_on_member_id"
+    t.index ["private"], name: "index_events_on_private"
+    t.index ["start_at"], name: "index_events_on_start_at"
   end
 
   create_table "members", force: :cascade do |t|

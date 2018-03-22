@@ -1,0 +1,42 @@
+.container
+  .row.pt-5
+    .col
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+        %h1.h3.brand-primary= @event.title
+        %div
+          = link_to edit_manage_event_path(@event), class: 'btn btn-outline-primary' do
+            %i.far.fa-edit
+            Edit
+          &nbsp;
+          = link_to manage_events_path, class: 'btn btn-outline-secondary' do
+            %i.fas.fa-arrow-alt-circle-left
+            Back
+  .row.pt-5
+    .col
+      %p
+        %strong Type
+        = @event.event_type
+      %p
+        %strong Event Date
+        = short_date_time @event.start_at, @event.time_zone
+      %p
+        %strong Location
+        = @event.location
+      %p
+        %strong City
+        = @event.city
+      %p
+        %strong State
+        = @event.state
+      %p
+        %strong Website:
+        = link_to @event.url, @event.url, target: '_blank' if @event.url.present?
+      %p
+        %strong RSVP Limit
+        = @event.rsvp_limit
+      %p
+        %strong Private
+        = @event.private? ? 'Yes' : 'No'
+      %p
+        %strong Details
+      = simple_format @event.details

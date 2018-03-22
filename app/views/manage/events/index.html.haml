@@ -1,0 +1,36 @@
+.container
+  .row.pt-5
+    .col
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+        %h2.brand-primary My Community Events
+        = link_to new_manage_event_path, class: 'btn btn-outline-primary' do
+          %i.fas.fa-plus-circle
+          Add Event
+  .row.pt-5
+    .col
+      - if @events.any?
+        .table-responsive
+          %table.table
+            %thead
+              %tr
+                %th Title
+                %th Type
+                %th Date
+                %th Location
+                %th
+            %tbody
+              - @events.each_with_index do |event, i|
+                %tr
+                  %td= link_to "#{i+1}. #{event.title}", manage_event_path(event)
+                  %td= event.event_type
+                  %td= short_date_time(event.start_at, event.time_zone)
+                  %td= event.location
+                  %td
+                    = link_to edit_manage_event_path(event), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
+                      %i.far.fa-edit
+                    &nbsp;
+                    = link_to manage_event_path(event), title: 'Delete', id: "delete_event_#{event.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this event. Press OK to continue.' } do
+                      %i.far.fa-trash-alt
+      - else
+        %p.text-muted
+          %em No events were found.

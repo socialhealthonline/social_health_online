@@ -1,7 +1,16 @@
 .container
   .row.pt-5
     .col
-      %h2.brand-primary My Community
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+        %h2.brand-primary My Community
+        .dropdown
+          %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+            %i.fas.fa-cog
+            Manage
+          .dropdown-menu.dropdown-menu-right
+            = link_to manage_events_path, class: 'dropdown-item' do
+              %i.fas.fa-map-marker-alt
+              Events
 
   .row
     .col
