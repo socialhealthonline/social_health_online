@@ -14,7 +14,7 @@ RSpec.describe 'Public pages' do
     it 'views join page successfully' do
       visit join_path
       expect(current_path).to eq join_path
-      expect(page).to have_content 'Join Up'
+      expect(page).to have_content 'Joining'
     end
   end
 
@@ -27,10 +27,10 @@ RSpec.describe 'Public pages' do
   end
 
   describe 'visitor' do
-    it 'views affiliates page successfully' do
-      visit affiliates_path
-      expect(current_path).to eq affiliates_path
-      expect(page).to have_content 'Our Affiliates'
+    it 'views partners page successfully' do
+      visit partners_path
+      expect(current_path).to eq partners_path
+      expect(page).to have_content 'Our Partners'
     end
   end
 
@@ -39,6 +39,14 @@ RSpec.describe 'Public pages' do
       visit service_path
       expect(current_path).to eq service_path
       expect(page).to have_content 'Our Service'
+    end
+  end
+
+  describe 'visitor' do
+    it 'views pricing page successfully' do
+      visit pricing_path
+      expect(current_path).to eq pricing_path
+      expect(page).to have_content 'Pricing'
     end
   end
 

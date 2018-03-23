@@ -1,10 +1,12 @@
+- page_title 'Contact Us'
+
 .container
-  .row.pt-5
+  .row.pt-5.pb-3
     .col
       %h2.text-info Contact Us
   .row.mb-5
     .col-md-4
-      %p.lead
+      %p.lead.pb-3
         Contact us to learn more about our service, request a demo, or acquire a limited 14-day free
         trial Guest User account!
       %p
@@ -29,5 +31,5 @@
               = email_field_tag :email, params[:email], class: 'form-control', required: true
             .form-group
               %label(for="message") Message
-              = text_area_tag :message, params[:message], class: 'form-control', required: true
+              = text_area_tag :message, params[:message], rows: '6', class: 'form-control', required: true
             = submit_tag 'Send', class: 'btn btn-primary', data: { disable_with: 'Please wait...' }

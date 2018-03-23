@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def page_title(page_title)
+    content_for(:title) { page_title }
+  end
+
   def active_nav(nav_item)
     if controller_name == 'public'
       action_name == nav_item ? 'active' : nil

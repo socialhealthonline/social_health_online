@@ -1,22 +1,33 @@
-#hero
-  .container
-    %h3.mb-4.font-weight-bold.text-light
-      Social Health is dedicated to improving the wellness of people and their communities by promoting
-      healthier social lives.
-    %h5.mb-4.font-weight-bold.text-light
-      With our service, Social Health Online, we make it fun and easy to receive rewards by connecting
-      with people and attending social events.
-    %h5.font-weight-bold.text-light
-      Make your social life more rewarding with Social Health.
+.main-container
+  #hero
+    .container
+      %h3.mb-4.font-weight-bold.text-light
+        Social Health is dedicated to improving the wellness of people and their communities by promoting
+        healthier social lives.
+      %h5.mb-4.font-weight-bold.text-light
+        With our service, Social Health Online, we make it fun and easy to receive rewards by connecting
+        with people and attending social events.
+      %h5.font-weight-bold.text-light
+        Make your social life more rewarding with Social Health.
 
-.container
-  .row.py-5
-    .col.text-center
-      = image_tag 'social.svg', height: '70'
-      %h5.text-info Meet.
-    .col.text-center
-      = image_tag 'handshake.svg', height: '70'
-      %h5.text-info Greet.
-    .col.text-center
-      = image_tag 'total-cart.svg', height: '70'
-      %h5.text-info Benefit.
+  %section.space-sm.text-center
+    .container
+      .row
+        .col
+          = link_to 'Get Started', contact_path, class: 'btn btn-lg btn-info'
+
+  %section.space-lg.text-center.bg-white
+    .container
+      .row
+        .col.text-center
+          = image_tag 'social.svg', height: '70'
+          %h5.text-info Meet.
+          %span.text-muted Attend or host social events.
+        .col.text-center
+          = image_tag 'handshake.svg', height: '70'
+          %h5.text-info Greet.
+          %span.text-muted Develop relationships with others at events.
+        .col.text-center
+          = image_tag 'total-cart.svg', height: '70'
+          %h5.text-info Benefit.
+          %span.text-muted Log your participation in events for rewards.
