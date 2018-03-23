@@ -12,11 +12,16 @@
  *
  *= require flatpickr/dist/flatpickr.min
  */
+
+@import "wingman/bootstrap/functions";
+@import "wingman/bootstrap/variables";
+@import "wingman/custom/variables";
 @import "variables";
 @import "bootstrap";
+@import "wingman/custom/components";
 
 body {
-  padding-top: 66px;
+  // padding-top: 66px;
 }
 
 .brand-primary {

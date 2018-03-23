@@ -1,15 +1,17 @@
-%footer.footer.bg-secondary
+%footer.bg-gray.text-light.footer-long
   .container
     .row
-      .col-md
-        %small.text-white Copyright &copy; #{Date.today.year} Social Health, LLC. All rights reserved.
-      .col-md.text-center
-        %small
-          = link_to 'Terms &amp; Conditions of Use'.html_safe, 'https://docs.google.com/document/d/e/2PACX-1vRCNcisGQv58Gt8Y799gFDLvydg1DNIXX_IfNkRRd6fc1KQvvxxvhwGsRe0kISy5vwiKB0IXf7NUssP/pub', class: 'text-white', target: '_blank'
+      .col-12.col-md-4
+        = image_tag 'logo.png', alt: 'Social Health Online', height: '40', class: 'mb-4'
+        %p.text-muted
+          Copyright &copy; #{Date.today.year} Social Health, LLC.
+          %br
+          All rights reserved.
+      .col-12.col-md-4.text-center
+        = link_to 'Terms &amp; Conditions of Use'.html_safe, 'https://docs.google.com/document/d/e/2PACX-1vRCNcisGQv58Gt8Y799gFDLvydg1DNIXX_IfNkRRd6fc1KQvvxxvhwGsRe0kISy5vwiKB0IXf7NUssP/pub', target: '_blank'
         %span.px-2.text-white &middot;
-        %small
-          = link_to 'Privacy Policy', 'https://docs.google.com/document/d/e/2PACX-1vQRgQpvflp4NkDfZJW7VGwUZSTmWtp6VYK3qqqSaSPBkz-epF4pQ7ldoaRNd88-_22w-38iEmMty7T9/pub', class: 'text-white', target: '_blank'
-      .col-md
+        = link_to 'Privacy Policy', 'https://docs.google.com/document/d/e/2PACX-1vQRgQpvflp4NkDfZJW7VGwUZSTmWtp6VYK3qqqSaSPBkz-epF4pQ7ldoaRNd88-_22w-38iEmMty7T9/pub', target: '_blank'
+      .col-12.col-md-4
         %ul.text-right#social-links
           %li
             = link_to 'https://www.instagram.com/socialhealthonline', target: '_blank' do
