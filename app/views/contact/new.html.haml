@@ -5,7 +5,7 @@
     .col
       %h2.text-info Contact Us
   .row.mb-5
-    .col-md-4
+    .col-md-6
       %p.lead.pb-3
         Contact us to learn more about our service, request a demo, or acquire a limited 14-day free
         trial Guest User account!
@@ -16,9 +16,16 @@
       %p
         Phone: 1-866-282-5789
       %p
-        Email: info@socialhealthonline.com
+        General Info:
+        = mail_to 'info@socialhealthonline.com'
+        %br
+        Service Support:
+        = mail_to 'support@socialhealthonline.com'
+        %br
+        Sales:
+        = mail_to 'sales@socialhealthonline.com'
 
-    .col-md-8
+    .col-md-6
       .card
         .card-body
           = form_with url: contact_url, method: :post, local: true do
