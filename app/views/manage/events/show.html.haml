@@ -2,7 +2,9 @@
   .row.pt-5
     .col
       .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
-        %h1.h3.brand-primary= @event.title
+        %h1.h3.brand-primary
+          %i.fas.fa-map-marker-alt
+          = @event.title
         %div
           = link_to edit_manage_event_path(@event), class: 'btn btn-outline-primary' do
             %i.far.fa-edit
@@ -11,7 +13,7 @@
           = link_to manage_events_path, class: 'btn btn-outline-secondary' do
             %i.fas.fa-arrow-alt-circle-left
             Back
-  .row.pt-5
+  .row.pb-5
     .col
       %p
         %strong Type
