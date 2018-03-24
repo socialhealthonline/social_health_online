@@ -2,14 +2,14 @@ Rails.application.routes.draw do
   root 'public#index'
 
   # Public pages
-  get 'about-us' => 'public#about'
-  get 'join'     => 'public#join'
-  get 'service'  => 'public#service'
-  get 'partners' => 'public#partners'
-  get 'pricing'  => 'public#pricing'
-  get 'news'     => 'public#news'
-  get 'terms'    => 'public#terms'
-  get 'privacy'  => 'public#privacy'
+  get 'about-us'   => 'public#about'
+  get 'join'       => 'public#join'
+  get 'service'    => 'public#service'
+  get 'membership' => 'public#membership'
+  get 'pricing'    => 'public#pricing'
+  get 'news'       => 'public#news'
+  get 'terms'      => 'public#terms'
+  get 'privacy'    => 'public#privacy'
 
   # Contact
   get 'contact'  => 'contact#new'

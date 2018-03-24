@@ -12,7 +12,7 @@ class PublicController < ApplicationController
   def service
   end
 
-  def partners
+  def membership
   end
 
   def pricing
