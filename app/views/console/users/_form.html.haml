@@ -65,18 +65,18 @@
         %label(for="user_ethnicity") Race/Ethnicity
         = f.select :ethnicity, User::ETHNICITY, {}, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
         = model_error_display(@user, :ethnicity)
-  .row.mb-3
+  .row
     .col
       .card
         .card-body
-          .form-check.mb-3
+          .form-check.mb-1
             = f.check_box :manager, class: 'form-check-input'
             %label.form-check-label(for="user_manager") Account Manager
           %small Manager for their member account and community
     .col
       .card
         .card-body
-          .form-check.mb-3
+          .form-check.mb-1
             = f.check_box :enabled, class: 'form-check-input'
             %label.form-check-label(for="user_enabled") Enabled
           %small Enabled to sign in

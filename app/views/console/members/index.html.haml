@@ -1,12 +1,13 @@
-.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
   %h1.h3.brand-primary Members
-  = link_to new_console_member_path, class: 'btn btn-outline-primary' do
-    %i.fas.fa-plus-circle
-    Add Member
+  %div
+    = link_to new_console_member_path, class: 'btn btn-outline-primary' do
+      %i.fas.fa-plus-circle
+      Add Member
 
 - if @members.any?
   .table-responsive
-    %table.table.table-striped
+    %table.table
       %thead
         %tr
           %th Name

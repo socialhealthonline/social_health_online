@@ -3,28 +3,32 @@
   = render 'head'
   %body{class: "#{controller_name} #{action_name}"}
     = render 'nav_bar'
-    .container-fluid
-      .row
-        %nav.col-md-2.d-none.d-md-block.bg-light.sidebar
-          .sidebar-sticky
-            %ul.nav.flex-column
-              %li.nav-item.py-1
-                = link_to console_members_path, class: 'nav-link' do
-                  %i.fas.fa-users
-                  Members
-              %li.nav-item.py-1
-                = link_to console_affiliates_path, class: 'nav-link' do
-                  %i.far.fa-handshake
-                  Affiliates
-              %li.nav-item.py-1
-                = link_to '#', class: 'nav-link' do
-                  %i.far.fa-newspaper
-                  News
-              %li.nav-item.py-1
-                = link_to '#', class: 'nav-link' do
-                  %i.fas.fa-shield-alt
-                  Admins
-        %main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4
-          - unless flash.empty?
-            = render partial: 'flash', locals: { flash: flash }
-          = yield
+    .main-container
+      %section.space-sm
+        .container
+          .row
+            .col-12.col-md-3.mb-1.order-md-1
+              .card.card-sm
+                .list-group.list-group-flush
+                  = link_to console_members_path, class: 'list-group-item d-flex justify-content-between' do
+                    %div
+                      %i.fas.fa-users
+                      Members
+                  = link_to console_affiliates_path, class: 'list-group-item d-flex justify-content-between' do
+                    %div
+                      %i.far.fa-handshake
+                      Affiliates
+                  = link_to '#', class: 'list-group-item d-flex justify-content-between' do
+                    %div
+                      %i.far.fa-newspaper
+                      News
+                  = link_to '#', class: 'list-group-item d-flex justify-content-between' do
+                    %div
+                      %i.fas.fa-shield-alt
+                      Admins
+            .col-12.col-md-9.mb-1.order-md-2
+              - unless flash.empty?
+                = render partial: 'flash', locals: { flash: flash }
+              .card.card-sm
+                .card-body
+                  = yield
