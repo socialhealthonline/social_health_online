@@ -20,6 +20,12 @@
 @import "bootstrap";
 @import "wingman/custom/components";
 
+@font-face {
+  font-family:'Entypo';
+  src:url(font-path('entypo.eot'));
+  src:url(font-path('entypo.eot?#iefix')) format('embedded-opentype'), url(font-path('entypo.woff2')) format('woff2'), url(font-path('entypo.woff')) format('woff'), url(font-path('entypo.ttf')) format('truetype'), url(font-path('entypo.svg')) format('svg')
+}
+
 body {
   // padding-top: 66px;
 }
