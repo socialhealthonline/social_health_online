@@ -13,6 +13,7 @@ FactoryBot.define do
     birthdate (Date.today - 30.years)
     gender 'Male'
     ethnicity 'White'
+    member
 
     trait :admin do
       admin true

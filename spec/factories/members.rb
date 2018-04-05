@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :member do
-    name 'ACME'
+    sequence(:name) { |n| "Member#{n}" }
     address '123 Main St.'
     city 'Hometown'
     state 'AL'

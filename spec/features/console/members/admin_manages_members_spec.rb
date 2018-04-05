@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Admin mananges member accounts' do
+RSpec.describe 'Admin manages member accounts' do
 
   let!(:admin) { create(:user, :admin) }
 
@@ -27,14 +27,14 @@ RSpec.describe 'Admin mananges member accounts' do
       click_button 'Save'
       expect(page).to have_content 'The member was successfully created'
       expect(current_path).to eq console_member_path(Member.last)
-      expect(Member.count).to eq 1
+      expect(Member.count).to eq 2
     end
 
     it 'unsuccessfully' do
       click_link 'Add Member'
       fill_in 'member_name', with: 'ACME'
       click_button 'Save'
-      expect(Member.count).to eq 0
+      expect(Member.count).to eq 1
     end
   end
 
