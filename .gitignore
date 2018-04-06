@@ -17,3 +17,5 @@
 /config/master.key
 /config/database.yml
 /coverage
+
+/.idea
