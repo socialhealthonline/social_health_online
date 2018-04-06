@@ -2,8 +2,35 @@
 
 .container
   .row
-    .col.py-5
+    .col.pt-5.pb-3
       %h2.text-info Member Account Pricing
+  .row
+    .col-md-6.col-lg-4
+      .card.pricing.card-lg
+        .card-body
+          %h5 5 - 50 Users
+          %span.display-3.price-collapse.collapse.show $5
+          %span.text-small per user / month
+          %span.h6 Annual Subscription
+          = link_to 'Get Started', contact_path, class: 'btn btn-lg btn-info'
+    .col-md-6.col-lg-4
+      .card.pricing.card-lg
+        .card-body
+          %h5 51 - 100 Users
+          %span.display-3 $4
+          %span.text-small per user / month
+          %span.h6 Annual Subscription
+          = link_to 'Get Started', contact_path, class: 'btn btn-lg btn-info'
+    .col-md-6.col-lg-4
+      .card.pricing.card-lg
+        .card-body
+          %h5 > 100 Users
+          %span.display-3 $3
+          %span.text-small per user / month
+          %span.h6 Annual Subscription
+          = link_to 'Get Started', contact_path, class: 'btn btn-lg btn-info'
+  .row
+    .col
       %p
         Organizations can become Members through our website to deliver the full Social Health Online
         experience by hosting Users and managing Communities to improve people's social wellness.
@@ -15,7 +42,20 @@
         with one lump-sum payment receive a 3% discount and those that renew their subscriptions receive
         5% loyalty discounts. No refunds are provided.
 
+  .row
+    .col.pt-3.pb-3
       %h2.text-info Individual User Account Pricing
+  .row.justify-content-center
+    .col-md-6.col-lg-4
+      .card.pricing.card-lg
+        .card-body
+          %span.display-3.price-collapse.collapse.show $3
+          %span.text-small per user / month
+          %span.h6 Annual Subscription
+          = link_to 'Get Started', contact_path, class: 'btn btn-lg btn-info'
+
+  .row.pb-3
+    .col
       %p
         Individuals can become Users through our website to immediately access Social Health Online.
         However, individuals who become Users this way won't have an actively-managed Community and
