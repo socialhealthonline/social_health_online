@@ -59,7 +59,8 @@ class Console::MembersController < ConsoleController
       :bio,
       :url,
       :events_url,
-      :suspended
+      :suspended,
+      :hide_info_on_locator
     )
   end
 
