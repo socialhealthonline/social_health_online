@@ -75,9 +75,17 @@
         %label(for="member_bio") Bio
         = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@member, :bio)}"
         = model_error_display(@member, :bio)
-  .form-check.mb-3
-    = f.check_box :suspended, class: 'form-check-input'
-    %label.form-check-label(for="member_suspended") Suspended
+  .row
+    .col-lg-2
+      .form-group
+        .form-check.mb-3
+          = f.check_box :suspended, class: 'form-check-input'
+          %label.form-check-label(for="member_suspended") Suspended
+    .col-lg-4
+      .form-group
+        .form-check.mb-3
+          = f.check_box :hide_info_on_locator, class: 'form-check-input'
+          %label.form-check-label(for="hide_info_on_locator") Hide Information on Member Locator
 
   .mb-5
     = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
