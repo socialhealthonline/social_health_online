@@ -1,29 +1,35 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
   %h1.h3.brand-primary Affiliates
   %div
-    = link_to new_console_affiliate_path, class: 'btn btn-outline-primary' do
+    = link_to new_console_affiliate_path, class: 'btn btn-primary' do
       %i.fas.fa-plus-circle
       Add Affiliate
 
 - if @affiliates.any?
   .table-responsive
-    %table.table
+    %table.table.table-borderless.align-items-center
       %thead
         %tr
-          %th Name
-          %th State
-          %th
+          %th(scope="col") Name
+          %th(scope="col") State
+          %th(scope="col")
       %tbody
         - @affiliates.each_with_index do |affiliate, i|
-          %tr
-            %td= link_to "#{i+1}. #{affiliate.name}", console_affiliate_path(affiliate)
+          %tr.bg-white
+            %th(scope="row")= link_to "#{i+1}. #{affiliate.name}", console_affiliate_path(affiliate)
             %td= affiliate.state
-            %td
-              = link_to edit_console_affiliate_path(affiliate), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
-                %i.far.fa-edit
-              &nbsp;
-              = link_to console_affiliate_path(affiliate), title: 'Delete', id: "delete_affiliate_#{affiliate.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this affiliate. Press OK to continue.' } do
-                %i.far.fa-trash-alt
+            %td.w-10.text-right
+              .dropdown
+                = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{affiliate.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
+                  %i.fas.fa-ellipsis-h
+                .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{affiliate.id}")
+                  = link_to edit_console_affiliate_path(affiliate), title: 'Edit', class: 'dropdown-item text-info' do
+                    %i.far.fa-edit
+                    Edit
+                  = link_to console_affiliate_path(affiliate), title: 'Delete', id: "delete_affiliate_#{affiliate.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this affiliate. Press OK to continue.' } do
+                    %i.far.fa-trash-alt
+                    Delete
+          %tr.table-divider
 - else
   %p.text-muted
     %em No affiliates were found.

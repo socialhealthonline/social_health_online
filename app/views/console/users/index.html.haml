@@ -7,38 +7,41 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
   %h1.h3.brand-primary Users
   %div
-    = link_to new_console_member_user_path(@member), class: 'btn btn-outline-primary' do
+    = link_to new_console_member_user_path(@member), class: 'btn btn-primary' do
       %i.fas.fa-plus-circle
       Add User
 
 - if @users.any?
   .table-responsive
-    %table.table
+    %table.table.table-borderless.align-items-center
       %thead
         %tr
-          %th Name
-          %th Display Name
-          %th Email
-          %th Manager
-          %th Last Sign In
-          %th
+          %th(scope="col") Name
+          %th(scope="col") Email
+          %th(scope="col") Manager
+          %th(scope="col") Last Sign In
+          %th(scope="col")
       %tbody
         - @users.each_with_index do |user, i|
-          %tr
-            %td= link_to "#{i+1}. #{user.name}", console_member_user_path(@member, user)
-            %td= user.display_name
+          %tr.bg-white
+            %th(scope="row")= link_to "#{i+1}. #{user.name}", console_member_user_path(@member, user)
             %td= user.email
             %td
               - if user.manager?
                 %i.far.fa-check-circle.text-success(title="Manager")
-
             %td= short_date user.last_sign_in_at
-            %td
-              = link_to edit_console_member_user_path(@member, user), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
-                %i.far.fa-edit
-              &nbsp;
-              = link_to console_member_user_path(@member, user), title: 'Delete', id: "delete_user_#{user.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this user. Press OK to continue.' } do
-                %i.far.fa-trash-alt
+            %td.w-10.text-right
+              .dropdown
+                = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{user.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
+                  %i.fas.fa-ellipsis-h
+                .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{user.id}")
+                  = link_to edit_console_member_user_path(@member, user), title: 'Edit', class: 'dropdown-item text-info' do
+                    %i.far.fa-edit
+                    Edit
+                  = link_to console_member_user_path(@member, user), title: 'Delete', id: "delete_user_#{user.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this user. Press OK to continue.' } do
+                    %i.far.fa-trash-alt
+                    Delete
+          %tr.table-divider
 - else
   %p.text-muted
     %em No users were found.

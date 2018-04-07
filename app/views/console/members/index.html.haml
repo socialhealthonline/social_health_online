@@ -1,33 +1,37 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
   %h1.h3.brand-primary Members
   %div
-    = link_to new_console_member_path, class: 'btn btn-outline-primary' do
+    = link_to new_console_member_path, class: 'btn btn-primary' do
       %i.fas.fa-plus-circle
       Add Member
 
 - if @members.any?
   .table-responsive
-    %table.table
+    %table.table.table-borderless.align-items-center
       %thead
         %tr
-          %th Name
-          %th Contact Name
-          %th Contact Email
-          %th State
-          %th
+          %th(scope="col") Name
+          %th(scope="col") Contact Name
+          %th(scope="col") State
+          %th(scope="col")
       %tbody
         - @members.each_with_index do |member, i|
-          %tr
-            %td= link_to "#{i+1}. #{member.name}", console_member_path(member)
+          %tr.bg-white
+            %th(scope="row")= link_to "#{i+1}. #{member.name}", console_member_path(member)
             %td= member.contact_name
-            %td= member.contact_email
             %td= member.state
-            %td
-              = link_to edit_console_member_path(member), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
-                %i.far.fa-edit
-              &nbsp;
-              = link_to console_member_path(member), title: 'Delete', id: "delete_member_#{member.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this member. Press OK to continue.' } do
-                %i.far.fa-trash-alt
+            %td.w-10.text-right
+              .dropdown
+                = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{member.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
+                  %i.fas.fa-ellipsis-h
+                .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{member.id}")
+                  = link_to edit_console_member_path(member), title: 'Edit', class: 'dropdown-item text-info' do
+                    %i.far.fa-edit
+                    Edit
+                  = link_to console_member_path(member), title: 'Delete', id: "delete_member_#{member.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this member. Press OK to continue.' } do
+                    %i.far.fa-trash-alt
+                    Delete
+          %tr.table-divider
 - else
   %p.text-muted
     %em No members were found.

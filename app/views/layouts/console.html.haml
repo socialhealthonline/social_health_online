@@ -29,6 +29,4 @@
             .col-12.col-md-9.mb-1.order-md-2
               - unless flash.empty?
                 = render partial: 'flash', locals: { flash: flash }
-              .card.card-sm
-                .card-body
-                  = yield
+              = yield
