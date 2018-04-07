@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2018_04_11_032611) do
     t.string "events_url"
     t.string "slug"
     t.index ["slug"], name: "index_members_on_slug", unique: true
+    t.boolean "hide_info_on_locator", default: false
   end
 
   create_table "news", force: :cascade do |t|
