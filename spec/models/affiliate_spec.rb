@@ -7,6 +7,8 @@ RSpec.describe Affiliate do
   it { should validate_presence_of :city }
   it { should validate_presence_of :state }
   it { should validate_presence_of :zip }
+  it { should validate_presence_of :support_type }
+  it { should validate_inclusion_of(:support_type).in_array(Affiliate.support_types.values) }
 
   context 'with an existing affiliate' do
     before { create(:affiliate, name: 'Acme') }
