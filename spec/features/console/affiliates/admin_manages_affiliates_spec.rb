@@ -19,6 +19,8 @@ RSpec.describe 'Admin mananges affiliates' do
       fill_in 'affiliate_zip', with: '55555'
       fill_in 'affiliate_phone', with: '5555555555'
       fill_in 'affiliate_url', with: 'example.com'
+      select 'Events', from: 'affiliate_support_type'
+      check('affiliate_hide_info_on_locator')
       click_button 'Save'
       expect(page).to have_content 'The affiliate was successfully created'
       expect(current_path).to eq console_affiliate_path(Affiliate.last)
