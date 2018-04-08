@@ -24,6 +24,7 @@ RSpec.describe 'Admin manages member accounts' do
       fill_in 'member_account_start_date', with: Date.today.to_s
       fill_in 'member_url', with: 'example.com'
       fill_in 'member_events_url', with: 'events.example.com'
+      check('member_hide_info_on_locator')
       click_button 'Save'
       expect(page).to have_content 'The member was successfully created'
       expect(current_path).to eq console_member_path(Member.last)
