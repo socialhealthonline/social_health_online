@@ -34,6 +34,9 @@ Rails.application.routes.draw do
     resources :events
   end
 
+  # Dashboard
+  get 'dashboard' => 'dashboard#index'
+
   # Console
   get 'console' => 'console#index'
   namespace :console do
