@@ -17,6 +17,10 @@
   = link_to @affiliate.url, @affiliate.url, target: '_blank' if @affiliate.url.present?
 
 %p
+  %strong Support Type:
+  = Affiliate::SUPPORT_TYPES[@affiliate.support_type]
+
+%p
   %strong Hide Information on Affiliate Locator:
   = @affiliate.hide_info_on_locator ? 'Yes' : 'No'
 
