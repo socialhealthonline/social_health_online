@@ -2,7 +2,7 @@ class Console::NewsController < ConsoleController
   before_action :set_news, only: [:show, :edit, :update, :destroy]
 
   def index
-    @news = News.all
+    @news = News.page(params[:page])
   end
 
   def show; end
@@ -19,6 +19,7 @@ class Console::NewsController < ConsoleController
     if @news.save
       redirect_to console_news_path(@news), success: 'News was successfully created.'
     else
+      flash.now[:error] = 'Please correct the errors to continue.'
       render :new
     end
   end

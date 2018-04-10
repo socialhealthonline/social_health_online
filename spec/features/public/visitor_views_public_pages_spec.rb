@@ -19,10 +19,23 @@ RSpec.describe 'Public pages' do
   end
 
   describe 'visitor' do
-    it 'views news page successfully' do
+    let!(:news) { create(:news, title: 'Test title', body: 'Some text') }
+
+    before do
       visit news_path
+    end
+
+    it 'views news page successfully' do
       expect(current_path).to eq news_path
       expect(page).to have_content 'News'
+    end
+
+    it 'views news title' do
+      expect(page).to have_content 'Test title'
+    end
+
+    it 'views news body' do
+      expect(page).to have_content 'Some text'
     end
   end
 

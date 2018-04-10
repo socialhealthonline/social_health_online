@@ -19,7 +19,7 @@ class PublicController < ApplicationController
   end
 
   def news
-    @news = News.all
+    @news = News.page(params[:page])
   end
 
 end

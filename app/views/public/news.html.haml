@@ -10,3 +10,4 @@
           %p.h5= news.title
           %p= news.created_at.strftime("%d/%m/%Y")
           %p= simple_format(news.body)
+      %p= paginate @news

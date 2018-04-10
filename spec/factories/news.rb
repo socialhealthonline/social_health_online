@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :news do
-    title 'MyString'
-    body 'MyText'
+    title 'Title'
+    body 'Text'
   end
 end
