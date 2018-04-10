@@ -10,9 +10,9 @@
     %table.table
       %thead
         %tr
-          %th Title
-          %th Body
-          %th Date
+          %th= sort_link 'title'
+          %th= sort_link 'body'
+          %th= sort_link 'created_at', 'Added On'
           %th
       %tbody
         - @news.each.with_index(1) do |news, i|

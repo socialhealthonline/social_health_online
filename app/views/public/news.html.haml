@@ -8,6 +8,6 @@
       - @news.each do |news|
         .mb-3
           %p.h5= news.title
-          %p= news.created_at.strftime("%d/%m/%Y")
+          %p= news.updated_at.strftime("%d/%m/%Y")
           %p= simple_format(news.body)
       %p= paginate @news
