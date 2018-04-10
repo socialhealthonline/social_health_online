@@ -18,4 +18,8 @@ class PublicController < ApplicationController
   def pricing
   end
 
+  def news
+    @news = News.all
+  end
+
 end

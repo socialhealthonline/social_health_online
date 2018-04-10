@@ -1,0 +1,20 @@
+= form_with(model: @news, url: [:console, @news], local: true) do |f|
+  .row
+    .col
+      .form-group
+        %label Title
+        = f.text_field :title, class: "form-control #{form_error_class(@news, :title)}"
+        = model_error_display(@news, :title)
+  .row
+    .col
+      .form-group
+        %label Body
+        = f.text_area :body, rows: 12, class: "form-control #{form_error_class(@news, :body)}"
+        = model_error_display(@news, :body)
+
+  .mb-3
+    = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
+    - if @news.persisted?
+      = link_to 'Cancel', console_news_path(@news), class: 'btn btn-outline-secondary'
+    - else
+      = link_to 'Cancel', console_news_index_path, class: 'btn btn-outline-secondary'

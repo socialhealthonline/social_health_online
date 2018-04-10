@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   namespace :console do
     root to: 'console#index', as: 'root'
     resources :affiliates
+    resources :news
     resources :members do
       resources :users
     end
