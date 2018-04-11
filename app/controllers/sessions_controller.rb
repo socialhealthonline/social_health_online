@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    redirect_to root_url if authenticated_user
+    redirect_to dashboard_url if authenticated_user
   end
 
   def create
@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
 
   def landing_path
     return console_root_url if authenticated_user.admin?
-    return root_url
+    return dashboard_url
   end
 
 end
