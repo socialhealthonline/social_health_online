@@ -1,4 +1,6 @@
 class Member < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   has_one :primary_manager, class_name: 'User', primary_key: :primary_manager_id
   has_many :users, inverse_of: :member, dependent: :destroy
@@ -16,6 +18,10 @@ class Member < ApplicationRecord
 
   def full_address
     [address, city, state, zip].compact.join(', ')
+  end
+
+  def should_generate_new_friendly_id?
+    name_changed?
   end
 
   private

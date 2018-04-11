@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   get 'my-profile' => 'profile#edit', as: 'profile'
   patch 'profile' => 'profile#update', as: 'update_profile'
 
+  # Communities
+  get '/communities/:id' => 'communities#show'
+
   # Manage
   namespace :manage do
     get 'member' => 'member#edit', as: 'edit_member'

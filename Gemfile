@@ -6,6 +6,7 @@ ruby '2.5.1'
 gem 'bcrypt'
 gem 'bootsnap', require: false
 gem 'bootstrap'
+gem 'friendly_id'
 gem 'hamlit'
 gem 'jquery-rails' # bootstrap dependency
 gem 'pg'
