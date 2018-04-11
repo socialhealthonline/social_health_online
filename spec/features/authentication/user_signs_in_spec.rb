@@ -6,9 +6,9 @@ RSpec.describe 'User signs in' do
     it 'with redirect from subsequent signin_path request' do
       sign_in create(:user)
       expect(page).to have_content('Welcome back')
-      expect(current_path).to eq root_path
+      expect(current_path).to eq dashboard_path
       visit signin_path
-      expect(current_path).to eq root_path
+      expect(current_path).to eq dashboard_path
     end
 
     it 'with mixed-case email address' do
@@ -18,7 +18,7 @@ RSpec.describe 'User signs in' do
       fill_in 'password', with: user.password
       click_button 'Sign In'
       user.reload
-      expect(current_path).to eq root_path
+      expect(current_path).to eq dashboard_path
       expect(page).to have_content('Welcome back')
       expect(user.last_sign_in_at).to_not be nil
     end

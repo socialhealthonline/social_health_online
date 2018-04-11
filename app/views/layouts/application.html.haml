@@ -3,10 +3,12 @@
   = render 'head'
   %body{class: "#{controller_name} #{action_name}"}
     = render 'nav_bar'
+    .main-container
+      = render 'secondary_nav_bar' if authenticated_user
 
-    - unless flash.empty?
-      = render partial: 'flash', locals: { flash: flash }
+      - unless flash.empty?
+        = render partial: 'flash', locals: { flash: flash }
 
-    = yield
+      = yield
 
-    = render 'footer'
+      = render 'footer'
