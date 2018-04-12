@@ -14,6 +14,7 @@ gem 'rails', '~> 5.2.0.rc1'
 gem 'sass-rails', '~> 5.0'
 gem 'sendgrid-ruby'
 gem 'uglifier', '>= 1.3.0'
+gem 'kaminari'
 
 group :development, :test do
   gem 'awesome_print'
@@ -21,6 +22,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'erb2haml'
 end
 
 group :development do
