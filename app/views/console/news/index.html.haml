@@ -19,7 +19,7 @@
           %tr
             %td= link_to truncate("#{i}. #{news.title}"), console_news_path(news)
             %td= truncate(news.body)
-            %td= news.created_at.strftime("%Y-%m-%d %H:%M")
+            %td= date_time_for_news(news.created_at)
             %td
               = link_to edit_console_news_path(news), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
                 %i.far.fa-edit
