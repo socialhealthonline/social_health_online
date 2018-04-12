@@ -27,11 +27,11 @@
                   = link_to 'Profile', manage_edit_member_path, class: 'dropdown-item'
                   = link_to 'Events', manage_events_path, class: 'dropdown-item'
       .col-12.col-md-8
-        - if @member.primary_manager_id.present?
+        - if @member.primary_manager.present?
           %p
             %i.fas.fa-user
             Primary Manager -
-            = @member.primary_manager&.name
+            = @member.primary_manager.name
         - if @member.url.present?
           %p
             = link_to @member.url do
