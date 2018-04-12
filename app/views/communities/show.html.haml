@@ -1,6 +1,34 @@
-.container
-  .row.pt-5
-    .col
-      %h2.brand-primary= @community.name
-  .row.mb-5
-    .col
+%section.bg-white.text-dark.height-30
+  .container.align-self-end
+    .row
+      .col-12.col-md-8
+        %h1.mb-2= @member.name
+        %p
+          %i.fas.fa-user
+          = @member.primary_manager&.name
+        %p
+          = link_to @member.url do
+            %i.fas.fa-external-link-alt
+            = @member.url
+        - if @member.events_url.present?
+          %p
+            = link_to @member.events_url do
+              %i.fas.fa-map-marker-alt
+              = @member.events_url
+        %p= @member.bio
+
+%section.flush-with-above.space-0
+  %div
+    .container
+      .row
+        .col
+          %ul.nav.nav-tabs#communityTabs(role="tablist")
+            %li.nav-item
+              <a class="nav-link active" id="news-tab" data-toggle="tab" href="#news" role="tab" aria-controls="news" aria-selected="true">News</a>
+            %li.nav-item
+              <a class="nav-link" id="events-tab" data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false">Events</a>
+            %li.nav-item
+              <a class="nav-link" id="members-tab" data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="false">Members</a>
+
+%section.pt-2
+  .tab-content
