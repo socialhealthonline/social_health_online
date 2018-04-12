@@ -28,6 +28,7 @@ class Member < ApplicationRecord
 
   def add_protocol_to_url
     self.url = "http://#{url}" if url.present? && url !~ /\Ahttp/
+    self.events_url = "http://#{events_url}" if events_url.present? && events_url !~ /\Ahttp/
   end
 
 end

@@ -3,12 +3,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'active_model_serializers'
 gem 'bcrypt'
 gem 'bootsnap', require: false
 gem 'bootstrap'
 gem 'friendly_id'
+gem 'fullcalendar-rails'
 gem 'hamlit'
 gem 'jquery-rails' # bootstrap dependency
+gem 'momentjs-rails'
 gem 'pg'
 gem 'puma'
 gem 'rails', '~> 5.2.0.rc1'

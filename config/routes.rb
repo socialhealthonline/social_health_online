@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   # Communities
   get '/communities/:id' => 'communities#show'
+  get '/communities/:id/events' => 'communities#events'
 
   # Manage
   namespace :manage do
