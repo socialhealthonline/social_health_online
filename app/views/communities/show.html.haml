@@ -34,12 +34,12 @@
             = @member.primary_manager.name
         - if @member.url.present?
           %p
-            = link_to @member.url do
+            = link_to @member.url, target: '_blank' do
               %i.fas.fa-external-link-alt
               Website
         - if @member.events_url.present?
           %p
-            = link_to @member.events_url do
+            = link_to @member.events_url, target: '_blank' do
               %i.fas.fa-map-marker-alt
               Events Webpage
         %p
