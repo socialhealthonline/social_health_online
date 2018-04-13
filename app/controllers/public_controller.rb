@@ -1,5 +1,4 @@
 class PublicController < ApplicationController
-
   def index
   end
 
@@ -22,4 +21,7 @@ class PublicController < ApplicationController
     @news = News.order('updated_at desc').page(params[:page])
   end
 
+  def affiliate_locator
+    @affiliates = Affiliate.where(hide_info_on_locator: false)
+  end
 end
