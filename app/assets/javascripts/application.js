@@ -12,10 +12,11 @@
 //
 //= require jquery3
 //= require rails-ujs
+//= require footable.min
 //= require activestorage
 //= require popper
-//= require bootstrap
 //= require fontawesome-all
+//= require bootstrap
 //= require flatpickr/dist/flatpickr.min
 //= require moment
 //= require fullcalendar
@@ -28,5 +29,9 @@ $(document).ready(function() {
   $(".flatpickr-date-time").flatpickr({
     enableTime: true,
     dateFormat: 'Y-m-d h:i K'
+  });
+
+  jQuery(function($){
+    $('.table').footable();
   });
 });

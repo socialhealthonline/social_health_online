@@ -12,6 +12,7 @@
  *
  *= require flatpickr/dist/flatpickr.min
  *= require fullcalendar
+ *= require footable.standalone
  */
 
 @import "wingman/bootstrap/functions";
@@ -25,6 +26,12 @@
   font-family:'Entypo';
   src:url(font-path('entypo.eot'));
   src:url(font-path('entypo.eot?#iefix')) format('embedded-opentype'), url(font-path('entypo.woff2')) format('woff2'), url(font-path('entypo.woff')) format('woff'), url(font-path('entypo.ttf')) format('truetype'), url(font-path('entypo.svg')) format('svg')
+}
+
+
+
+table.footable > tbody > tr > td, table.footable > tbody > tr > th {
+  display: table-cell;
 }
 
 body {
