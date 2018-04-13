@@ -19,7 +19,7 @@ class Console::MembersController < ConsoleController
   def create
     @member = Member.new(member_params)
     if @member.save
-      redirect_to console_member_url(@member), success: 'The member was successfully created!'
+      redirect_to console_member_url(@member.id), success: 'The member was successfully created!'
     else
       flash.now[:error] = 'Please correct the errors to continue.'
       render :new
@@ -29,7 +29,7 @@ class Console::MembersController < ConsoleController
   def update
     @member = Member.find params[:id]
     if @member.update(member_params)
-      redirect_to console_member_url(@member), success: 'The member was successfully updated!'
+      redirect_to console_member_url(@member.id), success: 'The member was successfully updated!'
     else
       render :edit
     end

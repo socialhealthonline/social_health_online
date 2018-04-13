@@ -1,0 +1,74 @@
+- content_for :javascript do
+  :javascript
+    $(document).ready(function() {
+      $('#calendar').fullCalendar({
+        events: "/communities/#{@member.slug}/events.json",
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay,listMonth'
+        }
+      });
+    });
+
+%section.bg-white.text-dark.height-30
+  .container.align-self-end
+    .row
+      .col-12
+        .d-flex.justify-content-between.align-items-center
+          %h1.mb-2= @member.name
+          - if authenticated_user.manager? && authenticated_user.member_id == @member.id
+            %div
+              .dropdown
+                %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                  %i.fas.fa-cog
+                  Manage
+                .dropdown-menu.dropdown-menu-right
+                  = link_to 'Profile', manage_edit_member_path, class: 'dropdown-item'
+                  = link_to 'Events', manage_events_path, class: 'dropdown-item'
+      .col-12.col-md-8
+        - if @member.primary_manager.present?
+          %p
+            %i.fas.fa-user
+            Primary Manager -
+            = @member.primary_manager.name
+        - if @member.url.present?
+          %p
+            = link_to @member.url, target: '_blank' do
+              %i.fas.fa-external-link-alt
+              Website
+        - if @member.events_url.present?
+          %p
+            = link_to @member.events_url, target: '_blank' do
+              %i.fas.fa-map-marker-alt
+              Events Webpage
+        %p
+          %h5 Bio
+          = @member.bio
+
+%section.flush-with-above.space-0
+  %div
+    .container
+      .row
+        .col
+          %ul.nav.nav-tabs#communityTabs(role="tablist")
+            %li.nav-item
+              %a.nav-link.active#events-tab(data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false") Events
+            %li.nav-item
+              %a.nav-link#announcements-tab(data-toggle="tab" href="#announcements" role="tab" aria-controls="announcements" aria-selected="true") Announcements
+            %li.nav-item
+              %a.nav-link#members-tab(data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="false") Users
+
+%section.pt-2
+  .tab-content
+    .tab-pane.fade.show.active#events(role="tabpanel" aria-labelledby="events-tab")
+      .container
+        .row
+          .col-12
+            .card
+              .card-body
+                #calendar
+    .tab-pane.fade#announcements(role="tabpanel" aria-labelledby="announcements-tab")
+      .container
+    .tab-pane.fade#members(role="tabpanel" aria-labelledby="members-tab")
+      .container

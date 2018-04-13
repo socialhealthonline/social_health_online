@@ -38,4 +38,8 @@ module ApplicationHelper
     datetime.blank? ? nil : datetime.in_time_zone(time_zone).strftime('%b %d %Y, %l:%M %p %Z')
   end
 
+  def my_community_path
+    "/communities/#{authenticated_user.member.slug}"
+  end
+
 end

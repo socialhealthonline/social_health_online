@@ -1,6 +1,8 @@
 class Member < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
-  has_one :primary_manager, class_name: 'User', primary_key: :primary_manager_id
+  has_one :primary_manager, class_name: 'User', foreign_key: :id, primary_key: :primary_manager_id
   has_many :users, inverse_of: :member, dependent: :destroy
   has_many :events, inverse_of: :member, dependent: :destroy
 
@@ -18,10 +20,15 @@ class Member < ApplicationRecord
     [address, city, state, zip].compact.join(', ')
   end
 
+  def should_generate_new_friendly_id?
+    name_changed?
+  end
+
   private
 
   def add_protocol_to_url
     self.url = "http://#{url}" if url.present? && url !~ /\Ahttp/
+    self.events_url = "http://#{events_url}" if events_url.present? && events_url !~ /\Ahttp/
   end
 
 end

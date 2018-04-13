@@ -26,7 +26,7 @@ RSpec.describe 'Admin manages member accounts' do
       fill_in 'member_events_url', with: 'events.example.com'
       click_button 'Save'
       expect(page).to have_content 'The member was successfully created'
-      expect(current_path).to eq console_member_path(Member.last)
+      expect(current_path).to eq console_member_path(Member.last.id)
       expect(Member.count).to eq 2
     end
 
@@ -43,7 +43,7 @@ RSpec.describe 'Admin manages member accounts' do
 
     before do
       sign_in admin
-      visit edit_console_member_path(member)
+      visit edit_console_member_path(member.id)
     end
 
     it 'successfully' do
