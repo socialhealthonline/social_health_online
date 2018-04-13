@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'join'       => 'public#join'
   get 'service'    => 'public#service'
   get 'membership' => 'public#membership'
+  get 'affiliate_locator' => 'public#affiliate_locator'
   get 'pricing'    => 'public#pricing'
   get 'news'       => 'public#news'
   get 'terms'      => 'public#terms'
