@@ -85,4 +85,4 @@
   - if @user.persisted?
     = link_to 'Cancel', console_member_user_path(@member, @user), class: 'btn btn-outline-secondary'
   - else
-    = link_to 'Cancel', console_member_users_path(@member), class: 'btn btn-outline-secondary'
+    = link_to 'Cancel', console_member_users_path(@member.id), class: 'btn btn-outline-secondary'

@@ -10,7 +10,11 @@ class Console::UsersController < ConsoleController
   end
 
   def new
-    @user = User.new
+    if @member.users.count < @member.service_capacity 
+      @user = User.new
+    else
+      redirect_to console_member_users_url(@member.id), error: 'You have reached your service capacity. If you would like to increase it, please contact us at support@socialhealthonline.com.'
+    end
   end
 
   def edit
@@ -18,14 +22,19 @@ class Console::UsersController < ConsoleController
   end
 
   def create
-    @user = @member.users.new(user_params)
-    @user.set_random_password
-    if @user.save
-      UserMailer.welcome(@user).deliver_now if @user.manager?
-      redirect_to console_member_user_url(@member.id, @user), success: 'The user was successfully created!'
+    if @member.users.count < @member.service_capacity 
+      @user = @member.users.new(user_params)
+      @user.set_random_password
+
+      if @user.save
+        UserMailer.welcome(@user).deliver_now if @user.manager?
+        redirect_to console_member_user_url(@member.id, @user), success: 'The user was successfully created!'
+      else
+        flash.now[:error] = 'Please correct the errors to continue.'
+        render :new
+      end
     else
-      flash.now[:error] = 'Please correct the errors to continue.'
-      render :new
+      redirect_to console_member_users_url(@member.id), error: 'You have reached your service capacity. If you would like to increase it, please contact us at support@socialhealthonline.com.'
     end
   end
 

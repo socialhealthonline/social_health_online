@@ -4,12 +4,13 @@
     %li.breadcrumb-item= link_to @member.name, console_member_path(@member.id)
     %li.breadcrumb-item.active(aria-current="page") Users
 
-.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
-  %h1.h3.brand-primary Users
-  %div
-    = link_to new_console_member_user_path(@member.id), class: 'btn btn-primary' do
-      %i.fas.fa-plus-circle
-      Add User
+- if @member.users.length < @member.service_capacity
+  .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
+    %h1.h3.brand-primary Users
+    %div
+      = link_to new_console_member_user_path(@member.id), class: 'btn btn-primary' do
+        %i.fas.fa-plus-circle
+        Add User
 
 - if @users.any?
   .table-responsive

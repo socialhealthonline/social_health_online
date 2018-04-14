@@ -7,12 +7,32 @@
           Copyright &copy; #{Date.today.year} Social Health, LLC.
           %br
           All rights reserved.
-      .col-12.col-md-6
+          %br
+          Terms &amp; Conditions of Use, Privacy Policy, features, support, pricing, and service options subject to change without notice.
+      .col-12.col-md-6.text-center
         = link_to 'Terms &amp; Conditions of Use'.html_safe, 'https://docs.google.com/document/d/e/2PACX-1vRCNcisGQv58Gt8Y799gFDLvydg1DNIXX_IfNkRRd6fc1KQvvxxvhwGsRe0kISy5vwiKB0IXf7NUssP/pub', target: '_blank'
         %span.px-2.text-white &middot;
         = link_to 'Privacy Policy', 'https://docs.google.com/document/d/e/2PACX-1vQRgQpvflp4NkDfZJW7VGwUZSTmWtp6VYK3qqqSaSPBkz-epF4pQ7ldoaRNd88-_22w-38iEmMty7T9/pub', target: '_blank'
         %span.px-2.text-white &middot;
         = link_to 'FAQ', 'https://docs.google.com/document/d/e/2PACX-1vSaxPp-OKepuuYKuzQicSJQYxiorHEI8gP3ZOVVLDPNOaby2Kh-7FxAdsOZTNXRA-cHdznNN3spBLK6/pub', target: '_blank'
+
+        %p.mt-3
+          = link_to 'About Us', about_us_path
+          %span.px-2.text-white &middot;
+          = link_to 'Our Service', service_path
+          %span.px-2.text-white &middot;
+          = link_to 'Joining', join_path
+          %span.px-2.text-white &middot;
+          = link_to 'Membership', membership_path
+        
+          %br 
+
+          = link_to 'Pricing', pricing_path
+          %span.px-2.text-white &middot;
+          = link_to 'News', news_path
+          %span.px-2.text-white &middot;
+          = link_to 'Contact Us', contact_path
+
       .col-12.col-md-2
         %ul.text-right#social-links
           %li
