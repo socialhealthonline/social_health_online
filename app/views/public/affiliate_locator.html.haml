@@ -1,38 +1,29 @@
 - page_title 'Membership'
-
+%script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGfsf8dSa4hJAJQ3K6PNZI3LCIfRNZWUI")
+= javascript_include_tag "affiliate_locator"
 .container-fluid
   .row
-    .col-lg-8.col-xs-12.py-5
+    .col-lg-8.col-xs-12.pt-5
 
-      %p.h4 Affiliate Locator
-      - if @affiliates.any?
-        %table.footable.table.table-bordered.table-hover{'data-empty': "No Results",'data-sorting': "true",'data-filtering':"true"}
-          %thead
-            %tr
-              %th Index
-              %th Name
-              %th Address
-              %th City
-              %th State
-              %th Zip Code
-              %th Phone
-              %th URL / Link
-              %th Support Type
-          %tbody
-            - @affiliates.each_with_index do |affiliate, i|
-              %tr
-                %td #{i+1}
-                %td= affiliate.name
-                %td= affiliate.address
-                %td= affiliate.city
-                %td= affiliate.state
-                %td= affiliate.zip
-                %td= affiliate.phone
-                %td= affiliate.url
-                %td= Affiliate::SUPPORT_TYPES[affiliate.support_type]
-    -# - else
-    -#   %p.text-muted
-    -#     %em 
-    .col-lg-4.py_3
-      %iframe{width: "100%", height: "500px", frameborder: "0", style: "border:0",src: "https://www.google.com/maps/embed/v1/place?key=AIzaSyBGfsf8dSa4hJAJQ3K6PNZI3LCIfRNZWUI&q=Space+Needle,Seattle+WA", allowfullscreen: true }
-</iframe>
+      %h2.text-info.pb-3 Affiliate Locator
+
+      %h5 Filter
+      .col-xs-12
+        .row
+          .col-xs-6.col-md-2
+            = select_tag 'affiliate-filter-toggle', options_for_select(locator_filter_options),class: "form-control"
+          .col-xs-12.col-md-3#affiliate-filter-form
+          .col-xs-12.col-md-4
+            .row#affiliate-filter-btn-group
+              .col-xs-5
+                = button_tag "Filter", class: "form-control", id: "affiliate-filter-button"
+              .col-xs-5.offset-1
+                = button_tag "Clear Filters", class: "form-control", id: "clear-affiliate-filter-button"
+            
+      #affiliate-locator-table-container
+        %table.footable.table.table-bordered.my-2.table-hover#affiliate-locator-table{'data-sorting': "true"}
+
+    
+    .col-md-12.col-lg-4.py_3
+      %p(id="affiliate-locator-map")
+  
