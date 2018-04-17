@@ -30,8 +30,4 @@ $(document).ready(function() {
     enableTime: true,
     dateFormat: 'Y-m-d h:i K'
   });
-
-  jQuery(function($){
-    $('.table').footable();
-  });
 });
