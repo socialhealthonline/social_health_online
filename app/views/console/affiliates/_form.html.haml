@@ -37,6 +37,18 @@
         %label(for="affiliate_url") Website
         = f.text_field :url, class: "form-control #{form_error_class(@affiliate, :url)}"
         = model_error_display(@affiliate, :url)
+  .row
+    .col-lg-5
+      .form-group
+        %label(for="affiliate_support_type") Support Type
+        = f.select :support_type, support_types, {}, { class: 'form-control custom-select' }
+        = model_error_display(@affiliate, :support_type)
+  .row
+    .col-lg-5
+      .form-group
+        .form-check.mb-3
+          = f.check_box :hide_info_on_locator, class: 'form-check-input'
+          %label.form-check-label(for="hide_info_on_locator") Hide Information on Affiliate Locator
 
   .mb-5
     = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }

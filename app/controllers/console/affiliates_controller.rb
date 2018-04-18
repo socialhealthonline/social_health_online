@@ -52,7 +52,9 @@ class Console::AffiliatesController < ConsoleController
       :state,
       :zip,
       :phone,
-      :url
+      :url,
+      :hide_info_on_locator,
+      :support_type
     )
   end
 
