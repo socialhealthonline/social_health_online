@@ -22,7 +22,9 @@ class PublicController < ApplicationController
   end
 
   def affiliate_locator
-    @affiliates = Affiliate.where(hide_info_on_locator: false)
+  end
+
+  def member_locator
   end
 
   def affiliates
@@ -49,5 +51,31 @@ class PublicController < ApplicationController
     end
 
     render json: affiliates, each_serializer: AffiliateForLocatorSerializer
+  end
+
+  def members
+    state = params[:state]
+    city = params[:city]
+    zip = params[:zip]
+
+    state = state.downcase.strip if state
+    city = city.downcase.strip if city
+    zip = zip.strip if zip
+
+    members = Member.where(hide_info_on_locator: false)
+
+    if city && state
+      where('name LIKE ?', "%#{search}%")
+
+      members = members.where(["lower(state) LIKE :state AND lower(city) LIKE :city", {state: "%#{state}%", city: "%#{city}%"}])
+    elsif city
+      members = members.where(["lower(city) LIKE :city", {city: "%#{city}%"}])
+    elsif state
+      members = members.where(["lower(state) LIKE :state", {state: "%#{state}%"}])
+    elsif zip
+      members = members.where(zip: zip)
+    end
+
+    render json: members, each_serializer: MemberForLocatorSerializer
   end
 end

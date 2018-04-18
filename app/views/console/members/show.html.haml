@@ -64,9 +64,6 @@
   %strong Hide Information on Member Locator:
   = @member.hide_info_on_locator? ? 'Yes' : 'No'
 %p
-  %strong Hide Information on Member Locator:
-  = @member.hide_info_on_locator? ? 'Yes' : 'No'
-%p
   = link_to edit_console_member_path(@member.id), class: 'btn btn-outline-primary' do
     %i.far.fa-edit
     Edit
