@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require flatpickr/dist/flatpickr.min
+ *= require fullcalendar
  */
 
 @import "wingman/bootstrap/functions";
@@ -51,7 +52,7 @@ body {
 // }
 
 #hero {
-  height: 600px;
+  height: 500px;
   background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.25)), image-url('hero.jpg') no-repeat;
   color: #eee;
   display: flex;
@@ -131,3 +132,14 @@ body {
 .page-link:hover {
   color: #17a2b8;
 }
+
+.our-services li {
+  padding-bottom: 0.5em;
+}
+
+@include media-breakpoint-down(sm) {
+  .footer-short .col-md-4 {
+    padding-bottom: 1em;
+  }
+}
+

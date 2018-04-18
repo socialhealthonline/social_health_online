@@ -1,15 +1,16 @@
 %nav(aria-label="breadcrumb")
   %ol.breadcrumb
     %li.breadcrumb-item= link_to 'Members', console_members_path
-    %li.breadcrumb-item= link_to @member.name, console_member_path(@member)
+    %li.breadcrumb-item= link_to @member.name, console_member_path(@member.id)
     %li.breadcrumb-item.active(aria-current="page") Users
 
-.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
-  %h1.h3.brand-primary Users
-  %div
-    = link_to new_console_member_user_path(@member), class: 'btn btn-primary' do
-      %i.fas.fa-plus-circle
-      Add User
+- if @member.users.length < @member.service_capacity
+  .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
+    %h1.h3.brand-primary Users
+    %div
+      = link_to new_console_member_user_path(@member.id), class: 'btn btn-primary' do
+        %i.fas.fa-plus-circle
+        Add User
 
 - if @users.any?
   .table-responsive
@@ -24,7 +25,7 @@
       %tbody
         - @users.each_with_index do |user, i|
           %tr.bg-white
-            %th(scope="row")= link_to "#{i+1}. #{user.name}", console_member_user_path(@member, user)
+            %th(scope="row")= link_to "#{i+1}. #{user.name}", console_member_user_path(@member.id, user)
             %td= user.email
             %td
               - if user.manager?
@@ -35,10 +36,10 @@
                 = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{user.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
                   %i.fas.fa-ellipsis-h
                 .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{user.id}")
-                  = link_to edit_console_member_user_path(@member, user), title: 'Edit', class: 'dropdown-item text-info' do
+                  = link_to edit_console_member_user_path(@member.id, user), title: 'Edit', class: 'dropdown-item text-info' do
                     %i.far.fa-edit
                     Edit
-                  = link_to console_member_user_path(@member, user), title: 'Delete', id: "delete_user_#{user.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this user. Press OK to continue.' } do
+                  = link_to console_member_user_path(@member.id, user), title: 'Delete', id: "delete_user_#{user.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this user. Press OK to continue.' } do
                     %i.far.fa-trash-alt
                     Delete
           %tr.table-divider

@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  TYPES = ['Art/Photography', 'Career/Business', 'Dance/Theater', 'Family/Kids', 'Fashion/Beauty', 'Festivals/Fairs', 'Film', 'Food/Drink', 'Games', 'Health/Wellness', 'Hobbies/Crafts', 'Language/Culture', 'Language/Culture', 'Learning/Education', 'Music', 'Nightlife', 'Other', 'Outdoor/Adventure', 'Pets/Animals', 'Reading/Writing', 'Religion/Beliefs', 'Seniors', 'Social Movements', 'Sports/Fitness', 'Tech', 'Volunteer/Charity' ]
+  TYPES = ['Art/Photography', 'Career/Business', 'Dance/Theater', 'Family/Kids', 'Fashion/Beauty', 'Festivals/Fairs', 'Film', 'Food/Drink', 'Games', 'Health/Wellness', 'Hobbies/Crafts', 'Language/Culture', 'Learning/Education', 'Music', 'Nightlife', 'Other', 'Outdoor/Adventure', 'Pets/Animals', 'Reading/Writing', 'Religion/Beliefs', 'Seniors', 'Social Movements', 'Sports/Fitness', 'Tech', 'Volunteer/Charity' ]
 
   belongs_to :member, inverse_of: :events
 

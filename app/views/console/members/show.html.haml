@@ -10,7 +10,7 @@
       %i.fas.fa-cog
       Manage
     .dropdown-menu.dropdown-menu-right
-      = link_to console_member_users_path(@member), class: 'dropdown-item' do
+      = link_to console_member_users_path(@member.id), class: 'dropdown-item' do
         %i.fas.fa-user-circle
         Users
 
@@ -50,7 +50,7 @@
     = link_to @member.url, @member.url, target: '_blank'
 
 %p
-  %strong Events Website:
+  %strong Events Webpage:
   - if @member.events_url.present?
     = link_to @member.events_url, @member.events_url, target: '_blank'
 %p
@@ -62,10 +62,10 @@
   = @member.suspended? ? 'Yes' : 'No'
 
 %p
-  = link_to edit_console_member_path(@member), class: 'btn btn-outline-primary' do
+  = link_to edit_console_member_path(@member.id), class: 'btn btn-outline-primary' do
     %i.far.fa-edit
     Edit
   &nbsp;
-  = link_to console_member_path(@member), method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'Please confirm that you wish to delete this member. Press OK to continue.' } do
+  = link_to console_member_path(@member.id), method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'Please confirm that you wish to delete this member. Press OK to continue.' } do
     %i.far.fa-trash-alt
     Delete

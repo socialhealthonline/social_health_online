@@ -8,7 +8,7 @@ RSpec.describe 'Admin mananges members users' do
   describe 'creates a new user' do
     before do
       sign_in admin
-      visit console_member_users_path(member)
+      visit console_member_users_path(member.id)
       click_link 'Add User'
     end
 
@@ -28,7 +28,7 @@ RSpec.describe 'Admin mananges members users' do
       check 'user_manager'
       click_button 'Save'
       expect(page).to have_content 'The user was successfully created'
-      expect(current_path).to eq console_member_user_path(member, User.last)
+      expect(current_path).to eq console_member_user_path(member.id, User.last)
       expect(User.last.manager).to eq true
       expect(member.users.count).to eq 1
       expect(unread_emails_for(User.last.email).size).to eq 1
@@ -46,7 +46,7 @@ RSpec.describe 'Admin mananges members users' do
 
     before do
       sign_in admin
-      visit edit_console_member_user_path(member, user)
+      visit edit_console_member_user_path(member.id, user)
     end
 
     it 'successfully' do
@@ -71,12 +71,12 @@ RSpec.describe 'Admin mananges members users' do
 
     before do
       sign_in admin
-      visit console_member_users_path(member)
+      visit console_member_users_path(member.id)
     end
 
     it 'successfully' do
       expect { click_link "delete_user_#{user.id}" }.to change{ User.count }.by(-1)
-      expect(current_path).to eq console_member_users_path(member)
+      expect(current_path).to eq console_member_users_path(member.id)
     end
   end
 

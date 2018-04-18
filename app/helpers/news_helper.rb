@@ -8,10 +8,10 @@ module NewsHelper
   end
 
   def date_for_news(date)
-    date.blank? ? nil : date.strftime('%m/%d/%Y')
+    date.blank? ? nil : date.in_time_zone('Central America').strftime('%m/%d/%Y')
   end
 
   def date_time_for_news(date)
-    date.blank? ? nil : date.strftime('%Y-%m-%d %H:%M')
+    date.blank? ? nil : date.in_time_zone('Central America').strftime('%Y-%m-%d %H:%M')
   end
 end

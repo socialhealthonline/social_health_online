@@ -12,7 +12,7 @@ class Manage::EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
+    @event = Event.new(time_zone: authenticated_user.time_zone)
   end
 
   def create

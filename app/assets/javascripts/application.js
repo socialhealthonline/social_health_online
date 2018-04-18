@@ -17,6 +17,8 @@
 //= require bootstrap
 //= require fontawesome-all
 //= require flatpickr/dist/flatpickr.min
+//= require moment
+//= require fullcalendar
 
 $(document).ready(function() {
   $(".flatpickr-date").flatpickr({
