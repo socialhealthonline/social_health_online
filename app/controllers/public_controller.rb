@@ -48,6 +48,6 @@ class PublicController < ApplicationController
       affiliates = affiliates.where(zip: zip)
     end
 
-    render json: affiliates, each_serializer: AffiliatesForLocatorSerializer
+    render json: affiliates, each_serializer: AffiliateForLocatorSerializer
   end
 end
