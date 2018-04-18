@@ -12,6 +12,7 @@
 //
 //= require jquery3
 //= require rails-ujs
+//= require footable.min
 //= require activestorage
 //= require popper
 //= require bootstrap

@@ -11,7 +11,9 @@
  * It is generally better to create a new file per style scope.
  *
  *= require flatpickr/dist/flatpickr.min
+ *= require fontawesome-all
  *= require fullcalendar
+ *= require footable.standalone
  */
 
 @import "wingman/bootstrap/functions";
@@ -142,4 +144,84 @@ body {
     padding-bottom: 1em;
   }
 }
+
+
+/// AFFLILIATE LOCATOR
+#affiliate-locator-map{
+  margin-top: 20px;
+  width: 100%;
+  height: 550px;
+}
+
+#affiliate-locator-table-container{
+  display: block;
+  overflow: scroll;
+  max-height: 500px;
+}
+
+
+
+@media (max-width: 767.98px) { 
+  #city-input{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  #state-input{
+    margin-bottom: 20px;
+  }
+
+  #affiliate-filter-btn-group{
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  #zip-input{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+ }
+
+ 
+/// MEMBER LOCATOR
+#member-locator-map{
+  margin-top: 20px;
+  width: 100%;
+  height: 550px;
+}
+
+#member-locator-table-container{
+  display: block;
+  overflow: scroll;
+  max-height: 500px;
+}
+
+#member-locator-table > tr{
+  cursor: pointer;
+}
+
+
+
+@media (max-width: 767.98px) { 
+  #city-input{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  #state-input{
+    margin-bottom: 20px;
+  }
+
+  #member-filter-btn-group{
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  #zip-input{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+ }
+
+
+
+
 
