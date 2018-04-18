@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get "membership" => "public#membership"
   get "affiliate_locator" => "public#affiliate_locator"
   get "affiliates" => "public#affiliates"
+  get "member_locator" => "public#member_locator"
+  get "members" => "public#members"
   get "pricing" => "public#pricing"
   get "news" => "public#news"
   get "terms" => "public#terms"
