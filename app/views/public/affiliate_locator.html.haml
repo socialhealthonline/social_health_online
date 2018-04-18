@@ -1,0 +1,29 @@
+- page_title 'Affiliate Locator'
+%script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGfsf8dSa4hJAJQ3K6PNZI3LCIfRNZWUI")
+= javascript_include_tag "affiliate_locator"
+.container-fluid
+  .row
+    .col-lg-8.col-xs-12.pt-5
+
+      %h2.text-info.pb-3 Affiliate Locator
+
+      %h5 Filter
+      .col-xs-12
+        .row
+          .col-xs-6.col-md-2
+            = select_tag 'affiliate-filter-toggle', options_for_select(locator_filter_options),class: "form-control"
+          .col-xs-12.col-md-3#affiliate-filter-form
+          .col-xs-12.col-md-4
+            .row#affiliate-filter-btn-group
+              .col-xs-5
+                = button_tag "Filter", class: "form-control", id: "affiliate-filter-button"
+              .col-xs-5.offset-1
+                = button_tag "Clear Filters", class: "form-control", id: "clear-affiliate-filter-button"
+            
+      #affiliate-locator-table-container
+        %table.footable.table.table-bordered.my-2.table-hover#affiliate-locator-table{'data-sorting': "true"}
+
+    
+    .col-md-12.col-lg-4.py_3
+      %p(id="affiliate-locator-map")
+  

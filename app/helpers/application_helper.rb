@@ -42,4 +42,7 @@ module ApplicationHelper
     "/communities/#{authenticated_user.member.slug}"
   end
 
+  def locator_filter_options
+    [["City, State", "geo"], ["Zip Code", "zip"]]
+  end
 end

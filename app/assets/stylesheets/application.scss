@@ -12,6 +12,7 @@
  *
  *= require flatpickr/dist/flatpickr.min
  *= require fullcalendar
+ *= require footable.standalone
  */
 
 @import "wingman/bootstrap/functions";
@@ -25,6 +26,12 @@
   font-family:'Entypo';
   src:url(font-path('entypo.eot'));
   src:url(font-path('entypo.eot?#iefix')) format('embedded-opentype'), url(font-path('entypo.woff2')) format('woff2'), url(font-path('entypo.woff')) format('woff'), url(font-path('entypo.ttf')) format('truetype'), url(font-path('entypo.svg')) format('svg')
+}
+
+
+
+table.footable > tbody > tr > td, table.footable > tbody > tr > th {
+  display: table-cell;
 }
 
 body {
@@ -142,4 +149,60 @@ body {
     padding-bottom: 1em;
   }
 }
+
+
+/// AFFLILIATE LOCATOR
+#affiliate-locator-map{
+  margin-top: 20px;
+  width: 100%;
+  height: 550px;
+}
+
+#affiliate-locator-table-container{
+  display: block;
+  overflow: scroll;
+  max-height: 500px;
+}
+
+
+
+@media (max-width: 767.98px) { 
+  #city-input{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  #state-input{
+    margin-bottom: 20px;
+  }
+
+  #affiliate-filter-btn-group{
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  #zip-input{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+ }
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}
+
 

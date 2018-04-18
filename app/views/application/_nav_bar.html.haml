@@ -14,8 +14,21 @@
               = link_to 'Our Service', service_path, class: 'nav-link'
             %li.nav-item{class: "#{active_nav('join')}"}
               = link_to 'Joining', join_path, class: 'nav-link'
-            %li.nav-item{class: "#{active_nav('membership')}"}
-              = link_to 'Membership', membership_path, class: 'nav-link'
+            -# %li.nav-item{class: "#{active_nav('membership')}"}
+            -#   = link_to 'Membership', membership_path, class: 'nav-link'
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle#navbarDropdownMenuLink{href: '/membership', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
+                = 'Membership'
+              .dropdown-menu.dropdown-menu-right{ 'aria-labelledby' => 'navbarDropdownMenuLink'}
+                = link_to membership_path, class: 'dropdown-item' do
+                  %i.fas.fa-user-circle
+                  Membership Information
+                = link_to console_path, class: 'dropdown-item' do
+                  %i.fas.fa-user-circle
+                  Member Locator
+                = link_to affiliate_locator_path, class: 'dropdown-item' do
+                  %i.fas.fa-users
+                  Affiliate Locator
             %li.nav-item{class: "#{active_nav('pricing')}"}
               = link_to 'Pricing', pricing_path, class: 'nav-link'
             %li.nav-item{class: "#{active_nav('news')}"}
