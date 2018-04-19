@@ -2,8 +2,7 @@ class EventForCalendarSerializer < ActiveModel::Serializer
   attributes :id, :title, :details, :start, :allDay, :url, :color
 
   def url
-    # "/events/#{object.id}"
-    '#'
+    "/communities/#{object.member.slug}/events/#{object.id}"
   end
 
   def start

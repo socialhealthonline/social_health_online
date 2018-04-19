@@ -32,8 +32,9 @@ Rails.application.routes.draw do
   patch "profile" => "profile#update", as: "update_profile"
 
   # Communities
-  get '/communities/:id' => 'communities#show'
-  get '/communities/:id/events' => 'communities#events'
+  resources :members, path: :communities, as: :community, controller: :communities do
+    resources :events, only: [:index, :show]
+  end
 
   # Manage
   namespace :manage do
