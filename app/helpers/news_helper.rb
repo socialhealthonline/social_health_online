@@ -6,12 +6,4 @@ module NewsHelper
     icon = column == sort_column ? icon : ''
     link_to "#{title} <span class='#{icon}'></span>".html_safe, {column: column, direction: direction}
   end
-
-  def date_for_news(date)
-    date.blank? ? nil : date.in_time_zone('Central America').strftime('%m/%d/%Y')
-  end
-
-  def date_time_for_news(date)
-    date.blank? ? nil : date.in_time_zone('Central America').strftime('%Y-%m-%d %H:%M')
-  end
 end
