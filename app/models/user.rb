@@ -5,7 +5,7 @@ class User < ApplicationRecord
   RELATIONSHIP_STATUS = ['Single', 'In a relationship', 'Married', 'Other']
   EDUCATION_LEVEL = ['High School', 'College', 'Advanced Graduate', 'Other']
 
-  belongs_to :member, inverse_of: :users, optional: true
+  belongs_to :member, inverse_of: :users
 
   validates :name, :email, :address, :city, :gender, :ethnicity, :birthdate, :time_zone, presence: true
   validates_uniqueness_of :email, case_sensitive: false

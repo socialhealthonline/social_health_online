@@ -54,5 +54,6 @@ Rails.application.routes.draw do
     resources :members do
       resources :users
     end
+    resources :users, path: :admins, as: :admins, controller: :admins
   end
 end
