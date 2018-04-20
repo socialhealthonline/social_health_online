@@ -10,7 +10,7 @@ class Console::UsersController < ConsoleController
   end
 
   def new
-    if @member.users.count < @member.service_capacity 
+    if @member.users.count < @member.service_capacity
       @user = User.new
     else
       redirect_to console_member_users_url(@member.id), error: 'You have reached your service capacity. If you would like to increase it, please contact us at support@socialhealthonline.com.'
@@ -22,12 +22,12 @@ class Console::UsersController < ConsoleController
   end
 
   def create
-    if @member.users.count < @member.service_capacity 
+    if @member.users.count < @member.service_capacity
       @user = @member.users.new(user_params)
       @user.set_random_password
 
       if @user.save
-        UserMailer.welcome(@user).deliver_now if @user.manager?
+        UserMailer.welcome(@user).deliver_now
         redirect_to console_member_user_url(@member.id, @user), success: 'The user was successfully created!'
       else
         flash.now[:error] = 'Please correct the errors to continue.'

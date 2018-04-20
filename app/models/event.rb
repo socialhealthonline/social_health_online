@@ -9,9 +9,14 @@ class Event < ApplicationRecord
 
   before_validation :add_protocol_to_url
 
+  def location_display
+    [location, city, state].join(', ')
+  end
+
   private
 
   def add_protocol_to_url
     self.url = "http://#{url}" if url.present? && url !~ /\Ahttp/
   end
+
 end

@@ -1,0 +1,23 @@
+.container
+  .row.pt-5
+    .col
+      %h2.brand-primary= @event.title
+
+  .row
+    .col
+      %section.section-lg
+        %p
+          %i.far.fa-calendar-alt
+          = short_date_time @event.start_at, @event.time_zone
+        %p
+          %i.fas.fa-users
+          = @event.event_type
+        %p
+          %i.fas.fa-map-marker-alt
+          = @event.location_display
+        - if @event.url.present?
+          %p
+            %i.fas.fa-external-link-alt
+            = link_to @event.url, @event.url, target: '_blank'
+        %p
+          = simple_format @event.details

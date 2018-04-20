@@ -1,0 +1,57 @@
+%nav(aria-label="breadcrumb")
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to 'Admins', console_admins_path
+    %li.breadcrumb-item.active(aria-current="page")= @admin.name
+
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+  %h1.h3.brand-primary= @admin.name
+
+%p= @admin.full_address
+
+%p
+  %strong Display name:
+  = @admin.display_name
+
+%p
+  %strong Email:
+  = @admin.email
+
+%p
+  %strong Phone:
+  = number_to_phone @admin.phone
+
+%p
+  %strong Birthdate:
+  = short_date @admin.birthdate
+
+%p
+  %strong Gender:
+  = @admin.gender
+
+%p
+  %strong Race/Ethnicity:
+  = @admin.ethnicity
+
+%p
+  %strong Timezone:
+  = @admin.time_zone
+
+%p
+  %strong Member:
+  = @admin.member.name
+%p
+  %strong Account Manager:
+  = @admin.manager? ? 'Yes' : 'No'
+
+%p
+  %strong Enabled:
+  = @admin.enabled? ? 'Yes' : 'No'
+
+%p
+  = link_to edit_console_admin_path(@admin), class: 'btn btn-outline-primary' do
+    %i.far.fa-edit
+    Edit
+  &nbsp;
+  = link_to console_admin_path(@admin), method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'Please confirm that you wish to delete this admin. Press OK to continue.' } do
+    %i.far.fa-trash-alt
+    Delete
