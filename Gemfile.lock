@@ -50,14 +50,14 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
-    autoprefixer-rails (8.2.0)
+    autoprefixer-rails (8.3.0)
       execjs
     awesome_print (1.8.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
     bootsnap (1.2.1)
       msgpack (~> 1.0)
-    bootstrap (4.0.0)
+    bootstrap (4.1.0)
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
@@ -292,7 +292,7 @@ DEPENDENCIES
   awesome_print
   bcrypt
   bootsnap
-  bootstrap
+  bootstrap (~> 4.1.0)
   capybara
   database_cleaner
   email_spec

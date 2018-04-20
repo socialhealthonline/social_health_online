@@ -16,7 +16,7 @@
 //= require activestorage
 //= require popper
 //= require fontawesome-all
-//= require bootstrap
+//= require bootstrap-sprockets
 //= require flatpickr/dist/flatpickr.min
 //= require moment
 //= require fullcalendar

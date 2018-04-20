@@ -6,7 +6,7 @@ ruby '2.5.1'
 gem 'active_model_serializers'
 gem 'bcrypt'
 gem 'bootsnap', require: false
-gem 'bootstrap'
+gem 'bootstrap', '~> 4.1.0'
 gem 'friendly_id'
 gem 'fullcalendar-rails'
 gem 'hamlit'
