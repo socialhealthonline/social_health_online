@@ -1,5 +1,5 @@
 (function() {
-  AFFILIATE_TABLE_COLUMNS = [
+  var AFFILIATE_TABLE_COLUMNS = [
     { name: "name", title: "Name" },
     { name: "address", title: "Address" },
     { name: "city", title: "City" },
@@ -11,8 +11,8 @@
   ];
 
   $(document).ready(function() {
-    let filterTypeSelected = $("#affiliate-filter-toggle")[0].value;
-    let filterForm = $("#affiliate-filter-form")[0];
+    var filterTypeSelected = $("#affiliate-filter-toggle")[0].value;
+    var filterForm = $("#affiliate-filter-form")[0];
 
     function displayFilter(filterTypeSelected) {
       if (filterTypeSelected === "geo") {
@@ -35,25 +35,25 @@
     displayFilter(filterTypeSelected);
 
     $("#affiliate-filter-toggle").on("change", function() {
-      let filterTypeSelected = $("#affiliate-filter-toggle")[0].value;
+      var filterTypeSelected = $("#affiliate-filter-toggle")[0].value;
       displayFilter(filterTypeSelected);
     });
 
     $("#affiliate-filter-button").on("click", function() {
-      let filterTypeSelected = $("#affiliate-filter-toggle")[0].value;
+      var filterTypeSelected = $("#affiliate-filter-toggle")[0].value;
 
       options = {};
 
       if (filterTypeSelected === "geo") {
-        let city = $("#city-input")[0].value;
-        let state = $("#state-input")[0].value;
+        var city = $("#city-input")[0].value;
+        var state = $("#state-input")[0].value;
 
         options = {
           city: city,
           state: state
         };
       } else if (filterTypeSelected === "zip") {
-        let zip = $("#zip-input")[0].value;
+        var zip = $("#zip-input")[0].value;
 
         options = {
           zip: zip
@@ -72,7 +72,7 @@
               "ready.ft.table": function(e, ft) {
                 $("#affiliate-locator-table > tbody")
                   .children()
-                  .each((id, child) => {
+                  .each(function (id, child) {
                     $(child).on("click", function() {
                       row = data[id];
                       displayMarker(row);
@@ -111,7 +111,7 @@
             "ready.ft.table": function(e, ft) {
               $("#affiliate-locator-table > tbody")
                 .children()
-                .each((id, child) => {
+                .each(function(id, child){
                   $(child).on("click", function() {
                     row = data[id];
                     displayMarker(row);
@@ -139,7 +139,7 @@
           "ready.ft.table": function(e, ft) {
             $("#affiliate-locator-table > tbody")
               .children()
-              .each((id, child) => {
+              .each(function(id, child) {
                 $(child).on("click", function() {
                   row = data[id];
                   displayMarker(row);
@@ -159,8 +159,8 @@
   });
 
   function displayMarker(item) {
-    let geocoder;
-    let map;
+    var geocoder;
+    var map;
 
     function initialize() {
       geocoder = new google.maps.Geocoder();
@@ -176,7 +176,7 @@
     }
     initialize();
 
-    let address = row.address + ", " + row.city + ", " + row.state;
+    var address = row.address + ", " + row.city + ", " + row.state;
     var contentString =
       '<div id="member-marker-content">' +
       "<h3>" +
@@ -222,8 +222,8 @@
   }
 
   function displayMarkers(data) {
-    let geocoder;
-    let map;
+    var geocoder;
+    var map;
 
     function initialize() {
       geocoder = new google.maps.Geocoder();
@@ -239,11 +239,11 @@
     }
     initialize();
 
-    let i = 0;
+    var i = 0;
     // Display All the Markers
-    data.forEach(row => {
+    data.forEach(function(row) {
       i += 1;
-      let address = row.address + ", " + row.city + ", " + row.state;
+      var address = row.address + ", " + row.city + ", " + row.state;
       var contentString =
         '<div id="affiliate-marker-content">' +
         "<h3>" +
@@ -301,7 +301,7 @@
 
     query = buildFilterQuery(filter_options);
 
-    let url = BASE_URL + query;
+    var url = BASE_URL + query;
 
     $.ajax({
       type: "GET",
@@ -318,9 +318,9 @@
   }
 
   function buildFilterQuery(filter_options = {}) {
-    let city = filter_options.city;
-    let state = filter_options.state;
-    let zip = filter_options.zip;
+    var city = filter_options.city;
+    var state = filter_options.state;
+    var zip = filter_options.zip;
 
     query = "?";
 
