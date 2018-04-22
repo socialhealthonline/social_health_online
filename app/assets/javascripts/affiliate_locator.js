@@ -21,7 +21,7 @@
           '<input type="text" name="city" placeholder="City" id="city-input" class="form-control">' +
           "</div>" +
           '<div class="col-md-6">' +
-          '<input type="text" name="state" placeholder="State" id="state-input" class="form-control">' +
+          buildStatesSelector('state-input', 'state') +
           "</div></div>";
       } else if (filterTypeSelected === "zip") {
         filterForm.innerHTML =
@@ -61,11 +61,10 @@
       }
 
       // Clear out the table HTML
-      $(".table")[0].innerHTML = "";
+      $("#affiliate-locator-table")[0].innerHTML = "";
 
       getAffiliates(
         function(data) {
-          console.log(data);
           jQuery(function($) {
             $("#affiliate-locator-table")
             .on({
@@ -99,7 +98,7 @@
       // clear out input fields
       if (filterTypeSelected === "geo") {
         $("#city-input")[0].value = "";
-        $("#state-input")[0].value = "";
+        $("#state-input")[0].value = "AL";
       } else if (filterTypeSelected === "zip") {
         $("#zip-input")[0].value = "";
       }
@@ -209,7 +208,7 @@
         var marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location,
-          title: "Affiliate Locator",
+          title: row.name,
           animation: google.maps.Animation.DROP
         });
         infowindow.open(map, marker);
@@ -278,7 +277,7 @@
             var marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location,
-              title: "Affiliate",
+              title: row.name,
               animation: google.maps.Animation.DROP
             });
 

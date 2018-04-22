@@ -20,7 +20,7 @@
           '<input type="text" name="city" placeholder="City" id="city-input" class="form-control">' +
           "</div>" +
           '<div class="col-md-6">' +
-          '<input type="text" name="state" placeholder="State" id="state-input" class="form-control">' +
+          buildStatesSelector('state-input', 'state') +
           "</div></div>";
       } else if (filterTypeSelected === "zip") {
         filterForm.innerHTML =
@@ -64,7 +64,6 @@
 
       getMembers(
         function(data) {
-          console.log(data);
           jQuery(function($) {
             $("#member-locator-table")
               .on({
@@ -209,7 +208,7 @@
         var marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location,
-          title: "Member Locator",
+          title: row.name,
           animation: google.maps.Animation.DROP
         });
         infowindow.open(map, marker);
@@ -278,7 +277,7 @@
             var marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location,
-              title: "Member Locator",
+              title: row.name,
               animation: google.maps.Animation.DROP
             });
 
