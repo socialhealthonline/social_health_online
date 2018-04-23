@@ -3,7 +3,7 @@
   %div
     = link_to new_console_notification_path, class: 'btn btn-outline-primary' do
       %i.fas.fa-plus-circle
-      Add notification
+      Add Notification
 
 - if @notifications.any?
   .table-responsive
@@ -24,7 +24,7 @@
               = link_to edit_console_notification_path(notification), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
                 %i.far.fa-edit
               &nbsp;
-              = link_to console_notification_path(notification), title: "delete_notification_#{notification.id}", id: '', class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this notification. Press OK to continue.' } do
+              = link_to console_notification_path(notification), title: 'delete notification', id: "delete_notification_#{notification.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this notification. Press OK to continue.' } do
                 %i.far.fa-trash-alt
   %p= paginate @notifications
 - else

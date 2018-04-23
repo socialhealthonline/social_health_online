@@ -19,6 +19,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'sendgrid-ruby'
 gem 'uglifier', '>= 1.3.0'
 gem 'kaminari'
+gem 'gon'
 
 group :development, :test do
   gem 'awesome_print'

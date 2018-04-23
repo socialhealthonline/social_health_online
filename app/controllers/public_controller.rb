@@ -12,6 +12,7 @@ class PublicController < ApplicationController
   end
 
   def membership
+    take_graph_data
   end
 
   def pricing
@@ -77,5 +78,12 @@ class PublicController < ApplicationController
     end
 
     render json: members, each_serializer: MemberForLocatorSerializer
+  end
+
+  private
+
+  def take_graph_data
+    gon.members_in_states = Member.group(:state).count
+    gon.affiliates_in_states = Affiliate.group(:state).count
   end
 end
