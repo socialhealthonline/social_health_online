@@ -20,6 +20,7 @@ gem 'sendgrid-ruby'
 gem 'uglifier', '>= 1.3.0'
 gem 'kaminari'
 gem 'font-awesome-rails'
+gem 'gon'
 
 group :development, :test do
   gem 'awesome_print'

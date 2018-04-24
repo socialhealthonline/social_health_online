@@ -1,0 +1,20 @@
+= form_with(model: @notification, url: [:console, @notification], local: true) do |f|
+  .row
+    .col
+      .form-group
+        %label Title
+        = f.text_field :title, class: "form-control #{form_error_class(@notification, :title)}"
+        = model_error_display(@notification, :title)
+  .row
+    .col
+      .form-group
+        %label Body
+        = f.text_area :body, rows: 12, class: "form-control #{form_error_class(@notification, :body)}"
+        = model_error_display(@notification, :body)
+
+  .mb-3
+    = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
+    - if @notification.persisted?
+      = link_to 'Cancel', console_notification_path(@notification), class: 'btn btn-outline-secondary'
+    - else
+      = link_to 'Cancel', console_notifications_path, class: 'btn btn-outline-secondary'

@@ -26,6 +26,10 @@
                     %div
                       %i.fas.fa-shield-alt
                       Admins
+                  = link_to console_notifications_path, class: 'list-group-item d-flex justify-content-between' do
+                    %div
+                      %i.far.fa-bell
+                      Notifications
             .col-12.col-md-9.mb-1.order-md-2
               - unless flash.empty?
                 = render partial: 'flash', locals: { flash: flash }

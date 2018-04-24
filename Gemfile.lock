@@ -104,6 +104,10 @@ GEM
       momentjs-rails (>= 2.9.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    gon (6.2.0)
+      actionpack (>= 3.0)
+      multi_json
+      request_store (>= 1.0)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
@@ -156,6 +160,7 @@ GEM
     momentjs-rails (2.20.1)
       railties (>= 3.1)
     msgpack (1.2.4)
+    multi_json (1.13.1)
     mustermann (1.0.2)
     nio4r (2.3.0)
     nokogiri (1.8.2)
@@ -210,6 +215,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    request_store (1.4.1)
+      rack (>= 1.4)
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -303,6 +310,7 @@ DEPENDENCIES
   font-awesome-rails
   friendly_id
   fullcalendar-rails
+  gon
   hamlit
   jquery-rails
   kaminari

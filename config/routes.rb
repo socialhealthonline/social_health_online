@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     root to: "console#index", as: "root"
     resources :affiliates
     resources :news
+    resources :notifications
     resources :members do
       resources :users
     end

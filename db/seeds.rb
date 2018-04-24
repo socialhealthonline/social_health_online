@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 15.times { |i| News.create(title: "Title #{i}", body: 'Some text') }
+15.times { |i| Notification.create(title: "Notification #{i}", body: 'Some text') }
