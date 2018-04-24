@@ -12,13 +12,13 @@
 //
 //= require jquery3
 //= require rails-ujs
+//= require moment
 //= require footable.min
 //= require activestorage
 //= require popper
 //= require fontawesome-all
 //= require bootstrap-sprockets
 //= require flatpickr/dist/flatpickr.min
-//= require moment
 //= require fullcalendar
 
 $(document).ready(function() {
@@ -32,7 +32,7 @@ $(document).ready(function() {
   });
 });
 
-US_STATES = {
+var US_STATES = {
   'Alabama': 'AL',
   'Alaska': 'AK',
   'Arizona': 'AZ',

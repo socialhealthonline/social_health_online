@@ -6,13 +6,6 @@
 * @license Released under the GPLv3 license.
 */
 /* globals - instead we house them under the .footable.table class as the root of FooTable is always the table itself. */
-@font-face {
-  font-family: 'FontAwesome';
-  font-style: normal;
-  font-weight: 400;
-  src: url("https://use.fontawesome.com/releases/v5.0.10/webfonts/fa-regular-400.eot");
-  src: url("https://use.fontawesome.com/releases/v5.0.10/webfonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("https://use.fontawesome.com/releases/v5.0.10/webfonts/fa-regular-400.woff2") format("woff2"), url("https://use.fontawesome.com/releases/v5.0.10/webfonts/fa-regular-400.woff") format("woff"), url("https://use.fontawesome.com/releases/v5.0.10/webfonts/fa-regular-400.ttf") format("truetype"), url("https://use.fontawesome.com/releases/v5.0.10/webfonts/fa-regular-400.svg#fontawesome") format("svg"); }
-
 .footable.table, .footable.table *,
 .footable-details.table, .footable-details.table * {
 	-webkit-box-sizing: border-box;

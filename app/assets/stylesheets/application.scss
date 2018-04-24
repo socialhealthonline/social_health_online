@@ -11,7 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require flatpickr/dist/flatpickr.min
- *= require fontawesome-all
+ *= require font-awesome
  *= require fullcalendar
  *= require footable.standalone
  */
@@ -164,8 +164,6 @@ body {
   overflow: scroll;
   max-height: 300px;
 }
-
-
 
 @media (max-width: 767.98px) { 
   #city-input{
