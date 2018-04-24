@@ -94,6 +94,7 @@
     });
 
     $("#clear-affiliate-filter-button").on("click", function() {
+      var filterTypeSelected = $("#affiliate-filter-toggle")[0].value;
 
       // clear out input fields
       if (filterTypeSelected === "geo") {
