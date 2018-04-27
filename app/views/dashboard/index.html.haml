@@ -3,12 +3,13 @@
     .col
       %h2.brand-primary Dashboard
 
-  .row.my-3.scroll-box
+  .row.my-3
     .col
-      %h3 Notifications
-      - @notifications.each do |notification|
-        .mb-3
-          %p.h5= notification.title
-          %p= date_in_cst(notification.updated_at)
-          %p= simple_format(notification.body)
-      %p= paginate @notifications
+      %h3.notification-title Notifications
+      #scroll-box
+        - @notifications.each do |notification|
+          .mb-3
+            %h5= notification.title
+            .notification-date= date_in_cst(notification.updated_at)
+            .notification-text= simple_format(notification.body)
+        %p= paginate @notifications
