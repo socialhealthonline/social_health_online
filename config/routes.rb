@@ -58,4 +58,16 @@ Rails.application.routes.draw do
     end
     resources :users, path: :admins, as: :admins, controller: :admins
   end
+
+  # Mailbox
+  get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
+  get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
+  get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
+  resources :conversations do
+    member do
+      post :reply
+      post :trash
+      post :untrash
+    end
+  end
 end

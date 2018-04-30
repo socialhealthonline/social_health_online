@@ -1,0 +1,6 @@
+.nav.flex-column.nav-pills
+  = link_to mailbox_inbox_path, class: "nav-link #{active_page(:inbox)}" do
+    Inbox
+    %span.badge.badge-danger= unread_messages_count
+  = link_to 'Sent', mailbox_sent_path, class: "nav-link #{active_page(:sent)}"
+  = link_to 'Trash', mailbox_trash_path, class: "nav-link #{active_page(:trash)}"

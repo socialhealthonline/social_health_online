@@ -27,6 +27,16 @@ class User < ApplicationRecord
   has_secure_token :auth_token
   has_secure_token :password_reset_token
 
+  acts_as_messageable
+
+  def mailboxer_name
+    self.name
+  end
+
+  def mailboxer_email
+    self.email
+  end
+
   def full_address
     [address, city, state, zip].compact.join(', ')
   end
