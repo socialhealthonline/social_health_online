@@ -226,10 +226,12 @@ body {
  }
 
 #scroll-box {
-  height: 250px;
+  height: 265px;
   overflow: auto;
   margin: auto;
   width: 75%;
+  border: 2px solid black;
+  padding: 10px;
 }
 
 .notification-title {
@@ -258,11 +260,8 @@ body {
 
 .geochart {
   margin: auto;
-  width: 900px;
-  height: 500px;
+  width: 100%;
 }
-
-
 
 
 
