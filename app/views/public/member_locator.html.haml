@@ -10,16 +10,17 @@
       %h5 Filter
       .col-xs-12
         .row
-          .col-xs-6.col-md-2
+          .col-xs-6.col-md-3
             = select_tag 'member-filter-toggle', options_for_select(locator_filter_options),class: "form-control"
-          .col-xs-12.col-md-3#member-filter-form
-          .col-xs-12.col-md-4
+          .col-xs-12.col-md-6#member-filter-form
+        .row.my-2
+          .col-xs-12.col-md-7
             .row#member-filter-btn-group
-              .col-xs-5
-                = button_tag "Filter", class: "form-control", id: "member-filter-button"
-              .col-xs-5.offset-1
-                = button_tag "Clear Filters", class: "form-control", id: "clear-member-filter-button"
-            
+              .col-xs-5.col-md-4
+                = button_tag "Search", class: "form-control", id: "member-filter-button"
+              .col-xs-5.col-md-5
+                = button_tag "Clear Search", class: "form-control", id: "clear-member-filter-button"
+                
       #member-locator-table-container
         %table.footable.table.table-striped.my-2.table-hover#member-locator-table{'data-sorting': "true","style": "display: table;"}
 

@@ -10,15 +10,16 @@
       %h5 Filter
       .col-xs-12
         .row
-          .col-xs-6.col-md-2
+          .col-xs-6.col-md-3
             = select_tag 'affiliate-filter-toggle', options_for_select(locator_filter_options),class: "form-control"
-          .col-xs-12.col-md-3#affiliate-filter-form
-          .col-xs-12.col-md-4
+          .col-xs-12.col-md-6#affiliate-filter-form
+        .row.my-2
+          .col-xs-12.col-md-7
             .row#affiliate-filter-btn-group
-              .col-xs-5
-                = button_tag "Filter", class: "form-control", id: "affiliate-filter-button"
-              .col-xs-5.offset-1
-                = button_tag "Clear Filters", class: "form-control", id: "clear-affiliate-filter-button"
+              .col-xs-5.col-md-4
+                = button_tag "Search", class: "form-control", id: "affiliate-filter-button"
+              .col-xs-5.col-md-5
+                = button_tag "Clear Search", class: "form-control", id: "clear-affiliate-filter-button"
             
       #affiliate-locator-table-container
         %table.footable.table.table-striped.my-2.table-hover#affiliate-locator-table{'data-sorting': "true", "style": "display: table;"}
