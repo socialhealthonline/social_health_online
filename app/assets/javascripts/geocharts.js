@@ -9,7 +9,8 @@ var options = {
   region: 'US',
   resolution: 'provinces',
   backgroundColor: '#f8f9fa',
-  colorAxis: { colors: ['#99CCFF', 'blue'] }
+  colorAxis: { minValue: 1, maxValue: 500, colors: ['#99CCFF', 'blue'] },
+  legend: 'none'
 };
 
 function drawMapForMembers() {
