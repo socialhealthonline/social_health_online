@@ -22,6 +22,7 @@ gem 'kaminari'
 gem 'font-awesome-rails'
 gem 'gon'
 gem 'will_paginate', '~> 3.1.0'
+gem 'city-state'
 
 group :development, :test do
   gem 'awesome_print'
