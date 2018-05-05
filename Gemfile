@@ -21,6 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'kaminari'
 gem 'font-awesome-rails'
 gem 'gon'
+gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   gem 'awesome_print'
