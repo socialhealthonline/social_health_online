@@ -43,6 +43,13 @@ Rails.application.routes.draw do
     resources :events
   end
 
+  namespace :social_tracker do
+    get "log" => "events#new"
+    post "log" => "events#create"
+    get "history" => "events#index"
+    get "history/:id" => "events#show"
+  end
+
   # Dashboard
   get 'dashboard' => 'dashboard#index'
 
