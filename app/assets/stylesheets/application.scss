@@ -255,7 +255,8 @@ body {
 }
 
 #scroll-box div.notification-text {
-  font-size: 13px;
+    font-size: 13px;
+    word-wrap: break-word;
 }
 
 .geochart {
