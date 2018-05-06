@@ -66,7 +66,7 @@ class PublicController < ApplicationController
     members = Member.where(hide_info_on_locator: false)
 
     if city && state
-      where('name LIKE ?', "%#{search}%")
+      #where('name LIKE ?', "%#{search}%")
 
       members = members.where(["lower(state) LIKE :state AND lower(city) LIKE :city", {state: "%#{state}%", city: "%#{city}%"}])
     elsif city
