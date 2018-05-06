@@ -23,6 +23,7 @@ gem 'font-awesome-rails'
 gem 'gon'
 gem 'will_paginate', '~> 3.1.0'
 gem 'city-state'
+gem 'nested_form_fields'
 
 group :development, :test do
   gem 'awesome_print'

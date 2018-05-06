@@ -20,6 +20,7 @@
 //= require bootstrap-sprockets
 //= require flatpickr/dist/flatpickr.min
 //= require fullcalendar
+//= require_nested_form_fields
 
 $(document).ready(function() {
   $(".flatpickr-date").flatpickr({
