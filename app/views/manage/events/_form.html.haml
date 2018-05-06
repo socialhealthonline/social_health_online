@@ -24,23 +24,23 @@
   .row
     .col-lg-4
       .form-group
-        %label(for="event_location") Location
+        %label(for="event_location") Event Location
         = f.text_field :location, class: "form-control #{form_error_class(@event, :location)}"
         = model_error_display(@event, :location)
     .col-lg-4
       .form-group
-        %label(for="event_city") City
+        %label(for="event_city") Event City
         = f.text_field :city, class: "form-control #{form_error_class(@event, :city)}"
         = model_error_display(@event, :city)
     .col-lg-4
       .form-group
-        %label(for="event_state") State
+        %label(for="event_state") Event State
         = f.select :state, US_STATES, { include_blank: true }, { class: "#{form_error_class(@event, :state)} form-control custom-select" }
         = model_error_display(@event, :state)
   .row
     .col-lg-6
       .form-group
-        %label(for="event_url") Website
+        %label(for="event_url") Event Website
         = f.text_field :url, class: "form-control #{form_error_class(@event, :url)}"
         = model_error_display(@event, :url)
     .col-lg-6
@@ -51,7 +51,7 @@
   .row
     .col
       .form-group
-        %label(for="event_details") Details
+        %label(for="event_details") Event Details
         = f.text_area :details, rows: 4, class: "form-control #{form_error_class(@event, :details)}"
         = model_error_display(@event, :details)
   .form-check.mb-3
