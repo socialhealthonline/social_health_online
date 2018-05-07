@@ -11,12 +11,14 @@
       %thead
         %tr
           %th(scope="col") Name
+          %th(scope="col") City
           %th(scope="col") State
           %th(scope="col")
       %tbody
         - @affiliates.each_with_index do |affiliate, i|
           %tr.bg-white
             %th(scope="row")= link_to "#{i+1}. #{affiliate.name}", console_affiliate_path(affiliate)
+            %td= affiliate.city
             %td= affiliate.state
             %td.w-10.text-right
               .dropdown

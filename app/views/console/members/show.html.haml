@@ -61,9 +61,13 @@
   %strong Suspended:
   = @member.suspended? ? 'Yes' : 'No'
 %p
-  %strong Hide Information on Member Locator:
+  %strong Hide Info on Member Locator:
   = @member.hide_info_on_locator? ? 'Yes' : 'No'
 %p
+  = link_to console_members_path, class: 'btn btn-outline-primary' do
+    %i.fas.fa-arrow-left
+    Back
+  &nbsp;
   = link_to edit_console_member_path(@member.id), class: 'btn btn-outline-primary' do
     %i.far.fa-edit
     Edit

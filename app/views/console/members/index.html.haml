@@ -7,11 +7,14 @@
 
 - if @members.any?
   .table-responsive
-    %table.table.table-borderless.align-items-center
+    %table.table.table-borderless.align-items-center 
       %thead
         %tr
           %th(scope="col") Name
           %th(scope="col") Contact Name
+          %th(scope="col") Contact Email
+          %th(scope="col") Contact Phone
+          %th(scope="col") City
           %th(scope="col") State
           %th(scope="col")
       %tbody
@@ -19,6 +22,9 @@
           %tr.bg-white
             %th(scope="row")= link_to "#{i+1}. #{member.name}", console_member_path(member.id)
             %td= member.contact_name
+            %td= member.contact_email
+            %td= member.contact_phone
+            %td= member.city
             %td= member.state
             %td.w-10.text-right
               .dropdown
