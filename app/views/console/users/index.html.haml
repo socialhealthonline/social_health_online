@@ -18,6 +18,7 @@
       %thead
         %tr
           %th(scope="col") Name
+          %th(scope="col") Display Name
           %th(scope="col") Email
           %th(scope="col") Manager
           %th(scope="col") Last Sign In
@@ -26,6 +27,7 @@
         - @users.each_with_index do |user, i|
           %tr.bg-white
             %th(scope="row")= link_to "#{i+1}. #{user.name}", console_member_user_path(@member.id, user)
+            %td= user.display_name
             %td= user.email
             %td
               - if user.manager?

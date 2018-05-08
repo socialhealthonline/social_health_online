@@ -24,8 +24,12 @@
                   %i.fas.fa-cog
                   Manage
                 .dropdown-menu.dropdown-menu-right
-                  = link_to 'Profile', manage_edit_member_path, class: 'dropdown-item'
-                  = link_to 'Events', manage_events_path, class: 'dropdown-item'
+                  = link_to manage_edit_member_path, class: 'dropdown-item' do
+                    %i.fas.fa-building
+                    Profile
+                  = link_to manage_events_path, class: 'dropdown-item' do
+                    %i.fas.fa-map-marker-alt
+                    Events
       .col-12.col-md-8
         - if @member.primary_manager.present?
           %p

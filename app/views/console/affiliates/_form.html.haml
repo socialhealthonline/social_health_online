@@ -2,7 +2,7 @@
   .row
     .col-lg-6
       .form-group
-        %label(for="affiliate_name") Name
+        %label(for="affiliate_name") Affiliate Name
         = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@affiliate, :name)}"
         = model_error_display(@affiliate, :name)
     .col-lg-6
