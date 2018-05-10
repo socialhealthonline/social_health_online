@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "public#index"
 
+  get 'cities/:state', to: 'application#cities'
+
   # Public pages
   get "about-us" => "public#about"
   get "join" => "public#join"
@@ -40,6 +42,11 @@ Rails.application.routes.draw do
   namespace :manage do
     get "member" => "member#edit", as: "edit_member"
     patch "member" => "member#update", as: "update_member"
+    namespace :social_tracker do
+      get "users/history" => "history#users"
+      get "users/:id/history" => "history#user_history"
+      get "users/:id/history/:id" => "history#show"
+    end
     resources :events
   end
 
@@ -48,6 +55,13 @@ Rails.application.routes.draw do
     post "log" => "events#create"
     get "history" => "events#index"
     get "history/:id" => "events#show"
+  end
+
+  namespace :social_fitness do
+    get "log" => "fitness#new"
+    post "log" => "fitness#create"
+    get "history" => "fitness#index"
+    get "history/:id" => "fitness#show"
   end
 
   # Dashboard
@@ -64,5 +78,18 @@ Rails.application.routes.draw do
       resources :users
     end
     resources :users, path: :admins, as: :admins, controller: :admins
+    namespace :social_tracker do
+      get "members" => "history#members"
+      get "members/:name/users" => "history#users", as: :member
+      get "members/:name/users/:id/" => "history#user_history", as: :member_user
+      get "members/:name/users/:user_id/history/:id" => "history#show", as: :member_user_social_event_log
+    end
+
+    namespace :social_fitness do
+      get "members" => "history#members"
+      get "members/:name/users" => "history#users", as: :member
+      get "members/:name/users/:id/" => "history#user_history", as: :member_user
+      get "members/:name/users/:user_id/history/:id" => "history#show", as: :member_user_social_fitness_log
+    end
   end
 end
