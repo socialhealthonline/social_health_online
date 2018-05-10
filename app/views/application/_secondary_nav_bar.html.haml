@@ -18,3 +18,9 @@
             .dropdown-menu.dropdown-menu-right{'aria-labelledby' => 'communitiesDropdownMenuLink'}
               = link_to 'Log Events', social_tracker_log_path, class: 'dropdown-item'
               = link_to 'History', social_tracker_history_path, class: 'dropdown-item'
+          %li.nav-item.dropdown
+            %a.nav-link.dropdown-toggle#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
+              Social Fitness
+            .dropdown-menu.dropdown-menu-right{'aria-labelledby' => 'communitiesDropdownMenuLink'}
+              = link_to 'Self Assessment', social_fitness_log_path, class: 'dropdown-item'
+              = link_to 'History', social_fitness_history_path, class: 'dropdown-item'
