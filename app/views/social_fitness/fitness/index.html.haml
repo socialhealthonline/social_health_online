@@ -1,0 +1,25 @@
+- page_title 'Social Fitness | History'
+
+.container
+  .row
+    .col.py-3
+      %h1.text-info Social Fitness
+      %h3.text-info History
+      .row
+        .col-sm-4.offset-sm-4
+          - if @social_fitness_logs.any?
+            .table-responsive
+              %table.table.align-items-center.text-center
+                %thead
+                  %tr
+                    %th 
+                      %strong Date
+                %tbody.bg-white
+                  - @social_fitness_logs.each do |log|
+                    %tr
+                      %td= link_to short_date_slashed(log.created_at), social_fitness_path(log), class: 'text-info'
+            = will_paginate @social_fitness_logs
+          - else
+            %p.text-muted
+              %em No Social Fitness Logs.
+      
