@@ -24,6 +24,37 @@ class Member < ApplicationRecord
     name_changed?
   end
 
+  def social_fitness_csv
+    attributes = %w{state name user_name user_email individuals groups family friends colleagues significant_other local_community overall}
+    user_attributes = %w{name email}
+    fitness_attributes = %w{individuals groups family friends colleagues significant_other local_community overall}
+    ratings_attributes = %w{individuals groups overall}
+
+    ::CSV.generate(headers: true) do |csv|
+      csv << attributes
+      
+      users.each do |user|
+        row = []
+        values = [state, name]
+        user_values = user_attributes.map{ |attr| user.send(attr) }
+        
+        user.social_fitness_logs.each do |log|
+          fitness_values = fitness_attributes.map do |attr| 
+            if ratings_attributes.include? attr
+              RATINGS.key(log.send(attr)).to_s
+            else
+              RATINGS_WITH_NA.key(log.send(attr)).to_s
+            end
+          end
+          values.push(*user_values,*fitness_values)
+
+          row.push(values)
+        end
+        csv << row
+      end
+    end
+  end
+
   private
 
   def add_protocol_to_url
