@@ -30,6 +30,14 @@
                     %div
                       %i.far.fa-bell
                       Notifications
+                  = link_to console_social_tracker_members_path, class: 'list-group-item d-flex justify-content-between' do
+                    %div
+                      %i.fas.fa-users
+                      Social Tracker
+                  = link_to console_social_fitness_members_path, class: 'list-group-item d-flex justify-content-between' do
+                    %div
+                      %i.fas.fa-users
+                      Social Fitness
             .col-12.col-md-9.mb-1.order-md-2
               - unless flash.empty?
                 = render partial: 'flash', locals: { flash: flash }

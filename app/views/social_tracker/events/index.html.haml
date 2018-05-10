@@ -1,0 +1,30 @@
+- page_title 'Social Tracker | History'
+
+.container
+  .row
+    .col.py-3
+      %h1.text-info Social Tracker
+      %h3.text-info History
+      - if @social_event_logs.any?
+        .table-responsive
+          %table.table.table-borderless.align-items-center(id="social-tracker-history-table")
+            %thead
+              %tr
+                %th Log Date
+                %th Event Date
+                %th Event Venue
+                %th Event Rating
+            %tbody.bg-white
+              - @social_event_logs.each do |log|
+                %tr
+                  %td= link_to short_date_slashed(log.created_at), social_tracker_path(log), class: 'text-info'
+                  %td= link_to short_date_slashed(log.event_date), social_tracker_path(log), class: 'text-info'
+                  %td= truncate(log.venue, :length => 30)
+                  %td
+                    %strong= RATINGS.key(log.rating)
+                %tr.table-divider
+        = will_paginate @social_event_logs
+      - else
+        %p.text-muted
+          %em You have not logged any Social Events.
+      

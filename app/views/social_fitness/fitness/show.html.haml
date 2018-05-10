@@ -1,0 +1,39 @@
+.container
+  .row
+    .col.py-4
+      %h1.text-info Social Fitness
+      %h3.text-info History
+      %h3
+        %strong= short_date_slashed(@log.created_at)
+      .row
+        .col-lg-6
+          %p 
+            %strong My social fitness with individuals is:
+          %p= RATINGS.key(@log.individuals)
+          %p 
+            %strong My social fitness with groups is:
+          %p= RATINGS.key(@log.groups)
+          %p 
+            %strong My social fitness with my family is:
+          %p= RATINGS_WITH_NA.key(@log.family)
+          %p 
+            %strong My social fitness with my friends is:
+          %p= RATINGS_WITH_NA.key(@log.friends)
+        .col-lg-6
+          %p 
+            %strong My social fitness with my colleagues is:
+          %p= RATINGS_WITH_NA.key(@log.colleagues)
+          %p 
+            %strong My social fitness with my significant other is:
+          %p= RATINGS_WITH_NA.key(@log.significant_other)
+          %p
+            %strong My social fitness with my local community is:
+          %p= RATINGS_WITH_NA.key(@log.local_community)
+          %p
+            %strong My overall social fitness is:
+          %p= RATINGS.key(@log.overall)
+      %p.pt-5
+        = link_to(social_fitness_history_path) do
+          %span
+            %i(class="fas fa-arrow-circle-left")
+            Back

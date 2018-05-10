@@ -26,6 +26,7 @@
                 .dropdown-menu.dropdown-menu-right
                   = link_to 'Profile', manage_edit_member_path, class: 'dropdown-item'
                   = link_to 'Events', manage_events_path, class: 'dropdown-item'
+                  = link_to 'Social Tracker', manage_social_tracker_users_path, class: 'dropdown-item'
       .col-12.col-md-8
         - if @member.primary_manager.present?
           %p

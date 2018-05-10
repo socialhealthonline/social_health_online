@@ -6,6 +6,8 @@ class User < ApplicationRecord
   EDUCATION_LEVEL = ['High School', 'College', 'Advanced Graduate', 'Other']
 
   belongs_to :member, inverse_of: :users
+  has_many :social_event_logs
+  has_many :social_fitness_logs
 
   validates :name, :email, :address, :city, :gender, :ethnicity, :birthdate, :time_zone, presence: true
   validates_uniqueness_of :email, case_sensitive: false
@@ -40,4 +42,11 @@ class User < ApplicationRecord
     self.password_confirmation = self.password
   end
 
+  def total_social_events_logged
+    social_event_logs.count
+  end
+
+  def last_social_event_log_date
+    social_event_logs.first&.created_at
+  end
 end
