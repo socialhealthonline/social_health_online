@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
   helper_method :authenticated_user
   add_flash_types :error, :success, :info, :warning
 
+  def cities
+    render json: CS.cities(params[:state], :us).to_json
+  end
+
   private
 
   def authenticated_user
