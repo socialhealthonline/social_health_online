@@ -12,6 +12,7 @@ gem 'fullcalendar-rails'
 gem 'hamlit'
 gem 'jquery-rails' # bootstrap dependency
 gem 'momentjs-rails'
+gem 'mailboxer'
 gem 'pg'
 gem 'puma'
 gem 'rails', '~> 5.2.0.rc1'

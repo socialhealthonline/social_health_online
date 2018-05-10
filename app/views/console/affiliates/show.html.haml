@@ -21,10 +21,14 @@
   = Affiliate::SUPPORT_TYPES[@affiliate.support_type]
 
 %p
-  %strong Hide Information on Affiliate Locator:
+  %strong Hide Info on Affiliate Locator:
   = @affiliate.hide_info_on_locator ? 'Yes' : 'No'
 
 %p
+  = link_to console_affiliates_path, class: 'btn btn-outline-primary'do
+    %i.fas.fa-arrow-left
+    Back
+  &nbsp;
   = link_to edit_console_affiliate_path(@affiliate), class: 'btn btn-outline-primary' do
     %i.far.fa-edit
     Edit

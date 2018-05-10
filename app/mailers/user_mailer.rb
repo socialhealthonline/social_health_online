@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: '"Social Health Online" <info@socialhealthonline.com>'
+  default from: '"Social Health Online" <support@socialhealthonline.com>'
 
   def welcome(user)
     @user = user

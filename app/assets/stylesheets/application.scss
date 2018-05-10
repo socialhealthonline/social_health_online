@@ -297,12 +297,17 @@ body {
 }
 
 #scroll-box div.notification-text {
-  font-size: 13px;
+    font-size: 13px;
+    word-wrap: break-word;
 }
 
 .geochart {
   margin: auto;
   width: 100%;
+}
+
+#conversation-form label{
+  font-weight: 500;
 }
 
 

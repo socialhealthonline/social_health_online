@@ -20,7 +20,7 @@
         .row
           .col-lg-6
             .form-group
-              %label(for="member_name") Name
+              %label(for="member_name")Member Name
               = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@member, :name)}"
               = model_error_display(@member, :name)
           .col-lg-6

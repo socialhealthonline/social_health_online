@@ -11,7 +11,7 @@
 %p= @user.full_address
 
 %p
-  %strong Display name:
+  %strong Display Name:
   = @user.display_name
 
 %p
@@ -47,6 +47,10 @@
   = @user.enabled? ? 'Yes' : 'No'
 
 %p
+  = link_to console_member_users_path, class: 'btn btn-outline-primary'do
+    %i.fas.fa-arrow-left
+    Back
+  &nbsp;
   = link_to edit_console_member_user_path(@member.id, @user), class: 'btn btn-outline-primary' do
     %i.far.fa-edit
     Edit

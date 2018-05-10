@@ -24,8 +24,12 @@
                   %i.fas.fa-cog
                   Manage
                 .dropdown-menu.dropdown-menu-right
-                  = link_to 'Profile', manage_edit_member_path, class: 'dropdown-item'
-                  = link_to 'Events', manage_events_path, class: 'dropdown-item'
+                  = link_to manage_edit_member_path, class: 'dropdown-item' do
+                    %i.fas.fa-building
+                    Profile
+                  = link_to manage_events_path, class: 'dropdown-item' do
+                    %i.fas.fa-map-marker-alt
+                    Events
                   = link_to 'Social Tracker', manage_social_tracker_users_path, class: 'dropdown-item'
       .col-12.col-md-8
         - if @member.primary_manager.present?
@@ -58,7 +62,7 @@
             %li.nav-item
               %a.nav-link#announcements-tab(data-toggle="tab" href="#announcements" role="tab" aria-controls="announcements" aria-selected="true") Announcements
             %li.nav-item
-              %a.nav-link#members-tab(data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="false") Users
+              %a.nav-link#members-tab(data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="false") User List
 
 %section.pt-2
   .tab-content

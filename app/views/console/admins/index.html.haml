@@ -11,6 +11,7 @@
       %thead
         %tr
           %th(scope="col") Name
+          %th(scope="col") Display Name
           %th(scope="col") Email
           %th(scope="col") Last Sign In
           %th(scope="col")
@@ -18,6 +19,7 @@
         - @admins.each_with_index do |admin, i|
           %tr.bg-white
             %th(scope="row")= link_to "#{i+1}. #{admin.name}", console_admin_path(admin)
+            %td= admin.display_name
             %td= admin.email
             %td= short_date admin.last_sign_in_at
             %td.w-10.text-right

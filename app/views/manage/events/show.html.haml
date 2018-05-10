@@ -16,22 +16,22 @@
   .row.pb-5
     .col
       %p
-        %strong Type
+        %strong Event Type
         = @event.event_type
       %p
         %strong Event Date
         = short_date_time @event.start_at, @event.time_zone
       %p
-        %strong Location
+        %strong Event Location
         = @event.location
       %p
-        %strong City
+        %strong Event City
         = @event.city
       %p
-        %strong State
+        %strong Event State
         = @event.state
       %p
-        %strong Website:
+        %strong Event Website:
         = link_to @event.url, @event.url, target: '_blank' if @event.url.present?
       %p
         %strong RSVP Limit

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :authenticated_user
+  helper_method :authenticated_user, :mailbox, :conversation
   add_flash_types :error, :success, :info, :warning
 
   def cities
@@ -29,6 +29,14 @@ class ApplicationController < ActionController::Base
     if authenticated_user.blank? || !authenticated_user.manager?
       redirect_to root_url and return
     end
+  end
+
+  def mailbox
+    @mailbox ||= authenticated_user.mailbox
+  end
+
+  def conversation
+    @conversation ||= mailbox.conversations.find(params[:id])
   end
 
 end
