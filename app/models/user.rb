@@ -23,6 +23,8 @@ class User < ApplicationRecord
   before_save { |user| user.email.downcase! }
   before_validation { |user| user.phone.gsub!(/\D/,'') if user.phone? }
 
+  scope :all_except, ->(user) { where.not(id: user) }
+
   has_secure_password
   has_secure_token :auth_token
   has_secure_token :password_reset_token
@@ -33,7 +35,7 @@ class User < ApplicationRecord
     self.name
   end
 
-  def mailboxer_email
+  def mailboxer_email(object)
     self.email
   end
 

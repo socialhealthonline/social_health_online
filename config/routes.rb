@@ -69,5 +69,6 @@ Rails.application.routes.draw do
       post :trash
       post :untrash
     end
+    post :mark_as_deleted, on: :collection
   end
 end
