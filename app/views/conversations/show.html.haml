@@ -1,9 +1,13 @@
 .container
   .row.pt-5.pb-3
     .col-12.col-md-3.mb-1.order-md-1
-      = link_to "Compose", new_conversation_path, class: "btn btn-success mb-3"
+      = link_to 'Compose', new_conversation_path, class: 'btn btn-success mb-3'
       .card.card-sm
         .list-group.list-group-flush
           = render 'mailbox/folders'
     .col-12.col-md-9.mb-1.order-md-2
       = render partial: 'messages'
+      = form_for :message, url: reply_conversation_path(conversation) do |f|
+        .form-group
+          = f.text_area :body, placeholder: 'Reply Message', rows: 4, class: 'form-control', required: true
+        = f.submit 'Reply', class: 'btn btn-success pull-right'
