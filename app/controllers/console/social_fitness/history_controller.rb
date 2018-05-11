@@ -23,6 +23,6 @@ class Console::SocialFitness::HistoryController < ConsoleController
   def member_csv
     @member = Member.friendly.find(params[:name])
 
-    send_data @member.social_fitness_csv, filename: "member-#{@member.friendly_id}-#{Date.today}.csv"
+    send_data @member.social_fitness_csv, filename: "member-#{@member.friendly_id}-#{Date.today}-social-fitness.csv"
   end
 end

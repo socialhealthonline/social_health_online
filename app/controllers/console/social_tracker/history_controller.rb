@@ -23,8 +23,6 @@ class Console::SocialTracker::HistoryController < ConsoleController
   def member_csv
     @member = Member.friendly.find(params[:name])
 
-    respond_to do |format|
-      format.csv { send_data @member.to_csv, filename: "users-#{Date.today}.csv" }
-    end
+    send_data @member.social_tracker_csv, filename: "member-#{@member.friendly_id}-#{Date.today}-social-tracker.csv"
   end
 end
