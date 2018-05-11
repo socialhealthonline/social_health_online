@@ -10,6 +10,10 @@
             .col-12.col-md-3.mb-1.order-md-1
               .card.card-sm
                 .list-group.list-group-flush
+                  = link_to console_path, class: 'list-group-item d-flex justify-content-between' do
+                    %div
+                      %i.fas.fa-tachometer-alt
+                      Console
                   = link_to console_members_path, class: 'list-group-item d-flex justify-content-between' do
                     %div
                       %i.fas.fa-id-card

@@ -22,7 +22,7 @@
       = model_error_display(@member, :state)
   .col-lg-4
     .form-group
-      %label(for="member_zip") Zip
+      %label(for="member_zip") ZIP Code
       = f.text_field :zip, class: "form-control #{form_error_class(@member, :zip)}"
       = model_error_display(@member, :zip)
 .row

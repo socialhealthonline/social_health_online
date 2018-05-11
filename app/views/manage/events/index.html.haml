@@ -8,6 +8,14 @@
         = link_to new_manage_event_path, class: 'btn btn-primary' do
           %i.fas.fa-plus-circle
           Add Event
+        .dropdown
+          %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+            %i.fas.fa-cog
+            Manage
+          .dropdown-menu.dropdown-menu-right
+            = link_to manage_edit_member_path, class: 'dropdown-item' do
+              %i.fas.fa-building
+              Profile
   .row
     .col
       - if @events.any?
@@ -19,6 +27,8 @@
                 %th(scope="col") Event Type
                 %th(scope="col") Event Date
                 %th(scope="col") Event Location
+                %th(scope="col") Event City
+                %th(scope="col") Event State
                 %th(scope="col")
             %tbody
               - @events.each_with_index do |event, i|
@@ -27,6 +37,8 @@
                   %td= event.event_type
                   %td= short_date_time(event.start_at, event.time_zone)
                   %td= event.location
+                  %td= event.city
+                  %td= event.state
                   %td.w-10.text-right
                     .dropdown
                       = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{event.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do

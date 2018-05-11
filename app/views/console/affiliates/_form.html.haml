@@ -23,7 +23,7 @@
         = model_error_display(@affiliate, :state)
     .col-lg-4
       .form-group
-        %label(for="affiliate_zip") Zip
+        %label(for="affiliate_zip") ZIP Code
         = f.text_field :zip, class: "form-control #{form_error_class(@affiliate, :zip)}"
         = model_error_display(@affiliate, :zip)
   .row
@@ -48,7 +48,7 @@
       .form-group
         .form-check.mb-3
           = f.check_box :hide_info_on_locator, class: 'form-check-input'
-          %label.form-check-label(for="hide_info_on_locator") Hide Info on Affiliate Locator
+          %label.form-check-label(for="hide_info_on_locator") Hide Info - Pending Approval
 
   .mb-5
     = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }

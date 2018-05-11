@@ -42,3 +42,15 @@
       %p
         %strong Details
       = simple_format @event.details
+%p
+  = link_to manage_events_path, class: 'btn btn-outline-primary' do
+    %i.fas.fa-arrow-left
+    Back
+    &nbsp;
+    = link_to edit_manage_event_path(@event.id), class: 'btn btn-outline-primary' do
+      %i.far.fa-edit
+      Edit
+    &nbsp;
+    = link_to manage_events_path(@event.id), method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'Please confirm that you wish to delete this event. Press OK to continue.' } do
+      %i.far.fa-trash-alt
+      Delete
