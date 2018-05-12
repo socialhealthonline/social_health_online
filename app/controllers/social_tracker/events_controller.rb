@@ -7,20 +7,17 @@ class SocialTracker::EventsController < ApplicationController
 
   def create
     @social_event_log = authenticated_user.social_event_logs.build(log_params)
-    params.require(:social_event_log).permit(event_categories: [])
 
-    categories = params[:event_categories]
-    byebug
     if @social_event_log.save
-      redirect_to social_tracker_history_url, success: 'The event was logged successfully!'
+      redirect_to social_tracker_history_url, success: "The event was logged successfully!"
     else
-      flash.now[:error] = 'Please correct the errors to continue.'
+      flash.now[:error] = "Please correct the errors to continue."
       render :new
     end
-  end 
+  end
 
   def index
-    @social_event_logs = authenticated_user.social_event_logs.paginate(page: params[:page], per_page: 2)
+    @social_event_logs = authenticated_user.social_event_logs.paginate(page: params[:page])
   end
 
   def show
@@ -39,7 +36,7 @@ class SocialTracker::EventsController < ApplicationController
       :category,
       :venue,
       :rating,
-      event_categories_attributes: [:id, :name, :_destroy]
+      event_categories_attributes: [:id, :name, :_destroy],
     )
   end
 end

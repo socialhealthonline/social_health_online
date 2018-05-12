@@ -34,11 +34,11 @@
                   %strong= user.total_social_events_logged
                 %td= short_date(user.last_social_event_log_date) || "No Logs"
     - else
-    %p.text-muted
-      %em No Users were found.
+      %p.text-muted
+        %em No Users were found.
 
-        %p.my-3
-          = link_to(my_community_path) do
-            %span
-              %i(class="fas fa-arrow-circle-left")
-              Back
+    %p.my-3
+      = link_to(my_community_path) do
+        %span
+          %i(class="fas fa-arrow-circle-left")
+          Back

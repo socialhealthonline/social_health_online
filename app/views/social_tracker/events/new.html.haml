@@ -13,7 +13,7 @@
           .col-lg-6
             .form-group
               %label(for="social_event_log_event_date") Event Date
-              = f.text_field :event_date, class: "flatpickr-date form-control #{form_error_class(@social_event_log, event_date)}"
+              = f.text_field :event_date, class: "flatpickr-date form-control #{form_error_class(@social_event_log, :event_date)}"
               = model_error_display(@social_event_log, :event_date)
             .form-group
               %label(for="social_event_log_state") Event State
@@ -34,17 +34,28 @@
               %label(for="social_event_log_source") Event Source
               = f.select :source, SocialEventLog::EVENT_SOURCES, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :source)}" }
               = model_error_display(@social_event_log, :source)
-            .form-group#category_group
+            .form-group
               %label(for="social_event_log_event_categories") 
-                Event Category
-              = f.nested_fields_for :event_categories do |cf| 
-                = cf.remove_nested_fields_link 
-                = cf.select :name, ::EVENT_CATEGORIES, {}, { class: 'form-control custom-select'}
-                = model_error_display(@social_event_log, :event_categories)
-              = f.add_nested_fields_link :event_categories do 
-                %span.mt-2
-                  %i(class="fas fa-plus-circle")
-                  Add New Category
+                Event Categories
+              = f.fields_for :event_categories do |cf|
+                = render 'event_category_fields', f: cf
+              %span.not_sho_category(style="display: none;") (Can only add categories for SHO Events)
+              = link_to_add_category "Add Category", f, :event_categories
+              = model_error_display(@social_event_log, :event_categories)
+            -# %span.mt-2
+            -#   %i(class="fas fa-plus-circle")
+            -#   Add New Category
+            -# .form-group#category_group
+            -#   %label(for="social_event_log_event_categories") 
+            -#     Event Category
+            -#   = f.nested_fields_for :event_categories do |cf| 
+            -#     = cf.remove_nested_fields_link 
+            -#     = cf.select :name, ::EVENT_CATEGORIES, {}, { class: 'form-control custom-select'}
+            -#     = model_error_display(@social_event_log, :event_categories)
+            -#   = f.add_nested_fields_link :event_categories do 
+            -#     %span.mt-2
+            -#       %i(class="fas fa-plus-circle")
+            -#       Add New Category
             .form-group
               %label(for="social_event_log_venue") Event Venue
               = f.text_area :venue, class: "form-control #{form_error_class(@social_event_log, :venue)}"

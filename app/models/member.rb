@@ -56,9 +56,8 @@ class Member < ApplicationRecord
   end
 
   def social_tracker_csv
-    # TODO: Once category is fixed, add categiry to csv
-    attributes = %w{state name primary_manager_name primary_manager_email user_name user_email log_date event_date event_state event_city event_type event_source event_venue event_rating}
-    tracker_attributes = %w{created_at event_date state city event_type source venue rating}
+    attributes = %w{state name primary_manager_name primary_manager_email user_name user_email log_date event_date event_state event_city event_type event_source event_category event_venue event_rating}
+    tracker_attributes = %w{created_at event_date state city event_type source event_categories venue rating}
     user_attributes = %w{name email}
 
     ::CSV.generate(headers: true) do |csv|
@@ -68,8 +67,8 @@ class Member < ApplicationRecord
         row = []
         values = [state, name]
         user_values = user_attributes.map { |attr| user&.send(attr) }
-        primary_manager_values = user_attributes.map { |attr| 
-          val = primary_manager&.send(attr) 
+        primary_manager_values = user_attributes.map { |attr|
+          val = primary_manager&.send(attr)
           val ? val : ""
         }
         user.social_event_logs.each do |log|
@@ -83,6 +82,10 @@ class Member < ApplicationRecord
               SocialEventLog::EVENT_SOURCES.key(log.send(attr))
             when "rating"
               RATINGS.key(log.send(attr)).to_s
+            when "event_categories"
+              category = ""
+              log.send(attr).each { |cat| category += cat.name + " " }
+              category.strip
             else
               log.send(attr)
             end

@@ -11,7 +11,7 @@ class Console::SocialTracker::HistoryController < ConsoleController
   def user_history
     @member = Member.friendly.find(params[:name])
     @user = User.find(params[:id])
-    @social_event_logs = @user.social_event_logs.paginate(page: params[:page],per_page: 2)
+    @social_event_logs = @user.social_event_logs.paginate(page: params[:page])
   end
 
   def show

@@ -23,15 +23,17 @@
           %p= SocialEventLog::EVENT_SOURCES.key(@log.source)
           %p 
             %strong Event Category
-          %p= @log.category
+          %p
+            - @log.event_categories.each_with_index do |category, i|
+              %p= category.name
           %p
             %strong Event Host
-          %p= @log.venue
+          %p= @log.venue || "Not Social Health Online"
           %p
             %strong Event Rating
           %p= RATINGS.key(@log.rating)
       %p.mt-4
-        = link_to(console_social_tracker_members_path) do
+        = link_to(social_tracker_history_path) do
           %span
             %i(class="fas fa-arrow-circle-left")
             Back

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_07_232757) do
+ActiveRecord::Schema.define(version: 2018_05_12_003142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2018_05_07_232757) do
 
   create_table "event_categories", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "social_event_log_id", null: false
+    t.bigint "social_event_log_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["social_event_log_id"], name: "index_event_categories_on_social_event_log_id"
@@ -168,7 +168,6 @@ ActiveRecord::Schema.define(version: 2018_05_07_232757) do
     t.string "city", null: false
     t.string "event_type", null: false
     t.integer "source", default: 0, null: false
-    t.string "category"
     t.text "venue"
     t.integer "rating", null: false
     t.integer "user_id", null: false
@@ -231,6 +230,7 @@ ActiveRecord::Schema.define(version: 2018_05_07_232757) do
     t.index ["password_reset_token"], name: "index_users_on_password_reset_token"
   end
 
+  add_foreign_key "event_categories", "social_event_logs"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"

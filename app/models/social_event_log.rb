@@ -1,10 +1,10 @@
 class SocialEventLog < ApplicationRecord
   EVENT_SOURCES = {
     "Social Health Online": 0,
-    "Not Social Health Online": 1
+    "Not Social Health Online": 1,
   }
 
-  default_scope { order('created_at desc') }
+  default_scope { order("created_at desc") }
 
   validates_presence_of :event_date, :state, :city, :event_type, :source, :rating
 
@@ -22,5 +22,8 @@ class SocialEventLog < ApplicationRecord
   has_many :event_categories
 
   accepts_nested_attributes_for :event_categories, allow_destroy: true
+
+  validates_associated :event_categories
+
 
 end

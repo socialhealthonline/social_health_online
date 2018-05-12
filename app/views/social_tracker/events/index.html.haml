@@ -19,7 +19,7 @@
                 %tr
                   %td= link_to short_date_slashed(log.created_at), social_tracker_path(log), class: 'text-info'
                   %td= link_to short_date_slashed(log.event_date), social_tracker_path(log), class: 'text-info'
-                  %td= truncate(log.venue, :length => 30)
+                  %td= log.source == 0 ? truncate(log.venue, :length => 30) : "Not SHO"
                   %td
                     %strong= RATINGS.key(log.rating)
                 %tr.table-divider

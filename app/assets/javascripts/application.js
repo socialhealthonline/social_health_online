@@ -20,7 +20,7 @@
 //= require bootstrap-sprockets
 //= require flatpickr/dist/flatpickr.min
 //= require fullcalendar
-//= require_nested_form_fields
+//= require nested_form_fields
 //= require chosen-jquery
 
 $(document).ready(function() {
