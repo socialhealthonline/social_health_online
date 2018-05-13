@@ -34,6 +34,10 @@ module ApplicationHelper
     date.blank? ? nil : date.strftime('%Y-%m-%d')
   end
 
+  def short_date_slashed(date)
+    date.blank? ? nil : date.strftime('%d/%m/%Y')
+  end
+
   def short_date_time(datetime, time_zone)
     datetime.blank? ? nil : datetime.in_time_zone(time_zone).strftime('%b %d %Y, %l:%M %p %Z')
   end
@@ -56,5 +60,14 @@ module ApplicationHelper
 
   def active_page(active_page)
     @active == active_page ? 'active' : ''
+  end
+
+  def link_to_add_category(name, f, association)
+    new_object = f.object.send(association).klass.new
+    id = new_object.object_id
+    fields = f.fields_for(association, new_object, child_index: id) do |builder|
+      render(association.to_s.singularize + "_fields", f: builder)
+    end
+    link_to(name, '#', class: "add_category", data: {id: id, fields: fields.gsub("\n", "")})
   end
 end

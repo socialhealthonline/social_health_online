@@ -1,0 +1,29 @@
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
+  %div
+    %h1.h3.brand-primary Social Tracker
+    %h5.brand-primary Members
+- if @members.any?
+  .table-responsive
+    %table.table.table-borderless.align-items-center
+      %thead
+        %tr
+          %th
+          %th Name
+          %th State
+          %th
+      %tbody
+        - @members.each.with_index(1) do |member, i|
+          %tr.bg-white
+            %td= i
+            %td= link_to member.name , [:console,:social_tracker,member]
+            %td= US_STATES.key(member.state)
+            %td
+              = link_to console_social_tracker_member_csv_path(member) do
+                %span
+                  %i(class="fas fa-download")
+                  Export CSV
+          %tr.table-divider
+- else
+  %p.text-muted
+    %em No Members were found.
+

@@ -20,6 +20,8 @@
 //= require bootstrap-sprockets
 //= require flatpickr/dist/flatpickr.min
 //= require fullcalendar
+//= require nested_form_fields
+//= require chosen-jquery
 
 $(document).ready(function() {
   $(".flatpickr-date").flatpickr({
@@ -29,6 +31,10 @@ $(document).ready(function() {
   $(".flatpickr-date-time").flatpickr({
     enableTime: true,
     dateFormat: 'Y-m-d h:i K'
+  });
+
+  $('.chosen-select').chosen({
+    no_results_text: 'No results matched'
   });
 });
 

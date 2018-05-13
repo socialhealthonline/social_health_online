@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_30_094857) do
+ActiveRecord::Schema.define(version: 2018_05_12_003142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 2018_04_30_094857) do
     t.datetime "updated_at", null: false
     t.boolean "hide_info_on_locator", default: false
     t.integer "support_type", default: 0, null: false
+  end
+
+  create_table "event_categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "social_event_log_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["social_event_log_id"], name: "index_event_categories_on_social_event_log_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -154,6 +162,36 @@ ActiveRecord::Schema.define(version: 2018_04_30_094857) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "social_event_logs", force: :cascade do |t|
+    t.date "event_date", null: false
+    t.string "state", null: false
+    t.string "city", null: false
+    t.string "event_type", null: false
+    t.integer "source", default: 0, null: false
+    t.text "venue"
+    t.integer "rating", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_type"], name: "index_social_event_logs_on_event_type"
+    t.index ["user_id"], name: "index_social_event_logs_on_user_id"
+  end
+
+  create_table "social_fitness_logs", force: :cascade do |t|
+    t.integer "individuals", null: false
+    t.integer "groups", null: false
+    t.integer "family", null: false
+    t.integer "friends", null: false
+    t.integer "colleagues", null: false
+    t.integer "significant_other", null: false
+    t.integer "local_community", null: false
+    t.integer "overall", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_social_fitness_logs_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -192,6 +230,7 @@ ActiveRecord::Schema.define(version: 2018_04_30_094857) do
     t.index ["password_reset_token"], name: "index_users_on_password_reset_token"
   end
 
+  add_foreign_key "event_categories", "social_event_logs"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"

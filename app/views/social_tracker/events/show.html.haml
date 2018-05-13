@@ -1,0 +1,39 @@
+.container
+  .row
+    .col.py-4
+      %h1.text-info Social Tracker
+      %h3.text-info History
+      .row
+        .col-lg-6
+          %p 
+            %strong Event Date
+          %p= short_date_slashed(@log.event_date)
+          %p 
+            %strong Event State
+          %p= US_STATES.key(@log.state)
+          %p 
+            %strong Event City
+          %p= @log.city
+          %p 
+            %strong Event Type
+          %p= @log.event_type
+        .col-lg-6
+          %p 
+            %strong Event Source
+          %p= SocialEventLog::EVENT_SOURCES.key(@log.source)
+          %p 
+            %strong Event Category
+          %p
+            - @log.event_categories.each_with_index do |category, i|
+              %p= category.name
+          %p
+            %strong Event Host
+          %p= @log.venue || "Not Social Health Online"
+          %p
+            %strong Event Rating
+          %p= RATINGS.key(@log.rating)
+      %p.mt-4
+        = link_to(social_tracker_history_path) do
+          %span
+            %i(class="fas fa-arrow-circle-left")
+            Back
