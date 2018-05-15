@@ -41,13 +41,9 @@ RSpec.describe 'User views event' do
     end
 
     it 'is successful subscribe to event' do
-      # binding.pry
       expect(page).to have_content 'RSVP'
       find('#rsvp-dropdown a[href$="Yes"]').click
       expect(page).to_not have_content 'The RSVP limit for this event is reached'
-      # find('a[href$="Yes"]')
-      # find('a.btn.btn-primary.dropdown-toggle').click
     end
   end
-
 end
