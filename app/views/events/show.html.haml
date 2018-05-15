@@ -16,9 +16,10 @@
                       = link_to value, community_event_rsvp_switch_path(@member.id, @event.id, event: value), class: 'dropdown-item', id: "user-choice-#{value}", method: :post
                     - else
                       = link_to value, community_event_rsvp_switch_path(@member.id, @event.id, event: value), class: 'dropdown-item', method: :post
-    = link_to community_path(@member.slug), class: 'btn btn-outline-secondary' do
-      %i.fas.fa-arrow-alt-circle-left
-      Back
+    %div
+      = link_to community_path(@member.slug), class: 'btn btn-outline-secondary' do
+        %i.fas.fa-arrow-alt-circle-left
+        Back
 
   .row
     .col
@@ -27,7 +28,7 @@
           %i.far.fa-calendar-alt
           = short_date_time @event.start_at, @event.time_zone
         %p
-          %i.fas.fa-tag
+          %i.fas.fa-users
           = @event.event_type
         %p
           %i.fas.fa-map-marker-alt
