@@ -8,6 +8,8 @@ RSpec.describe Event do
   it { should have_db_index(:private) }
 
   it { should belong_to(:member) }
+  it { should have_many(:rsvps) }
+  it { should have_many(:users).through(:rsvps) }
 
   it { should validate_presence_of :title }
   it { should validate_presence_of :start_at }

@@ -2,6 +2,23 @@
   .row.pt-5
     .col
       %h2.brand-primary= @event.title
+    %div
+      .container.align-self-end
+        .row
+          .col-12
+            %div
+              .dropdown
+                %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                  RSVP
+                .dropdown-menu.dropdown-menu-right#rsvp-dropdown
+                  - %w(Yes Maybe No).each do |value|
+                    - if @event.rsvp_limit_reached? && !@rsvp_switcher&.rsvp_status&.eql?('Yes')
+                      = link_to value, community_event_rsvp_switch_path(@member.id, @event.id, event: value), class: 'dropdown-item', id: "user-choice-#{value}", method: :post
+                    - else
+                      = link_to value, community_event_rsvp_switch_path(@member.id, @event.id, event: value), class: 'dropdown-item', method: :post
+    = link_to community_path(@member.slug), class: 'btn btn-outline-secondary' do
+      %i.fas.fa-arrow-alt-circle-left
+      Back
 
   .row
     .col
@@ -21,3 +38,23 @@
             = link_to @event.url, @event.url, target: '_blank'
         %p
           = simple_format @event.details
+        %p
+          %strong RSVP list
+        %div.table-wrapper-2
+          %table.table
+            %thead.mdb-color.lighten-4
+              %tr
+                %th
+                %th.th-lg Name
+                %th.th-lg
+                %th.th-lg RSVP
+                %th
+            %tbody
+            - @event.rsvps.each do |rsvp|
+              %tr
+                %th{scope: "row"}
+                %td= rsvp.user.name
+                %td
+                %td= rsvp&.rsvp_status
+                %td
+              

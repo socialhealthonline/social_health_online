@@ -22,6 +22,7 @@
 //= require fullcalendar
 //= require nested_form_fields
 //= require chosen-jquery
+//= require event
 
 $(document).ready(function() {
   $(".flatpickr-date").flatpickr({

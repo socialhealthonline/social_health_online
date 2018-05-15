@@ -26,5 +26,4 @@ RSpec.describe 'Member manager updates information' do
     expect(Member.last.name).to_not be_nil
     expect(page).to have_form_field_error_for('member_name')
   end
-
 end
