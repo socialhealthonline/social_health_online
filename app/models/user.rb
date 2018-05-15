@@ -8,6 +8,8 @@ class User < ApplicationRecord
   belongs_to :member, inverse_of: :users
   has_many :social_event_logs
   has_many :social_fitness_logs
+  has_many :rsvps
+  has_many :events, -> { distinct }, through: :rsvps
 
   validates :name, :email, :address, :city, :gender, :ethnicity, :birthdate, :time_zone, presence: true
   validates_uniqueness_of :email, case_sensitive: false

@@ -34,7 +34,7 @@ class Manage::EventsController < ApplicationController
     if @event.update(event_params)
       redirect_to manage_event_url(@event), success: 'The event was successfully updated!'
     else
-      flash.now[:error] = 'Please correct the errors to continue.'
+      update_action_flash_error
       render :edit
     end
   end
@@ -76,4 +76,11 @@ class Manage::EventsController < ApplicationController
     Time.use_zone(@event.time_zone) { yield }
   end
 
+  def update_action_flash_error
+    if @event.errors[:rsvp_limit].empty?
+      flash.now[:error] = 'Please correct the errors to continue.'
+    else
+      flash.now[:error] = @event.errors[:rsvp_limit][0]
+    end
+  end
 end

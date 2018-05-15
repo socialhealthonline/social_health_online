@@ -35,7 +35,9 @@ Rails.application.routes.draw do
 
   # Communities
   resources :members, path: :communities, as: :community, controller: :communities do
-    resources :events, only: [:index, :show]
+    resources :events, only: [:index, :show] do
+      post 'create_or_switch_rsvp' => 'events#create_or_switch_rsvp', as: 'rsvp_switch'
+    end
   end
 
   # Manage
