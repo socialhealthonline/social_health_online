@@ -11,7 +11,7 @@ class Console::SocialFitness::HistoryController < ConsoleController
   def user_history
     @member = Member.friendly.find(params[:name])
     @user = User.find(params[:id])
-    @social_fitness_logs = @user.social_fitness_logs.paginate(page: params[:page])
+    @social_fitness_logs = @user.social_fitness_logs.page params[:page]
   end
 
   def show
