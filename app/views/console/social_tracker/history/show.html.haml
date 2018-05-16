@@ -15,7 +15,7 @@
         .col-lg-6
           %p 
             %strong Event Date
-          %p= short_date_slashed(@log.event_date)
+          %p= short_date(@log.event_date)
           %p 
             %strong Event State
           %p= US_STATES.key(@log.state)
@@ -35,7 +35,7 @@
             - @log.event_categories.each do |category|
               %p= category.name
           %p
-            %strong Event Host
+            %strong Event Venue
           %p= @log.venue
           %p
             %strong Event Rating

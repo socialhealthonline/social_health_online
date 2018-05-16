@@ -5,7 +5,8 @@
     .col.mt-5
       .row
         .col-8
-          %h1.text-info My Community Social Tracker
+          %h1.text-info 
+            %strong My Community Social Tracker
           %h3.text-info Users
         .col-4
           .dropdown.text-right
@@ -13,32 +14,36 @@
               %i.fas.fa-cog
               Manage
             .dropdown-menu.dropdown-menu-right
-              = link_to 'Profile', manage_edit_member_path, class: 'dropdown-item'
-              = link_to 'Events', manage_events_path, class: 'dropdown-item'
-              = link_to 'Social Tracker', manage_social_tracker_users_path, class: 'dropdown-item'
-    - if @users.any?
-      .table-responsive.mt-3
-        %table.table.table-borderless.align-items-center(id="social-tracker-history-table")
-          %thead
-            %tr
-              %th
-              %th Name
-              %th Total Events Logged
-              %th Last Logged Event
-          %tbody
-            - @users.each.with_index(1) do |user, i|
-              %tr.bg-white
-                %td= i
-                %td= link_to user.name, [:manage,:social_tracker,user]
-                %td
-                  %strong= user.total_social_events_logged
-                %td= short_date(user.last_social_event_log_date) || "No Logs"
-    - else
-      %p.text-muted
-        %em No Users were found.
+              = link_to manage_edit_member_path, class: 'dropdown-item' do
+                %i.fas.fa-building
+                Profile
+              = link_to manage_events_path, class: 'dropdown-item' do
+                %i.fas.fa-map-marker-alt
+                Events
+              = link_to 'Social Tracker', manage_social_tracker_users_path(@member), class: 'dropdown-item'
+      - if @users.any?
+        .table-responsive.mt-3
+          %table.table.table-borderless.align-items-center(id="social-tracker-history-table")
+            %thead
+              %tr
+                %th
+                %th Name
+                %th Total Events Logged
+                %th Last Logged Event
+            %tbody
+              - @users.each.with_index(1) do |user, i|
+                %tr.bg-white
+                  %td= i
+                  %td= link_to user.name, [:manage,:social_tracker,@member,user]
+                  %td
+                    %strong= user.total_social_events_logged
+                  %td= short_date(user.last_social_event_log_date) || "No Logs"
+      - else
+        %p.text-muted.my-4
+          %em No Users were found.
 
-    %p.my-3
-      = link_to(my_community_path) do
-        %span
-          %i(class="fas fa-arrow-circle-left")
-          Back
+      %p.pb-3
+        = link_to(my_community_path) do
+          %span
+            %i(class="fas fa-arrow-circle-left")
+            Back

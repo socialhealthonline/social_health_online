@@ -31,11 +31,7 @@ module ApplicationHelper
   end
 
   def short_date(date)
-    date.blank? ? nil : date.strftime('%Y-%m-%d')
-  end
-
-  def short_date_slashed(date)
-    date.blank? ? nil : date.strftime('%d/%m/%Y')
+    date.blank? ? nil : date.strftime('%m/%d/%Y')
   end
 
   def short_date_time(datetime, time_zone)

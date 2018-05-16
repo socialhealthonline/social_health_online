@@ -43,9 +43,9 @@ Rails.application.routes.draw do
     get "member" => "member#edit", as: "edit_member"
     patch "member" => "member#update", as: "update_member"
     namespace :social_tracker do
-      get "users" => "history#users"
-      get "users/:id/history" => "history#user_history", as: :user
-      get "users/:id/history/:id" => "history#show", as: :user_history
+      get "/:name/users" => "history#users", as: :users
+      get "/:name/users/:id/history" => "history#user_history", as: :member_user
+      get "/:name/users/:id/history/:id" => "history#show", as: :user_history
     end
     resources :events
   end

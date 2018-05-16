@@ -7,7 +7,7 @@
         .col-lg-6
           %p 
             %strong Event Date
-          %p= short_date_slashed(@log.event_date)
+          %p= short_date(@log.event_date)
           %p 
             %strong Event State
           %p= US_STATES.key(@log.state)
@@ -27,8 +27,8 @@
             - @log.event_categories.each_with_index do |category, i|
               %p= category.name
           %p
-            %strong Event Host
-          %p= @log.venue || "Not Social Health Online"
+            %strong Event Venue
+          %p= @log.venue
           %p
             %strong Event Rating
           %p= RATINGS.key(@log.rating)
