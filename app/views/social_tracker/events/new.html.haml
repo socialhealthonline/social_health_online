@@ -3,11 +3,12 @@
 .container
   .row
     .col.py-3
-      %h1.text-info Social Tracker
+      %h1.text-info 
+        %strong Social Tracker
       %h3.text-info Log Events
       %p.text-center.p-3{style: "border: 1px solid black;"}
         Log your social events below to track your activities 
-        and qualify for automatic entry into sweepstakes
+        and qualify for automatic entry into sweepstakes.
       = form_with model: @social_event_log, url: social_tracker_log_path(@social_event_log), local: true, class: "pt-3" do |f|
         .row
           .col-lg-6
@@ -22,7 +23,7 @@
             .form-group
               %label(for="social_event_log_city")
                 Event City 
-                %em (if the city is not selected below, select the nearest metro area)
+                %em (if the city is not listed below, select the nearest metro area)
               = f.select :city, {}, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :city)}" }
               = model_error_display(@social_event_log, :city)
             .form-group
@@ -42,20 +43,6 @@
               %span.not_sho_category(style="display: none;") (Can only add categories for SHO Events)
               = link_to_add_category "Add Category", f, :event_categories
               = model_error_display(@social_event_log, :event_categories)
-            -# %span.mt-2
-            -#   %i(class="fas fa-plus-circle")
-            -#   Add New Category
-            -# .form-group#category_group
-            -#   %label(for="social_event_log_event_categories") 
-            -#     Event Category
-            -#   = f.nested_fields_for :event_categories do |cf| 
-            -#     = cf.remove_nested_fields_link 
-            -#     = cf.select :name, ::EVENT_CATEGORIES, {}, { class: 'form-control custom-select'}
-            -#     = model_error_display(@social_event_log, :event_categories)
-            -#   = f.add_nested_fields_link :event_categories do 
-            -#     %span.mt-2
-            -#       %i(class="fas fa-plus-circle")
-            -#       Add New Category
             .form-group
               %label(for="social_event_log_venue") Event Venue
               = f.text_area :venue, class: "form-control #{form_error_class(@social_event_log, :venue)}"
