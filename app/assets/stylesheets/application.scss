@@ -309,10 +309,15 @@ body {
   color: #aeb3bd;
 }
 .table-wrapper-2 {
-  border: 1px solid;
+  border: 2px solid black;
   display: block;
   max-height: 200px;
   width: 55%;
   overflow-y: auto;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+#events-feed {
+  width: 75% !important;
+  margin: auto;
 }
