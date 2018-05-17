@@ -16,6 +16,9 @@
             = link_to manage_edit_member_path, class: 'dropdown-item' do
               %i.fas.fa-building
               Profile
+            = link_to manage_social_tracker_users_path, class: 'dropdown-item' do
+              %i.fas.fa-database
+              Social Tracker
   .row
     .col
       - if @events.any?
