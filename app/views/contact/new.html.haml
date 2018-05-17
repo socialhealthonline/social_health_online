@@ -4,7 +4,7 @@
   .row.pt-5.pb-3
     .col
       %h2.text-info Contact Us
-  .row.mb-5
+  .row.mb-1
     .col-md-6
       %p.lead.pb-3
         Contact us to learn more about our service, submit a sales inquiry, or request service support!
@@ -39,3 +39,26 @@
               %label(for="message") Message
               = text_area_tag :message, params[:message], rows: '6', class: 'form-control', required: true
             = submit_tag 'Send', class: 'btn btn-primary', data: { disable_with: 'Please wait...' }
+
+.container
+  .row
+    .col.py-3
+      %h2.text-info Social Media  
+  .row.pb-5 
+    .col-md-6.col-lg-4
+      .text-center.brand-primary.mb-2
+        = link_to 'https://www.facebook.com/socialhealthonline', target: '_blank' do
+          %i.fab.fa-facebook-square.fa-5x
+          %h5.text-info Facebook
+    .col-md-6.col-lg-4
+      .text-center.brand-primary.mb-2
+        = link_to 'https://www.youtube.com/channel/UCNvu4X63s_k9UK5kKeGKVmg', target: '_blank' do
+          %i.fab.fa-youtube.fa-5x
+          %h5.text-info YouTube
+    .col-md-6.col-lg-4
+      .text-center.brand-primary.mb-2
+        = link_to 'https://www.instagram.com/socialhealthonline', target: '_blank' do
+          %i.fab.fa-instagram.fa-5x
+          %h5.text-info Instagram
+
+        
