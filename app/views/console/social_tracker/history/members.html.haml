@@ -7,15 +7,13 @@
     %table.table.table-borderless.align-items-center
       %thead
         %tr
-          %th
           %th Name
           %th State
           %th
       %tbody
         - @members.each.with_index(1) do |member, i|
           %tr.bg-white
-            %td= i
-            %td= link_to member.name , [:console,:social_tracker,member]
+            %td= link_to "#{i}. #{member.name}" , [:console,:social_tracker,member]
             %td= US_STATES.key(member.state)
             %td
               = link_to console_social_tracker_member_csv_path(member) do
