@@ -4,8 +4,8 @@ RSpec.describe UserEventRsvpAnswerService do
   before do
     member = create(:member)
     @params = {}
-    @params[:event_id] = create(:event, member: member).id
-    @params[:event] = 'Yes'
+    @params[:id] = create(:event, member: member).id
+    @params[:event] = 'yes'
     @authenticated_user = create(:user, member: member)
     @service = UserEventRsvpAnswerService.new(@params, @authenticated_user)
   end
@@ -21,7 +21,7 @@ RSpec.describe UserEventRsvpAnswerService do
   context "updates rsvp in database" do
     describe 'it updates' do
       before do
-        @params[:event] = 'No'
+        @params[:event] = 'no'
         updated_rsvp = UserEventRsvpAnswerService.new(@params, @authenticated_user).call
         @rsvp = Rsvp.last
       end

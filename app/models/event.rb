@@ -16,7 +16,7 @@ class Event < ApplicationRecord
 
   def rsvp_limit_reached?
     return false unless rsvp_limit
-    rsvps.where(rsvp_status: 'Yes').count == rsvp_limit
+    rsvps.where(rsvp_status: 'yes').count == rsvp_limit
   end
 
   private
@@ -27,7 +27,7 @@ class Event < ApplicationRecord
 
   def validate_rsvp_limit
     return true unless rsvp_limit
-    if rsvp_limit < rsvps.where(rsvp_status: 'Yes').count
+    if rsvp_limit < rsvps.where(rsvp_status: 'yes').count
       errors[:rsvp_limit] << "Caution - RSVP Limit cannot be less than the number of recorded 'Yes' responses."
     end
   end

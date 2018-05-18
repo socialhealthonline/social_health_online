@@ -26,6 +26,7 @@ gem 'city-state'
 gem 'nested_form_fields'
 gem 'csv'
 gem 'chosen-rails'
+gem 'draper'
 
 group :development, :test do
   gem 'awesome_print'

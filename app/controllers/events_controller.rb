@@ -20,7 +20,7 @@ class EventsController < ApplicationController
 
   def show
     @rsvp_switcher = authenticated_user.rsvps.find_by(event_id: params[:id])
-    @event = Event.find params[:id]
+    @event = Event.find(params[:id]).decorate
 
     if @event.private? # ensure user is a member of this community before viewing private events
       redirect_to community_path(@member) and return unless authenticated_user.member_id == @event.member_id
@@ -28,12 +28,10 @@ class EventsController < ApplicationController
   end
 
   def create_or_switch_rsvp
-    if UserEventRsvpAnswerService.new(params, authenticated_user).call
-      redirect_to community_event_path(@member.id, params[:event_id])
-    else
+    unless UserEventRsvpAnswerService.new(params, authenticated_user).call
       flash[:error] = 'The RSVP limit for this event is reached'
-      redirect_to community_event_path(@member.id, params[:event_id])
     end
+    redirect_to community_event_path(@member, params[:id])
   end
 
   private

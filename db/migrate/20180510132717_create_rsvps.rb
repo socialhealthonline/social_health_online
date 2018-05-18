@@ -6,9 +6,5 @@ class CreateRsvps < ActiveRecord::Migration[5.2]
       t.belongs_to :user
       t.timestamps
     end
-
-    def down
-      drop_table :rsvps
-    end
   end
 end

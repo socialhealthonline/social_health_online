@@ -80,7 +80,7 @@ class Manage::EventsController < ApplicationController
     if @event.errors[:rsvp_limit].empty?
       flash.now[:error] = 'Please correct the errors to continue.'
     else
-      flash.now[:error] = @event.errors[:rsvp_limit][0]
+      flash.now[:error] = @event.errors[:rsvp_limit].first
     end
   end
 end

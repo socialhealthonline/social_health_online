@@ -9,6 +9,6 @@ RSpec.describe Rsvp, type: :model do
   it { should belong_to(:event) }
 
   it { should validate_presence_of(:rsvp_status) }
-  it { should allow_values('Yes', 'Maybe', 'No').for(:rsvp_status) }
+  it { should allow_values("yes", "maybe", "no").for(:rsvp_status) }
   it { should validate_uniqueness_of(:user_id).scoped_to(:event_id) }
 end
