@@ -12,12 +12,12 @@
               %a.nav-link.dropdown-toggle#navbarDropdownMenuLink{href: '/service', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
                 = 'Our Service'
               .dropdown-menu.dropdown-menu-right{ 'aria-labelledby' => 'navbarDropdownMenuLink'}
+                = link_to about_us_path, class: 'dropdown-item' do
+                  About Us
                 = link_to service_path, class: 'dropdown-item' do
                   Service Information
                 = link_to join_path, class: 'dropdown-item' do
                   Joining
-                = link_to about_us_path, class: 'dropdown-item' do
-                  About Us
             -# %li.nav-item{class: "#{active_nav('membership')}"}
             -#   = link_to 'Membership', membership_path, class: 'nav-link'
             %li.nav-item.dropdown
