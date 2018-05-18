@@ -9,7 +9,7 @@ RSpec.describe 'Event feed' do
 
   before do
     sign_in user
-    visit dashboard_path()
+    visit dashboard_path
   end
 
   context 'An Event is displayed in the feed' do
