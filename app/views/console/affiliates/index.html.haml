@@ -13,6 +13,7 @@
           %th(scope="col") Affiliate Name
           %th(scope="col") City
           %th(scope="col") State
+          %th(scope="col") Support Type
           %th(snope="col") Hidden
           %th(scope="col")
       %tbody
@@ -21,6 +22,7 @@
             %th(scope="row")= link_to "#{i+1}. #{affiliate.name}", console_affiliate_path(affiliate)
             %td= affiliate.city
             %td= affiliate.state
+            %td= affiliate.support_type ? 'Events' : 'Discounts'
             %td= affiliate.hide_info_on_locator ? 'Yes' : 'No'
             %td.w-10.text-right
               .dropdown
