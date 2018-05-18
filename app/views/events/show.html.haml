@@ -13,12 +13,6 @@
                 .dropdown-menu.dropdown-menu-right#rsvp-dropdown
                   - Rsvp.rsvp_statuses.keys.each do |value|
                     = @event.link_or_span(value, @rsvp_switcher)
-                  -# - Rsvp.rsvp_statuses.keys.each do |value|
-                  -#   = @event.method_name
-                  -#   - if @event.rsvp_limit_reached? && @rsvp_switcher.rsvp_status != 'yes'
-                  -#     = link_to value.capitalize, create_or_switch_rsvp_community_event_path(@member, @event, event: value), class: 'dropdown-item', method: :post
-                  -#   - else
-                  -#     = link_to value.capitalize, create_or_switch_rsvp_community_event_path(@member, @event, event: value), class: 'dropdown-item', method: :post
     %div
       = link_to community_path(@member.slug), class: 'btn btn-outline-secondary' do
         %i.fas.fa-arrow-alt-circle-left
