@@ -4,7 +4,7 @@
     { name: "address", title: "Address" },
     { name: "city", title: "City" },
     { name: "state", title: "State" },
-    { name: "zip", title: "Zip Code" },
+    { name: "zip", title: "ZIP Code" },
     { name: "phone", title: "Phone Number" },
     { name: "url", title: "URL / Link" }
   ];
