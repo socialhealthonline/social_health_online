@@ -25,7 +25,7 @@ gem 'gon'
 gem 'city-state'
 gem 'nested_form_fields'
 gem 'csv'
-gem 'chosen-rails'
+gem 'select2-rails'
 gem 'draper'
 
 group :development, :test do

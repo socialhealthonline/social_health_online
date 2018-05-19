@@ -5,11 +5,9 @@ class ConversationsController < ApplicationController
 
   def create
     recipients = User.where(id: conversation_params[:recipients])
-    conversation = authenticated_user.send_message(recipients,
-                                                   conversation_params[:body],
-                                                   conversation_params[:subject]).conversation
+    authenticated_user.send_message(recipients, conversation_params[:body], conversation_params[:subject])
     flash[:success] = 'Your message was successfully sent!'
-    redirect_to conversation_path(conversation)
+    redirect_to mailbox_inbox_path
   end
 
   def show
@@ -19,6 +17,7 @@ class ConversationsController < ApplicationController
 
   def reply
     authenticated_user.reply_to_conversation(conversation, message_params[:body])
+    conversation.recipients.each { |recipient| conversation.untrash(recipient) }
     flash[:success] = 'Your reply message was successfully sent!'
     redirect_to conversation_path(conversation)
   end
