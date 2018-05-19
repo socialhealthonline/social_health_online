@@ -5,7 +5,7 @@ class AffiliateForLocatorSerializer < ActiveModel::Serializer
     Affiliate::SUPPORT_TYPES[object.support_type]
   end
 
-  def state
-    US_STATES.key(object.state)
-  end
+  # def state
+  #   US_STATES.key(object.state)
+  # end
 end
