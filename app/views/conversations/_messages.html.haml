@@ -4,7 +4,7 @@
   .col
     .pull-right
       - if conversation.is_trashed?(authenticated_user)
-        = link_to 'Untrash', untrash_conversation_path(conversation), class: 'btn btn-success', method: :post
+        = link_to 'Restore', untrash_conversation_path(conversation), class: 'btn btn-success', method: :post
       - else
         = link_to 'Move to trash', trash_conversation_path(conversation), class: 'btn btn-danger', method: :post,
          data: { confirm: 'Are you sure?' }
@@ -15,9 +15,10 @@
         - message = receipt.message
         %tr.bg-white
           %th{:scope => 'row'}
-            %b= message.sender.name
+            %b From:
+            = message.sender.display_name
             %br/
-            = message.created_at.strftime('%A, %b %d, %Y at %I:%M%p')
+            = time_in_cst(message.created_at)
             %br/
             .mt-1= message.body
         %tr.table-divider
