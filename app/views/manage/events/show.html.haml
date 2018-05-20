@@ -16,8 +16,10 @@
   .row
     .col
       %p
-        %strong Event Type
-        = @event.event_type
+        %strong Event Types
+      %p
+        - @log.event_types.each_with_index do |type, i|
+          %p= type.name
       %p
         %strong Event Date
         = short_date_time @event.start_at, @event.time_zone
