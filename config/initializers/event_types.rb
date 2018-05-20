@@ -29,7 +29,7 @@ EVENT_TYPES = [
 EVENT_CATEGORIES = [
   "Affiliate",
   "Community",
-  "MatchMaker",
+  "Matchmaker",
   "Weekly Social Target"
 ].freeze
 
