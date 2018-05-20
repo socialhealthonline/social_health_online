@@ -27,9 +27,11 @@
               = f.select :city, {}, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :city)}" }
               = model_error_display(@social_event_log, :city)
             .form-group
-              %label(for="social_event_log_event_type") Event Type
-              = f.select :event_type, EVENT_TYPES, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_type)}" }
-              = model_error_display(@social_event_log, :event_type)
+              %label(for="social_event_log_event_types") 
+                Event Types
+                %em (multiple: use Ctrl/Command + click)
+              = f.select :event_types, EVENT_TYPES, {include_hidden: false}, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_types)}", multiple: true, style: "height: 300px;" }
+              = model_error_display(@social_event_log, :event_types)
           .col-lg-6
             .form-group
               %label(for="social_event_log_source") Event Source
@@ -38,10 +40,8 @@
             .form-group
               %label(for="social_event_log_event_categories") 
                 Event Categories
-              = f.fields_for :event_categories do |cf|
-                = render 'event_category_fields', f: cf
-              %span.not_sho_category(style="display: none;") (Can only add categories for SHO Events)
-              = link_to_add_category "Add Category", f, :event_categories
+                %em (multiple: use Ctrl/Command + click)
+              = f.select :event_categories, EVENT_CATEGORIES, {include_hidden: false}, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_categories)}", multiple: true, style: "height: 100px;" }
               = model_error_display(@social_event_log, :event_categories)
             .form-group
               %label(for="social_event_log_venue") Event Venue
