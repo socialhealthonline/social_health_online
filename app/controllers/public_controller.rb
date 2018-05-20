@@ -11,6 +11,9 @@ class PublicController < ApplicationController
   def service
   end
 
+  def service_highlights
+  end
+
   def membership
     take_graph_data
   end
