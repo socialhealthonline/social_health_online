@@ -66,4 +66,8 @@ module ApplicationHelper
     end
     link_to(name, '#', class: "add_category", data: {id: id, fields: fields.gsub("\n", "")})
   end
+
+  def dashboard_events_status(status_index)
+    Rsvp.rsvp_statuses.key(status_index).capitalize
+  end
 end
