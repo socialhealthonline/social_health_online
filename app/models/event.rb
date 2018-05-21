@@ -16,7 +16,7 @@ class Event < ApplicationRecord
 
   def rsvp_limit_reached?
     return false unless rsvp_limit
-    rsvps.where(rsvp_status: 'yes').count == rsvp_limit
+    rsvps.yes.count == rsvp_limit
   end
 
   private
