@@ -25,7 +25,7 @@ class Member < ApplicationRecord
   end
 
   def social_fitness_csv
-    attributes = %w{state name user_name user_email individuals groups family friends colleagues significant_other local_community overall}
+    attributes = %w{log_date state name user_name user_email individuals groups family friends colleagues significant_other local_community overall}
     user_attributes = %w{name email}
     fitness_attributes = %w{individuals groups family friends colleagues significant_other local_community overall}
     ratings_attributes = %w{individuals groups overall}
@@ -34,11 +34,11 @@ class Member < ApplicationRecord
       csv << attributes
 
       users.each do |user|
-        row = []
         values = [state, name]
         user_values = user_attributes.map { |attr| user.send(attr) }
 
         user.social_fitness_logs.each do |log|
+          row = []
           fitness_values = fitness_attributes.map do |attr|
             if ratings_attributes.include? attr
               RATINGS.key(log.send(attr)).to_s
@@ -46,25 +46,22 @@ class Member < ApplicationRecord
               RATINGS_WITH_NA.key(log.send(attr)).to_s
             end
           end
-          values.push(*user_values, *fitness_values)
-
-          row.push(values)
+          row.push(log.created_at, *values, *user_values, *fitness_values)
+          csv << row
         end
-        csv << row
       end
     end
   end
 
   def social_tracker_csv
-    attributes = %w{state name primary_manager_name primary_manager_email user_name user_email log_date event_date event_state event_city event_type event_source event_category event_venue event_rating}
-    tracker_attributes = %w{created_at event_date state city event_type source event_categories venue rating}
+    attributes = %w{log_date state name primary_manager_name primary_manager_email user_name user_email event_date event_state event_city event_type event_source event_category event_venue event_rating}
+    tracker_attributes = %w{event_date state city event_type source event_categories venue rating}
     user_attributes = %w{name email}
 
     ::CSV.generate(headers: true) do |csv|
       csv << attributes
 
       users.each do |user|
-        row = []
         values = [state, name]
         user_values = user_attributes.map { |attr| user&.send(attr) }
         primary_manager_values = user_attributes.map { |attr|
@@ -72,6 +69,7 @@ class Member < ApplicationRecord
           val ? val : ""
         }
         user.social_event_logs.each do |log|
+          row = []
           tracker_values = tracker_attributes.map do |attr|
             case attr
             when "state"
@@ -90,11 +88,9 @@ class Member < ApplicationRecord
               log.send(attr)
             end
           end
-          values.push(*primary_manager_values, *user_values, *tracker_values)
-
-          row.push(values)
+          row.push(log.created_at, *values, *primary_manager_values, *user_values, *tracker_values)
+          csv << row
         end
-        csv << row
       end
     end
   end

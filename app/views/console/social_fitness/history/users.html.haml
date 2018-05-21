@@ -13,14 +13,12 @@
     %table.table.table-borderless.align-items-center
       %thead
         %tr
-          %th
           %th Name
           %th Display Name
       %tbody
         - @users.each.with_index(1) do |user, i|
           %tr.bg-white
-            %td= i
-            %td= link_to user.name , [:console,:social_fitness,@member, user]
+            %td= link_to "#{i}. #{user.name}" , [:console,:social_fitness,@member, user]
             %td= link_to user.display_name
           %tr.table-divider
 - else
