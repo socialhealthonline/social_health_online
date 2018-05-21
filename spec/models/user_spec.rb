@@ -8,7 +8,9 @@ RSpec.describe User do
   it { should have_db_index :email }
   it { should have_db_index :password_reset_token }
 
-  it { should belong_to :member }
+  it { should belong_to(:member) }
+  it { should have_many(:rsvps) }
+  it { should have_many(:events).through(:rsvps) }
 
   it { should have_secure_password }
 

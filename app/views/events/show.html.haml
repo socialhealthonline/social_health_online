@@ -2,6 +2,21 @@
   .row.pt-5
     .col
       %h2.brand-primary= @event.title
+    %div
+      .container.align-self-end
+        .row
+          .col-12
+            %div
+              .dropdown
+                %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                  RSVP
+                .dropdown-menu.dropdown-menu-right#rsvp-dropdown
+                  - Rsvp.rsvp_statuses.keys.each do |value|
+                    = @event.link_or_span(value, @rsvp_switcher)
+    %div
+      = link_to community_path(@member.slug), class: 'btn btn-outline-secondary' do
+        %i.fas.fa-arrow-alt-circle-left
+        Back
 
   .row
     .col
@@ -10,7 +25,7 @@
           %i.far.fa-calendar-alt
           = short_date_time @event.start_at, @event.time_zone
         %p
-          %i.fas.fa-tag
+          %i.fas.fa-users
           = @event.event_type
         %p
           %i.fas.fa-map-marker-alt
@@ -21,3 +36,22 @@
             = link_to @event.url, @event.url, target: '_blank'
         %p
           = simple_format @event.details
+        %p
+          %strong RSVP list
+        %div.table-wrapper-2
+          %table.table
+            %thead.mdb-color.lighten-4
+              %tr
+                %th
+                %th.th-lg Name
+                %th.th-lg
+                %th.th-lg RSVP
+                %th
+            %tbody
+            - @event.rsvps.each do |rsvp|
+              %tr
+                %th{scope: "row"}
+                %td= rsvp.user.name
+                %td
+                %td= rsvp&.rsvp_status.capitalize
+                %td

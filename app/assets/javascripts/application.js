@@ -101,4 +101,3 @@ function buildStatesSelector(id, name) {
 
   return selector;
 }
-
