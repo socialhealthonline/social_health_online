@@ -5,14 +5,7 @@
         %h1.h3.brand-primary
           %i.fas.fa-map-marker-alt
           = @event.title
-        %div
-          = link_to edit_manage_event_path(@event), class: 'btn btn-outline-primary' do
-            %i.far.fa-edit
-            Edit
-          &nbsp;
-          = link_to manage_events_path, class: 'btn btn-outline-secondary' do
-            %i.fas.fa-arrow-alt-circle-left
-            Back
+
   .row
     .col
       %p

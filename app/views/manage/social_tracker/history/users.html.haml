@@ -24,20 +24,22 @@
       - if @users.any?
         .table-responsive.mt-3
           %table.table.table-borderless.align-items-center(id="social-tracker-history-table")
-            %thead
-              %tr
-                %th
-                %th Name
-                %th Total Events Logged
-                %th Last Logged Event
-            %tbody
-              - @users.each.with_index(1) do |user, i|
-                %tr.bg-white
-                  %td= i
-                  %td= link_to user.name, [:manage,:social_tracker,@member,user]
-                  %td
-                    %strong= user.total_social_events_logged
-                  %td= short_date(user.last_social_event_log_date) || "No Logs"
+          %thead
+            %tr
+              %th
+              %th Name
+              %th Display Name
+              %th Total Events Logged
+              %th Last Logged Event
+          %tbody
+            - @users.each.with_index(1) do |user, i|
+              %tr.bg-white
+                %td= i
+                %td= link_to user.name, [:manage,:social_tracker,user]
+                %td= link_to user.display_name
+                %td
+                  %strong= user.total_social_events_logged
+                %td= short_date(user.last_social_event_log_date) || "No Logs"
       - else
         %p.text-muted.my-4
           %em No Users were found.
@@ -47,3 +49,4 @@
           %span
             %i(class="fas fa-arrow-circle-left")
             Back
+

@@ -13,7 +13,9 @@
             = link_to manage_events_path, class: 'dropdown-item' do
               %i.fas.fa-map-marker-alt
               Events
-
+            = link_to manage_social_tracker_users_path, class: 'dropdown-item' do
+              %i.fas.fa-database
+              Social Tracker
   .row
     .col
       = form_with model: @member, url: [:manage, :update, @member], local: true do |f|

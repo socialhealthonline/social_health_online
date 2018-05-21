@@ -14,12 +14,15 @@
       %thead
         %tr
           %th Name
+          %th Display Name
           %th Total Events Logged
           %th Last Logged Event
       %tbody
         - @users.each.with_index(1) do |user, i|
           %tr.bg-white
-            %td= link_to "#{i}. #{user.name}" , [:console,:social_tracker,@member, user]
+            %td= i
+            %td= link_to user.name , [:console,:social_tracker,@member, user]
+            %td= link_to user.display_name
             %td
               %strong= user.total_social_events_logged
             %td= short_date(user.last_social_event_log_date) || "No Logs"
