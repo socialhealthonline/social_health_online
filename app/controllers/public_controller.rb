@@ -21,6 +21,9 @@ class PublicController < ApplicationController
   def pricing
   end
 
+  def support
+  end
+
   def news
     @news = News.order('updated_at desc').page(params[:page])
   end
