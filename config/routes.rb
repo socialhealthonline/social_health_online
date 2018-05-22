@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "member_locator" => "public#member_locator"
   get "members" => "public#members"
   get "pricing" => "public#pricing"
+  get "support" => "public#support"
   get "news" => "public#news"
   get "terms" => "public#terms"
   get "privacy" => "public#privacy"
