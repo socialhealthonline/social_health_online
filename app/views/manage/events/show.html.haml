@@ -11,7 +11,7 @@
       %p
         %strong Event Types
       %p
-        - @log.event_types.each_with_index do |type, i|
+        - @log&.event_types&.each_with_index do |type, i|
           %p= type.name
       %p
         %strong Event Date
