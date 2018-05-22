@@ -6,8 +6,7 @@ class CommunitiesController < ApplicationController
   end
 
   def explore_communities
-    # @communities = Member.joins(:users).where("users.member_id != ?", authenticated_user.member_id).distinct
-    @communities = Member.where("name !=? ", authenticated_user.member.name)
+    @communities = Member.where.not("name = ? ", authenticated_user.member.name)
     @communities = FindExploredCommunities.new(@communities).call(permitted_params)
   end
 
