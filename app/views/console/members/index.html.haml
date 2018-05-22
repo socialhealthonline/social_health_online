@@ -16,6 +16,7 @@
           %th(scope="col") Contact Phone
           %th(scope="col") City
           %th(scope="col") State
+          %th(scope="col") Service Capacity
           %th(scope="col")
       %tbody
         - @members.each_with_index do |member, i|
@@ -26,6 +27,7 @@
             %td= member.contact_phone
             %td= member.city
             %td= member.state
+            %td= member.service_capacity
             %td.w-10.text-right
               .dropdown
                 = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{member.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
