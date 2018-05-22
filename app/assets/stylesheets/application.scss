@@ -321,3 +321,17 @@ body {
   width: 75% !important;
   margin: auto;
 }
+
+@media (min-width: 576px) {
+  .form-group {
+    margin-bottom: 1rem !important;
+  }
+}
+
+#explore_communities_city {
+  text-align: center;
+}
+
+#explore_communities_zip {
+  text-align: center;
+}

@@ -2,27 +2,28 @@
   .row.my-3
     .col
       = form_with url: [:explore_communities], method: :get, local: true do |f|
-        .form-group.form-inline
-          = f.select(:state, US_STATES, {}, class: "form-control", include_blank: 'State' )
-          = f.text_field :city, placeholder: 'City', class: 'form-control'
-          = f.text_field :zip, placeholder: 'ZIP Code', class: 'form-control'
-        .row.my-2
-          .col-xs-12.col-md-7
-            .row
-              .col-xs-5.col-md-4
-                = f.button "Search", class: "form-control"
-      %h3.notification-title My events
+        .form-group.form-inline.justify-content-center#explore_communities_form
+          %div.form-group.col-12.col-sm-12.col-md-2.col-lg-2
+            = f.select(:state, US_STATES, {}, class: "form-control", id: 'explore_communities_state', include_blank: 'State', style: "width: 100%;")
+          %div.form-group.col-12.col-sm-12.col-md-4.col-lg-4
+            = f.text_field :city, placeholder: 'City', class: 'form-control', id: 'explore_communities_city', style: "width: 100%;"
+          %div.form-group.col-12.col-sm-12.col-md-2.col-lg-2
+            = f.text_field :zip, placeholder: 'ZIP Code', class: 'form-control', id: 'explore_communities_zip', style: "width: 100%;"
+        %div.form-row
+          %div.col-12
+            .col-xs-3.col-md-3.col-sm-3.mx-auto
+              = f.button "Search", class: "form-control btn btn-primary mb-2"
       %div.table-wrapper-2#events-feed
         %table.table
           %thead.mdb-color.lighten-4
             %tr
-              %th 
+              %th
               %th Name
-              %th 
+              %th
               %th State
-              %th 
+              %th
               %th City
-              %th 
+              %th
               %th ZIP Code
           %tbody
           - @communities.each do |community|

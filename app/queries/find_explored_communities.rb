@@ -12,7 +12,7 @@ class FindExploredCommunities
     scoped = paginate(scoped, params[:page])
     scoped
   end
-  
+
   private
 
     def filter_by_state(scoped, state = nil)
