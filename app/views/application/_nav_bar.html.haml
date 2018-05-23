@@ -18,8 +18,6 @@
                   Service Information
                 = link_to service_highlights_path, class: 'dropdown-item' do
                   Service Highlights
-                = link_to join_path, class: 'dropdown-item' do
-                  Joining
             -# %li.nav-item{class: "#{active_nav('membership')}"}
             -#   = link_to 'Membership', membership_path, class: 'nav-link'
             %li.nav-item.dropdown
@@ -32,6 +30,8 @@
                   Member Locator
                 = link_to affiliate_locator_path, class: 'dropdown-item' do
                   Affiliate Locator
+                = link_to join_path, class: 'dropdown-item' do
+                  User Enrollment
             %li.nav-item{class: "#{active_nav('pricing')}"}
               = link_to 'Pricing', pricing_path, class: 'nav-link'
             %li.nav-item{class: "#{active_nav('support')}"}
