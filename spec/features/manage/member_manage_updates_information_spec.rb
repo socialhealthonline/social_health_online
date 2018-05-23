@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Member manager updates information' do
-
   let!(:manager) { create(:user, :manager, member: create(:member)) }
 
   before do

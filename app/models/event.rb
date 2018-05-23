@@ -9,6 +9,9 @@ class Event < ApplicationRecord
   validate :validate_rsvp_limit, on: :update
 
   before_validation :add_protocol_to_url
+  scope :events_for_feed, -> (authenticated_user_id) { where("rsvps.user_id = ? and rsvps.rsvp_status in (?) and start_at >= ?",
+                                                       authenticated_user_id, [Rsvp.rsvp_statuses[:yes], Rsvp.rsvp_statuses[:maybe]], Time.zone.now)
+                                                       .select('events.*, rsvps.rsvp_status as status') }
 
   def location_display
     [location, city, state].join(', ')
