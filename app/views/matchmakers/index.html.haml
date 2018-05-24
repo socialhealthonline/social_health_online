@@ -1,7 +1,7 @@
 .container
   .row.my-3
     .col
-      = form_with url: [:explore_communities], method: :get, local: true do |f|
+      = form_with url: [:matchmaker], method: :get, local: true do |f|
         .form-group.form-inline.justify-content-center#explore_communities_form
           %div.form-group.col-12.col-sm-12.col-md-2.col-lg-2
             = f.select(:state, US_STATES, {}, class: "form-control find_by_state", include_blank: 'State', style: "width: 100%;")
@@ -20,22 +20,26 @@
               %th
               %th Name
               %th
-              %th City
-              %th
               %th State
+              %th
+              %th City
               %th
               %th ZIP Code
           %tbody
-          - @communities.each do |community|
+          - @users.each do |user|
             %tr
               %td
-              %td= link_to community.name, community_path(community.slug)
               %td
-              %td= community.city
+                %a(class="matchmaker_popover" 
+                   data-toggle="popover"
+                   data-content= "#{render 'links_in_popover'}")
+                  =user.name
               %td
-              %td= community.state
+              %td= user.state
               %td
-              %td= community.zip
+              %td= user.city
+              %td
+              %td= user.zip
         %div.container.pagination.justify-content-center
-          %p= paginate @communities
+          %p= paginate @users
         %br

@@ -1,4 +1,4 @@
-class FindExploredCommunities
+class FindUsersCommunities
   attr_reader :initial_scope
 
   def initialize(initial_scope)
