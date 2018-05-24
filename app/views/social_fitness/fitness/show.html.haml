@@ -33,7 +33,6 @@
             %strong My overall social fitness is:
           %p= RATINGS.key(@log.overall)
       %p.pt-5
-        = link_to(social_fitness_history_path) do
-          %span
-            %i(class="fas fa-arrow-circle-left")
-            Back
+        = link_to social_fitness_history_path, class: 'btn btn-outline-primary' do
+          %i.fas.fa-arrow-left
+          Back

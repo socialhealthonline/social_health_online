@@ -43,7 +43,6 @@
             %strong Event Rating
           %p= RATINGS.key(@log.rating)
 %p
-  = link_to [:console,:social_tracker,@member,@user] do
-    %span
-      %i(class="fas fa-arrow-circle-left")
-      Back
+  = link_to [:console,:social_tracker,@member,@user], class: 'btn btn-outline-primary' do
+    %i.fas.fa-arrow-left
+    Back

@@ -28,8 +28,6 @@
     %em No Social Fitness Logs for this user.
 
 %p
-  = link_to [:console,:social_fitness,@member] do
-    %span
-      %i(class="fas fa-arrow-circle-left")
-      Back
-        
+  = link_to [:console,:social_fitness,@member], class: 'btn btn-outline-primary' do
+    %i.fas.fa-arrow-left
+    Back
