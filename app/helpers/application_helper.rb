@@ -39,11 +39,11 @@ module ApplicationHelper
   end
 
   def date_in_cst(date)
-    date.blank? ? nil : date.in_time_zone('Central America').strftime('%m/%d/%Y')
+    date.blank? ? nil : date.in_time_zone('Central Time (US & Canada)').strftime('%m/%d/%Y')
   end
 
   def date_time_in_cst(date)
-    date.blank? ? nil : date.in_time_zone('Central America').strftime('%Y-%m-%d %H:%M')
+    date.blank? ? nil : date.in_time_zone('Central Time (US & Canada)').strftime('%Y-%m-%d %H:%M')
   end
 
   def my_community_path

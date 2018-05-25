@@ -2,7 +2,9 @@
   %th{scope: 'row'}
     - unless folder.equal?(:sent)
       %b From:
-      = conversation.originator.name
+      = conversation.originator.display_name
+      - if conversation.is_unread?(authenticated_user)
+        %span.badge.badge-danger New
     - else
       %b Recipients:
       = conversation.recipients.map(&:name).reject { |name| name.eql?(authenticated_user.name) }.join(', ')
@@ -10,14 +12,14 @@
     %b Subject:
     = conversation.subject
     %br/
-    = conversation.messages.last.created_at.strftime('%A, %b %d, %Y at %I:%M%p')
+    = time_in_cst(conversation.messages.last.created_at)
     %br/
     .mt-1= truncate conversation.messages.last.body, length: 180
-  %td{width: '140'}
+  %td{ width: '140' }
     - view_btn_text = folder.equal?(:inbox) ? 'Reply' : 'View'
     = link_to view_btn_text, conversation_path(conversation), class: 'btn btn-sm btn-primary btn-block'
     - if conversation.is_trashed?(authenticated_user)
-      = link_to 'Untrash', untrash_conversation_path(conversation), class: 'btn btn-sm btn-success btn-block mt-1', method: :post
+      = link_to 'Restore', untrash_conversation_path(conversation), class: 'btn btn-sm btn-primary btn-block mt-1', method: :post
     - else
       = link_to 'Move to trash', trash_conversation_path(conversation), class: 'btn btn-sm btn-danger btn-block', method: :post, data: { confirm: 'Are you sure?' }
 %tr.table-divider
