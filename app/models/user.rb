@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :social_fitness_logs
   has_many :rsvps
   has_many :events, through: :rsvps
+  has_one :hidden_field
 
   validates :name, :email, :address, :city, :gender, :ethnicity, :birthdate, :time_zone, presence: true
   validates_uniqueness_of :email, case_sensitive: false

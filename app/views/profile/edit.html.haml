@@ -11,6 +11,7 @@
               %label(for="user_name") Name
               = f.text_field :name, autofocus: true, required: true, class: "form-control #{form_error_class(@user, :name)}"
               = model_error_display(@user, :name)
+              = f.check_box :bool_name, checked: @hiddens_fields.settings['name']
           .col
             .form-group
               %label(for="user_display_name") Display Name
