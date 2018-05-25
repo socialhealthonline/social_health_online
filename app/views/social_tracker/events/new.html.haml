@@ -28,7 +28,7 @@
               = model_error_display(@social_event_log, :city)
             .form-group
               %label(for="social_event_log_event_types") 
-                Event Types
+                Event Type
                 %em (multiple: use Ctrl/Command + click)
               = f.select :event_types, EVENT_TYPES, {include_hidden: false}, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_types)}", multiple: true, style: "height: 300px;" }
               = model_error_display(@social_event_log, :event_types)
@@ -44,7 +44,7 @@
               = f.select :event_categories, EVENT_CATEGORIES, {include_hidden: false}, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_categories)}", multiple: true, style: "height: 100px;" }
               = model_error_display(@social_event_log, :event_categories)
             .form-group
-              %label(for="social_event_log_venue") Event Venue
+              %label(for="social_event_log_venue") Event Location
               = f.text_area :venue, class: "form-control #{form_error_class(@social_event_log, :venue)}"
               = model_error_display(@social_event_log, :venue)
             .form-group

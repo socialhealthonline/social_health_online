@@ -9,7 +9,7 @@
   .row
     .col
       %p
-        %strong Event Types
+        %strong Event Type
       %p
         - @log&.event_types&.each_with_index do |type, i|
           %p= type.name
@@ -35,7 +35,7 @@
         %strong Private
         = @event.private? ? 'Yes' : 'No'
       %p
-        %strong Details
+        %strong Event Details
       = simple_format @event.details
   %p.pb-5
     = link_to manage_events_path, class: 'btn btn-outline-primary mr-1' do

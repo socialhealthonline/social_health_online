@@ -12,7 +12,7 @@
           .dropdown-menu.dropdown-menu-right
             = link_to manage_events_path, class: 'dropdown-item' do
               %i.fas.fa-map-marker-alt
-              Events
+              Community Events
             = link_to manage_social_tracker_users_path(@member), class: 'dropdown-item' do
               %i.fas.fa-database
               Social Tracker
@@ -43,7 +43,7 @@
               = model_error_display(@member, :state)
           .col-lg-4
             .form-group
-              %label(for="member_zip") Zip
+              %label(for="member_zip") ZIP Code
               = f.text_field :zip, class: "form-control #{form_error_class(@member, :zip)}"
               = model_error_display(@member, :zip)
         .row

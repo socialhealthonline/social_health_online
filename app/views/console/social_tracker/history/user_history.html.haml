@@ -16,13 +16,13 @@
         %tr
           %th Log Date
           %th Event Date
-          %th Event Venue
+          %th Event 
           %th Event Rating
       %tbody
         - @social_event_logs.each do |log|
           %tr.bg-white
             %td= link_to short_date(log.created_at), [:console,:social_tracker,@member, @user, log], class: 'text-info'
-            %td= link_to short_date(log.event_date), [:console,:social_tracker,@member, @user, log], class: 'text-info'
+            %td= short_date(log.event_date)
             %td= truncate(log.venue, :length => 30)
             %td
               %strong= RATINGS.key(log.rating)

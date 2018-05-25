@@ -5,7 +5,8 @@
     .col.mt-5
       .row
         .col-8
-          %h1.text-info My Community Social Tracker
+          %h1.text-info
+            %strong My Community Social Tracker
           %h3.text-info Users
         .col-4
           .dropdown.text-right
@@ -15,11 +16,10 @@
             .dropdown-menu.dropdown-menu-right
               = link_to manage_edit_member_path, class: 'dropdown-item' do
                 %i.fas.fa-building
-                Profile
+                Community Profile
               = link_to manage_events_path, class: 'dropdown-item' do
                 %i.fas.fa-map-marker-alt
-                Events
-              = link_to 'Social Tracker', manage_social_tracker_users_path(@member), class: 'dropdown-item'
+                Community Events
   
       - if @social_event_logs.any?
         .table-responsive

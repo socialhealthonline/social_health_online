@@ -16,10 +16,10 @@
             .dropdown-menu.dropdown-menu-right
               = link_to manage_edit_member_path, class: 'dropdown-item' do
                 %i.fas.fa-building
-                Profile
+                Community Profile
               = link_to manage_events_path, class: 'dropdown-item' do
                 %i.fas.fa-map-marker-alt
-                Events
+                Community Events
       - if @users.any?
         .table-responsive.mt-3
           %table.table.table-borderless.align-items-center(id="social-tracker-history-table")

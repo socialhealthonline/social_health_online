@@ -1,7 +1,8 @@
 .container
   .row
     .col.py-4
-      %h1.text-info Social Tracker
+      %h1.text-info
+        %strong Social Tracker
       %h3.text-info History
       .row
         .col-lg-6
@@ -15,7 +16,7 @@
             %strong Event City
           %p= @log.city
           %p 
-            %strong Event Types
+            %strong Event Type
           %p
             - @log.event_types.each_with_index do |type, i|
               %p= type.name
@@ -29,7 +30,7 @@
             - @log.event_categories.each_with_index do |category, i|
               %p= category.name
           %p
-            %strong Event Venue
+            %strong Event Location
           %p= @log.venue
           %p
             %strong Event Rating

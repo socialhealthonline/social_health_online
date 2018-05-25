@@ -9,14 +9,12 @@
             %div
               .dropdown
                 %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                  %i.fas.fa-hand-point-right
                   RSVP
                 .dropdown-menu.dropdown-menu-right#rsvp-dropdown
                   - Rsvp.rsvp_statuses.keys.each do |value|
                     = @event.link_or_span(value, @rsvp_switcher)
-    %div
-      = link_to community_path(@member.slug), class: 'btn btn-outline-secondary' do
-        %i.fas.fa-arrow-alt-circle-left
-        Back
+ 
 
   .row
     .col
@@ -25,7 +23,7 @@
           %i.far.fa-calendar-alt
           = short_date_time @event.start_at, @event.time_zone
         %p
-          %i.fas.fa-users
+          %i.fas.fa-tag
           = @event.event_type
         %p
           %i.fas.fa-map-marker-alt
@@ -35,9 +33,10 @@
             %i.fas.fa-external-link-alt
             = link_to @event.url, @event.url, target: '_blank'
         %p
-          = simple_format @event.details
+          %i.fas.fa-sticky-note
+          = @event.details
         %p
-          %strong RSVP list
+          %strong RSVP List
         %div.table-wrapper-2
           %table.table
             %thead.mdb-color.lighten-4
@@ -55,3 +54,8 @@
                 %td
                 %td= rsvp&.rsvp_status.capitalize
                 %td
+
+        %p
+          = link_to community_path(@member.slug), class: 'btn btn-outline-secondary' do
+            %i.fas.fa-arrow-alt-circle-left
+            Back
