@@ -3,6 +3,7 @@ class ProfileController < ApplicationController
 
   def edit
     @user = authenticated_user
+    @hiddens_fields = HiddenField.find_or_create_by(user_id: authenticated_user)
   end
 
   def update
