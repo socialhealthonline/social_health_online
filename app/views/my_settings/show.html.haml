@@ -1,7 +1,7 @@
 .container
   .row.pt-5
     .col
-      %h2.brand-primary My settings
+      %h2.brand-primary My Settings
 
   .row.my-3
     .col
@@ -15,4 +15,4 @@
                 .form-check.mb-
                   = f.check_box :receive_email, class: 'form-check-input'
                   %label.form-check-label(for="receive_email") Receive Email Notifications for Messages
-              .mb-2= f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
+              .d-flex.justify-content-center.mb-2= f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }

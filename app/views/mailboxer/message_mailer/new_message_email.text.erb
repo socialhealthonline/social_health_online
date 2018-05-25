@@ -1,10 +1,8 @@
-You have a new message: <%= @subject %>
-===============================================
-
-You have received a new message:
+You have a new message
 
 -----------------------------------------------
-<%= @message.body.html_safe? ? @message.body : strip_tags(@message.body) %>
+Subject: <%= @subject %>
+Message: <%= @message.body.html_safe? ? @message.body : strip_tags(@message.body) %>
 -----------------------------------------------
 
 Visit <%= root_url %> to check your messages.

@@ -4,10 +4,11 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>You have a new notification: <%= @notification.subject.html_safe? ? @notification.subject : strip_tags(@notification.subject) %></h1>
+    <h1>You have a new notification</h1>
     <blockquote>
       <p>
-        <%= raw @notification.body %>
+        Subject: <%= @notification.subject.html_safe? ? @notification.subject : strip_tags(@notification.subject) %><br>
+        Notification: <%= raw @notification.body %>
       </p>
     </blockquote>
     <p>

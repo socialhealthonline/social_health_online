@@ -4,7 +4,7 @@
   .col
     .pull-right
       - if conversation.is_trashed?(authenticated_user)
-        = link_to 'Restore', untrash_conversation_path(conversation), class: 'btn btn-success', method: :post
+        = link_to 'Restore', untrash_conversation_path(conversation), class: 'btn btn-primary', method: :post
       - else
         = link_to 'Move to trash', trash_conversation_path(conversation), class: 'btn btn-danger', method: :post,
          data: { confirm: 'Are you sure?' }

@@ -1,7 +1,7 @@
 = form_for :conversation, url: :conversations, html: { id: 'conversation-form' } do |f|
-  .form-group
+  .form-group.resipients-box
     = f.label :recipients
-    = f.select(:recipients, User.all_except(authenticated_user).collect {|p| [ p.email, p.id ] }, {},
+    = f.select(:recipients, User.all_except(authenticated_user).collect {|p| [ p.display_name, p.id ] }, {},
     { multiple: true, required: true, class: 'form-control resipients-select', data: { placeholder: 'Select recipients' } })
   .form-group
     = f.label :subject

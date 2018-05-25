@@ -1,10 +1,8 @@
-You have a new notification: <%= @notification.subject.html_safe? ? @notification.subject : strip_tags(@notification.subject) %>
-===============================================
-
-You have received a new notification:
+You have a new notification
 
 -----------------------------------------------
-<%= @notification.body.html_safe? ? @notification.body : strip_tags(@notification.body) %>
+Subject: <%= @notification.subject.html_safe? ? @notification.subject : strip_tags(@notification.subject) %>
+Notification: <%= @notification.body.html_safe? ? @notification.body : strip_tags(@notification.body) %>
 -----------------------------------------------
 
 Visit <%= root_url %> to check your messages.
