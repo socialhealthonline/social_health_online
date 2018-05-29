@@ -3,8 +3,8 @@
 .container
   .row.pt-3
     .col
-      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
-        %h2.brand-primary My Community Events
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3
+        %h1.brand-primary My Community Events
         = link_to new_manage_event_path, class: 'btn btn-primary ml-auto mr-1' do
           %i.fas.fa-plus-circle
           Add Event
@@ -20,7 +20,7 @@
   .row
     .col
       - if @events.any?
-        .table-responsive
+        .table-responsive.text-center
           %table.table.table-borderless.align-items-center
             %thead
               %tr
