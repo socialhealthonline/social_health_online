@@ -16,8 +16,8 @@ class ConversationsController < ApplicationController
   end
 
   def reply
-    authenticated_user.reply_to_conversation(conversation, message_params[:body])
-    conversation.recipients.each { |recipient| conversation.untrash(recipient) }
+    authenticated_user.reply_to_conversation(conversation, message_params[:body], nil, false)
+    conversation.recipients.reject { |r| r.eql? authenticated_user }.each { |r| conversation.untrash(r) }
     flash[:success] = 'Your reply message was successfully sent!'
     redirect_to conversation_path(conversation)
   end
@@ -34,8 +34,8 @@ class ConversationsController < ApplicationController
 
   def mark_as_deleted
     mailbox.trash.each do |conversation|
-      conversation.mark_as_deleted(authenticated_user)
       conversation.opt_out(authenticated_user)
+      conversation.mark_as_deleted(authenticated_user)
     end
     redirect_to mailbox_trash_path
   end

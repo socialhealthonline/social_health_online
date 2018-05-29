@@ -10,4 +10,4 @@
       = form_for :message, url: reply_conversation_path(conversation) do |f|
         .form-group
           = f.text_area :body, placeholder: 'Reply Message', rows: 4, class: 'form-control', required: true
-        = f.submit 'Reply', class: 'btn btn-success pull-right'
+        = f.submit 'Reply', class: 'btn btn-primary pull-right'
