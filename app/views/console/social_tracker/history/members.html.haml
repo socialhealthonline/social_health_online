@@ -7,10 +7,10 @@
     %table.table.table-borderless.align-items-center
       %thead
         %tr
-          %th
           %th Member Name
-          %th City
-          %th State
+          %th Member City
+          %th Member States
+          %th Export CSV
           %th
       %tbody
         - @members.each.with_index(1) do |member, i|
@@ -27,4 +27,3 @@
 - else
   %p.text-muted
     %em No Members were found.
-

@@ -16,12 +16,13 @@
           %table.table.align-items-center.text-center
             %thead
               %tr
-                %th 
+                %th
                   %strong Log Date
             %tbody.bg-white
               - @social_fitness_logs.each do |log|
                 %tr
                   %td= link_to short_date(log.created_at), [:console,:social_fitness,@member,@user,log], class: 'text-info'
+                %tr.table-divider    
         = paginate @social_fitness_logs
 - else
   %p.text-muted
