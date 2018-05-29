@@ -1,0 +1,3 @@
+$('#profile_partial').html("<%= j render(partial: 'profile/profile_modal', locals: { user: @user }) %>")
+$('#myModal').modal();
+$('.matchmaker_popover').popover('hide');

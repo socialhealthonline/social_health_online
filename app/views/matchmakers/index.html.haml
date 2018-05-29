@@ -1,3 +1,4 @@
+%div#profile_partial
 .container
   .row.my-3
     .col
@@ -32,7 +33,7 @@
               %td
                 %a(class="matchmaker_popover" 
                    data-toggle="popover"
-                   data-content= "#{render 'links_in_popover'}")
+                   data-content= "#{render 'links_in_popover',  user: user }")
                   =user.name
               %td
               %td= user.state

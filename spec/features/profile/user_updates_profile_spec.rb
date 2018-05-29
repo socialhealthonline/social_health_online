@@ -42,4 +42,10 @@ RSpec.describe 'User updates profile' do
     expect(page).to have_form_field_error_for('user_password_confirmation')
   end
 
+  it 'successfully update checkbox field user name' do
+    uncheck 'user_hidden_field_attributes_name'
+    click_button 'Update'
+    expect(page).to have_text 'Your profile was successfully updated'
+  end
+
 end
