@@ -1,13 +1,11 @@
 %footer.bg-gray.text-light.footer-short
   .container
     .row.pt-3
-      .col-12.col-md-4
+      .col-12.col-md-3
         %a{ :href => "/", :title => "Homepage" }
-          = image_tag 'logo.png', alt: 'Social Health Online', height: '40', class: 'mb-4'
+          = image_tag 'logo.png', alt: 'Social Health Online', height: '40', class: 'mb-2'
         %p.text-muted
-          Copyright &copy; #{Date.today.year} Social Health, LLC.
-          %br
-          All rights reserved.
+          Copyright &copy; #{Date.today.year} Social Health, LLC. All rights reserved.
           %br
           Terms &amp; Conditions of Use, Privacy Policy, features, support, pricing, and service options subject to change without notice.
       .col-12.col-md-6.text-center
@@ -46,8 +44,8 @@
           %span.px-2.text-white &middot;
           = link_to 'Contact Us', contact_path
 
-      .col-12.col-md-2
-        %ul.text-right#social-links
+      .col-12.col-md-3
+        %ul.text-center#social-links
           %li
             = link_to 'https://www.facebook.com/socialhealthonline', target: '_blank' do
               = image_tag 'facebook.svg', class: 'img-fluid', alt: 'Facebook', style: 'height: 25px'
@@ -57,3 +55,19 @@
           %li
             = link_to 'https://www.instagram.com/socialhealthonline', target: '_blank' do
               = image_tag 'instagram.svg', class: 'img-fluid', alt: 'Instagram', style: 'height: 25px'
+
+          .row-mb-2.text-muted.text-center     
+            %br
+            500 Southland Drive, Ste 127,
+            %br
+            Birmingham, AL 35226
+            %br
+            %a{ href: 'mailto:info@socialhealthonline.com',
+               title: 'info@socialhealthonline.com',
+               target: '_blank'}> info@socialhealthonline.com
+            %br
+            1-866-282-5789
+           
+           
+            
+      

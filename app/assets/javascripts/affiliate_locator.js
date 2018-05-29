@@ -26,7 +26,7 @@
       } else if (filterTypeSelected === "zip") {
         filterForm.innerHTML =
           '<div class="row">' +
-          '<div class="col-xs-3 px-2">' +
+          '<div class="col-md-12 px-2">' +
           '<input type="text" name="zip" placeholder="Zip Code" id="zip-input" class="form-control">' +
           "</div></div>";
       }

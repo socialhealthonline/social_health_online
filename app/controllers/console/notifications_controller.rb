@@ -1,8 +1,9 @@
 class Console::NotificationsController < ConsoleController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
-
+  helper_method :sort_column, :sort_direction
+  
   def index
-    @notifications = Notification.page(params[:page])
+    @notifications = Notification.order("#{sort_column} #{sort_direction}").page(params[:page])
   end
 
   def show; end
@@ -46,4 +47,13 @@ class Console::NotificationsController < ConsoleController
     def notification_params
       params.require(:notification).permit(:title, :body)
     end
+
+    def sort_column
+      %w[title body created_at].include?(params[:column]) ? params[:column] : 'updated_at'
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
+    end
+    
 end

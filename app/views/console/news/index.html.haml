@@ -7,16 +7,16 @@
 
 - if @news.any?
   .table-responsive
-    %table.table
+    %table.table.table-borderless
       %thead
         %tr
-          %th= sort_link 'title'
-          %th= sort_link 'body'
+          %th= sort_link 'title', 'News Title'
+          %th= sort_link 'body', 'News Body'
           %th= sort_link 'created_at', 'Added On'
           %th
       %tbody
         - @news.each.with_index(1) do |news, i|
-          %tr
+          %tr.bg-white
             %td= link_to truncate("#{i}. #{news.title}"), console_news_path(news)
             %td= truncate(news.body)
             %td= date_time_in_cst(news.created_at)

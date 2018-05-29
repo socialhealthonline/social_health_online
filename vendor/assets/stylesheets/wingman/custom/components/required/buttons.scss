@@ -19,7 +19,7 @@
 
 .btn-outline-primary, .btn-outline-secondary{
   &:not(:hover):not([aria-expanded="true"]):not([aria-pressed="true"]){
-    border-color: $gray-400;
+    border-color: #bee5eb;
   }
 }
 
