@@ -17,10 +17,9 @@
             .col-xs-3.col-md-3.col-sm-3.mx-auto
               = f.button "Search", class: "form-control btn btn-primary mb-3"
       %div.table-wrapper-2.table-hover#events-feed
-        %table.table
+        %table.table.text-center
           %thead.mdb-color.lighten-4
             %tr
-              %th
               %th Community Name
               %th
               %th City
@@ -28,10 +27,10 @@
               %th State
               %th
               %th ZIP Code
+              %th
           %tbody
           - @communities.each do |community|
             %tr.bg-white
-              %td
               %td= link_to community.name, community_path(community.slug)
               %td
               %td= community.city
@@ -39,6 +38,7 @@
               %td= community.state
               %td
               %td= community.zip
+              %td
             %tr.table-divider
         %div.container.pagination.justify-content-center
           %p= paginate @communities

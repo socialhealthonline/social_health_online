@@ -1,6 +1,6 @@
 .container
   .row
-    .col.py-4
+    .col.py-3
       %h1.text-info Social Fitness
       %h3.text-info History
       %h3
@@ -8,29 +8,29 @@
       .row
         .col-lg-6
           %p
-            My social fitness with individuals is:
+            %strong My social fitness with individuals is:
           %p= RATINGS.key(@log.individuals)
           %p
-            My social fitness with groups is:
+            %strong My social fitness with groups is:
           %p= RATINGS.key(@log.groups)
           %p
-            My social fitness with my family is:
+            %strong My social fitness with my family is:
           %p= RATINGS_WITH_NA.key(@log.family)
           %p
-            My social fitness with my friends is:
+            %strong My social fitness with my friends is:
           %p= RATINGS_WITH_NA.key(@log.friends)
         .col-lg-6
           %p
-            My social fitness with my colleagues is:
+            %strong My social fitness with my colleagues is:
           %p= RATINGS_WITH_NA.key(@log.colleagues)
           %p
-            My social fitness with my significant other is:
+            %strong My social fitness with my significant other is:
           %p= RATINGS_WITH_NA.key(@log.significant_other)
           %p
-            My social fitness with my local community is:
+            %strong My social fitness with my local community is:
           %p= RATINGS_WITH_NA.key(@log.local_community)
           %p
-            My overall social fitness is:
+            %strong My overall social fitness is:
           %p= RATINGS.key(@log.overall)
       %p.pt-3
         = link_to social_fitness_history_path, class: 'btn btn-outline-primary' do

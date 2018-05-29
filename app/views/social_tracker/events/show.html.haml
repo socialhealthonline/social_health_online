@@ -1,6 +1,6 @@
 .container
   .row
-    .col.py-4
+    .col.py-3
       %h1.text-info Social Tracker
       %h3.text-info History
       .row
@@ -34,7 +34,7 @@
           %p
             %strong Event Rating
           %p= RATINGS.key(@log.rating)
-      %p.mt-4
+      %p.pt-3
         = link_to social_tracker_history_path, class: 'btn btn-outline-primary' do
           %i.fas.fa-arrow-left
           Back

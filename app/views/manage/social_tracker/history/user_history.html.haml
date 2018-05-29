@@ -2,12 +2,11 @@
 
 .container
   .row
-    .col.mt-5
+    .col.py-3
       .row
         .col-8
-          %h1.text-info
-            %strong My Community Social Tracker
-          %h3.text-info Users
+          %h1.text-info My Community Social Tracker
+          %h3.text-info.mb-2=@user.name
         .col-4
           .dropdown.text-right
             %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
@@ -20,29 +19,29 @@
               = link_to manage_events_path, class: 'dropdown-item' do
                 %i.fas.fa-map-marker-alt
                 Community Events
-  
-      - if @social_event_logs.any?
-        .table-responsive
-
-          %table.table.table-borderless.align-items-center
-            %thead
-              %tr
-                %th 
-                  %strong Log Date
-                %th 
-                  %strong Event Date
-            %tbody
-              - @social_event_logs.each do |log|
-                %tr.bg-white
-                  %td= short_date(log.created_at)
-                  %td= short_date(log.event_date)
-          = paginate @social_event_logs
-      - else
-        %p.text-muted.my-4
-          %em No Social Event Logs were found.
+        .row
+          .col-sm-4.offset-sm-4
+          - if @social_event_logs.any?
+            .table-responsive
+              %table.table.align-items-center.text-center.table-hover
+                %thead
+                  %tr
+                    %th
+                      %strong Log Date
+                    %th
+                      %strong Event Date
+                %tbody
+                  - @social_event_logs.each do |log|
+                    %tr.bg-white
+                      %td= short_date(log.created_at)
+                      %td= short_date(log.event_date)
+                    %tr.table-divider
+              = paginate @social_event_logs
+          - else
+            %p.text-muted.my-4
+              %em No Social Event Logs were found.
 
       %p.py-3
         = link_to manage_social_tracker_users_path, class: 'btn btn-outline-primary' do
           %i.fas.fa-arrow-left
           Back
-        

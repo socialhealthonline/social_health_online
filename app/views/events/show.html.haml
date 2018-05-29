@@ -44,10 +44,9 @@
           %tbody
           - @event.rsvps.each do |rsvp|
             %tr
-              %th{scope: "row"}
+              %td
               %td= rsvp.user.name
               %td.text-center= rsvp&.rsvp_status.capitalize
-              %td
 
       %p.mb-3
         = link_to community_path(@member.slug), class: 'btn btn-outline-secondary' do
