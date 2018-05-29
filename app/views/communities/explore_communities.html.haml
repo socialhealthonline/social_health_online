@@ -1,4 +1,7 @@
 .container
+  .row
+    .col.py-3
+      %h1.text-info Explore Communities
   .row.my-3
     .col
       = form_with url: [:explore_communities], method: :get, local: true do |f|
@@ -13,7 +16,7 @@
           %div.col-12
             .col-xs-3.col-md-3.col-sm-3.mx-auto
               = f.button "Search", class: "form-control btn btn-primary mb-2"
-      %div.table-wrapper-2#events-feed
+      %div.table-wrapper-2.table-hover#events-feed
         %table.table
           %thead.mdb-color.lighten-4
             %tr
@@ -27,7 +30,7 @@
               %th ZIP Code
           %tbody
           - @communities.each do |community|
-            %tr
+            %tr.bg-white
               %td
               %td= link_to community.name, community_path(community.slug)
               %td

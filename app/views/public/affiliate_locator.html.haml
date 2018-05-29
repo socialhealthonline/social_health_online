@@ -5,7 +5,7 @@
   .row
     .col-lg-8.col-xs-12.pt-3
 
-      %h2.text-info.pb-1 Affiliate Locator
+      %h1.text-info.pb-1 Affiliate Locator
 
       .col-xs-12
         .row.justify-content-center
@@ -15,15 +15,14 @@
         .row.my-2.justify-content-center
           .col-xs-12.col-md-7
             .row.justify-content-center#affiliate-filter-btn-group
-              .col-xs-5.col-md-
-                = button_tag "Search", class: "form-control", id: "affiliate-filter-button"
-              .col-xs-5.col-md-5
-                = button_tag "Clear Search", class: "form-control", id: "clear-affiliate-filter-button"
-            
+              .col-xs-5.col-md-4
+                = button_tag "Search", class: "form-control btn btn-primary", id: "affiliate-filter-button"
+              .col-xs-5.col-md-4
+                = button_tag "Clear Search", class: "form-control btn btn-primary", id: "clear-affiliate-filter-button"
+
       #affiliate-locator-table-container
         %table.footable.table.table-striped.my-2.table-hover#affiliate-locator-table{'data-sorting': "true", "style": "display: table;"}
 
-    
-    .col-md-12.col-lg-4.py_3
+
+    .col-md-12.col-lg-4.pt-2.pb-3
       %p(id="affiliate-locator-map")
-  

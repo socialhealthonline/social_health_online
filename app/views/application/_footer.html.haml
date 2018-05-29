@@ -1,10 +1,10 @@
 %footer.bg-gray.text-light.footer-short
   .container
     .row.pt-3
-      .col-12.col-md-3
+      .col-12.col-md-3.mb-3.text-center
         %a{ :href => "/", :title => "Homepage" }
           = image_tag 'logo.png', alt: 'Social Health Online', height: '40', class: 'mb-2'
-        %p.text-muted
+        %p.text-muted.text-center
           Copyright &copy; #{Date.today.year} Social Health, LLC. All rights reserved.
           %br
           Terms &amp; Conditions of Use, Privacy Policy, features, support, pricing, and service options subject to change without notice.
@@ -15,13 +15,13 @@
         %span.px-2.text-white &middot;
         = link_to 'FAQ', 'https://docs.google.com/document/d/e/2PACX-1vSaxPp-OKepuuYKuzQicSJQYxiorHEI8gP3ZOVVLDPNOaby2Kh-7FxAdsOZTNXRA-cHdznNN3spBLK6/pub', target: '_blank'
 
-        %p.mt-3
+        %p.mt-3.mb-3
           = link_to 'About Us', about_us_path
           %span.px-2.text-white &middot;
           = link_to 'Service Information', service_path
           %span.px-2.text-white &middot;
           = link_to 'Service Highlights', service_highlights_path
-        
+
           %br
 
           = link_to 'Membership Information', membership_path
@@ -34,7 +34,7 @@
 
           = link_to 'User Enrollment', join_path
           %span.px-2.text-white &middot;
-          = link_to 'Pricing', pricing_path         
+          = link_to 'Pricing', pricing_path
 
           %br
 
@@ -45,7 +45,7 @@
           = link_to 'Contact Us', contact_path
 
       .col-12.col-md-3
-        %ul.text-center#social-links
+        %ul.text-center.pl-0#social-links
           %li
             = link_to 'https://www.facebook.com/socialhealthonline', target: '_blank' do
               = image_tag 'facebook.svg', class: 'img-fluid', alt: 'Facebook', style: 'height: 25px'
@@ -56,7 +56,7 @@
             = link_to 'https://www.instagram.com/socialhealthonline', target: '_blank' do
               = image_tag 'instagram.svg', class: 'img-fluid', alt: 'Instagram', style: 'height: 25px'
 
-          .row-mb-2.text-muted.text-center     
+          .row-mb-2.text-muted.text-center.pl-0
             %br
             500 Southland Drive, Ste 127,
             %br
@@ -67,7 +67,3 @@
                target: '_blank'}> info@socialhealthonline.com
             %br
             1-866-282-5789
-           
-           
-            
-      

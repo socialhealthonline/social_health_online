@@ -3,8 +3,7 @@
 .container
   .row
     .col.py-3
-      %h1.text-info 
-        %strong Social Fitness
+      %h1.text-info Social Fitness
       %h3.text-info Self-Assessment
       %p.text-center.p-3{style: "border: 1px solid black;"}
         "Social fitness" is a term given to the status of the wellness of your relationships with others.
@@ -14,7 +13,7 @@
         .row
           .col-lg-6
             .form-group
-              %label(for="social_fitness_log_individuals") 
+              %label(for="social_fitness_log_individuals")
                 %strong My social fitness with individuals is:
               = f.select :individuals, RATINGS, {}, { class: "form-control custom-select #{form_error_class(@social_fitness_log, :individuals)}" }
               = model_error_display(@social_fitness_log, :individuals)

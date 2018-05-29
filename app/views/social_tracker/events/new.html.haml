@@ -3,11 +3,10 @@
 .container
   .row
     .col.py-3
-      %h1.text-info 
-        %strong Social Tracker
+      %h1.text-info Social Tracker
       %h3.text-info Log Events
       %p.text-center.p-3{style: "border: 1px solid black;"}
-        Log your social events below to track your activities 
+        Log your social events below to track your activities
         and qualify for automatic entry into sweepstakes.
       = form_with model: @social_event_log, url: social_tracker_log_path(@social_event_log), local: true, class: "pt-3" do |f|
         .row
@@ -22,12 +21,12 @@
               = model_error_display(@social_event_log, :state)
             .form-group
               %label(for="social_event_log_city")
-                Event City 
+                Event City
                 %em (if the city is not listed below, select the nearest metro area)
               = f.select :city, {}, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :city)}" }
               = model_error_display(@social_event_log, :city)
             .form-group
-              %label(for="social_event_log_event_types") 
+              %label(for="social_event_log_event_types")
                 Event Type
                 %em (multiple: use Ctrl/Command + click)
               = f.select :event_types, EVENT_TYPES, {include_hidden: false}, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_types)}", multiple: true, style: "height: 300px;" }
@@ -38,7 +37,7 @@
               = f.select :source, SocialEventLog::EVENT_SOURCES, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :source)}" }
               = model_error_display(@social_event_log, :source)
             .form-group
-              %label(for="social_event_log_event_categories") 
+              %label(for="social_event_log_event_categories")
                 Event Categories
                 %em (multiple: use Ctrl/Command + click)
               = f.select :event_categories, EVENT_CATEGORIES, {include_hidden: false}, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_categories)}", multiple: true, style: "height: 100px;" }
