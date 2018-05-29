@@ -31,13 +31,12 @@ namespace :db do
     }) unless User.exists?(email: 'jeremyleesmith@gmail.com')
 
     User.create({
-      name: 'Alex Ulbricht3',
-      email: 'alex.a.ulbricht5@gmail.com',
+      name: 'Alex Ulbricht',
+      email: 'alex.a.ulbricht@gmail.com',
       password: 'shoadmin2',
       password_confirmation: 'shoadmin2',
       admin: true,
       display_name: 'Alex',
-      member: Member.first,
       address: '123 Main St.',
       city: 'Hometown',
       state: 'AL',

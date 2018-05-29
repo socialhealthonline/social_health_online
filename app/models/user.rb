@@ -71,7 +71,6 @@ class User < ApplicationRecord
   # from String to Boolean all attrs except :id
   # @param attrs [Hash]
   def hidden_field_attributes=(attrs)
-    # binding.pry
     attrs.except(:id).each { |k, v| attrs[k] = ActiveRecord::Type::Boolean.new.cast(v) }
     super(attrs)
   end
