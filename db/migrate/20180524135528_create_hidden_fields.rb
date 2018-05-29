@@ -2,6 +2,7 @@ class CreateHiddenFields < ActiveRecord::Migration[5.2]
   def change
     create_table :hidden_fields do |t|
       t.belongs_to :user
+      # pg version >= 9.4
       t.jsonb :settings, null: false, default: { name: true,
                                                  email: true,
                                                  phone: true,

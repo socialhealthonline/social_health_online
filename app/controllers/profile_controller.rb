@@ -3,7 +3,7 @@ class ProfileController < ApplicationController
 
   def edit
     @user = authenticated_user
-    @hiddens_fields = HiddenField.find_or_create_by(user_id: authenticated_user)
+    @hidden_fields = HiddenField.find_or_create_by(user_id: @user.id)
   end
 
   def update
@@ -40,8 +40,12 @@ class ProfileController < ApplicationController
       :pet_peeves,
       :bio,
       :password,
-      :password_confirmation
+      :password_confirmation,
+      hidden_field_attributes: [:id, prepared_hidden_fields]
     )
   end
 
+  def prepared_hidden_fields
+    authenticated_user.hidden_field.settings.keys.map(&:to_sym)
+  end
 end

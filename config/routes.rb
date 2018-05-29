@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   # Matchmaker
   get 'matchmaker' => 'matchmakers#index'
+  get 'fetch_user' => 'matchmakers#fetch_user'
 
   # Authentication vanity routes
   get "signin" => "sessions#new", as: "signin"

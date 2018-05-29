@@ -27,6 +27,9 @@ class User < ApplicationRecord
 
   before_save { |user| user.email.downcase! }
   before_validation { |user| user.phone.gsub!(/\D/,'') if user.phone? }
+  after_create :create_hidden_fields
+
+  accepts_nested_attributes_for :hidden_field
 
   scope :all_except, ->(user) { where.not(id: user) }
 
@@ -63,5 +66,17 @@ class User < ApplicationRecord
 
   def last_social_event_log_date
     social_event_logs.first&.created_at
+  end
+
+  # from String to Boolean all attrs except :id
+  # @param attrs [Hash]
+  def hidden_field_attributes=(attrs)
+    # binding.pry
+    attrs.except(:id).each { |k, v| attrs[k] = ActiveRecord::Type::Boolean.new.cast(v) }
+    super(attrs)
+  end
+
+  def create_hidden_fields
+    HiddenField.create(user_id: self.id)
   end
 end
