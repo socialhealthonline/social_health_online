@@ -1,0 +1,30 @@
+<!-- The Modal -->
+<div class='modal' id='myModal'>
+  <div class='modal-dialog'>
+    <div class='modal-content'>
+      <!-- Modal Header -->
+      <div class='modal-header'>
+        <h4 class='modal-title'></h4>
+        <button class='close' data-dismiss="modal">×</button>
+      </div>
+      <!-- Modal body -->
+      <div class='modal-body'>
+        <p>Name: <%= user.name if user.hidden_field.name %></p>
+        <p>Email: <%= user.email if user.hidden_field.email %></p>
+        <p>Phone: <%= user.phone if user.hidden_field.phone %></p>
+        <p>Address: <%= user.address if user.hidden_field.address %></p>
+        <p>City: <%= user.city if user.hidden_field.city %></p>
+        <p>State: <%= user.state if user.hidden_field.state %></p>
+        <p>Zip: <%= user.zip if user.hidden_field.zip %></p>
+        <p>Time_zone: <%= user.time_zone if user.hidden_field.time_zone %></p>
+        <p>Birthdate: <%= user.birthdate if user.hidden_field.birthdate %></p>
+        <p>Gender: <%= user.gender if user.hidden_field.gender %></p>
+        <p>Ethnicity: <%= user.ethnicity if user.hidden_field.ethnicity%></p>
+      </div>
+      <!-- Modal footer -->
+      <div class='modal-footer'>
+        <button class='btn btn-danger' data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
