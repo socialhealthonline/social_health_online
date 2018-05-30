@@ -23,7 +23,7 @@ class Console::AdminsController < ConsoleController
     @admin.set_random_password
 
     if @admin.save
-      redirect_to console_admin_url(@admin), success: 'The admin was successfully created!'
+      redirect_to console_admin_url(@admin), success: 'The Admin was successfully created!'
     else
       @members = Member.order(:name)
       flash.now[:error] = 'Please correct the errors to continue.'
@@ -34,7 +34,7 @@ class Console::AdminsController < ConsoleController
   def update
     @admin = User.find params[:id]
     if @admin.update(user_params)
-      redirect_to console_admin_url(@admin), success: 'The admin was successfully updated!'
+      redirect_to console_admin_url(@admin), success: 'The Admin was successfully updated!'
     else
       @members = Member.order(:name)
       flash.now[:error] = 'Please correct the errors to continue.'
@@ -45,7 +45,7 @@ class Console::AdminsController < ConsoleController
   def destroy
     @admin = User.find params[:id]
     @admin.destroy
-    redirect_to console_admins_url, success: 'The admin was successfully deleted!'
+    redirect_to console_admins_url, success: 'The Admin was successfully deleted!'
   end
 
   private

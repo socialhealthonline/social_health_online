@@ -7,7 +7,7 @@
 
 - if @news.any?
   .table-responsive
-    %table.table.table-borderless
+    %table.table.table-borderless.table-hover
       %thead
         %tr
           %th= sort_link 'title', 'News Title'
@@ -30,4 +30,4 @@
   %p= paginate @news
 - else
   %p.text-muted
-    %em No news were found.
+    %em No news was found.

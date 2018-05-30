@@ -71,7 +71,7 @@
         .form-check.mb-1
           = f.check_box :manager, class: 'form-check-input'
           %label.form-check-label(for="user_manager") Account Manager
-        %small Manager for their member account and community
+        %small Manager for their Member account and Community
   .col
     .form-group
       %label(for="user_member_id") Member
@@ -93,7 +93,7 @@
           %label.form-check-label(for="user_enabled") Enabled
         %small Enabled to sign in
 
-.mb-5
+.mb-5.text-center
   = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
   - if @admin.persisted?
     = link_to 'Cancel', console_admin_path(@admin), class: 'btn btn-outline-secondary'

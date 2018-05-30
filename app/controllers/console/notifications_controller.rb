@@ -1,9 +1,9 @@
 class Console::NotificationsController < ConsoleController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
-  
+
   def index
-    @notifications = Notification.order("#{sort_column} #{sort_direction}").page(params[:page])
+    @notifications = Notification.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def show; end
@@ -55,5 +55,4 @@ class Console::NotificationsController < ConsoleController
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
     end
-    
 end

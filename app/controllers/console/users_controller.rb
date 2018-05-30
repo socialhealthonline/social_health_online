@@ -2,7 +2,7 @@ class Console::UsersController < ConsoleController
   before_action :load_member
 
   def index
-    @users = User.where(member_id: @member.id).order(:name)
+    @users = User.where(member_id: @member.id).order(:name).page(params[:page]).per(25)
   end
 
   def show
@@ -28,7 +28,7 @@ class Console::UsersController < ConsoleController
 
       if @user.save
         UserMailer.welcome(@user).deliver_now
-        redirect_to console_member_user_url(@member.id, @user), success: 'The user was successfully created!'
+        redirect_to console_member_user_url(@member.id, @user), success: 'The User was successfully created!'
       else
         flash.now[:error] = 'Please correct the errors to continue.'
         render :new
@@ -41,7 +41,7 @@ class Console::UsersController < ConsoleController
   def update
     @user = User.find params[:id]
     if @user.update(user_params)
-      redirect_to console_member_user_url(@member.id, @user), success: 'The user was successfully updated!'
+      redirect_to console_member_user_url(@member.id, @user), success: 'The User was successfully updated!'
     else
       flash.now[:error] = 'Please correct the errors to continue.'
       render :edit
@@ -51,7 +51,7 @@ class Console::UsersController < ConsoleController
   def destroy
     @user = User.find params[:id]
     @user.destroy
-    redirect_to console_member_users_url(@member.id), success: 'The user was successfully deleted!'
+    redirect_to console_member_users_url(@member.id), success: 'The User was successfully deleted!'
   end
 
   private

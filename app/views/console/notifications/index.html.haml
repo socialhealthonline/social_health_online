@@ -7,12 +7,12 @@
 
 - if @notifications.any?
   .table-responsive
-    %table.table.table-borderless
+    %table.table.table-borderless.table-hover
       %thead
         %tr
-          %th= sort_link 'title'
-          %th= sort_link 'body'
-          %th= sort_link 'created_at'
+          %th= sort_link 'title', 'Notification Title'
+          %th= sort_link 'body', 'Notification Body'
+          %th= sort_link 'created_at', 'Added On'
           %th
       %tbody
         - @notifications.each.with_index(1) do |notification, i|
@@ -27,6 +27,7 @@
               = link_to console_notification_path(notification), title: 'delete notification', id: "delete_notification_#{notification.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this notification. Press OK to continue.' } do
                 %i.far.fa-trash-alt
           %tr.table-divider
+      %p= paginate
   %p= paginate @notifications
 - else
   %p.text-muted

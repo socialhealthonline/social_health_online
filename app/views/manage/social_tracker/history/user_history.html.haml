@@ -3,11 +3,11 @@
 .container
   .row
     .col.py-3
-      .row
-        .col-8
+      .row.justify-content-center
+        .col-7
           %h1.text-info My Community Social Tracker
           %h3.text-info.mb-2=@user.name
-        .col-4
+        .col-5
           .dropdown.text-right
             %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
               %i.fas.fa-cog
@@ -23,7 +23,7 @@
           .col-sm-4.offset-sm-4
           - if @social_event_logs.any?
             .table-responsive
-              %table.table.align-items-center.text-center.table-hover
+              %table.table.align-items-center.text-center.table-hover.table-sm
                 %thead
                   %tr
                     %th
@@ -39,7 +39,7 @@
               = paginate @social_event_logs
           - else
             %p.text-muted.my-4
-              %em No Social Event Logs were found.
+              %em No social event logs were found.
 
       %p.py-3
         = link_to manage_social_tracker_users_path, class: 'btn btn-outline-primary' do
