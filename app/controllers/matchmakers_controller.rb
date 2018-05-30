@@ -2,7 +2,7 @@ class MatchmakersController < ApplicationController
   before_action :require_authentication
 
   def index
-    @users = User.joins(:hidden_field).where("hidden_fields.user_id != ? and hidden_fields.settings @> ?", authenticated_user.id, { matchmaker: true }.to_json)
+    @users = User.joins(:hidden_field).where.not("hidden_fields.user_id = ? and hidden_fields.settings @> ?", authenticated_user.id, { matchmaker: false }.to_json)
     @users = FindUsersCommunities.new(@users).call(permitted_params)
   end
 
