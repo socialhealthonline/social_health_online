@@ -54,7 +54,13 @@ class Console::AffiliatesController < ConsoleController
       :phone,
       :url,
       :hide_info_on_locator,
-      :support_type
+      :support_type,
+      :contact_name,
+      :contact_phone,
+      :contact_phone_extension,
+      :contact_email,
+      :support_notes,
+      :date_added
     )
   end
 
