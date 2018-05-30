@@ -38,12 +38,12 @@ module ApplicationHelper
     datetime.blank? ? nil : datetime.in_time_zone(time_zone).strftime('%b %d %Y, %l:%M %p %Z')
   end
 
-  def date_in_cst(date)
-    date.blank? ? nil : date.in_time_zone('Central America').strftime('%m/%d/%Y')
+  def date_in_cdt(date)
+    date.blank? ? nil : date.in_time_zone('Central Time (US & Canada)').strftime('%m/%d/%Y')
   end
 
-  def date_time_in_cst(date)
-    date.blank? ? nil : date.in_time_zone('Central America').strftime('%Y-%m-%d %H:%M')
+  def date_time_in_cdt(date)
+    date.blank? ? nil : date.in_time_zone('Central Time (US & Canada)').strftime('%Y-%m-%d %H:%M %Z')
   end
 
   def my_community_path

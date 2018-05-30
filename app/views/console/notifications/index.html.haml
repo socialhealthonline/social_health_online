@@ -19,7 +19,7 @@
           %tr.bg-white
             %td= link_to truncate("#{i}. #{notification.title}"), console_notification_path(notification)
             %td= truncate(notification.body)
-            %td= date_time_in_cst(notification.created_at)
+            %td= date_time_in_cdt(notification.created_at)
             %td
               = link_to edit_console_notification_path(notification), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
                 %i.far.fa-edit
