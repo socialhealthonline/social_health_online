@@ -28,6 +28,7 @@ $(document).ready(function() {
     allowInput: true,
     dateFormat: 'Y-m-d'
   });
+
   $(".flatpickr-date-time").flatpickr({
     enableTime: true,
     dateFormat: 'Y-m-d h:i K'
@@ -37,6 +38,19 @@ $(document).ready(function() {
     theme: 'bootstrap',
     minimumInputLength: 1
   })
+
+  $('.chosen-select').chosen({
+    no_results_text: 'No results matched'
+  });
+
+  $(".events-flash").click(function(){
+    $('#helper-method').html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>"
+                              + "<button aria-label='Close' class='close' data-dismiss='alert' type='button'>"
+                                + "<span aria-hidden='true'>×</span>"
+                              + "</button>"
+                                + "This event is currently at full capacity so you may not RSVP at this time."
+                              + "</div>");
+  });
 });
 
 var US_STATES = {
