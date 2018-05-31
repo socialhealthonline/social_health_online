@@ -40,7 +40,7 @@ class User < ApplicationRecord
   end
 
   def mailboxer_email(object)
-    self.email
+    self.email if receive_email
   end
 
   def full_address

@@ -1,0 +1,18 @@
+.container
+  .row.pt-5
+    .col
+      %h2.brand-primary My Settings
+
+  .row.my-3
+    .col
+      %h3.notification-title Messages
+
+      = form_for authenticated_user, url: my_settings_path do |f|
+        .row
+          .settings-box
+            .col
+              .form-group
+                .form-check.mb-
+                  = f.check_box :receive_email, class: 'form-check-input'
+                  %label.form-check-label(for="receive_email") Receive Email Notifications for Messages
+              .d-flex.justify-content-center.mb-2= f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
