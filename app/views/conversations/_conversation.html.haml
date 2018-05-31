@@ -12,7 +12,7 @@
     %b Subject:
     = conversation.subject
     %br/
-    = time_in_cst(conversation.messages.last.created_at)
+    = time_in_cdt(conversation.messages.last.created_at, '%A, %b %d, %Y at %I:%M%p')
     %br/
     .mt-1= truncate conversation.messages.last.body, length: 180
   %td{ width: '140' }

@@ -18,7 +18,7 @@
             %b From:
             = message.sender.display_name
             %br/
-            = time_in_cst(message.created_at)
+            = time_in_cdt(message.created_at, '%A, %b %d, %Y at %I:%M%p')
             %br/
             .mt-1= message.body
         %tr.table-divider
