@@ -1,41 +1,40 @@
 .container
   .row
-    .col.py-4
+    .col.py-3
       %h1.text-info Social Tracker
       %h3.text-info History
       .row
         .col-lg-6
-          %p 
+          %p
             %strong Event Date
           %p= short_date(@log.event_date)
-          %p 
+          %p
             %strong Event State
           %p= US_STATES.key(@log.state)
-          %p 
+          %p
             %strong Event City
           %p= @log.city
-          %p 
-            %strong Event Types
+          %p
+            %strong Event Type
           %p
             - @log.event_types.each_with_index do |type, i|
               %p= type.name
         .col-lg-6
-          %p 
+          %p
             %strong Event Source
           %p= SocialEventLog::EVENT_SOURCES.key(@log.source)
-          %p 
+          %p
             %strong Event Category
           %p
             - @log.event_categories.each_with_index do |category, i|
               %p= category.name
           %p
-            %strong Event Venue
+            %strong Event Location
           %p= @log.venue
           %p
             %strong Event Rating
           %p= RATINGS.key(@log.rating)
-      %p.mt-4
-        = link_to(social_tracker_history_path) do
-          %span
-            %i(class="fas fa-arrow-circle-left")
-            Back
+      %p.pt-3
+        = link_to social_tracker_history_path, class: 'btn btn-outline-primary' do
+          %i.fas.fa-arrow-left
+          Back

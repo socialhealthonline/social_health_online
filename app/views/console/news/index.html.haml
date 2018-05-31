@@ -1,32 +1,33 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
   %h1.h3.brand-primary News
   %div
-    = link_to new_console_news_path, class: 'btn btn-outline-primary' do
+    = link_to new_console_news_path, class: 'btn btn-primary' do
       %i.fas.fa-plus-circle
       Add News
 
 - if @news.any?
   .table-responsive
-    %table.table
+    %table.table.table-borderless.table-hover
       %thead
         %tr
-          %th= sort_link 'title'
-          %th= sort_link 'body'
+          %th= sort_link 'title', 'News Title'
+          %th= sort_link 'body', 'News Body'
           %th= sort_link 'created_at', 'Added On'
           %th
       %tbody
         - @news.each.with_index(1) do |news, i|
-          %tr
+          %tr.bg-white
             %td= link_to truncate("#{i}. #{news.title}"), console_news_path(news)
             %td= truncate(news.body)
-            %td= date_time_in_cst(news.created_at)
+            %td= time_in_cdt(news.created_at, '%Y-%m-%d %H:%M')
             %td
               = link_to edit_console_news_path(news), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
                 %i.far.fa-edit
               &nbsp;
               = link_to console_news_path(news), title: "delete_news_#{news.id}", id: '', class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this news. Press OK to continue.' } do
                 %i.far.fa-trash-alt
+          %tr.table-divider
   %p= paginate @news
 - else
   %p.text-muted
-    %em No news were found.
+    %em No news was found.

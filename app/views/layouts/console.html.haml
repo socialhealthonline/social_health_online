@@ -7,7 +7,7 @@
       %section.space-sm
         .container
           .row
-            .col-12.col-md-3.mb-1.order-md-1
+            .col-12.col-md-2.mb-1.order-md-1
               .card.card-sm
                 .list-group.list-group-flush
                   = link_to console_path, class: 'list-group-item d-flex justify-content-between' do
@@ -42,7 +42,7 @@
                     %div
                       %i.fas.fa-chart-line
                       Social Fitness
-            .col-12.col-md-9.mb-1.order-md-2
+            .col-12.col-md-10.mb-1.order-md-2
               - unless flash.empty?
                 = render partial: 'flash', locals: { flash: flash }
               = yield

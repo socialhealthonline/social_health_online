@@ -38,6 +38,9 @@ Rails.application.routes.draw do
   get "my-profile" => "profile#edit", as: "profile"
   patch "profile" => "profile#update", as: "update_profile"
 
+  # My settings
+  resource :my_settings, only: [:show, :update]
+
   # Communities
   resources :members, path: :communities, as: :community, controller: :communities do
     resources :events, only: [:index, :show] do

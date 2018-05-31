@@ -3,26 +3,25 @@
 = javascript_include_tag "member_locator"
 .container-fluid
   .row
-    .col-lg-8.col-xs-12.pt-5
+    .col-lg-8.col-xs-12.pt-3
 
-      %h2.text-info.pb-3 Member Locator
+      %h1.text-info.pb-1 Member Locator
 
       .col-xs-12
-        .row
+        .row.justify-content-center
           .col-xs-6.col-md-3
             = select_tag 'member-filter-toggle', options_for_select(locator_filter_options),class: "form-control"
           .col-xs-12.col-md-6#member-filter-form
-        .row.my-2
+        .row.my-3.justify-content-center
           .col-xs-12.col-md-7
-            .row#member-filter-btn-group
+            .row.justify-content-center#member-filter-btn-group
+              .col-xs-5.col-md-4.mb-1
+                = button_tag "Search", class: "form-control btn btn-primary", id: "member-filter-button"
               .col-xs-5.col-md-4
-                = button_tag "Search", class: "form-control", id: "member-filter-button"
-              .col-xs-5.col-md-5
-                = button_tag "Clear Search", class: "form-control", id: "clear-member-filter-button"
-                
+                = button_tag "Clear Search", class: "form-control btn btn-primary", id: "clear-member-filter-button"
+
       #member-locator-table-container
         %table.footable.table.table-striped.my-2.table-hover#member-locator-table{'data-sorting': "true","style": "display: table;"}
 
-    .col-md-12.col-lg-4.py_3
+    .col-md-12.col-lg-4.pt-2.pb-3
       %p(id="member-locator-map")
-  

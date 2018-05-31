@@ -40,7 +40,7 @@ class User < ApplicationRecord
   end
 
   def mailboxer_email(object)
-    self.email
+    self.email if receive_email
   end
 
   def full_address
@@ -63,4 +63,13 @@ class User < ApplicationRecord
   def last_social_event_log_date
     social_event_logs.first&.created_at
   end
+
+  def total_social_fitness_logs
+    social_fitness_logs.count
+  end
+
+  def last_social_fitness_log_date
+    social_fitness_logs.first&.created_at
+  end
+
 end

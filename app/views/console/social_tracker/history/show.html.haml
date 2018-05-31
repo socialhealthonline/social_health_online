@@ -23,7 +23,7 @@
             %strong Event City
           %p= @log.city
           %p 
-            %strong Event Types
+            %strong Event Type
           %p
             - @log.event_types.each_with_index do |type, i|
               %p= type.name
@@ -37,13 +37,12 @@
             - @log.event_categories.each do |category|
               %p= category.name
           %p
-            %strong Event Venue
+            %strong Event Location
           %p= @log.venue
           %p
             %strong Event Rating
           %p= RATINGS.key(@log.rating)
 %p
-  = link_to [:console,:social_tracker,@member,@user] do
-    %span
-      %i(class="fas fa-arrow-circle-left")
-      Back
+  = link_to [:console,:social_tracker,@member,@user], class: 'btn btn-outline-primary' do
+    %i.fas.fa-arrow-left
+    Back

@@ -4,20 +4,20 @@
     %h5.brand-primary Members
 - if @members.any?
   .table-responsive
-    %table.table.table-borderless.align-items-center
+    %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
-          %th
           %th Member Name
-          %th City
-          %th State
+          %th Member City
+          %th Member State
+          %th Export CSV
           %th
       %tbody
         - @members.each.with_index(1) do |member, i|
           %tr.bg-white
             %td= link_to "#{i}. #{member.name}" , [:console,:social_tracker,member]
             %td= member.city
-            %td= US_STATES.key(member.state)
+            %td= member.state
             %td
               = link_to console_social_tracker_member_csv_path(member) do
                 %span
@@ -27,4 +27,3 @@
 - else
   %p.text-muted
     %em No Members were found.
-

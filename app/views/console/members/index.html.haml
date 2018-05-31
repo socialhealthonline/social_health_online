@@ -7,7 +7,7 @@
 
 - if @members.any?
   .table-responsive
-    %table.table.table-borderless.align-items-center 
+    %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
           %th(scope="col") Member Name
@@ -40,6 +40,7 @@
                     %i.far.fa-trash-alt
                     Delete
           %tr.table-divider
+    %p= paginate @members
 - else
   %p.text-muted
-    %em No members were found.
+    %em No Members were found.

@@ -239,6 +239,7 @@ ActiveRecord::Schema.define(version: 2018_05_21_073221) do
     t.text "hobbies"
     t.text "pet_peeves"
     t.text "bio"
+    t.boolean "receive_email", default: false
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["enabled"], name: "index_users_on_enabled"

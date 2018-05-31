@@ -14,7 +14,8 @@
  *= require font-awesome
  *= require fullcalendar
  *= require footable.standalone
- *= require chosen
+ *= require select2
+ *= require select2-bootstrap
  */
 
 @import "wingman/bootstrap/functions";
@@ -28,6 +29,10 @@
   font-family:'Entypo';
   src:url(font-path('entypo.eot'));
   src:url(font-path('entypo.eot?#iefix')) format('embedded-opentype'), url(font-path('entypo.woff2')) format('woff2'), url(font-path('entypo.woff')) format('woff'), url(font-path('entypo.ttf')) format('truetype'), url(font-path('entypo.svg')) format('svg')
+}
+
+table.table-wrapper-2.table-hover > tbody > tr:hover {
+  background-color: #bee5eb;
 }
 
 table.footable.table-hover > tbody > tr:hover {
@@ -89,6 +94,7 @@ body {
 
 #social-links li {
   display: inline;
+  margin-bottom: 24px;
   margin-right: 12px;
 }
 
@@ -176,7 +182,7 @@ body {
   max-height: 300px;
 }
 
-@media (max-width: 767.98px) { 
+@media (max-width: 767.98px) {
   #city-input{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -196,7 +202,7 @@ body {
   }
  }
 
- 
+
 /// MEMBER LOCATOR
 #member-locator-map{
   margin-top: 20px;
@@ -216,7 +222,7 @@ body {
 
 
 
-@media (max-width: 767.98px) { 
+@media (max-width: 767.98px) {
   #city-input{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -242,7 +248,15 @@ body {
   margin: auto;
   width: 75%;
   border: 2px solid black;
-  padding: 10px;
+  padding: 24px;
+}
+
+.settings-box {
+  overflow: auto;
+  margin: auto;
+  width: 75%;
+  border: 2px solid black;
+  padding: 15px;
 }
 
 .notification-title {
@@ -297,21 +311,13 @@ body {
   font-weight: 500;
 }
 
-.chosen-container-multi .chosen-choices{
-  background-image: none;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
+.select2-container--bootstrap .select2-selection--multiple .select2-search--inline .select2-search__field{
   font-size: 1rem;
-  padding: 5px 16px 5px 12px;
-}
-
-#conversation_recipients_chosen > ul > li > input{
-  color: #aeb3bd;
 }
 .table-wrapper-2 {
   border: 2px solid black;
   display: block;
-  max-height: 200px;
+  max-height: 265px;
   width: 55%;
   overflow-y: auto;
   -ms-overflow-style: -ms-autohiding-scrollbar;

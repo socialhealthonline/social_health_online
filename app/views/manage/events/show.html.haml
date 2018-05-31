@@ -1,18 +1,15 @@
 .container
-  .row.pt-5
+  .row.pt-3
     .col
-      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
-        %h1.h3.brand-primary
-          %i.fas.fa-map-marker-alt
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3
+        %h1
           = @event.title
 
   .row
     .col
       %p
-        %strong Event Types
-      %p
-        - @log&.event_types&.each_with_index do |type, i|
-          %p= type.name
+        %strong Event Type
+        =@event.event_type
       %p
         %strong Event Date
         = short_date_time @event.start_at, @event.time_zone
@@ -26,7 +23,7 @@
         %strong Event State
         = @event.state
       %p
-        %strong Event Website:
+        %strong Event Website
         = link_to @event.url, @event.url, target: '_blank' if @event.url.present?
       %p
         %strong RSVP Limit
@@ -35,9 +32,9 @@
         %strong Private
         = @event.private? ? 'Yes' : 'No'
       %p
-        %strong Details
+        %strong Event Details
       = simple_format @event.details
-  %p.pb-5
+  %p.pt-2.pb-3
     = link_to manage_events_path, class: 'btn btn-outline-primary mr-1' do
       %i.fas.fa-arrow-left
       Back
