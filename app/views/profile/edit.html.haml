@@ -1,8 +1,8 @@
 .container
   .row.pt-3
-    .col
+    .col.pb-4
       %h1.brand-primary My Profile
-  .row.mb-3
+  .row
     .col
       = form_with model: @user, url: update_profile_url, method: :patch, local: true do |f|
         = f.fields_for :hidden_field do |h|
@@ -166,5 +166,5 @@
                 %label(for="user_password_confirmation") Confirm New Password
                 = f.password_field :password_confirmation, class: "form-control #{form_error_class(@user, :password_confirmation)}"
                 = model_error_display(@user, :password_confirmation)
-          .row.justify-content-center
+          .row.justify-content-center.pt-1.pb-3
             = f.submit 'Update', class: 'btn btn-primary', data: { disable_with: 'Updating...' }

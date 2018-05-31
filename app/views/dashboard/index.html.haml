@@ -10,7 +10,7 @@
         - @notifications.each do |notification|
           .mb-3
             %h5= notification.title
-            .notification-date= date_in_cst(notification.updated_at)
+            .notification-date= time_in_cdt(notification.updated_at, '%m/%d/%Y')
             .notification-text= simple_format(notification.body)
         %p= paginate @notifications
   .row.my-3

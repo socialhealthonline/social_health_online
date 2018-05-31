@@ -10,20 +10,20 @@
   .row
     .col
       %p
-        %i.far.fa-calendar-alt
+        %i.far.fa-calendar-alt{:title => "Event Date/Time"}
         = short_date_time @event.start_at, @event.time_zone
       %p
-        %i.fas.fa-tag
+        %i.fas.fa-tag{:title => "Event Type"}
         = @event.event_type
       %p
-        %i.fas.fa-map-marker-alt
+        %i.fas.fa-map-marker-alt{:title => "Event Location"}
         = @event.location_display
       - if @event.url.present?
         %p
-          %i.fas.fa-external-link-alt
+          %i.fas.fa-external-link-alt{:title => "Event URL"}
           = link_to @event.url, @event.url, target: '_blank'
       %p
-        %i.fas.fa-sticky-note
+        %i.fas.fa-sticky-note{:title => "Event Details"}
         = @event.details
         .dropdown
           %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")

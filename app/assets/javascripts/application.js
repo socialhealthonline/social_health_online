@@ -21,7 +21,7 @@
 //= require flatpickr/dist/flatpickr.min
 //= require fullcalendar
 //= require nested_form_fields
-//= require chosen-jquery
+//= require select2
 
 $(document).ready(function() {
   $(".flatpickr-date").flatpickr({
@@ -40,8 +40,11 @@ $(document).ready(function() {
 
   $('.matchmaker_popover').popover({
     html:true
-  });
-  
+
+  $('.resipients-select').select2({
+    theme: 'bootstrap',
+    minimumInputLength: 1
+  })
 });
 
 var US_STATES = {

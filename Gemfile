@@ -25,7 +25,7 @@ gem 'gon'
 gem 'city-state'
 gem 'nested_form_fields'
 gem 'csv'
-gem 'chosen-rails'
+gem 'select2-rails'
 gem 'draper'
 
 group :development, :test do
@@ -38,6 +38,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'web-console'
   gem 'rails-erd'
   gem 'spring'
@@ -45,9 +47,11 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'email_spec'
   gem 'launchy'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
+  gem 'headless'
 end

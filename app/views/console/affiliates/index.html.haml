@@ -7,7 +7,7 @@
 
 - if @affiliates.any?
   .table-responsive
-    %table.table.table-borderless.align-items-center
+    %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
           %th(scope="col") Affiliate Name
@@ -36,6 +36,7 @@
                     %i.far.fa-trash-alt
                     Delete
           %tr.table-divider
+    %p= paginate @affiliates
 - else
   %p.text-muted
-    %em No affiliates were found.
+    %em No Affiliates were found.
