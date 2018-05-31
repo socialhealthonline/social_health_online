@@ -41,6 +41,7 @@ $(document).ready(function() {
   $('.matchmaker_popover').popover({
     html:true
   });
+  
 });
 
 var US_STATES = {
