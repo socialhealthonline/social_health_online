@@ -28,9 +28,18 @@ $(document).ready(function() {
     allowInput: true,
     dateFormat: 'Y-m-d'
   });
+
   $(".flatpickr-date-time").flatpickr({
     enableTime: true,
     dateFormat: 'Y-m-d h:i K'
+  });
+
+  $('.chosen-select').chosen({
+    no_results_text: 'No results matched'
+  });
+
+  $('.matchmaker_popover').popover({
+    html:true
   });
 
   $('.resipients-select').select2({

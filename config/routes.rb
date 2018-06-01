@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   get "contact" => "contact#new"
   post "contact" => "contact#create"
 
+  # Matchmaker
+  get 'matchmaker' => 'matchmakers#index'
+
   # Authentication vanity routes
   get "signin" => "sessions#new", as: "signin"
   delete "signout" => "sessions#destroy", as: "signout"
