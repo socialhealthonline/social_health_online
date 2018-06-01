@@ -3,6 +3,7 @@ class CommunitiesController < ApplicationController
 
   def show
     @member = Member.friendly.find params[:id]
+    @announcements = @member.announcements.page(params[:page])
   end
 
   def explore_communities

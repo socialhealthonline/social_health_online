@@ -61,6 +61,7 @@ Rails.application.routes.draw do
       get "/:name/users/:id/history/:id" => "history#show", as: :user_history
     end
     resources :events
+    resources :announcements
   end
 
   namespace :social_tracker do

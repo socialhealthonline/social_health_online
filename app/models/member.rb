@@ -5,6 +5,7 @@ class Member < ApplicationRecord
   has_one :primary_manager, class_name: "User", foreign_key: :id, primary_key: :primary_manager_id
   has_many :users, inverse_of: :member, dependent: :destroy
   has_many :events, inverse_of: :member, dependent: :destroy
+  has_many :announcements, dependent: :destroy
 
   validates :name, :address, :city, :state, :zip, :contact_name, :contact_email, :contact_phone, :service_capacity, presence: true
   validates_uniqueness_of :name, case_sensitive: false
