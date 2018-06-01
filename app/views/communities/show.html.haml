@@ -33,6 +33,9 @@
                   = link_to manage_social_tracker_users_path(@member), class: 'dropdown-item' do
                     %i.fas.fa-database
                     Social Tracker
+                  = link_to manage_announcements_path, class: 'dropdown-item' do
+                    %i.fas.fa.fa-bell.fa-w-14
+                    Announcements
 
       .col-12.col-md-8
         - if @member.primary_manager.present?
@@ -78,5 +81,15 @@
                 #calendar
     .tab-pane.fade#announcements(role="tabpanel" aria-labelledby="announcements-tab")
       .container
+        .row.my-3
+          .col
+            #scroll-box-announcements
+              - @announcements.each do |announcement|
+                .mb-3
+                  %h5= announcement.title
+                  .announcements-date= time_in_cdt(announcement.updated_at, '%m/%d/%Y')
+                  .announcements-text= simple_format(announcement.body)
+              %p= paginate @announcements
+        
     .tab-pane.fade#members(role="tabpanel" aria-labelledby="members-tab")
       .container

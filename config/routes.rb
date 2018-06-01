@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   get "contact" => "contact#new"
   post "contact" => "contact#create"
 
+  # Matchmaker
+  get 'matchmaker' => 'matchmakers#index'
+  get 'fetch_user' => 'matchmakers#fetch_user'
+
   # Authentication vanity routes
   get "signin" => "sessions#new", as: "signin"
   delete "signout" => "sessions#destroy", as: "signout"
@@ -57,6 +61,7 @@ Rails.application.routes.draw do
       get "/:name/users/:id/history/:id" => "history#show", as: :user_history
     end
     resources :events
+    resources :announcements
   end
 
   namespace :social_tracker do

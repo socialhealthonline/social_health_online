@@ -34,14 +34,14 @@ $(document).ready(function() {
     dateFormat: 'Y-m-d h:i K'
   });
 
+  $('.matchmaker_popover').popover({
+    html:true
+  });
+
   $('.resipients-select').select2({
     theme: 'bootstrap',
     minimumInputLength: 1
   })
-
-  $('.chosen-select').chosen({
-    no_results_text: 'No results matched'
-  });
 
   $(".events-flash").click(function(){
     $('#helper-method').html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>"
@@ -51,6 +51,20 @@ $(document).ready(function() {
                                 + "This event is currently at full capacity so you may not RSVP at this time."
                               + "</div>");
   });
+
+  function communityTabsOnLoad() {
+    $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+      localStorage.setItem('activeTab', $(e.target).attr('href'));
+    });
+
+    var activeTab = localStorage.getItem('activeTab');
+    
+    if(activeTab){
+      $('#communityTabs a[href="' + activeTab + '"]').tab('show');
+    }
+  }
+
+  communityTabsOnLoad();
 });
 
 var US_STATES = {

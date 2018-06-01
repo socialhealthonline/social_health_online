@@ -8,10 +8,6 @@
       - @news.each do |news|
         .mb-3
           %p.h5= news.title
-<<<<<<< HEAD
           %p= time_in_cdt(news.updated_at, '%m/%d/%Y')
-=======
-          %p= date_in_cdt(news.updated_at)
->>>>>>> 322b6bbd4b207f9b9ada634004dba0491728dce7
           %p= simple_format(news.body)
       %p= paginate @news
