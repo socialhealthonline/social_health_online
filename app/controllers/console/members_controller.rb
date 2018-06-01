@@ -1,7 +1,7 @@
 class Console::MembersController < ConsoleController
-
+  helper_method :sort_column, :sort_direction
   def index
-    @members = Member.order(:name).page(params[:page]).per(25)
+    @members = Member.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def show
@@ -60,8 +60,26 @@ class Console::MembersController < ConsoleController
       :url,
       :events_url,
       :suspended,
-      :hide_info_on_locator
+      :hide_info_on_locator,
+      :column,
+      :direction
     )
   end
 
+  def sortable_columns
+    %w[
+      name address city state zip contact_name contact_email
+      contact_phone service_capacity account_start_date account_end_date
+      suspended
+    ]
+  end
+
+  def sort_column
+    logger.debug("SORT:::: #{params[:direction].inspect}")
+    sortable_columns.include?(params[:column]) ? params[:column] : 'name'
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
 end

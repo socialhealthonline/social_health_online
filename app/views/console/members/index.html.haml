@@ -10,16 +10,22 @@
     %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
-          %th(scope="col") Member Name
-          %th(scope="col") City
-          %th(scope="col") State
-          %th(scope="col") User Seats
-          %th(scope="col") Account Start Date
+          %th(scope="col")= sort_link('name', 'Member Name')
+          %th(scope="col")= sort_link('contact_name', 'Contact Name')
+          %th(scope="col")= sort_link('contact_email', 'Contact Email')
+          %th(scope="col")= sort_link('contact_phone', 'Contact Phone')
+          %th(scope="col")= sort_link('city', 'City')
+          %th(scope="col")= sort_link('state', 'State')
+          %th(scope="col")= sort_link('service_capacity', 'User Seats')
+          %th(scope="col")= sort_link('account_start_date', 'Account Start Date')
           %th(scope="col")
       %tbody
         - @members.each_with_index do |member, i|
           %tr.bg-white
             %th(scope="row")= link_to "#{i+1}. #{member.name}", console_member_path(member.id)
+            %td= member.contact_name
+            %td= member.contact_email
+            %td= member.contact_phone
             %td= member.city
             %td= member.state
             %td= member.service_capacity
