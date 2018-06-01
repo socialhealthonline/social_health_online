@@ -41,6 +41,15 @@ $(document).ready(function() {
   $('.resipients-select').select2({
     theme: 'bootstrap',
     minimumInputLength: 1
+  })
+
+  $(".events-flash").click(function(){
+    $('#helper-method').html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>"
+                              + "<button aria-label='Close' class='close' data-dismiss='alert' type='button'>"
+                                + "<span aria-hidden='true'>×</span>"
+                              + "</button>"
+                                + "This event is currently at full capacity so you may not RSVP at this time."
+                              + "</div>");
   });
 
   function communityTabsOnLoad() {
