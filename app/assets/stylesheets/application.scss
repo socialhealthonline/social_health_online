@@ -341,3 +341,35 @@ body {
 .find_by_zip {
   text-align: center;
 }
+
+#scroll-box-announcements {
+  height: 265px;
+  overflow: auto;
+  // margin: auto;
+  width: 75%;
+  // border: 2px solid black;
+  padding: 24px;
+  position: relative;
+  bottom: 50px;
+}
+
+#scroll-box-announcements h5 {
+  font-size: 14px;
+  margin-bottom: 0;
+  font-weight: 500;
+  line-height: 1.175rem;
+}
+
+#scroll-box-announcements > div.mb-3 {
+  margin-bottom: 10px !important;
+}
+
+#scroll-box-announcements div.announcements-date {
+  font-size: 12px;
+  color: #6c757d;
+}
+
+#scroll-box-announcements div.announcements-text {
+    font-size: 13px;
+    word-wrap: break-word;
+}

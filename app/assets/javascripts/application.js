@@ -42,6 +42,20 @@ $(document).ready(function() {
     theme: 'bootstrap',
     minimumInputLength: 1
   });
+
+  function communityTabsOnLoad() {
+    $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+      localStorage.setItem('activeTab', $(e.target).attr('href'));
+    });
+
+    var activeTab = localStorage.getItem('activeTab');
+    
+    if(activeTab){
+      $('#communityTabs a[href="' + activeTab + '"]').tab('show');
+    }
+  }
+
+  communityTabsOnLoad();
 });
 
 var US_STATES = {
