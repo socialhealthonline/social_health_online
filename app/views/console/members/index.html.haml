@@ -10,13 +10,13 @@
     %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
-          %th(scope="col") Member Name
-          %th(scope="col") Contact Name
-          %th(scope="col") Contact Email
-          %th(scope="col") Contact Phone
-          %th(scope="col") City
-          %th(scope="col") State
-          %th(scope="col") Service Capacity
+          %th(scope="col")= sort_link('name', 'Member Name')
+          %th(scope="col")= sort_link('contact_name', 'Contact Name')
+          %th(scope="col")= sort_link('contact_email', 'Contact Email')
+          %th(scope="col")= sort_link('contact_phone', 'Contact Phone')
+          %th(scope="col")= sort_link('city', 'City')
+          %th(scope="col")= sort_link('state', 'State')
+          %th(scope="col")= sort_link('service_capacity', 'Service Capacity')
           %th(scope="col")
       %tbody
         - @members.each_with_index do |member, i|
