@@ -34,10 +34,6 @@ $(document).ready(function() {
     dateFormat: 'Y-m-d h:i K'
   });
 
-  $('.chosen-select').chosen({
-    no_results_text: 'No results matched'
-  });
-
   $('.matchmaker_popover').popover({
     html:true
   });
@@ -45,7 +41,7 @@ $(document).ready(function() {
   $('.resipients-select').select2({
     theme: 'bootstrap',
     minimumInputLength: 1
-  })
+  });
 });
 
 var US_STATES = {
