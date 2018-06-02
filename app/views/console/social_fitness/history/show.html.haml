@@ -1,6 +1,6 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
   %div
-    %h1.h3.brand-primary Social Fitness 
+    %h1.h3.brand-primary Social Fitness
     %nav(aria-label="breadcrumb")
       %ol.breadcrumb
         %li.breadcrumb-item= link_to 'Members', console_social_fitness_members_path
@@ -10,28 +10,26 @@
 
 .container
   .row
-    .col.py-4
-      %h3
-        %strong= short_date(@log.created_at)
+    .col.py-2
       .row
         .col-lg-6
-          %p 
+          %p
             %strong My social fitness with individuals is:
           %p= RATINGS.key(@log.individuals)
-          %p 
+          %p
             %strong My social fitness with groups is:
           %p= RATINGS.key(@log.groups)
-          %p 
+          %p
             %strong My social fitness with my family is:
           %p= RATINGS_WITH_NA.key(@log.family)
-          %p 
+          %p
             %strong My social fitness with my friends is:
           %p= RATINGS_WITH_NA.key(@log.friends)
         .col-lg-6
-          %p 
+          %p
             %strong My social fitness with my colleagues is:
           %p= RATINGS_WITH_NA.key(@log.colleagues)
-          %p 
+          %p
             %strong My social fitness with my significant other is:
           %p= RATINGS_WITH_NA.key(@log.significant_other)
           %p

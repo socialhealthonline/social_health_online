@@ -34,7 +34,7 @@ $grays: map-merge((
   "900": $gray-900
 ), $grays);
 
-$blue:    #4582EC;
+$blue:    #007bff;
 $indigo:  #6610f2;
 $purple:  #6f42c1;
 $pink:    #e83e8c;
@@ -302,7 +302,7 @@ $table-cell-padding-sm:       .3rem !default;
 
 $table-bg:                    transparent !default;
 $table-accent-bg:             rgba($black, .05) !default;
-$table-hover-bg:              $gray-200;
+$table-hover-bg:              rgba($blue, .075) !default;
 $table-active-bg:             $table-hover-bg !default;
 
 $table-border-width:          $border-width !default;
@@ -539,7 +539,7 @@ $dropdown-divider-bg:               $gray-200 !default;
 $dropdown-box-shadow:               0 .5rem 1rem rgba($black, .175) !default;
 
 $dropdown-link-color:               $body-color;
-$dropdown-link-hover-color:         $headings-color;
+$dropdown-link-hover-color:         $blue;
 $dropdown-link-hover-bg:            $gray-100 !default;
 
 $dropdown-link-active-color:        $component-active-color;

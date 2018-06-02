@@ -9,12 +9,12 @@ class SocialFitness::FitnessController < ApplicationController
     @social_fitness_log = authenticated_user.social_fitness_logs.build(log_params)
 
     if @social_fitness_log.save
-      redirect_to social_fitness_history_url, success: 'Fitness logged successfully!'
+      redirect_to social_fitness_history_url, success: 'Entry logged successfully!'
     else
       flash.now[:error] = 'Please correct the errors to continue.'
       render :new
     end
-  end 
+  end
 
   def index
     @social_fitness_logs = authenticated_user.social_fitness_logs.page params[:page]

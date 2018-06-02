@@ -1,6 +1,6 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
   %div
-    %h1.h3.brand-primary Social Tracker   
+    %h1.h3.brand-primary Social Tracker
     %nav(aria-label="breadcrumb")
       %ol.breadcrumb
         %li.breadcrumb-item= link_to 'Members', console_social_tracker_members_path
@@ -11,25 +11,25 @@
 - if @social_event_logs.any?
   .table-responsive
 
-    %table.table.table-borderless.align-items-center
+    %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
           %th Log Date
           %th Event Date
-          %th Event Venue
+          %th Event Location
           %th Event Rating
       %tbody
         - @social_event_logs.each do |log|
           %tr.bg-white
             %td= link_to short_date(log.created_at), [:console,:social_tracker,@member, @user, log], class: 'text-info'
-            %td= link_to short_date(log.event_date), [:console,:social_tracker,@member, @user, log], class: 'text-info'
+            %td= short_date(log.event_date)
             %td= truncate(log.venue, :length => 30)
-            %td
-              %strong= RATINGS.key(log.rating)
+            %td= RATINGS.key(log.rating)
+          %tr.table-divider
     = paginate @social_event_logs
 - else
   %p.text-muted
-    %em No Social Event Logs for this user.
+    %em No events logged for this user.
 
 %p.pt-3
   = link_to console_social_tracker_member_path, class: 'btn btn-outline-primary' do

@@ -27,7 +27,8 @@ namespace :db do
       phone: '555-555-5555',
       gender: 'Male',
       ethnicity: 'White',
-      birthdate: '1970-1-1'
+      birthdate: '1970-1-1',
+      member_id: Member.first.id
     }) unless User.exists?(email: 'jeremyleesmith@gmail.com')
 
     User.create({
@@ -44,7 +45,8 @@ namespace :db do
       phone: '555-555-5555',
       gender: 'Male',
       ethnicity: 'White',
-      birthdate: '1970-1-1'
+      birthdate: '1970-1-1',
+      member_id: Member.first.id
     }) unless User.exists?(email: 'alex.a.ulbricht@gmail.com')
 
     User.create({
@@ -61,7 +63,8 @@ namespace :db do
       phone: '555-555-5555',
       gender: 'Male',
       ethnicity: 'White',
-      birthdate: '1970-1-1'
+      birthdate: '1970-1-1',
+      member_id: Member.first.id
     }) unless User.exists?(email: 'james.quillen@gmail.com')
   end
 end

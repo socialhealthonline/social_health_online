@@ -12,7 +12,7 @@
         = f.text_area :body, rows: 12, class: "form-control #{form_error_class(@notification, :body)}"
         = model_error_display(@notification, :body)
 
-  .mb-3
+  .mb-3.text-center
     = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
     - if @notification.persisted?
       = link_to 'Cancel', console_notification_path(@notification), class: 'btn btn-outline-secondary'

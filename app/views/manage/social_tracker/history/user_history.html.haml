@@ -2,12 +2,12 @@
 
 .container
   .row
-    .col.mt-5
-      .row
-        .col-8
+    .col.py-3
+      .row.justify-content-center
+        .col-7
           %h1.text-info My Community Social Tracker
-          %h3.text-info Users
-        .col-4
+          %h3.text-info.mb-2=@user.name
+        .col-5
           .dropdown.text-right
             %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
               %i.fas.fa-cog
@@ -15,34 +15,33 @@
             .dropdown-menu.dropdown-menu-right
               = link_to manage_edit_member_path, class: 'dropdown-item' do
                 %i.fas.fa-building
-                Profile
+                Community Profile
               = link_to manage_events_path, class: 'dropdown-item' do
                 %i.fas.fa-map-marker-alt
-                Events
-              = link_to 'Social Tracker', manage_social_tracker_users_path(@member), class: 'dropdown-item'
-  
-      - if @social_event_logs.any?
-        .table-responsive
-
-          %table.table.table-borderless.align-items-center
-            %thead
-              %tr
-                %th 
-                  %strong Log Date
-                %th 
-                  %strong Event Date
-            %tbody
-              - @social_event_logs.each do |log|
-                %tr.bg-white
-                  %td= short_date(log.created_at)
-                  %td= short_date(log.event_date)
-          = paginate @social_event_logs
-      - else
-        %p.text-muted.my-4
-          %em No Social Event Logs were found.
+                Community Events
+        .row
+          .col-sm-4.offset-sm-4
+          - if @social_event_logs.any?
+            .table-responsive
+              %table.table.align-items-center.text-center.table-hover.table-sm
+                %thead
+                  %tr
+                    %th
+                      %strong Log Date
+                    %th
+                      %strong Event Date
+                %tbody
+                  - @social_event_logs.each do |log|
+                    %tr.bg-white
+                      %td= short_date(log.created_at)
+                      %td= short_date(log.event_date)
+                    %tr.table-divider
+              = paginate @social_event_logs
+          - else
+            %p.text-muted.my-4
+              %em No social event logs were found.
 
       %p.py-3
         = link_to manage_social_tracker_users_path, class: 'btn btn-outline-primary' do
           %i.fas.fa-arrow-left
           Back
-        

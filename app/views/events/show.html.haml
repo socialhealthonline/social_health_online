@@ -1,57 +1,55 @@
+#helper-method
 .container
-  .row.pt-5
+  .row.pt-3.mb-2
     .col
-      %h2.brand-primary= @event.title
+      %h1= @event.title
     %div
       .container.align-self-end
         .row
           .col-12
-            %div
-              .dropdown
-                %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
-                  RSVP
-                .dropdown-menu.dropdown-menu-right#rsvp-dropdown
-                  - Rsvp.rsvp_statuses.keys.each do |value|
-                    = @event.link_or_span(value, @rsvp_switcher)
     %div
-      = link_to community_path(@member.slug), class: 'btn btn-outline-secondary' do
-        %i.fas.fa-arrow-alt-circle-left
-        Back
-
   .row
     .col
-      %section.section-lg
+      %p
+        %i.far.fa-calendar-alt{:title => "Event Date/Time"}
+        = short_date_time @event.start_at, @event.time_zone
+      %p
+        %i.fas.fa-tag{:title => "Event Type"}
+        = @event.event_type
+      %p
+        %i.fas.fa-map-marker-alt{:title => "Event Location"}
+        = @event.location_display
+      - if @event.url.present?
         %p
-          %i.far.fa-calendar-alt
-          = short_date_time @event.start_at, @event.time_zone
-        %p
-          %i.fas.fa-users
-          = @event.event_type
-        %p
-          %i.fas.fa-map-marker-alt
-          = @event.location_display
-        - if @event.url.present?
-          %p
-            %i.fas.fa-external-link-alt
-            = link_to @event.url, @event.url, target: '_blank'
-        %p
-          = simple_format @event.details
-        %p
-          %strong RSVP list
-        %div.table-wrapper-2
-          %table.table
-            %thead.mdb-color.lighten-4
-              %tr
-                %th
-                %th.th-lg Name
-                %th.th-lg
-                %th.th-lg RSVP
-                %th
-            %tbody
-            - @event.rsvps.each do |rsvp|
-              %tr
-                %th{scope: "row"}
-                %td= rsvp.user.name
-                %td
-                %td= rsvp&.rsvp_status.capitalize
-                %td
+          %i.fas.fa-external-link-alt{:title => "Event URL"}
+          = link_to @event.url, @event.url, target: '_blank'
+      %p
+        %i.fas.fa-sticky-note{:title => "Event Details"}
+        = @event.details
+        .dropdown
+          %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+            %i.fas.fa-hand-point-right
+            RSVP
+          .dropdown-menu.dropdown-menu-right#rsvp-dropdown
+            - Rsvp.rsvp_statuses.keys.each do |value|
+              = @event.link_or_span(value, @rsvp_switcher)
+      %p
+        %strong RSVP List
+      %div.table-wrapper-2.mb-2
+        %table.table.table-borderless
+          %thead.mdb-color.lighten-4
+            %tr
+              %th
+              %th.th-lg Name
+              %th.th-lg.text-center RSVP
+          %tbody
+          - @event.rsvps.each do |rsvp|
+            %tr
+              %td
+              %td= rsvp.user.name
+              %td.text-center= rsvp&.rsvp_status.capitalize
+
+      %p.mb-3
+        = link_to community_path(@member.slug), class: 'btn btn-outline-secondary' do
+          %i.fas.fa-arrow-alt-circle-left
+          Back

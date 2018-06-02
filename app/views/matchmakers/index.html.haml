@@ -1,0 +1,46 @@
+%div#profile_partial
+.container
+  .row.my-3
+    .col
+      = form_with url: [:matchmaker], method: :get, local: true do |f|
+        .form-group.form-inline.justify-content-center#explore_communities_form
+          %div.form-group.col-12.col-sm-12.col-md-2.col-lg-2
+            = f.select(:state, US_STATES, {}, class: "form-control find_by_state", include_blank: 'State', style: "width: 100%;")
+          %div.form-group.col-12.col-sm-12.col-md-4.col-lg-4
+            = f.text_field :city, placeholder: 'City', class: 'form-control find_by_city', style: "width: 100%;"
+          %div.form-group.col-12.col-sm-12.col-md-2.col-lg-2
+            = f.text_field :zip, placeholder: 'ZIP Code', class: 'form-control find_by_zip', style: "width: 100%;"
+        %div.form-row
+          %div.col-12
+            .col-xs-3.col-md-3.col-sm-3.mx-auto
+              = f.button "Search", class: "form-control btn btn-primary mb-2"
+      %div.table-wrapper-2#events-feed
+        %table.table
+          %thead.mdb-color.lighten-4
+            %tr
+              %th
+              %th Name
+              %th
+              %th State
+              %th
+              %th City
+              %th
+              %th ZIP Code
+          %tbody
+          - @users.each do |user|
+            %tr
+              %td
+              %td
+                %a(class="matchmaker_popover" 
+                   data-toggle="popover"
+                   data-content= "#{render 'links_in_popover',  user: user }")
+                  =user.name
+              %td
+              %td= user.state
+              %td
+              %td= user.city
+              %td
+              %td= user.zip
+        %div.container.pagination.justify-content-center
+          %p= paginate @users
+        %br

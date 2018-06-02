@@ -1,6 +1,6 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
   %div
-    %h1.h3.brand-primary Social Tracker   
+    %h1.h3.brand-primary Social Tracker
     %nav(aria-label="breadcrumb")
       %ol.breadcrumb
         %li.breadcrumb-item= link_to 'Members', console_social_tracker_members_path
@@ -10,7 +10,7 @@
 
 - if @users.any?
   .table-responsive
-    %table.table.table-borderless.align-items-center
+    %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
           %th Name
@@ -22,8 +22,7 @@
           %tr.bg-white
             %td= link_to "#{i}. #{user.name}" , [:console,:social_tracker,@member, user]
             %td= link_to user.display_name
-            %td
-              %strong= user.total_social_events_logged
+            %td= user.total_social_events_logged
             %td= short_date(user.last_social_event_log_date) || "No Logs"
           %tr.table-divider
 - else

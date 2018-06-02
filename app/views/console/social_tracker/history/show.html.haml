@@ -23,7 +23,7 @@
             %strong Event City
           %p= @log.city
           %p 
-            %strong Event Types
+            %strong Event Type
           %p
             - @log.event_types.each_with_index do |type, i|
               %p= type.name
@@ -37,7 +37,7 @@
             - @log.event_categories.each do |category|
               %p= category.name
           %p
-            %strong Event Venue
+            %strong Event Location
           %p= @log.venue
           %p
             %strong Event Rating

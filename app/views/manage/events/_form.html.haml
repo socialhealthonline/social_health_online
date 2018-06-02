@@ -57,7 +57,7 @@
   .form-check.mb-3
     = f.check_box :private, class: 'form-check-input'
     %label.form-check-label(for="event_private") Private
-  .mb-5
+  .mb-3.text-center
     = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
     - if @event.persisted?
       = link_to 'Cancel', manage_event_path(@event), class: 'btn btn-outline-secondary'

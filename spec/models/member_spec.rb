@@ -4,6 +4,7 @@ RSpec.describe Member do
 
   it { should have_many(:users).dependent(:destroy) }
   it { should have_many(:events).dependent(:destroy) }
+  it { should have_many(:announcements).dependent(:destroy) }
   it { should have_one(:primary_manager) }
 
   it { should validate_presence_of :name }

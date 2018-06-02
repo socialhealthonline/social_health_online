@@ -11,12 +11,12 @@
       });
     });
 
-%section.bg-white.text-dark.height-30
+%section.bg-white.text-dark.pt-3.pb-3
   .container.align-self-end
     .row
       .col-12
         .d-flex.justify-content-between.align-items-center
-          %h1.mb-2= @member.name
+          %h1.mb-2.font-weight-bold= @member.name
           - if authenticated_user.manager? && authenticated_user.member_id == @member.id
             %div
               .dropdown
@@ -26,13 +26,16 @@
                 .dropdown-menu.dropdown-menu-right
                   = link_to manage_edit_member_path, class: 'dropdown-item' do
                     %i.fas.fa-building
-                    Profile
+                    Community Profile
                   = link_to manage_events_path, class: 'dropdown-item' do
                     %i.fas.fa-map-marker-alt
-                    Events
+                    Community Events
                   = link_to manage_social_tracker_users_path(@member), class: 'dropdown-item' do
                     %i.fas.fa-database
                     Social Tracker
+                  = link_to manage_announcements_path, class: 'dropdown-item' do
+                    %i.fas.fa.fa-bell.fa-w-14
+                    Announcements
 
       .col-12.col-md-8
         - if @member.primary_manager.present?
@@ -67,8 +70,8 @@
             %li.nav-item
               %a.nav-link#members-tab(data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="false") User List
 
-%section.pt-2
-  .tab-content
+%section.pt-2.pb-2
+  .tab-content.pb-2
     .tab-pane.fade.show.active#events(role="tabpanel" aria-labelledby="events-tab")
       .container
         .row
@@ -78,5 +81,15 @@
                 #calendar
     .tab-pane.fade#announcements(role="tabpanel" aria-labelledby="announcements-tab")
       .container
+        .row.my-3
+          .col
+            #scroll-box-announcements
+              - @announcements.each do |announcement|
+                .mb-3
+                  %h5= announcement.title
+                  .announcements-date= time_in_cdt(announcement.updated_at, '%m/%d/%Y')
+                  .announcements-text= simple_format(announcement.body)
+              %p= paginate @announcements
+        
     .tab-pane.fade#members(role="tabpanel" aria-labelledby="members-tab")
       .container

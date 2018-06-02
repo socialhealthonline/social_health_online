@@ -39,7 +39,7 @@
       = model_error_display(@user, :state)
   .col
     .form-group
-      %label(for="user_zip") Zip
+      %label(for="user_zip") ZIP Code
       = f.text_field :zip, class: "form-control #{form_error_class(@user, :zip)}"
       = model_error_display(@user, :zip)
 .row
@@ -71,7 +71,7 @@
         .form-check.mb-1
           = f.check_box :manager, class: 'form-check-input'
           %label.form-check-label(for="user_manager") Account Manager
-        %small Manager for their member account and community
+        %small Manager for their Member account and Community
   .col
     .card
       .card-body
@@ -80,7 +80,7 @@
           %label.form-check-label(for="user_enabled") Enabled
         %small Enabled to sign in
 
-.mb-5
+.mb-5.text-center
   = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
   - if @user.persisted?
     = link_to 'Cancel', console_member_user_path(@member.id, @user), class: 'btn btn-outline-secondary'

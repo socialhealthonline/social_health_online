@@ -1,21 +1,22 @@
 - page_title 'My Community'
 
 .container
-  .row.pt-5
+  .row.pt-3
     .col
-      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
-        %h2.brand-primary My Community Profile
-        .dropdown
-          %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
-            %i.fas.fa-cog
-            Manage
-          .dropdown-menu.dropdown-menu-right
-            = link_to manage_events_path, class: 'dropdown-item' do
-              %i.fas.fa-map-marker-alt
-              Events
-            = link_to manage_social_tracker_users_path(@member), class: 'dropdown-item' do
-              %i.fas.fa-database
-              Social Tracker
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3
+        %h1.brand-primary My Community Profile
+    .col.text-right
+      .dropdown
+        %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+          %i.fas.fa-cog
+          Manage
+        .dropdown-menu.dropdown-menu-right
+          = link_to manage_events_path, class: 'dropdown-item' do
+            %i.fas.fa-map-marker-alt
+            Community Events
+          = link_to manage_social_tracker_users_path(@member), class: 'dropdown-item' do
+            %i.fas.fa-database
+            Social Tracker
   .row
     .col
       = form_with model: @member, url: [:manage, :update, @member], local: true do |f|
@@ -43,7 +44,7 @@
               = model_error_display(@member, :state)
           .col-lg-4
             .form-group
-              %label(for="member_zip") Zip
+              %label(for="member_zip") ZIP Code
               = f.text_field :zip, class: "form-control #{form_error_class(@member, :zip)}"
               = model_error_display(@member, :zip)
         .row
@@ -69,5 +70,5 @@
               %label(for="member_bio") Bio
               = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@member, :bio)}"
               = model_error_display(@member, :bio)
-        .mb-5
+        .mb-3.text-center
           = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }

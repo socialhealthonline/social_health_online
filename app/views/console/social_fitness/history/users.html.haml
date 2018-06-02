@@ -1,6 +1,6 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
   %div
-    %h1.h3.brand-primary Social Fitness 
+    %h1.h3.brand-primary Social Fitness
     %nav(aria-label="breadcrumb")
       %ol.breadcrumb
         %li.breadcrumb-item= link_to 'Members', console_social_fitness_members_path
@@ -10,16 +10,20 @@
 
 - if @users.any?
   .table-responsive
-    %table.table.table-borderless.align-items-center
+    %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
           %th Name
           %th Display Name
+          %th Total Entries Logged
+          %th Last Logged Entry 
       %tbody
         - @users.each.with_index(1) do |user, i|
           %tr.bg-white
             %td= link_to "#{i}. #{user.name}" , [:console,:social_fitness,@member, user]
             %td= link_to user.display_name
+            %td= user.total_social_fitness_logs
+            %td= user.last_social_fitness_log_date
           %tr.table-divider
 - else
   %p.text-muted
