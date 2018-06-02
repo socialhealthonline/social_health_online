@@ -7,19 +7,19 @@
 
 - if @notifications.any?
   .table-responsive
-    %table.table.table-borderless
+    %table.table.table-borderless.table-hover
       %thead
         %tr
-          %th= sort_link 'title'
-          %th= sort_link 'body'
-          %th= sort_link 'created_at'
+          %th= sort_link 'title', 'Notification Title'
+          %th= sort_link 'body', 'Notification Body'
+          %th= sort_link 'created_at', 'Added On'
           %th
       %tbody
         - @notifications.each.with_index(1) do |notification, i|
           %tr.bg-white
             %td= link_to truncate("#{i}. #{notification.title}"), console_notification_path(notification)
             %td= truncate(notification.body)
-            %td= date_time_in_cst(notification.created_at)
+            %td= time_in_cdt(notification.created_at, '%Y-%m-%d %H:%M')
             %td
               = link_to edit_console_notification_path(notification), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
                 %i.far.fa-edit

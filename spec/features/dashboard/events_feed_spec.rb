@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Event feed' do
   let(:user) { create(:user) }
-  let(:event) { create(:event, location: 'BJCC', city: 'Hometown', state: 'AL', member: user.member, start_at: Time.current.tomorrow) }
+  let(:event) { create(:event, title: 'Event Title 3', location: 'BJCC', city: 'Hometown', state: 'AL', member: user.member, start_at: Time.current.tomorrow) }
   let(:event_2) { create(:event, title: 'Event Title 2', location: 'BJCC', city: 'Hometown', state: 'AL', member: user.member, start_at: Time.current.yesterday) }
   let!(:rsvp) {create(:rsvp, user: user, event: event)}
   let!(:rsvp_2) {create(:rsvp, user: user, event: event_2)}

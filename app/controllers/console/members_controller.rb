@@ -1,7 +1,7 @@
 class Console::MembersController < ConsoleController
 
   def index
-    @members = Member.order(:name)
+    @members = Member.order(:name).page(params[:page]).per(25)
   end
 
   def show
@@ -19,7 +19,7 @@ class Console::MembersController < ConsoleController
   def create
     @member = Member.new(member_params)
     if @member.save
-      redirect_to console_member_url(@member.id), success: 'The member was successfully created!'
+      redirect_to console_member_url(@member.id), success: 'The Member was successfully created!'
     else
       flash.now[:error] = 'Please correct the errors to continue.'
       render :new
@@ -29,7 +29,7 @@ class Console::MembersController < ConsoleController
   def update
     @member = Member.find params[:id]
     if @member.update(member_params)
-      redirect_to console_member_url(@member.id), success: 'The member was successfully updated!'
+      redirect_to console_member_url(@member.id), success: 'The Member was successfully updated!'
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class Console::MembersController < ConsoleController
   def destroy
     @member = Member.find params[:id]
     @member.destroy
-    redirect_to console_members_url, success: 'The member was successfully deleted!'
+    redirect_to console_members_url, success: 'The Member was successfully deleted!'
   end
 
   private

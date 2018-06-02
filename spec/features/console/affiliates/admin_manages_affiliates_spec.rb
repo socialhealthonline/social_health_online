@@ -27,7 +27,7 @@ RSpec.describe 'Admin mananges affiliates' do
       select 'Events', from: 'affiliate_support_type'
       check('affiliate_hide_info_on_locator')
       click_button 'Save'
-      expect(page).to have_content 'The affiliate was successfully created'
+      expect(page).to have_content 'The Affiliate was successfully created'
       expect(current_path).to eq console_affiliate_path(Affiliate.last)
       expect(Affiliate.count).to eq 1
     end

@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :social_fitness_logs
   has_many :rsvps
   has_many :events, through: :rsvps
+  has_one :hidden_field
 
   validates :name, :email, :address, :city, :gender, :ethnicity, :birthdate, :time_zone, presence: true
   validates_uniqueness_of :email, case_sensitive: false
@@ -26,8 +27,12 @@ class User < ApplicationRecord
 
   before_save { |user| user.email.downcase! }
   before_validation { |user| user.phone.gsub!(/\D/,'') if user.phone? }
+  after_create :create_hidden_fields
+
+  accepts_nested_attributes_for :hidden_field
 
   scope :all_except, ->(user) { where.not(id: user) }
+  scope :matchmaker, ->(user) { where.not("hidden_fields.user_id = ? and hidden_fields.settings @> ?", user.id, { matchmaker: false }.to_json) }
 
   has_secure_password
   has_secure_token :auth_token
@@ -40,7 +45,7 @@ class User < ApplicationRecord
   end
 
   def mailboxer_email(object)
-    self.email
+    self.email if receive_email
   end
 
   def full_address
@@ -72,4 +77,14 @@ class User < ApplicationRecord
     social_fitness_logs.first&.created_at
   end
 
+  # from String to Boolean all attrs except :id
+  # @param attrs [Hash]
+  def hidden_field_attributes=(attrs)
+    attrs.except(:id).each { |k, v| attrs[k] = ActiveRecord::Type::Boolean.new.cast(v) }
+    super(attrs)
+  end
+
+  def create_hidden_fields
+    HiddenField.create(user_id: self.id)
+  end
 end

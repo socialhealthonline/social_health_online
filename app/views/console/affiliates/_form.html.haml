@@ -81,7 +81,7 @@
           = f.check_box :hide_info_on_locator, class: 'form-check-input'
           %label.form-check-label(for="hide_info_on_locator") Hide Info - Pending Approval
 
-  .mb-5
+  .mb-5.text-center
     = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
     - if @affiliate.persisted?
       = link_to 'Cancel', console_affiliate_path(@affiliate), class: 'btn btn-outline-secondary'

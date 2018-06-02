@@ -14,43 +14,43 @@
           .col-lg-6
             .form-group
               %label(for="social_fitness_log_individuals")
-                %strong My social fitness with individuals is:
+                My social fitness with individuals is:
               = f.select :individuals, RATINGS, {}, { class: "form-control custom-select #{form_error_class(@social_fitness_log, :individuals)}" }
               = model_error_display(@social_fitness_log, :individuals)
             .form-group
               %label(for="social_fitness_log_groups")
-                %strong My social fitness with groups is:
+                My social fitness with groups is:
               = f.select :groups, RATINGS, {}, { class: "form-control custom-select #{form_error_class(@social_fitness_log, :groups)}" }
               = model_error_display(@social_fitness_log, :groups)
             .form-group
               %label(for="social_fitness_log_family")
-                %strong My social fitness with my family is:
+                My social fitness with my family is:
               = f.select :family, RATINGS_WITH_NA, {}, { class: "form-control custom-select #{form_error_class(@social_fitness_log, :family)}" }
               = model_error_display(@social_fitness_log, :family)
             .form-group
               %label(for="social_fitness_log_friends")
-                %strong My social fitness with my friends is:
+                My social fitness with my friends is:
               = f.select :friends, RATINGS_WITH_NA, {}, { class: "form-control custom-select #{form_error_class(@social_fitness_log, :friends)}" }
               = model_error_display(@social_fitness_log, :friends)
           .col-lg-6
             .form-group
               %label(for="social_fitness_log_colleagues")
-                %strong My social fitness with my colleagues is:
+                My social fitness with my colleagues is:
               = f.select :colleagues, RATINGS_WITH_NA, {}, { class: "form-control custom-select #{form_error_class(@social_fitness_log, :colleagues)}" }
               = model_error_display(@social_fitness_log, :colleagues)
             .form-group
               %label(for="social_fitness_log_significant_other")
-                %strong My social fitness with my significant other is:
+                My social fitness with my significant other is:
               = f.select :significant_other, RATINGS_WITH_NA, {}, { class: "form-control custom-select #{form_error_class(@social_fitness_log, :significant_other)}" }
               = model_error_display(@social_fitness_log, :significant_other)
             .form-group
               %label(for="social_fitness_log_local_community")
-                %strong My social fitness with my local community is:
+                My social fitness with my local community is:
               = f.select :local_community, RATINGS_WITH_NA, {}, { class: "form-control custom-select #{form_error_class(@social_fitness_log, :local_community)}" }
               = model_error_display(@social_fitness_log, :local_community)
             .form-group
               %label(for="social_fitness_log_overall")
-                %strong My overall social fitness is:
+                My overall social fitness is:
               = f.select :overall, RATINGS, {}, { class: "form-control custom-select #{form_error_class(@social_fitness_log, :overall)}" }
               = model_error_display(@social_fitness_log, :overall)
           .col-lg-12

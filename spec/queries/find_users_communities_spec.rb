@@ -1,24 +1,28 @@
 require 'rails_helper'
 
-RSpec.describe FindExploredCommunities do
+RSpec.describe FindUsersCommunities do
   describe '#call' do
     let(:member_1) { create(:member) }
     let(:user) { create(:user, member: member_1) }
-
+    
     before do
       @params = {}
       @params[:state] = 'AL'
       @params[:city] = 'Hometown'
       @params[:zip] = '35210'
       @communities = Member.where("name !=? ", user.member.name)
-      @communities = FindExploredCommunities.new(@communities).call(@params)
+      @users = User.all_except(user)
+      @communities = FindUsersCommunities.new(@communities).call(@params)
+      @users = FindUsersCommunities.new(@users).call(@params)
     end
 
     context 'success filter' do
       let!(:member_2) { create(:member) }
+      let!(:user_2) { create(:user, state: 'AL', city: 'Hometown', zip: '35210', member: member_1) }
 
       before(:each) do
         expect(@communities.size).to eq(1)
+        expect(@users.size).to eq(1)
       end
 
       context 'given state filter' do
@@ -37,6 +41,7 @@ RSpec.describe FindExploredCommunities do
     context 'unsuccess filter' do
       before(:each) do
         expect(@communities.size).to eq(0)
+        expect(@users.size).to eq(0)
       end
 
       context 'empty state filter' do

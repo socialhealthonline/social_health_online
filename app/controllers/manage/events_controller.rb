@@ -4,7 +4,7 @@ class Manage::EventsController < ApplicationController
   around_action :event_time_zone, only: [:edit]
 
   def index
-    @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :desc)
+    @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :desc).page(params[:page]).per(25)
   end
 
   def show

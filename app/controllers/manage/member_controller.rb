@@ -9,7 +9,7 @@ class Manage::MemberController < ApplicationController
   def update
     @member = Member.find authenticated_user.member_id
     if @member.update(member_params)
-      redirect_to manage_edit_member_url, success: 'Your community information was successfully updated!'
+      redirect_to manage_edit_member_url, success: 'Your Community information was successfully updated!'
     else
       @managers = User.where(member_id: authenticated_user.member_id, manager: true)
       flash.now[:error] = 'Please correct the errors to continue.'
