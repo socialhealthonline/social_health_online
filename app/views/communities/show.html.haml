@@ -16,7 +16,7 @@
     .row
       .col-12
         .d-flex.justify-content-between.align-items-center
-          %h1.mb-2.font-weight-bold= @member.name
+          %h1.mb-2.font-weight-bold.c-pointer{ data: { toggle: 'modal', target: '#community-profile-modal' } }= @member.name
           - if authenticated_user.manager? && authenticated_user.member_id == @member.id
             %div
               .dropdown
@@ -39,7 +39,7 @@
 
       .col-12.col-md-8
         - if @member.primary_manager.present?
-          %p
+          %p.c-pointer{ data: { toggle: 'modal', target: '#community-profile-modal' } }
             %i.fas.fa-user
             Primary Manager -
             = @member.primary_manager.name
@@ -113,3 +113,46 @@
         
     .tab-pane.fade#members(role="tabpanel" aria-labelledby="members-tab")
       .container
+
+#community-profile-modal.modal.fade{ 'aria-hidden' => 'true', 'aria-labelledby' => 'CommunityProfileModalLabel', role: 'dialog', tabindex: '-1' }
+  .modal-dialog{ role: 'document' }
+    .modal-content
+      .modal-header
+        %h5#CommunityProfileModalLabel.modal-title= @member.name
+        %button.close{ 'aria-label' => 'Close', 'data-dismiss' => 'modal', type: 'button' }
+          %span{ 'aria-hidden' => 'true' } ×
+      .modal-body
+        %p
+          %strong Member Name:
+          = @member.name
+        %p
+          %strong Address:
+          = @member.address
+        %p
+          %strong City:
+          = @member.city
+        %p
+          %strong State:
+          = @member.state
+        %p
+          %strong ZIP Code:
+          = @member.zip
+        %p
+          %strong Website:
+          = link_to @member.url, @member.url, target: '_blank'
+        %p
+          %strong Events Webpage:
+          = link_to @member.events_url, @member.events_url, target: '_blank'
+        %p
+          %strong Primary Manager:
+          = @member.primary_manager&.name
+        %p
+          %strong Primary Manager Phone:
+          = @member.primary_manager&.phone
+        %p
+          %strong Primary Manager E-mail:
+          = @member.primary_manager&.email
+        %p
+          %strong Bio:
+          = @member.bio
+      .modal-footer
