@@ -38,10 +38,14 @@ $(document).ready(function() {
     html:true
   });
 
-  $('.resipients-select').select2({
+  var resipients_select = $('.resipients-select');
+  resipients_select.select2({
     theme: 'bootstrap',
     minimumInputLength: 1
-  })
+  });
+
+  resipients_select.val(gon.recipient_id);
+  resipients_select.trigger('change');
 
   $(".events-flash").click(function(){
     $('#helper-method').html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>"
