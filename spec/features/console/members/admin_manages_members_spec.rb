@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Admin manages member accounts' do
-
   let!(:admin) { create(:user, :admin) }
 
   describe 'creates a new member' do
@@ -72,9 +73,28 @@ RSpec.describe 'Admin manages member accounts' do
     end
 
     it 'successfully' do
-      expect { click_link "delete_member_#{member.id}" }.to change{ Member.count }.by(-1)
+      expect { click_link "delete_member_#{member.id}" }.to change { Member.count }.by(-1)
       expect(current_path).to eq console_members_path
     end
   end
 
+  describe 'sort members' do
+    FactoryBot.reload
+    Member.all.destroy_all
+
+    let!(:members) { create_list(:member, 5) }
+
+    before do
+      sign_in admin
+      visit console_members_path
+    end
+
+    it 'descending' do
+      expect(page).to have_selector('table tbody tr:nth-child(1) th', text: 'Member1')
+
+      click_link 'Member Name'
+
+      expect(page).to have_selector('table tbody tr:nth-child(1) th', text: '1. Member6')
+    end
+  end
 end
