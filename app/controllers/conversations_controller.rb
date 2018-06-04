@@ -1,7 +1,9 @@
 class ConversationsController < ApplicationController
   before_action :require_authentication
 
-  def new; end
+  def new
+    gon.recipient_id = params[:recipient_id]
+  end
 
   def create
     recipients = User.where(id: conversation_params[:recipients])
