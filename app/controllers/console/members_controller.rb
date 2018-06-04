@@ -10,10 +10,12 @@ class Console::MembersController < ConsoleController
 
   def new
     @member = Member.new
+    set_managers_option
   end
 
   def edit
     @member = Member.find params[:id]
+    set_managers_option
   end
 
   def create
@@ -62,7 +64,11 @@ class Console::MembersController < ConsoleController
       :suspended,
       :hide_info_on_locator,
       :column,
-      :direction
+      :direction,
+      :welcome_kit_date,
+      :phone,
+      :contact_phone_extension,
+      :primary_manager_id
     )
   end
 
@@ -81,5 +87,9 @@ class Console::MembersController < ConsoleController
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
+
+  def set_managers_option
+    @managers = User.where(member_id: authenticated_user.member_id, manager: true)
   end
 end

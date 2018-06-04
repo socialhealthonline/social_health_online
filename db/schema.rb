@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_21_073221) do
+ActiveRecord::Schema.define(version: 2018_06_04_115737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 2018_05_21_073221) do
     t.datetime "updated_at", null: false
     t.boolean "hide_info_on_locator", default: false
     t.integer "support_type", default: 0, null: false
+    t.string "contact_name"
+    t.string "contact_phone_extension"
+    t.string "contact_email"
+    t.string "support_notes"
+    t.datetime "date_added"
+    t.string "contact_phone"
   end
 
   create_table "event_categories", force: :cascade do |t|
@@ -153,6 +159,9 @@ ActiveRecord::Schema.define(version: 2018_05_21_073221) do
     t.string "events_url"
     t.boolean "hide_info_on_locator", default: false
     t.string "slug"
+    t.datetime "welcome_kit_date"
+    t.string "phone"
+    t.string "contact_phone_extension"
     t.index ["slug"], name: "index_members_on_slug", unique: true
   end
 
