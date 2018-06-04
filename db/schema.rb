@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_04_111226) do
+ActiveRecord::Schema.define(version: 2018_06_04_115737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2018_06_04_111226) do
     t.string "support_notes"
     t.datetime "date_added"
     t.string "contact_phone"
+<<<<<<< HEAD
   end
 
   create_table "announcements", force: :cascade do |t|
@@ -63,6 +64,8 @@ ActiveRecord::Schema.define(version: 2018_06_04_111226) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_announcements_on_member_id"
+=======
+>>>>>>> Add member profile fields
   end
 
   create_table "event_categories", force: :cascade do |t|
@@ -197,6 +200,9 @@ ActiveRecord::Schema.define(version: 2018_06_04_111226) do
     t.string "events_url"
     t.boolean "hide_info_on_locator", default: false
     t.string "slug"
+    t.datetime "welcome_kit_date"
+    t.string "phone"
+    t.string "contact_phone_extension"
     t.index ["slug"], name: "index_members_on_slug", unique: true
   end
 
