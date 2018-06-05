@@ -73,6 +73,26 @@
 %section.pt-2.pb-2
   .tab-content.pb-2
     .tab-pane.fade.show.active#events(role="tabpanel" aria-labelledby="events-tab")
+      .container.events-legend-container
+        .row.my-3
+          .col
+            #scroll-box
+              %p.text-center
+                %strong
+                  Legend
+              .row
+                .col-lg-6.col-xl-6.col-md-6.text-center
+                  .bg-primary Public Event
+                  %br
+                  - @public_events.each do |event|
+                    .mb-2.col-xl-12.col-lg-12
+                      =link_to event.title, community_event_path(authenticated_user.member, event)
+                .col-lg-6.col-xl-6.col-md-6.text-center
+                  .bg-danger Private Event
+                  %br
+                  - @private_events.each do |event|
+                    .mb-2.col-xl-12.col-lg-12
+                      =link_to event.title, community_event_path(authenticated_user.member, event)
       .container
         .row
           .col-12

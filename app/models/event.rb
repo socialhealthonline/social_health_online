@@ -12,6 +12,7 @@ class Event < ApplicationRecord
   scope :events_for_feed, -> (authenticated_user_id) { where("rsvps.user_id = ? and rsvps.rsvp_status in (?) and start_at >= ?",
                                                        authenticated_user_id, [Rsvp.rsvp_statuses[:yes], Rsvp.rsvp_statuses[:maybe]], Time.zone.now)
                                                        .select('events.*, rsvps.rsvp_status as status') }
+  scope :event_legend, -> (member_id, event_type_bool) { where("member_id = ? and private = ?", member_id, event_type_bool) }
 
   def location_display
     [location, city, state].join(', ')
