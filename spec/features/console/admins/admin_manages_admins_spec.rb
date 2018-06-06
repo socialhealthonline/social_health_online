@@ -28,7 +28,7 @@ RSpec.describe 'Admin mananges admin users' do
       check 'user_manager'
       select admin.member.name, from: 'user_member_id'
       click_button 'Save'
-      expect(page).to have_content 'The admin was successfully created'
+      expect(page).to have_content 'The Admin was successfully created'
       expect(current_path).to eq console_admin_path(User.last)
       expect(User.last.manager).to eq true
       expect(User.last.admin).to eq true
