@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-
+  skip_before_action :pending_user?
+  
   def new
     redirect_to dashboard_url if authenticated_user
   end
@@ -23,6 +24,18 @@ class SessionsController < ApplicationController
   def destroy
     reset_session
     redirect_to root_url
+  end
+
+  def confirm_email
+    user = User.find_by_confirm_token(params[:id])
+    if user
+      user.email_activate
+      flash[:success] = "Welcome! Your email has been confirmed. Please sign in to continue."
+      redirect_to signin_path
+    else
+      flash[:error] = "Sorry. User does not exist"
+      redirect_to root_url
+    end
   end
 
   private

@@ -1,0 +1,45 @@
+.container
+  .row
+    .col
+      %br
+      %h1#my-users-title
+        %strong My Community Users
+      %div
+        - if authenticated_user.manager?
+          %div.float-right.new_manage_user_button
+            .dropdown
+              %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                %i.fas.fa-cog
+                Manage
+              .dropdown-menu.dropdown-menu-right
+                = link_to manage_edit_member_path, class: 'dropdown-item' do
+                  %i.fas.fa-building
+                  Community Profile
+                = link_to manage_events_path, class: 'dropdown-item' do
+                  %i.fas.fa-map-marker-alt
+                  Community Events
+                = link_to manage_social_tracker_users_path(authenticated_user.member), class: 'dropdown-item' do
+                  %i.fas.fa-database
+                  Social Tracker
+                = link_to manage_announcements_path, class: 'dropdown-item' do
+                  %i.fas.fa.fa-bell.fa-w-14
+                  Announcements
+                = link_to manage_users_path, class: 'dropdown-item' do
+                  %i.fas.fa-user-circle
+                  Manage Users
+      %h2#my-users-title Add Users
+      
+      .col-12.col-sm-12.col-md-9.col-lg-6.col-xl-6
+        = form_with(url: manage_users_path, local: true) do |f|
+          #scroll-box-users
+            .row
+              .col
+                .form-group.col-12.col-sm-12.col-md-12.col-lg-12.col-xl-12
+                  %br
+                  -(1..10).map do |i|
+                    = f.text_field "email_#{i}".to_sym, class: "form-control"
+                    %br
+          %br
+          .mb-3
+            = f.submit 'Send', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
+            = link_to 'Cancel', manage_users_path, class: 'btn btn-outline-secondary'

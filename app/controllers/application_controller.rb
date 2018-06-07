@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   helper_method :authenticated_user, :mailbox, :conversation
   add_flash_types :error, :success, :info, :warning
+  before_action :disabled_user?
+  before_action :pending_user?
 
   def cities
     render json: CS.cities(params[:state], :us).to_json
@@ -10,6 +12,18 @@ class ApplicationController < ActionController::Base
 
   def authenticated_user
     @authenticated_user ||= User.find_by(auth_token: session[:auth_token]) if session[:auth_token]
+  end
+
+  def disabled_user?
+    if authenticated_user&.disabled?
+      session[:auth_token] = nil
+    end
+  end
+  
+  def pending_user?
+    if authenticated_user&.pending?
+      redirect_to profile_url and return
+    end
   end
 
   def require_authentication

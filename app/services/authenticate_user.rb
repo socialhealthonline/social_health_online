@@ -10,14 +10,15 @@ class AuthenticateUser
   end
 
   def call
-    if @user && @user.authenticate(@params[:password]) && @user.enabled? && !@user.member&.suspended
+    # binding.pry
+    if @user && @user.authenticate(@params[:password]) && @user.enabled? && !@user.member&.suspended && !@user.disabled?
       @authenticated = true
       @flash = "Welcome back, #{@user.name}!"
     else
       @authenticated = false
       if @user.nil? # no user
         @flash = 'The email or password you entered was not recognized. Please try again!'
-      elsif !@user.enabled? || @user.member&.suspended
+      elsif !@user.enabled? || @user.member&.suspended || @user.disabled?
         @flash = 'Your account has been disabled!'
       elsif @user.enabled # bad password
         @flash = 'The email or password you entered was not recognized. Please try again!'

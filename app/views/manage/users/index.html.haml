@@ -1,0 +1,65 @@
+.container
+  %br
+  .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
+    %h1.h3.brand-primary My Community Users
+    %div
+      - if authenticated_user.manager?
+        %div.float-right.new_manage_user_button
+          .dropdown
+            %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+              %i.fas.fa-cog
+              Manage
+            .dropdown-menu.dropdown-menu-right
+              = link_to manage_edit_member_path, class: 'dropdown-item' do
+                %i.fas.fa-building
+                Community Profile
+              = link_to manage_events_path, class: 'dropdown-item' do
+                %i.fas.fa-map-marker-alt
+                Community Events
+              = link_to manage_social_tracker_users_path(authenticated_user.member), class: 'dropdown-item' do
+                %i.fas.fa-database
+                Social Tracker
+              = link_to manage_announcements_path, class: 'dropdown-item' do
+                %i.fas.fa.fa-bell.fa-w-14
+                Announcements
+              = link_to manage_users_path, class: 'dropdown-item' do
+                %i.fas.fa-user-circle
+                Manage Users
+      %div.float-right
+        = link_to new_manage_user_path, class: 'btn btn-primary' do
+          %i.fas.fa-plus-circle
+          Add Users
+
+  - if @users.any?
+    .table-responsive
+      %table.table.table-borderless.table-hover
+        %thead
+          %tr
+            %th Name
+            %th Email
+            %th Status
+            %th Manager
+            %th
+        %tbody
+          - @users.each.with_index(1) do |user, i|
+            %tr.bg-white
+              %td= truncate("#{i}. #{user.name}")
+              %td= truncate(user.email)
+              %td= user.user_status.capitalize
+              %td
+                - if user.manager?
+                  %i.fa.fa-check
+                - else
+                  %strong X
+              %td
+                = link_to edit_manage_user_path(user), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
+                  %i.far.fa-edit
+                &nbsp;
+                = link_to manage_user_path(user), title: 'delete user', id: "delete_user_#{user.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this user. Press OK to continue.' } do
+                  %i.far.fa-trash-alt
+            %tr.table-divider
+    %p= paginate @users
+    %br
+  - else
+    %p.text-muted
+      %em No users were found.

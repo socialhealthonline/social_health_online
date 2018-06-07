@@ -36,6 +36,9 @@
                   = link_to manage_announcements_path, class: 'dropdown-item' do
                     %i.fas.fa.fa-bell.fa-w-14
                     Announcements
+                  = link_to manage_users_path, class: 'dropdown-item' do
+                    %i.fas.fa-user-circle
+                    Manage Users
 
       .col-12.col-md-8
         - if @member.primary_manager.present?

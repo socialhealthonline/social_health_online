@@ -1,9 +1,9 @@
 class User < ApplicationRecord
-
   ETHNICITY = ['Black', 'White', 'Hispanic', 'Asian', 'American Indian', 'Pacific Islander', 'Other']
   GENDER = ['Male', 'Female', 'Other']
   RELATIONSHIP_STATUS = ['Single', 'In a relationship', 'Married', 'Other']
   EDUCATION_LEVEL = ['High School', 'College', 'Advanced Graduate', 'Other']
+  enum user_status: %i[pending active disabled]
 
   belongs_to :member, inverse_of: :users
   has_many :social_event_logs
@@ -34,7 +34,7 @@ class User < ApplicationRecord
   scope :all_except, ->(user) { where.not(id: user) }
   scope :matchmaker, ->(user) { where.not("hidden_fields.user_id = ? and hidden_fields.settings @> ?", user.id, { matchmaker: false }.to_json) }
 
-  has_secure_password
+  has_secure_password validations: false
   has_secure_token :auth_token
   has_secure_token :password_reset_token
 
@@ -53,7 +53,7 @@ class User < ApplicationRecord
   end
 
   def erase_password_reset_fields
-    self.update(password_reset_token: nil, password_reset_sent_at: nil)
+    self.save(password_reset_token: nil, password_reset_sent_at: nil, validate: false)
   end
 
   def set_random_password
@@ -86,5 +86,11 @@ class User < ApplicationRecord
 
   def create_hidden_fields
     HiddenField.create(user_id: self.id)
+  end
+
+  def email_activate
+    self.user_status = :active
+    self.confirm_token = nil
+    save!(validate: false)
   end
 end

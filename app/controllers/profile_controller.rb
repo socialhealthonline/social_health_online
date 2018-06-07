@@ -1,5 +1,6 @@
 class ProfileController < ApplicationController
   before_action :require_authentication
+  skip_before_action :pending_user?
 
   def edit
     @user = authenticated_user
@@ -8,6 +9,10 @@ class ProfileController < ApplicationController
 
   def update
     @user = authenticated_user
+    unless @user.first_login
+      params[:user].merge!(first_login: Date.today) 
+      # params[:user].merge!(user_status: :active)
+    end
     if @user.update(user_params)
       redirect_to profile_url, success: 'Your profile was successfully updated!'
     else
@@ -41,6 +46,8 @@ class ProfileController < ApplicationController
       :bio,
       :password,
       :password_confirmation,
+      :first_login,
+      :user_status,
       hidden_field_attributes: [:id, prepared_hidden_fields]
     )
   end

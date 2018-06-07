@@ -371,3 +371,19 @@ body {
     font-size: 13px;
     word-wrap: break-word;
 }
+
+#scroll-box-users {
+  height: 500px;
+  overflow: auto;
+  padding: 24px;
+  border: 1px solid black;
+  bottom: 50px;
+}
+
+#my-users-title {
+  margin-left: 10px;
+}
+
+.new_manage_user_button {
+  margin-left: 10px;
+}
