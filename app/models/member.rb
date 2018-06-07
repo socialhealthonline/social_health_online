@@ -6,6 +6,7 @@ class Member < ApplicationRecord
   has_many :users, inverse_of: :member, dependent: :destroy
   has_many :events, inverse_of: :member, dependent: :destroy
   has_many :announcements, dependent: :destroy
+  has_one_attached :logo
 
   validates :name, :address, :city, :state, :zip, :contact_name, :contact_email, :contact_phone, :service_capacity, presence: true
   validates_uniqueness_of :name, case_sensitive: false
@@ -13,9 +14,22 @@ class Member < ApplicationRecord
   validates :zip, format: {with: %r{\A[\d]{5}(-[\d]{4})?\z}}
   validates :contact_phone, format: {with: /\A\d{10}\z/, message: "must be 10 digits including area code"}
   validates_format_of :contact_email, with: /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
+  validate :logo_validation
 
   before_validation { |member| member.contact_phone.gsub!(/\D/, "") if member.contact_phone? }
   before_validation :add_protocol_to_url
+
+  def logo_validation
+    if logo.attached?
+      if logo.blob.byte_size > 5.megabytes
+        logo.purge
+        errors[:logo] << 'This file exceeds the maximum allowed file size (5 MB)'
+      elsif !logo.blob.content_type.starts_with?('image/')
+        logo.purge
+        errors[:logo] << 'Only image file with extension: .jpg, .jpeg, .gif or .png is allowed'
+      end
+    end
+  end
 
   def full_address
     [address, city, state, zip].compact.join(", ")

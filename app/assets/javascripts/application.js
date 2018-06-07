@@ -69,6 +69,42 @@ $(document).ready(function() {
   }
 
   communityTabsOnLoad();
+
+  $('#member_logo').change(function(){
+    var maxExceededMessage = 'This file exceeds the maximum allowed file size (3 MB)';
+    var extErrorMessage = 'Only image file with extension: .jpg, .jpeg, .gif or .png is allowed';
+    var allowedExtension = ["jpg", 'jpeg', 'gif', 'png'];
+
+    var input = $(this);
+    var extName;
+    var maxFileSize = $(this).data('max-file-size');
+    var sizeExceeded = false;
+    var extError = false;
+
+    hide_erorrs();
+
+    $.each(this.files, function() {
+      if (this.size && maxFileSize && this.size > parseInt(maxFileSize)) { sizeExceeded = true; }
+      extName = this.name.split('.').pop();
+      if ($.inArray(extName, allowedExtension) == -1) { extError = true; }
+    });
+
+    if (sizeExceeded) show_error(maxExceededMessage);
+    if (extError) show_error(extErrorMessage);
+
+    function show_error(message){
+      input.addClass('is-invalid');
+      $('#file-field').append('<small class="text-danger error-msg">' + message + '</small>');
+      $(':input[type="submit"]').prop('disabled', true);
+    }
+
+    function hide_erorrs() {
+      input.removeClass('is-invalid');
+      $('.error-msg').hide();
+      $(':input[type="submit"]').prop('disabled', false);
+    }
+  });
+
 });
 
 var US_STATES = {
