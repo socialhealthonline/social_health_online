@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   helper_method :authenticated_user, :mailbox, :conversation
   add_flash_types :error, :success, :info, :warning
 
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+
   def cities
     render json: CS.cities(params[:state], :us).to_json
   end
@@ -37,6 +39,11 @@ class ApplicationController < ActionController::Base
 
   def conversation
     @conversation ||= mailbox.conversations.find(params[:id])
+  end
+
+  def render_404(message = 'Not Found')
+    logger.info "Rendering 404: #{message}"
+    render file: "#{Rails.root}/public/404.html", layout: false, status: 404
   end
 
 end

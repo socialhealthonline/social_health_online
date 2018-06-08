@@ -106,4 +106,8 @@ RSpec.configure do |config|
     @headless.try(:stop)
   end
 
+  config.after(:suite) do
+    FileUtils.rm_rf(Dir["#{Rails.root}/tmp/storage/"])
+  end
+
 end
