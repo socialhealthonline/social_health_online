@@ -4,8 +4,6 @@ class CommunitiesController < ApplicationController
   def show
     @member = Member.friendly.find params[:id]
     @announcements = @member.announcements.page(params[:page])
-    @public_events = Event.event_legend(authenticated_user.member.id, false)
-    @private_events = Event.event_legend(authenticated_user.member.id, true)
   end
 
   def explore_communities
