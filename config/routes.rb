@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "join" => "public#join"
   get "service" => "public#service"
   get "service_highlights" => "public#service_highlights"
+  get "service_screenshots" => "public#service_screenshots"
   get "membership" => "public#membership"
   get "affiliate_locator" => "public#affiliate_locator"
   get "affiliates" => "public#affiliates"
@@ -121,4 +122,8 @@ Rails.application.routes.draw do
     end
     post :mark_as_deleted, on: :collection
   end
+
+  # Media Center
+  get "media_center" => "media_center#index"
+  
 end
