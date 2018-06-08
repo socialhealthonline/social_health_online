@@ -10,7 +10,6 @@ class AuthenticateUser
   end
 
   def call
-    # binding.pry
     if @user && @user.authenticate(@params[:password]) && @user.enabled? && !@user.member&.suspended && !@user.disabled?
       @authenticated = true
       @flash = "Welcome back, #{@user.name}!"

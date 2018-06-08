@@ -11,7 +11,7 @@ class ProfileController < ApplicationController
     @user = authenticated_user
     unless @user.first_login
       params[:user].merge!(first_login: Date.today) 
-      # params[:user].merge!(user_status: :active)
+      params[:user].merge!(user_status: :activated)
     end
     if @user.update(user_params)
       redirect_to profile_url, success: 'Your profile was successfully updated!'

@@ -1,6 +1,6 @@
 .container
   %br
-  .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
+  .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top
     %h1.h3.brand-primary My Community Users
     %div
       - if authenticated_user.manager?
@@ -25,10 +25,13 @@
               = link_to manage_users_path, class: 'dropdown-item' do
                 %i.fas.fa-user-circle
                 Manage Users
-      %div.float-right
-        = link_to new_manage_user_path, class: 'btn btn-primary' do
-          %i.fas.fa-plus-circle
-          Add Users
+        %div.float-right
+          = link_to new_manage_user_path, class: 'btn btn-primary' do
+            %i.fas.fa-plus-circle
+            Add Users
+  %h6.brand-primary Service Capacity 10
+  %h6.brand-primary= "Current User Total #{@users_count}" 
+  .border-bottom
 
   - if @users.any?
     .table-responsive
