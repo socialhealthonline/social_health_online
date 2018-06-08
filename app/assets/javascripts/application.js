@@ -71,26 +71,26 @@ $(document).ready(function() {
   communityTabsOnLoad();
 
   $('#member_logo').change(function(){
-    var maxExceededMessage = 'This file exceeds the maximum allowed file size (3 MB)';
-    var extErrorMessage = 'Only image file with extension: .jpg, .jpeg, .gif or .png is allowed';
-    var allowedExtension = ["jpg", 'jpeg', 'gif', 'png'];
+    var max_exceeded_message = 'This file exceeds the maximum allowed file size (3 MB)';
+    var ext_error_message = 'Only image file with extension: .jpg, .jpeg, .gif or .png is allowed';
+    var allowed_extension = ["jpg", 'jpeg', 'gif', 'png'];
 
     var input = $(this);
-    var extName;
-    var maxFileSize = $(this).data('max-file-size');
-    var sizeExceeded = false;
+    var ext_name;
+    var max_file_size = $(this).data('max-file-size');
+    var size_exceeded = false;
     var extError = false;
 
-    hide_erorrs();
+    hide_errors();
 
     $.each(this.files, function() {
-      if (this.size && maxFileSize && this.size > parseInt(maxFileSize)) { sizeExceeded = true; }
-      extName = this.name.split('.').pop();
-      if ($.inArray(extName, allowedExtension) == -1) { extError = true; }
+      if (this.size && max_file_size && this.size > parseInt(max_file_size)) { size_exceeded = true; }
+      ext_name = this.name.split('.').pop();
+      if ($.inArray(ext_name, allowed_extension) == -1) { extError = true; }
     });
 
-    if (sizeExceeded) show_error(maxExceededMessage);
-    if (extError) show_error(extErrorMessage);
+    if (size_exceeded) show_error(max_exceeded_message);
+    if (extError) show_error(ext_error_message);
 
     function show_error(message){
       input.addClass('is-invalid');
@@ -98,7 +98,7 @@ $(document).ready(function() {
       $(':input[type="submit"]').prop('disabled', true);
     }
 
-    function hide_erorrs() {
+    function hide_errors() {
       input.removeClass('is-invalid');
       $('.error-msg').hide();
       $(':input[type="submit"]').prop('disabled', false);
