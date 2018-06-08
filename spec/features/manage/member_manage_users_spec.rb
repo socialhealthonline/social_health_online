@@ -50,9 +50,7 @@ RSpec.describe 'Send invites users and manage them' do
       expect(page).to have_content('My Community Users')
       visit edit_manage_user_path(user_2)
       expect(page).to have_content(user_2.email)
-      # page.should have_css("#user_user_status[disabled]") 
       find_field 'user_user_status', disabled: true
-      # field_labeled("", disabled: true)
     end
   end
 end

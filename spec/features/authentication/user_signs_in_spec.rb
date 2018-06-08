@@ -76,6 +76,14 @@ RSpec.describe 'User signs in' do
       expect(page).to have_content('Your account has been disabled')
       expect(current_path).to eq '/sessions'
     end
-  end
 
+    it 'with disabled user account' do
+      user.update_attribute(:user_status, :disabled)
+      fill_in 'email', with: user.email
+      fill_in 'password', with: user.password
+      click_button 'Sign In'
+      expect(page).to have_content('Your account has been disabled')
+      expect(current_path).to eq '/sessions'
+    end
+  end
 end
