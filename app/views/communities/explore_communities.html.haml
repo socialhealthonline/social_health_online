@@ -24,8 +24,6 @@
               %th
               %th State
               %th
-              %th ZIP Code
-              %th
           %tbody
           - @communities.each do |community|
             %tr.bg-white
@@ -34,8 +32,6 @@
               %td= community.city
               %td
               %td= community.state
-              %td
-              %td= community.zip
               %td
             %tr.table-divider
         %div.container.pagination.justify-content-center
