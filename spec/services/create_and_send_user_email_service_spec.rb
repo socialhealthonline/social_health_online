@@ -4,8 +4,7 @@ RSpec.describe CreateAndSendUserEmailService do
   let!(:user) { create(:user, member: create(:member)) }
 
   before do
-    @params = {}
-    (1..5).map { |i| @params["email_#{i}"] = "user#{i}@gmail.com" }
+    @params = (1..5).map { |i| ["email_#{i}", "user#{i}@gmail.com"] }.to_h
     @service = CreateAndSendUserEmailService.new(@params, user)
   end
 
