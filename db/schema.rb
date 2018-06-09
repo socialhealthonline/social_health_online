@@ -9,9 +9,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
 ActiveRecord::Schema.define(version: 2018_05_31_121929) do
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +25,12 @@ ActiveRecord::Schema.define(version: 2018_05_31_121929) do
     t.datetime "updated_at", null: false
     t.boolean "hide_info_on_locator", default: false
     t.integer "support_type", default: 0, null: false
+    t.string "contact_name"
+    t.string "contact_phone_extension"
+    t.string "contact_email"
+    t.string "support_notes"
+    t.datetime "date_added"
+    t.string "contact_phone"
   end
 
   create_table "announcements", force: :cascade do |t|
