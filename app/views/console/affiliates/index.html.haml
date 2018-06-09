@@ -1,6 +1,9 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
   %h1.h3.brand-primary Affiliates
   %div
+    = link_to export_csv_console_affiliates_path, class: 'btn btn-primary btn-export' do
+      Export CSV
+
     = link_to new_console_affiliate_path, class: 'btn btn-primary' do
       %i.fas.fa-plus-circle
       Add Affiliate

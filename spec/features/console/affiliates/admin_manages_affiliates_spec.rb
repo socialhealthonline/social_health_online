@@ -1,5 +1,10 @@
 require 'rails_helper'
 
+# helper class to get access to csv_affiliate_list
+class AffiliateCsvHelper
+  include AffiliateHelper
+end
+
 RSpec.describe 'Admin mananges affiliates' do
 
   let!(:admin) { create(:user, :admin) }
@@ -66,6 +71,24 @@ RSpec.describe 'Admin mananges affiliates' do
     it 'successfully' do
       expect { click_link "delete_affiliate_#{affiliate.id}" }.to change{ Affiliate.count }.by(-1)
       expect(current_path).to eq console_affiliates_path
+    end
+  end
+
+  describe 'export affiliates' do
+    let!(:affiliate) { create(:affiliate) }
+
+    before do
+      sign_in admin
+      visit console_affiliates_path
+    end
+
+    it "as csv" do
+      click_link 'Export CSV'
+
+      expected_csv = file_fixture('affiliate.csv').read
+      generated_csv = AffiliateCsvHelper.new.csv_affilialate_list
+
+      expect(generated_csv).to eq expected_csv
     end
   end
 

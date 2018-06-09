@@ -88,7 +88,11 @@ Rails.application.routes.draw do
   get "console" => "console#index"
   namespace :console do
     root to: "console#index", as: "root"
-    resources :affiliates
+    resources :affiliates do
+      collection do
+        get 'export_csv'
+      end
+    end
     resources :news
     resources :notifications
     resources :members do
