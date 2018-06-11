@@ -9,8 +9,20 @@
 %p= @affiliate.full_address
 
 %p
+  %strong Contact Name:
+  = @affiliate.contact_name
+
+%p
+  %strong Contact Email:
+  = @affiliate.contact_email
+
+%p
   %strong Phone:
   = number_to_phone @affiliate.phone
+
+%p
+  %strong Phone Extension:
+  = @affiliate.contact_phone_extension
 
 %p
   %strong Website:
@@ -19,6 +31,10 @@
 %p
   %strong Support Type:
   = Affiliate::SUPPORT_TYPES[@affiliate.support_type]
+
+%p
+  %strong Date Added:
+  = @affiliate.date_added
 
 %p
   %strong Hide Info - Pending Approval:

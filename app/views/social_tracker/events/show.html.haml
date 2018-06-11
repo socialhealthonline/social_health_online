@@ -6,33 +6,33 @@
       .row
         .col-lg-6
           %p
-            %strong Event Date
+            %strong Event Date:
           %p= short_date(@log.event_date)
           %p
-            %strong Event State
+            %strong Event State:
           %p= US_STATES.key(@log.state)
           %p
-            %strong Event City
+            %strong Event City:
           %p= @log.city
           %p
-            %strong Event Type
+            %strong Event Type:
           %p
             - @log.event_types.each_with_index do |type, i|
               %p= type.name
         .col-lg-6
           %p
-            %strong Event Source
+            %strong Event Source:
           %p= SocialEventLog::EVENT_SOURCES.key(@log.source)
           %p
-            %strong Event Category
+            %strong Event Category:
           %p
             - @log.event_categories.each_with_index do |category, i|
               %p= category.name
           %p
-            %strong Event Location
+            %strong Event Location:
           %p= @log.venue
           %p
-            %strong Event Rating
+            %strong Event Rating:
           %p= RATINGS.key(@log.rating)
       %p.pt-3
         = link_to social_tracker_history_path, class: 'btn btn-outline-primary' do
