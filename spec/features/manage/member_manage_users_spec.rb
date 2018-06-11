@@ -12,10 +12,12 @@ RSpec.describe 'Send invites users and manage them' do
   end
 
   context 'successfully invite users' do
-    it 'fills up the form with uniq emails' do
+    it 'visit manage users page' do
       expect(page).to have_content('My Community Users')
+    end
+
+    it 'fills up the form with uniq emails' do
       visit new_manage_user_path
-      expect(page).to have_content('Add Users')
       fill_in 'email_1', with: 'email1@gmail.com'
       fill_in 'email_2', with: 'email2@gmail.com'
       click_button 'Send'
@@ -24,10 +26,12 @@ RSpec.describe 'Send invites users and manage them' do
   end
 
   context 'unsuccessfully invite users' do
-    it 'fills up the form with existed emails' do
+    it 'visit manage users page' do
       expect(page).to have_content('My Community Users')
+    end
+
+    it 'fills up the form with existed emails' do
       visit new_manage_user_path
-      expect(page).to have_content('Add Users')
       fill_in 'email_1', with: 'email1@gmail.com'
       fill_in 'email_2', with: 'email2@gmail.com'
       fill_in 'email_3', with: 'email2@gmail.com'
@@ -39,18 +43,21 @@ RSpec.describe 'Send invites users and manage them' do
   context 'manage users' do
     it 'successfully change user status' do
       expect(page).to have_content('My Community Users')
+    end
+
+    it 'update profile' do
       visit edit_manage_user_path(user)
-      expect(page).to have_content(user.email)
-      select('disabled', from: 'user_user_status')
       click_button 'Update'
       expect(page).to have_content('Profile was successfully updated!')
     end
 
     it "manage can't change user status" do
       expect(page).to have_content('My Community Users')
+    end
+
+    it "the page contains disabled select field" do
       visit edit_manage_user_path(user_2)
-      expect(page).to have_content(user_2.email)
-      find_field 'user_user_status', disabled: true
+      expect(page).to have_field('user_user_status', disabled: true)
     end
   end
 end

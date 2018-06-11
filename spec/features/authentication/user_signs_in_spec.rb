@@ -83,7 +83,6 @@ RSpec.describe 'User signs in' do
       fill_in 'password', with: user.password
       click_button 'Sign In'
       expect(page).to have_content('Your account has been disabled')
-      expect(current_path).to eq '/sessions'
     end
   end
 end

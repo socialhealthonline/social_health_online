@@ -4,7 +4,7 @@ class Manage::UsersController < ApplicationController
   before_action :set_service_capacity, only: [:index, :new]
 
   def index
-    @users = User.where(member_id: authenticated_user.member.id).page(params[:page])
+    @users = User.where(member_id: authenticated_user.member.id).page(params[:page]).decorate
     @users_count = User.all.count
   end
 
@@ -76,7 +76,7 @@ class Manage::UsersController < ApplicationController
     end
 
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find(params[:id]).decorate
     end
 
     def set_service_capacity

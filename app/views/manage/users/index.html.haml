@@ -50,10 +50,7 @@
               %td= truncate(user.email)
               %td= user.user_status.capitalize
               %td
-                - if user.manager?
-                  %i.fa.fa-check
-                - else
-                  %strong X
+                = user.user_manager?
               %td
                 = link_to edit_manage_user_path(user), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
                   %i.far.fa-edit

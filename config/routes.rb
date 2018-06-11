@@ -32,11 +32,7 @@ Rails.application.routes.draw do
   delete "signout" => "sessions#destroy", as: "signout"
 
   # Authentication
-  resources :sessions, only: [:new, :create, :destroy] do
-    member do
-      get :confirm_email
-    end
-  end
+  resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
 
   # My profile

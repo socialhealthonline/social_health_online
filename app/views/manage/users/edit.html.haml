@@ -108,11 +108,12 @@
           .col
             .form-group
               %label(for="user_status") User Status
-              - if @user.pending?
-                = f.select :user_status, ['Pending'], { include_blank: false }, { class: "form-control custom-select #{form_error_class(@user, :user_status)}", disabled: true }
-              - else
-                = f.select :user_status, ['activated', 'disabled'] , { include_blank: false }, { class: "form-control custom-select #{form_error_class(@user, :user_status)}" }
-                = model_error_display(@user, :user_status)
+              = @user.user_pending?(f)
+              = model_error_display(@user, :user_status)
+              -# - if @user.pending?
+              -#   = f.select :user_status, ['Pending'], { include_blank: false }, { class: "form-control custom-select #{form_error_class(@user, :user_status)}", disabled: true }
+              -# - else
+              -#   = f.select :user_status, ['activated', 'disabled'] , { include_blank: false }, { class: "form-control custom-select #{form_error_class(@user, :user_status)}" }
         .row
           .col
             .form-group

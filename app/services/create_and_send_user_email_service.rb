@@ -2,13 +2,13 @@ class CreateAndSendUserEmailService
   def initialize(params, authenticated_user)
     @params = params
     @authenticated_user = authenticated_user
-    @users = []
+    @exists_users = []
   end
 
   def call
     @params.each do |k, email|
       if User.exists?(email: email)
-        @users << "User with email: #{email} already exists"
+        @exists_users << "User with email: #{email} already exists"
       else
         User.new.tap do |u|
           u.email = email
@@ -16,10 +16,10 @@ class CreateAndSendUserEmailService
           u.member_id = @authenticated_user.member.id
           u.save!(validate: false)
           UserMailer.registration_confirmation(u).deliver
+          HiddenField.create(user_id: u.id)
         end
-        HiddenField.create(user_id: User.last.id)
       end
     end
-    @users
+    @exists_users
   end
 end

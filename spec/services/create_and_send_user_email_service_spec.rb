@@ -10,8 +10,11 @@ RSpec.describe CreateAndSendUserEmailService do
 
   describe '#call' do
     context 'given new users' do
-      it 'creates and sends emails' do
-        expect { @service.call }.to change { User.count }.by(5)
+      before do
+        @service.call
+      end
+
+      it 'sends emails' do
         expect(ActionMailer::Base.deliveries.count).to eq(5)
       end
     end
@@ -24,6 +27,9 @@ RSpec.describe CreateAndSendUserEmailService do
 
       it 'returns an array with already existed user emails' do
         expect(@existed_users).not_to be_empty
+      end
+
+      it 'not change email count' do
         expect(ActionMailer::Base.deliveries.count).to eq(5)
       end
     end
