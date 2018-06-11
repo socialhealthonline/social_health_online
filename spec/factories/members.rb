@@ -9,6 +9,6 @@ FactoryBot.define do
     contact_email 'tom@example.com'
     contact_phone '555-555-5555'
     phone '555-555-5555'
-    service_capacity 1
+    service_capacity 100
   end
 end

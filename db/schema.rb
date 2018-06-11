@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2018_06_04_115737) do
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -195,11 +194,11 @@ ActiveRecord::Schema.define(version: 2018_06_04_115737) do
     t.string "url"
     t.integer "primary_manager_id"
     t.string "events_url"
-    t.boolean "hide_info_on_locator", default: false
     t.string "slug"
     t.datetime "welcome_kit_date"
     t.string "phone"
     t.string "contact_phone_extension"
+    t.boolean "hide_info_on_locator", default: false
     t.index ["slug"], name: "index_members_on_slug", unique: true
   end
 
@@ -256,7 +255,6 @@ ActiveRecord::Schema.define(version: 2018_06_04_115737) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", null: false
     t.string "email", null: false
     t.boolean "enabled", default: true, null: false
     t.boolean "admin", default: false, null: false
@@ -269,14 +267,6 @@ ActiveRecord::Schema.define(version: 2018_06_04_115737) do
     t.datetime "updated_at", null: false
     t.integer "member_id"
     t.string "display_name"
-    t.string "address", null: false
-    t.string "city", null: false
-    t.string "state", null: false
-    t.string "zip", null: false
-    t.string "phone", null: false
-    t.string "gender", null: false
-    t.string "ethnicity", null: false
-    t.date "birthdate", null: false
     t.string "time_zone", default: "Central Time (US & Canada)", null: false
     t.boolean "manager", default: false, null: false
     t.string "relationship_status"
@@ -287,6 +277,17 @@ ActiveRecord::Schema.define(version: 2018_06_04_115737) do
     t.text "pet_peeves"
     t.text "bio"
     t.boolean "receive_email", default: false
+    t.integer "user_status", default: 0
+    t.date "first_login"
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "phone"
+    t.string "gender"
+    t.string "ethnicity"
+    t.date "birthdate"
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["enabled"], name: "index_users_on_enabled"
