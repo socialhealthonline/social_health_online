@@ -2,6 +2,11 @@
 
 require 'rails_helper'
 
+# helper class to get access to csv_member_list
+class MemberCsvHelper
+  include MemberHelper
+end
+
 RSpec.describe 'Admin manages member accounts' do
   let!(:admin) { create(:user, :admin) }
 
@@ -95,6 +100,27 @@ RSpec.describe 'Admin manages member accounts' do
       click_link 'Member Name'
 
       expect(page).to have_selector('table tbody tr:nth-child(1) th', text: '1. Member6')
+    end
+  end
+
+  describe 'export members' do
+    Member.all.destroy_all
+    FactoryBot.reload
+
+    let!(:members) { create_list(:member, 1) }
+
+    before do
+      sign_in admin
+      visit console_members_path
+    end
+
+    it "as csv" do
+      click_link 'Export CSV'
+
+      expected_csv = file_fixture('members.csv').read
+      generated_csv = MemberCsvHelper.new.csv_member_list
+
+      expect(generated_csv).to eq expected_csv
     end
   end
 end

@@ -43,6 +43,11 @@ class Console::MembersController < ConsoleController
     redirect_to console_members_url, success: 'The Member was successfully deleted!'
   end
 
+  def export_csv
+    csv = helpers.csv_member_list
+    send_data csv, filename: "members-#{Date.today}.csv"
+  end
+
   private
 
   def member_params
