@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 2018_06_04_115737) do
     t.string "support_notes"
     t.datetime "date_added"
     t.string "contact_phone"
-<<<<<<< HEAD
   end
 
   create_table "announcements", force: :cascade do |t|
@@ -64,8 +63,6 @@ ActiveRecord::Schema.define(version: 2018_06_04_115737) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_announcements_on_member_id"
-=======
->>>>>>> Add member profile fields
   end
 
   create_table "event_categories", force: :cascade do |t|
