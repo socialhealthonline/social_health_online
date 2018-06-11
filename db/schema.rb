@@ -195,8 +195,8 @@ ActiveRecord::Schema.define(version: 2018_06_04_111226) do
     t.string "url"
     t.integer "primary_manager_id"
     t.string "events_url"
-    t.boolean "hide_info_on_locator", default: false
     t.string "slug"
+    t.boolean "hide_info_on_locator", default: false
     t.index ["slug"], name: "index_members_on_slug", unique: true
   end
 
