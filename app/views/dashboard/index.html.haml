@@ -23,9 +23,6 @@
               %th Event Title
               %th Event Type
               %th Event Date
-              %th Event Location
-              %th Event City
-              %th Event State
               %th RSVP
           %tbody
           - @events.each do |event|
@@ -33,8 +30,5 @@
               %td= link_to event.title, community_event_path(authenticated_user.member, event)
               %td= event.event_type
               %td= time_in_cdt(event.start_at, '%Y-%m-%d %H:%M %Z')
-              %td= event.location
-              %td= event.city
-              %td= event.state
               %td= dashboard_events_status(event.status)
             %tr.table-divider
