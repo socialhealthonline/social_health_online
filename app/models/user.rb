@@ -1,9 +1,9 @@
 class User < ApplicationRecord
-
   ETHNICITY = ['Black', 'White', 'Hispanic', 'Asian', 'American Indian', 'Pacific Islander', 'Other']
   GENDER = ['Male', 'Female', 'Other']
   RELATIONSHIP_STATUS = ['Single', 'In a relationship', 'Married', 'Other']
   EDUCATION_LEVEL = ['High School', 'College', 'Advanced Graduate', 'Other']
+  enum user_status: %i[pending activated disabled]
 
   belongs_to :member, inverse_of: :users
   has_many :social_event_logs
@@ -27,8 +27,6 @@ class User < ApplicationRecord
 
   before_save { |user| user.email.downcase! }
   before_validation { |user| user.phone.gsub!(/\D/,'') if user.phone? }
-  after_create :create_hidden_fields
-
   accepts_nested_attributes_for :hidden_field
 
   scope :all_except, ->(user) { where.not(id: user) }
@@ -53,7 +51,9 @@ class User < ApplicationRecord
   end
 
   def erase_password_reset_fields
-    self.update(password_reset_token: nil, password_reset_sent_at: nil)
+    self.password_reset_token = nil
+    self.password_reset_sent_at = nil
+    self.save(validate: false)
   end
 
   def set_random_password
@@ -82,9 +82,5 @@ class User < ApplicationRecord
   def hidden_field_attributes=(attrs)
     attrs.except(:id).each { |k, v| attrs[k] = ActiveRecord::Type::Boolean.new.cast(v) }
     super(attrs)
-  end
-
-  def create_hidden_fields
-    HiddenField.create(user_id: self.id)
   end
 end
