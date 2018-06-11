@@ -108,6 +108,19 @@ class Member < ApplicationRecord
     end
   end
 
+  def status
+    active_users = User.where(member_id: self.id)
+                       .where.not(last_sign_in_at: 'nil')
+
+    return 'Suspended' if suspended
+
+    if active_users.present?
+      return 'Active'
+    else
+      return 'Passive'
+    end
+  end
+
   private
 
   def add_protocol_to_url
