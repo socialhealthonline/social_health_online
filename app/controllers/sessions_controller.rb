@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-
+  skip_before_action :pending_user?
+  
   def new
     redirect_to dashboard_url if authenticated_user
   end

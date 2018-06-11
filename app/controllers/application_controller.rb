@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   helper_method :authenticated_user, :mailbox, :conversation
   add_flash_types :error, :success, :info, :warning
+  before_action :disabled_user?
+  before_action :pending_user?
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
@@ -12,6 +14,18 @@ class ApplicationController < ActionController::Base
 
   def authenticated_user
     @authenticated_user ||= User.find_by(auth_token: session[:auth_token]) if session[:auth_token]
+  end
+
+  def disabled_user?
+    if authenticated_user&.disabled?
+      session[:auth_token] = nil
+    end
+  end
+  
+  def pending_user?
+    if authenticated_user&.pending?
+      redirect_to profile_url, warning: 'You should first complete you profile!'
+    end
   end
 
   def require_authentication

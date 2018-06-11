@@ -63,6 +63,7 @@ Rails.application.routes.draw do
     end
     resources :events
     resources :announcements
+    resources :users
   end
 
   namespace :social_tracker do

@@ -6,11 +6,11 @@ class SendPasswordResetRequest
 
   def call
     # generate a new auth token
-    @user.regenerate_password_reset_token
+    @user.password_reset_token = SecureRandom.hex
+    @user.save(validate: false)
     # update the password reset sent_at
     @user.touch(:password_reset_sent_at)
     # deliver the email
-    UserMailer.password_reset(@user).deliver_now
+    UserMailer.password_reset(@user).deliver
   end
-
 end
