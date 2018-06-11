@@ -44,7 +44,7 @@
 .row
   .col-lg-4
     .form-group
-      %label(for="member_service_capacity") Service Capacity
+      %label(for="member_service_capacity") User Seats
       = f.text_field :service_capacity, class: "form-control #{form_error_class(@member, :service_capacity)}"
       = model_error_display(@member, :service_capacity)
   .col-lg-4

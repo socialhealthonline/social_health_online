@@ -3,7 +3,8 @@ class Affiliate < ApplicationRecord
 
   enum support_types: SUPPORT_TYPES
 
-  validates :name, :address, :city, :state, :zip, :support_type, presence: true
+  validates :name,:address, :city, :state, :zip, :support_type, :contact_phone,
+            :contact_email, :contact_name, :date_added, presence: true
   validates_uniqueness_of :name, case_sensitive: false
   validates :state, inclusion: US_STATES.values
   validates :support_type, inclusion: Affiliate.support_types.values

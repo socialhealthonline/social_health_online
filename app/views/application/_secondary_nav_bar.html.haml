@@ -21,6 +21,7 @@
               Local Activities
             .dropdown-menu.dropdown-menu-right{'aria-labelledby' => 'communitiesDropdownMenuLink'}
               = link_to matchmaker_path, class: 'dropdown-item' do
+                %i.fas.fa-comments
                 Matchmaker
           %li.nav-item.dropdown
             %a.nav-link.dropdown-toggle#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
@@ -42,3 +43,11 @@
               = link_to social_fitness_history_path, class: 'dropdown-item' do
                 %i.fas.fa-history
                 History
+              = link_to social_fitness_plan_path, class: 'dropdown-item' do
+                %i.fas.fa-list-alt
+                Fitness Plan            
+              = link_to social_fitness_resources_path, class: 'dropdown-item' do
+                %i.fas.fa-book
+                Resources
+          %li.nav-item= link_to 'Media Center', media_center_path, class: 'nav-link'
+        

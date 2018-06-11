@@ -24,6 +24,12 @@ class SocialFitness::FitnessController < ApplicationController
     @log = authenticated_user.social_fitness_logs.find(params[:id])
   end
 
+  def resources
+  end
+
+  def plan
+  end
+
   private
 
   def log_params

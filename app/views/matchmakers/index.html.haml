@@ -31,9 +31,8 @@
             %tr
               %td
               %td
-                %a(class="matchmaker_popover" 
-                   data-toggle="popover"
-                   data-content= "#{render 'links_in_popover',  user: user }")
+                %a{ class: 'matchmaker_popover c-pointer',
+                    data: { toggle: 'popover', content: "#{render 'links_in_popover',  user: user }" } }
                   =user.name
               %td
               %td= user.state

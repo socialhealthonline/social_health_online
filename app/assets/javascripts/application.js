@@ -38,10 +38,14 @@ $(document).ready(function() {
     html:true
   });
 
-  $('.resipients-select').select2({
+  var resipients_select = $('.resipients-select');
+  resipients_select.select2({
     theme: 'bootstrap',
     minimumInputLength: 1
-  })
+  });
+
+  resipients_select.val(gon.recipient_id);
+  resipients_select.trigger('change');
 
   $(".events-flash").click(function(){
     $('#helper-method').html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>"
@@ -65,6 +69,42 @@ $(document).ready(function() {
   }
 
   communityTabsOnLoad();
+
+  $('#member_logo').change(function(){
+    var max_exceeded_message = 'This file exceeds the maximum allowed file size (3 MB)';
+    var ext_error_message = 'Only image file with extension: .jpg, .jpeg, .gif or .png is allowed';
+    var allowed_extension = ["jpg", 'jpeg', 'gif', 'png'];
+
+    var input = $(this);
+    var ext_name;
+    var max_file_size = $(this).data('max-file-size');
+    var size_exceeded = false;
+    var extError = false;
+
+    hide_errors();
+
+    $.each(this.files, function() {
+      if (this.size && max_file_size && this.size > parseInt(max_file_size)) { size_exceeded = true; }
+      ext_name = this.name.split('.').pop();
+      if ($.inArray(ext_name, allowed_extension) == -1) { extError = true; }
+    });
+
+    if (size_exceeded) show_error(max_exceeded_message);
+    if (extError) show_error(ext_error_message);
+
+    function show_error(message){
+      input.addClass('is-invalid');
+      $('#file-field').append('<small class="text-danger error-msg">' + message + '</small>');
+      $(':input[type="submit"]').prop('disabled', true);
+    }
+
+    function hide_errors() {
+      input.removeClass('is-invalid');
+      $('.error-msg').hide();
+      $(':input[type="submit"]').prop('disabled', false);
+    }
+  });
+
 });
 
 var US_STATES = {

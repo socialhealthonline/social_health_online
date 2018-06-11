@@ -44,25 +44,29 @@
         quickly at the Users' convenience to minimize the time they spend online supporting the development of their
         social lives offline.
 
-  .row
-    .col-md-6.d-none.d-md-block
-      .card
-        %img.card-img-top.img-responsive{ src: "https://placekitten.com/600/400"}
-        .card-body
-          %p.card-text This is a cat that's only visible on larger screens!
-    .col-md-6.d-none.d-md-block
-      .card
-        %img.card-img-top.img-responsive{ src: "https://placekitten.com/600/400"}
-        .card-body
-          %p.card-text This is a cat that's only visible on larger screens!
-
-    .col-sm-12.d-md-none
-      .card
-        %img.card-img-top.img-responsive{ src: "https://placekitten.com/600/500"}
-        .card-body
-          %p.card-text This is a cat that's only visible on smaller screens!
-    .col-sm-12.d-md-none
-      .card
-        %img.card-img-top.img-responsive{ src: "https://placekitten.com/600/500"}
-        .card-body
-          %p.card-text This is a cat that's only visible on smaller screens!
+.container
+  .row.justify-content-center
+    .col-lg-4
+      .card.pricing.card-lg
+        .card-header.border
+          %h3 Members
+        .card-body.brand-primary.border
+          %i.fas.fa-building.fa-5x
+        .card-footer.text-center.border
+          Members are organizations that register with us to host and manage Communities of Users in the service.
+    .col-lg-4
+      .card.pricing.card-lg
+        .card-header.border
+          %h3 Users
+        .card-body.brand-primary.border
+          %i.fas.fa-user-circle.fa-5x
+        .card-footer.text-center.border
+          Users are the people who utilize the service to share, participate in, and log social events.
+    .col-lg-4
+      .card.pricing.card-lg
+        .card-header.border
+          %h3 Affiliates
+        .card-body.brand-primary.pb-4.border
+          %i.fas.fa-shopping-basket.fa-5x
+        .card-footer.text-center.border
+          Affiliates are organizations that link their event information and/or provide discounts to Users.

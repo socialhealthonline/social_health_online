@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "join" => "public#join"
   get "service" => "public#service"
   get "service_highlights" => "public#service_highlights"
+  get "service_screenshots" => "public#service_screenshots"
   get "membership" => "public#membership"
   get "affiliate_locator" => "public#affiliate_locator"
   get "affiliates" => "public#affiliates"
@@ -77,6 +78,8 @@ Rails.application.routes.draw do
     post "log" => "fitness#create"
     get "history" => "fitness#index"
     get "history/:id" => "fitness#show"
+    get "resources" => "fitness#resources"
+    get "plan" => "fitness#plan"
   end
 
   # Dashboard
@@ -86,7 +89,11 @@ Rails.application.routes.draw do
   get "console" => "console#index"
   namespace :console do
     root to: "console#index", as: "root"
-    resources :affiliates
+    resources :affiliates do
+      collection do
+        get 'export_csv'
+      end
+    end
     resources :news
     resources :notifications
     resources :members do
@@ -122,4 +129,8 @@ Rails.application.routes.draw do
     end
     post :mark_as_deleted, on: :collection
   end
+
+  # Media Center
+  get "media_center" => "media_center#index"
+  
 end

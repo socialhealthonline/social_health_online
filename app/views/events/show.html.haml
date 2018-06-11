@@ -40,16 +40,18 @@
           %thead.mdb-color.lighten-4
             %tr
               %th
-              %th.th-lg Name
+              %th.th-lg Display Name
               %th.th-lg.text-center RSVP
           %tbody
           - @event.rsvps.each do |rsvp|
             %tr
               %td
-              %td= rsvp.user.name
+              %td= rsvp.user.display_name
               %td.text-center= rsvp&.rsvp_status.capitalize
 
-      %p.mb-3
+      %div.mb-3        
         = link_to community_path(@member.slug), class: 'btn btn-outline-secondary' do
           %i.fas.fa-arrow-alt-circle-left
           Back
+
+

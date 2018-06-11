@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 
 gem 'active_model_serializers'
+gem "aws-sdk-s3", require: false
 gem 'bcrypt'
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 4.1.0'
@@ -27,6 +28,7 @@ gem 'nested_form_fields'
 gem 'csv'
 gem 'select2-rails'
 gem 'draper'
+gem 'image_processing'
 
 group :development, :test do
   gem 'awesome_print'

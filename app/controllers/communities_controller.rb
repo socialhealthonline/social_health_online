@@ -2,7 +2,7 @@ class CommunitiesController < ApplicationController
   before_action :require_authentication
 
   def show
-    @member = Member.friendly.find params[:id]
+    @member = Member.friendly.find(params[:id]).decorate
     @announcements = @member.announcements.page(params[:page])
   end
 

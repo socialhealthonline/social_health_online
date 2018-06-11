@@ -42,6 +42,11 @@ class Console::AffiliatesController < ConsoleController
     redirect_to console_affiliates_url, success: 'The Affiliate was successfully deleted!'
   end
 
+  def export_csv
+    csv = helpers.csv_affilialate_list
+    send_data csv, filename: "affiliates-#{Date.today}.csv"
+  end
+
   private
 
   def affiliate_params
@@ -54,7 +59,13 @@ class Console::AffiliatesController < ConsoleController
       :phone,
       :url,
       :hide_info_on_locator,
-      :support_type
+      :support_type,
+      :contact_name,
+      :contact_phone,
+      :contact_phone_extension,
+      :contact_email,
+      :support_notes,
+      :date_added
     )
   end
 

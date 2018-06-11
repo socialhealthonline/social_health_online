@@ -43,10 +43,6 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
   display: table-cell;
 }
 
-body {
-  // padding-top: 66px;
-}
-
 .brand-primary {
   color: $brand-primary;
 }
@@ -59,21 +55,9 @@ body {
   }
 }
 
-// #main-nav {
-//   box-shadow: 0 2px 4px rgba(0,0,0,0.24);
-// }
-
 #main-nav .navbar-nav .nav-link {
-  // color: $brand-primary;
-  // &:hover {
-  //   color: darken( $brand-primary, 15% )
-  // }
   font-size: 1.2em;
 }
-
-// #main-nav .navbar-nav .active > .nav-link {
-//   color: darken( $brand-primary, 15% )
-// }
 
 #hero {
   height: 500px;
@@ -342,6 +326,18 @@ body {
   text-align: center;
 }
 
+.c-pointer {
+  cursor: pointer;
+}
+
+#community-profile-modal strong{
+  font-weight: 500;
+}
+
+.btn-export {
+  margin-right: 5px;
+}
+
 #scroll-box-announcements {
   height: 265px;
   overflow: auto;
@@ -368,8 +364,17 @@ body {
 }
 
 #scroll-box-announcements div.announcements-text {
-    font-size: 13px;
-    word-wrap: break-word;
+  font-size: 13px;
+  word-wrap: break-word;
+}
+
+.events-legend-container {
+  margin-top: -50px;
+}
+
+.event-legend-scroll {
+  height: 200px !important;
+  width: 100% !important;
 }
 
 #scroll-box-users {
