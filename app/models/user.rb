@@ -83,10 +83,4 @@ class User < ApplicationRecord
     attrs.except(:id).each { |k, v| attrs[k] = ActiveRecord::Type::Boolean.new.cast(v) }
     super(attrs)
   end
-
-  def validate_password(user_password)
-    User.validators_on(:password).each do |validator|
-      validator.validate_each(self, :password, user_password)
-    end
-  end
 end
