@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2018_06_07_104521) do
 
   # These are extensions that must be enabled in order to support this database
@@ -196,6 +197,9 @@ ActiveRecord::Schema.define(version: 2018_06_07_104521) do
     t.integer "primary_manager_id"
     t.string "events_url"
     t.string "slug"
+    t.datetime "welcome_kit_date"
+    t.string "phone"
+    t.string "contact_phone_extension"
     t.boolean "hide_info_on_locator", default: false
     t.index ["slug"], name: "index_members_on_slug", unique: true
   end

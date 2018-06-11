@@ -97,6 +97,9 @@ Rails.application.routes.draw do
     resources :news
     resources :notifications
     resources :members do
+      collection do
+        get 'export_csv'
+      end
       resources :users
     end
     resources :users, path: :admins, as: :admins, controller: :admins
