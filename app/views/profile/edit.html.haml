@@ -62,7 +62,7 @@
                 = model_error_display(@user, :state)
                 %div.float-right
                   %label(for="user_state") Hide Info
-                  = h.check_box :state, { checked: @user.hidden_field&.city }, 'true', 'false'
+                  = h.check_box :state, { checked: @user.hidden_field&.state }, 'true', 'false'
             .col
               .form-group
                 %label(for="user_zip") ZIP Code
