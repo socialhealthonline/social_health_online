@@ -17,6 +17,7 @@ class CreateAndSendUserEmailService
           u.save!(validate: false)
           UserMailer.registration_confirmation(u).deliver
         end
+        HiddenField.create(user_id: User.last.id)
       end
     end
     @users

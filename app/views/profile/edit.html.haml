@@ -14,7 +14,7 @@
                 = model_error_display(@user, :name)
                 %div.float-right
                   %label(for="user_name") Hide Info
-                  = h.check_box :name, { checked: @hidden_fields&.name }, 'true', 'false'
+                  = h.check_box :name, { checked: @user.hidden_field&.name }, 'true', 'false'
             .col
               .form-group
                 %label(for="user_display_name") Display Name
@@ -28,7 +28,7 @@
                 = model_error_display(@user, :email)
                 %div.float-right
                   %label(for="user_email") Hide Info
-                  = h.check_box :email, { checked: @hidden_fields&.email }, 'true', 'false'
+                  = h.check_box :email, { checked: @user.hidden_field&.email }, 'true', 'false'
             .col
               .form-group
                 %label(for="user_phone") Phone
@@ -36,7 +36,7 @@
                 = model_error_display(@user, :phone)
                 %div.float-right
                   %label(for="user_phone") Hide Info
-                  = h.check_box :phone, { checked: @hidden_fields&.phone }, 'true', 'false'
+                  = h.check_box :phone, { checked: @user.hidden_field&.phone }, 'true', 'false'
           .row
             .col
               .form-group
@@ -45,7 +45,7 @@
                 = model_error_display(@user, :address)
                 %div.float-right
                   %label(for="user_address") Hide Info
-                  = h.check_box :address, { checked: @hidden_fields&.address }, 'true', 'false'
+                  = h.check_box :address, { checked: @user.hidden_field&.address }, 'true', 'false'
             .col
               .form-group
                 %label(for="user_city") City
@@ -53,7 +53,7 @@
                 = model_error_display(@user, :city)
                 %div.float-right
                   %label(for="user_city") Hide Info
-                  = h.check_box :city, { checked: @hidden_fields&.city }, 'true', 'false'
+                  = h.check_box :city, { checked: @user.hidden_field&.city }, 'true', 'false'
           .row
             .col
               .form-group
@@ -62,7 +62,7 @@
                 = model_error_display(@user, :state)
                 %div.float-right
                   %label(for="user_state") Hide Info
-                  = h.check_box :state, { checked: @hidden_fields&.city }, 'true', 'false'
+                  = h.check_box :state, { checked: @user.hidden_field&.city }, 'true', 'false'
             .col
               .form-group
                 %label(for="user_zip") ZIP Code
@@ -70,7 +70,7 @@
                 = model_error_display(@user, :zip)
                 %div.float-right
                   %label(for="user_zip") Hide Info
-                  = h.check_box :zip, { checked: @hidden_fields&.zip }, 'true', 'false'
+                  = h.check_box :zip, { checked: @user.hidden_field&.zip }, 'true', 'false'
           .row
             .col
               .form-group
@@ -79,7 +79,7 @@
                 = model_error_display(@user, :time_zone)
                 %div.float-right
                   %label(for="user_time_zone") Hide Info
-                  = h.check_box :time_zone, { checked: @hidden_fields&.time_zone }, 'true', 'false'
+                  = h.check_box :time_zone, { checked: @user.hidden_field&.time_zone }, 'true', 'false'
             .col
               .form-group
                 %label(for="user_birthdate") Birthdate (YYYY-MM-DD)
@@ -87,7 +87,7 @@
                 = model_error_display(@user, :birthdate)
                 %div.float-right
                   %label(for="user_birthdate") Hide Info
-                  = h.check_box :birthdate, { checked: @hidden_fields&.birthdate }, 'true', 'false'
+                  = h.check_box :birthdate, { checked: @user.hidden_field&.birthdate }, 'true', 'false'
           .row
             .col
               .form-group
@@ -96,7 +96,7 @@
                 = model_error_display(@user, :gender)
                 %div.float-right
                   %label(for="user_gender") Hide Info
-                  = h.check_box :gender, { checked: @hidden_fields&.gender }, 'true', 'false'
+                  = h.check_box :gender, { checked: @user.hidden_field&.gender }, 'true', 'false'
             .col
               .form-group
                 %label(for="user_ethnicity") Race/Ethnicity
@@ -104,7 +104,7 @@
                 = model_error_display(@user, :ethnicity)
                 %div.float-right
                   %label(for="user_ethnicity") Hide Info
-                  = h.check_box :ethnicity, { checked: @hidden_fields&.ethnicity }, 'true', 'false'
+                  = h.check_box :ethnicity, { checked: @user.hidden_field&.ethnicity }, 'true', 'false'
           .row
             .col
               .form-group
@@ -149,7 +149,7 @@
             .col
               .form-group
                 .col-xs-2
-                  = h.check_box :matchmaker, { checked: @hidden_fields&.matchmaker }, 'true', 'false'
+                  = h.check_box :matchmaker, { checked: @user.hidden_field&.matchmaker }, 'true', 'false'
                   %label(for="user_invisible") Invisible in Matchmaker 
           %hr
           .row

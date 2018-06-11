@@ -19,13 +19,13 @@ class RecoverPassword
     elsif @params[:user][:password].blank?
       @user.errors.add(:password, "can't be blank")
       @blank_password = true
-    elsif @params[:user][:password].eql?(@params[:user][:password_confirmation])
-      create_user(@user)
+    else
+      @user.update(password: @params[:user][:password], password_confirmation: @params[:user][:password_confirmation])
+      return self if @user.errors.details[:password].present? || @user.errors.details[:password_confirmation].present?
+      update_user(@user)
       @user.erase_password_reset_fields
       @success = true
       @flash = 'Your password was successfully changed. Please sign in.'
-    else
-      @user.update(password: @params[:user][:password], password_confirmation: @params[:user][:password_confirmation])
     end
     self
   end
@@ -42,7 +42,7 @@ class RecoverPassword
     @blank_password
   end
 
-  def create_user(user)
+  def update_user(user)
     user.tap do |u|
       u.password = @params[:user][:password]
       u.password_confirmation = @params[:user][:password_confirmation]

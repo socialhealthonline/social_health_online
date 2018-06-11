@@ -4,7 +4,7 @@ class ProfileController < ApplicationController
 
   def edit
     @user = authenticated_user
-    @hidden_fields = HiddenField.find_or_create_by(user_id: @user.id)
+    HiddenField.find_or_create_by(user_id: @user.id) # move logic of creation then user is creating
   end
 
   def update

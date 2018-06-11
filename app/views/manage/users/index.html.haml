@@ -29,8 +29,8 @@
           = link_to new_manage_user_path, class: 'btn btn-primary' do
             %i.fas.fa-plus-circle
             Add Users
-  %h6.brand-primary Service Capacity 10
-  %h6.brand-primary= "Current User Total #{@users_count}" 
+  %h6.brand-primary= "Service Capacity: #{@service_capacity}"
+  %h6.brand-primary= "Current User Total: #{@users_count}" 
   .border-bottom
 
   - if @users.any?

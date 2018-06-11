@@ -41,7 +41,7 @@ RSpec.describe 'Send invites users and manage them' do
       expect(page).to have_content('My Community Users')
       visit edit_manage_user_path(user)
       expect(page).to have_content(user.email)
-      select('Disabled', from: 'user_user_status')
+      select('disabled', from: 'user_user_status')
       click_button 'Update'
       expect(page).to have_content('Profile was successfully updated!')
     end

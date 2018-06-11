@@ -27,8 +27,6 @@ class User < ApplicationRecord
 
   before_save { |user| user.email.downcase! }
   before_validation { |user| user.phone.gsub!(/\D/,'') if user.phone? }
-  after_create :create_hidden_fields
-
   accepts_nested_attributes_for :hidden_field
 
   scope :all_except, ->(user) { where.not(id: user) }
@@ -86,7 +84,9 @@ class User < ApplicationRecord
     super(attrs)
   end
 
-  def create_hidden_fields
-    HiddenField.create(user_id: self.id)
+  def validate_password(user_password)
+    User.validators_on(:password).each do |validator|
+      validator.validate_each(self, :password, user_password)
+    end
   end
 end

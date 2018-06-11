@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   
   def pending_user?
     if authenticated_user&.pending?
-      redirect_to profile_url and return
+      redirect_to profile_url, warning: 'You should first complete you profile!'
     end
   end
 

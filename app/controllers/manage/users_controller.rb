@@ -1,23 +1,26 @@
 class Manage::UsersController < ApplicationController
   before_action :require_manager
-  before_action :check_pending, only: [:update]
+  before_action :set_user, only: [:edit, :update]
+  before_action :set_service_capacity, only: [:index, :new]
 
   def index
     @users = User.where(member_id: authenticated_user.member.id).page(params[:page])
-    @users_count = @users.count
+    @users_count = User.all.count
   end
 
   def new; end
 
-  def edit
-    @user = User.find(params[:id])
-  end
+  def edit; end
 
   def update
-    update_user_params[:user_status].downcase!
-    @user.attributes = update_user_params
-    @user.save(validate: false)
-    redirect_to manage_users_path, success: 'Profile was successfully updated!'
+    @user_form = Manage::UserForm.new(@user, authenticated_user)
+    if @user_form.validate_fields(update_user_params).present?
+      flash.now[:error] = @user_form.error
+      render :edit
+    else
+      @user_form.submit(update_user_params)
+      redirect_to edit_manage_user_path(@user), success: 'Profile was successfully updated!'
+    end
   end
 
   def create
@@ -69,14 +72,14 @@ class Manage::UsersController < ApplicationController
     end
 
     def prepare_emails
-      (1..10).map { |i| "email_#{i}".to_sym}
+      (1..authenticated_user.member.service_capacity).map { |i| "email_#{i}".to_sym}
     end
 
-    def check_pending
+    def set_user
       @user = User.find(params[:id])
-      if @user.pending? && !update_user_params[:user_status].downcase.eql?('pending')
-        render :edit
-        flash[:error] = "You can't switch user status"
-      end
+    end
+
+    def set_service_capacity
+      @service_capacity = authenticated_user.member.service_capacity
     end
 end
