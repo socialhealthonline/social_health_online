@@ -117,7 +117,17 @@
               %p= paginate @announcements
         
     .tab-pane.fade#members(role="tabpanel" aria-labelledby="members-tab")
+      %div#profile_partial
       .container
+        .row.my-3
+          .col
+            #scroll-box-announcements
+              - @users.each do |user|
+                .mb-3
+                  %a{ class: 'matchmaker_popover c-pointer',
+                      data: { toggle: 'popover', content: "#{render 'matchmakers/links_in_popover',  user: user }" } }
+                    =user.name
+            %p= paginate @users
 
 #community-profile-modal.modal.fade{ 'aria-hidden' => 'true', 'aria-labelledby' => 'CommunityProfileModalLabel', role: 'dialog', tabindex: '-1' }
   .modal-dialog{ role: 'document' }
