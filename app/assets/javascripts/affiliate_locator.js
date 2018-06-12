@@ -18,7 +18,7 @@
       if (filterTypeSelected === "geo") {
         filterForm.innerHTML =
           '<div class="row"><div class="col-md-6">' +
-          '<input type="text" name="city" placeholder="City" id="city-input" class="form-control">' +
+          '<input type="text" name="city" placeholder="City" id="city-input" class="form-control text-center">' +
           "</div>" +
           '<div class="col-md-6">' +
           buildStatesSelector('state-input', 'state') +

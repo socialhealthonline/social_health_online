@@ -6,6 +6,6 @@ class MemberForLocatorSerializer < ActiveModel::Serializer
   # end
 
   def phone
-    object.contact_phone
+    object.phone
   end
 end

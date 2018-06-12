@@ -1,5 +1,13 @@
 %div#profile_partial
 .container
+  .row.pt-3
+    %h1.text-info Matchmaker
+
+  .row.pt-3
+    .col
+      %p.text-center.p-3{style: "border: 1px solid black;"}
+        Search for Users in your area to plan activites together.
+  
   .row.my-3
     .col
       = form_with url: [:matchmaker], method: :get, local: true do |f|
@@ -25,7 +33,6 @@
               %th
               %th City
               %th
-              %th ZIP Code
           %tbody
           - @users.each do |user|
             %tr
@@ -39,7 +46,6 @@
               %td
               %td= user.city
               %td
-              %td= user.zip
         %div.container.pagination.justify-content-center
           %p= paginate @users
         %br

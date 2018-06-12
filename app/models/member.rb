@@ -15,6 +15,7 @@ class Member < ApplicationRecord
   validates :contact_phone, format: {with: /\A\d{10}\z/, message: "must be 10 digits including area code"}
   validates_format_of :contact_email, with: /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
   validate :logo_validation
+  validates :phone, format: {with: /\A\d{10}\z/, message: "must be 10 digits including area code"}
 
   before_validation { |member| member.contact_phone.gsub!(/\D/, "") if member.contact_phone? }
   before_validation :add_protocol_to_url
@@ -117,7 +118,7 @@ class Member < ApplicationRecord
     if active_users.present?
       return 'Active'
     else
-      return 'Passive'
+      return 'Pending'
     end
   end
 
