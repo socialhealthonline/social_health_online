@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-describe 'Community Users List' do
+feature 'Community Users List', type: :feature, js: true do
   let(:member) { create(:member) }
-  let(:user) { create(:user, member: member) }
+  let(:user) { create(:user, member: member, name: 'First User') }
   let!(:user_2) { create(:user, member: member, name: 'Second User') }
-  let!(:user_3) { create(:user, member: member, name: 'Third User', user_status: :disabled) }
+  let!(:user_3) { create(:user, :disabled_status, member: member, name: 'Third User') }
 
   before do
     sign_in user
@@ -21,12 +21,7 @@ describe 'Community Users List' do
   context 'User is not on the page' do
     it 'Disabled user is not displayed on the community page' do
       click_link 'User List'
-      expect(page).to_not have_content user_3.name
-    end
-
-    it 'Current is not displayed on the community page' do
-      click_link 'User List'
-      expect(page).to_not have_content user.name
+      expect(page).to have_no_content user_3.name
     end
   end
 end

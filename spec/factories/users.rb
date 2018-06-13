@@ -28,6 +28,10 @@ FactoryBot.define do
     trait :disabled do
       enabled false
     end
+
+    trait :disabled_status do
+      user_status 'disabled'
+    end
   end
 
 end
