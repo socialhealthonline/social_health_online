@@ -1,5 +1,5 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
-  %h1.h3.brand-primary Admins
+  %h1.brand-primary Admins
   %div
     = link_to new_console_admin_path, class: 'btn btn-primary' do
       %i.fas.fa-plus-circle
@@ -13,6 +13,7 @@
           %th(scope="col") Name
           %th(scope="col") Display Name
           %th(scope="col") Email
+          %th(scope="col") Manager
           %th(scope="col") Last Sign In
           %th(scope="col")
       %tbody
@@ -21,6 +22,7 @@
             %th(scope="row")= link_to "#{i+1}. #{admin.name}", console_admin_path(admin)
             %td= admin.display_name
             %td= admin.email
+            %td= admin.manager? ? 'Yes' : 'No'
             %td= short_date admin.last_sign_in_at
             %td.w-10.text-right
               .dropdown

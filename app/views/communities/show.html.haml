@@ -4,9 +4,9 @@
       $('#calendar').fullCalendar({
         events: "/communities/#{@member.slug}/events.json",
         header: {
-          left: 'prev,next today',
-          center: 'title',
-          right: ''
+          left: 'prev',
+          center: 'title,today',
+          right: 'next'
         }
       });
     });
@@ -34,25 +34,25 @@
                     %i.fas.fa-database
                     Social Tracker
                   = link_to manage_announcements_path, class: 'dropdown-item' do
-                    %i.fas.fa.fa-bell.fa-w-14
+                    %i.fas.fa.fa-bullhorn
                     Announcements
                   = link_to manage_users_path, class: 'dropdown-item' do
                     %i.fas.fa-user-circle
-                    Manage Users
+                    Users
 
-      .col-12.col-md-8
+      .col-12.col-md-9
         %p
           = @member.logo
         - if @member.primary_manager.present?
           %p.c-pointer{ data: { toggle: 'modal', target: '#community-profile-modal' } }
-            %i.fas.fa-user
-            Primary Manager -
+            %i.fas.fa-id-card
+            Community Manager -
             = @member.primary_manager.name
         - if @member.url.present?
           %p
             = link_to @member.url, target: '_blank' do
               %i.fas.fa-external-link-alt
-              Website
+              Member Website
         - if @member.events_url.present?
           %p
             = link_to @member.events_url, target: '_blank' do
@@ -78,26 +78,7 @@
 %section.pt-2.pb-2
   .tab-content.pb-2
     .tab-pane.fade.show.active#events(role="tabpanel" aria-labelledby="events-tab")
-      .container.events-legend-container
-        .row.my-3
-          .col-12
-            #scroll-box.event-legend-scroll
-              %p.text-center
-                %strong
-                  Legend
-              .row
-                .col-lg-6.col-xl-6.col-md-6.col-sm-6.col-6
-                  .col-lg-12.col-xl-12.col-md-12.col-sm-12.col-12.text-center
-                    .bg-primary Public Event
-                    %br
-                      .mb-2.col-xl-12.col-lg-12
-                        %p Events are open to all users
-                .col-lg-6.col-xl-6.col-md-6.col-sm-6.col-6
-                  .col-lg-12.col-xl-12.col-md-12.col-sm-12.col-12.text-center
-                    .bg-danger Private Event
-                    %br
-                      .mb-2.col-xl-12.col-lg-12
-                        %p Events are only open to Users from this Community
+
       .container
         .row
           .col-12
@@ -119,6 +100,23 @@
     .tab-pane.fade#members(role="tabpanel" aria-labelledby="members-tab")
       .container
 
+  .container.events-legend-container
+    .row.my-3.justify-content-center
+      .col-7.border 
+        %p.text-center
+          %strong
+            Legend
+          .row.pb-2
+            .col-lg-6.col-xl-6.col-md-6.col-sm-6.col-6
+              .col-lg-12.col-xl-12.col-md-12.col-sm-12.col-12.text-center
+                .bg-primary.text-white
+                  Public Event
+            .col-lg-6.col-xl-6.col-md-6.col-sm-6.col-6
+              .col-lg-12.col-xl-12.col-md-12.col-sm-12.col-12.text-center
+                .bg-danger.text-white
+                  Private Event
+
+                        
 #community-profile-modal.modal.fade{ 'aria-hidden' => 'true', 'aria-labelledby' => 'CommunityProfileModalLabel', role: 'dialog', tabindex: '-1' }
   .modal-dialog{ role: 'document' }
     .modal-content
@@ -140,7 +138,7 @@
           %strong ZIP Code:
           = @member.zip
         %p
-          %strong Website:
+          %strong Member Website:
           = link_to @member.url, @member.url, target: '_blank'
         %p
           %strong Events Webpage:

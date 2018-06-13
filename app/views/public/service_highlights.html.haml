@@ -6,13 +6,15 @@
       %h1.text-info Service Highlights
 
   .card
-    #headingOne.card-header.text-center
-      %button.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-target" => "#collapseOne", "data-toggle" => "collapse"}
+    #headingOne.card-header.text-center.border
+      %button.btn-responsive.btn-outline-info.btn-link.mb-2{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-target" => "#collapseOne", "data-toggle" => "collapse"}
         %h3 Features
-      .text-center.brand-primary.mb-2
+      .text-center.brand-primary
         %i.fas.fa-clipboard-check.fa-5x
+      %button.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-target" => "#collapseOne", "data-toggle" => "collapse"}
+        %i.fas.fa-chevron-down.fa-2x          
     #collapseOne.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
-      .card-body
+      .card-body.border
         .row.justify-content-center
           .col-lg-4
             .card.pricing.card-lg
@@ -70,13 +72,15 @@
             satisfying experiences.
 
   .card
-    #headingTwo.card-header.text-center
-      %button.btn.btn-link{"aria-controls" => "collapsTwo", "aria-expanded" => "true", "data-target" => "#collapseTwo", "data-toggle" => "collapse"}
+    #headingTwo.card-header.text-center.border
+      %button.btn-responsive.btn-outline-info.btn-link.mb-2{"aria-controls" => "collapseTwo", "aria-expanded" => "true", "data-target" => "#collapseTwo", "data-toggle" => "collapse"}
         %h3 Benefits
-      .text-center.brand-primary.mb-2
+      .text-center.brand-primary
         %i.fas.fa-plus-square.fa-5x
+      %button.btn.btn-link{"aria-controls" => "collapseTwo", "aria-expanded" => "true", "data-target" => "#collapseTwo", "data-toggle" => "collapse"}
+        %i.fas.fa-chevron-down.fa-2x           
     #collapseTwo.collapse{"aria-labelledby" => "headingTwo", "data-parent" => "#accordion"}
-      .card-body
+      .card-body.border
         %ul
           %li.pb-1
             Enhanced personal satisfaction and health improvements will result for Users as they elevate
@@ -90,10 +94,12 @@
 
   .card
     #headingThree.card-header.text-center
-      %button.btn.btn-link{"aria-controls" => "collapsThree", "aria-expanded" => "true", "data-target" => "#collapseThree", "data-toggle" => "collapse"}
+      %button.btn-responsive.btn-outline-info.btn-link.mb-1{"aria-controls" => "collapsThree", "aria-expanded" => "true", "data-target" => "#collapseThree", "data-toggle" => "collapse"}
         %h3 Data Driven Results
-      .text-center.brand-primary.mb-2
-        %i.fas.fa-chart-bar.fa-5x        
+      .text-center.brand-primary
+        %i.fas.fa-chart-bar.fa-5x
+      %button.btn.btn-link{"aria-controls" => "collapseThree", "aria-expanded" => "true", "data-target" => "#collapseThree", "data-toggle" => "collapse"}
+        %i.fas.fa-chevron-down.fa-2x           
     #collapseThree.collapse{"aria-labelledby" => "headingThree", "data-parent" => "#accordion"}
       .card-body
         %p
@@ -123,13 +129,15 @@
             target: '_blank'}> "Social Relationships and Health: A Flashpoint for Health Policy"
 
   .card
-    #headingFour.card-header.text-center
-      %button.btn.btn-link{"aria-controls" => "collapsFour", "aria-expanded" => "true", "data-target" => "#collapseFour", "data-toggle" => "collapse"}
-        %h3 Rewards and Inventives
-      .text-center.brand-primary.mb-2
+    #headingFour.card-header.text-center.border
+      %button.btn-responsive.btn-outline-info.btn-link.mb-2{"aria-controls" => "collapsFour", "aria-expanded" => "true", "data-target" => "#collapseFour", "data-toggle" => "collapse"}
+        %h3 Rewards and Incentives
+      .text-center.brand-primary
         %i.fas.fa-dollar-sign.fa-5x
+      %button.btn.btn-link{"aria-controls" => "collapseFour", "aria-expanded" => "true", "data-target" => "#collapseFour", "data-toggle" => "collapse"}
+        %i.fas.fa-chevron-down.fa-2x 
     #collapseFour.collapse{"aria-labelledby" => "headingFour", "data-parent" => "#accordion"}
-      .card-body            
+      .card-body.border            
         %p
           Behaviors and lifestyles directly affect people's wellness, and using rewards and incentives
           is a cost-effective way to influence actions that is already proven in multiple sectors
@@ -148,13 +156,15 @@
             Social Health Experience Level. As this level increases, Users receive accolades for their progress.
 
   .card
-    #headingFive.card-header.text-center
-      %button.btn.btn-link{"aria-controls" => "collapsFive", "aria-expanded" => "true", "data-target" => "#collapseFive", "data-toggle" => "collapse"}
+    #headingFive.card-header.text-center.border
+      %button.btn-responsive.btn-outline-info.btn-link.mb-2{"aria-controls" => "collapsFive", "aria-expanded" => "true", "data-target" => "#collapseFive", "data-toggle" => "collapse"}
         %h3 Reporting
-      .text-center.brand-primary.mb-2
-        %i.fas.fa-file-alt.fa-5x        
+      .text-center.brand-primary
+        %i.fas.fa-file-alt.fa-5x
+      %button.btn.btn-link{"aria-controls" => "collapseFive", "aria-expanded" => "true", "data-target" => "#collapseFive", "data-toggle" => "collapse"}
+        %i.fas.fa-chevron-down.fa-2x         
     #collapseFive.collapse{"aria-labelledby" => "headingFive", "data-parent" => "#accordion"}
-      .card-body   
+      .card-body.border   
         %p
           Social Health considers the collection and review of service-related data in business reports
           to be of great importance because this process not only verifies the success of Social Health
@@ -169,13 +179,15 @@
 
 
   .card
-    #headingSix.card-header.text-center
-      %button.btn.btn-link{"aria-controls" => "collapsSix", "aria-expanded" => "true", "data-target" => "#collapseSix", "data-toggle" => "collapse"}
+    #headingSix.card-header.text-center.border
+      %button.btn-responsive.btn-outline-info.btn-link.mb-2{"aria-controls" => "collapsSix", "aria-expanded" => "true", "data-target" => "#collapseSix", "data-toggle" => "collapse"}
         %h3 Privacy, Security, and Fairness
-      .text-center.brand-primary.mb-2
+      .text-center.brand-primary
         %i.fas.fa-lock.fa-5x
+      %button.btn.btn-link{"aria-controls" => "collapseSix", "aria-expanded" => "true", "data-target" => "#collapseSix", "data-toggle" => "collapse"}
+        %i.fas.fa-chevron-down.fa-2x 
     #collapseSix.collapse{"aria-labelledby" => "headingSix", "data-parent" => "#accordion"}
-      .card-body
+      .card-body.border
         %p
           Our stand-alone service is not part of a group health plan, does not collect or use medical
           data, and does not fall under the HIPAA rules, but we have incorporated safeguards and business

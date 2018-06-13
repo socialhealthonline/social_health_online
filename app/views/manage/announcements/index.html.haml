@@ -1,14 +1,35 @@
 %br
 .container
   .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
-    %h1.h3.brand-primary Announcements
+    %h1.brand-primary My Community Announcements
     %div
-      = link_to new_manage_announcement_path, class: 'btn btn-primary' do
-        %i.fas.fa-plus-circle
-        Add Announcement
+      - if authenticated_user.manager?
+        %div.float-right.new_manage_user_button
+          .dropdown
+            %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+              %i.fas.fa-cog
+              Manage
+            .dropdown-menu.dropdown-menu-right
+              = link_to manage_edit_member_path, class: 'dropdown-item' do
+                %i.fas.fa-building
+                Community Profile
+              = link_to manage_events_path, class: 'dropdown-item' do
+                %i.fas.fa-map-marker-alt
+                Community Events
+              = link_to manage_social_tracker_users_path(authenticated_user.member), class: 'dropdown-item' do
+                %i.fas.fa-database
+                Social Tracker
+              = link_to manage_users_path, class: 'dropdown-item' do
+                %i.fas.fa-user-circle
+                Manage Users
+
+        %div.float-right
+          = link_to new_manage_announcement_path, class: 'btn btn-primary' do
+            %i.fas.fa-plus-circle
+            Add Announcement
 
   - if @announcements.any?
-    .table-responsive
+    .table-responsive.text-center
       %table.table.table-borderless.table-hover
         %thead
           %tr

@@ -28,8 +28,8 @@
             %td= member.city
             %td= member.state
             %td= member.service_capacity
-            %td= member.account_start_date
-            %td= member.welcome_kit_date
+            %td= short_date member.account_start_date
+            %td= short_date member.welcome_kit_date
             %td= member.status
             %td.w-10.text-right
               .dropdown

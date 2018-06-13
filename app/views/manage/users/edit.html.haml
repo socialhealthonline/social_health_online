@@ -1,7 +1,7 @@
 .container
   .row.pt-3
-    .col.pb-4
-      %h1.brand-primary= "User #{@user.email}" 
+    .col.pb-3
+      %h1.brand-primary Edit User
   .row
     .col
       = form_with model: @user, url: [:manage, @user], method: :patch, local: true do |f|

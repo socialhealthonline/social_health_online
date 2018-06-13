@@ -6,7 +6,7 @@
   .row.pt-3
     .col
       %p.text-center.p-3{style: "border: 1px solid black;"}
-        Search for Users in your area to plan activites together.
+        Use Matchmaker to search for Users in your area to plan activites together.
   
   .row.my-3
     .col
@@ -16,14 +16,12 @@
             = f.select(:state, US_STATES, {}, class: "form-control find_by_state", include_blank: 'State', style: "width: 100%;")
           %div.form-group.col-12.col-sm-12.col-md-4.col-lg-4
             = f.text_field :city, placeholder: 'City', class: 'form-control find_by_city', style: "width: 100%;"
-          %div.form-group.col-12.col-sm-12.col-md-2.col-lg-2
-            = f.text_field :zip, placeholder: 'ZIP Code', class: 'form-control find_by_zip', style: "width: 100%;"
         %div.form-row
           %div.col-12
             .col-xs-3.col-md-3.col-sm-3.mx-auto
               = f.button "Search", class: "form-control btn btn-primary mb-2"
       %div.table-wrapper-2#events-feed
-        %table.table
+        %table.table.text-center
           %thead.mdb-color.lighten-4
             %tr
               %th

@@ -30,9 +30,7 @@
             %th(scope="row")= link_to "#{i+1}. #{user.name}", console_member_user_path(@member.id, user)
             %td= user.display_name
             %td= user.email
-            %td
-              - if user.manager?
-                %i.far.fa-check-circle.text-success(title="Manager")
+            %td= user.manager? ? 'Yes' : 'No'
             %td= short_date user.last_sign_in_at
             %td= user.enabled? ? 'Enabled' : 'Disabled'
             %td.w-10.text-right

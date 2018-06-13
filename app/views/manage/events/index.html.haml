@@ -16,7 +16,13 @@
             = link_to manage_edit_member_path, class: 'dropdown-item' do
               %i.fas.fa-building
               Community Profile
-
+            = link_to manage_announcements_path, class: 'dropdown-item' do
+              %i.fas.fa.fa-bullhorn
+              Announcements
+            = link_to manage_users_path, class: 'dropdown-item' do
+              %i.fas.fa-user-circle
+              Users
+                    
   .row.pb-3
     .col
       - if @events.any?
@@ -24,12 +30,12 @@
           %table.table.table-borderless.align-items-center.table-hover
             %thead
               %tr
-                %th(scope="col") Event Title:
-                %th(scope="col") Event Type:
-                %th(scope="col") Event Date:
-                %th(scope="col") Event Location:
-                %th(scope="col") Event City:
-                %th(scope="col") Event State:
+                %th(scope="col") Event Title
+                %th(scope="col") Event Type
+                %th(scope="col") Event Date/Time
+                %th(scope="col") Event Location
+                %th(scope="col") Event City
+                %th(scope="col") Event State
                 %th(scope="col")
             %tbody
               - @events.each_with_index do |event, i|
