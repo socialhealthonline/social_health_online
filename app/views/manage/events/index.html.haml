@@ -22,6 +22,9 @@
             = link_to manage_users_path, class: 'dropdown-item' do
               %i.fas.fa-user-circle
               Users
+            = link_to manage_social_tracker_users_path(@member), class: 'dropdown-item' do
+              %i.fas.fa-database
+              Social Tracker              
                     
   .row.pb-3
     .col
