@@ -31,15 +31,9 @@ RSpec.describe Member do
   end
 
   describe 'valid phone number' do
-    it { should allow_value('2055551234').for(:contact_phone) }
-    it { should_not allow_values('345645', '20555512342').for(:contact_phone) }
+    it { should allow_value('2055551234').for(:contact_phone, :phone) }
+    it { should_not allow_values('345645', '20555512342').for(:contact_phone, :phone) }
   end
-
-  describe 'valid phone number' do
-    it { should allow_value('2055551234').for(:phone) }
-    it { should_not allow_values('345645', '20555512342').for(:contact_phone) }
-  end
-  
 
   describe 'valid US state' do
     it { should allow_value('FL', 'DC').for(:state) }
