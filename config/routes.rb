@@ -135,5 +135,8 @@ Rails.application.routes.draw do
 
   # Media Center
   get "media_center" => "media_center#index"
+
+  # Affiliates
+  get "affiliates_search" => "affiliates#index"
   
 end
