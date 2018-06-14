@@ -1,0 +1,23 @@
+- page_title 'Issues'
+
+.container
+  .row.pt-3.pb-3
+    .col
+      %h1.text-info Issues
+  .row.mb-1
+    .col-md-12
+      %p.lead.pb-3.mb-0
+        Please provide a detailed description of any bugs, glitches, or service abuses you may have
+        encountered while using social health online so that they can be addressed.
+      %p
+        Issue(s)
+
+    .col-md-12
+      .card
+        .card-body
+          = form_with url: issues_url, method: :post, local: true do
+            = hidden_field_tag :subject, ''
+            .form-group
+              %label(for="message") Message
+              = text_area_tag :message, params[:message], rows: '6', class: 'form-control', required: true
+            = submit_tag 'Send', class: 'btn btn-primary', data: { disable_with: 'Please wait...' }

@@ -138,5 +138,8 @@ Rails.application.routes.draw do
 
   # Affiliates
   get "affiliates_search" => "affiliates#index"
-  
+
+  # Issues
+  get "issues" => "issues#new"
+  post "issues" => "issues#create"
 end
