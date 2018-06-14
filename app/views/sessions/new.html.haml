@@ -1,9 +1,9 @@
 .container
-  .row.mb-5
+  .row.my-4
     .col-lg-4.ml-auto.mr-auto
       %h3.text-center.pt-3 Sign In
       .card
-        .card-body
+        .card-body.border
           = form_with url: [:sessions], local: true do
             .form-group
               %label(for="sign-in-email") Email

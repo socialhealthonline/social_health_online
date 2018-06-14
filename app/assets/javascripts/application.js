@@ -16,7 +16,6 @@
 //= require footable.min
 //= require activestorage
 //= require popper
-//= require fontawesome-all
 //= require bootstrap-sprockets
 //= require flatpickr/dist/flatpickr.min
 //= require fullcalendar

@@ -5,7 +5,7 @@
     .col.py-3
       %h1.text-info Service Information
 
-      %p.h5 Why Social Health Online?
+      %p.h3 Why Social Health Online?
 
       %p
         Mounting evidence illustrates the trend of people becoming more socially disconnected. Additionally, research
@@ -27,7 +27,7 @@
 
         Social Health Online was created as a response to the growing need for a wellness service that supports the development of relationships between people.
         
-      %p.h5 How Social Health Online Works
+      %p.h3 How Social Health Online Works
 
       %p
         Social Health Online is a wellness service with an ecosystem comprised of Members, Affiliates, 
@@ -51,7 +51,8 @@
         .card-header.border
           %h3 Members
         .card-body.brand-primary.border
-          %i.fas.fa-building.fa-5x
+          = link_to membership_path(:anchor => "Members") do
+            %i.fas.fa-building.fa-5x
         .card-footer.text-center.border
           Members are organizations that register with us to host and manage Communities of Users in the service.
     .col-lg-4
@@ -59,7 +60,8 @@
         .card-header.border
           %h3 Users
         .card-body.brand-primary.border
-          %i.fas.fa-user-circle.fa-5x
+          = link_to join_path do
+            %i.fas.fa-user-circle.fa-5x
         .card-footer.text-center.border
           Users are the people who utilize the service to share, participate in, and log social events.
     .col-lg-4
@@ -67,6 +69,7 @@
         .card-header.border
           %h3 Affiliates
         .card-body.brand-primary.pb-4.border
-          %i.fas.fa-shopping-basket.fa-5x
+          = link_to membership_path(:anchor => "Affiliates") do
+            %i.fas.fa-store-alt.fa-5x
         .card-footer.text-center.border
           Affiliates are organizations that link their event information and/or provide discounts to Users.

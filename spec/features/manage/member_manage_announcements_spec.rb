@@ -83,7 +83,7 @@ RSpec.describe 'Member manager updates event' do
 
     context 'successfully' do
       it 'render success message' do
-        expect(page).to have_content 'Announcement was successfully destroyed.'
+        expect(page).to have_content 'Announcement was successfully deleted.'
       end
 
       it 'show console index announcement' do

@@ -18,6 +18,7 @@
           %th(scope="col") State
           %th(scope="col") Support Type
           %th(snope="col") Hidden
+          %th(scope="col") Date Added
           %th(scope="col")
       %tbody
         - @affiliates.each_with_index do |affiliate, i|
@@ -27,6 +28,7 @@
             %td= affiliate.state
             %td= Affiliate.support_types.key(affiliate.support_type)
             %td= affiliate.hide_info_on_locator ? 'Yes' : 'No'
+            %td= short_date affiliate.created_at
             %td.w-10.text-right
               .dropdown
                 = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{affiliate.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do

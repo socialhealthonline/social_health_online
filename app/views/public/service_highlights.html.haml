@@ -5,157 +5,198 @@
     .col.py-3
       %h1.text-info Service Highlights
 
-      %p.h5 Features
-  .row.justify-content-center
-    .col-lg-4
-      .card.pricing.card-lg
-        .card-header.border
-          %h3 Communities
-        .card-body.brand-primary.border
-          %i.fas.fa-users.fa-5x
-        .card-footer.text-center.border
-          Communities provide a place for Users to meet and find events.
-    .col-lg-4
-      .card.pricing.card-lg
-        .card-header.border
-          %h3 Messages
-        .card-body.brand-primary.border
-          %i.fas.fa-envelope.fa-5x
-        .card-footer.text-center.border
-          Users can communicate in the service with private messages.
-    .col-lg-4
-      .card.pricing.card-lg
-        .card-header.border
-          %h3 Matchmaker
-        .card-body.brand-primary.pb-4.border
-          %i.fas.fa-comments.fa-5x
-        .card-footer.text-center.border
-          Users can arrange for one-on-one activities with our Matchmaker.
-
-  .row.justify-content-center
-    .col-lg-4
-      .card.pricing.card-lg
-        .card-header.border
-          %h3 Social Tracker
-        .card-body.brand-primary.border
-          %i.fas.fa-database.fa-5x
-        .card-footer.text-center.border
-          Users can log and track social event participation with this feature.
-    .col-lg-4
-      .card.pricing.card-lg
-        .card-header.border
-          %h3 Social Fitness
-        .card-body.brand-primary.border
-          %i.fas.fa-heartbeat.fa-5x
-        .card-footer.text-center.border
-          This feature helps Users plan social events to achieve personal goals.
-
-  .row
-    .col.py-3
-      %ul
-        %li.pb-1
-          Social Health Online is designed with the latest technology to assist and incentivize the
-          building of relationships and reward the efforts Users make towards improving their wellness
-          when they participate in social events.
-        %li.pb-1
-          Members can shape healthier behaviors by guiding social information to Users they host in online
-          Communities, Affiliates can link Users to local social events or discounts, and Users also
-          have the ability to promote their own activities with our Matchmaker.
-        %li
-          Profiling and messaging systems that facilitate personal interactions while also providing
-          Users with anonymity are offered to ensure all participants can have the most profound and
-          satisfying experiences.
-      .text-center.brand-primary.mb-2
+  .card
+    #headingOne.card-header.text-center.border
+      %button.btn-responsive.btn-outline-info.btn-link.mb-2{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-target" => "#collapseOne", "data-toggle" => "collapse"}
+        %h3 Features
+      .text-center.brand-primary
         %i.fas.fa-clipboard-check.fa-5x
+      %button.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-target" => "#collapseOne", "data-toggle" => "collapse"}
+        %i.fas.fa-chevron-down.fa-2x          
+    #collapseOne.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+      .card-body.border
+        .row.justify-content-center
+          .col-lg-4
+            .card.pricing.card-lg
+              .card-header.border
+                %h3 Communities
+              .card-body.brand-primary.border
+                %i.fas.fa-users.fa-5x
+              .card-footer.text-center.border
+                Communities provide a place for Users to meet and find events.
+          .col-lg-4
+            .card.pricing.card-lg
+              .card-header.border
+                %h3 Messages
+              .card-body.brand-primary.border
+                %i.fas.fa-envelope.fa-5x
+              .card-footer.text-center.border
+                Users can communicate in the service with private messages.
+          .col-lg-4
+            .card.pricing.card-lg
+              .card-header.border
+                %h3 Matchmaker
+              .card-body.brand-primary.pb-4.border
+                %i.fas.fa-comments.fa-5x
+              .card-footer.text-center.border
+                Users can arrange for one-on-one activities with our Matchmaker.
+        .row.justify-content-center
+          .col-lg-4
+            .card.pricing.card-lg
+              .card-header.border
+                %h3 Social Tracker
+              .card-body.brand-primary.border
+                %i.fas.fa-database.fa-5x
+              .card-footer.text-center.border
+                Users can log and track social event participation with this feature.
+          .col-lg-4
+            .card.pricing.card-lg
+              .card-header.border
+                %h3 Social Fitness
+              .card-body.brand-primary.border
+                %i.fas.fa-heartbeat.fa-5x
+              .card-footer.text-center.border
+                This feature helps Users plan social events to achieve personal goals.             
+        %ul
+          %li.pb-1
+            Social Health Online is designed with the latest technology to assist and incentivize the
+            building of relationships and reward the efforts Users make towards improving their wellness
+            when they participate in social events.
+          %li.pb-1
+            Members can shape healthier behaviors by guiding social information to Users they host in online
+            Communities, Affiliates can link Users to local social events or discounts, and Users also
+            have the ability to promote their own activities with our Matchmaker.
+          %li
+            Profiling and messaging systems that facilitate personal interactions while also providing
+            Users with anonymity are offered to ensure all participants can have the most profound and
+            satisfying experiences.
 
-      %p.h5 Benefits
-      %ul
-        %li.pb-1
-          Enhanced personal satisfaction and health improvements will result for Users as they elevate
-          their lifestyles and behaviors through positive social changes.
-        %li.pb-1
-          Reduced healthcare costs for all participants is possible as lifestyles and behaviors
-          improve.
-        %li
-          Members' and Affiliates' relationships and reputations are heightened via their
-          support of the Users.
-      .text-center.brand-primary.mb-2
+  .card
+    #headingTwo.card-header.text-center.border
+      %button.btn-responsive.btn-outline-info.btn-link.mb-2{"aria-controls" => "collapseTwo", "aria-expanded" => "true", "data-target" => "#collapseTwo", "data-toggle" => "collapse"}
+        %h3 Benefits
+      .text-center.brand-primary
         %i.fas.fa-plus-square.fa-5x
+      %button.btn.btn-link{"aria-controls" => "collapseTwo", "aria-expanded" => "true", "data-target" => "#collapseTwo", "data-toggle" => "collapse"}
+        %i.fas.fa-chevron-down.fa-2x           
+    #collapseTwo.collapse{"aria-labelledby" => "headingTwo", "data-parent" => "#accordion"}
+      .card-body.border
+        %ul
+          %li.pb-1
+            Enhanced personal satisfaction and health improvements will result for Users as they elevate
+            their lifestyles and behaviors through positive social changes.
+          %li.pb-1
+            Reduced healthcare costs for all participants is possible as lifestyles and behaviors
+            improve.
+          %li
+            Members' and Affiliates' relationships and reputations are heightened via their
+            support of the Users.
 
-      %p.h5 Data Driven Results
-      %p
-        We have built our service on a foundation of scientific research and data, so we have
-        provided a few articles spotlighting the kinds of issues we're addressing and the
-        results that can be experienced when our service is used:
-      %ul
-        %li.pb-1
-          "At work, loneliness reduces task performance, limits creativity, and impairs other aspects of
-          executive function such as reasoning and decision making . . . it is
-          imperative that we address the loneliness epidemic quickly." -&nbsp
-          %a{ href: 'https://hbr.org/cover-story/2017/09/work-and-the-loneliness-epidemic',
-          title: 'Work and the Lonelines Epidemic', target: '_blank'}> "Work and the Loneliness Epidemic"
-        %li.pb-1
-          "Wellness isn’t just about physical fitness. Depression and stress, in particular, have proved
-          to be major sources of lost productivity. Wellness program administrators need to think beyond
-          diet and exercise." -&nbsp
-          %a{ href: 'https://hbr.org/2010/12/whats-the-hard-return-on-employee-wellness-programs',
-          title: 'What\'s the Hard Return on Employee Wellness Programs?',
-          target: '_blank'}> "What's the Hard Return on Employee Wellness Programs?"
-        %li
-          ". . . enhanced relationship/health linkages can be viewed as preventive medicine. While
-          social ties may serve to improve health outcomes for those who develop serious health
-          conditions, social ties may help prevent these conditions from developing in the first place." -&nbsp
-          %a{ href: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3150158/pdf/nihms300162.pdf',
-          title: 'Social Relationships and Health: A Flashpoint for Health Policy',
-          target: '_blank'}> "Social Relationships and Health: A Flashpoint for Health Policy"
-      .text-center.brand-primary.mb-2
+  .card
+    #headingThree.card-header.text-center
+      %button.btn-responsive.btn-outline-info.btn-link.mb-1{"aria-controls" => "collapsThree", "aria-expanded" => "true", "data-target" => "#collapseThree", "data-toggle" => "collapse"}
+        %h3 Data Driven Results
+      .text-center.brand-primary
         %i.fas.fa-chart-bar.fa-5x
+      %button.btn.btn-link{"aria-controls" => "collapseThree", "aria-expanded" => "true", "data-target" => "#collapseThree", "data-toggle" => "collapse"}
+        %i.fas.fa-chevron-down.fa-2x           
+    #collapseThree.collapse{"aria-labelledby" => "headingThree", "data-parent" => "#accordion"}
+      .card-body
+        %p
+          We have built our service on a foundation of scientific research and data, so we have
+          provided a few articles spotlighting the kinds of issues we're addressing and the
+          results that can be experienced when our service is used:
+        %ul
+          %li.pb-1
+            "At work, loneliness reduces task performance, limits creativity, and impairs other aspects of
+            executive function such as reasoning and decision making . . . it is
+            imperative that we address the loneliness epidemic quickly." -&nbsp
+            %a{ href: 'https://hbr.org/cover-story/2017/09/work-and-the-loneliness-epidemic',
+            title: 'Work and the Lonelines Epidemic', target: '_blank'}> "Work and the Loneliness Epidemic"
+          %li.pb-1
+            "Wellness isn’t just about physical fitness. Depression and stress, in particular, have proved
+            to be major sources of lost productivity. Wellness program administrators need to think beyond
+            diet and exercise." -&nbsp
+            %a{ href: 'https://hbr.org/2010/12/whats-the-hard-return-on-employee-wellness-programs',
+            title: 'What\'s the Hard Return on Employee Wellness Programs?',
+            target: '_blank'}> "What's the Hard Return on Employee Wellness Programs?"
+          %li
+            ". . . enhanced relationship/health linkages can be viewed as preventive medicine. While
+            social ties may serve to improve health outcomes for those who develop serious health
+            conditions, social ties may help prevent these conditions from developing in the first place." -&nbsp
+            %a{ href: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3150158/pdf/nihms300162.pdf',
+            title: 'Social Relationships and Health: A Flashpoint for Health Policy',
+            target: '_blank'}> "Social Relationships and Health: A Flashpoint for Health Policy"
 
-      %p.h5 Rewards and Incentives
-      %p
-        Behaviors and lifestyles directly affect people's wellness, and using rewards and incentives
-        is a cost-effective way to influence actions that is already proven in multiple sectors
-        (e.g., retail and healthcare). Because of their established value, many rewards and incentives
-        are provided through Social Health Online to stimulate positive social changes, including:
-      %ul
-        %li.pb-1
-          Users are automatically entered in a variety of monthly and annual sweepstakes for Amazon
-          eGift Cards ranging from $20 to $100 in value when they log their participation in social events.
-        %li.pb-1
-          Each Member organization is guaranteed to have at least one sweepstakes winner every month for their active Users
-          as a winner is randomly selected for every increment of 20 Users they have (e.g., 0-20 Users = 1 winner,
-          21-40 Users = 2 winners, etc.).
-        %li
-          To show recognition for their efforts, after logging their events Users acquire points towards their
-          Social Health Experience Level. As this level increases, Users receive accolades for their progress.
-      .text-center.brand-primary.mb-2
+  .card
+    #headingFour.card-header.text-center.border
+      %button.btn-responsive.btn-outline-info.btn-link.mb-2{"aria-controls" => "collapsFour", "aria-expanded" => "true", "data-target" => "#collapseFour", "data-toggle" => "collapse"}
+        %h3 Rewards and Incentives
+      .text-center.brand-primary
         %i.fas.fa-dollar-sign.fa-5x
+      %button.btn.btn-link{"aria-controls" => "collapseFour", "aria-expanded" => "true", "data-target" => "#collapseFour", "data-toggle" => "collapse"}
+        %i.fas.fa-chevron-down.fa-2x 
+    #collapseFour.collapse{"aria-labelledby" => "headingFour", "data-parent" => "#accordion"}
+      .card-body.border            
+        %p
+          Behaviors and lifestyles directly affect people's wellness, and using rewards and incentives
+          is a cost-effective way to influence actions that is already proven in multiple sectors
+          (e.g., retail and healthcare). Because of their established value, many rewards and incentives
+          are provided through Social Health Online to stimulate positive social changes, including:
+        %ul
+          %li.pb-1
+            Users are automatically entered in a variety of monthly and annual sweepstakes for Amazon
+            eGift Cards ranging from $20 to $100 in value when they log their participation in social events.
+          %li.pb-1
+            Each Member organization is guaranteed to have at least one sweepstakes winner every month for their active Users
+            as a winner is randomly selected for every increment of 20 Users they have (e.g., 0-20 Users = 1 winner,
+            21-40 Users = 2 winners, etc.).
+          %li
+            To show recognition for their efforts, after logging their events Users acquire points towards their
+            Social Health Experience Level. As this level increases, Users receive accolades for their progress.
 
-      %p.h5 Reporting
-      %p
-        Social Health considers the collection and review of service-related data in business reports
-        to be of great importance because this process not only verifies the success of Social Health
-        Online but also it allows us to see how we can improve.
-      %p
-        Because of this philosophy, Members are given the ability to pull data from the service and
-        observe their Users' level of participation with social events. Also, all Members and Users
-        will receive quarterly User Feedback Reports from Social Health containing the results of
-        anonymous surveys we send to randomly selected Users. Additionally, our Social Fitness
-        Self-Assessment allows Users to easily track their progress towards the wellness achievements
-        they want.
-      .text-center.brand-primary.mb-2
+  .card
+    #headingFive.card-header.text-center.border
+      %button.btn-responsive.btn-outline-info.btn-link.mb-2{"aria-controls" => "collapsFive", "aria-expanded" => "true", "data-target" => "#collapseFive", "data-toggle" => "collapse"}
+        %h3 Reporting
+      .text-center.brand-primary
         %i.fas.fa-file-alt.fa-5x
+      %button.btn.btn-link{"aria-controls" => "collapseFive", "aria-expanded" => "true", "data-target" => "#collapseFive", "data-toggle" => "collapse"}
+        %i.fas.fa-chevron-down.fa-2x         
+    #collapseFive.collapse{"aria-labelledby" => "headingFive", "data-parent" => "#accordion"}
+      .card-body.border   
+        %p
+          Social Health considers the collection and review of service-related data in business reports
+          to be of great importance because this process not only verifies the success of Social Health
+          Online but also it allows us to see how we can improve.
+        %p
+          Because of this philosophy, Members are given the ability to pull data from the service and
+          observe their Users' level of participation with social events. Also, all Members and Users
+          will receive quarterly User Feedback Reports from Social Health containing the results of
+          anonymous surveys we send to randomly selected Users. Additionally, our Social Fitness
+          Self-Assessment allows Users to easily track their progress towards the wellness achievements
+          they want.
 
-      %p.h5 Privacy, Security, and Fairness
-      %p
-        Our stand-alone service is not part of a group health plan, does not collect or use medical
-        data, and does not fall under the HIPAA rules, but we have incorporated safeguards and business
-        practices to ensure full compliance with all applicable laws and regulations. Additionally,
-        we perform quarterly audits to detect and address service misuse.
-      %p
-        Our service does not include the provision of medical care, is a voluntary participatory
-        service offered to all people regardless of their health, and none of the conditions for obtaining
-        rewards require Users to satisfy a standard related to a particular health factor. Social Health
-        Online offers benefits to all active Users, regardless of their level of involvement.
-      .text-center.brand-primary.mb-2
+
+  .card
+    #headingSix.card-header.text-center.border
+      %button.btn-responsive.btn-outline-info.btn-link.mb-2{"aria-controls" => "collapsSix", "aria-expanded" => "true", "data-target" => "#collapseSix", "data-toggle" => "collapse"}
+        %h3 Privacy, Security, and Fairness
+      .text-center.brand-primary
         %i.fas.fa-lock.fa-5x
+      %button.btn.btn-link{"aria-controls" => "collapseSix", "aria-expanded" => "true", "data-target" => "#collapseSix", "data-toggle" => "collapse"}
+        %i.fas.fa-chevron-down.fa-2x 
+    #collapseSix.collapse{"aria-labelledby" => "headingSix", "data-parent" => "#accordion"}
+      .card-body.border
+        %p
+          Our stand-alone service is not part of a group health plan, does not collect or use medical
+          data, and does not fall under the HIPAA rules, but we have incorporated safeguards and business
+          practices to ensure full compliance with all applicable laws and regulations. Additionally,
+          we perform quarterly audits to detect and address service misuse.
+        %p
+          Our service does not include the provision of medical care, is a voluntary participatory
+          service offered to all people regardless of their health, and none of the conditions for obtaining
+          rewards require Users to satisfy a standard related to a particular health factor. Social Health
+          Online offers benefits to all active Users, regardless of their level of involvement.
+
+        

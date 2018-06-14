@@ -5,7 +5,7 @@ class MySettingsController < ApplicationController
 
   def update
     if authenticated_user.update(settings_params)
-      flash.now[:success] = 'Your settings was successfully updated!'
+      flash.now[:success] = 'Your settings were successfully updated!'
     else
       flash.now[:error] = 'Please correct the errors to continue.'
     end

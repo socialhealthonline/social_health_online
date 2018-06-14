@@ -17,6 +17,12 @@
           = link_to manage_social_tracker_users_path(@member), class: 'dropdown-item' do
             %i.fas.fa-database
             Social Tracker
+          = link_to manage_announcements_path, class: 'dropdown-item' do
+            %i.fas.fa.fa-bullhorn
+            Announcements
+          = link_to manage_users_path, class: 'dropdown-item' do
+            %i.fas.fa-user-circle
+            Users
   .row
     .col
       = form_with model: @member, url: [:manage, :update, @member], local: true do |f|

@@ -14,29 +14,23 @@
       %thead
         %tr
           %th(scope="col")= sort_link('name', 'Member Name')
-          %th(scope="col")= sort_link('contact_name', 'Contact Name')
-          %th(scope="col")= sort_link('contact_email', 'Contact Email')
-          %th(scope="col")= sort_link('contact_phone', 'Contact Phone')
           %th(scope="col")= sort_link('city', 'City')
           %th(scope="col")= sort_link('state', 'State')
           %th(scope="col")= sort_link('service_capacity', 'User Seats')
           %th(scope="col")= sort_link('account_start_date', 'Account Start Date')
-          %th(scope="col") Status
           %th(scope="col")= sort_link('welcome_kit_date', 'Welcome Kit Date')
+          %th(scope="col") Status  
           %th(scope="col")
       %tbody
         - @members.each_with_index do |member, i|
           %tr.bg-white
             %th(scope="row")= link_to "#{i+1}. #{member.name}", console_member_path(member.id)
-            %td= member.contact_name
-            %td= member.contact_email
-            %td= member.contact_phone
             %td= member.city
             %td= member.state
             %td= member.service_capacity
-            %td= member.account_start_date
+            %td= short_date member.account_start_date
+            %td= short_date member.welcome_kit_date
             %td= member.status
-            %td= member.welcome_kit_date
             %td.w-10.text-right
               .dropdown
                 = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{member.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do

@@ -14,7 +14,9 @@
         %i.fas.fa-user-circle
         Users
 
-%p= @member.full_address
+%p
+  %strong Address:
+  = @member.full_address
 
 %p
   %strong Contact Name:
@@ -29,12 +31,20 @@
   = number_to_phone @member.contact_phone
 
 %p
+  %strong Phone:
+  = number_to_phone @member.phone
+
+%p
   %strong User Seats:
   = @member.service_capacity
 
 %p
   %strong Account Start Date:
   = short_date @member.account_start_date
+
+%p
+  %strong Welcome Kit Date:
+  = short_date @member.welcome_kit_date
 
 %p
   %strong Account End Date:
@@ -58,8 +68,8 @@
   = truncate(@member.bio, length: 100)
 
 %p
-  %strong Suspended:
-  = @member.suspended? ? 'Yes' : 'No'
+  %strong Status:
+  = @member.status
 %p
   %strong Hide Info on Member Locator:
   = @member.hide_info_on_locator? ? 'Yes' : 'No'
