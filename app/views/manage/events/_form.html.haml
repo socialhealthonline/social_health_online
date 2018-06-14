@@ -65,9 +65,15 @@
         %label(for="event_details") Event Details
         = f.text_area :details, rows: 4, class: "form-control #{form_error_class(@event, :details)}"
         = model_error_display(@event, :details)
-  .form-check.mb-3
-    = f.check_box :private, class: 'form-check-input'
-    %label.form-check-label(for="event_private") Private
+  .row
+    .col-lg-3
+      .form-group
+        %label(for="private") Event Access
+        = f.select(:private,
+          options_for_select([['Private', '1'], ['Public', '0']], @event.private),
+          {prompt: "...Select..."},
+          {:class => "form-control #{form_error_class(@event, :private)}"})
+        = model_error_display(@event, :private)
   .mb-3.text-center
     = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
     - if @event.persisted?
