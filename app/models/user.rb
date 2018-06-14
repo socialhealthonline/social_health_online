@@ -30,7 +30,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :hidden_field
 
   scope :all_except, ->(user) { where.not(id: user) }
-  scope :matchmaker, ->(user) { where.not("hidden_fields.user_id = ? and hidden_fields.settings @> ?", user.id, { matchmaker: false }.to_json) }
+  scope :matchmaker, ->(user) { where("hidden_fields.user_id != ? and hidden_fields.settings @> ?", user.id, { matchmaker: true }.to_json).where(user_status: :activated) }
 
   has_secure_password
   has_secure_token :auth_token
