@@ -2,8 +2,8 @@ class Event < ApplicationRecord
   belongs_to :member, inverse_of: :events
   has_many :rsvps
   has_many :users, :through => :rsvps
-  
-  validates :title, :start_at, :event_type, presence: true
+
+  validates :title, :start_at, :event_type, :address, :zip, :city, :location, presence: true
   validates :event_type, inclusion: EVENT_TYPES
   validates :state, inclusion: US_STATES.values, allow_nil: true
   validate :validate_rsvp_limit, on: :update

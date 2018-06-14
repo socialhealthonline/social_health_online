@@ -13,37 +13,48 @@
   .row
     .col-lg-6
       .form-group
-        %label(for="event_start_at") Event Date
-        = f.text_field :start_at, class: "flatpickr-date-time form-control #{form_error_class(@event, :start_at)}"
-        = model_error_display(@event, :start_at)
+      %label(for="event_start_at") Event Date
+      = f.text_field :start_at, class: "flatpickr-date-time form-control #{form_error_class(@event, :start_at)}"
+      = model_error_display(@event, :start_at)
     .col-lg-6
       .form-group
         %label(for="event_time_zone") Timezone
         = f.select(:time_zone, ['Alaska', 'Hawaii', 'Pacific Time (US & Canada)', 'Mountain Time (US & Canada)', 'Central Time (US & Canada)', 'Eastern Time (US & Canada)'].sort, {}, { class: "custom-select form-control #{form_error_class(@event, :time_zone)}" })
         = model_error_display(@event, :time_zone)
+
   .row
     .col-lg-4
       .form-group
-        %label(for="event_location") Event Location
-        = f.text_field :location, class: "form-control #{form_error_class(@event, :location)}"
-        = model_error_display(@event, :location)
+      %label(for="event_location") Event Location
+      = f.text_field :location, class: "form-control #{form_error_class(@event, :location)}"
+      = model_error_display(@event, :location)
+    .col-lg-4
+      .form-group
+        %label(for="address") Event Address
+        = f.text_field :address, class: "form-control #{form_error_class(@event, :address)}"
+        = model_error_display(@event, :address)
     .col-lg-4
       .form-group
         %label(for="event_city") Event City
         = f.text_field :city, class: "form-control #{form_error_class(@event, :city)}"
         = model_error_display(@event, :city)
-    .col-lg-4
+  .row
+    .col-lg-3
       .form-group
         %label(for="event_state") Event State
         = f.select :state, US_STATES, { include_blank: true }, { class: "#{form_error_class(@event, :state)} form-control custom-select" }
         = model_error_display(@event, :state)
-  .row
-    .col-lg-6
+    .col-lg-3
+      .form-group
+        %label(for="zip") Event Zip Code
+        = f.text_field :zip, class: "form-control #{form_error_class(@event, :zip)}"
+        = model_error_display(@event, :zip)
+    .col-lg-3
       .form-group
         %label(for="event_url") Event Website
         = f.text_field :url, class: "form-control #{form_error_class(@event, :url)}"
         = model_error_display(@event, :url)
-    .col-lg-6
+    .col-lg-3
       .form-group
         %label(for="event_rsvp_limit") RSVP Limit
         = f.text_field :rsvp_limit, class: "form-control #{form_error_class(@event, :rsvp_limit)}"

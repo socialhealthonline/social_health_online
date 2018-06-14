@@ -60,7 +60,9 @@ class Manage::EventsController < ApplicationController
       :url,
       :details,
       :private,
-      :rsvp_limit
+      :rsvp_limit,
+      :address,
+      :zip
     )
   end
 
