@@ -48,6 +48,7 @@ class ProfileController < ApplicationController
       :password_confirmation,
       :first_login,
       :user_status,
+      :phone_extension,
       hidden_field_attributes: [:id, prepared_hidden_fields]
     )
   end

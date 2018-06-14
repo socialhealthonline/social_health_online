@@ -21,7 +21,7 @@
                 = f.text_field :display_name, class: "form-control #{form_error_class(@user, :display_name)}"
                 = model_error_display(@user, :display_name)
           .row
-            .col
+            .col-lg-6
               .form-group
                 %label(for="user_email") Email
                 = f.email_field :email, required: true, class: "form-control #{form_error_class(@user, :email)}"
@@ -37,6 +37,14 @@
                 %div.float-right
                   %label(for="user_phone") Hide Info
                   = h.check_box :phone, { checked: @user.hidden_field&.phone }, 'true', 'false'
+            .col
+              .form-group
+                %label(for="phone_extension") Phone Extension
+                = f.text_field :phone_extension, class: "form-control #{form_error_class(@user, :phone_extension)}"
+                = model_error_display(@user, :phone_extension)
+                %div.float-right
+                  %label(for="phone_extension") Hide Info
+                  = h.check_box :phone_extension, { checked: @user.hidden_field&.phone_extension }, 'true', 'false'
           .row
             .col
               .form-group
