@@ -3,7 +3,7 @@ class User < ApplicationRecord
   GENDER = ['Male', 'Female', 'Other']
   RELATIONSHIP_STATUS = ['Single', 'In a relationship', 'Married', 'Other']
   EDUCATION_LEVEL = ['High School', 'College', 'Advanced Graduate', 'Other']
-  enum user_status: %i[pending enabled disabled]
+  enum user_status: %i[pending activated disabled]
 
   belongs_to :member, inverse_of: :users
   has_many :social_event_logs

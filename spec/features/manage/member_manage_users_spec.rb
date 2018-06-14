@@ -21,7 +21,7 @@ RSpec.describe 'Send invites users and manage them' do
       fill_in 'email_1', with: 'email1@gmail.com'
       fill_in 'email_2', with: 'email2@gmail.com'
       click_button 'Send'
-      expect(page).to have_content('Invitations successfully sent!)
+      expect(page).to have_content('Invitations successfully sent!')
     end
   end
 
