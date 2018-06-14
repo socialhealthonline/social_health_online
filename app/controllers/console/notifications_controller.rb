@@ -35,7 +35,7 @@ class Console::NotificationsController < ConsoleController
 
   def destroy
     @notification.destroy
-    redirect_to console_notifications_path, success: 'Notification was successfully destroyed.'
+    redirect_to console_notifications_path, success: 'Notification was successfully deleted.'
   end
 
   private

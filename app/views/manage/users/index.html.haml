@@ -1,7 +1,7 @@
 .container
   %br
   .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top
-    %h1.h3.brand-primary My Community Users
+    %h1.brand-primary My Community Users
     %div
       - if authenticated_user.manager?
         %div.float-right.new_manage_user_button
@@ -20,7 +20,7 @@
                 %i.fas.fa-database
                 Social Tracker
               = link_to manage_announcements_path, class: 'dropdown-item' do
-                %i.fas.fa.fa-bell.fa-w-14
+                %i.fas.fa-bullhorn
                 Announcements
               = link_to manage_users_path, class: 'dropdown-item' do
                 %i.fas.fa-user-circle
@@ -34,11 +34,12 @@
   .border-bottom
 
   - if @users.any?
-    .table-responsive
+    .table-responsive.text-center
       %table.table.table-borderless.table-hover
         %thead
           %tr
             %th Name
+            %th Display Name
             %th Email
             %th Status
             %th Manager
@@ -47,10 +48,10 @@
           - @users.each.with_index(1) do |user, i|
             %tr.bg-white
               %td= truncate("#{i}. #{user.name}")
+              %td= user.display_name
               %td= truncate(user.email)
               %td= user.user_status.capitalize
-              %td
-                = user.user_manager?
+              %td= user.user_manager?
               %td
                 = link_to edit_manage_user_path(user), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
                   %i.far.fa-edit

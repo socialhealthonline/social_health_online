@@ -35,7 +35,7 @@ class Manage::AnnouncementsController < ApplicationController
 
   def destroy
     @announcement.destroy
-    redirect_to manage_announcements_path, success: 'Announcement was successfully destroyed.'
+    redirect_to manage_announcements_path, success: 'Announcement was successfully deleted.'
   end
 
   private

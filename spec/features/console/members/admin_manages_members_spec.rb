@@ -26,6 +26,7 @@ RSpec.describe 'Admin manages member accounts' do
       fill_in 'member_contact_name', with: 'Tom Jones'
       fill_in 'member_contact_email', with: 'tom@example.com'
       fill_in 'member_contact_phone', with: '5555555555'
+      fill_in 'member_phone', with: '5555555555'
       fill_in 'member_service_capacity', with: 30
       fill_in 'member_account_start_date', with: Date.today.to_s
       fill_in 'member_url', with: 'example.com'

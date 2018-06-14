@@ -35,7 +35,7 @@ class Console::NewsController < ConsoleController
 
   def destroy
     @news.destroy
-    redirect_to console_news_index_path, success: 'News was successfully destroyed.'
+    redirect_to console_news_index_path, success: 'News was successfully deleted.'
   end
 
   private

@@ -6,7 +6,9 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.mb-3.border-bottom
   %h1.h3.brand-primary= @affiliate.name
 
-%p= @affiliate.full_address
+%p
+  %strong Address:
+  = @affiliate.full_address
 
 %p
   %strong Contact Name:
@@ -34,7 +36,7 @@
 
 %p
   %strong Date Added:
-  = @affiliate.date_added
+  = short_date @affiliate.date_added
 
 %p
   %strong Hide Info - Pending Approval:

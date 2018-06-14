@@ -26,7 +26,7 @@ class Manage::UsersController < ApplicationController
   def create
     users = CreateAndSendUserEmailService.new(user_params, authenticated_user).call
     if users.empty?
-      redirect_to manage_users_path, success: 'Successfully send intivations!'
+      redirect_to manage_users_path, success: 'Invitations successfully sent!'
     else
       redirect_to manage_users_path, error: users
     end

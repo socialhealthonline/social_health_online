@@ -13,9 +13,9 @@ class UserDecorator < ApplicationDecorator
 
   def user_manager?
     if user.manager?
-      h.content_tag :i, '', class: "fa fa-check"
+      'Yes'
     else
-      h.content_tag :strong, 'X'
+      'No'
     end
   end
 end

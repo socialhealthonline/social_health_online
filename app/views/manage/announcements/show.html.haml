@@ -1,11 +1,7 @@
 .container
-  %nav(aria-label="breadcrumb")
-    %ol.breadcrumb
-      %li.breadcrumb-item= link_to 'Announcement', manage_announcements_path
-      %li.breadcrumb-item.active(aria-current="page")= @announcement.title
 
-  .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
-    %h1.h3.brand-primary= @announcement.title
+  .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom.mt-3
+    %h1.brand-primary= @announcement.title
 
   %p
     = simple_format(@announcement.body)
