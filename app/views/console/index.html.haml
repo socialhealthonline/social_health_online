@@ -8,18 +8,20 @@
       .card.pricing.card-lg
         .card-body.border
           %h5 Total Affiliates
-          %p #{ Affiliate.all.count }
           %span.display-3
+            #{ Affiliate.all.count }
     .col-md-6.col-lg-4
       .card.pricing.card-lg
         .card-body.border
           %h5 Total Members
-          %p #{ Member.all.count }
+          %span.display-3
+            #{ Member.all.count }
           %span.display-3 
     .col-md-6.col-lg-4
       .card.pricing.card-lg
         .card-body.border
-          %h5 Total Users
-          %p #{ User.all.count }
+          %h5 Total
+          %span.display-3          
+            #{ User.all.count }
           %span.display-3 
 

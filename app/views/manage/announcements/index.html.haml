@@ -1,11 +1,11 @@
 %br
 .container
-  .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
+  .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3
     %h1.brand-primary My Community Announcements
     %div
       - if authenticated_user.manager?
         %div.float-right.new_manage_user_button
-          .dropdown
+          .dropdown.mb-2
             %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
               %i.fas.fa-cog
               Manage
@@ -21,7 +21,7 @@
                 Social Tracker
               = link_to manage_users_path, class: 'dropdown-item' do
                 %i.fas.fa-user-circle
-                Manage Users
+                Users
 
         %div.float-right
           = link_to new_manage_announcement_path, class: 'btn btn-primary' do

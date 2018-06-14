@@ -1,5 +1,5 @@
 class Console::AffiliatesController < ConsoleController
-
+  helper_method :sort_column, :sort_direction
   def index
     @affiliates = Affiliate.order(:name).page(params[:page]).per(25)
   end
@@ -67,6 +67,25 @@ class Console::AffiliatesController < ConsoleController
       :support_notes,
       :date_added
     )
+  end
+
+  def sortable_columns
+    %w[
+      name city state support_notes hide_info_on_locator date_added
+    ]
+  end
+
+  def sort_column
+    logger.debug("SORT:::: #{params[:direction].inspect}")
+    sortable_columns.include?(params[:column]) ? params[:column] : 'name'
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
+
+  def set_managers_option
+    @managers = User.where(member_id: authenticated_user.member_id, manager: true)
   end
 
 end

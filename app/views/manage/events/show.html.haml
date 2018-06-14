@@ -8,31 +8,31 @@
   .row
     .col
       %p
-        %strong Event Type
+        %strong Event Type:
         =@event.event_type
       %p
-        %strong Event Date
+        %strong Event Date:
         = short_date_time @event.start_at, @event.time_zone
       %p
-        %strong Event Location
+        %strong Event Location:
         = @event.location
       %p
-        %strong Event City
+        %strong Event City:
         = @event.city
       %p
-        %strong Event State
+        %strong Event State:
         = @event.state
       %p
-        %strong Event Website
+        %strong Event Website:
         = link_to @event.url, @event.url, target: '_blank' if @event.url.present?
       %p
-        %strong RSVP Limit
+        %strong RSVP Limit:
         = @event.rsvp_limit
       %p
-        %strong Private
+        %strong Private:
         = @event.private? ? 'Yes' : 'No'
       %p
-        %strong Event Details
+        %strong Event Details:
       = simple_format @event.details
   %p.pt-2.pb-3
     = link_to manage_events_path, class: 'btn btn-outline-primary mr-1' do

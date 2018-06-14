@@ -105,7 +105,7 @@
               = f.text_field :pet_peeves, class: "form-control #{form_error_class(@user, :pet_peeves)}"
               = model_error_display(@user, :pet_peeves)
         .row
-          .col
+          .col-6
             .form-group
               %label(for="user_status") User Status
               = @user.user_pending?(f)
