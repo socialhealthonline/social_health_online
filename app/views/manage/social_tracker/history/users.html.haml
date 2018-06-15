@@ -18,6 +18,12 @@
               = link_to manage_events_path, class: 'dropdown-item' do
                 %i.fas.fa-map-marker-alt
                 Community Events
+              = link_to manage_announcements_path, class: 'dropdown-item' do
+                %i.fas.fa.fa-bullhorn
+                Announcements   
+              = link_to manage_users_path, class: 'dropdown-item' do
+                %i.fas.fa-user-circle
+                Users                
       - if @users.any?
         .table-responsive.mt-3.text-center
           %table.table.table-borderless.align-items-center.table-hover(id="social-tracker-history-table")

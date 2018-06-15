@@ -6,8 +6,9 @@
       %h1.text-info Social Tracker
       %h3.text-info Log Events
       %p.text-center.p-3{style: "border: 1px solid black;"}
-        Log your social events below to track your activities
-        and qualify for automatic entry into sweepstakes.
+        %strong
+          Log your social events below to track your activities
+          and qualify for automatic entry into sweepstakes.
       = form_with model: @social_event_log, url: social_tracker_log_path(@social_event_log), local: true, class: "pt-3" do |f|
         .row
           .col-lg-6

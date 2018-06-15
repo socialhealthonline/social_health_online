@@ -11,7 +11,7 @@
           .mb-3
             %h5= notification.title
             .notification-date= time_in_cdt(notification.updated_at, '%m/%d/%Y')
-            .notification-text= simple_format(notification.body)
+            .notification-text.pb-2= simple_format(notification.body)
         %p= paginate @notifications
 
   .row.my-3

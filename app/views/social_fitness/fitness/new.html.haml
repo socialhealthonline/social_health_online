@@ -6,9 +6,10 @@
       %h1.text-info Social Fitness
       %h3.text-info Self-Assessment
       %p.text-center.p-3{style: "border: 1px solid black;"}
-        "Social fitness" is a term given to the status of the wellness of your relationships with others.
-        Reflect on the many aspects of your social fitness and indicate your perception of them
-        below to track your progress towards your personal goals.
+        %strong
+          "Social fitness" is a term given to the status of the wellness of your relationships with others.
+          Reflect on the many aspects of your social fitness and indicate your perception of them
+          below to track your progress towards your personal goals.
       = form_with model: @social_fitness_log, url: social_fitness_log_path(@social_fitness_log), local: true, class: "pt-3" do |f|
         .row
           .col-lg-6

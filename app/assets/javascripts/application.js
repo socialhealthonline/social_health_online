@@ -25,12 +25,12 @@
 $(document).ready(function() {
   $(".flatpickr-date").flatpickr({
     allowInput: true,
-    dateFormat: 'Y-m-d'
+    dateFormat: 'm-d-Y'
   });
 
   $(".flatpickr-date-time").flatpickr({
     enableTime: true,
-    dateFormat: 'Y-m-d h:i K'
+    dateFormat: 'm-d-Y h:i K'
   });
 
   $('.matchmaker_popover').popover({

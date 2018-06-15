@@ -13,7 +13,7 @@
   .row
     .col-lg-6
       .form-group
-      %label(for="event_start_at") Event Date
+      %label(for="event_start_at") Event Date/Time
       = f.text_field :start_at, class: "flatpickr-date-time form-control #{form_error_class(@event, :start_at)}"
       = model_error_display(@event, :start_at)
     .col-lg-6
