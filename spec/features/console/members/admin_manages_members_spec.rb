@@ -2,13 +2,10 @@
 
 require 'rails_helper'
 
-# helper class to get access to csv_member_list
-class MemberCsvHelper
-  include MemberHelper
-end
-
 RSpec.describe 'Admin manages member accounts' do
-  let!(:admin) { create(:user, :admin) }
+  let!(:admin_member) { create(:member, name: 'Member 1') }
+  let!(:admin) { create(:user, :admin, member: admin_member) }
+  let!(:member) { create(:member, name: 'Member 2') }
 
   describe 'creates a new member' do
     before do
@@ -35,20 +32,18 @@ RSpec.describe 'Admin manages member accounts' do
       click_button 'Save'
       expect(page).to have_content 'The Member was successfully created'
       expect(current_path).to eq console_member_path(Member.last.id)
-      expect(Member.count).to eq 2
+      expect(Member.count).to eq 3
     end
 
     it 'unsuccessfully' do
       click_link 'Add Member'
       fill_in 'member_name', with: 'ACME'
       click_button 'Save'
-      expect(Member.count).to eq 1
+      expect(Member.count).to eq 2
     end
   end
 
   describe 'edits a member' do
-    let!(:member) { create(:member) }
-
     before do
       sign_in admin
       visit edit_console_member_path(member.id)
@@ -71,8 +66,6 @@ RSpec.describe 'Admin manages member accounts' do
   end
 
   describe 'deletes a member' do
-    let!(:member) { create(:member) }
-
     before do
       sign_in admin
       visit console_members_path
@@ -85,43 +78,20 @@ RSpec.describe 'Admin manages member accounts' do
   end
 
   describe 'sort members' do
-    FactoryBot.reload
-    Member.all.destroy_all
-
-    let!(:members) { create_list(:member, 5) }
-
     before do
       sign_in admin
       visit console_members_path
     end
 
     it 'descending' do
-      expect(page).to have_selector('table tbody tr:nth-child(1) th', text: 'Member1')
-
       click_link 'Member Name'
-
-      expect(page).to have_selector('table tbody tr:nth-child(1) th', text: '1. Member6')
-    end
-  end
-
-  describe 'export members' do
-    Member.all.destroy_all
-    FactoryBot.reload
-
-    let!(:members) { create_list(:member, 1) }
-
-    before do
-      sign_in admin
-      visit console_members_path
+      expect(page).to have_selector('table tbody tr:nth-child(1) th', text: "1. #{member.name}")
     end
 
-    it "as csv" do
-      click_link 'Export CSV'
-
-      expected_csv = file_fixture('members.csv').read
-      generated_csv = MemberCsvHelper.new.csv_member_list
-
-      expect(generated_csv).to eq expected_csv
+    it 'ascending' do
+      click_link 'Member Name'
+      click_link 'Member Name'
+      expect(page).to have_selector('table tbody tr:nth-child(1) th', text: "1. #{admin.member.name}")
     end
   end
 end
