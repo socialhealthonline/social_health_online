@@ -3,13 +3,9 @@ class MemberDecorator < ApplicationDecorator
   include Draper::LazyHelpers
 
   def logo
-    params = { class: 'c-pointer', data: { toggle: 'modal', target: '#community-profile-modal' } }
     if object.logo.attached? && object.logo.attachment.valid?
-      params[:alt] = 'Community logo'
-      image_tag object.logo.variant(resize: '160x160'), params
-    else
-      params[:alt] = 'Default logo'
-      image_tag 'default-logo.png', params
+      image_tag object.logo.variant(resize: '160x160'), class: 'c-pointer', alt: 'Community logo',
+                data: { toggle: 'modal', target: '#community-profile-modal' }
     end
   end
 

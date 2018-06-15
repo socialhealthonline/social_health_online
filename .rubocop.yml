@@ -1,0 +1,44 @@
+# Work for all cops
+AllCops:
+  DisplayCopNames: true
+  Exclude:
+    - 'db/**/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+
+# Disable documentations, because it's all clear w/o it *tollface*
+Style/Documentation:
+  Enabled: false
+
+# Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
+Metrics/LineLength:
+  Max: 80
+
+# Configuration parameters: CountBlocks.
+Metrics/BlockNesting:
+  Max: 4
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+  Max: 120
+
+Metrics/ClassLength:
+  Max: 210
+
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 30
+
+# CyclomaticComplexity
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+# PerceivedComplexity
+Metrics/PerceivedComplexity:
+  Max: 10  
+
+# Assignment Branch condition
+Metrics/AbcSize:
+  Max: 25
+
