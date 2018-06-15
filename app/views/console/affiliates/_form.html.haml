@@ -40,7 +40,7 @@
     .col-lg-4
       .form-group
         %label(for="date_added") Date Added
-        = f.date_field :date_added, class: "flatpickr-date form-control #{form_error_class(@affiliate, :date_added)}"
+        = f.date_field :date_added, as: :date_picker, class: "form-control #{form_error_class(@affiliate, :date_added)}"
         = model_error_display(@affiliate, :date_added)
   .row
     .col-lg-4

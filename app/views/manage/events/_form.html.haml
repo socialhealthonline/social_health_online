@@ -13,21 +13,21 @@
   .row
     .col-lg-6
       .form-group
-      %label(for="event_start_at") Event Date/Time
-      = f.text_field :start_at, class: "flatpickr-date-time form-control #{form_error_class(@event, :start_at)}"
-      = model_error_display(@event, :start_at)
+        %label(for="event_start_at") Event Date/Time
+        = f.text_field :start_at, class: "flatpickr-date-time form-control #{form_error_class(@event, :start_at)}"
+        = model_error_display(@event, :start_at)
     .col-lg-6
       .form-group
-        %label(for="event_time_zone") Timezone
+        %label(for="event_time_zone") Time Zone
         = f.select(:time_zone, ['Alaska', 'Hawaii', 'Pacific Time (US & Canada)', 'Mountain Time (US & Canada)', 'Central Time (US & Canada)', 'Eastern Time (US & Canada)'].sort, {}, { class: "custom-select form-control #{form_error_class(@event, :time_zone)}" })
         = model_error_display(@event, :time_zone)
 
   .row
     .col-lg-4
       .form-group
-      %label(for="event_location") Event Location
-      = f.text_field :location, class: "form-control #{form_error_class(@event, :location)}"
-      = model_error_display(@event, :location)
+        %label(for="event_location") Event Location
+        = f.text_field :location, class: "form-control #{form_error_class(@event, :location)}"
+        = model_error_display(@event, :location)
     .col-lg-4
       .form-group
         %label(for="address") Event Address
@@ -46,7 +46,7 @@
         = model_error_display(@event, :state)
     .col-lg-3
       .form-group
-        %label(for="zip") Event Zip Code
+        %label(for="zip") Event ZIP Code
         = f.text_field :zip, class: "form-control #{form_error_class(@event, :zip)}"
         = model_error_display(@event, :zip)
     .col-lg-3
@@ -71,7 +71,7 @@
         %label(for="private") Event Access
         = f.select(:private,
           options_for_select([['Private', '1'], ['Public', '0']], @event.private),
-          {prompt: "...Select..."},
+          {prompt: ""},
           {:class => "form-control #{form_error_class(@event, :private)}"})
         = model_error_display(@event, :private)
   .mb-3.text-center

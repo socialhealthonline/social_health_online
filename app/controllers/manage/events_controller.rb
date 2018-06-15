@@ -54,15 +54,8 @@ class Manage::EventsController < ApplicationController
       :start_at,
       :time_zone,
       :event_type,
-      :state,
-      :city,
       :location,
-      :url,
-      :details,
       :private,
-      :rsvp_limit,
-      :address,
-      :zip
     )
   end
 

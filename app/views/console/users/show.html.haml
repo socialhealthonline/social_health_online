@@ -37,7 +37,7 @@
   = @user.ethnicity
 
 %p
-  %strong Timezone:
+  %strong Time Zone:
   = @user.time_zone
 
 %p
@@ -48,7 +48,7 @@
   %strong Enabled:
   = @user.enabled? ? 'Yes' : 'No'
 
-%p
+ %p
   = link_to console_member_users_path, class: 'btn btn-outline-primary'do
     %i.fas.fa-arrow-left
     Back
