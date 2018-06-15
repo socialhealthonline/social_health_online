@@ -70,9 +70,9 @@
       .form-group
         %label(for="private") Event Access
         = f.select(:private,
-          options_for_select([['Private', '1'], ['Public', '0']], @event.private),
-          {prompt: ""},
-          {:class => "form-control #{form_error_class(@event, :private)}"})
+          options_for_select([['Private', 'true'], ['Public', 'false']], @event.private),
+          {},
+          { class: "form-control #{form_error_class(@event, :private)}"})
         = model_error_display(@event, :private)
   .mb-3.text-center
     = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
