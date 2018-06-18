@@ -41,7 +41,7 @@
         %strong Event Details:
       = simple_format @event.details
   %p.pt-2.pb-3
-    = link_to manage_events_path, class: 'btn btn-outline-primary mr-1' do
+    = link_to 'javascript:history.back()', class: 'btn btn-outline-primary mr-1' do
       %i.fas.fa-arrow-left
       Back
     = link_to edit_manage_event_path(@event.id), class: 'btn btn-outline-primary mr-1' do
