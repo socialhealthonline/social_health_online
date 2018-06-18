@@ -2,7 +2,18 @@ class SocialTracker::EventsController < ApplicationController
   before_action :require_authentication
 
   def new
-    @social_event_log = SocialEventLog.new
+    today = Date.today
+    range = today..today.next_day
+
+    today_social_event_logs = authenticated_user.social_event_logs.where(created_at: range)
+    today_social_event_logs_count = today_social_event_logs.count
+
+    if today_social_event_logs_count >= 3
+      redirect_to social_tracker_history_url,
+                  error: 'You can log a maximum of 3 events per day'
+    else
+      @social_event_log = SocialEventLog.new
+    end
   end
 
   def create
