@@ -13,7 +13,7 @@ RSpec.describe FindUsersCommunities do
       @communities = Member.where("name !=? ", user.member.name)
       @users = User.all_except(user)
       @communities = FindUsersCommunities.new(@communities, show_init_scope: true).call(@params)
-      @users = FindUsersCommunities.new(@users, show_init_scope:false ).call(@params)
+      @users = FindUsersCommunities.new(@users, show_init_scope: false ).call(@params)
     end
 
     context 'success filter' do

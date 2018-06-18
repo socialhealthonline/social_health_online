@@ -10,6 +10,7 @@ class Manage::UsersController < ApplicationController
 
   def new
     @users_count = User.where(member_id: authenticated_user.member.id).count
+    @available_users = @service_capacity - @users_count
   end
 
   def edit; end
