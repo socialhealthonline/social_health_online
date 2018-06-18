@@ -5,10 +5,12 @@ class Manage::UsersController < ApplicationController
 
   def index
     @users = User.where(member_id: authenticated_user.member.id).page(params[:page]).decorate
-    @users_count = User.all.count
+    @users_count = User.where(member_id: authenticated_user.member.id).count
   end
 
-  def new; end
+  def new
+    @users_count = User.where(member_id: authenticated_user.member.id).count
+  end
 
   def edit; end
 
@@ -63,6 +65,7 @@ class Manage::UsersController < ApplicationController
         :bio,
         :password,
         :password_confirmation,
+        :manager,
         :user_status
       )
     end

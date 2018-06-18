@@ -105,9 +105,9 @@
             #scroll-box-announcements
               - @users.each do |user|
                 .mb-3
-                  %a{ class: 'matchmaker_popover c-pointer',
-                      data: { toggle: 'popover', content: "#{render 'matchmakers/links_in_popover',  user: user }" } }
-                    =user.name
+                  %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                    data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: user }" } }
+                    =user.display_name
             %p= paginate @users
 
   .container.events-legend-container

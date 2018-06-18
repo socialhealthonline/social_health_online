@@ -12,8 +12,8 @@ RSpec.describe FindUsersCommunities do
       @params[:zip] = '35210'
       @communities = Member.where("name !=? ", user.member.name)
       @users = User.all_except(user)
-      @communities = FindUsersCommunities.new(@communities).call(@params)
-      @users = FindUsersCommunities.new(@users).call(@params)
+      @communities = FindUsersCommunities.new(@communities, show_init_scope: true).call(@params)
+      @users = FindUsersCommunities.new(@users, show_init_scope:false ).call(@params)
     end
 
     context 'success filter' do
