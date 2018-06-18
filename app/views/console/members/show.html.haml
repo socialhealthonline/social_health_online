@@ -19,6 +19,10 @@
   = @member.full_address
 
 %p
+  %strong Phone:
+  = number_to_phone @member.phone
+
+%p
   %strong Contact Name:
   = @member.contact_name
 
@@ -31,8 +35,8 @@
   = number_to_phone @member.contact_phone
 
 %p
-  %strong Phone:
-  = number_to_phone @member.phone
+  %strong Contact Phone Extension:
+  = number_to_phone @member.contact_phone_extension
 
 %p
   %strong User Seats:

@@ -52,12 +52,12 @@
           %p
             = link_to @member.url, target: '_blank' do
               %i.fas.fa-external-link-alt
-              Member Website
+              Website
         - if @member.events_url.present?
           %p
             = link_to @member.events_url, target: '_blank' do
               %i.fas.fa-map-marker-alt
-              Events Webpage
+              Events Website
         %p
           %h5 Bio
           = @member.bio
@@ -148,10 +148,10 @@
           %strong ZIP Code:
           = @member.zip
         %p
-          %strong Member Website:
+          %strong Website:
           = link_to @member.url, @member.url, target: '_blank'
         %p
-          %strong Events Webpage:
+          %strong Events Website:
           = link_to @member.events_url, @member.events_url, target: '_blank'
         %p
           %strong Primary Manager:

@@ -1,5 +1,5 @@
 class AffiliateForLocatorSerializer < ActiveModel::Serializer
-  attributes :name, :address, :city, :zip, :url, :phone, :support_type, :full_address, :state
+  attributes :name, :address, :city, :zip, :url, :phone, :support_type, :full_address, :state, :support_notes
   include ActionView::Helpers
   def support_type
     Affiliate::SUPPORT_TYPES[object.support_type]

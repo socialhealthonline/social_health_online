@@ -82,7 +82,7 @@
           .row
             .col
               .form-group
-                %label(for="user_time_zone") Timezone
+                %label(for="user_time_zone") Time Zone
                 = f.select(:time_zone, ['Alaska', 'Hawaii', 'Pacific Time (US & Canada)', 'Mountain Time (US & Canada)', 'Central Time (US & Canada)', 'Eastern Time (US & Canada)'].sort, {}, { class: 'custom-select form-control' })
                 = model_error_display(@user, :time_zone)
                 %div.float-right
@@ -90,7 +90,7 @@
                   = h.check_box :time_zone, { checked: @user.hidden_field&.time_zone }, '1', '0'
             .col
               .form-group
-                %label(for="user_birthdate") Birthdate (YYYY-MM-DD)
+                %label(for="user_birthdate") Birthdate
                 = f.text_field :birthdate, class: "flatpickr-date form-control #{form_error_class(@user, :birthdate)}"
                 = model_error_display(@user, :birthdate)
                 %div.float-right
@@ -100,7 +100,7 @@
             .col
               .form-group
                 %label(for="user_gender") Gender
-                = f.select :gender, User::GENDER, {}, { class: "form-control custom-select #{form_error_class(@user, :gender)}" }
+                = f.select :gender, User::GENDER, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@user, :gender)}" }
                 = model_error_display(@user, :gender)
                 %div.float-right
                   %label(for="user_gender") Hide Info
@@ -108,7 +108,7 @@
             .col
               .form-group
                 %label(for="user_ethnicity") Race/Ethnicity
-                = f.select :ethnicity, User::ETHNICITY, {}, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
+                = f.select :ethnicity, User::ETHNICITY, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
                 = model_error_display(@user, :ethnicity)
                 %div.float-right
                   %label(for="user_ethnicity") Hide Info

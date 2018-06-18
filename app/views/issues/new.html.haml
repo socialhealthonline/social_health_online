@@ -3,21 +3,19 @@
 .container
   .row.pt-3.pb-3
     .col
-      %h1.text-info Issues
+      %h1.text-info Report Issues
   .row.mb-1
     .col-md-12
-      %p.lead.pb-3.mb-0
-        Please provide a detailed description of any bugs, glitches, or service abuses you may have
-        encountered while using social health online so that they can be addressed.
-      %p
-        Issue(s)
+      %p.text-center.mb-2.p-3{style: "border: 1px solid black;"}
+        %strong
+          Please provide a detailed description of any bugs, glitches, or service abuses you have
+          encountered so they can be addressed.
 
     .col-md-12
       .card
-        .card-body
+        .card-body.text-center
           = form_with url: issues_url, method: :post, local: true do
             = hidden_field_tag :subject, ''
             .form-group
-              %label(for="message") Message
               = text_area_tag :message, params[:message], rows: '6', class: 'form-control', required: true
             = submit_tag 'Send', class: 'btn btn-primary', data: { disable_with: 'Please wait...' }

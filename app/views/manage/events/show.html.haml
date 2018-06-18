@@ -17,11 +17,17 @@
         %strong Event Location:
         = @event.location
       %p
+        %strong Event Address:
+        = @event.address
+      %p
         %strong Event City:
         = @event.city
       %p
         %strong Event State:
         = @event.state
+      %p
+        %strong ZIP Code:
+        = @event.zip
       %p
         %strong Event Website:
         = link_to @event.url, @event.url, target: '_blank' if @event.url.present?

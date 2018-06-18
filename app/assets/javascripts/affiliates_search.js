@@ -183,6 +183,7 @@
       "<h3>" +
       row.name +
       "</h3>" +
+      "<h6>Address:</h6>" +
       "<p>" +
       row.full_address +
       "</p>" +
@@ -197,6 +198,13 @@
       '">' +
       (row.url || "No Website") +
       "</a>" +
+      "<h6>Support Type:</h6>" +
+      "<p>" +
+      row.support_type +
+      "</p>" +	  
+      "<h6>Support Notes:</h6>" +
+      "<p>" +
+      (row.support_notes || "No Support Notes") +
       "</p>" +
       "</div>";
 
@@ -244,28 +252,36 @@
     // Display All the Markers
     data.forEach(function(row) {
       i += 1;
-      var address = row.address + ", " + row.city + ", " + row.state;
-      var contentString =
-        '<div id="affiliate-marker-content">' +
-        "<h3>" +
-        row.name +
-        "</h3>" +
-        "<p>" +
-        row.full_address +
-        "</p>" +
-        "<h6>Phone:</h6>" +
-        "<p>" +
-        (row.phone || "No Phone Number") +
-        "</p>" +
-        "<h6>Website:</h6>" +
-        "<p>" +
-        '<a href="' +
-        (row.url || "#") +
-        '">' +
-        (row.url || "No Website") +
-        "</a>" +
-        "</p>" +
-        "</div>";
+    var address = row.address + ", " + row.city + ", " + row.state;
+    var contentString =
+      '<div id="member-marker-content">' +
+      "<h3>" +
+      row.name +
+      "</h3>" +
+      "<h6>Address:</h6>" +
+      "<p>" +
+      row.full_address +
+      "</p>" +
+      "<h6>Phone:</h6>" +
+      "<p>" +
+      (row.phone || "No Phone Number") +
+      "</p>" +
+      "<h6>Website:</h6>" +
+      "<p>" +
+      '<a href="' +
+      (row.url || "#") +
+      '">' +
+      (row.url || "No Website") +
+      "</a>" +
+      "<h6>Support Type:</h6>" +
+      "<p>" +
+      row.support_type +
+      "</p>" +	  
+      "<h6>Support Notes:</h6>" +
+      "<p>" +
+      (row.support_notes || "No Support Notes") +
+      "</p>" +
+      "</div>";
 
       var infowindow = new google.maps.InfoWindow({
         content: contentString

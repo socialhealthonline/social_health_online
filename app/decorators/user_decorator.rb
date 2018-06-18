@@ -13,11 +13,7 @@ class UserDecorator < ApplicationDecorator
   end
 
   def user_manager?
-    if user.manager?
-      'Yes'
-    else
-      'No'
-    end
+    user.manager? ? 'Yes' : 'No'
   end
 
   def profile_name
