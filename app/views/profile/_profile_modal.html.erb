@@ -9,17 +9,28 @@
       </div>
       <!-- Modal body -->
       <div class='modal-body'>
-        <p><strong>Name:</strong> <%= user&.name if user.hidden_field.name %></p>
-        <p><strong>Email:</strong> <%= user&.email if user.hidden_field.email %></p>
-        <p><strong>Phone:</strong> <%= user&.phone if user.hidden_field.phone %></p>
-        <p><strong>Address:</strong> <%= user&.address if user.hidden_field.address %></p>
-        <p><strong>City:</strong> <%= user&.city if user.hidden_field.city %></p>
-        <p><strong>State:</strong> <%= user&.state if user.hidden_field.state %></p>
-        <p><strong>ZIP Code:</strong> <%= user&.zip if user.hidden_field.zip %></p>
-        <p><strong>Time Zone:</strong> <%= user&.time_zone if user.hidden_field.time_zone %></p>
-        <p><strong>Birthdate:</strong> <%= user&.birthdate if user.hidden_field.birthdate %></p>
-        <p><strong>Gender:</strong> <%= user&.gender if user.hidden_field.gender %></p>
-        <p><strong>Race/Ethnicity:</strong> <%= user&.ethnicity if user.hidden_field.ethnicity%></p>
+        <%= user.profile_name %>
+        <%= user.profile_email %>
+        <%= user.profile_phone %>
+        <%= user.profile_address %>
+        <%= user.profile_city %>
+        <%= user.profile_state %>
+        <%= user.profile_zip %>
+        <%= user.profile_time_zone %>
+        <%= user.profile_birthdate %>
+        <%= user.profile_gender %>
+        <%= user.profile_ethnicity %>
+        <%= user.profile_relationship_status %>
+        <%= user.profile_education_level %>
+        <%= user.profile_occupation %>
+        <%= user.profile_languages %>
+        <%= user.profile_hobbies %>
+        <%= user.profile_pet_peeves %>
+        <%= user.profile_bio %>
+      </div>
+      <!-- Modal footer -->
+      <div class='modal-footer'>
+        <button class='btn btn-danger' data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

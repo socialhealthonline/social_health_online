@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_14_122352) do
+ActiveRecord::Schema.define(version: 2018_06_15_093219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 2018_06_14_122352) do
 
   create_table "hidden_fields", force: :cascade do |t|
     t.bigint "user_id"
-    t.jsonb "settings", default: {"null"=>false, "default"=>{"zip"=>true, "city"=>true, "name"=>true, "email"=>true, "phone"=>true, "state"=>true, "gender"=>true, "address"=>true, "birthdate"=>true, "ethnicity"=>true, "time_zone"=>true, "matchmaker"=>true, "phone_extension"=>true}}, null: false
+    t.jsonb "settings", default: {"null"=>false, "default"=>{"zip"=>"0", "city"=>"0", "name"=>"0", "email"=>"0", "phone"=>"0", "state"=>"0", "gender"=>"0", "address"=>"0", "birthdate"=>"0", "ethnicity"=>"0", "time_zone"=>"0", "matchmaker"=>"0", "phone_extension"=>"0"}}, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_hidden_fields_on_user_id"
@@ -199,7 +199,6 @@ ActiveRecord::Schema.define(version: 2018_06_14_122352) do
     t.string "events_url"
     t.boolean "hide_info_on_locator", default: false
     t.string "slug"
-    t.boolean "hide_info_on_locator", default: false
     t.datetime "welcome_kit_date"
     t.string "phone"
     t.string "contact_phone_extension"
@@ -259,7 +258,6 @@ ActiveRecord::Schema.define(version: 2018_06_14_122352) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
     t.string "email", null: false
     t.boolean "enabled", default: true, null: false
     t.boolean "admin", default: false, null: false
@@ -272,14 +270,6 @@ ActiveRecord::Schema.define(version: 2018_06_14_122352) do
     t.datetime "updated_at", null: false
     t.integer "member_id"
     t.string "display_name"
-    t.string "address"
-    t.string "city"
-    t.string "state"
-    t.string "zip"
-    t.string "phone"
-    t.string "gender"
-    t.string "ethnicity"
-    t.date "birthdate"
     t.string "time_zone", default: "Central Time (US & Canada)", null: false
     t.boolean "manager", default: false, null: false
     t.string "relationship_status"
@@ -292,6 +282,15 @@ ActiveRecord::Schema.define(version: 2018_06_14_122352) do
     t.boolean "receive_email", default: false
     t.integer "user_status", default: 0
     t.date "first_login"
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "phone"
+    t.string "gender"
+    t.string "ethnicity"
+    t.date "birthdate"
     t.string "phone_extension"
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"

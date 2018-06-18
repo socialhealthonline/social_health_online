@@ -2,13 +2,15 @@ class Manage::UsersController < ApplicationController
   before_action :require_manager
   before_action :set_user, only: [:edit, :update]
   before_action :set_service_capacity, only: [:index, :new]
+  before_action :set_user_count, only: [:index, :new]
 
   def index
     @users = User.where(member_id: authenticated_user.member.id).page(params[:page]).decorate
-    @users_count = User.all.count
   end
 
-  def new; end
+  def new
+    @available_users_count = @service_capacity - @users_count
+  end
 
   def edit; end
 
@@ -63,6 +65,7 @@ class Manage::UsersController < ApplicationController
         :bio,
         :password,
         :password_confirmation,
+        :manager,
         :user_status
       )
     end
@@ -81,5 +84,9 @@ class Manage::UsersController < ApplicationController
 
     def set_service_capacity
       @service_capacity = authenticated_user.member.service_capacity
+    end
+
+    def set_user_count
+      @users_count = User.where(member_id: authenticated_user.member.id).count
     end
 end

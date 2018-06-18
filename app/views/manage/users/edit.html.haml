@@ -118,6 +118,14 @@
               = model_error_display(@user, :bio)
         .row
           .col
+            .card
+              .card-body
+                .form-check.mb-1
+                  = f.check_box :manager, class: 'form-check-input'
+                  %label.form-check-label(for="user_manager") Account Manager
+                %small Manager for their Member account and Community
+        .row
+          .col
             %p.text-muted Change your password:
         .row
           .col

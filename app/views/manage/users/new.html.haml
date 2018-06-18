@@ -40,7 +40,7 @@
               .col
                 .form-group.col-12.col-sm-12.col-md-12.col-lg-12.col-xl-12
                   %br
-                  -(1..@service_capacity).map do |i|
+                  -(1..@available_users_count).map do |i|
                     = f.text_field "email_#{i}".to_sym, class: "form-control"
                     %br
           %br

@@ -37,14 +37,14 @@
             %tr
               %td
               %td
-                %a{ class: 'matchmaker_popover c-pointer',
-                    data: { toggle: 'popover', content: "#{render 'links_in_popover',  user: user }" } }
-                  =user.name
+                %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                    data: { toggle: 'popover', trigger: 'focus', content: "#{render 'links_in_popover',  user: user }" } }
+                  =user.display_name
               %td
               %td= user.state
               %td
               %td= user.city
               %td
         %div.container.pagination.justify-content-center
-          %p= paginate @users
+          %p= paginate @users unless @users.empty?
         %br
