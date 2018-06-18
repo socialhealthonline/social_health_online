@@ -104,6 +104,13 @@ $(document).ready(function() {
     }
   });
 
+  // remove saved password from profile input field
+  $('#profile-password').val('');
+
+  $('.matchmaker_popover').popover({
+    trigger: 'focus'
+  });
+
 });
 
 var US_STATES = {

@@ -10,12 +10,13 @@ class CreateAndSendUserEmailService
       if User.exists?(email: email)
         @exists_users << "User with email: #{email} already exists"
       else
+        password = SecureRandom.hex
         User.new.tap do |u|
           u.email = email
-          u.password = SecureRandom.hex
+          u.password = password
           u.member_id = @authenticated_user.member.id
           u.save!(validate: false)
-          UserMailer.registration_confirmation(u).deliver
+          UserMailer.registration_confirmation(u, password).deliver
           HiddenField.create(user_id: u.id)
         end
       end
