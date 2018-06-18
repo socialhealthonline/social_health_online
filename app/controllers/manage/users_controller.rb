@@ -9,7 +9,7 @@ class Manage::UsersController < ApplicationController
   end
 
   def new
-    @available_users = @service_capacity - @users_count
+    @available_users_count = @service_capacity - @users_count
   end
 
   def edit; end
