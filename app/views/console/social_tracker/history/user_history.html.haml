@@ -18,6 +18,7 @@
           %th Event Date
           %th Event Location
           %th Event Rating
+          %th
       %tbody
         - @social_event_logs.each do |log|
           %tr.bg-white
@@ -25,6 +26,9 @@
             %td= short_date(log.event_date)
             %td= truncate(log.venue, :length => 30)
             %td= RATINGS.key(log.rating)
+            %td
+              = link_to '#', title: 'delete log', id: 'delete_log_#{log.id}', class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this log. Press OK to continue.' } do
+                %i.far.fa-trash-alt
           %tr.table-divider
     = paginate @social_event_logs
 - else

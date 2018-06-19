@@ -197,7 +197,6 @@ ActiveRecord::Schema.define(version: 2018_06_14_122352) do
     t.string "url"
     t.integer "primary_manager_id"
     t.string "events_url"
-    t.boolean "hide_info_on_locator", default: false
     t.string "slug"
     t.boolean "hide_info_on_locator", default: false
     t.datetime "welcome_kit_date"

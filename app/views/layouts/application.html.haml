@@ -11,5 +11,6 @@
 
       = yield
 
+      = render 'secondary_footer' if authenticated_user
       = render 'footer'
     = content_for :javascript

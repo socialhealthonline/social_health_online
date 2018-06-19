@@ -25,4 +25,11 @@ class Console::SocialTracker::HistoryController < ConsoleController
 
     send_data @member.social_tracker_csv, filename: "member-#{@member.friendly_id}-#{Date.today}-social-tracker.csv"
   end
+
+  def destroy
+    @log.destroy
+    redirect_to member_user_path, success:"Log was successfully deleted."
+  end 
+  
+  
 end

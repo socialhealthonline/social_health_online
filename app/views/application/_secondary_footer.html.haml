@@ -1,0 +1,17 @@
+%footer.bg-white.footer-short.border-top
+  .container
+    .row.pt-2.justify-content-center
+      = link_to dashboard_path do
+        %i.fas.fa-home.pt-2{:title => 'Home'} Home
+      %span.px-2
+      =link_to mailbox_inbox_path do
+        %i.fas.fa-envelope.pt-2{:title => 'Messages'} Messages
+      %span.px-2  
+      =link_to my_community_path do
+        %i.fas.fa-building.pt-2{:title => 'My Community'} My Community
+      %span.px-2  
+      =link_to social_tracker_log_path do
+        %i.fas.fa-database.pt-2{:title => 'Social Tracker'} Social Tracker
+
+      
+
