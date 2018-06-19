@@ -30,7 +30,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :hidden_field
 
   scope :all_except, ->(user) { where.not(id: user) }
-  scope :matchmaker, ->(user) { where("hidden_fields.user_id != ? and hidden_fields.settings @> ?", user.id, { matchmaker: true }.to_json).where(user_status: :activated) }
+  scope :matchmaker, ->(user) { where("hidden_fields.user_id != ? and hidden_fields.settings @> ?", user.id, { matchmaker: '0' }.to_json).where(user_status: :activated) }
 
   has_secure_password
   has_secure_token :auth_token
@@ -75,12 +75,5 @@ class User < ApplicationRecord
 
   def last_social_fitness_log_date
     social_fitness_logs.first&.created_at
-  end
-
-  # from String to Boolean all attrs except :id
-  # @param attrs [Hash]
-  def hidden_field_attributes=(attrs)
-    attrs.except(:id).each { |k, v| attrs[k] = ActiveRecord::Type::Boolean.new.cast(v) }
-    super(attrs)
   end
 end

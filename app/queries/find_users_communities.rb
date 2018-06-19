@@ -1,8 +1,9 @@
 class FindUsersCommunities
   attr_reader :initial_scope
 
-  def initialize(initial_scope)
+  def initialize(initial_scope, show_init_scope:)
     @initial_scope = initial_scope
+    @show_init_scope = show_init_scope
   end
 
   def call(params)
@@ -10,7 +11,8 @@ class FindUsersCommunities
     scoped = filter_by_city(scoped, params[:city])
     scoped = filter_by_zip(scoped, params[:zip])
     scoped = paginate(scoped, params[:page])
-    scoped
+    @show_init_scope = true if params[:state]
+    @show_init_scope ? scoped : []
   end
 
   private
