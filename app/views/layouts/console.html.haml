@@ -42,6 +42,10 @@
                     %div
                       %i.fas.fa-chart-line
                       Social Fitness
+                  = link_to dashboard_path, class: 'list-group-item d-flex justify-content-between' do
+                    %div
+                      %i.fas.fa-desktop
+                      Dashboard
             .col-12.col-md-10.mb-1.order-md-2
               - unless flash.empty?
                 = render partial: 'flash', locals: { flash: flash }

@@ -51,6 +51,8 @@ Rails.application.routes.draw do
   end
   
   get 'explore_communities' => 'communities#explore_communities'
+  get 'favorites' => 'communities#favorites'
+  get 'contacts' => 'communities#contacts'
 
   # Manage
   namespace :manage do

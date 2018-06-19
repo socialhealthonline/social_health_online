@@ -12,6 +12,12 @@ class CommunitiesController < ApplicationController
     @communities = FindUsersCommunities.new(@communities, show_init_scope: true).call(permitted_params)
   end
 
+  def favorites
+  end
+
+  def contacts
+  end
+
   private
 
     def permitted_params
