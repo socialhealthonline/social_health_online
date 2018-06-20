@@ -21,16 +21,18 @@
           %div.col-12
             .col-xs-3.col-md-3.col-sm-3.mx-auto
               = f.button "Search", class: "form-control btn btn-primary mb-2"
-      %div.table-wrapper-2#events-feed
+            %h3.notification-title.justify-content-center.mb-2
+              %strong Users
+      %div.table-wrapper-2#events-feed{:style => "border-radius: 12px;"}
         %table.table.text-center
           %thead.mdb-color.lighten-4
             %tr
               %th
               %th Name
               %th
-              %th State
-              %th
               %th City
+              %th
+              %th State
               %th
           %tbody
           - @users.each do |user|
@@ -41,9 +43,9 @@
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render 'links_in_popover',  user: user }" } }
                   =user.display_name
               %td
-              %td= user.state
-              %td
               %td= user.city
+              %td
+              %td= user.state
               %td
         %div.container.pagination.justify-content-center
           %p= paginate @users unless @users.empty?

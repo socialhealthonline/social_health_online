@@ -14,7 +14,7 @@
         - if @active.equal?(:trash) && messages.any?
           .row
             .col
-              .pull-right
+              .float-right
                 = link_to 'Empty trash', mark_as_deleted_conversations_path, class: 'btn btn-danger mb-3', method: :post,
          data: { confirm: 'Are you sure?' }
         .table-responsive

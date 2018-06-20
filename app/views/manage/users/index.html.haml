@@ -27,8 +27,8 @@
           = link_to new_manage_user_path, class: 'btn btn-primary' do
             %i.fas.fa-plus-circle
             Add Users
-  %h6.brand-primary.mt-2= "Service Capacity: #{@service_capacity}"
-  %h6.brand-primary= "Current User Total: #{@users_count}" 
+  %h6.mt-2= "Service Capacity: #{@service_capacity}"
+  %h6= "Current User Total: #{@users_count}" 
   
 
   - if @users.any?
@@ -54,7 +54,7 @@
                 = link_to edit_manage_user_path(user), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
                   %i.far.fa-edit
                 &nbsp;
-                = link_to manage_user_path(user), title: 'delete user', id: "delete_user_#{user.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this user. Press OK to continue.' } do
+                = link_to manage_user_path(user), title: 'Delete', id: "delete_user_#{user.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this user. Press OK to continue.' } do
                   %i.far.fa-trash-alt
             %tr.table-divider
     %p= paginate @users

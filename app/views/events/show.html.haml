@@ -26,6 +26,9 @@
       %p
         %i.fas.fa-sticky-note{:title => "Event Details"}
         = @event.details
+
+      %p
+        %strong RSVP List
         .dropdown
           %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
             %i.fas.fa-hand-point-right
@@ -33,9 +36,7 @@
           .dropdown-menu.dropdown-menu-right#rsvp-dropdown
             - Rsvp.rsvp_statuses.keys.each do |value|
               = @event.link_or_span(value, @rsvp_switcher)
-      %p
-        %strong RSVP List
-      %div.table-wrapper-2.mb-2
+      %div.table-wrapper-2.mb-2{ :style => "border-radius: 12px;" }
         %table.table.table-borderless
           %thead.mdb-color.lighten-4
             %tr
@@ -50,8 +51,8 @@
               %td.text-center= rsvp&.rsvp_status.capitalize
 
       %div.mb-3        
-        = link_to community_path(@member.slug), class: 'btn btn-outline-secondary' do
-          %i.fas.fa-users
-          Return to Community
+        = link_to 'javascript:history.back()', class: 'btn btn-outline-secondary' do
+          %i.fas.fa-arrow-left
+          Back
           
 

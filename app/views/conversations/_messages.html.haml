@@ -2,7 +2,7 @@
   .col-6
     %h4.mb-3= "Subject: #{conversation.subject}"
   .col
-    .pull-right
+    .float-right
       - if conversation.is_trashed?(authenticated_user)
         = link_to 'Restore', untrash_conversation_path(conversation), class: 'btn btn-primary', method: :post
       - else

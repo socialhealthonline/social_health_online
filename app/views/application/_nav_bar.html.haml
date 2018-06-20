@@ -10,7 +10,7 @@
           %ul.navbar-nav.font-weight-bold
             %li.nav-item.dropdown
               %a.nav-link.dropdown-toggle#navbarDropdownMenuLink{href: '/service', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
-                = 'Our Service'
+                = 'Service'
               .dropdown-menu.dropdown-menu-right{ 'aria-labelledby' => 'navbarDropdownMenuLink'}
                 = link_to about_us_path, class: 'dropdown-item' do
                   About Us
@@ -41,7 +41,7 @@
             %li.nav-item{class: "#{active_nav('news')}"}
               = link_to 'News', news_path, class: 'nav-link'
             %li.nav-item{class: "#{active_nav('contact')}"}
-              = link_to 'Contact Us', contact_path, class: 'nav-link'
+              = link_to 'Contact', contact_path, class: 'nav-link'
           %ul.navbar-nav
             - if authenticated_user
               %li.nav-item.dropdown

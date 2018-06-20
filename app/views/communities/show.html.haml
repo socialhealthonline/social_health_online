@@ -52,12 +52,12 @@
           %p
             = link_to @member.url, target: '_blank' do
               %i.fas.fa-external-link-alt
-              Website
+              Visit Website
         - if @member.events_url.present?
           %p
             = link_to @member.events_url, target: '_blank' do
               %i.fas.fa-map-marker-alt
-              Events Website
+              Visit Events Webpage
         %p
           %h5 Bio
           = @member.bio
@@ -83,7 +83,7 @@
         .row
           .col-12
             .card
-              .card-body
+              .card-body{ :style => "border: 1px solid black;" }
                 #calendar
     .tab-pane.fade#announcements(role="tabpanel" aria-labelledby="announcements-tab")
       .container
@@ -101,32 +101,18 @@
       %div#profile_partial
       .container
         .row.my-3
-          .col
-            #scroll-box-announcements
+          .col-6
+            #scroll-box-announcements{ style: "border: 1px solid black; border-radius: 12px; width: 100%;" }
+              %h5.notification-title.mb-2
+                %strong Display Name
               - @users.each do |user|
-                .mb-3
+                .mb-3.text-center
                   %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: user }" } }
                     =user.display_name
             %p= paginate @users
 
-  .container.events-legend-container
-    .row.my-3.justify-content-center
-      .col-7.border 
-        %p.text-center
-          %strong
-            Legend
-          .row.pb-2
-            .col-lg-6.col-xl-6.col-md-6.col-sm-6.col-6
-              .col-lg-12.col-xl-12.col-md-12.col-sm-12.col-12.text-center
-                .bg-primary.text-white
-                  Public Event
-            .col-lg-6.col-xl-6.col-md-6.col-sm-6.col-6
-              .col-lg-12.col-xl-12.col-md-12.col-sm-12.col-12.text-center
-                .bg-danger.text-white
-                  Private Event
-
-                        
+                       
 #community-profile-modal.modal.fade{ 'aria-hidden' => 'true', 'aria-labelledby' => 'CommunityProfileModalLabel', role: 'dialog', tabindex: '-1' }
   .modal-dialog{ role: 'document' }
     .modal-content
@@ -151,7 +137,7 @@
           %strong Website:
           = link_to @member.url, @member.url, target: '_blank'
         %p
-          %strong Events Website:
+          %strong Events Webpage:
           = link_to @member.events_url, @member.events_url, target: '_blank'
         %p
           %strong Primary Manager:
