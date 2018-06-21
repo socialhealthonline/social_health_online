@@ -24,7 +24,7 @@
               = link_to manage_users_path, class: 'dropdown-item' do
                 %i.fas.fa-user-circle
                 Users                
-      - if @users.any?
+      - if @member.users.any?
         .table-responsive.mt-3.text-center
           %table.table.table-borderless.align-items-center.table-hover(id="social-tracker-history-table")
             %thead
@@ -34,7 +34,7 @@
                 %th Total Events Logged
                 %th Last Logged Event
             %tbody
-            - @users.each.with_index(1) do |user, i|
+            - @member.users.each.with_index(1) do |user, i|
               %tr.bg-white
                 %td= link_to "#{i}. #{user.name}" , [:manage,:social_tracker,@member, user]
                 %td
