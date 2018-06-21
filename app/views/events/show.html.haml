@@ -1,3 +1,4 @@
+%div#profile_partial
 #helper-method
 .container
   .row.pt-3.mb-2
@@ -54,12 +55,13 @@
           - @event.rsvps.each do |rsvp|
             %tr
               %td
-              %td= rsvp.user.display_name
+              %td
+                %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                    data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: rsvp.user }" } }
+                  =rsvp.user.display_name
               %td.text-center= rsvp&.rsvp_status.capitalize
 
       %div.mb-3        
         = link_to 'javascript:history.back()', class: 'btn btn-outline-secondary' do
           %i.fas.fa-arrow-left
           Back
-          
-
