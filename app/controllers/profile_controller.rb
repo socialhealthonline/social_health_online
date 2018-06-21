@@ -54,6 +54,6 @@ class ProfileController < ApplicationController
   end
 
   def prepared_hidden_fields
-    authenticated_user.hidden_field.settings['default'].keys.map(&:to_sym)
+    authenticated_user.hidden_field.settings.keys.map(&:to_sym)
   end
 end
