@@ -3,7 +3,7 @@
 .container
   .row
     .col.py-3
-      %h1.text-info Log Events
+      %h1.text-info.text-center Log Events
       %p.text-center.p-2{style: "border: 1px solid black;"}
         %strong
           Log your social events below to track your activities
@@ -43,7 +43,7 @@
               = f.select :event_categories, EVENT_CATEGORIES, {include_hidden: false}, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_categories)}", multiple: true, style: "height: 100px;" }
               = model_error_display(@social_event_log, :event_categories)
             .form-group
-              %label(for="social_event_log_venue") Event Location (e.g. Central Park, My Home, etc.)
+              %label(for="social_event_log_venue") Event Location (e.g. Central Park, my house, etc.)
               = f.text_area :venue, class: "form-control #{form_error_class(@social_event_log, :venue)}"
               = model_error_display(@social_event_log, :venue)
             .form-group

@@ -6,7 +6,6 @@
     { name: "state", title: "State" },
     { name: "zip", title: "ZIP Code" },
     { name: "phone", title: "Phone Number" },
-    { name: "url", title: "URL / Link" }
   ];
 
   $(document).ready(function() {
@@ -181,6 +180,7 @@
       "<h3>" +
       row.name +
       "</h3>" +
+      "<h6>Address:</h6>" +	
       "<p>" +
       row.full_address +
       "</p>" +

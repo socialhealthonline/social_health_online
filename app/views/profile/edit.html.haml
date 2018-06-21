@@ -1,7 +1,7 @@
 .container
   .row.pt-3
     .col.pb-4
-      %h1.brand-primary My Profile
+      %h1.brand-primary.text-center My Profile
   .row
     .col
       = form_with model: @user, url: update_profile_url, method: :patch, local: true do |f|
@@ -37,14 +37,6 @@
                 %div.float-right
                   %label(for="user_phone") Hide Info
                   = h.check_box :phone, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.phone) }, '1', '0'
-            .col
-              .form-group
-                %label(for="phone_extension") Phone Extension
-                = f.text_field :phone_extension, class: "form-control #{form_error_class(@user, :phone_extension)}"
-                = model_error_display(@user, :phone_extension)
-                %div.float-right
-                  %label(for="phone_extension") Hide Info
-                  = h.check_box :phone_extension, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.phone_extension) }, '1', '0'
           .row
             .col
               .form-group

@@ -1,10 +1,9 @@
 .container
   .row
     .col.py-3
-      %h1.text-info Social Tracker
-      %h3.text-info History
+      %h1.text-info.text-center Event Log
       .row
-        .col-lg-6
+        .col-lg-6.text-center
           %p
             %strong Event Date:
           %p= short_date(@log.event_date)
@@ -19,7 +18,7 @@
           %p
             - @log.event_types.each_with_index do |type, i|
               %p= type.name
-        .col-lg-6
+        .col-lg-6.text-center
           %p
             %strong Event Source:
           %p= SocialEventLog::EVENT_SOURCES.key(@log.source)

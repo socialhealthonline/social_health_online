@@ -6,9 +6,7 @@
     { name: "state", title: "State" },
     { name: "zip", title: "ZIP Code" },
     { name: "phone", title: "Phone Number" },
-    { name: "url", title: "URL / Link" },
     { name: "support_type", title: "Support Type" },
-    { name: "support_notes", title: "Support Notes" }
   ];
 
   $(document).ready(function() {

@@ -3,28 +3,7 @@
     .col
       %br
       %div
-        - if authenticated_user.manager?
-          %div.float-right.new_manage_user_button
-            .dropdown
-              %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
-                %i.fas.fa-cog
-                Manage
-              .dropdown-menu.dropdown-menu-right
-                = link_to manage_edit_member_path, class: 'dropdown-item' do
-                  %i.fas.fa-building
-                  Community Profile
-                = link_to manage_events_path, class: 'dropdown-item' do
-                  %i.fas.fa-map-marker-alt
-                  Community Events
-                = link_to manage_social_tracker_users_path(authenticated_user.member), class: 'dropdown-item' do
-                  %i.fas.fa-database
-                  Social Tracker
-                = link_to manage_announcements_path, class: 'dropdown-item' do
-                  %i.fas.fa-bullhorn
-                  Announcements
-                = link_to manage_users_path, class: 'dropdown-item' do
-                  %i.fas.fa-user-circle
-                  Users
+     
       %h1.brand-primary.mb-4 Add Users
 
       .col-12.col-sm-12.col-md-9.col-lg-6.col-xl-6

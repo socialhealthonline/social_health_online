@@ -1,10 +1,9 @@
 .container
   .row
     .col.py-3
-      %h1.text-info Social Fitness
-      %h3.text-info History
+      %h1.text-info.text-center Fitness Log
       .row
-        .col-lg-6
+        .col-lg-6.text-center
           %p
             %strong My social fitness with individuals is:
           %p= RATINGS.key(@log.individuals)
@@ -17,7 +16,7 @@
           %p
             %strong My social fitness with my friends is:
           %p= RATINGS_WITH_NA.key(@log.friends)
-        .col-lg-6
+        .col-lg-6.text-center
           %p
             %strong My social fitness with my colleagues is:
           %p= RATINGS_WITH_NA.key(@log.colleagues)

@@ -26,15 +26,13 @@
           = link_to @event.url, @event.url, target: '_blank'
       %p
         %i.fas.fa-map-marker{:title => "Event Address"}
-        = @event.location_display  
-      
-      %p
-        %i.fas.fa-sticky-note{:title => "Event Details"}
-        = @event.details
+        = @event.location_display      
       %p
         %i.fas.fa-door-open{:title => "Event Access"}
         = @event.private? ? 'Private' : 'Public' 
-
+      %p
+        %i.fas.fa-sticky-note{:title => "Event Details"}
+        = @event.details
       %p
         %strong RSVP List
         .dropdown
