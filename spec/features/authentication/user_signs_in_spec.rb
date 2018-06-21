@@ -19,7 +19,7 @@ RSpec.describe 'User signs in' do
       click_button 'Sign In'
       user.reload
       expect(current_path).to eq home_path
-      expect(page).to have_content('Welcome back')
+      expect(page).to have_content("Welcome back, #{user.name}!")
       expect(user.last_sign_in_at).to_not be nil
     end
 

@@ -24,7 +24,7 @@
               = link_to edit_console_news_path(news), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
                 %i.far.fa-edit
               &nbsp;
-              = link_to console_news_path(news), title: "Delete", id: '', class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this news. Press OK to continue.' } do
+              = link_to console_news_path(news), title: "Delete", id: "delete_news_#{news.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this news. Press OK to continue.' } do
                 %i.far.fa-trash-alt
           %tr.table-divider
   %p= paginate @news
