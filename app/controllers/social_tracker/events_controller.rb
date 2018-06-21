@@ -10,7 +10,7 @@ class SocialTracker::EventsController < ApplicationController
 
     if today_social_event_logs_count >= 3
       redirect_to social_tracker_history_url,
-                  error: 'You can log a maximum of 3 events per day'
+                  error: 'Unsuccessfully logged event. You can log a maximum of 3 events per day.'
     else
       @social_event_log = SocialEventLog.new
     end

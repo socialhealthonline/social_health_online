@@ -1,19 +1,20 @@
 - page_title 'Issues'
 
 .container
-  .row.pt-3.pb-3
+  .row.pt-3.mb-3
     .col
       %h1.text-info Report Issues
-  .row.mb-1
+  .row
     .col-md-12
-      %p.text-center.mb-2.p-3{style: "border: 1px solid black;"}
+      %p.text-center.mb-4.p-2{style: "border: 1px solid black;"}
         %strong
-          Please provide a detailed description of any bugs, glitches, or service abuses you have
+          Provide a description of any bugs, glitches, or service abuses you have
           encountered so they can be addressed.
 
     .col-md-12
       .card
-        .card-body.text-center
+        %p.text-left.px-3.mb-0 Issues
+        .card-body.text-center.pt-0
           = form_with url: issues_url, method: :post, local: true do
             = hidden_field_tag :subject, ''
             .form-group

@@ -9,14 +9,14 @@ RSpec.describe 'Pending User' do
     end
 
     it 'redirect to edit profile if user is with status pending' do
-      visit dashboard_path
+      visit home_path
       expect(current_path).to eq profile_path
     end
 
     it 'activated user can navigate over pages' do
       user.update_attribute(:user_status, :activated)
-      visit dashboard_path
-      expect(current_path).to eq dashboard_path
+      visit home_path
+      expect(current_path).to eq home_path
     end
   end
 end

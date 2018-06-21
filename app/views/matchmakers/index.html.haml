@@ -1,13 +1,13 @@
 %div#profile_partial
 .container
-  .row.pt-3
+  .row.pt-3.px-2
     %h1.text-info Matchmaker
 
   .row.pt-3
     .col
-      %p.text-center.p-3{style: "border: 1px solid black;"}
+      %p.text-center.p-2{style: "border: 1px solid black;"}
         %strong
-          Use Matchmaker to search for Users in your area, become acquainted with them, and plan activites together.
+          Use Matchmaker to search for Users in your area, become acquainted with them, and plan activities together.
   
   .row.my-3
     .col
@@ -20,7 +20,7 @@
         %div.form-row
           %div.col-12
             .col-xs-3.col-md-3.col-sm-3.mx-auto
-              = f.button "Search", class: "form-control btn btn-primary mb-2"
+              = f.button "Search", class: "form-control btn btn-primary mb-3"
             %h3.notification-title.justify-content-center.mb-2
               %strong Users
       %div.table-wrapper-2#events-feed{:style => "border-radius: 12px;"}

@@ -54,7 +54,7 @@ module ApplicationHelper
     @active == active_page ? 'active' : ''
   end
 
-  def dashboard_events_status(status_index)
+  def home_events_status(status_index)
     Rsvp.rsvp_statuses.key(status_index).capitalize
   end
 end

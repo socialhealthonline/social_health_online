@@ -19,7 +19,7 @@
           %h1.mb-2.font-weight-bold.c-pointer{ data: { toggle: 'modal', target: '#community-profile-modal' } }= @member.name
           - if authenticated_user.manager? && authenticated_user.member_id == @member.id
             %div
-              .dropdown
+              .dropdown.mb-3
                 %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
                   %i.fas.fa-cog
                   Manage

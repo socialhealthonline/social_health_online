@@ -10,42 +10,42 @@
             .col-12.col-md-2.mb-1.order-md-1
               .card.card-sm
                 .list-group.list-group-flush
-                  = link_to console_path, class: 'list-group-item d-flex justify-content-between' do
+                  = link_to console_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.fas.fa-tachometer-alt
                       Console
-                  = link_to console_members_path, class: 'list-group-item d-flex justify-content-between' do
+                  = link_to console_members_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.fas.fa-address-card
                       Members
-                  = link_to console_affiliates_path, class: 'list-group-item d-flex justify-content-between' do
+                  = link_to console_affiliates_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white ', :style => 'border: 1px solid black;' do
                     %div
                       %i.far.fa-handshake
                       Affiliates
-                  = link_to console_news_index_path, class: 'list-group-item d-flex justify-content-between' do
+                  = link_to console_news_index_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.far.fa-newspaper
                       News
-                  = link_to console_admins_path, class: 'list-group-item d-flex justify-content-between' do
+                  = link_to console_admins_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.fas.fa-shield-alt
                       Admins
-                  = link_to console_notifications_path, class: 'list-group-item d-flex justify-content-between' do
+                  = link_to console_notifications_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.far.fa-bell
                       Notifications
-                  = link_to console_social_tracker_members_path, class: 'list-group-item d-flex justify-content-between' do
+                  = link_to console_social_tracker_members_path, class: 'list-group-item d-flex justify-content-center px-1 bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.fas.fa-database
                       Social Tracker
-                  = link_to console_social_fitness_members_path, class: 'list-group-item d-flex justify-content-between' do
+                  = link_to console_social_fitness_members_path, class: 'list-group-item d-flex justify-content-center px-1 bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
-                      %i.fas.fa-chart-line
+                      %i.fas.fa-heartbeat
                       Social Fitness
-                  = link_to dashboard_path, class: 'list-group-item d-flex justify-content-between' do
+                  = link_to home_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.fas.fa-desktop
-                      Dashboard
+                      Home
             .col-12.col-md-10.mb-1.order-md-2
               - unless flash.empty?
                 = render partial: 'flash', locals: { flash: flash }

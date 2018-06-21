@@ -5,7 +5,9 @@
 
   .row.my-3
     .col
-      %h3.notification-title Messages
+      %h3.notification-title
+        %strong
+          Messages
 
       = form_for authenticated_user, url: my_settings_path do |f|
         .row.mb-2

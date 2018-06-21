@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   ETHNICITY = ['Black', 'White', 'Hispanic', 'Asian', 'American Indian', 'Pacific Islander', 'Other']
   GENDER = ['Male', 'Female', 'Other']
-  RELATIONSHIP_STATUS = ['Single', 'In a relationship', 'Married', 'Other']
+  RELATIONSHIP_STATUS = ['Single', 'In a Relationship', 'Married', 'Other']
   EDUCATION_LEVEL = ['High School', 'College', 'Advanced Graduate', 'Other']
   enum user_status: %i[pending activated disabled]
 

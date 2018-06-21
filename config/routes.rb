@@ -85,7 +85,7 @@ Rails.application.routes.draw do
   end
 
   # Dashboard
-  get "dashboard" => "dashboard#index"
+  get "home" => "home#index"
 
   # Console
   get "console" => "console#index"

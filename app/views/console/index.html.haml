@@ -1,4 +1,4 @@
-.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.pb-3
   %h1.h3.brand-primary Console
   %div
 
@@ -6,19 +6,19 @@
   .row
     .col-md-8.col-lg-4
       .card.pricing.card-lg
-        .card-body.border
+        .card-body{ :style => "border: 1px solid black;" }
           %h5 Total Affiliates
           %span.display-4
             #{ Affiliate.all.count }
     .col-md-6.col-lg-4
       .card.pricing.card-lg
-        .card-body.border
+        .card-body{ :style => "border: 1px solid black;" }
           %h5 Total Members
           %span.display-4
             #{ Member.all.count }
     .col-md-6.col-lg-4
       .card.pricing.card-lg
-        .card-body.border
+        .card-body{ :style => "border: 1px solid black;" }
           %h5 Total Users
           %span.display-4          
             #{ User.all.count }

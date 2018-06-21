@@ -1,7 +1,7 @@
 .container
   .row.pt-3
     .col
-      %h1.text-info Dashboard
+      %h1.text-info Home
 
   .row.my-3
     .col
@@ -25,7 +25,7 @@
           = @level
         %h5.notification-title.mt-2 Social Health Level Progress
         %span.social-health-experience-experience
-          %div.progress
+          %div.progress{ :style => "border: 1px solid black;" }
             %div.progress-bar{"aria-valuemax" => "100","aria-valuemin" => "0",
                               "aria-valuenow" => "#{@progress}", :role => "progressbar", :style => "width:#{@progress}%"}
               ="#{@progress}%"
@@ -48,5 +48,5 @@
               %td= link_to event.title, community_event_path(authenticated_user.member, event)
               %td= event.event_type
               %td= time_in_cdt(event.start_at, '%m/%d/%Y')
-              %td= dashboard_events_status(event.status)
+              %td= home_events_status(event.status)
             %tr.table-divider

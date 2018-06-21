@@ -11,7 +11,7 @@
         %strong Event Type:
         =@event.event_type
       %p
-        %strong Event Date:
+        %strong Event Date/Time:
         = short_date_time @event.start_at, @event.time_zone
       %p
         %strong Event Location:
@@ -26,7 +26,7 @@
         %strong Event State:
         = @event.state
       %p
-        %strong ZIP Code:
+        %strong Event ZIP Code:
         = @event.zip
       %p
         %strong Event Website:
