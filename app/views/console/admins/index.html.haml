@@ -1,3 +1,4 @@
+%div#profile_partial
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
   %h1.brand-primary Admins
   %div
@@ -20,7 +21,10 @@
         - @admins.each_with_index do |admin, i|
           %tr.bg-white
             %th(scope="row")= link_to "#{i+1}. #{admin.name}", console_admin_path(admin)
-            %td= admin.display_name
+            %td
+              %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                  data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: admin }" } }
+                =admin.display_name
             %td= admin.email
             %td= admin.manager? ? 'Yes' : 'No'
             %td= short_date admin.last_sign_in_at

@@ -25,43 +25,43 @@ class UserDecorator < ApplicationDecorator
   end
 
   def profile_email
-    h.content_tag :p, "Email: #{ object&.email }" unless object.hidden_field.email
+    h.content_tag :p, "Email: #{ object&.email }" if object.hidden_field.email.eql?('0')
   end
 
   def profile_phone
-    h.content_tag :p, "Phone: #{ object&.phone }" unless object.hidden_field.phone
+    h.content_tag :p, "Phone: #{ object&.phone }" if object.hidden_field.phone.eql?('0')
   end
 
   def profile_address
-    h.content_tag :p, "Address: #{ object&.address }" unless object.hidden_field.address
+    h.content_tag :p, "Address: #{ object&.address }" if object.hidden_field.address.eql?('0')
   end
 
   def profile_city
-    h.content_tag :p, "City: #{ object&.city }" unless object.hidden_field.city
+    h.content_tag :p, "City: #{ object&.city }" if object.hidden_field.city.eql?('0')
   end
 
   def profile_state
-    h.content_tag :p, "State: #{ object&.state }" unless object.hidden_field.state
+    h.content_tag :p, "State: #{ object&.state }" if object.hidden_field.state.eql?('0')
   end
 
   def profile_zip
-    h.content_tag :p, "ZIP: #{ object&.zip }" unless object.hidden_field.zip
+    h.content_tag :p, "ZIP: #{ object&.zip }" if object.hidden_field.zip.eql?('0')
   end
 
   def profile_time_zone
-    h.content_tag :p, "Time Zone: #{ object&.time_zone }" unless object.hidden_field.time_zone
+    h.content_tag :p, "Time Zone: #{ object&.time_zone }" if object.hidden_field.time_zone.eql?('0')
   end
 
   def profile_birthdate
-    h.content_tag :p, "Birthdate: #{ object&.birthdate }" unless object.hidden_field.birthdate
+    h.content_tag :p, "Birthdate: #{ object&.birthdate }" if object.hidden_field.birthdate.eql?('0')
   end
 
   def profile_gender
-    h.content_tag :p, "Gender: #{ object&.gender }" unless object.hidden_field.gender
+    h.content_tag :p, "Gender: #{ object&.gender }" if object.hidden_field.gender.eql?('0')
   end
 
   def profile_ethnicity
-    h.content_tag :p, "Ethnicity: #{ object&.ethnicity }" unless object.hidden_field.ethnicity
+    h.content_tag :p, "Ethnicity: #{ object&.ethnicity }" if object.hidden_field.ethnicity.eql?('0')
   end
 
   def profile_relationship_status
