@@ -1,7 +1,6 @@
 class Manage::SocialTracker::HistoryController < ApplicationController
   def users
-    @member = Member.friendly.find params[:name]
-    @users = @member.users
+    @member = Member.includes(users: [:social_event_logs]).friendly.find(params[:name])
   end
 
   def user_history
