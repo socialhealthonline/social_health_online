@@ -62,7 +62,7 @@ class User < ApplicationRecord
   end
 
   def total_social_events_logged
-    social_event_logs.count
+    social_event_logs.size
   end
 
   def last_social_event_log_date
