@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_20_160225) do
+ActiveRecord::Schema.define(version: 2018_06_22_185049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -197,8 +197,8 @@ ActiveRecord::Schema.define(version: 2018_06_20_160225) do
     t.string "url"
     t.integer "primary_manager_id"
     t.string "events_url"
-    t.boolean "hide_info_on_locator", default: false
     t.string "slug"
+    t.boolean "hide_info_on_locator", default: false
     t.datetime "welcome_kit_date"
     t.string "phone"
     t.string "contact_phone_extension"
@@ -292,6 +292,7 @@ ActiveRecord::Schema.define(version: 2018_06_20_160225) do
     t.integer "user_status", default: 0
     t.date "first_login"
     t.string "phone_extension"
+    t.text "group"
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["enabled"], name: "index_users_on_enabled"
