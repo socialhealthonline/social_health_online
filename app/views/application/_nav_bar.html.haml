@@ -58,15 +58,15 @@
                   = link_to my_settings_path, class: 'dropdown-item' do
                     %i.fas.fa-wrench
                     My Settings
-                  = link_to issues_path, class: 'dropdown-item' do
-                    %i.fas.fa-flag
-                    Report Issues
                   = link_to my_favorites_path, class: 'dropdown-item' do
                     %i.fas.fa-star
                     My Favorites
                   = link_to my_contacts_path, class: 'dropdown-item' do
                     %i.fas.fa-address-book
                     My Contacts
+                  = link_to issues_path, class: 'dropdown-item' do
+                    %i.fas.fa-flag
+                    Report Issues                    
                   = link_to signout_path, method: :delete, class: 'dropdown-item', id: 'nav-signout', data: { confirm: 'Are you sure you would like to sign out? Press OK to continue.' } do
                     %i.fas.fa-sign-out-alt
                     Sign Out

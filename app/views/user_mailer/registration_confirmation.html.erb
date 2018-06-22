@@ -1,8 +1,14 @@
 <p> Welcome to Social Health Online! </p>
 <p>
-Your account has been created and you may access the service now. You'll first need to reset your password. Click the link below to have reset instructions sent to your email address:
+Your account has been created and you may access the service now. You'll first need to sign in with your termporary password.
 </p>
-Your password is: <%= @password %>
+Your temporary password is: <%= @password %>
+<p>
+  Click the link below to sign in:
+</p>
+<p>
+  <%= link_to "Click here to sign in.", signin_path %>
+</p>
 <p>
   Remember to always protect your login information so that your account remains secure.
 </p>
