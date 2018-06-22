@@ -65,6 +65,12 @@
       = f.select :ethnicity, User::ETHNICITY, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
       = model_error_display(@user, :ethnicity)
 .row
+  .col-6
+    .form-group
+      %label(for="user_group") Group
+      = f.text_field :group, class: "form-control #{form_error_class(@user, :group)}"
+      = model_error_display(@user, :group)      
+.row
   .col
     .card
       .card-body

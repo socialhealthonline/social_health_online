@@ -41,6 +41,10 @@
   = @user.time_zone
 
 %p
+  %strong Group:
+  = @user.group
+
+%p
   %strong Account Manager:
   = @user.manager? ? 'Yes' : 'No'
 

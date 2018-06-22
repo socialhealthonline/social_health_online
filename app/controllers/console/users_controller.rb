@@ -74,6 +74,7 @@ class Console::UsersController < ConsoleController
       :ethnicity,
       :birthdate,
       :time_zone,
+      :group,
       :enabled,
       :manager
     )

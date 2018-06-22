@@ -62,6 +62,7 @@ class Manage::UsersController < ApplicationController
         :languages,
         :hobbies,
         :pet_peeves,
+        :group,
         :bio,
         :password,
         :password_confirmation,

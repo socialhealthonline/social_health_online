@@ -109,6 +109,11 @@
         .row
           .col-6
             .form-group
+              %label(for="group") Group (e.g. Sales, Accounting, etc.)
+              = f.text_field :group, class: "form-control #{form_error_class(@user, :group)}"
+              = model_error_display(@user, :group)
+          .col-6
+            .form-group
               %label(for="user_status") User Status
               = @user.user_pending?(f)
               = model_error_display(@user, :user_status)
