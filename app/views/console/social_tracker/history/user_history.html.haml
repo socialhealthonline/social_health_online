@@ -27,7 +27,7 @@
             %td= truncate(log.venue, :length => 30)
             %td= RATINGS.key(log.rating)
             %td
-              = link_to '#', title: 'delete log', id: 'delete_log_#{log.id}', class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this log. Press OK to continue.' } do
+              = link_to 'console_social_tracker_members_path', title: 'delete log', id: 'delete_log_#{log.id}', class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this log. Press OK to continue.' } do
                 %i.far.fa-trash-alt
           %tr.table-divider
     = paginate @social_event_logs
