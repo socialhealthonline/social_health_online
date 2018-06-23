@@ -10,7 +10,7 @@ class IssuesController < ApplicationController
     else
       # send email
       IssuesMailer.notify(params, authenticated_user).deliver_now
-      redirect_to issues_url, success: "Thanks for reporting issue(s) us. We'll be in touch!"
+      redirect_to issues_url, success: "Thank you for your submission. We'll be in touch!"
     end
   end
 end

@@ -109,7 +109,7 @@
         .row
           .col-6
             .form-group
-              %label(for="group") Group (e.g. Sales, Accounting, etc.)
+              %label(for="group") Group (e.g. Sales Team)
               = f.text_field :group, class: "form-control #{form_error_class(@user, :group)}"
               = model_error_display(@user, :group)
           .col-6
@@ -130,7 +130,7 @@
                 .form-check.mb-1
                   = f.check_box :manager, class: 'form-check-input'
                   %label.form-check-label(for="user_manager") Account Manager
-                %small Manager for their Member account and Community
+                %small Manager for the Member account
         .row
           .col
             %p.text-muted Change your password:
