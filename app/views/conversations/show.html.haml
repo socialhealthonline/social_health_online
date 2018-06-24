@@ -4,7 +4,7 @@
       %h1.text-info Messages
   .row.pt-3.pb-3
     .col-12.col-md-3.mb-1.order-md-1
-      = link_to 'Compose', new_conversation_path, class: 'btn btn-info mb-3'
+      = link_to 'Compose', new_conversation_path, class: 'btn btn-info mb-3', style: 'border: 1px solid black;'
       .card.card-sm
         .list-group.list-group-flush
           = render 'mailbox/folders'
@@ -13,4 +13,4 @@
       = form_for :message, url: reply_conversation_path(conversation) do |f|
         .form-group
           = f.text_area :body, placeholder: 'Reply Message', rows: 4, class: 'form-control', required: true
-        = f.submit 'Reply', class: 'btn btn-primary float-right'
+        = f.submit 'Reply', class: 'btn btn-primary float-right', style: 'border: 1px solid black;'

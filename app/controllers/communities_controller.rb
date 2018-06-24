@@ -12,6 +12,9 @@ class CommunitiesController < ApplicationController
     @communities = FindUsersCommunities.new(@communities, show_init_scope: true).call(permitted_params)
   end
 
+  def event_search
+  end
+
   private
 
     def permitted_params

@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   end
   
   get 'explore_communities' => 'communities#explore_communities'
+  get 'event_search' => 'communities#event_search'
 
   # Manage
   namespace :manage do

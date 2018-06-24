@@ -2,5 +2,5 @@
   = link_to mailbox_inbox_path, class: "nav-link #{active_page(:inbox)}" do
     Inbox
     %span.badge.badge-danger.pull-right= unread_messages_count
-  = link_to 'Sent', mailbox_sent_path, class: "nav-link #{active_page(:sent)}"
-  = link_to 'Trash', mailbox_trash_path, class: "nav-link #{active_page(:trash)}"
+  = link_to 'Sent', mailbox_sent_path, class: "nav-link #{active_page(:sent)}", style: 'border: 1px solid black;'
+  = link_to 'Trash', mailbox_trash_path, class: "nav-link #{active_page(:trash)}", style: 'border: 1px solid black;'

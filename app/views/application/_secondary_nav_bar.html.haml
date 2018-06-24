@@ -22,6 +22,9 @@
               = link_to explore_communities_path, class: 'dropdown-item' do
                 %i.fas.fa-compass
                 Explore Communities
+              =link_to event_search_path, class: 'dropdown-item' do
+                %i.fas.fa-search
+                Event Search
 
           %li.nav-item.dropdown.mr-1.my-1
             %a.btn.btn-primary.dropdown-toggle.px-1#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}

@@ -17,9 +17,9 @@
     .mt-1= truncate conversation.messages.last.body, length: 180
   %td{ width: '140' }
     - view_btn_text = folder.equal?(:inbox) ? 'View' : 'View'
-    = link_to view_btn_text, conversation_path(conversation), class: 'btn btn-sm btn-primary btn-block'
+    = link_to view_btn_text, conversation_path(conversation), class: 'btn btn-sm btn-primary btn-block', style: 'border: 1px solid black;'
     - if conversation.is_trashed?(authenticated_user)
-      = link_to 'Restore', untrash_conversation_path(conversation), class: 'btn btn-sm btn-primary btn-block mt-1', method: :post
+      = link_to 'Restore', untrash_conversation_path(conversation), class: 'btn btn-sm btn-primary btn-block mt-1', style: 'border: 1px solid black;', method: :post
     - else
-      = link_to 'Move to trash', trash_conversation_path(conversation), class: 'btn btn-sm btn-danger btn-block', method: :post, data: { confirm: 'Are you sure?' }
+      = link_to 'Move to trash', trash_conversation_path(conversation), class: 'btn btn-sm btn-danger btn-block', style: 'border: 1px solid black;', method: :post, data: { confirm: 'Are you sure?' }
 %tr.table-divider
