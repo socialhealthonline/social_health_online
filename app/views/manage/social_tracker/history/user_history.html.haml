@@ -9,7 +9,7 @@
         .row
           .col-sm-4.offset-sm-4
           - if @social_event_logs.any?
-            .table-responsive
+            .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
               %table.table.align-items-center.text-center.table-hover.table-sm
                 %thead
                   %tr
@@ -29,6 +29,6 @@
               %em No social event logs were found.
 
       %p.py-3
-        = link_to manage_social_tracker_users_path, class: 'btn btn-outline-primary' do
+        = link_to manage_social_tracker_users_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do
           %i.fas.fa-arrow-left
           Back

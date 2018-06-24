@@ -1,5 +1,5 @@
 .nav.flex-column.nav-pills
-  = link_to mailbox_inbox_path, class: "nav-link #{active_page(:inbox)}" do
+  = link_to mailbox_inbox_path, class: "nav-link #{active_page(:inbox)}", style: 'border: 1px solid black;' do
     Inbox
     %span.badge.badge-danger.pull-right= unread_messages_count
   = link_to 'Sent', mailbox_sent_path, class: "nav-link #{active_page(:sent)}", style: 'border: 1px solid black;'

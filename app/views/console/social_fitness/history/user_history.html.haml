@@ -12,7 +12,7 @@
   .row
     .col-sm-4.offset-sm-4
       - if @social_fitness_logs.any?
-        .table-responsive
+        .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
           %table.table.align-items-center.text-center.table-hover
             %thead
               %tr
@@ -29,6 +29,6 @@
     %em No social fitness entries for this User.
 
 %p
-  = link_to [:console,:social_fitness,@member], class: 'btn btn-outline-primary' do
+  = link_to [:console,:social_fitness,@member], class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do
     %i.fas.fa-arrow-left
     Back

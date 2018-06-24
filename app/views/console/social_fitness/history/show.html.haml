@@ -39,6 +39,6 @@
             %strong My overall social fitness is:
           %p= RATINGS.key(@log.overall)
 %p
-  = link_to [:console,:social_fitness,@member,@user], class: 'btn btn-outline-primary' do
+  = link_to [:console,:social_fitness,@member,@user], class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do
     %i.fas.fa-arrow-left
     Back

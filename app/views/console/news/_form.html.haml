@@ -13,8 +13,8 @@
         = model_error_display(@news, :body)
 
   .mb-3.text-center
-    = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
+    = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }
     - if @news.persisted?
-      = link_to 'Cancel', console_news_path(@news), class: 'btn btn-outline-secondary'
+      = link_to 'Cancel', console_news_path(@news), class: 'btn btn-outline-secondary', :style => 'border: 1px solid black;'
     - else
-      = link_to 'Cancel', console_news_index_path, class: 'btn btn-outline-secondary'
+      = link_to 'Cancel', console_news_index_path, class: 'btn btn-outline-secondary', :style => 'border: 1px solid black;'

@@ -9,7 +9,7 @@
         %li.breadcrumb-item.active(aria-current="page")= @user.name
 
 - if @social_event_logs.any?
-  .table-responsive
+  .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
 
     %table.table.table-borderless.align-items-center.table-hover
       %thead
@@ -36,6 +36,6 @@
     %em No events logged for this User.
 
 %p.pt-3
-  = link_to console_social_tracker_member_path, class: 'btn btn-outline-primary' do
+  = link_to console_social_tracker_member_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do
     %i.fas.fa-arrow-left
     Back
