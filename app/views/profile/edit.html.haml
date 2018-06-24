@@ -169,4 +169,4 @@
                 = f.password_field :password_confirmation, class: "form-control #{form_error_class(@user, :password_confirmation)}"
                 = model_error_display(@user, :password_confirmation)
           .row.justify-content-center.pt-1.pb-3
-            = f.submit 'Update', class: 'btn btn-primary', data: { disable_with: 'Updating...' }
+            = f.submit 'Update', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Updating...' }

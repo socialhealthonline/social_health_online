@@ -19,4 +19,4 @@
             = hidden_field_tag :subject, ''
             .form-group
               = text_area_tag :message, params[:message], rows: '6', class: 'form-control', required: true
-            = submit_tag 'Send', class: 'btn btn-primary', data: { disable_with: 'Please wait...' }
+            = submit_tag 'Send', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
