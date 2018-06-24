@@ -15,7 +15,7 @@
       %i.far.fa-edit
       Edit
     &nbsp;
-    = link_to manage_announcement_path(@announcement), method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'Please confirm that you wish to delete this notification. Press OK to continue.' } do
+    = link_to manage_announcement_path(@announcement), method: :delete, class: 'btn btn-outline-danger', style: 'border: 1px solid black;', data: { confirm: 'Please confirm that you wish to delete this notification. Press OK to continue.' } do
       %i.far.fa-trash-alt
       Delete
 %br

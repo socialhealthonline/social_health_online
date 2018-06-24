@@ -30,9 +30,10 @@
       %p
         %i.fas.fa-door-open{:title => "Event Access"}
         = @event.private? ? 'Private' : 'Public' 
-      %p
-        %i.fas.fa-sticky-note{:title => "Event Details"}
-        = @event.details
+      -if @event.details.present?  
+        %p
+          %i.fas.fa-sticky-note{:title => "Event Details"}
+          = @event.details
       %p
         %strong RSVP List
         .dropdown
@@ -60,6 +61,6 @@
               %td.text-center= rsvp&.rsvp_status.capitalize
 
       %div.mb-3        
-        = link_to 'javascript:history.back()', class: 'btn btn-outline-secondary' do
+        = link_to 'javascript:history.back()', class: 'btn btn-outline-secondary', style: 'border: 1px solid black;' do
           %i.fas.fa-arrow-left
           Back

@@ -13,6 +13,8 @@ class CommunitiesController < ApplicationController
   end
 
   def event_search
+    @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :desc).page(params[:page]).per(25)
+    @member = authenticated_user.member_id
   end
 
   private
