@@ -10,7 +10,7 @@
     %h5.brand-primary Users
 
 - if @users.any?
-  .table-responsive
+  .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
     %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
@@ -32,7 +32,7 @@
 - else
   %p.text-muted
     %em No Users were found.
-%p
+%p.mt-2
   = link_to console_social_tracker_members_path, class: 'btn btn-outline-primary' do
     %i.fas.fa-arrow-left
     Back

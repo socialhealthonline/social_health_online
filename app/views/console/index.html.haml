@@ -8,19 +8,19 @@
   .row
     .col-md-8.col-lg-4
       .card.pricing.card-lg
-        .card-body{ :style => "border: 1px solid black;" }
+        .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
           %h5 Total Affiliates
           %span.display-4
             #{ Affiliate.all.count }
     .col-md-6.col-lg-4
       .card.pricing.card-lg
-        .card-body{ :style => "border: 1px solid black;" }
+        .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
           %h5 Total Members
           %span.display-4
             #{ Member.all.count }
     .col-md-6.col-lg-4
       .card.pricing.card-lg
-        .card-body{ :style => "border: 1px solid black;" }
+        .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
           %h5 Total Users
           %span.display-4          
             #{ User.all.count }

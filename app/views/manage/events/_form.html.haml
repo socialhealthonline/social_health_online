@@ -75,8 +75,8 @@
           { class: "form-control #{form_error_class(@event, :private)}"})
         = model_error_display(@event, :private)
   .mb-3.text-center
-    = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
+    = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, style: 'border: 1px solid black;'
     - if @event.persisted?
-      = link_to 'Cancel', manage_event_path(@event), class: 'btn btn-outline-secondary'
+      = link_to 'Cancel', manage_event_path(@event), class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'
     - else
-      = link_to 'Cancel', manage_events_path, class: 'btn btn-outline-secondary'
+      = link_to 'Cancel', manage_events_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'

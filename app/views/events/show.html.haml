@@ -20,13 +20,13 @@
       %p
         %i.fas.fa-image{:title => "Event Location"}
         = @event.location
+      %p
+        %i.fas.fa-map-marker{:title => "Event Address"}
+        = @event.location_display   
       - if @event.url.present?
         %p
           %i.fas.fa-globe{:title => "Event Website"}
-          = link_to @event.url, @event.url, target: '_blank'
-      %p
-        %i.fas.fa-map-marker{:title => "Event Address"}
-        = @event.location_display      
+          = link_to @event.url, @event.url, target: '_blank' 
       %p
         %i.fas.fa-door-open{:title => "Event Access"}
         = @event.private? ? 'Private' : 'Public' 

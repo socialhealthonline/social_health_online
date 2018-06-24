@@ -2,14 +2,14 @@
 
 %div#profile_partial
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
-  %h1.brand-primary Admins
+  %h3.brand-primary Admins
   %div
     = link_to new_console_admin_path, class: 'btn btn-primary' do
       %i.fas.fa-plus-circle
       Add Admin
 
 - if @admins.any?
-  .table-responsive
+  .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
     %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr

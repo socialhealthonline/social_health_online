@@ -20,10 +20,10 @@
           - if authenticated_user.manager? && authenticated_user.member_id == @member.id
             %div
               .dropdown.mb-3
-                %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                %a.btn.btn-primary.dropdown-toggle{style: 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
                   %i.fas.fa-cog
                   Manage
-                .dropdown-menu.dropdown-menu-right
+                .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;'}
                   = link_to manage_edit_member_path, class: 'dropdown-item' do
                     %i.fas.fa-building
                     Community Profile
@@ -65,7 +65,7 @@
 %section.flush-with-above.space-0
   %div
     .container
-      .row
+      .row.font-weight-bold
         .col
           %ul.nav.nav-tabs#communityTabs(role="tablist")
             %li.nav-item
@@ -84,14 +84,14 @@
         .row
           .col-12
             .card
-              .card-body{ :style => "border: 1px solid black;" }
+              .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
                 #calendar
     .tab-pane.fade#announcements(role="tabpanel" aria-labelledby="announcements-tab")
       .container
-        .row.my-3
-          .col
-            #scroll-box-announcements
-              - @announcements.each do |announcement|
+        .row.mt-4
+          .col.pt-3
+            #scroll-box-announcements{ :style => "border: 2px solid black; border-radius: 12px;" }
+              - @announcements.each do |announcement| 
                 .mb-3
                   %h5= announcement.title
                   .announcements-date= time_in_cdt(announcement.updated_at, '%m/%d/%Y')
@@ -103,7 +103,7 @@
       .container
         .row.my-3.justify-content-center
           .col-7.pt-3
-            #scroll-box-announcements{ style: "border: 1px solid black; border-radius: 12px; width: 100%;" }
+            #scroll-box-announcements{ style: "border: 2px solid black; border-radius: 12px; width: 100%;" }
               %h5.notification-title.mb-2
                 %strong Display Name
               - @users.each do |user|

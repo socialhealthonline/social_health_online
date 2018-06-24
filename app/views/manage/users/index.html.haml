@@ -9,10 +9,10 @@
       - if authenticated_user.manager?
         %div.float-right.new_manage_user_button
           .dropdown
-            %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+            %a.btn.btn-primary.dropdown-toggle{style: 'border: 1px solid black'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
               %i.fas.fa-cog
               Manage
-            .dropdown-menu.dropdown-menu-right
+            .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;'}
               = link_to manage_edit_member_path, class: 'dropdown-item' do
                 %i.fas.fa-building
                 Community Profile
@@ -27,7 +27,7 @@
                 Announcements
 
         %div.float-right
-          = link_to new_manage_user_path, class: 'btn btn-primary' do
+          = link_to new_manage_user_path, class: 'btn btn-primary', style: 'border: 1px solid black;' do
             %i.fas.fa-plus-circle
             Add Users
   %h6.mt-2= "Service Capacity: #{@service_capacity}"
@@ -35,7 +35,7 @@
   
 
   - if @users.any?
-    .table-responsive.text-center
+    .table-responsive.text-center{ :style => 'border: 2px solid black; border-radius: 12px;'}
       %table.table.table-borderless.table-hover
         %thead
           %tr

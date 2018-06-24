@@ -8,10 +8,10 @@
           %h1.text-info My Community Social Tracker
         .col-5
           .dropdown.text-right
-            %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+            %a.btn.btn-primary.dropdown-toggle{style: 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
               %i.fas.fa-cog
               Manage
-            .dropdown-menu.dropdown-menu-right
+            .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;'}
               = link_to manage_edit_member_path, class: 'dropdown-item' do
                 %i.fas.fa-building
                 Community Profile
@@ -25,7 +25,7 @@
                 %i.fas.fa-user-circle
                 Users                
       - if @member.users.any?
-        .table-responsive.mt-3.text-center
+        .table-responsive.mt-3.text-center{ :style => 'border: 2px solid black; border-radius: 12px;' }
           %table.table.table-borderless.align-items-center.table-hover(id="social-tracker-history-table")
             %thead
               %tr

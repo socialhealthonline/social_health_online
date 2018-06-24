@@ -4,15 +4,15 @@
   .row
     .col.py-3
       %h1.text-info.text-center History
-      .row
+      .row.text-center
         .col-sm-4.offset-sm-4
           - if @social_fitness_logs.any?
-            .table-responsive
+            .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
               %table.table.align-items-center.text-center.table-hover.table-sm
                 %thead.row-borderless
                   %tr
                     %th
-                      %strong Log Date
+                      Log Date
                 %tbody.bg-white
                   - @social_fitness_logs.each do |log|
                     %tr

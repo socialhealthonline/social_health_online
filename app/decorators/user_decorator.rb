@@ -81,14 +81,14 @@ class UserDecorator < ApplicationDecorator
   end
 
   def profile_hobbies
-    h.content_tag :p, truncate("Hobbies: #{object&.hobbies}", length: 40) if object.hobbies && !object.hobbies&.empty?
+    h.content_tag :p, "Hobbies: #{object&.hobbies}" if object.hobbies && !object.hobbies&.empty?
   end
 
   def profile_pet_peeves
-    h.content_tag :p, truncate("Pet Peeves: #{object&.pet_peeves}", length: 40) if object.pet_peeves && !object.pet_peeves&.empty?
+    h.content_tag :p, "Pet Peeves: #{object&.pet_peeves}" if object.pet_peeves && !object.pet_peeves&.empty?
   end
 
   def profile_bio
-    h.content_tag :p, truncate("Bio: #{object&.bio}", length: 40) if object.bio && !object.bio&.empty?
+    h.content_tag :p, "Bio: #{object&.bio}" if object.bio && !object.bio&.empty?
   end
 end

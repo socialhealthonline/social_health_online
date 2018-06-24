@@ -7,10 +7,10 @@
         %h1.brand-primary My Community Profile
     .col.text-right
       .dropdown
-        %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+        %a.btn.btn-primary.dropdown-toggle{:style => 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
           %i.fas.fa-cog
           Manage
-        .dropdown-menu.dropdown-menu-right
+        .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;'}
           = link_to manage_events_path, class: 'dropdown-item' do
             %i.fas.fa-map-marker-alt
             Community Events
@@ -82,4 +82,4 @@
               = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@member, :bio)}"
               = model_error_display(@member, :bio)
         .mb-3.text-center
-          = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
+          = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, :style => 'border: 1px solid black;'
