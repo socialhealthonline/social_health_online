@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get "terms" => "public#terms"
   get "privacy" => "public#privacy"
 
+  # Create Member
+  resources :members_registration, only: [:new, :create]
+
   # Contact
   get "contact" => "contact#new"
   post "contact" => "contact#create"

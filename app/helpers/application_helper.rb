@@ -23,6 +23,7 @@ module ApplicationHelper
   end
 
   def field_with_error?(model, attribute)
+    return unless model
     model.errors[attribute].present?
   end
 

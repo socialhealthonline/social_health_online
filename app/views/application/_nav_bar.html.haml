@@ -42,7 +42,7 @@
               = link_to 'News', news_path, class: 'nav-link'
             %li.nav-item{class: "#{active_nav('contact')}"}
               = link_to 'Contact', contact_path, class: 'nav-link'
-          %ul.navbar-nav
+          %ul.navbar-nav.font-weight-bold
             - if authenticated_user
               %li.nav-item.dropdown
                 %a.nav-link.dropdown-toggle#userDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
@@ -65,5 +65,11 @@
                     %i.fas.fa-sign-out-alt
                     Sign Out
             - else
-              %li.nav-item
+              %li.nav-item.dropdown
+                %a.nav-link.dropdown-toggle#navbarDropdownMenuLink{'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
+                  = 'Registration'
+                .dropdown-menu.dropdown-menu-right{'aria-labelledby' => 'navbarDropdownMenuLink'}
+                  = link_to new_members_registration_path, class: 'dropdown-item' do
+                    Member
+              %li.nav-item.sign-in-button
                 = link_to 'Sign In', signin_path

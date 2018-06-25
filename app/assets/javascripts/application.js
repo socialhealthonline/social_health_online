@@ -111,6 +111,25 @@ $(document).ready(function() {
     trigger: 'focus'
   });
 
+  $(document).on('change', '#termsCheckBox', function() {
+    if(this.checked && $('#termsCheckBox').data('data_capcha')) {
+      $('#create_member').prop('disabled', false);
+    } else {
+      $('#create_member').prop('disabled', true);
+    }
+  });
+
+  thenCapchaIsSubmited = function() {
+    $('#termsCheckBox').data('data_capcha', true)
+    if ($('#termsCheckBox')[0].checked) {
+      $('#create_member').prop('disabled', false);
+    }
+  }
+
+  expiredRecapchaCallback = function() {
+    $('#termsCheckBox').data('data_capcha', false)
+    $('#create_member').prop('disabled', true);
+  }
 });
 
 var US_STATES = {
