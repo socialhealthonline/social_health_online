@@ -12,6 +12,9 @@
   .row
     .col
       %p
+        %i.fas.fa-portrait{:title => "Event Host"}
+        = @member.name
+      %p
         %i.fas.fa-tag{:title => "Event Type"}
         = @event.event_type
       %p
@@ -37,7 +40,7 @@
       %p
         %strong RSVP List
         .dropdown
-          %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+          %a.btn.btn-primary.dropdown-toggle{style: 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
             %i.fas.fa-hand-point-right
             RSVP
           .dropdown-menu.dropdown-menu-right#rsvp-dropdown
@@ -61,6 +64,6 @@
               %td.text-center= rsvp&.rsvp_status.capitalize
 
       %div.mb-3        
-        = link_to 'javascript:history.back()', class: 'btn btn-outline-secondary', style: 'border: 1px solid black;' do
+        = link_to 'javascript:history.back()', class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
           %i.fas.fa-arrow-left
           Back

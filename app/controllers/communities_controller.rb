@@ -14,7 +14,7 @@ class CommunitiesController < ApplicationController
 
   def event_search
     @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :desc).page(params[:page]).per(25)
-    @member = authenticated_user.member_id
+    @events = FindUsersCommunities.new(@events, show_init_scope: true).call(permitted_params)
   end
 
   private
