@@ -8,7 +8,7 @@ describe CreateManagerAndSendEmailService do
   end
 
   describe '#call' do
-    context 'Register new user' do
+    context 'Register New User' do
       before do
         @service.call
       end
