@@ -7,6 +7,7 @@ class MembersRegistrationController < ApplicationController
   def create
     @member = Member.new(member_params)
     if verify_recaptcha(model: @member) && @member.save
+      CreateManagerAndSendEmailService.new(@member, params[:member][:account_manager_name], params[:member][:account_manager_email]).call
       flash[:success] = 'Success'
       redirect_to root_path
     else
