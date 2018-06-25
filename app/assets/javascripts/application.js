@@ -120,14 +120,14 @@ $(document).ready(function() {
   });
 
   thenCapchaIsSubmited = function() {
-    $('#termsCheckBox').data('data_capcha', true)
+    $('#termsCheckBox').data('data_capcha', true);
     if ($('#termsCheckBox')[0].checked) {
       $('#create_member').prop('disabled', false);
     }
   }
 
   expiredRecapchaCallback = function() {
-    $('#termsCheckBox').data('data_capcha', false)
+    $('#termsCheckBox').data('data_capcha', false);
     $('#create_member').prop('disabled', true);
   }
 });
