@@ -28,6 +28,7 @@ gem 'csv'
 gem 'select2-rails'
 gem 'draper'
 gem 'image_processing'
+gem "recaptcha", require: "recaptcha/rails"
 
 group :development, :test do
   gem 'awesome_print'
