@@ -23,7 +23,11 @@
                 Announcements   
               = link_to manage_users_path, class: 'dropdown-item' do
                 %i.fas.fa-user-circle
-                Users                
+                Users
+              = link_to my_community_path, class: 'dropdown-item' do
+                %i.fas.fa-angle-double-left
+                Community Home
+
       - if @member.users.any?
         .table-responsive.mt-3.text-center{ :style => 'border: 2px solid black; border-radius: 12px;' }
           %table.table.table-borderless.align-items-center.table-hover(id="social-tracker-history-table")

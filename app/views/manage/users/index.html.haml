@@ -25,6 +25,9 @@
               = link_to manage_announcements_path, class: 'dropdown-item' do
                 %i.fas.fa-bullhorn
                 Announcements
+              = link_to my_community_path, class: 'dropdown-item' do
+                %i.fas.fa-angle-double-left
+                Community Home
 
         %div.float-right
           = link_to new_manage_user_path, class: 'btn btn-primary', style: 'border: 1px solid black;' do

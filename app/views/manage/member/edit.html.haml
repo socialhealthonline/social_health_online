@@ -23,6 +23,9 @@
           = link_to manage_users_path, class: 'dropdown-item' do
             %i.fas.fa-user-circle
             Users
+          = link_to my_community_path, class: 'dropdown-item' do
+            %i.fas.fa-angle-double-left
+            Community Home
   .row
     .col
       = form_with model: @member, url: [:manage, :update, @member], local: true do |f|
