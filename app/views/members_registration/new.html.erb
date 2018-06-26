@@ -98,12 +98,13 @@
           <div class="col">
             <div class="form-group">
               <label>Account Manager's Name</label>
+              <p class = "under_label_text">(Member's initial User)</p>
               <%= f.text_field :account_manager_name, required: true, class: "form-control #{form_error_class(@member, :account_manager_name)}" %>
               <%= model_error_display(@member, :account_manager_name) %>
             </div>
           </div>
           <div class="col">
-            <div class="form-group">
+            <div class="form-group" id="account_manager_email_form">
               <label>Account Manager's Email</label>
               <%= f.email_field :account_manager_email,  required: true,class: "form-control #{form_error_class(@member, :account_manager_email)}" %>
               <%= model_error_display(@member, :account_manager_email) %>
@@ -114,6 +115,7 @@
           <div class="col-lg-4">
             <div class="form-group">
               <label>User Seats</label>
+              <p class = "under_label_text">(5 User minimum - includes Account Manager)</p>
               <%= f.text_field :service_capacity, required: true, class: "form-control #{form_error_class(@member, :service_capacity)}" %>
               <%= model_error_display(@member, :service_capacity) %>
             </div>
