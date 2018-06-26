@@ -421,3 +421,19 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
 .sign-in-button {
   margin-top: 8px;
 }
+
+.under_label_text {
+  font-size: 10px !important;
+}
+
+@media only screen and (max-width: 991px) {
+  #account_manager_email_form {
+    margin-top: 29px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #account_manager_email_form {
+    margin-top: 31px;
+  }
+}

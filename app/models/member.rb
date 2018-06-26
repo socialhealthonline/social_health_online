@@ -17,6 +17,7 @@ class Member < ApplicationRecord
   validate :logo_validation
   validates :phone, format: { with: /\A\d{10}\z/, message: "must be 10 digits including area code" }
   validates :terms_of_service, acceptance: true
+  validates :service_capacity, numericality: { greater_than: 4 }
 
   before_validation { |member| member.contact_phone.gsub!(/\D/, "") if member.contact_phone? }
   before_validation :add_protocol_to_url
