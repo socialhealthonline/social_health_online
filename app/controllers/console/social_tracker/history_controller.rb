@@ -27,8 +27,8 @@ class Console::SocialTracker::HistoryController < ConsoleController
   end
 
   def destroy
-    @log.destroy
-    redirect_to console_social_tracker_members_path, success:"Log was successfully deleted."
+    # SocialEventLog.destroy(params[:id])
+    # redirect_to console_social_tracker_members_path, success:"Log was successfully deleted."
   end 
   
   

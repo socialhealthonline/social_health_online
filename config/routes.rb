@@ -113,6 +113,7 @@ Rails.application.routes.draw do
       get "members/:name/users" => "history#users", as: :member
       get "members/:name/users/:id/" => "history#user_history", as: :member_user
       get "members/:name/users/:user_id/history/:id" => "history#show", as: :member_user_social_event_log
+      delete "members/:name/users/:user_id/history/:id" => "history#destroy", as: :delete_social_event_log
     end
 
     namespace :social_fitness do
