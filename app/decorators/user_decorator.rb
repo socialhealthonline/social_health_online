@@ -78,7 +78,7 @@ class UserDecorator < ApplicationDecorator
 
   def profile_ethnicity
     h.content_tag :p do
-      h.content_tag(:strong, "Ethnicity: ") + object&.ethnicity if object.hidden_field.ethnicity.eql?('0')
+      h.content_tag(:strong, "Race/Ethnicity: ") + object&.ethnicity if object.hidden_field.ethnicity.eql?('0')
     end
   end
 
