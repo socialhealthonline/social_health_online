@@ -49,7 +49,7 @@ class Console::NewsController < ConsoleController
     end
 
     def sort_column
-      %w[title body created_at].include?(params[:column]) ? params[:column] : 'updated_at'
+      %w[title body created_at].include?(params[:column]) ? params[:column] : 'created_at'
     end
 
     def sort_direction

@@ -1,7 +1,7 @@
 class Console::AffiliatesController < ConsoleController
   helper_method :sort_column, :sort_direction
   def index
-    @affiliates = Affiliate.order(:name).page(params[:page]).per(25)
+    @affiliates = Affiliate.order("#{sort_column} #{sort_direction}").page(params[:page])
   end
 
   def show
@@ -82,10 +82,6 @@ class Console::AffiliatesController < ConsoleController
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
-  end
-
-  def set_managers_option
-    @managers = User.where(member_id: authenticated_user.member_id, manager: true)
   end
 
 end

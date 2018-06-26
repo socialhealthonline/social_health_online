@@ -17,14 +17,8 @@ class UserDecorator < ApplicationDecorator
   end
 
   def profile_name
-    if object.hidden_field.name
-      h.content_tag :p do
-	      h.content_tag(:strong, "Name: ") + object&.display_name
-      end
-    else
-      h.content_tag :p do
-	      h.content_tag(:strong, "Name: ") + object&.name
-      end
+    h.content_tag :p do
+      h.content_tag(:strong, "Name: ") + object&.name if object.hidden_field.name.eql?('0')
     end
   end
 

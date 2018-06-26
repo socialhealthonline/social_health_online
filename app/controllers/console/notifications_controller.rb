@@ -3,7 +3,7 @@ class Console::NotificationsController < ConsoleController
   helper_method :sort_column, :sort_direction
 
   def index
-    @notifications = Notification.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
+    @notifications = Notification.order("#{sort_column} #{sort_direction}").page(params[:page])
   end
 
   def show; end
@@ -41,15 +41,23 @@ class Console::NotificationsController < ConsoleController
   private
 
     def set_notification
-      @notification = Notification.find(params[:id])
+      @notifications = Notifications.find(params[:id])
     end
 
+    def notification_params
+    params.require(:notification).permit(
+      :title,
+      :body,
+      :created_at
+    )
+  end
+    
     def notification_params
       params.require(:notification).permit(:title, :body)
     end
 
     def sort_column
-      %w[title body created_at].include?(params[:column]) ? params[:column] : 'updated_at'
+      %w[title body created_at].include?(params[:column]) ? params[:column] : 'created_at'
     end
 
     def sort_direction
