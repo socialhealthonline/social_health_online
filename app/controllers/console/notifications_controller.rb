@@ -41,16 +41,12 @@ class Console::NotificationsController < ConsoleController
   private
 
     def set_notification
-      @notifications = Notifications.find(params[:id])
+      @notifications  = Notifications.find(params[:id])
     end
 
     def notification_params
-    params.require(:notification).permit(
-      :title,
-      :body,
-      :created_at
-    )
-  end
+    params.require(:notification).permit(:title, :body)
+    end
     
     def notification_params
       params.require(:notification).permit(:title, :body)
