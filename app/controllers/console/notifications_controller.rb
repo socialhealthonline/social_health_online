@@ -41,7 +41,7 @@ class Console::NotificationsController < ConsoleController
   private
 
     def set_notification
-      @notifications  = Notifications.find(params[:id])
+      @notification  = Notification.find(params[:id])
     end
 
     def notification_params
