@@ -1,8 +1,10 @@
 class Console::UsersController < ConsoleController
   before_action :load_member
+  helper_method :sort_column, :sort_direction
 
   def index
     @users = User.where(member_id: @member.id).order(:name).page(params[:page]).per(25)
+    @users = User.where(member_id: @member.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def show
@@ -75,9 +77,26 @@ class Console::UsersController < ConsoleController
       :birthdate,
       :time_zone,
       :group,
+      :last_sign_in_at,
       :enabled,
       :manager
     )
+  end
+
+  def sortable_columns
+    %w[
+      name email display_name address city state zip phone gender
+      ethnicity birthdate time_zone group last_sign_in_at enabled manager
+    ]
+  end
+
+  def sort_column
+    logger.debug("SORT:::: #{params[:direction].inspect}")
+    sortable_columns.include?(params[:column]) ? params[:column] : 'name'
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
 
 end

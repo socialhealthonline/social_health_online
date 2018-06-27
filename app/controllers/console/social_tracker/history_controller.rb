@@ -1,6 +1,9 @@
 class Console::SocialTracker::HistoryController < ConsoleController
+  helper_method :sort_column, :sort_direction
+
   def members
     @members = Member.all
+    @members = Member.order("#{sort_column} #{sort_direction}").page(params[:page])
   end
 
   def users
@@ -29,7 +32,29 @@ class Console::SocialTracker::HistoryController < ConsoleController
   def destroy
     # SocialEventLog.destroy(params[:id])
     # redirect_to console_social_tracker_members_path, success:"Log was successfully deleted."
-  end 
-  
-  
+  end
+
+  private
+
+    def member_params
+      params.require(:member).permit(
+        :name,
+        :city,
+        :state
+      )
+    end
+
+    def sortable_columns
+      %w[name city state]
+    end
+
+    def sort_column
+      logger.debug("SORT:::: #{params[:direction].inspect}")
+      sortable_columns.include?(params[:column]) ? params[:column] : 'name'
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+    end
+
 end

@@ -9,9 +9,9 @@
     %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
-          %th Member Name
-          %th City
-          %th State
+          %th= sort_link 'name', 'Member Name'
+          %th= sort_link 'city', 'City'
+          %th= sort_link 'state', 'State'
           %th Export CSV
           %th
       %tbody

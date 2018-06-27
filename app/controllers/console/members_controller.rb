@@ -1,5 +1,6 @@
 class Console::MembersController < ConsoleController
   helper_method :sort_column, :sort_direction
+  
   def index
     @members = Member.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end

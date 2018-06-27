@@ -40,10 +40,10 @@
         %table.table
           %thead.mdb-color.lighten-4.text-center
             %tr
-              %th=sort_link 'title', 'Event Title'
-              %th=sort_link 'event_type', 'Event Type'
-              %th=sort_link 'start_at', 'Event Date/Time'
-              %th=sort_link 'home_events_status(event.status)', 'RSVP'
+              %th Event Title
+              %th Event Type
+              %th Event Date/Time
+              %th RSVP
               %th
           %tbody
           - @events.each do |event|
