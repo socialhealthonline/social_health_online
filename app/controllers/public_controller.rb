@@ -16,7 +16,7 @@ class PublicController < ApplicationController
 
   def service_screenshots
   end
-  
+
   def membership
     take_graph_data
   end

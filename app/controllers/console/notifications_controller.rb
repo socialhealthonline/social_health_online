@@ -45,10 +45,6 @@ class Console::NotificationsController < ConsoleController
     end
 
     def notification_params
-    params.require(:notification).permit(:title, :body)
-    end
-    
-    def notification_params
       params.require(:notification).permit(:title, :body)
     end
 
@@ -59,4 +55,5 @@ class Console::NotificationsController < ConsoleController
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
     end
+
 end

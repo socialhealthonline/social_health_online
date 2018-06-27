@@ -52,7 +52,7 @@ Rails.application.routes.draw do
       post 'create_or_switch_rsvp', on: :member
     end
   end
-  
+
   get 'explore_communities' => 'communities#explore_communities'
   get 'event_search' => 'communities#event_search'
 

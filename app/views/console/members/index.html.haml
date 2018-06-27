@@ -21,7 +21,7 @@
           %th(scope="col")= sort_link('service_capacity', 'User Seats')
           %th(scope="col")= sort_link('account_start_date', 'Account Start Date')
           %th(scope="col")= sort_link('welcome_kit_date', 'Welcome Kit Date')
-          %th(scope="col") Status  
+          %th(scope="col") Status
           %th(scope="col")
       %tbody
         - @members.each_with_index do |member, i|
