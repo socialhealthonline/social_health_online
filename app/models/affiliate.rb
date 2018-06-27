@@ -1,5 +1,6 @@
 class Affiliate < ApplicationRecord
   SUPPORT_TYPES = ["Events", "Discounts", "Events & Discounts" ].freeze
+  SORTABLE_COLUMNS = %w[ name city state support_notes hide_info_on_locator date_added ]
 
   enum support_types: SUPPORT_TYPES
 
