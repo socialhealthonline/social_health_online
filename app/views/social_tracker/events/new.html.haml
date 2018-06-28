@@ -22,7 +22,7 @@
             .form-group
               %label(for="social_event_log_city")
                 Event City
-                %em (if the city is not listed below, select the nearest metro area)
+                %i.fas.fa-info-circle.fa{:title => 'If the city is not listed below, select the nearest metro area.'}
               = f.select :city, {}, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :city)}" }
               = model_error_display(@social_event_log, :city)
             .form-group
@@ -42,7 +42,8 @@
               %span.not_sho_category(style="display: none;") (Can only add categories for SHO Events)
               = link_to_add_category "Add Category", f, :event_categories
             .form-group
-              %label(for="social_event_log_venue") Event Location (e.g. Central Park, my house, etc.)
+              %label(for="social_event_log_venue") Event Location
+              %i.fas.fa-info-circle.fa{:title => 'e.g. Central Park, my house, etc'}
               = f.text_area :venue, class: "form-control #{form_error_class(@social_event_log, :venue)}"
               = model_error_display(@social_event_log, :venue)
             .form-group
