@@ -42,11 +42,11 @@
       %table.table.table-borderless.table-hover
         %thead
           %tr
-            %th= sort_link 'name', 'Name'
-            %th= sort_link 'display_name', 'Display Name'
-            %th= sort_link 'email', 'Email'
-            %th= sort_link 'status', 'Status'
-            %th= sort_link 'manager', 'Manager'
+            %th Name
+            %th Display Name
+            %th Email
+            %th Status
+            %th Manager
             %th
         %tbody
           - @users.each.with_index(1) do |user, i|

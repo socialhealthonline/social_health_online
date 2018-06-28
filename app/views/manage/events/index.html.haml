@@ -35,13 +35,12 @@
           %table.table.table-borderless.align-items-center.table-hover
             %thead
               %tr
-                %th(scope="col")= sort_link('title', 'Event Title')
-                %th(scope="col")= sort_link('event_type', 'Event Type')
-                %th(scope="col")= sort_link('start_at', 'Event Date/Time')
-                %th(scope="col")= sort_link('location', 'Event Location')
-                %th(scope="col")= sort_link('city', 'Event City')
-                %th(scope="col")= sort_link('state' 'Event State')
-                %th(scope="col")
+                %th(scope="col") Event Title
+                %th(scope="col") Event Type
+                %th(scope="col") Event Date/Time
+                %th(scope="col") Event Location
+                %th(scope="col") Event City
+                %th(scope="col") Event State
             %tbody
               - @events.each_with_index do |event, i|
                 %tr.bg-white

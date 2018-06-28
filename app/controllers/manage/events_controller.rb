@@ -2,10 +2,8 @@ class Manage::EventsController < ApplicationController
   before_action :require_manager
   around_action :param_time_zone, only: [:create, :update]
   around_action :event_time_zone, only: [:edit]
-  helper_method :sort_column, :sort_direction
 
   def index
-    @events = Event.order("#{sort_column} #{sort_direction}").page(params[:page])
     @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :desc).page(params[:page]).per(25)
     @member = authenticated_user.member_id
   end
@@ -66,21 +64,6 @@ class Manage::EventsController < ApplicationController
       :address,
       :zip
     )
-  end
-
-  def sortable_columns
-    %w[
-      title event_type start_at location city state
-    ]
-  end
-
-  def sort_column
-    logger.debug("SORT:::: #{params[:direction].inspect}")
-    sortable_columns.include?(params[:column]) ? params[:column] : 'title'
-  end
-
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
 
   def param_time_zone
