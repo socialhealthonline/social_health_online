@@ -3,9 +3,11 @@ class Manage::UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
   before_action :set_service_capacity, only: [:index, :new]
   before_action :set_user_count, only: [:index, :new]
+  helper_method :sort_column, :sort_direction
 
   def index
     @users = User.where(member_id: authenticated_user.member.id).page(params[:page]).decorate
+    @users = User.order("#{sort_column} #{sort_direction}").page(params[:page])
   end
 
   def new

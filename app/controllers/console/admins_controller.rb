@@ -1,7 +1,9 @@
 class Console::AdminsController < ConsoleController
+  helper_method :sort_column, :sort_direction
 
   def index
     @admins = User.where(admin: true).order(:name)
+    @admins = User.order("#{sort_column} #{sort_direction}").page(params[:page])
   end
 
   def show
@@ -64,11 +66,29 @@ class Console::AdminsController < ConsoleController
       :ethnicity,
       :birthdate,
       :time_zone,
+      :last_sign_in_at,
       :member_id,
       :enabled,
       :manager,
       :admin
     )
+  end
+
+  def sortable_columns
+    %w[
+      name email display_name address city state zip phone gender
+      ethnicity birthdate time_zone last_sign_in_at member_id enabled manager
+      admin
+    ]
+  end
+
+  def sort_column
+    logger.debug("SORT:::: #{params[:direction].inspect}")
+    sortable_columns.include?(params[:column]) ? params[:column] : 'name'
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
 
 end

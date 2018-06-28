@@ -13,12 +13,12 @@
     %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
-          %th(scope="col") Name
-          %th(scope="col") Display Name
-          %th(scope="col") Email
-          %th(scope="col") Manager
-          %th(scope="col") Last Sign In
-          %th(scope="col")
+        %th= sort_link 'name', 'Name'
+        %th= sort_link 'display_name', 'Display Name'
+        %th= sort_link 'email', 'Email'
+        %th= sort_link 'manager', 'Manager'
+        %th= sort_link 'last_sign_in_at', 'Last Sign In'
+        %th
       %tbody
         - @admins.each_with_index do |admin, i|
           %tr.bg-white

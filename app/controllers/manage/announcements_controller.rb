@@ -1,8 +1,10 @@
 class Manage::AnnouncementsController < ApplicationController
   before_action :require_manager
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   def index
+    @announcements = Announcement.order("#{sort_column} #{sort_direction}").page(params[:page])
     @announcements = Announcement.where(member_id: authenticated_user.member.id).page(params[:page])
   end
 

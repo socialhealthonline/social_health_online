@@ -34,24 +34,24 @@
             %i.fas.fa-plus-circle
             Add Users
   %h6.mt-2= "Service Capacity: #{@service_capacity}"
-  %h6= "Current User Total: #{@users_count}" 
-  
+  %h6= "Current User Total: #{@users_count}"
+
 
   - if @users.any?
     .table-responsive.text-center{ :style => 'border: 2px solid black; border-radius: 12px;'}
       %table.table.table-borderless.table-hover
         %thead
           %tr
-            %th Name
-            %th Display Name
-            %th Email
-            %th Status
-            %th Manager
+            %th= sort_link 'name', 'Name'
+            %th= sort_link 'display_name', 'Display Name'
+            %th= sort_link 'email', 'Email'
+            %th= sort_link 'status', 'Status'
+            %th= sort_link 'manager', 'Manager'
             %th
         %tbody
           - @users.each.with_index(1) do |user, i|
             %tr.bg-white
-              %td= link_to "#{i}. #{user.name}", edit_manage_user_path(user) 
+              %td= link_to "#{i}. #{user.name}", edit_manage_user_path(user)
               %td
                 %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: user }" } }
