@@ -18,7 +18,7 @@ module ApplicationHelper
 
   def model_error_display(model, attribute)
     if field_with_error?(model, attribute)
-      content_tag(:small, "#{model.errors[attribute].first}", class: 'text-danger')
+      content_tag(:small, "#{model.errors[attribute].first.downcase}", class: 'text-danger')
     end
   end
 
