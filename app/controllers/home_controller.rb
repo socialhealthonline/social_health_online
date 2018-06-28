@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   before_action :require_authentication
 
   def index
-    @notifications = Notification.order('updated_at desc').page(params[:page])
+    @notifications = Notification.order('updated_at asc').page(params[:page])
     @events = Event.joins(:rsvps).events_for_feed(authenticated_user.id)
     @social_event_Logs = SocialEventLog.where(user_id: authenticated_user.id)
 
