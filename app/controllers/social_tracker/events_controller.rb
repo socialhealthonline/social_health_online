@@ -18,11 +18,9 @@ class SocialTracker::EventsController < ApplicationController
 
   def create
     parameters = log_params.to_h
-    types = build_event_types(parameters[:event_types])
     categories = build_event_categories(parameters[:event_categories])
 
-    @social_event_log = authenticated_user.social_event_logs.build(parameters.except(:event_types,:event_categories))
-    @social_event_log.event_types = types if types
+    @social_event_log = authenticated_user.social_event_logs.build(parameters.except(:event_categories))
     @social_event_log.event_categories = categories if categories
 
     if @social_event_log.save
@@ -43,11 +41,6 @@ class SocialTracker::EventsController < ApplicationController
 
   private
 
-  def build_event_types(types)
-    return if types.empty?
-    types.map { |type_name| EventType.new(name: type_name) }
-  end
-
   def build_event_categories(categories)
     return if categories.empty?
     categories.map { |category_name| EventCategory.new(name: category_name) }
@@ -65,8 +58,8 @@ class SocialTracker::EventsController < ApplicationController
       :category,
       :venue,
       :rating,
-      event_categories: [],
-      event_types: []
+      :event_type,
+      event_categories: []
     )
   end
 end
