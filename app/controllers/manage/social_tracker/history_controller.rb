@@ -16,30 +16,4 @@ class Manage::SocialTracker::HistoryController < ApplicationController
     @user = @member.users.find(params[:user_id])
     @log = @user.social_event_logs.find(params[:id])
   end
-
-  private
-
-  def member_params
-    params.require(:member).permit(
-      :name,
-      :display_name,
-      :total_social_events_logged,
-      :last_social_event_log_date
-    )
-  end
-
-  def sortable_columns
-    %w[
-      name display_name total_social_events_logged last_social_event_log_date
-    ]
-  end
-
-  def sort_column
-    logger.debug("SORT:::: #{params[:direction].inspect}")
-    sortable_columns.include?(params[:column]) ? params[:column] : 'name'
-  end
-
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
-  end
 end
