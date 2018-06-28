@@ -8,12 +8,12 @@
   .row.my-3
     .col
       %h3.notification-title
-        %strong Notifications  
+        %strong Notifications
       #scroll-box{:style => "border-radius: 12px;"}
         - @notifications.each do |notification|
           .mb-3
             %h5= notification.title
-            .notification-date= time_in_cdt(notification.updated_at, '%m/%d/%Y')
+            .notification-date= time_in_cdt(notification.updated_at , '%m/%d/%Y')
             .notification-text.pb-2= simple_format(notification.body)
         %p= paginate @notifications
 
