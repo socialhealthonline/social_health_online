@@ -1,0 +1,18 @@
+%footer.bg-white.footer-short.border-top
+  .container
+    .row.pt-2.justify-content-center
+
+      = link_to console_path do
+        %i.fas.fa-tachometer-alt.fa-2x.pt-2{:title => 'Console'}
+      %span.px-3
+
+      = link_to console_members_path do
+        %i.fas.fa-address-card.fa-2x.pt-2{:title => 'Members'}
+      %span.px-3
+
+      = link_to console_affiliates_path do
+        %i.fas.fa-handshake.fa-2x.pt-2{:title => 'Affiliates'}
+      %span.px-3
+
+      = link_to console_social_tracker_members_path do
+        %i.fas.fa-database.fa-2x.pt-2{:title => 'Social Tracker'}

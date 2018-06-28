@@ -50,3 +50,5 @@
               - unless flash.empty?
                 = render partial: 'flash', locals: { flash: flash }
               = yield
+
+              = render 'console_footer'
