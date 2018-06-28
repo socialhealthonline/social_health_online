@@ -12,10 +12,13 @@
       let source = $("#social_event_log_source")[0].value;
       console.log(source);
       if(source === '0'){
-        $("#social_event_log_event_categories").prop("disabled", false);
-      }else if(source === '1'){        
-        $("#social_event_log_event_categories").prop("disabled", true);
-        $("#social_event_log_event_categories").val([]);
+          $('.add_category').show();
+          $('.not_sho_category').hide();
+          $("#social_event_log_venue").prop("disabled", false);
+        }else if(source === '1'){
+          $('.add_category').hide();
+          $('.not_sho_category').show();
+          $("#social_event_log_venue").prop("disabled", true);
       }
     });
 

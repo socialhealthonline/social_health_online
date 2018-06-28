@@ -2,31 +2,26 @@ class SocialTracker::EventsController < ApplicationController
   before_action :require_authentication
 
   def new
-    today = Date.today
-    range = today..today.next_day
-
-    today_social_event_logs = authenticated_user.social_event_logs.where(created_at: range)
-    today_social_event_logs_count = today_social_event_logs.count
-
-    if today_social_event_logs_count >= 3
-      redirect_to social_tracker_history_url,
-                  error: 'Unsuccessfully logged event. You can log a maximum of 3 events per day.'
-    else
-      @social_event_log = SocialEventLog.new
+    if daily_events_logged >= 3
+      flash.now[:error] = 'You can log a maximum of 3 events per day.'
     end
+
+    @social_event_log = SocialEventLog.new
   end
 
   def create
     parameters = log_params.to_h
-    types = build_event_types(parameters[:event_types])
     categories = build_event_categories(parameters[:event_categories])
 
-    @social_event_log = authenticated_user.social_event_logs.build(parameters.except(:event_types,:event_categories))
-    @social_event_log.event_types = types if types
+    @social_event_log = authenticated_user.social_event_logs.build(parameters.except(:event_categories))
     @social_event_log.event_categories = categories if categories
 
-    if @social_event_log.save
+    if @social_event_log.save && daily_events_logged < 3
+
       redirect_to social_tracker_history_url, success: "The event was logged successfully!"
+    elsif daily_events_logged >=3
+      flash.now[:error] = 'Unsuccessfully logged event. You can log a maximum of 3 events per day.'
+      render :new
     else
       flash.now[:error] = "Please correct the errors to continue."
       render :new
@@ -43,9 +38,12 @@ class SocialTracker::EventsController < ApplicationController
 
   private
 
-  def build_event_types(types)
-    return if types.empty?
-    types.map { |type_name| EventType.new(name: type_name) }
+  def daily_events_logged
+    today = Date.today
+    range = today..today.next_day
+
+    today_social_event_logs = authenticated_user.social_event_logs.where(created_at: range)
+    today_social_event_logs.count
   end
 
   def build_event_categories(categories)
@@ -65,8 +63,8 @@ class SocialTracker::EventsController < ApplicationController
       :category,
       :venue,
       :rating,
-      event_categories: [],
-      event_types: []
+      :event_type,
+      event_categories: []
     )
   end
 end

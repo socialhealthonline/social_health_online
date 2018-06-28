@@ -5,6 +5,7 @@ RSpec.describe SocialEventLog, type: :model do
     it { should validate_presence_of :event_date }
     it { should validate_presence_of :state }
     it { should validate_presence_of :city }
+    it { should validate_presence_of :event_type }
     it { should validate_presence_of :source }
     it { should validate_presence_of :rating }
     it { should validate_inclusion_of(:state).in_array(US_STATES.values) }

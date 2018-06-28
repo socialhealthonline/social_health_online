@@ -22,11 +22,9 @@
           %p 
             %strong Event City:
           %p= @log.city
-          %p 
-            %strong Event Type:
           %p
-            - @log.event_types.each_with_index do |type, i|
-              %p= type.name
+            %strong Event Type
+          %p= @log.event_type
         .col-lg-6
           %p 
             %strong Event Source:

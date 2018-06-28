@@ -91,7 +91,9 @@ class Member < ApplicationRecord
             when "state"
               US_STATES.key(log.send(attr))
             when "event_type"
-              EVENT_TYPES[log.send(attr)&.to_i].to_s
+              event_type = log.send(attr)
+              EVENT_TYPES[log.send(attr)&.to_i].to_s if event_type.present?
+              '' if event_type.blank?
             when "source"
               SocialEventLog::EVENT_SOURCES.key(log.send(attr))
             when "rating"
