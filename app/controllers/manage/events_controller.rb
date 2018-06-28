@@ -68,6 +68,21 @@ class Manage::EventsController < ApplicationController
     )
   end
 
+  def sortable_columns
+    %w[
+      title event_type start_at location city state
+    ]
+  end
+
+  def sort_column
+    logger.debug("SORT:::: #{params[:direction].inspect}")
+    sortable_columns.include?(params[:column]) ? params[:column] : 'title'
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
+
   def param_time_zone
     if params[:event][:time_zone].present?
       Time.use_zone(params[:event][:time_zone]) { yield }
