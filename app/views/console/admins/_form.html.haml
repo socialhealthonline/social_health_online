@@ -2,7 +2,6 @@
   .col
     .form-group
       %label(for="user_name") Name
-      %i.fas.fa-info-circle.fa{:title => 'Name of Admin'}
       = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@admin, :name)}"
       = model_error_display(@admin, :name)
   .col
