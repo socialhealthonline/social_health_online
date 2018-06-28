@@ -35,12 +35,11 @@
               = f.select :source, SocialEventLog::EVENT_SOURCES, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :source)}" }
               = model_error_display(@social_event_log, :source)
             .form-group
-              %label(for="social_event_log_event_categories")
-                Event Categories
-              = f.fields_for :event_categories do |cf|
-                = render 'event_category_fields', f: cf
-              %span.not_sho_category(style="display: none;") (Can only add categories for SHO Events)
-              = link_to_add_category "Add Category", f, :event_categories
+              %label(for="social_event_log_event_category")
+                Event Category
+                %span.not_sho_category(style="display: none;") (Can only add category for SHO Events)
+              =f.select :event_category, EVENT_CATEGORIES, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_category)}" }
+              = model_error_display(@social_event_log, :event_category)
             .form-group
               %label(for="social_event_log_venue") Event Location
               %i.fas.fa-info-circle.fa{:title => 'e.g. Central Park, my house, etc'}

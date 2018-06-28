@@ -1,6 +1,0 @@
-%fieldset
-  = f.select :name, ::EVENT_CATEGORIES, {}, { class: 'form-control custom-select'}
-  = f.hidden_field :_destroy
-  = link_to  '#', class: "remove_category" do
-    %p.text-right.mb-2
-      %i.fas.fa-trash

@@ -11,10 +11,7 @@ class SocialTracker::EventsController < ApplicationController
 
   def create
     parameters = log_params.to_h
-    categories = build_event_categories(parameters[:event_categories])
-
-    @social_event_log = authenticated_user.social_event_logs.build(parameters.except(:event_categories))
-    @social_event_log.event_categories = categories if categories
+    @social_event_log = authenticated_user.social_event_logs.build(parameters)
 
     if @social_event_log.save && daily_events_logged < 3
 
@@ -46,15 +43,7 @@ class SocialTracker::EventsController < ApplicationController
     today_social_event_logs.count
   end
 
-  def build_event_categories(categories)
-    return if categories.empty?
-    categories.map { |category_name| EventCategory.new(name: category_name) }
-  end
-
   def log_params
-    params[:social_event_log][:event_types] ||= []
-    params[:social_event_log][:event_categories] ||= []
-
     params.require(:social_event_log).permit(
       :event_date,
       :state,
@@ -64,7 +53,7 @@ class SocialTracker::EventsController < ApplicationController
       :venue,
       :rating,
       :event_type,
-      event_categories: []
+      :event_category
     )
   end
 end

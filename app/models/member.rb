@@ -71,7 +71,7 @@ class Member < ApplicationRecord
 
   def social_tracker_csv
     attributes = %w{log_date state name primary_manager_name primary_manager_email user_name user_email event_date event_state event_city event_type event_source event_category event_venue event_rating}
-    tracker_attributes = %w{event_date state city event_type source event_categories venue rating}
+    tracker_attributes = %w{event_date state city event_type source event_category venue rating}
     user_attributes = %w{name email}
 
     ::CSV.generate(headers: true) do |csv|
@@ -90,18 +90,10 @@ class Member < ApplicationRecord
             case attr
             when "state"
               US_STATES.key(log.send(attr))
-            when "event_type"
-              event_type = log.send(attr)
-              EVENT_TYPES[log.send(attr)&.to_i].to_s if event_type.present?
-              '' if event_type.blank?
             when "source"
               SocialEventLog::EVENT_SOURCES.key(log.send(attr))
             when "rating"
               RATINGS.key(log.send(attr)).to_s
-            when "event_categories"
-              category = ""
-              log.send(attr).each { |cat| category += cat.name + " " }
-              category.strip
             else
               log.send(attr)
             end

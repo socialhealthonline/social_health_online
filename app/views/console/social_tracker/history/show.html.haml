@@ -31,9 +31,7 @@
           %p= SocialEventLog::EVENT_SOURCES.key(@log.source)
           %p 
             %strong Event Category:
-          %p
-            - @log.event_categories.each do |category|
-              %p= category.name
+          %p= @log.event_category
           %p
             %strong Event Location:
           %p= @log.venue
