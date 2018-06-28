@@ -104,5 +104,4 @@ class Manage::EventsController < ApplicationController
         flash.now[:error] = @event.errors[:rsvp_limit].first
       end
     end
-  end
 end

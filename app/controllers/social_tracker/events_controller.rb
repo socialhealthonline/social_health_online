@@ -2,18 +2,11 @@ class SocialTracker::EventsController < ApplicationController
   before_action :require_authentication
 
   def new
-    today = Date.today
-    range = today..today.next_day
-
-    today_social_event_logs = authenticated_user.social_event_logs.where(created_at: range)
-    today_social_event_logs_count = today_social_event_logs.count
-
-    if today_social_event_logs_count >= 3
-      redirect_to social_tracker_history_url,
-                  error: 'Unsuccessfully logged event. You can log a maximum of 3 events per day.'
-    else
-      @social_event_log = SocialEventLog.new
+    if daily_events_logged >= 3
+      flash.now[:error] = 'You can log a maximum of 3 events per day.'
     end
+
+    @social_event_log = SocialEventLog.new
   end
 
   def create
@@ -23,8 +16,12 @@ class SocialTracker::EventsController < ApplicationController
     @social_event_log = authenticated_user.social_event_logs.build(parameters.except(:event_categories))
     @social_event_log.event_categories = categories if categories
 
-    if @social_event_log.save
+    if @social_event_log.save && daily_events_logged < 3
+
       redirect_to social_tracker_history_url, success: "The event was logged successfully!"
+    elsif daily_events_logged >=3
+      flash.now[:error] = 'Unsuccessfully logged event. You can log a maximum of 3 events per day.'
+      render :new
     else
       flash.now[:error] = "Please correct the errors to continue."
       render :new
@@ -40,6 +37,14 @@ class SocialTracker::EventsController < ApplicationController
   end
 
   private
+
+  def daily_events_logged
+    today = Date.today
+    range = today..today.next_day
+
+    today_social_event_logs = authenticated_user.social_event_logs.where(created_at: range)
+    today_social_event_logs.count
+  end
 
   def build_event_categories(categories)
     return if categories.empty?
