@@ -197,8 +197,8 @@ ActiveRecord::Schema.define(version: 2018_06_28_193250) do
     t.string "url"
     t.integer "primary_manager_id"
     t.string "events_url"
-    t.boolean "hide_info_on_locator", default: false
     t.string "slug"
+    t.boolean "hide_info_on_locator", default: false
     t.datetime "welcome_kit_date"
     t.string "phone"
     t.string "contact_phone_extension"
@@ -294,6 +294,7 @@ ActiveRecord::Schema.define(version: 2018_06_28_193250) do
     t.date "first_login"
     t.string "phone_extension"
     t.text "group"
+    t.string "favorites"
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["enabled"], name: "index_users_on_enabled"
