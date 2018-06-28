@@ -41,7 +41,6 @@
                 %th(scope="col")= sort_link('location', 'Event Location')
                 %th(scope="col")= sort_link('city', 'Event City')
                 %th(scope="col")= sort_link('state' 'Event State')
-                %th(scope="col")
             %tbody
               - @events.each_with_index do |event, i|
                 %tr.bg-white

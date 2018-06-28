@@ -1,4 +1,4 @@
-- page_title 'My Community Annoucements'
+- page_title 'My Community Announcements'
 
 %br
 .container
@@ -41,7 +41,6 @@
             %th= sort_link 'title', 'Announcement Title'
             %th= sort_link 'body', 'Announcement Body Preview'
             %th= sort_link 'created_at', 'Added On'
-            %th
         %tbody
           - @announcements.each.with_index(1) do |announcement, i|
             %tr.bg-white

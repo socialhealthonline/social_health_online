@@ -42,26 +42,20 @@ class Manage::AnnouncementsController < ApplicationController
 
   private
 
-  def sortable_columns
-    %w[
-      title body created_at
-    ]
-  end
+    def sort_column
+      %w[title body created_at].include?(params[:column]) ? params[:column] : 'created_at'
+    end
 
-  def sort_column
-    logger.debug("SORT:::: #{params[:direction].inspect}")
-    sortable_columns.include?(params[:column]) ? params[:column] : 'title'
-  end
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+    end
 
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
-  end
+    def set_announcement
+      @announcement = Announcement.find(params[:id])
+    end
 
-  def set_announcement
-    @announcement = Announcement.find(params[:id])
-  end
+    def announcement_params
+      params.require(:announcement).permit(:title, :body).merge(member_id: authenticated_user.member.id)
+    end
 
-  def announcement_params
-    params.require(:announcement).permit(:title, :body, :created_at).merge(member_id: authenticated_user.member.id)
-  end
 end
