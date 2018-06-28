@@ -3,7 +3,6 @@ class Manage::SocialTracker::HistoryController < ApplicationController
 
   def users
     @member = Member.includes(users: [:social_event_logs]).friendly.find(params[:name])
-    @member = Member.where(member_id: @member.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def user_history
