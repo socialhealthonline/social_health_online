@@ -22,13 +22,13 @@
             .form-group
               %label(for="social_event_log_city")
                 Event City
-                %em (if the city is not listed below, select the nearest metro area)
+                %i.fas.fa-info-circle.fa{:title => 'If the city is not listed below, select the nearest metro area.'}
               = f.select :city, {}, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :city)}" }
               = model_error_display(@social_event_log, :city)
             .form-group
               %label(for="social_event_log_event_types")
                 Event Type
-                %em (multiple: use Ctrl/Command + click)
+                %i.fas.fa-info-circle.fa{:title => 'To select more than one type, use Ctrl/Command + click'}
               = f.select :event_types, EVENT_TYPES, {include_hidden: false}, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_types)}", multiple: true, style: "height: 300px;" }
               = model_error_display(@social_event_log, :event_types)
           .col-lg-6
@@ -39,11 +39,12 @@
             .form-group
               %label(for="social_event_log_event_categories")
                 Event Categories
-                %em (multiple: use Ctrl/Command + click)
+                %i.fas.fa-info-circle.fa{:title => 'To select more than one category, use Ctrl/Command + click'}
               = f.select :event_categories, EVENT_CATEGORIES, {include_hidden: false}, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_categories)}", multiple: true, style: "height: 100px;" }
               = model_error_display(@social_event_log, :event_categories)
             .form-group
-              %label(for="social_event_log_venue") Event Location (e.g. Central Park, my house, etc.)
+              %label(for="social_event_log_venue") Event Location
+              %i.fas.fa-info-circle.fa{:title => 'e.g. Central Park, my house, etc'}
               = f.text_area :venue, class: "form-control #{form_error_class(@social_event_log, :venue)}"
               = model_error_display(@social_event_log, :venue)
             .form-group
