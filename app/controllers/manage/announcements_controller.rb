@@ -42,14 +42,6 @@ class Manage::AnnouncementsController < ApplicationController
 
   private
 
-    def sort_column
-      %w[title body created_at].include?(params[:column]) ? params[:column] : 'created_at'
-    end
-
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
-    end
-
     def set_announcement
       @announcement = Announcement.find(params[:id])
     end
@@ -57,5 +49,4 @@ class Manage::AnnouncementsController < ApplicationController
     def announcement_params
       params.require(:announcement).permit(:title, :body).merge(member_id: authenticated_user.member.id)
     end
-
 end

@@ -1,3 +1,4 @@
+<title><%='Member Registration'%>
 <div class="container">
   <div class="row pt-3">
     <div class="col pb-4">
@@ -40,7 +41,7 @@
           </div>
           <div class="col">
             <div class="form-group">
-              <label>ZIP Code</label>
+              <label>ZIP</label>
               <%= f.text_field :zip, required: true, class: "form-control #{form_error_class(@member, :zip)}" %>
               <%= model_error_display(@member, :zip) %>
             </div>
@@ -125,7 +126,7 @@
           <div class="col">
             <div class="form-check">
               <%= f.check_box :hide_info_on_locator, class: "form-check-input", id: "hideInfoCheckBox" %>
-              <label for="hideInfoCheckBox">Hide Info on Member Locator</label>
+              <label for="hideInfoCheckBox">Hide Info On Member Locator</label>
             </div>
           </div>
         </div>
@@ -134,7 +135,7 @@
             <div class="form-check">
               <%= f.check_box :terms_of_service, class: "form-check-input", id: "termsCheckBox", 'data-data_capcha': false %>
               <label for="termsCheckBox">
-                I Agree to the
+                I agree to the
                 <a target="_blank" href="https://docs.google.com/document/d/1U5V7BqmnuBweUSz4aXRdoShJu_e1GClLGe6lguEIHog/edit?usp=sharing">SaaS Agreement</a>
               </label>
             </div>

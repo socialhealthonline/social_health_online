@@ -1,4 +1,4 @@
-- page_title 'My Community Announcements'
+- page_title 'My Community Annoucements'
 
 %br
 .container
@@ -38,9 +38,10 @@
       %table.table.table-borderless.table-hover
         %thead
           %tr
-            %th= sort_link 'title', 'Announcement Title'
-            %th= sort_link 'body', 'Announcement Body Preview'
-            %th= sort_link 'created_at', 'Added On'
+            %th= sort_link('title', 'Announcement Title')
+            %th= sort_link('body', 'Announcement Body Preview')
+            %th= sort_link('created_at', 'Added On')
+            %th
         %tbody
           - @announcements.each.with_index(1) do |announcement, i|
             %tr.bg-white
