@@ -50,42 +50,58 @@ class Manage::EventsController < ApplicationController
 
   private
 
-  def event_params
-    params.require(:event).permit(
-      :title,
-      :start_at,
-      :time_zone,
-      :event_type,
-      :state,
-      :city,
-      :location,
-      :url,
-      :details,
-      :private,
-      :rsvp_limit,
-      :address,
-      :zip
-    )
-  end
-
-  def param_time_zone
-    if params[:event][:time_zone].present?
-      Time.use_zone(params[:event][:time_zone]) { yield }
-    else
-      yield
+    def event_params
+      params.require(:event).permit(
+        :title,
+        :start_at,
+        :time_zone,
+        :event_type,
+        :state,
+        :city,
+        :location,
+        :url,
+        :details,
+        :private,
+        :rsvp_limit,
+        :address,
+        :zip
+      )
     end
-  end
 
-  def event_time_zone
-    @event = Event.find_by!(member_id: authenticated_user.member_id, id: params[:id])
-    Time.use_zone(@event.time_zone) { yield }
-  end
+    def sortable_columns
+      %w[
+        title event_type start_at location city state
+      ]
+    end
 
-  def update_action_flash_error
-    if @event.errors[:rsvp_limit].empty?
-      flash.now[:error] = 'Please correct the errors to continue.'
-    else
-      flash.now[:error] = @event.errors[:rsvp_limit].first
+    def sort_column
+      logger.debug("SORT:::: #{params[:direction].inspect}")
+      sortable_columns.include?(params[:column]) ? params[:column] : 'title'
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+    end
+
+    def param_time_zone
+      if params[:event][:time_zone].present?
+        Time.use_zone(params[:event][:time_zone]) { yield }
+      else
+        yield
+      end
+    end
+
+    def event_time_zone
+      @event = Event.find_by!(member_id: authenticated_user.member_id, id: params[:id])
+      Time.use_zone(@event.time_zone) { yield }
+    end
+
+    def update_action_flash_error
+      if @event.errors[:rsvp_limit].empty?
+        flash.now[:error] = 'Please correct the errors to continue.'
+      else
+        flash.now[:error] = @event.errors[:rsvp_limit].first
+      end
     end
   end
 end
