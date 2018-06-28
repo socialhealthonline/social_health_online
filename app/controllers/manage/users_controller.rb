@@ -44,52 +44,52 @@ class Manage::UsersController < ApplicationController
 
   private
 
-    def update_user_params
-      params.require(:user).permit(
-        :name,
-        :display_name,
-        :email,
-        :phone,
-        :address,
-        :city,
-        :state,
-        :zip,
-        :time_zone,
-        :birthdate,
-        :gender,
-        :ethnicity,
-        :relationship_status,
-        :education_level,
-        :occupation,
-        :languages,
-        :hobbies,
-        :pet_peeves,
-        :group,
-        :bio,
-        :password,
-        :password_confirmation,
-        :manager,
-        :user_status
-      )
-    end
+  def update_user_params
+    params.require(:user).permit(
+      :name,
+      :display_name,
+      :email,
+      :phone,
+      :address,
+      :city,
+      :state,
+      :zip,
+      :time_zone,
+      :birthdate,
+      :gender,
+      :ethnicity,
+      :relationship_status,
+      :education_level,
+      :occupation,
+      :languages,
+      :hobbies,
+      :pet_peeves,
+      :group,
+      :bio,
+      :password,
+      :password_confirmation,
+      :manager,
+      :user_status
+    )
+  end
 
-    def user_params
-      params.permit(prepare_emails).reject{|_, v| v.blank?}
-    end
+  def user_params
+    params.permit(prepare_emails).reject{|_, v| v.blank?}
+  end
 
-    def prepare_emails
-      (1..authenticated_user.member.service_capacity).map { |i| "email_#{i}".to_sym}
-    end
+  def prepare_emails
+    (1..authenticated_user.member.service_capacity).map { |i| "email_#{i}".to_sym}
+  end
 
-    def set_user
-      @user = User.find(params[:id]).decorate
-    end
+  def set_user
+    @user = User.find(params[:id]).decorate
+  end
 
-    def set_service_capacity
-      @service_capacity = authenticated_user.member.service_capacity
-    end
+  def set_service_capacity
+    @service_capacity = authenticated_user.member.service_capacity
+  end
 
-    def set_user_count
-      @users_count = User.where(member_id: authenticated_user.member.id).count
-    end
+  def set_user_count
+    @users_count = User.where(member_id: authenticated_user.member.id).count
+  end
 end
