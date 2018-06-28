@@ -44,68 +44,67 @@ class Manage::UsersController < ApplicationController
 
   private
 
-    def update_user_params
-      params.require(:user).permit(
-        :name,
-        :display_name,
-        :email,
-        :phone,
-        :address,
-        :city,
-        :state,
-        :zip,
-        :time_zone,
-        :birthdate,
-        :gender,
-        :ethnicity,
-        :relationship_status,
-        :education_level,
-        :occupation,
-        :languages,
-        :hobbies,
-        :pet_peeves,
-        :group,
-        :bio,
-        :password,
-        :password_confirmation,
-        :manager,
-        :user_status
-      )
-    end
+  def update_user_params
+    params.require(:user).permit(
+      :name,
+      :display_name,
+      :email,
+      :phone,
+      :address,
+      :city,
+      :state,
+      :zip,
+      :time_zone,
+      :birthdate,
+      :gender,
+      :ethnicity,
+      :relationship_status,
+      :education_level,
+      :occupation,
+      :languages,
+      :hobbies,
+      :pet_peeves,
+      :group,
+      :bio,
+      :password,
+      :password_confirmation,
+      :manager,
+      :user_status
+    )
+  end
 
-    def sortable_columns
-      %w[
-        name display_name email manager user_status
-      ]
-    end
+  def sortable_columns
+    %w[
+      name display_name email manager user_status
+    ]
+  end
 
-    def sort_column
-      logger.debug("SORT:::: #{params[:direction].inspect}")
-      sortable_columns.include?(params[:column]) ? params[:column] : 'name'
-    end
+  def sort_column
+    logger.debug("SORT:::: #{params[:direction].inspect}")
+    sortable_columns.include?(params[:column]) ? params[:column] : 'name'
+  end
 
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
-    end
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
 
-    def user_params
-      params.permit(prepare_emails).reject{|_, v| v.blank?}
-    end
+  def user_params
+    params.permit(prepare_emails).reject{|_, v| v.blank?}
+  end
 
-    def prepare_emails
-      (1..authenticated_user.member.service_capacity).map { |i| "email_#{i}".to_sym}
-    end
+  def prepare_emails
+    (1..authenticated_user.member.service_capacity).map { |i| "email_#{i}".to_sym}
+  end
 
-    def set_user
-      @user = User.find(params[:id]).decorate
-    end
+  def set_user
+    @user = User.find(params[:id]).decorate
+  end
 
-    def set_service_capacity
-      @service_capacity = authenticated_user.member.service_capacity
-    end
+  def set_service_capacity
+    @service_capacity = authenticated_user.member.service_capacity
+  end
 
-    def set_user_count
-      @users_count = User.where(member_id: authenticated_user.member.id).count
-    end
-    
+  def set_user_count
+    @users_count = User.where(member_id: authenticated_user.member.id).count
+  end
 end
