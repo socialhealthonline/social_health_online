@@ -3,7 +3,7 @@ class Manage::SocialTracker::HistoryController < ApplicationController
 
   def users
     @member = Member.includes(users: [:social_event_logs]).friendly.find(params[:name])
-    @member = Member.order("#{sort_column} #{sort_direction}").page(params[:page])
+    @member = Member.where(member_id: @member.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def user_history
@@ -16,31 +16,4 @@ class Manage::SocialTracker::HistoryController < ApplicationController
     @user = @member.users.find(params[:user_id])
     @log = @user.social_event_logs.find(params[:id])
   end
-
-  private
-
-    def member_params
-      params.require(:member).permit(
-        :name,
-        :display_name,
-        :total_social_events_logged,
-        :last_social_event_log_date
-      )
-    end
-
-    def sortable_columns
-      %w[
-        name display_name total_social_events_logged last_social_event_log_date
-      ]
-    end
-
-    def sort_column
-      logger.debug("SORT:::: #{params[:direction].inspect}")
-      sortable_columns.include?(params[:column]) ? params[:column] : 'name'
-    end
-
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
-    end
-    
 end
