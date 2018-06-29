@@ -21,7 +21,7 @@
               = model_error_display(@social_event_log, :state)
             .form-group
               %label(for="social_event_log_city")
-                Event City (If the city is not listed below, select the nearest metro area.)
+                Event City (If the city is not listed below, select the nearest metro area)
               = f.select :city, {}, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :city)}" }
               = model_error_display(@social_event_log, :city)
             .form-group
