@@ -422,18 +422,28 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
   margin-top: 8px;
 }
 
-.under_label_text {
-  font-size: 10px !important;
+#member_plan{
+  height: 36px;
 }
 
-@media only screen and (max-width: 991px) {
-  #account_manager_email_form {
-    margin-top: 29px;
-  }
+.StripeElement {
+  background-color: white;
+  height: 34px;
+  padding: 6px 12px;
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
 }
 
-@media only screen and (min-width: 992px) {
-  #account_manager_email_form {
-    margin-top: 31px;
-  }
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
 }
