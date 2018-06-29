@@ -93,7 +93,7 @@
           %label.form-check-label(for="user_enabled") Enabled
         %small Enabled to sign in
 
-.mb-5.text-center
+.mb-4.text-center
   = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }
   - if @admin.persisted?
     = link_to 'Cancel', console_admin_path(@admin), class: 'btn btn-outline-secondary', :style => 'border: 1px solid black;'

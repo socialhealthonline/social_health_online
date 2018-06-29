@@ -115,7 +115,7 @@
         = f.check_box :hide_info_on_locator, class: 'form-check-input'
         %label.form-check-label(for="hide_info_on_locator") Hide Info on Member Locator
 
-.mb-5.text-center
+.text-center
   = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }
   - if @member.persisted?
     = link_to 'Cancel', console_member_path(@member.id), class: 'btn btn-outline-secondary', :style => 'border: 1px solid black;'
