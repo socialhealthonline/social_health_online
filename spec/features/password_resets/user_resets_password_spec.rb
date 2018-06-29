@@ -29,14 +29,14 @@ RSpec.describe 'User resets password' do
 
     it 'unsuccessfully with empty fields' do
       click_button 'Save'
-      expect(page).to have_content("Can't be blank")
+      expect(page).to have_content("сan't be blank")
     end
 
     it 'unsuccessfully with bad password' do
       fill_in 'user_password', with: 'newpassw0rd'
       fill_in 'user_password_confirmation', with: 'blahblahblah'
       click_button 'Save'
-      expect(page).to have_content("Doesn't match password")
+      expect(page).to have_content("doesn't match")
     end
   end
 

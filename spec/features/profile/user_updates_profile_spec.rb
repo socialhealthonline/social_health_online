@@ -31,14 +31,14 @@ RSpec.describe 'User updates profile' do
     expect(page).to have_form_field_error_for('user_name')
   end
 
-  it 'unsuccessfully with password update' do
+  it 'unsuccessfully with password update', js: true do
     fill_in 'profile-password', with: 'password'
     click_button 'Update'
     user.reload
     expect(current_path).to eq '/profile'
-    expect(page).to have_text 'Must be alphanumeric'
+    expect(page).to have_text 'must be alphanumeric'
     expect(page).to have_form_field_error_for('profile-password')
-    expect(page).to have_text "Doesn't match password"
+    expect(page).to have_text "doesn't match password"
     expect(page).to have_form_field_error_for('user_password_confirmation')
   end
 
