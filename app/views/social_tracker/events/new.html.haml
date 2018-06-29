@@ -36,7 +36,7 @@
             .form-group
               %label(for="social_event_log_event_category")
                 Event Category
-                %span.not_sho_category(style="display: none;") (Can only add category for SHO Events)
+                %span.not_sho_category(style="display: none;") 
               =f.select :event_category, EVENT_CATEGORIES, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_category)}" }
               = model_error_display(@social_event_log, :event_category)
             .form-group
