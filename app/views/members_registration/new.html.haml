@@ -1,0 +1,123 @@
+- page_title 'Member Registration'
+
+%script{ src: 'https://js.stripe.com/v3/' }
+= javascript_include_tag 'stripe_form'
+
+.container
+  .row.pt-3
+    .col.pb-4
+      %h1.brand-primary.text-center
+        Member Registration
+  .row
+    .col
+      = form_with model: @member, url: members_registration_index_path, method: :post, id: 'payment-form', local: true do |f|
+        .row
+          .col-lg-6
+            .form-group
+              %label Member Name
+              = f.text_field :name, autofocus: true, required: true, class: "form-control #{form_error_class(@member, :name)}"
+              = model_error_display(@member, :name)
+          .col
+            .form-group
+              %label Address
+              = f.text_field :address, required: true, class: "form-control #{form_error_class(@member, :address)}"
+              = model_error_display(@member, :address)
+        .row
+          .col-lg-6
+            .form-group
+              %label City
+              = f.text_field :city, required: true, class: "form-control #{form_error_class(@member, :city)}"
+              = model_error_display(@member, :city)
+          .col-lg-4
+            .form-group
+              %label State
+              = f.select :state, US_STATES, {}, { class: "form-control custom-select #{form_error_class(@member, :state)}" }
+              = model_error_display(@member, :state)
+          .col
+            .form-group
+              %label ZIP Code
+              = f.text_field :zip, required: true, class: "form-control #{form_error_class(@member, :zip)}"
+              = model_error_display(@member, :zip)
+        .row
+          .col-lg-6
+            .form-group
+              %label Phone
+              = f.text_field :phone, required: true, class: "form-control #{form_error_class(@member, :phone)}"
+              = model_error_display(@member, :phone)
+          .col
+            .form-group
+              %label Website
+              = f.text_field :url, required: true, class: "form-control #{form_error_class(@member, :url)}"
+              = model_error_display(@member, :url)
+        .row
+          .col-lg-6
+            .form-group
+              %label Contact Name
+              = f.text_field :contact_name, required: true, class: "form-control #{form_error_class(@member, :contact_name)}"
+              = model_error_display(@member, :contact_name)
+          .col
+            .form-group
+              %label Contact Email
+              = f.email_field :contact_email, required: true, class: "form-control #{form_error_class(@member, :contact_email)}"
+              = model_error_display(@member, :contact_email)
+        .row
+          .col-lg-6
+            .form-group
+              %label Contact Phone
+              = f.text_field :contact_phone, required: true, class: "form-control #{form_error_class(@member, :contact_phone)}"
+              = model_error_display(@member, :contact_phone)
+          .col
+            .form-group
+              %label Contact Phone Extension
+              = f.text_field :contact_phone_extension, class: "form-control #{form_error_class(@member, :contact_phone_extension)}"
+              = model_error_display(@member, :contact_phone_extension)
+        .row
+          .col-lg-6
+            .form-group
+              %label Account Manager's Name (Member's initial User)
+              = f.text_field :account_manager_name, required: true, class: "form-control #{form_error_class(@member, :account_manager_name)}"
+              = model_error_display(@member, :account_manager_name)
+          .col
+            #account_manager_email_form.form-group
+              %label Account Manager's Email
+              = f.email_field :account_manager_email,  required: true,class: "form-control #{form_error_class(@member, :account_manager_email)}"
+              = model_error_display(@member, :account_manager_email)
+        .row
+          .col-lg-6
+            .form-group
+              %label User Seats (5 User minimum - includes Account Manager)
+              = f.number_field :service_capacity, min: 5, required: true, class: "form-control #{form_error_class(@member, :service_capacity)}"
+              = model_error_display(@member, :service_capacity)
+          .col
+            .form-group
+              %label Payment period
+              = f.select :plan, STRIPE_PLANS, {}, { class: 'form-control custom-select' }
+        .row
+          .col-lg-6
+            .form-group
+              %label Credit or debit card
+              #card-element
+              %small.text-danger#card-errors{ role: 'alert' }
+          .col
+            .form-group
+              %label Total price:
+              #total-price
+        .row
+          .col
+            .form-check
+              = f.check_box :hide_info_on_locator, class: 'form-check-input', id: 'hideInfoCheckBox'
+              %label{ for: 'hideInfoCheckBox' } Hide Info on Member Locator
+        .row
+          .col
+            .form-check
+              = f.check_box :terms_of_service, class: 'form-check-input', id: 'termsCheckBox', 'data-data_capcha': false
+              %label{ for: 'termsCheckBox' }
+                I Agree to the
+                %a{ href: 'https://docs.google.com/document/d/1U5V7BqmnuBweUSz4aXRdoShJu_e1GClLGe6lguEIHog/edit?usp=sharing', target: '_blank' } SaaS Agreement
+
+        %div
+          = recaptcha_tags callback: 'thenCapchaIsSubmited', expired_callback: 'expiredRecapchaCallback'
+
+        .row.justify-content-center.pt-1.pb-3
+          = f.submit 'Submit', class: 'btn btn-primary mr-2', id: 'create_member', data: { disable_with: false }
+          = link_to 'Cancel', root_path, class: 'btn btn-primary'

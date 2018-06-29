@@ -6,6 +6,7 @@ RSpec.describe 'Explore Communities' do
       before do
         visit new_members_registration_path
         allow_any_instance_of(MembersRegistrationController).to receive(:verify_recaptcha).and_return(true)
+        allow_any_instance_of(CreateManagerAndSubscriptionService).to receive(:call).and_return(true)
       end
 
       it 'Visitor visit register page' do
@@ -26,6 +27,7 @@ RSpec.describe 'Explore Communities' do
         fill_in 'member_account_manager_name', with: 'Test Account Manager Name'
         fill_in 'member_account_manager_email', with: 'example_manager@gmail.com'
         fill_in 'member_service_capacity', with: 5
+        fill_stripe_elements(4242424242424242)
         check 'termsCheckBox'
         page.execute_script('thenCapchaIsSubmited()')
         click_button 'Submit'
@@ -52,6 +54,7 @@ RSpec.describe 'Explore Communities' do
         fill_in 'member_account_manager_name', with: 'Test Account Manager Name'
         fill_in 'member_account_manager_email', with: 'example_manager@gmail.com'
         fill_in 'member_service_capacity', with: 5
+        fill_stripe_elements(4242424242424242)
         check 'termsCheckBox'
         page.execute_script('thenCapchaIsSubmited()')
         click_button 'Submit'

@@ -6,6 +6,7 @@
   %link(href="https://fonts.googleapis.com/css?family=Rubik:300,400,400i,500" rel="stylesheet")
   %link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous")
   = csrf_meta_tag
+  = tag :meta, name: 'stripe-key', content: Rails.application.credentials[Rails.env.to_sym][:stripe][:publishable_key]
   = stylesheet_link_tag 'application', media: 'all'
   = javascript_include_tag 'application'
   = Gon::Base.render_data

@@ -17,14 +17,14 @@ RSpec.describe 'Event feed' do
     end
 
     it 'Event is on the page then status is maybe' do
-      rsvp.update(rsvp_status: 'maybe');
+      rsvp.update(rsvp_status: 'maybe')
       visit_page_and_show_event(event)
     end
   end
 
   context 'Do not display event in the feed' do
     it 'Event is NOT on the page then status is no' do
-      rsvp.update(rsvp_status: 'no');
+      rsvp.update(rsvp_status: 'no')
       visit_page_and_not_show_event(event)
     end
 

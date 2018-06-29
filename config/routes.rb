@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   # Create Member
   resources :members_registration, only: [:new, :create]
 
+  #Stripe webhooks
+  mount StripeEvent::Engine, at: '/stripe_events'
+
   # Contact
   get "contact" => "contact#new"
   post "contact" => "contact#create"
