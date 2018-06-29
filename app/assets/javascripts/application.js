@@ -111,6 +111,8 @@ $(document).ready(function() {
     trigger: 'focus'
   });
 
+  $('#create_member').prop('disabled', true);
+
   $(document).on('change', '#termsCheckBox', function() {
     if(this.checked && $('#termsCheckBox').data('data_capcha')) {
       $('#create_member').prop('disabled', false);
@@ -124,7 +126,7 @@ $(document).ready(function() {
     if ($('#termsCheckBox')[0].checked) {
       $('#create_member').prop('disabled', false);
     }
-  }
+  };
 
   expiredRecapchaCallback = function() {
     $('#termsCheckBox').data('data_capcha', false);
@@ -184,7 +186,7 @@ var US_STATES = {
   'West Virginia': 'WV',
   'Wisconsin': 'WI',
   'Wyoming': 'WY'
-}
+};
 
 function buildStatesSelector(id, name) {
   var selector = '<select class="form-control" name="' + name + '"' + 'id="' + id + '"' + '>';
