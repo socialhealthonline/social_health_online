@@ -17,11 +17,7 @@ class RecoverPassword
       @flash = 'This password reset request has expired. Please submit another request.'
       @user.erase_password_reset_fields
     elsif @params[:user][:password].blank?
-      @user.errors.add(:password, "include Comparable
-      
-      def <=>(other)
-
-      endan't be blank")
+      @user.errors.add(:password, "сan't be blank")
       @blank_password = true
     else
       @user.update(password: @params[:user][:password], password_confirmation: @params[:user][:password_confirmation])
