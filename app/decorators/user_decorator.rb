@@ -43,7 +43,7 @@ class UserDecorator < ApplicationDecorator
   def profile_city
     h.content_tag :p do
       h.content_tag(:strong, "City: ") + object&.city if object.hidden_field.city.eql?('0')
-    end 
+    end
   end
 
   def profile_state
@@ -54,7 +54,7 @@ class UserDecorator < ApplicationDecorator
 
   def profile_zip
     h.content_tag :p do
-      h.content_tag(:strong, "ZIP: ") + object&.zip if object.hidden_field.zip.eql?('0')
+      h.content_tag(:strong, "ZIP Code: ") + object&.zip if object.hidden_field.zip.eql?('0')
     end
   end
 
@@ -66,7 +66,7 @@ class UserDecorator < ApplicationDecorator
 
   def profile_birthdate
     h.content_tag :p do
-      h.content_tag(:strong, "Birthdate: ") + object&.birthdate if object.hidden_field.birthdate.eql?('0')
+      h.content_tag(:strong, "Birthdate: ", '%d/%m/%Y') + object&.birthdate if object.hidden_field.birthdate.eql?('0')
     end
   end
 
