@@ -86,7 +86,7 @@ RSpec.describe 'Admin mananges affiliates' do
       click_link 'Export CSV'
 
       expected_csv = file_fixture('affiliate.csv').read
-      generated_csv = AffiliateCsvHelper.new.csv_affilialate_list
+      generated_csv = AffiliateCsvHelper.new.csv_affiliate_list
 
       expect(generated_csv).to eq expected_csv
     end

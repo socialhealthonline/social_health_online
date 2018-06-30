@@ -43,7 +43,7 @@ class Console::AffiliatesController < ConsoleController
   end
 
   def export_csv
-    csv = helpers.csv_affilialate_list
+    csv = helpers.csv_affiliate_list
     send_data csv, filename: "affiliates-#{Date.today}.csv"
   end
 

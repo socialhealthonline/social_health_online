@@ -108,6 +108,9 @@ Rails.application.routes.draw do
         get 'export_csv'
       end
       resources :users
+        collection do
+          get 'export_csv'
+      end
     end
     resources :users, path: :admins, as: :admins, controller: :admins
     namespace :social_tracker do

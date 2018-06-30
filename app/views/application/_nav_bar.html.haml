@@ -68,7 +68,7 @@
               %li.nav-item.dropdown
                 %a.nav-link.dropdown-toggle.c-pointer{'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
                   = 'Register'
-                .dropdown-menu.dropdown-menu-right{'aria-labelledby' => 'navbarDropdownMenuLink'}
+                .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'navbarDropdownMenuLink'}
                   = link_to new_members_registration_path, class: 'dropdown-item' do
                     Member Registration
               %li.nav-item.sign-in-button
