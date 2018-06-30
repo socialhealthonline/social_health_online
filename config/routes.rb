@@ -107,7 +107,7 @@ Rails.application.routes.draw do
       collection do
         get 'export_csv'
       end
-    resources :users
+    resources :users do
       collection do
         get 'export_csv'
       end
