@@ -56,11 +56,6 @@ class Console::UsersController < ConsoleController
     redirect_to console_member_users_url(@member.id), success: 'The User was successfully deleted!'
   end
 
-  def export_csv
-    csv = helpers.csv_user_list
-    send_data csv, filename: "users-#{Date.today}.csv"
-  end
-
   private
 
   def load_member
