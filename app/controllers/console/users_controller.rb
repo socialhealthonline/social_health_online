@@ -57,7 +57,7 @@ class Console::UsersController < ConsoleController
   end
 
   def export_csv
-    csv = users.csv_user_list
+    csv = helpers.csv_user_list
     send_data csv, filename: "users-#{Date.today}.csv"
   end
 
