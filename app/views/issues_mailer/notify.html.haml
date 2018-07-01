@@ -2,8 +2,16 @@
 
 %p
   <strong>Name:</strong> #{@authenticated_user.name}
+
 %p
-  <strong>Email:</strong> #{@user.email}
+  <strong>Display Name:</strong> #{@authenticated_user.display_name}
+
+%p
+  <strong>Email:</strong> #{@authenticated_user.email}
+
+%p
+  <strong>Member:</strong> #{@authenticated_user.member.id}
+
 %p
   <strong>Message:</strong>
 %p
