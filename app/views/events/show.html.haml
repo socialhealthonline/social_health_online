@@ -44,12 +44,12 @@
             - Rsvp.rsvp_statuses.keys.each do |value|
               = @event.link_or_span(value, @rsvp_switcher)
       %div.table-wrapper-2.table-hover.mb-2{ :style => "border-radius: 12px;" }
-        %table.table.table-borderless.text-left
+        %table.table.table-borderless.text-left.mb-2
           %thead.mdb-color.lighten-4
             %tr
               %th
               %th.th-lg Display Name
-              %th.th-lg.text-center RSVP
+              %th.th-lg.text-center.pr-3 RSVP
           %tbody
           - @event.rsvps.each do |rsvp|
             %tr
@@ -58,7 +58,7 @@
                 %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: rsvp.user }" } }
                   =rsvp.user.display_name
-              %td.text-center= rsvp&.rsvp_status.capitalize
+              %td.text-center.pr-3= rsvp&.rsvp_status.capitalize
 
       %div.mb-3.float-left
         = link_to 'javascript:history.back()', class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
