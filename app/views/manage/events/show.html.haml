@@ -35,8 +35,8 @@
         %strong RSVP Limit:
         = @event.rsvp_limit
       %p
-        %strong Private:
-        = @event.private? ? 'Yes' : 'No'
+        %strong Event Access:
+        = @event.private? ? 'Private' : 'Public'
       %p
         %strong Event Details:
       = simple_format @event.details
