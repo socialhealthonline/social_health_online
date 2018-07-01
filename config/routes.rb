@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get "pricing" => "public#pricing"
   get "support" => "public#support"
   get "news" => "public#news"
+  get "affiliate_agreement" => "public#affiliate_agreement"
+  get "saas_agreement" => "public#saas_agreement"
   get "terms" => "public#terms"
   get "privacy" => "public#privacy"
   get "faq" => "public#faq"
@@ -108,7 +110,7 @@ Rails.application.routes.draw do
       collection do
         get 'export_csv'
       end
-      resources :users 
+      resources :users
     end
     resources :users, path: :admins, as: :admins, controller: :admins
     namespace :social_tracker do

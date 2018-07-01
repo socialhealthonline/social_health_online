@@ -30,6 +30,14 @@ class PublicController < ApplicationController
   def privacy
   end
 
+  def affiliate_agreement
+  end
+
+  def terms
+  end
+
+  def saas_agreement
+
   def faq
   end
 
