@@ -91,13 +91,13 @@
         .row.mt-4
           .col.pt-3
             #scroll-box-announcements{ :style => "border: 2px solid black; border-radius: 12px;" }
-              - @announcements.each do |announcement| 
-                .mb-3
+              - @announcements.each do |announcement|
+                .mb-3.text-center
                   %h5= announcement.title
-                  .announcements-date= time_in_cdt(announcement.updated_at, '%m/%d/%Y')
-                  .announcements-text= simple_format(announcement.body)
+                  .announcements-date.border-bottom= time_in_cdt(announcement.updated_at, '%m/%d/%Y')
+                  .announcements-text.text-left.pb-2= simple_format(announcement.body)
               %p= paginate @announcements
-        
+
     .tab-pane.fade#members(role="tabpanel" aria-labelledby="members-tab")
       %div#profile_partial
       .container
@@ -105,7 +105,7 @@
           .col-7.pt-3
             #scroll-box-announcements{ style: "border: 2px solid black; border-radius: 12px; width: 100%;" }
               %h5.notification-title.mb-2
-                %strong Display Name
+                Display Name
               - @users.each do |user|
                 .mb-3.text-center
                   %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
@@ -113,7 +113,7 @@
                     =user.display_name
             %p= paginate @users
 
-                       
+
 #community-profile-modal.modal.fade{ 'aria-hidden' => 'true', 'aria-labelledby' => 'CommunityProfileModalLabel', role: 'dialog', tabindex: '-1' }
   .modal-dialog{ role: 'document' }
     .modal-content
