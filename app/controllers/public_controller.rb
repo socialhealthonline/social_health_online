@@ -37,6 +37,7 @@ class PublicController < ApplicationController
   end
 
   def saas_agreement
+  end
 
   def faq
   end
