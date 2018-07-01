@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get "news" => "public#news"
   get "terms" => "public#terms"
   get "privacy" => "public#privacy"
+  get "faq" => "public#faq"
 
   # Create Member
   resources :members_registration, only: [:new, :create]
