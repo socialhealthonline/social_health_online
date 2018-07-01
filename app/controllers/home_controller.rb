@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 
   def index
     @notifications = Notification.order('updated_at desc').page(params[:page])
-    @events = Event.joins(:rsvps).events_for_feed(authenticated_user.id)
+    @events = Event.joins(:rsvps).events_for_feed(authenticated_user.id).order(start_at: :desc).page(params[:page])
     @social_event_Logs = SocialEventLog.where(user_id: authenticated_user.id)
 
     next_level = 10
