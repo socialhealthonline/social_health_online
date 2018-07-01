@@ -5,6 +5,6 @@ class IssuesMailer < ApplicationMailer
 
     mail to: 'support@socialhealthonline.com',
          subject: '[Social Health Online] New Issue(s)',
-         from: "#{authenticated_user.name} <#{authenticated_user.email}>"
+         from: "#{authenticated_user.name} <#{authenticated_user.name}>"
   end
 end
