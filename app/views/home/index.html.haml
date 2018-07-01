@@ -13,7 +13,7 @@
         - @notifications.each do |notification|
           .mb-3.text-center
             %h5= notification.title
-            .notification-date.border-bottom= time_in_cdt(notification.updated_at , '%m/%d/%Y')
+            .notification-date.mb-2.border-bottom= time_in_cdt(notification.updated_at , '%m/%d/%Y')
             .notification-text.text-left.pb-2= simple_format(notification.body)
         %p= paginate @notifications
 

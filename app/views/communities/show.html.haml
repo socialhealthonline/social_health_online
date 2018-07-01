@@ -94,7 +94,7 @@
               - @announcements.each do |announcement|
                 .mb-3.text-center
                   %h5= announcement.title
-                  .announcements-date.border-bottom= time_in_cdt(announcement.updated_at, '%m/%d/%Y')
+                  .announcements-date.mb-2.border-bottom= time_in_cdt(announcement.updated_at, '%m/%d/%Y')
                   .announcements-text.text-left.pb-2= simple_format(announcement.body)
               %p= paginate @announcements
 
