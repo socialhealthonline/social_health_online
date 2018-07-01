@@ -69,10 +69,13 @@
         .col
           %ul.nav.nav-tabs#communityTabs(role="tablist")
             %li.nav-item
+              %i.fas.fa-calendar
               %a.nav-link.active#events-tab(data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false") Events
             %li.nav-item
+              %i.fas.fa-bullhorn
               %a.nav-link#announcements-tab(data-toggle="tab" href="#announcements" role="tab" aria-controls="announcements" aria-selected="true") Announcements
             %li.nav-item
+              %i.fas.fa-address-card-o
               %a.nav-link#members-tab(data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="false") User List
 - page_title 'My Community'
 
@@ -104,10 +107,10 @@
         .row.my-3.justify-content-center
           .col-7.pt-3
             #scroll-box-announcements{ style: "border: 2px solid black; border-radius: 12px; width: 100%;" }
-              %h5.notification-title.mb-2
+              %h5.notification-title.border-bottom.mb-2
                 Display Name
               - @users.each do |user|
-                .mb-3.text-center
+                .mb-3.bg-white.text-center
                   %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: user }" } }
                     =user.display_name
