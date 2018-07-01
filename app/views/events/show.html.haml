@@ -1,13 +1,10 @@
 %div#profile_partial
 #helper-method
-.container
+.container.text-center
   .row.pt-3.mb-2
     .col
       %h1= @event.title
-    %div
-      .container.align-self-end
-        .row
-          .col-12
+
     %div
   .row
     .col
@@ -25,15 +22,15 @@
         = @event.location
       %p
         %i.fas.fa-map-marker{:title => "Event Address"}
-        = @event.location_display   
+        = @event.location_display
       - if @event.url.present?
         %p
           %i.fas.fa-globe{:title => "Event Website"}
-          = link_to @event.url, @event.url, target: '_blank' 
+          = link_to @event.url, @event.url, target: '_blank'
       %p
         %i.fas.fa-door-open{:title => "Event Access"}
-        = @event.private? ? 'Private' : 'Public' 
-      -if @event.details.present?  
+        = @event.private? ? 'Private' : 'Public'
+      -if @event.details.present?
         %p
           %i.fas.fa-sticky-note{:title => "Event Details"}
           = @event.details
@@ -46,8 +43,8 @@
           .dropdown-menu.dropdown-menu-right#rsvp-dropdown
             - Rsvp.rsvp_statuses.keys.each do |value|
               = @event.link_or_span(value, @rsvp_switcher)
-      %div.table-wrapper-2.mb-2{ :style => "border-radius: 12px;" }
-        %table.table.table-borderless
+      %div.table-wrapper-2.table-hover.mb-2{ :style => "border-radius: 12px;" }
+        %table.table.table-borderless.text-left
           %thead.mdb-color.lighten-4
             %tr
               %th
@@ -63,7 +60,7 @@
                   =rsvp.user.display_name
               %td.text-center= rsvp&.rsvp_status.capitalize
 
-      %div.mb-3        
+      %div.mb-3.float-left
         = link_to 'javascript:history.back()', class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
           %i.fas.fa-arrow-left
           Back
