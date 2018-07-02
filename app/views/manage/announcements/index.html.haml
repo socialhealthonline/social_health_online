@@ -1,0 +1,61 @@
+- page_title 'My Community Announcements'
+
+%br
+.container
+  .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3
+    %h1.brand-primary My Community Announcements
+    %div
+      - if authenticated_user.manager?
+        %div.float-right.new_manage_user_button
+          .dropdown.mb-2
+            %a.btn.btn-primary.dropdown-toggle{:style => 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+              %i.fas.fa-cog
+              Manage
+            .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;'}
+              = link_to manage_edit_member_path, class: 'dropdown-item' do
+                %i.fas.fa-building
+                Community Profile
+              = link_to manage_events_path, class: 'dropdown-item' do
+                %i.fas.fa-map-marker-alt
+                Community Events
+              = link_to manage_social_tracker_users_path(authenticated_user.member), class: 'dropdown-item' do
+                %i.fas.fa-database
+                Social Tracker
+              = link_to manage_users_path, class: 'dropdown-item' do
+                %i.fas.fa-user-circle
+                Users
+              = link_to my_community_path, class: 'dropdown-item' do
+                %i.fas.fa-angle-double-left
+                Community Home
+
+        %div.float-right
+          = link_to new_manage_announcement_path, class: 'btn btn-primary px-1', style: 'border: 1px solid black;' do
+            %i.fas.fa-plus-circle
+            Add Announcement
+
+  - if @announcements.any?
+    .table-responsive.text-center{ :style => 'border: 2px solid black; border-radius: 12px;'}
+      %table.table.table-borderless.table-hover
+        %thead
+          %tr
+            %th Announcement Title
+            %th Announcement Body Preview
+            %th Added On
+        %tbody
+          - @announcements.each.with_index(1) do |announcement, i|
+            %tr.bg-white
+              %td= link_to truncate("#{i}. #{announcement.title}"), manage_announcement_path(announcement)
+              %td= truncate(announcement.body)
+              %td= time_in_cdt(announcement.created_at, '%m/%d/%Y %H:%M')
+              %td
+                = link_to edit_manage_announcement_path(announcement), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
+                  %i.far.fa-edit
+                &nbsp;
+                = link_to manage_announcement_path(announcement), title: 'Delete', id: "delete_announcement_#{announcement.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this notification. Press OK to continue.' } do
+                  %i.far.fa-trash-alt
+            %tr.table-divider
+    %p= paginate @announcements
+  - else
+    %p.text-muted
+      %em No announcement were found.
+%br

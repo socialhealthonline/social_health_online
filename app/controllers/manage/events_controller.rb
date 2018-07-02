@@ -4,7 +4,8 @@ class Manage::EventsController < ApplicationController
   around_action :event_time_zone, only: [:edit]
 
   def index
-    @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :desc)
+    @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :desc).page(params[:page]).per(25)
+    @member = authenticated_user.member_id
   end
 
   def show
@@ -34,7 +35,8 @@ class Manage::EventsController < ApplicationController
     if @event.update(event_params)
       redirect_to manage_event_url(@event), success: 'The event was successfully updated!'
     else
-      flash.now[:error] = 'Please correct the errors to continue.'
+      #flash.now[:error] = 'Please correct the errors to continue.'
+      update_action_flash_error
       render :edit
     end
   end
@@ -59,7 +61,9 @@ class Manage::EventsController < ApplicationController
       :url,
       :details,
       :private,
-      :rsvp_limit
+      :rsvp_limit,
+      :address,
+      :zip
     )
   end
 
@@ -76,4 +80,11 @@ class Manage::EventsController < ApplicationController
     Time.use_zone(@event.time_zone) { yield }
   end
 
+  def update_action_flash_error
+    if @event.errors[:rsvp_limit].empty?
+      flash.now[:error] = 'Please correct the errors to continue.'
+    else
+      flash.now[:error] = @event.errors[:rsvp_limit].first
+    end
+  end
 end

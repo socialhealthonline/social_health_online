@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user do
-    name 'Tom Jones'
+    sequence(:name) { |n| "Tom Jones #{n}"}
     sequence(:email) { |n| "user#{n}@example.com" }
     password 'Password007'
     password_confirmation 'Password007'
@@ -13,6 +13,8 @@ FactoryBot.define do
     birthdate (Date.today - 30.years)
     gender 'Male'
     ethnicity 'White'
+    user_status :activated
+    first_login Date.today
     member
 
     trait :admin do
@@ -25,6 +27,10 @@ FactoryBot.define do
 
     trait :disabled do
       enabled false
+    end
+
+    trait :disabled_status do
+      user_status 'disabled'
     end
   end
 

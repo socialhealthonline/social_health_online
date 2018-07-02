@@ -1,7 +1,9 @@
 .container
-  .row.pt-5.pb-3
+  .row.pt-3.pb-3.px-2.justify-content-center
+    %h1.text-info Messages
+  .row.mb-2
     .col-12.col-md-3.mb-1.order-md-1
-      = link_to "Compose", new_conversation_path, class: "btn btn-success mb-3"
+      = link_to 'Compose', new_conversation_path, class: 'btn btn-info mb-3', style: 'border: 1px solid black;'
       .card.card-sm
         .list-group.list-group-flush
           = render 'mailbox/folders'
@@ -12,8 +14,8 @@
         - if @active.equal?(:trash) && messages.any?
           .row
             .col
-              .pull-right
-                = link_to 'Empty trash', mark_as_deleted_conversations_path, class: 'btn btn-danger mb-3', method: :post,
+              .float-right
+                = link_to 'Empty trash', mark_as_deleted_conversations_path, class: 'btn btn-danger mb-3', style: 'border: 1px solid black;', method: :post,
          data: { confirm: 'Are you sure?' }
         .table-responsive
           %table.table.table-borderless.align-items-center.messages-box

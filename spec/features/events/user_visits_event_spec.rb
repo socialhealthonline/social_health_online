@@ -31,4 +31,19 @@ RSpec.describe 'User views event' do
     end
   end
 
+  context 'user go to event' do
+    let!(:user) { create(:user) }
+    let!(:event) { create(:event, member: create(:member)) }
+
+    before do
+      sign_in user
+      visit community_event_path(event.member, event)
+    end
+
+    it 'is successful subscribe to event' do
+      expect(page).to have_content 'RSVP'
+      find('#rsvp-dropdown a[href$="yes"]').click
+      expect(page).to_not have_content 'The RSVP limit for this event is reached'
+    end
+  end
 end

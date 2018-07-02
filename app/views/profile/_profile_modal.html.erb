@@ -1,0 +1,33 @@
+<!-- The Modal -->
+<div class='modal' id='profileModal'>
+  <div class='modal-dialog'>
+    <div class='modal-content'>
+      <!-- Modal Header -->
+      <div class='modal-header'>
+        <h3 class= "modal-title"><%= user.display_name %></h3>
+        <button class='close' data-dismiss="modal">×</button>
+      </div>
+      <!-- Modal body -->
+      <div class='modal-body'>
+        <%= user.profile_name %>
+        <%= user.profile_email %>
+        <%= user.profile_phone %>
+        <%= user.profile_address %>
+        <%= user.profile_city %>
+        <%= user.profile_state %>
+        <%= user.profile_zip %>
+        <%= user.profile_birthdate %>
+        <%= user.profile_gender %>
+        <%= user.profile_ethnicity %>
+        <%= user.profile_relationship_status %>
+        <%= user.profile_education_level %>
+        <%= user.profile_occupation %>
+        <%= user.profile_languages %>
+        <%= user.profile_hobbies %>
+        <%= user.profile_pet_peeves %>
+        <%= user.profile_bio %>
+      </div>
+      <!-- Modal footer -->
+    </div>
+  </div>
+</div>

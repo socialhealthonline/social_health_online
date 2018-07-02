@@ -8,7 +8,9 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
   %h1.h3.brand-primary= @user.name
 
-%p= @user.full_address
+%p
+  %strong Address:
+  = @user.full_address
 
 %p
   %strong Display Name:
@@ -35,8 +37,12 @@
   = @user.ethnicity
 
 %p
-  %strong Timezone:
+  %strong Time Zone:
   = @user.time_zone
+
+%p
+  %strong Group:
+  = @user.group
 
 %p
   %strong Account Manager:
@@ -47,7 +53,7 @@
   = @user.enabled? ? 'Yes' : 'No'
 
 %p
-  = link_to console_member_users_path, class: 'btn btn-outline-primary'do
+  = link_to console_member_users_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do
     %i.fas.fa-arrow-left
     Back
   &nbsp;

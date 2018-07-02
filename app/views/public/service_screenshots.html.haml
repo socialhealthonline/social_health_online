@@ -1,0 +1,44 @@
+- page_title 'Service Screenshots'
+
+.container.our-services
+  .row
+    .col.my-3
+      %h1.text-info Service Screenshots
+
+  .row
+    .col.mb-3
+      %h3 User's Community Page
+ 
+
+  .row
+    .col-md-6
+      .card
+        %img.card-img-top
+          = image_tag "community_laptop.png", class: "img-fluid"
+        .card-body.text-center.border-top
+          %p.card-text Desktop View
+    .col-md-6
+      .card
+        %img.card-img-top
+          = image_tag "community_phone.png", class: "img-fluid"
+        .card-body.text-center.border-top
+          %p.card-text Mobile View
+
+
+  .row
+    .col.py-3
+      %h3 User's Home Page
+      
+  .row
+    .col-md-6
+      .card
+        %img.card-img-top
+          = image_tag "home_laptop.png", class: "img-fluid"
+        .card-body.text-center.border-top
+          %p.card-text Desktop View
+    .col-md-6
+      .card
+        %img.card-img-top
+          = image_tag "home_phone.png", class: "img-fluid"
+        .card-body.text-center.border-top
+          %p.card-text Mobile View

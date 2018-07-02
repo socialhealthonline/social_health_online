@@ -45,24 +45,24 @@
 .row
   .col
     .form-group
-      %label(for="user_time_zone") Timezone
+      %label(for="user_time_zone") Time Zone
       = f.select(:time_zone, ['Alaska', 'Hawaii', 'Pacific Time (US & Canada)', 'Mountain Time (US & Canada)', 'Central Time (US & Canada)', 'Eastern Time (US & Canada)'].sort, {}, { class: 'custom-select form-control' })
       = model_error_display(@admin, :time_zone)
   .col
     .form-group
-      %label(for="user_birthdate") Birthdate (YYYY-MM-DD)
+      %label(for="user_birthdate") Birthdate
       = f.text_field :birthdate, class: "flatpickr-date form-control #{form_error_class(@admin, :birthdate)}"
       = model_error_display(@admin, :birthdate)
 .row
   .col
     .form-group
       %label(for="user_gender") Gender
-      = f.select :gender, User::GENDER, {}, { class: "form-control custom-select #{form_error_class(@admin, :gender)}" }
+      = f.select :gender, User::GENDER, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@admin, :gender)}" }
       = model_error_display(@admin, :gender)
   .col
     .form-group
       %label(for="user_ethnicity") Race/Ethnicity
-      = f.select :ethnicity, User::ETHNICITY, {}, { class: "form-control custom-select #{form_error_class(@admin, :ethnicity)}" }
+      = f.select :ethnicity, User::ETHNICITY, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@admin, :ethnicity)}" }
       = model_error_display(@admin, :ethnicity)
 .row
   .col
@@ -71,7 +71,7 @@
         .form-check.mb-1
           = f.check_box :manager, class: 'form-check-input'
           %label.form-check-label(for="user_manager") Account Manager
-        %small Manager for their member account and community
+        %small Manager for their Member account and Community
   .col
     .form-group
       %label(for="user_member_id") Member
@@ -84,7 +84,7 @@
         .form-check.mb-1
           = f.check_box :admin, class: 'form-check-input'
           %label.form-check-label(for="user_admin") Admin
-        %small Site admin privileges
+        %small Site Admin privileges
   .col
     .card
       .card-body
@@ -93,9 +93,9 @@
           %label.form-check-label(for="user_enabled") Enabled
         %small Enabled to sign in
 
-.mb-5
-  = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
+.mb-4.text-center
+  = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }
   - if @admin.persisted?
-    = link_to 'Cancel', console_admin_path(@admin), class: 'btn btn-outline-secondary'
+    = link_to 'Cancel', console_admin_path(@admin), class: 'btn btn-outline-secondary', :style => 'border: 1px solid black;'
   - else
-    = link_to 'Cancel', console_admins_path, class: 'btn btn-outline-secondary'
+    = link_to 'Cancel', console_admins_path, class: 'btn btn-outline-secondary', :style => 'border: 1px solid black;'

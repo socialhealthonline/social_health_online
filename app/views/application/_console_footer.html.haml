@@ -1,0 +1,22 @@
+%footer.bg-white.footer-short.border-top.mt-4
+  .container
+    .row.pt-2.justify-content-center.text-center.font-weight-bold
+
+      = link_to console_path do
+        %i.fas.fa-tachometer-alt.fa-2x.pt-2{:title => 'Console'}
+        <p class ="under_label_text">Console</p>
+      %span.px-2
+
+      = link_to console_members_path do
+        %i.fas.fa-building.fa-2x.pt-2{:title => 'Members'}
+        <p class ="under_label_text text-center">Members</p>
+      %span.px-2
+
+      = link_to console_affiliates_path do
+        %i.fas.fa-store-alt.fa-2x.pt-2{:title => 'Affiliates'}
+        <p class ="under_label_text text-center">Affiliates</p>
+      %span.px-2
+
+      = link_to console_social_tracker_members_path do
+        %i.fas.fa-database.fa-2x.pt-2{:title => 'Social Tracker'}
+        <p class ="under_label_text text-center">Social Tracker</p>

@@ -1,31 +1,54 @@
-.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
+- page_title 'Members'
+
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.pb-3.border-bottom
   %h1.h3.brand-primary Members
   %div
-    = link_to new_console_member_path, class: 'btn btn-primary' do
+    = link_to export_csv_console_members_path, class: 'btn btn-primary btn-export', :style => 'border: 1px solid black;' do
+      Export CSV
+
+    = link_to new_console_member_path, class: 'btn btn-primary', :style => 'border: 1px solid black;' do
       %i.fas.fa-plus-circle
       Add Member
 
+.row.my-3
+  .col
+    %h5.notification-title
+      %strong Table Filter
+    = form_with url: [:console_members], method: :get, local: true do |f|
+      .form-group.form-inline.justify-content-center#explore_communities_form
+        %div.form-group.col-12.col-sm-12.col-md-2.col-lg-2
+          = f.select(:state, US_STATES, {}, class: "form-control find_by_state", include_blank: 'State', style: "width: 100%;")
+        %div.form-group.col-12.col-sm-12.col-md-4.col-lg-4
+          = f.text_field :city, placeholder: 'City', class: 'form-control find_by_city', style: "width: 100%;"
+      %div.form-row
+        %div.col-12
+          .col-xs-3.col-md-3.col-sm-3.mx-auto
+            = f.button "Filter", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
+          %h3.notification-title.justify-content-center.mb-2.border-bottom
+
 - if @members.any?
-  .table-responsive
-    %table.table.table-borderless.align-items-center 
+  .table-responsive.member-list-table{ :style => 'border: 2px solid black; border-radius: 12px;'}
+    %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
-          %th(scope="col") Member Name
-          %th(scope="col") Contact Name
-          %th(scope="col") Contact Email
-          %th(scope="col") Contact Phone
-          %th(scope="col") City
-          %th(scope="col") State
+          %th(scope="col")= sort_link('name', 'Member Name')
+          %th(scope="col")= sort_link('city', 'City')
+          %th(scope="col")= sort_link('state', 'State')
+          %th(scope="col")= sort_link('service_capacity', 'User Seats')
+          %th(scope="col")= sort_link('account_start_date', 'Account Start Date')
+          %th(scope="col")= sort_link('welcome_kit_date', 'Welcome Kit Date')
+          %th(scope="col") Status
           %th(scope="col")
       %tbody
         - @members.each_with_index do |member, i|
           %tr.bg-white
             %th(scope="row")= link_to "#{i+1}. #{member.name}", console_member_path(member.id)
-            %td= member.contact_name
-            %td= member.contact_email
-            %td= member.contact_phone
             %td= member.city
             %td= member.state
+            %td= member.service_capacity
+            %td= short_date member.account_start_date
+            %td= short_date member.welcome_kit_date
+            %td= member.status
             %td.w-10.text-right
               .dropdown
                 = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{member.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
@@ -38,6 +61,7 @@
                     %i.far.fa-trash-alt
                     Delete
           %tr.table-divider
+    %p= paginate @members
 - else
   %p.text-muted
-    %em No members were found.
+    %em No Members were found.

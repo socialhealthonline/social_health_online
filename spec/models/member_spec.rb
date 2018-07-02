@@ -4,6 +4,7 @@ RSpec.describe Member do
 
   it { should have_many(:users).dependent(:destroy) }
   it { should have_many(:events).dependent(:destroy) }
+  it { should have_many(:announcements).dependent(:destroy) }
   it { should have_one(:primary_manager) }
 
   it { should validate_presence_of :name }
@@ -13,7 +14,8 @@ RSpec.describe Member do
   it { should validate_presence_of :contact_name }
   it { should validate_presence_of :contact_email }
   it { should validate_presence_of :contact_phone }
-
+  it { should validate_presence_of :phone }
+  
   context 'with an existing member' do
     before { create(:member, name: 'Acme') }
     specify do
@@ -30,7 +32,9 @@ RSpec.describe Member do
 
   describe 'valid phone number' do
     it { should allow_value('2055551234').for(:contact_phone) }
+    it { should allow_value('2055551234').for(:phone) }
     it { should_not allow_values('345645', '20555512342').for(:contact_phone) }
+    it { should_not allow_values('345645', '20555512342').for(:phone) }
   end
 
   describe 'valid US state' do

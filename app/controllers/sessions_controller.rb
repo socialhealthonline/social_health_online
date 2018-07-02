@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
-
+  skip_before_action :pending_user?
+  
   def new
-    redirect_to dashboard_url if authenticated_user
+    redirect_to home_url if authenticated_user
   end
 
   def create
@@ -29,7 +30,7 @@ class SessionsController < ApplicationController
 
   def landing_path
     return console_root_url if authenticated_user.admin?
-    return dashboard_url
+    return home_url
   end
 
 end

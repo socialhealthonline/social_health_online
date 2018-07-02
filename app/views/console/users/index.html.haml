@@ -8,31 +8,34 @@
   .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
     %h1.h3.brand-primary Users
     %div
-      = link_to new_console_member_user_path(@member.id), class: 'btn btn-primary' do
+      = link_to new_console_member_user_path(@member.id), class: 'btn btn-primary', :style => 'border: 1px solid black;' do
         %i.fas.fa-plus-circle
         Add User
 
 - if @users.any?
-  .table-responsive
-    %table.table.table-borderless.align-items-center
+  .table-responsive.mb-3{ :style => 'border: 2px solid black; border-radius: 12px;' }
+    %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
-          %th(scope="col") Name
-          %th(scope="col") Display Name
-          %th(scope="col") Email
-          %th(scope="col") Manager
-          %th(scope="col") Last Sign In
-          %th(scope="col")
+          %th= sort_link 'name', 'Name'
+          %th= sort_link 'display_name', 'Display Name'
+          %th= sort_link 'email', 'Email'
+          %th= sort_link 'manager', 'Manager'
+          %th= sort_link 'last_sign_in_at', 'Last Sign In'
+          %th= sort_link 'enabled', 'Status'
+          %th
       %tbody
         - @users.each_with_index do |user, i|
           %tr.bg-white
             %th(scope="row")= link_to "#{i+1}. #{user.name}", console_member_user_path(@member.id, user)
-            %td= user.display_name
-            %td= user.email
             %td
-              - if user.manager?
-                %i.far.fa-check-circle.text-success(title="Manager")
+              %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                  data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user:user }" } }
+                =user.display_name
+            %td= user.email
+            %td= user.manager? ? 'Yes' : 'No'
             %td= short_date user.last_sign_in_at
+            %td= user.enabled? ? 'Enabled' : 'Disabled'
             %td.w-10.text-right
               .dropdown
                 = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{user.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
@@ -45,6 +48,12 @@
                     %i.far.fa-trash-alt
                     Delete
           %tr.table-divider
+    %p= paginate @users
 - else
   %p.text-muted
-    %em No users were found. 
+    %em No Users were found.
+
+%div.mb-3
+  = link_to 'javascript:history.back()', class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+    %i.fas.fa-arrow-left
+    Back

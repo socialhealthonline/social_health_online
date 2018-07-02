@@ -1,7 +1,9 @@
 class Console::AdminsController < ConsoleController
+  helper_method :sort_column, :sort_direction
 
   def index
     @admins = User.where(admin: true).order(:name)
+    @admins = User.order("#{sort_column} #{sort_direction}").page(params[:page])
   end
 
   def show
@@ -23,7 +25,7 @@ class Console::AdminsController < ConsoleController
     @admin.set_random_password
 
     if @admin.save
-      redirect_to console_admin_url(@admin), success: 'The admin was successfully created!'
+      redirect_to console_admin_url(@admin), success: 'The Admin was successfully created!'
     else
       @members = Member.order(:name)
       flash.now[:error] = 'Please correct the errors to continue.'
@@ -34,7 +36,7 @@ class Console::AdminsController < ConsoleController
   def update
     @admin = User.find params[:id]
     if @admin.update(user_params)
-      redirect_to console_admin_url(@admin), success: 'The admin was successfully updated!'
+      redirect_to console_admin_url(@admin), success: 'The Admin was successfully updated!'
     else
       @members = Member.order(:name)
       flash.now[:error] = 'Please correct the errors to continue.'
@@ -45,7 +47,7 @@ class Console::AdminsController < ConsoleController
   def destroy
     @admin = User.find params[:id]
     @admin.destroy
-    redirect_to console_admins_url, success: 'The admin was successfully deleted!'
+    redirect_to console_admins_url, success: 'The Admin was successfully deleted!'
   end
 
   private
@@ -64,11 +66,29 @@ class Console::AdminsController < ConsoleController
       :ethnicity,
       :birthdate,
       :time_zone,
+      :last_sign_in_at,
       :member_id,
       :enabled,
       :manager,
       :admin
     )
+  end
+
+  def sortable_columns
+    %w[
+      name email display_name address city state zip phone gender
+      ethnicity birthdate time_zone last_sign_in_at member_id enabled manager
+      admin
+    ]
+  end
+
+  def sort_column
+    logger.debug("SORT:::: #{params[:direction].inspect}")
+    sortable_columns.include?(params[:column]) ? params[:column] : 'name'
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
 
 end

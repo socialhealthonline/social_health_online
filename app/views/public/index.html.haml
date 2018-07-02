@@ -1,26 +1,32 @@
 .main-container
   #hero
     .container
-      %h3.mb-4.font-weight-bold.text-light.text-center
+      %h1.mb-4.text-light.text-center
+        Make your social life more rewarding with Social Health.
+      %h3.text-light.text-center
         Social Health is dedicated to improving the wellness of people and their communities by promoting
         healthier social lives with rewards and incentives.
-      %h3.font-weight-bold.text-light.text-center
-        Make your social life more rewarding with Social Health.
       %p.pt-3.text-center.mt-3
-        = link_to 'Get Started', contact_path, class: 'btn btn-lg btn-info'
+        = link_to 'Register Now', new_members_registration_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
 
-  %section.space-md.text-center.bg-white
+  %section.space-xs.text-center.bg-white
     .container
       .row
         .col.text-center
-          = image_tag 'social.svg', height: '70'
-          %h5.text-info Meet.
-          %span.text-muted Attend or host social events.
+          = link_to image_tag('social.svg', height: '70'), service_path
+          %h5.text-info
+            %a{ href: service_path, title: 'Meet' }>
+              %strong Meet.
+          %span Attend or host social events.
         .col.text-center
-          = image_tag 'handshake.svg', height: '70'
-          %h5.text-info Greet.
-          %span.text-muted Develop relationships with others at events.
+          = link_to image_tag('handshake.svg', height: '70'), service_path
+          %h5.text-info
+            %a{ href: service_path, title: 'Meet' }>
+              %strong Greet.
+          %span Develop relationships with others at events.
         .col.text-center
-          = image_tag 'total-cart.svg', height: '70'
-          %h5.text-info Benefit.
-          %span.text-muted Log your participation in events for rewards.
+          = link_to image_tag('total-cart.svg', height: '70'), service_path
+          %h5.text-info
+            %a{ href: service_path, title: 'Meet' }>
+              %Strong Benefit.
+          %span Log your participation in events for rewards.

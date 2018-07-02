@@ -1,0 +1,24 @@
+- page_title 'My Settings'
+
+.container
+  .row.pt-3
+    .col.text-center
+      %h1.brand-primary My Settings
+
+  .row.my-3
+    .col
+      %h3.notification-title
+        %strong
+          Messages
+
+      = form_for authenticated_user, url: my_settings_path do |f|
+        .row.mb-2
+          .settings-box{:style => "border-radius: 12px;"}
+            .col
+              .form-group
+                .form-check
+                  = f.check_box :receive_email, class: 'form-check-input'
+                  %label.form-check-label.pl-1(for="receive_email") Receive Email Notifications for Messages
+
+        .row.justify-content-center.pt-1.pb-3
+          = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }

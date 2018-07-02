@@ -1,15 +1,15 @@
 class ConversationsController < ApplicationController
   before_action :require_authentication
 
-  def new; end
+  def new
+    gon.recipient_id = params[:recipient_id]
+  end
 
   def create
     recipients = User.where(id: conversation_params[:recipients])
-    conversation = authenticated_user.send_message(recipients,
-                                                   conversation_params[:body],
-                                                   conversation_params[:subject]).conversation
+    authenticated_user.send_message(recipients, conversation_params[:body], conversation_params[:subject])
     flash[:success] = 'Your message was successfully sent!'
-    redirect_to conversation_path(conversation)
+    redirect_to mailbox_inbox_path
   end
 
   def show
@@ -18,7 +18,8 @@ class ConversationsController < ApplicationController
   end
 
   def reply
-    authenticated_user.reply_to_conversation(conversation, message_params[:body])
+    authenticated_user.reply_to_conversation(conversation, message_params[:body], nil, false)
+    conversation.recipients.reject { |r| r.eql? authenticated_user }.each { |r| conversation.untrash(r) }
     flash[:success] = 'Your reply message was successfully sent!'
     redirect_to conversation_path(conversation)
   end
@@ -35,8 +36,8 @@ class ConversationsController < ApplicationController
 
   def mark_as_deleted
     mailbox.trash.each do |conversation|
-      conversation.mark_as_deleted(authenticated_user)
       conversation.opt_out(authenticated_user)
+      conversation.mark_as_deleted(authenticated_user)
     end
     redirect_to mailbox_trash_path
   end

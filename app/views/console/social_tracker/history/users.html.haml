@@ -1,19 +1,19 @@
+%div#profile_partial
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
   %div
+    %h1.h3.brand-primary Social Tracker
     %nav(aria-label="breadcrumb")
       %ol.breadcrumb
         %li.breadcrumb-item= link_to 'Members', console_social_tracker_members_path
         %li.breadcrumb-item.active= @member.name
         %li.breadcrumb-item.active(aria-current="page") Users
-    %h1.h3.brand-primary Social Tracker   
     %h5.brand-primary Users
 
 - if @users.any?
-  .table-responsive
-    %table.table.table-borderless.align-items-center
+  .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
+    %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
-          %th
           %th Name
           %th Display Name
           %th Total Events Logged
@@ -21,18 +21,18 @@
       %tbody
         - @users.each.with_index(1) do |user, i|
           %tr.bg-white
-            %td= i
-            %td= link_to user.name , [:console,:social_tracker,@member, user]
-            %td= link_to user.display_name
+            %td= link_to "#{i}. #{user.name}" , [:console,:social_tracker,@member, user]
             %td
-              %strong= user.total_social_events_logged
+              %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                  data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: user }" } }
+                =user.display_name
+            %td= user.total_social_events_logged
             %td= short_date(user.last_social_event_log_date) || "No Logs"
           %tr.table-divider
 - else
   %p.text-muted
     %em No Users were found.
-%p
-  = link_to console_social_tracker_members_path do
-    %span
-      %i(class="fas fa-arrow-circle-left")
-      Back
+%p.mt-2
+  = link_to console_social_tracker_members_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do
+    %i.fas.fa-arrow-left
+    Back

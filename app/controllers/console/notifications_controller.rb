@@ -1,8 +1,9 @@
 class Console::NotificationsController < ConsoleController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   def index
-    @notifications = Notification.page(params[:page])
+    @notifications = Notification.order("#{sort_column} #{sort_direction}").page(params[:page])
   end
 
   def show; end
@@ -34,16 +35,25 @@ class Console::NotificationsController < ConsoleController
 
   def destroy
     @notification.destroy
-    redirect_to console_notifications_path, success: 'Notification was successfully destroyed.'
+    redirect_to console_notifications_path, success: 'Notification was successfully deleted.'
   end
 
   private
 
     def set_notification
-      @notification = Notification.find(params[:id])
+      @notification  = Notification.find(params[:id])
     end
 
     def notification_params
       params.require(:notification).permit(:title, :body)
     end
+
+    def sort_column
+      %w[title body created_at].include?(params[:column]) ? params[:column] : 'created_at'
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
+    end
+
 end

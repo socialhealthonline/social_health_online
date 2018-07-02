@@ -16,26 +16,122 @@
 //= require footable.min
 //= require activestorage
 //= require popper
-//= require fontawesome-all
 //= require bootstrap-sprockets
 //= require flatpickr/dist/flatpickr.min
 //= require fullcalendar
 //= require nested_form_fields
-//= require chosen-jquery
+//= require select2
 
 $(document).ready(function() {
   $(".flatpickr-date").flatpickr({
     allowInput: true,
     dateFormat: 'Y-m-d'
   });
+
   $(".flatpickr-date-time").flatpickr({
     enableTime: true,
     dateFormat: 'Y-m-d h:i K'
   });
 
-  $('.chosen-select').chosen({
-    no_results_text: 'No results matched'
+  $('.matchmaker_popover').popover({
+    html:true
   });
+
+  var resipients_select = $('.resipients-select');
+  resipients_select.select2({
+    theme: 'bootstrap',
+    minimumInputLength: 1
+  });
+
+  resipients_select.val(gon.recipient_id);
+  resipients_select.trigger('change');
+
+  $(".events-flash").click(function(){
+    $('#helper-method').html("<div class='alert alert-danger alert-dismissible fade show' role='alert'>"
+                              + "<button aria-label='Close' class='close' data-dismiss='alert' type='button'>"
+                                + "<span aria-hidden='true'>×</span>"
+                              + "</button>"
+                                + "This event is currently at full capacity so you may not RSVP at this time."
+                              + "</div>");
+  });
+
+  function communityTabsOnLoad() {
+    $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+      localStorage.setItem('activeTab', $(e.target).attr('href'));
+    });
+
+    var activeTab = localStorage.getItem('activeTab');
+    
+    if(activeTab){
+      $('#communityTabs a[href="' + activeTab + '"]').tab('show');
+    }
+  }
+
+  communityTabsOnLoad();
+
+  $('#member_logo').change(function(){
+    var max_exceeded_message = 'this file exceeds the maximum allowed file size (3 mb)';
+    var ext_error_message = 'only image file with extension: .jpg, .jpeg, .gif or .png is allowed';
+    var allowed_extension = ["jpg", 'jpeg', 'gif', 'png'];
+
+    var input = $(this);
+    var ext_name;
+    var max_file_size = $(this).data('max-file-size');
+    var size_exceeded = false;
+    var extError = false;
+
+    hide_errors();
+
+    $.each(this.files, function() {
+      if (this.size && max_file_size && this.size > parseInt(max_file_size)) { size_exceeded = true; }
+      ext_name = this.name.split('.').pop();
+      if ($.inArray(ext_name, allowed_extension) == -1) { extError = true; }
+    });
+
+    if (size_exceeded) show_error(max_exceeded_message);
+    if (extError) show_error(ext_error_message);
+
+    function show_error(message){
+      input.addClass('is-invalid');
+      $('#file-field').append('<small class="text-danger error-msg">' + message + '</small>');
+      $(':input[type="submit"]').prop('disabled', true);
+    }
+
+    function hide_errors() {
+      input.removeClass('is-invalid');
+      $('.error-msg').hide();
+      $(':input[type="submit"]').prop('disabled', false);
+    }
+  });
+
+  // remove saved password from profile input field
+  $('#profile-password').val('');
+
+  $('.matchmaker_popover').popover({
+    trigger: 'focus'
+  });
+
+  $('#create_member').prop('disabled', true);
+
+  $(document).on('change', '#termsCheckBox', function() {
+    if(this.checked && $('#termsCheckBox').data('data_capcha')) {
+      $('#create_member').prop('disabled', false);
+    } else {
+      $('#create_member').prop('disabled', true);
+    }
+  });
+
+  thenCapchaIsSubmited = function() {
+    $('#termsCheckBox').data('data_capcha', true);
+    if ($('#termsCheckBox')[0].checked) {
+      $('#create_member').prop('disabled', false);
+    }
+  };
+
+  expiredRecapchaCallback = function() {
+    $('#termsCheckBox').data('data_capcha', false);
+    $('#create_member').prop('disabled', true);
+  }
 });
 
 var US_STATES = {
@@ -90,7 +186,7 @@ var US_STATES = {
   'West Virginia': 'WV',
   'Wisconsin': 'WI',
   'Wyoming': 'WY'
-}
+};
 
 function buildStatesSelector(id, name) {
   var selector = '<select class="form-control" name="' + name + '"' + 'id="' + id + '"' + '>';
@@ -101,4 +197,3 @@ function buildStatesSelector(id, name) {
 
   return selector;
 }
-

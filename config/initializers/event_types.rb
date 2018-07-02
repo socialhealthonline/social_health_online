@@ -1,9 +1,9 @@
 EVENT_TYPES = [
   "Art/Photography",
   "Career/Business",
-  "Dance/Theater", 
-  "Family/Kids", 
-  "Fashion/Beauty", 
+  "Dance/Theater",
+  "Family/Kids",
+  "Fashion/Beauty",
   "Festivals/Fairs",
   "Film",
   "Food/Drink",
@@ -29,8 +29,7 @@ EVENT_TYPES = [
 EVENT_CATEGORIES = [
   "Affiliate",
   "Community",
-  "MatchMaker",
-  "Weekly Social Target"
+  "Matchmaker",
 ].freeze
 
 RATINGS = {

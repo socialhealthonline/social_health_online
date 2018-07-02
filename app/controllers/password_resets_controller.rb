@@ -1,6 +1,8 @@
 class PasswordResetsController < ApplicationController
+  skip_before_action :pending_user?
 
   def new
+    @user = User.find_by(email: params[:email]&.downcase)
   end
 
   def create
@@ -18,9 +20,9 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
+    # should switch logic in RecoverPassword
     @user = User.find_by(password_reset_token: params[:id])
     password_recovery = RecoverPassword.new(@user, params).call
-
     if password_recovery.expired?
       redirect_to new_password_reset_url, error: password_recovery.flash
     elsif password_recovery.blank_password?

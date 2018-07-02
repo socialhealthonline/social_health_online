@@ -1,0 +1,15 @@
+%p New Social Health Online Issue(s) Submission
+
+%p
+  <strong>Name:</strong> #{@authenticated_user.name}
+
+%p
+  <strong>Display Name:</strong> #{@authenticated_user.display_name}
+
+%p
+  <strong>Email:</strong> #{@authenticated_user.email}
+
+%p
+  <strong>Message:</strong>
+%p
+  = @form_params[:message]

@@ -4,9 +4,8 @@
     { name: "address", title: "Address" },
     { name: "city", title: "City" },
     { name: "state", title: "State" },
-    { name: "zip", title: "Zip Code" },
+    { name: "zip", title: "ZIP Code" },
     { name: "phone", title: "Phone Number" },
-    { name: "url", title: "URL / Link" },
     { name: "support_type", title: "Support Type" }
   ];
 
@@ -18,7 +17,7 @@
       if (filterTypeSelected === "geo") {
         filterForm.innerHTML =
           '<div class="row"><div class="col-md-6">' +
-          '<input type="text" name="city" placeholder="City" id="city-input" class="form-control">' +
+          '<input type="text" name="city" placeholder="City" id="city-input" class="form-control text-center">' +
           "</div>" +
           '<div class="col-md-6">' +
           buildStatesSelector('state-input', 'state') +
@@ -26,8 +25,8 @@
       } else if (filterTypeSelected === "zip") {
         filterForm.innerHTML =
           '<div class="row">' +
-          '<div class="col-xs-3 px-2">' +
-          '<input type="text" name="zip" placeholder="Zip Code" id="zip-input" class="form-control">' +
+          '<div class="col-md-12 px-2">' +
+          '<input type="text" name="zip" placeholder="ZIP Code" id="zip-input" class="form-control">' +
           "</div></div>";
       }
     }
@@ -182,6 +181,7 @@
       "<h3>" +
       row.name +
       "</h3>" +
+      "<h6>Address:</h6>" +	
       "<p>" +
       row.full_address +
       "</p>" +
@@ -197,6 +197,10 @@
       (row.url || "No Website") +
       "</a>" +
       "</p>" +
+      "<h6>Support Type:</h6>" +
+      "<p>" +
+      row.support_type
+      "</p>" +	
       "</div>";
 
     var infowindow = new google.maps.InfoWindow({
@@ -243,28 +247,33 @@
     // Display All the Markers
     data.forEach(function(row) {
       i += 1;
-      var address = row.address + ", " + row.city + ", " + row.state;
-      var contentString =
-        '<div id="affiliate-marker-content">' +
-        "<h3>" +
-        row.name +
-        "</h3>" +
-        "<p>" +
-        row.full_address +
-        "</p>" +
-        "<h6>Phone:</h6>" +
-        "<p>" +
-        (row.phone || "No Phone Number") +
-        "</p>" +
-        "<h6>Website:</h6>" +
-        "<p>" +
-        '<a href="' +
-        (row.url || "#") +
-        '">' +
-        (row.url || "No Website") +
-        "</a>" +
-        "</p>" +
-        "</div>";
+    var address = row.address + ", " + row.city + ", " + row.state;
+    var contentString =
+      '<div id="member-marker-content">' +
+      "<h3>" +
+      row.name +
+      "</h3>" +
+      "<h6>Address:</h6>" +	
+      "<p>" +
+      row.full_address +
+      "</p>" +
+      "<h6>Phone:</h6>" +
+      "<p>" +
+      (row.phone || "No Phone Number") +
+      "</p>" +
+      "<h6>Website:</h6>" +
+      "<p>" +
+      '<a href="' +
+      (row.url || "#") +
+      '">' +
+      (row.url || "No Website") +
+      "</a>" +
+      "</p>" +
+      "<h6>Support Type:</h6>" +
+      "<p>" +
+      row.support_type
+      "</p>" +	
+      "</div>";
 
       var infowindow = new google.maps.InfoWindow({
         content: contentString

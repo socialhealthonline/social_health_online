@@ -2,11 +2,11 @@
   .col-6
     %h4.mb-3= "Subject: #{conversation.subject}"
   .col
-    .pull-right
+    .float-right
       - if conversation.is_trashed?(authenticated_user)
-        = link_to 'Untrash', untrash_conversation_path(conversation), class: 'btn btn-success', method: :post
+        = link_to 'Restore', untrash_conversation_path(conversation), class: 'btn btn-primary', style: 'border: 1px solid black;', method: :post
       - else
-        = link_to 'Move to trash', trash_conversation_path(conversation), class: 'btn btn-danger', method: :post,
+        = link_to 'Move to trash', trash_conversation_path(conversation), class: 'btn btn-danger', style: 'border: 1px solid black;', method: :post,
          data: { confirm: 'Are you sure?' }
 .table-responsive
   %table.table.messages-box.inside-message.align-items-center
@@ -15,9 +15,10 @@
         - message = receipt.message
         %tr.bg-white
           %th{:scope => 'row'}
-            %b= message.sender.name
+            %b From:
+            = message.sender.display_name
             %br/
-            = message.created_at.strftime('%A, %b %d, %Y at %I:%M%p')
+            = time_in_cdt(message.created_at, '%A, %b %d, %Y at %I:%M%p')
             %br/
             .mt-1= message.body
         %tr.table-divider

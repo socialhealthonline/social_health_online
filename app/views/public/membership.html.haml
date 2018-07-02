@@ -1,53 +1,55 @@
 %script{:src => "https://www.gstatic.com/charts/loader.js", :type => "text/javascript"}
 =javascript_include_tag 'geocharts'
 
-- page_title 'Membership'
+- page_title 'Membership Information'
 
 .container
   .row
-    .col.py-5
-      %h2.text-info Membership
+    .col.py-3
+      %h1.text-info Membership Information
 
-      %p.h5 Collaborating to Improve Social Wellness
-      %p.pb-2
+      %p.h3 Collaborating to Improve Social Wellness
+      %p
         By hosting Users and managing Communities in Social Health Online, or by simply offering links
         to social events or discounts, people and organizations can collaborate with Social Health to support the
         service and become Members or Affiliates.
 
-      %p.h5 Members
-      %p
-        Our Members are a cornerstone for our service because they are the gatekeepers that
-        enroll Users and provide important guidance to Users through their Community management. The
-        costs of becoming a Member are low and the organizations that take on this role will be making
-        a significant investment towards the improvement of the wellness of countless people and communities.
-      %p
-        Being a Member is ideal for employers looking to enhance their employees' work/life balance,
-        morale, and performance, healthcare organizations seeking new ways of promoting better behaviors
-        to improve health outcomes and lower medical costs, educators wanting to encourage youth fellowship
-        and volunteerism, and community organizations aiming to motivate their patrons and supporters
-        to engage in more of their local area’s social events.
+      #Members  
+        %p.h3 Members
+        %p
+          Our Members are a cornerstone for our service because they are the gatekeepers that
+          enroll Users and provide important guidance to Users through their Community management. The
+          costs of becoming a Member are low and the organizations that take on this role will be making
+          a significant investment towards the improvement of the wellness of countless people and communities.
+        %p
+          Being a Member is ideal for employers looking to enhance their employees' work/life balance,
+          morale, and performance, healthcare organizations seeking new ways of promoting better behaviors
+          to improve health outcomes and lower medical costs, educators wanting to encourage youth fellowship
+          and volunteerism, and community organizations aiming to motivate their patrons and supporters
+          to engage in more of their local area’s social events.
 
-      .geochart{ id: 'members_chart' }
-      %p.pb-3.text-center
-        = link_to 'Go to Member Locator', member_locator_path, class: 'btn btn-lg btn-info'
+        .geochart{ id: 'members_chart' }
+        %p.py-3.text-center
+          = link_to 'Go to Member Locator', member_locator_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;' 
 
-      %p.h5 Affiliates
-      %p
-        Our Affiliates provide crucial support to the Social Health Online ecosystem by allowing us to
-        link their social events, products, and services to the Users in a convenient way that inspires greater involvement in
-        local activities. It costs nothing to become an Affiliate, yet the benefits brought by their
-        collaboration with Social Health play a big part in ensuring all participants’ satisfaction and success.
-      %p
-        Being an Affiliate is ideal for merchants, businesses, and others seeking to promote greater
-        public involvement with their events, goods, and services.
+      #Affiliates
+        %p.h3 Affiliates
+        %p
+          Our Affiliates provide crucial support to the Social Health Online ecosystem by allowing us to
+          link their social events, products, and services to the Users in a convenient way that inspires greater involvement in
+          local activities. It costs nothing to become an Affiliate, yet the benefits brought by their
+          collaboration with Social Health play a big part in ensuring all participants’ satisfaction and success.
+        %p
+          Being an Affiliate is ideal for merchants, businesses, and others seeking to promote greater
+          public involvement with their events, goods, and services.
 
-      .geochart{ id: 'affiliates_chart' }
-      %p.pb-3.text-center
-        = link_to 'Go to Affiliate Locator', affiliate_locator_path, class: 'btn btn-lg btn-info'
+        .geochart{ id: 'affiliates_chart' }
+        %p.py-3.text-center
+          = link_to 'Go to Affiliate Locator', affiliate_locator_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;' 
 
-      %p.h5 Become a Member or Affiliate
-      %p
-        Contact us today to learn more about how our service can benefit you as a Member or Affiliate of Social Health! 
-                    
-      %p.pt-3.text-center.mt-3
-        = link_to 'Contact Us', contact_path, class: 'btn btn-lg btn-info'
+        %p.h3 Become a Member or Affiliate
+        %p
+          Contact us today to learn more about how our service can benefit you as a Member or Affiliate of Social Health!
+
+        %p.text-center.mt-3
+          = link_to 'Contact Us', contact_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;' 

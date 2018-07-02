@@ -27,7 +27,7 @@ RSpec.describe 'Admin mananges members users' do
       select 'Asian', from: 'user_ethnicity'
       check 'user_manager'
       click_button 'Save'
-      expect(page).to have_content 'The user was successfully created'
+      expect(page).to have_content 'The User was successfully created!'
       expect(current_path).to eq console_member_user_path(member.id, User.last)
       expect(User.last.manager).to eq true
       expect(member.users.count).to eq 1

@@ -8,19 +8,20 @@
     .col-lg-6
       .form-group
         %label(for="event_event_type") Event Type
-        = f.select :event_type, Event::TYPES, { include_blank: true }, { class: "#{form_error_class(@event, :event_type)} form-control custom-select" }
+        = f.select :event_type, EVENT_TYPES, { include_blank: true }, { class: "#{form_error_class(@event, :event_type)} form-control custom-select" }
         = model_error_display(@event, :event_type)
   .row
     .col-lg-6
       .form-group
-        %label(for="event_start_at") Event Date
+        %label(for="event_start_at") Event Date/Time
         = f.text_field :start_at, class: "flatpickr-date-time form-control #{form_error_class(@event, :start_at)}"
         = model_error_display(@event, :start_at)
     .col-lg-6
       .form-group
-        %label(for="event_time_zone") Timezone
+        %label(for="event_time_zone") Time Zone
         = f.select(:time_zone, ['Alaska', 'Hawaii', 'Pacific Time (US & Canada)', 'Mountain Time (US & Canada)', 'Central Time (US & Canada)', 'Eastern Time (US & Canada)'].sort, {}, { class: "custom-select form-control #{form_error_class(@event, :time_zone)}" })
         = model_error_display(@event, :time_zone)
+
   .row
     .col-lg-4
       .form-group
@@ -29,21 +30,31 @@
         = model_error_display(@event, :location)
     .col-lg-4
       .form-group
+        %label(for="address") Event Address
+        = f.text_field :address, class: "form-control #{form_error_class(@event, :address)}"
+        = model_error_display(@event, :address)
+    .col-lg-4
+      .form-group
         %label(for="event_city") Event City
         = f.text_field :city, class: "form-control #{form_error_class(@event, :city)}"
         = model_error_display(@event, :city)
-    .col-lg-4
+  .row
+    .col-lg-3
       .form-group
         %label(for="event_state") Event State
         = f.select :state, US_STATES, { include_blank: true }, { class: "#{form_error_class(@event, :state)} form-control custom-select" }
         = model_error_display(@event, :state)
-  .row
-    .col-lg-6
+    .col-lg-3
+      .form-group
+        %label(for="zip") Event ZIP Code
+        = f.text_field :zip, class: "form-control #{form_error_class(@event, :zip)}"
+        = model_error_display(@event, :zip)
+    .col-lg-3
       .form-group
         %label(for="event_url") Event Website
         = f.text_field :url, class: "form-control #{form_error_class(@event, :url)}"
         = model_error_display(@event, :url)
-    .col-lg-6
+    .col-lg-3
       .form-group
         %label(for="event_rsvp_limit") RSVP Limit
         = f.text_field :rsvp_limit, class: "form-control #{form_error_class(@event, :rsvp_limit)}"
@@ -54,12 +65,18 @@
         %label(for="event_details") Event Details
         = f.text_area :details, rows: 4, class: "form-control #{form_error_class(@event, :details)}"
         = model_error_display(@event, :details)
-  .form-check.mb-3
-    = f.check_box :private, class: 'form-check-input'
-    %label.form-check-label(for="event_private") Private
-  .mb-5
-    = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
+  .row
+    .col-lg-3
+      .form-group
+        %label(for="private") Event Access
+        = f.select(:private,
+          options_for_select([['Private', 'true'], ['Public', 'false']], @event.private),
+          {},
+          { class: "form-control #{form_error_class(@event, :private)}"})
+        = model_error_display(@event, :private)
+  .mb-3.text-center
+    = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, style: 'border: 1px solid black;'
     - if @event.persisted?
-      = link_to 'Cancel', manage_event_path(@event), class: 'btn btn-outline-secondary'
+      = link_to 'Cancel', manage_event_path(@event), class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'
     - else
-      = link_to 'Cancel', manage_events_path, class: 'btn btn-outline-secondary'
+      = link_to 'Cancel', manage_events_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'

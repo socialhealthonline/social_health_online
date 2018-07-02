@@ -1,27 +1,36 @@
-.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
+- page_title 'Affiliates'
+
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.pb-3.mb-3.border-bottom
   %h1.h3.brand-primary Affiliates
   %div
-    = link_to new_console_affiliate_path, class: 'btn btn-primary' do
+    = link_to export_csv_console_affiliates_path, class: 'btn btn-primary btn-export', :style => 'border: 1px solid black;' do
+      Export CSV
+
+    = link_to new_console_affiliate_path, class: 'btn btn-primary', :style => 'border: 1px solid black;' do
       %i.fas.fa-plus-circle
       Add Affiliate
 
 - if @affiliates.any?
-  .table-responsive
-    %table.table.table-borderless.align-items-center
+  .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
+    %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
-          %th(scope="col") Affiliate Name
-          %th(scope="col") City
-          %th(scope="col") State
-          %th(snope="col") Hidden
-          %th(scope="col")
+          %th= sort_link 'name', 'Affiliate Name'
+          %th= sort_link 'city', 'City'
+          %th= sort_link 'state', 'State'
+          %th= sort_link 'support_type', 'Support Type'
+          %th= sort_link 'hide_info_on_locator', 'Hidden'
+          %th= sort_link 'date_added', 'Date Added'
+          %th
       %tbody
         - @affiliates.each_with_index do |affiliate, i|
           %tr.bg-white
-            %th(scope="row")= link_to "#{i+1}. #{affiliate.name}", console_affiliate_path(affiliate)
+            %th(scope="row")= link_to "#{i+1}. #{affiliate.name}", console_affiliate_path(affiliate.id)
             %td= affiliate.city
             %td= affiliate.state
+            %td= support_types.key(affiliate.support_type)
             %td= affiliate.hide_info_on_locator ? 'Yes' : 'No'
+            %td= short_date affiliate.created_at
             %td.w-10.text-right
               .dropdown
                 = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{affiliate.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
@@ -34,6 +43,7 @@
                     %i.far.fa-trash-alt
                     Delete
           %tr.table-divider
+    %p= paginate @affiliates
 - else
   %p.text-muted
-    %em No affiliates were found.
+    %em No Affiliates were found.

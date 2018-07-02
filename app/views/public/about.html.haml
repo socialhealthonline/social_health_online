@@ -2,24 +2,29 @@
 
 .container
   .row
-    .col.py-5
-      %h2.text-info About Us
+    .col.pt-3.pb-3
+      %h1.text-info About Us
 
-      %p.h5 What is Social Health?
+      %p.h3 What is Social Health?
 
-      %p 
-        At Social Health, we believe everybody deserves deep and meaningful relationships with others because companionship 
-        and socializing are essential parts of a healthy life. In-person social connectivity is directly linked to people’s 
-        wellness and building a stronger local social circle not only improves an individual’s quality of life, but also 
+      %p
+        At Social Health, we believe everybody deserves deep and meaningful relationships with others because companionship
+        and socializing are essential parts of a healthy life. In-person social connectivity is directly linked to people’s
+        wellness and building a stronger local social circle not only improves an individual’s quality of life, but also
         strengthens entire communities.
 
-      %p 
+      %p
         To inspire greater participation with in-person social activities we have created a fun and collaborative
-        service for all people to use called Social Health Online. With Social Health Online, we deliver a social wellness service 
-        that rewards those who pursue greater social event participation because of the health benefits that occur when people 
+        service for all people to use called Social Health Online. With Social Health Online, we deliver a social wellness service
+        that rewards those who pursue greater social event participation because of the health benefits that occur when people
         build relationships.
-
+  .row
+    .col.pt-2.pb-2
       %blockquote.blockquote
-        %p.h4.text-info "...we deliver a social wellness service that rewards those who pursue greater social event participation..."
+        %p.h4.text-info.font-weight-bold "...we deliver a social wellness service that rewards those who pursue greater social event participation because of the health benefits that occur..."
 
-
+.container
+  .row
+    .col.pb-3
+      .embed-responsive.embed-responsive-16by9{ :style => "border: 2px solid black;" } 
+        %iframe.embed-responsive-item{ :src => "https://www.youtube.com/embed/hFheEzhPIjA?rel=0", :frameborder => "0", :allow => "encrypted-media" }

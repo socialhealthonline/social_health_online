@@ -1,6 +1,6 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
   %div
-    %h1.h3.brand-primary Social Tracker   
+    %h1.h3.brand-primary Social Tracker
     %nav(aria-label="breadcrumb")
       %ol.breadcrumb
         %li.breadcrumb-item= link_to 'Members', console_social_tracker_members_path
@@ -9,31 +9,33 @@
         %li.breadcrumb-item.active(aria-current="page")= @user.name
 
 - if @social_event_logs.any?
-  .table-responsive
+  .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
 
-    %table.table.table-borderless.align-items-center
+    %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
           %th Log Date
           %th Event Date
-          %th Event Venue
+          %th Event Location
           %th Event Rating
+          %th
       %tbody
         - @social_event_logs.each do |log|
           %tr.bg-white
-            %td= link_to short_date_slashed(log.created_at), [:console,:social_tracker,@member, @user, log], class: 'text-info'
-            %td= link_to short_date_slashed(log.event_date), [:console,:social_tracker,@member, @user, log], class: 'text-info'
+            %td= link_to short_date(log.created_at), [:console,:social_tracker,@member, @user, log], class: 'text-info'
+            %td= short_date(log.event_date)
             %td= truncate(log.venue, :length => 30)
+            %td= RATINGS.key(log.rating)
             %td
-              %strong= RATINGS.key(log.rating)
-    = will_paginate @social_event_logs
+              = link_to console_social_tracker_delete_social_event_log_path(@member, @user.id, log.id), title: 'delete log', id: 'delete_log_#{log.id}', class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this log. Press OK to continue.' } do
+                %i.far.fa-trash-alt
+          %tr.table-divider
+    = paginate @social_event_logs
 - else
   %p.text-muted
-    %em No Social Event Logs for this user.
+    %em No events logged for this User.
 
-%p
-  = link_to [:console,:social_tracker,@member] do
-    %span
-      %i(class="fas fa-arrow-circle-left")
-      Back
-        
+%p.pt-3
+  = link_to console_social_tracker_member_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do
+    %i.fas.fa-arrow-left
+    Back

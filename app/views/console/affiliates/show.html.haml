@@ -1,3 +1,5 @@
+- page_title @affiliate.name
+
 %nav(aria-label="breadcrumb")
   %ol.breadcrumb
     %li.breadcrumb-item= link_to 'Affiliates', console_affiliates_path
@@ -6,11 +8,25 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.mb-3.border-bottom
   %h1.h3.brand-primary= @affiliate.name
 
-%p= @affiliate.full_address
+%p
+  %strong Address:
+  = @affiliate.full_address
 
 %p
-  %strong Phone:
+  %strong Contact Name:
+  = @affiliate.contact_name
+
+%p
+  %strong Contact Email:
+  = @affiliate.contact_email
+
+%p
+  %strong Contact Phone:
   = number_to_phone @affiliate.phone
+
+%p
+  %strong Contact Phone Extension:
+  = @affiliate.contact_phone_extension
 
 %p
   %strong Website:
@@ -21,11 +37,19 @@
   = Affiliate::SUPPORT_TYPES[@affiliate.support_type]
 
 %p
+  %strong Support Notes:
+  = @affiliate.support_notes
+
+%p
+  %strong Date Added:
+  = short_date @affiliate.date_added
+
+%p
   %strong Hide Info - Pending Approval:
   = @affiliate.hide_info_on_locator ? 'Yes' : 'No'
 
 %p
-  = link_to console_affiliates_path, class: 'btn btn-outline-primary'do
+  = link_to console_affiliates_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do
     %i.fas.fa-arrow-left
     Back
   &nbsp;

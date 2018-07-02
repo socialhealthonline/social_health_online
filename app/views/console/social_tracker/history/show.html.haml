@@ -14,34 +14,31 @@
       .row
         .col-lg-6
           %p 
-            %strong Event Date
-          %p= short_date_slashed(@log.event_date)
+            %strong Event Date:
+          %p= short_date(@log.event_date)
           %p 
-            %strong Event State
+            %strong Event State:
           %p= US_STATES.key(@log.state)
           %p 
-            %strong Event City
+            %strong Event City:
           %p= @log.city
-          %p 
+          %p
             %strong Event Type
           %p= @log.event_type
         .col-lg-6
           %p 
-            %strong Event Source
+            %strong Event Source:
           %p= SocialEventLog::EVENT_SOURCES.key(@log.source)
           %p 
-            %strong Event Category
+            %strong Event Category:
+          %p= @log.event_category
           %p
-            - @log.event_categories.each do |category|
-              %p= category.name
-          %p
-            %strong Event Host
+            %strong Event Location:
           %p= @log.venue
           %p
-            %strong Event Rating
+            %strong Event Rating:
           %p= RATINGS.key(@log.rating)
 %p
-  = link_to [:console,:social_tracker,@member,@user] do
-    %span
-      %i(class="fas fa-arrow-circle-left")
-      Back
+  = link_to [:console,:social_tracker,@member,@user], class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do
+    %i.fas.fa-arrow-left
+    Back

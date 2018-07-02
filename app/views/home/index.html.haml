@@ -1,0 +1,55 @@
+- page_title 'Home'
+
+.container
+  .row.pt-3
+    .col
+      %h1.text-info.text-center Home
+
+  .row.my-3
+    .col
+      %h3.notification-title
+        %strong Notifications
+      #scroll-box{:style => "border-radius: 12px;"}
+        - @notifications.each do |notification|
+          .mb-3.text-center
+            %h5= notification.title
+            .notification-date.mb-2.border-bottom= time_in_cdt(notification.updated_at , '%m/%d/%Y')
+            .notification-text.text-left.pb-2= simple_format(notification.body)
+        %p= paginate @notifications
+
+  .row.my-3
+    .col
+      %h3.notification-title
+        %strong My Social Health
+      %div.table-wrapper-2.py-2#events-feed{:style => "border-radius: 12px;"}
+        %h5.notification-title Social Health Level
+        %span.social-health-experience-level.bg-primary.text-white{:style => "border-radius: 12px;"}
+          = @level
+        %h5.notification-title.mt-2 Social Health Level Progress
+        %span.social-health-experience-experience
+          %div.progress{ :style => "border: 1px solid black;" }
+            %div.progress-bar{"aria-valuemax" => "100","aria-valuemin" => "0",
+                              "aria-valuenow" => "#{@progress}", :role => "progressbar", :style => "width:#{@progress}%"}
+              ="#{@progress}%"
+
+  .row.my-3
+    .col
+      %h3.notification-title
+        %strong My Social Events
+      %div.table-wrapper-2.table-hover#events-feed{:style => "border-radius: 12px;"}
+        %table.table
+          %thead.mdb-color.lighten-4.text-center
+            %tr
+              %th Event Title
+              %th Event Type
+              %th Event Date/Time
+              %th RSVP
+              %th
+          %tbody
+          - @events.each do |event|
+            %tr.text-center.bg-white
+              %td= link_to "#{event.title}", community_event_path(authenticated_user.member, event)
+              %td= event.event_type
+              %td= time_in_cdt(event.start_at, '%m/%d/%Y, %H:%M %p %Z')
+              %td= home_events_status(event.status)
+            %tr.table-divider

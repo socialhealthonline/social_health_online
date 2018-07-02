@@ -11,11 +11,35 @@ class PublicController < ApplicationController
   def service
   end
 
+  def service_highlights
+  end
+
+  def service_screenshots
+  end
+
   def membership
     take_graph_data
   end
 
   def pricing
+  end
+
+  def support
+  end
+
+  def privacy
+  end
+
+  def affiliate_agreement
+  end
+
+  def terms
+  end
+
+  def saas_agreement
+  end
+
+  def faq
   end
 
   def news

@@ -1,11 +1,33 @@
-- page_title 'Our Service'
+- page_title 'Service Information'
 
 .container.our-services
   .row
-    .col.py-5
-      %h2.text-info Our Service
+    .col.py-3
+      %h1.text-info Service Information
 
-      %p.h5 How Social Health Online Works
+      %p.h3 Why Social Health Online?
+
+      %p
+        Mounting evidence illustrates the trend of people becoming more socially disconnected. Additionally, research
+        shows a direct link exists between the strength of a person's social relationships and their mental
+        and physical health. The following articles highlight examples of the many studies connecting people's wellness to their social lives: 
+
+        %ul
+          %li
+            %a{ href: 'https://www.health.harvard.edu/staying-healthy/staying-connected-can-improve-your-health.',
+               title: 'Staying connected can improve your health', target: '_blank' }> "Staying connected can improve your health" - Harvard Medical School
+          %li
+            %a{ href: 'http://www.bostonglobe.com/magazine/2017/03/09/the-biggest-threat-facing-middle-age-men-isn-smoking-obesity-loneliness/k6saC9FnnHQCUbf5mJ8okL/story.html',
+               title: 'The biggest threat facing middle-age men isn’t smoking or obesity. It’s loneliness.',
+               target: '_blank' }> "The biggest threat facing middle-age men isn’t smoking or obesity. It’s loneliness." - Boston Globe
+          %li
+            %a{ href: 'http://time.com/3747784/loneliness-mortality/',
+               title: 'Why Loneliness May Be the Next Big Public-Health Issue',
+               target: '_blank' }> "Why Loneliness May Be the Next Big Public-Health Issue" - Time Magazine
+
+        Social Health Online was created as a response to the growing need for a wellness service that supports the development of relationships between people.
+        
+      %p.h3 How Social Health Online Works
 
       %p
         Social Health Online is a wellness service with an ecosystem comprised of Members, Affiliates, 
@@ -21,80 +43,33 @@
         for their efforts and are automatically entered into sweepstakes. Social events can be located, created, and logged
         quickly at the Users' convenience to minimize the time they spend online supporting the development of their
         social lives offline.
- 
-      %p.h5 Features
-      %ul
-        %li
-          Social Health Online is designed with the latest technology to assist and incentivize the
-          building of relationships and reward the efforts Users make towards improving their wellness
-          when they participate in social events.
-        %li
-          Members can shape healthier behaviors by guiding social information to Users they host in online
-          Communities, Affiliates can link Users to local social events or discounts, and Users also 
-          have the ability to promote their own activities with our Matchmaker.
-        %li
-          Profiling and messaging systems that facilitate personal interactions while also providing
-          Users with anonymity are offered to ensure all participants can have the most profound and
-          satisfying experiences.
-      .text-center.brand-primary.mb-2
-        %i.fas.fa-clipboard-check.fa-5x
 
-      %p.h5 Benefits
-      %ul
-        %li
-          Enhanced personal satisfaction and health improvements will result for Users as they elevate
-          their lifestyles and behaviors through positive social changes.
-        %li
-          Reduced healthcare costs for all participants is possible as lifestyles and behaviors
-          improve.
-        %li
-          Members' and Affiliates' relationships and reputations are heightened via their 
-          support of the Users.
-      .text-center.brand-primary.mb-2
-        %i.fas.fa-heart.fa-5x
-
-      %p.h5 Rewards and Incentives
-      %p
-        Behaviors and lifestyles directly affect people's wellness, and using rewards and incentives
-        is a cost-effective way to influence actions that is already proven in multiple sectors
-        (e.g., retail and healthcare). Because of their established value, many rewards and incentives
-        are provided through Social Health Online to stimulate positive social changes, including:
-      %ul
-        %li
-          Users are automatically entered in a variety of monthly and annual sweepstakes for Amazon
-          eGift Cards when they log their participation in social events.
-        %li
-          Each Member organization is guaranteed to have at least one sweepstakes winner every month for their active Users.
-        %li
-          Every month a Member and Affiliate are highlighted in our newsletter.
-      .text-center.brand-primary.mb-2
-        %i.fas.fa-dollar-sign.fa-5x
-
-      %p.h5 Reporting
-      %p
-        Social Health considers the collection and review of service-related data in business reports
-        to be of great importance because this process not only verifies the success of Social Health
-        Online but also it allows us to see how we can improve.
-      %p
-        Because of this philosophy, Members are given the ability to pull data from the service and
-        observe their Users' level of participation with social events. Also, all Members and Users
-        will receive quarterly User Feedback Reports from Social Health containing the results of
-        anonymous surveys we send to randomly selected Users. Additionally, our Social Fitness 
-        self-assessment allows Users to easily track their progress towards the wellness achievements 
-        they want.
-      .text-center.brand-primary.mb-2
-        %i.fas.fa-file-alt.fa-5x
-
-      %p.h5 Privacy, Security, and Fairness
-      %p
-        Our stand-alone service is not part of a group health plan, does not collect or use medical
-        data, and does not fall under the HIPAA rules, but we have incorporated safeguards and business
-        practices to ensure full compliance with all applicable laws and regulations. Additionally,
-        we perform quarterly audits to detect and address service misuse.
-      %p
-        Our service does not include the provision of medical care, is a voluntary participatory
-        service offered to all people regardless of their health, and none of the conditions for obtaining
-        rewards require Users to satisfy a standard related to a particular health factor. Social Health
-        Online offers benefits to all active Users, regardless of their level of involvement.
-      .text-center.brand-primary.mb-2
-        %i.fas.fa-lock.fa-5x
+.container
+  .row.justify-content-center
+    .col-lg-4
+      .card.pricing.card-lg
+        .card-header.border
+          %h3 Members
+        .card-body.brand-primary.border
+          = link_to membership_path(:anchor => "Members") do
+            %i.fas.fa-building.fa-5x
+        .card-footer.text-center.border
+          Members are organizations that register with us to host and manage Communities of Users in the service.
+    .col-lg-4
+      .card.pricing.card-lg
+        .card-header.border
+          %h3 Users
+        .card-body.brand-primary.border
+          = link_to join_path do
+            %i.fas.fa-user-circle.fa-5x
+        .card-footer.text-center.border
+          Users are the people who utilize the service to share, participate in, and log social events.
+    .col-lg-4
+      .card.pricing.card-lg
+        .card-header.border
+          %h3 Affiliates
+        .card-body.brand-primary.pb-4.border
+          = link_to membership_path(:anchor => "Affiliates") do
+            %i.fas.fa-store-alt.fa-5x
+        .card-footer.text-center.border
+          Affiliates are organizations that link their event information and/or provide discounts to Users.

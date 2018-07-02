@@ -28,6 +28,11 @@
 .row
   .col-lg-4
     .form-group
+      %label(for="phone") Phone
+      = f.text_field :phone, class: "form-control #{form_error_class(@member, :phone)}"
+      = model_error_display(@member, :phone)
+  .col-lg-4
+    .form-group
       %label(for="member_contact_name") Contact Name
       = f.text_field :contact_name, class: "form-control #{form_error_class(@member, :contact_name)}"
       = model_error_display(@member, :contact_name)
@@ -36,15 +41,26 @@
       %label(for="member_contact_email") Contact Email
       = f.email_field :contact_email, class: "form-control #{form_error_class(@member, :contact_email)}"
       = model_error_display(@member, :contact_email)
+.row
   .col-lg-4
     .form-group
       %label(for="member_contact_phone") Contact Phone
       = f.text_field :contact_phone, class: "form-control #{form_error_class(@member, :contact_phone)}"
       = model_error_display(@member, :contact_phone)
+  .col-lg-4
+    .form-group
+      %label(for="contact_phone_extension") Contact Phone Extension
+      = f.text_field :contact_phone_extension, class: "form-control #{form_error_class(@member, :contact_phone_extension)}"
+      = model_error_display(@member, :contact_phone_extension)
+  .col-lg-4
+    .form-group
+      %label(for="welcome_kit_date") Welcome Kit Date
+      = f.text_field :welcome_kit_date, class: "flatpickr-date form-control #{form_error_class(@member, :welcome_kit_date)}"
+      = model_error_display(@member, :welcome_kit_date)
 .row
   .col-lg-4
     .form-group
-      %label(for="member_service_capacity") Service Capacity
+      %label(for="member_service_capacity") User Seats
       = f.text_field :service_capacity, class: "form-control #{form_error_class(@member, :service_capacity)}"
       = model_error_display(@member, :service_capacity)
   .col-lg-4
@@ -69,6 +85,19 @@
       = f.text_field :events_url, class: "form-control #{form_error_class(@member, :events_url)}"
       = model_error_display(@member, :events_url)
 .row
+  .col-lg-6
+    .form-group
+      %label(for="member_primary_manager_id") Primary Manager
+      = f.select :primary_manager_id,
+          options_from_collection_for_select(@managers, 'id', 'name', @member.primary_manager_id),
+          { include_blank: true }, { class: 'form-control custom-select' } if @managers.present?
+      = model_error_display(@member, :primary_manager_id)
+  .col-lg-6
+    .form-group
+      %label(for="status")  Status
+      = f.label @member.status, class: "form-control disabled readonly #{form_error_class(@member, :status)}"
+      = model_error_display(@member, :status)
+.row
   .col
     .form-group
       %label(for="member_bio") Bio
@@ -86,9 +115,9 @@
         = f.check_box :hide_info_on_locator, class: 'form-check-input'
         %label.form-check-label(for="hide_info_on_locator") Hide Info on Member Locator
 
-.mb-5
-  = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
+.text-center
+  = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }
   - if @member.persisted?
-    = link_to 'Cancel', console_member_path(@member.id), class: 'btn btn-outline-secondary'
+    = link_to 'Cancel', console_member_path(@member.id), class: 'btn btn-outline-secondary', :style => 'border: 1px solid black;'
   - else
-    = link_to 'Cancel', console_members_path, class: 'btn btn-outline-secondary'
+    = link_to 'Cancel', console_members_path, class: 'btn btn-outline-secondary', :style => 'border: 1px solid black;'

@@ -1,3 +1,5 @@
+- page_title @member.name
+
 %nav(aria-label="breadcrumb")
   %ol.breadcrumb
     %li.breadcrumb-item= link_to 'Members', console_members_path
@@ -6,15 +8,21 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
   %h1.h3.brand-primary= @member.name
   .dropdown
-    %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+    %a.btn.btn-primary.dropdown-toggle{:style => 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
       %i.fas.fa-cog
       Manage
-    .dropdown-menu.dropdown-menu-right
+    .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;'}
       = link_to console_member_users_path(@member.id), class: 'dropdown-item' do
         %i.fas.fa-user-circle
         Users
 
-%p= @member.full_address
+%p
+  %strong Address:
+  = @member.full_address
+
+%p
+  %strong Phone:
+  = number_to_phone @member.phone
 
 %p
   %strong Contact Name:
@@ -29,12 +37,20 @@
   = number_to_phone @member.contact_phone
 
 %p
-  %strong Service Capacity:
+  %strong Contact Phone Extension:
+  = number_to_phone @member.contact_phone_extension
+
+%p
+  %strong User Seats:
   = @member.service_capacity
 
 %p
   %strong Account Start Date:
   = short_date @member.account_start_date
+
+%p
+  %strong Welcome Kit Date:
+  = short_date @member.welcome_kit_date
 
 %p
   %strong Account End Date:
@@ -58,13 +74,13 @@
   = truncate(@member.bio, length: 100)
 
 %p
-  %strong Suspended:
-  = @member.suspended? ? 'Yes' : 'No'
+  %strong Status:
+  = @member.status
 %p
   %strong Hide Info on Member Locator:
   = @member.hide_info_on_locator? ? 'Yes' : 'No'
 %p
-  = link_to console_members_path, class: 'btn btn-outline-primary' do
+  = link_to console_members_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do
     %i.fas.fa-arrow-left
     Back
   &nbsp;

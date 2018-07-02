@@ -12,27 +12,12 @@
       let source = $("#social_event_log_source")[0].value;
       console.log(source);
       if(source === '0'){
-        $('.add_category').show();
-        $('.not_sho_category').hide();
-        $("#social_event_log_venue").prop("disabled", false);
-      }else if(source === '1'){
-        $('.add_category').hide();
-        $('.not_sho_category').show();
-        $("#social_event_log_venue").prop("disabled", true);
+          $('.not_sho_category').hide();
+          $("#social_event_log_event_category").prop("disabled", false);
+        }else if(source === '1'){
+          $('.not_sho_category').show();
+          $("#social_event_log_event_category").prop("disabled", true);
       }
-    });
-
-    $("form").on("click",".remove_category", function(event) {
-      $(this).prev('input[type=hidden').val('1');
-      $(this).closest('fieldset').hide();
-      event.preventDefault();
-    });
-
-    $("form").on("click",".add_category", function(event) {
-      let time = new Date().getTime();
-      let regexp = new RegExp($(this).data('id'), 'g');
-      $(this).before($(this).data('fields').replace(regexp, time))
-      event.preventDefault();
     });
   });
   

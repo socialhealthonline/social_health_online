@@ -1,21 +1,31 @@
-- page_title 'My Community'
+- page_title 'My Community Profile'
 
 .container
-  .row.pt-5
+  .row.pt-3
     .col
-      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
-        %h2.brand-primary My Community Profile
-        .dropdown
-          %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
-            %i.fas.fa-cog
-            Manage
-          .dropdown-menu.dropdown-menu-right
-            = link_to manage_events_path, class: 'dropdown-item' do
-              %i.fas.fa-map-marker-alt
-              Events
-            = link_to manage_social_tracker_users_path, class: 'dropdown-item' do
-              %i.fas.fa-database
-              Social Tracker
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3
+        %h1.brand-primary My Community Profile
+    .col.text-right
+      .dropdown
+        %a.btn.btn-primary.dropdown-toggle{:style => 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+          %i.fas.fa-cog
+          Manage
+        .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;'}
+          = link_to manage_events_path, class: 'dropdown-item' do
+            %i.fas.fa-map-marker-alt
+            Community Events
+          = link_to manage_social_tracker_users_path(@member), class: 'dropdown-item' do
+            %i.fas.fa-database
+            Social Tracker
+          = link_to manage_announcements_path, class: 'dropdown-item' do
+            %i.fas.fa.fa-bullhorn
+            Announcements
+          = link_to manage_users_path, class: 'dropdown-item' do
+            %i.fas.fa-user-circle
+            Users
+          = link_to my_community_path, class: 'dropdown-item' do
+            %i.fas.fa-angle-double-left
+            Community Home
   .row
     .col
       = form_with model: @member, url: [:manage, :update, @member], local: true do |f|
@@ -43,7 +53,7 @@
               = model_error_display(@member, :state)
           .col-lg-4
             .form-group
-              %label(for="member_zip") Zip
+              %label(for="member_zip") ZIP Code
               = f.text_field :zip, class: "form-control #{form_error_class(@member, :zip)}"
               = model_error_display(@member, :zip)
         .row
@@ -63,11 +73,16 @@
               %label(for="member_primary_manager_id") Primary Manager
               = f.select :primary_manager_id, options_from_collection_for_select(@managers, 'id', 'name', @member.primary_manager_id), { include_blank: true }, { class: 'form-control custom-select' }
               = model_error_display(@member, :primary_manager_id)
+          .col-lg-6
+            .form-group#file-field
+              %label(for="member_logo") Logo
+              = f.file_field :logo, class: "form-control #{form_error_class(@member, :logo)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 3.megabytes }
+              = model_error_display(@member, :logo)
         .row
           .col
             .form-group
               %label(for="member_bio") Bio
               = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@member, :bio)}"
               = model_error_display(@member, :bio)
-        .mb-5
-          = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
+        .mb-3.text-center
+          = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, :style => 'border: 1px solid black;'

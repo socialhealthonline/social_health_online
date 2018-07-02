@@ -3,27 +3,24 @@
 = javascript_include_tag "affiliate_locator"
 .container-fluid
   .row
-    .col-lg-8.col-xs-12.pt-5
+    .col-lg-8.col-xs-12.pt-3
 
-      %h2.text-info.pb-3 Affiliate Locator
+      %h1.text-info.pb-1 Affiliate Locator
 
       .col-xs-12
-        .row
+        .row.justify-content-center
           .col-xs-6.col-md-3
             = select_tag 'affiliate-filter-toggle', options_for_select(locator_filter_options),class: "form-control"
           .col-xs-12.col-md-6#affiliate-filter-form
-        .row.my-2
+        .row.my-3.justify-content-center
           .col-xs-12.col-md-7
-            .row#affiliate-filter-btn-group
-              .col-xs-5.col-md-4
-                = button_tag "Search", class: "form-control", id: "affiliate-filter-button"
-              .col-xs-5.col-md-5
-                = button_tag "Clear Search", class: "form-control", id: "clear-affiliate-filter-button"
-            
+            .row.justify-content-center#affiliate-filter-btn-group
+              .col-xs-5.col-md-7.mb-1
+                = button_tag "Search", class: "form-control btn btn-primary", id: "affiliate-filter-button", style: "border: 1px solid black;"
+
       #affiliate-locator-table-container
         %table.footable.table.table-striped.my-2.table-hover#affiliate-locator-table{'data-sorting': "true", "style": "display: table;"}
 
-    
-    .col-md-12.col-lg-4.py_3
+
+    .col-md-12.col-lg-4.pt-2.pb-3
       %p(id="affiliate-locator-map")
-  

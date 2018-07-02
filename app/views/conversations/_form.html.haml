@@ -1,13 +1,13 @@
 = form_for :conversation, url: :conversations, html: { id: 'conversation-form' } do |f|
-  .form-group
+  .form-group.resipients-box
     = f.label :recipients
-    = f.select(:recipients, User.all_except(authenticated_user).collect {|p| [ p.name, p.id ] }, {},
-    { multiple: true, required: true, class: 'form-control chosen-select', data: { placeholder: 'Select recipients' } })
+    = f.select(:recipients, User.all_except(authenticated_user).collect {|p| [ p.display_name, p.id ] }, {},
+    { multiple: true, required: true, class: 'form-control resipients-select', data: { placeholder: 'Select recipients' } })
   .form-group
     = f.label :subject
     = f.text_field :subject, placeholder: 'Subject', class: 'form-control', required: true
   .form-group
     = f.label :message
     = f.text_area :body, class: 'form-control',placeholder: 'Type your message here', rows: 4, required: true
-  = f.submit 'Send Message', class: 'btn btn-success'
-  = link_to 'Cancel', mailbox_inbox_path, class: 'btn btn-outline-secondary'
+  = f.submit 'Send Message', class: 'btn btn-info', style: 'border: 1px solid black;'
+  = link_to 'Cancel', mailbox_inbox_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'

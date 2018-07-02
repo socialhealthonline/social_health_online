@@ -5,16 +5,32 @@ class Member < ApplicationRecord
   has_one :primary_manager, class_name: "User", foreign_key: :id, primary_key: :primary_manager_id
   has_many :users, inverse_of: :member, dependent: :destroy
   has_many :events, inverse_of: :member, dependent: :destroy
+  has_many :announcements, dependent: :destroy
+  has_one_attached :logo
 
-  validates :name, :address, :city, :state, :zip, :contact_name, :contact_email, :contact_phone, :service_capacity, presence: true
+  validates :name, :address, :city, :state, :zip, :contact_name, :contact_email, :contact_phone, :phone, :service_capacity, presence: true
   validates_uniqueness_of :name, case_sensitive: false
   validates :state, inclusion: US_STATES.values
-  validates :zip, format: {with: %r{\A[\d]{5}(-[\d]{4})?\z}}
-  validates :contact_phone, format: {with: /\A\d{10}\z/, message: "must be 10 digits including area code"}
+  validates :zip, format: { with: %r{\A[\d]{5}(-[\d]{4})?\z} }
+  validates :contact_phone, format: { with: /\A\d{10}\z/, message: "must be 10 digits including area code" }
   validates_format_of :contact_email, with: /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
+  validate :logo_validation
+  validates :phone, format: { with: /\A\d{10}\z/, message: "must be 10 digits including area code" }
+  validates :terms_of_service, acceptance: true
+  validates :service_capacity, numericality: { greater_than: 4 }
 
   before_validation { |member| member.contact_phone.gsub!(/\D/, "") if member.contact_phone? }
   before_validation :add_protocol_to_url
+
+  def logo_validation
+    if logo.attached?
+      if logo.blob.byte_size > 3.megabytes
+        errors[:logo] << 'this file exceeds the maximum allowed file size (3 mb)'
+      elsif !logo.blob.content_type.starts_with?('image/')
+        errors[:logo] << 'only image file with extension: .jpg, .jpeg, .gif or .png is allowed'
+      end
+    end
+  end
 
   def full_address
     [address, city, state, zip].compact.join(", ")
@@ -25,7 +41,7 @@ class Member < ApplicationRecord
   end
 
   def social_fitness_csv
-    attributes = %w{state name user_name user_email individuals groups family friends colleagues significant_other local_community overall}
+    attributes = %w{log_date state name user_name user_email individuals groups family friends colleagues significant_other local_community overall}
     user_attributes = %w{name email}
     fitness_attributes = %w{individuals groups family friends colleagues significant_other local_community overall}
     ratings_attributes = %w{individuals groups overall}
@@ -34,11 +50,11 @@ class Member < ApplicationRecord
       csv << attributes
 
       users.each do |user|
-        row = []
         values = [state, name]
         user_values = user_attributes.map { |attr| user.send(attr) }
 
         user.social_fitness_logs.each do |log|
+          row = []
           fitness_values = fitness_attributes.map do |attr|
             if ratings_attributes.include? attr
               RATINGS.key(log.send(attr)).to_s
@@ -46,25 +62,22 @@ class Member < ApplicationRecord
               RATINGS_WITH_NA.key(log.send(attr)).to_s
             end
           end
-          values.push(*user_values, *fitness_values)
-
-          row.push(values)
+          row.push(log.created_at, *values, *user_values, *fitness_values)
+          csv << row
         end
-        csv << row
       end
     end
   end
 
   def social_tracker_csv
-    attributes = %w{state name primary_manager_name primary_manager_email user_name user_email log_date event_date event_state event_city event_type event_source event_category event_venue event_rating}
-    tracker_attributes = %w{created_at event_date state city event_type source event_categories venue rating}
+    attributes = %w{log_date state name primary_manager_name primary_manager_email user_name user_email event_date event_state event_city event_type event_source event_category event_venue event_rating}
+    tracker_attributes = %w{event_date state city event_type source event_category venue rating}
     user_attributes = %w{name email}
 
     ::CSV.generate(headers: true) do |csv|
       csv << attributes
 
       users.each do |user|
-        row = []
         values = [state, name]
         user_values = user_attributes.map { |attr| user&.send(attr) }
         primary_manager_values = user_attributes.map { |attr|
@@ -72,30 +85,36 @@ class Member < ApplicationRecord
           val ? val : ""
         }
         user.social_event_logs.each do |log|
+          row = []
           tracker_values = tracker_attributes.map do |attr|
             case attr
             when "state"
               US_STATES.key(log.send(attr))
-            when "event_type"
-              EVENT_TYPES[log.send(attr)&.to_i].to_s
             when "source"
               SocialEventLog::EVENT_SOURCES.key(log.send(attr))
             when "rating"
               RATINGS.key(log.send(attr)).to_s
-            when "event_categories"
-              category = ""
-              log.send(attr).each { |cat| category += cat.name + " " }
-              category.strip
             else
               log.send(attr)
             end
           end
-          values.push(*primary_manager_values, *user_values, *tracker_values)
-
-          row.push(values)
+          row.push(log.created_at, *values, *primary_manager_values, *user_values, *tracker_values)
+          csv << row
         end
-        csv << row
       end
+    end
+  end
+
+  def status
+    active_users = User.where(member_id: self.id)
+                       .where.not(last_sign_in_at: 'nil')
+
+    return 'Suspended' if suspended
+
+    if active_users.present?
+      return 'Active'
+    else
+      return 'Pending'
     end
   end
 

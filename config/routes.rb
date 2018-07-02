@@ -7,19 +7,35 @@ Rails.application.routes.draw do
   get "about-us" => "public#about"
   get "join" => "public#join"
   get "service" => "public#service"
+  get "service_highlights" => "public#service_highlights"
+  get "service_screenshots" => "public#service_screenshots"
   get "membership" => "public#membership"
   get "affiliate_locator" => "public#affiliate_locator"
   get "affiliates" => "public#affiliates"
   get "member_locator" => "public#member_locator"
   get "members" => "public#members"
   get "pricing" => "public#pricing"
+  get "support" => "public#support"
   get "news" => "public#news"
+  get "affiliate_agreement" => "public#affiliate_agreement"
+  get "saas_agreement" => "public#saas_agreement"
   get "terms" => "public#terms"
   get "privacy" => "public#privacy"
+  get "faq" => "public#faq"
+
+  # Create Member
+  resources :members_registration, only: [:new, :create]
+
+  #Stripe webhooks
+  mount StripeEvent::Engine, at: '/stripe_events'
 
   # Contact
   get "contact" => "contact#new"
   post "contact" => "contact#create"
+
+  # Matchmaker
+  get 'matchmaker' => 'matchmakers#index'
+  get 'fetch_user' => 'matchmakers#fetch_user'
 
   # Authentication vanity routes
   get "signin" => "sessions#new", as: "signin"
@@ -33,21 +49,31 @@ Rails.application.routes.draw do
   get "my-profile" => "profile#edit", as: "profile"
   patch "profile" => "profile#update", as: "update_profile"
 
+  # My settings
+  resource :my_settings, only: [:show, :update]
+
   # Communities
   resources :members, path: :communities, as: :community, controller: :communities do
-    resources :events, only: [:index, :show]
+    resources :events, only: [:index, :show] do
+      post 'create_or_switch_rsvp', on: :member
+    end
   end
+
+  get 'explore_communities' => 'communities#explore_communities'
+  get 'event_search' => 'communities#event_search'
 
   # Manage
   namespace :manage do
     get "member" => "member#edit", as: "edit_member"
     patch "member" => "member#update", as: "update_member"
     namespace :social_tracker do
-      get "users" => "history#users"
-      get "users/:id/history" => "history#user_history", as: :user
-      get "users/:id/history/:id" => "history#show", as: :user_history
+      get "/:name/users" => "history#users", as: :users
+      get "/:name/users/:id/history" => "history#user_history", as: :member_user
+      get "/:name/users/:id/history/:id" => "history#show", as: :user_history
     end
     resources :events
+    resources :announcements
+    resources :users
   end
 
   namespace :social_tracker do
@@ -62,19 +88,28 @@ Rails.application.routes.draw do
     post "log" => "fitness#create"
     get "history" => "fitness#index"
     get "history/:id" => "fitness#show"
+    get "resources" => "fitness#resources"
+    get "plan" => "fitness#plan"
   end
 
   # Dashboard
-  get "dashboard" => "dashboard#index"
+  get "home" => "home#index"
 
   # Console
   get "console" => "console#index"
   namespace :console do
     root to: "console#index", as: "root"
-    resources :affiliates
+    resources :affiliates do
+      collection do
+        get 'export_csv'
+      end
+    end
     resources :news
     resources :notifications
     resources :members do
+      collection do
+        get 'export_csv'
+      end
       resources :users
     end
     resources :users, path: :admins, as: :admins, controller: :admins
@@ -84,6 +119,7 @@ Rails.application.routes.draw do
       get "members/:name/users" => "history#users", as: :member
       get "members/:name/users/:id/" => "history#user_history", as: :member_user
       get "members/:name/users/:user_id/history/:id" => "history#show", as: :member_user_social_event_log
+      delete "members/:name/users/:user_id/history/:id" => "history#destroy", as: :delete_social_event_log
     end
 
     namespace :social_fitness do
@@ -107,4 +143,21 @@ Rails.application.routes.draw do
     end
     post :mark_as_deleted, on: :collection
   end
+
+  # Media Center
+  get "media_center" => "media_center#index"
+
+  # Affiliates
+  get "affiliates_search" => "affiliates#index"
+
+  # Issues
+  get "issues" => "issues#new"
+  post "issues" => "issues#create"
+
+  # My Favorites
+  get "my_favorites" => "my_favorites#index"
+
+  # My Contacts
+  get "my_contacts" => "my_contacts#index"
+
 end

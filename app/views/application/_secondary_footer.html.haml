@@ -1,0 +1,18 @@
+%footer.bg-white.footer-short.border-top
+  .container
+    .row.pt-2.justify-content-center.text-center.font-weight-bold
+      = link_to home_path do
+        %i.fas.fa-home.fa-2x.pt-2{:title => 'Home'}
+        <p class ="under_label_text">Home</p>
+      %span.px-2
+      =link_to mailbox_inbox_path do
+        %i.fas.fa-envelope.fa-2x.pt-2{:title => 'Messages'}
+        <p class ="under_label_text">Messages</p>
+      %span.px-2
+      =link_to my_community_path do
+        %i.fas.fa-building.fa-2x.pt-2{:title => 'My Community'}
+        <p class ="under_label_text">My Community</p>
+      %span.px-2
+      =link_to social_tracker_log_path do
+        %i.fas.fa-check.fa-2x.pt-2{:title => 'Log Events'}
+        <p class ="under_label_text">Log Events</p>

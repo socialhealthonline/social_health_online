@@ -1,42 +1,65 @@
 .container
-  .row.pt-5
+  .row.pt-3
     .col
-      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
-        %h1.h3.brand-primary
-          %i.fas.fa-map-marker-alt
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3
+        %h1
           = @event.title
 
   .row
     .col
       %p
-        %strong Event Type
-        = @event.event_type
+        %strong Event Type:
+        =@event.event_type
       %p
-        %strong Event Date
+        %strong Event Date/Time:
         = short_date_time @event.start_at, @event.time_zone
       %p
-        %strong Event Location
+        %strong Event Location:
         = @event.location
       %p
-        %strong Event City
+        %strong Event Address:
+        = @event.address
+      %p
+        %strong Event City:
         = @event.city
       %p
-        %strong Event State
+        %strong Event State:
         = @event.state
+      %p
+        %strong Event ZIP Code:
+        = @event.zip
       %p
         %strong Event Website:
         = link_to @event.url, @event.url, target: '_blank' if @event.url.present?
       %p
-        %strong RSVP Limit
+        %strong RSVP Limit:
         = @event.rsvp_limit
       %p
-        %strong Private
-        = @event.private? ? 'Yes' : 'No'
+        %strong Event Access:
+        = @event.private? ? 'Private' : 'Public'
       %p
-        %strong Details
+        %strong Event Details:
       = simple_format @event.details
-  %p.pb-5
-    = link_to manage_events_path, class: 'btn btn-outline-primary mr-1' do
+      %p
+        %strong RSVP List
+      %div.table-wrapper-2.mb-2.ml-0{ :style => "border-radius: 12px;" }
+        %table.table.table-borderless
+          %thead.mdb-color.lighten-4
+            %tr
+              %th
+              %th.th-lg Display Name
+              %th.th-lg.text-center.pr-3 RSVP
+          %tbody
+          - @event.rsvps.each do |rsvp|
+            %tr
+              %td
+              %td
+                %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                    data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: rsvp.user }" } }
+                  =rsvp.user.display_name
+              %td.text-center.pr-3= rsvp&.rsvp_status.capitalize
+  %p.pt-2.pb-3
+    = link_to 'javascript:history.back()', class: 'btn btn-outline-primary mr-1', :style => 'border: 1px solid black;' do
       %i.fas.fa-arrow-left
       Back
     = link_to edit_manage_event_path(@event.id), class: 'btn btn-outline-primary mr-1' do

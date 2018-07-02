@@ -39,31 +39,37 @@
       = model_error_display(@user, :state)
   .col
     .form-group
-      %label(for="user_zip") Zip
+      %label(for="user_zip") ZIP Code
       = f.text_field :zip, class: "form-control #{form_error_class(@user, :zip)}"
       = model_error_display(@user, :zip)
 .row
   .col
     .form-group
-      %label(for="user_time_zone") Timezone
+      %label(for="user_time_zone") Time Zone
       = f.select(:time_zone, ['Alaska', 'Hawaii', 'Pacific Time (US & Canada)', 'Mountain Time (US & Canada)', 'Central Time (US & Canada)', 'Eastern Time (US & Canada)'].sort, {}, { class: 'custom-select form-control' })
       = model_error_display(@user, :time_zone)
   .col
     .form-group
-      %label(for="user_birthdate") Birthdate (YYYY-MM-DD)
+      %label(for="user_birthdate") Birthdate
       = f.text_field :birthdate, class: "flatpickr-date form-control #{form_error_class(@user, :birthdate)}"
       = model_error_display(@user, :birthdate)
 .row
   .col
     .form-group
       %label(for="user_gender") Gender
-      = f.select :gender, User::GENDER, {}, { class: "form-control custom-select #{form_error_class(@user, :gender)}" }
+      = f.select :gender, User::GENDER, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@user, :gender)}" }
       = model_error_display(@user, :gender)
   .col
     .form-group
       %label(for="user_ethnicity") Race/Ethnicity
-      = f.select :ethnicity, User::ETHNICITY, {}, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
+      = f.select :ethnicity, User::ETHNICITY, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
       = model_error_display(@user, :ethnicity)
+.row
+  .col-6
+    .form-group
+      %label(for="user_group") Group
+      = f.text_field :group, class: "form-control #{form_error_class(@user, :group)}"
+      = model_error_display(@user, :group)
 .row
   .col
     .card
@@ -71,7 +77,7 @@
         .form-check.mb-1
           = f.check_box :manager, class: 'form-check-input'
           %label.form-check-label(for="user_manager") Account Manager
-        %small Manager for their member account and community
+        %small Manager for the Member account
   .col
     .card
       .card-body
@@ -80,9 +86,9 @@
           %label.form-check-label(for="user_enabled") Enabled
         %small Enabled to sign in
 
-.mb-5
+.text-center
   = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
   - if @user.persisted?
-    = link_to 'Cancel', console_member_user_path(@member, @user), class: 'btn btn-outline-secondary'
+    = link_to 'Cancel', console_member_user_path(@member.id, @user), class: 'btn btn-outline-secondary'
   - else
     = link_to 'Cancel', console_member_users_path(@member.id), class: 'btn btn-outline-secondary'

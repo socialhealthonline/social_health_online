@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_12_003142) do
+ActiveRecord::Schema.define(version: 2018_06_27_204523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "affiliates", force: :cascade do |t|
     t.string "name", null: false
@@ -27,6 +48,21 @@ ActiveRecord::Schema.define(version: 2018_05_12_003142) do
     t.datetime "updated_at", null: false
     t.boolean "hide_info_on_locator", default: false
     t.integer "support_type", default: 0, null: false
+    t.string "contact_name"
+    t.string "contact_phone_extension"
+    t.string "contact_email"
+    t.string "support_notes"
+    t.datetime "date_added"
+    t.string "contact_phone"
+  end
+
+  create_table "announcements", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_announcements_on_member_id"
   end
 
   create_table "event_categories", force: :cascade do |t|
@@ -35,6 +71,14 @@ ActiveRecord::Schema.define(version: 2018_05_12_003142) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["social_event_log_id"], name: "index_event_categories_on_social_event_log_id"
+  end
+
+  create_table "event_types", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "social_event_log_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["social_event_log_id"], name: "index_event_types_on_social_event_log_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -52,6 +96,8 @@ ActiveRecord::Schema.define(version: 2018_05_12_003142) do
     t.integer "rsvp_limit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.string "zip"
     t.index ["event_type"], name: "index_events_on_event_type"
     t.index ["member_id"], name: "index_events_on_member_id"
     t.index ["private"], name: "index_events_on_private"
@@ -68,6 +114,14 @@ ActiveRecord::Schema.define(version: 2018_05_12_003142) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "hidden_fields", force: :cascade do |t|
+    t.bigint "user_id"
+    t.jsonb "settings", default: {"zip"=>"0", "city"=>"0", "name"=>"0", "email"=>"0", "phone"=>"0", "state"=>"0", "gender"=>"0", "address"=>"0", "birthdate"=>"0", "ethnicity"=>"0", "time_zone"=>"0", "matchmaker"=>"0", "phone_extension"=>"0"}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_hidden_fields_on_user_id"
   end
 
   create_table "mailboxer_conversation_opt_outs", id: :serial, force: :cascade do |t|
@@ -145,6 +199,10 @@ ActiveRecord::Schema.define(version: 2018_05_12_003142) do
     t.string "events_url"
     t.string "slug"
     t.boolean "hide_info_on_locator", default: false
+    t.datetime "welcome_kit_date"
+    t.string "phone"
+    t.string "contact_phone_extension"
+    t.string "stripe_customer_id"
     t.index ["slug"], name: "index_members_on_slug", unique: true
   end
 
@@ -162,18 +220,28 @@ ActiveRecord::Schema.define(version: 2018_05_12_003142) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rsvps", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "rsvp_status", null: false
+    t.index ["event_id"], name: "index_rsvps_on_event_id"
+    t.index ["user_id"], name: "index_rsvps_on_user_id"
+  end
+
   create_table "social_event_logs", force: :cascade do |t|
     t.date "event_date", null: false
     t.string "state", null: false
     t.string "city", null: false
-    t.string "event_type", null: false
     t.integer "source", default: 0, null: false
     t.text "venue"
     t.integer "rating", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_type"], name: "index_social_event_logs_on_event_type"
+    t.string "event_type"
+    t.string "event_category"
     t.index ["user_id"], name: "index_social_event_logs_on_user_id"
   end
 
@@ -193,7 +261,7 @@ ActiveRecord::Schema.define(version: 2018_05_12_003142) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.string "email", null: false
     t.boolean "enabled", default: true, null: false
     t.boolean "admin", default: false, null: false
@@ -206,14 +274,14 @@ ActiveRecord::Schema.define(version: 2018_05_12_003142) do
     t.datetime "updated_at", null: false
     t.integer "member_id"
     t.string "display_name"
-    t.string "address", null: false
-    t.string "city", null: false
-    t.string "state", null: false
-    t.string "zip", null: false
-    t.string "phone", null: false
-    t.string "gender", null: false
-    t.string "ethnicity", null: false
-    t.date "birthdate", null: false
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "phone"
+    t.string "gender"
+    t.string "ethnicity"
+    t.date "birthdate"
     t.string "time_zone", default: "Central Time (US & Canada)", null: false
     t.boolean "manager", default: false, null: false
     t.string "relationship_status"
@@ -223,6 +291,12 @@ ActiveRecord::Schema.define(version: 2018_05_12_003142) do
     t.text "hobbies"
     t.text "pet_peeves"
     t.text "bio"
+    t.boolean "receive_email", default: false
+    t.integer "user_status", default: 0
+    t.date "first_login"
+    t.string "phone_extension"
+    t.text "group"
+    t.string "favorites"
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["enabled"], name: "index_users_on_enabled"
@@ -231,6 +305,7 @@ ActiveRecord::Schema.define(version: 2018_05_12_003142) do
   end
 
   add_foreign_key "event_categories", "social_event_logs"
+  add_foreign_key "event_types", "social_event_logs"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"

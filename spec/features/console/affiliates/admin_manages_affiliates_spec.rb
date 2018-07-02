@@ -1,5 +1,10 @@
 require 'rails_helper'
 
+# helper class to get access to csv_affiliate_list
+class AffiliateCsvHelper
+  include AffiliateHelper
+end
+
 RSpec.describe 'Admin mananges affiliates' do
 
   let!(:admin) { create(:user, :admin) }
@@ -19,10 +24,15 @@ RSpec.describe 'Admin mananges affiliates' do
       fill_in 'affiliate_zip', with: '55555'
       fill_in 'affiliate_phone', with: '5555555555'
       fill_in 'affiliate_url', with: 'example.com'
+      fill_in 'affiliate_contact_name', with: 'Joel jones'
+      fill_in 'affiliate_contact_phone', with: '5555555555'
+      fill_in 'affiliate_contact_email', with: 'contact@example.com'
+      fill_in 'affiliate_date_added', with: Date.today
+
       select 'Events', from: 'affiliate_support_type'
       check('affiliate_hide_info_on_locator')
       click_button 'Save'
-      expect(page).to have_content 'The affiliate was successfully created'
+      expect(page).to have_content 'The Affiliate was successfully created'
       expect(current_path).to eq console_affiliate_path(Affiliate.last)
       expect(Affiliate.count).to eq 1
     end
@@ -61,6 +71,24 @@ RSpec.describe 'Admin mananges affiliates' do
     it 'successfully' do
       expect { click_link "delete_affiliate_#{affiliate.id}" }.to change{ Affiliate.count }.by(-1)
       expect(current_path).to eq console_affiliates_path
+    end
+  end
+
+  describe 'export affiliates' do
+    let!(:affiliate) { create(:affiliate) }
+
+    before do
+      sign_in admin
+      visit console_affiliates_path
+    end
+
+    it "as csv" do
+      click_link 'Export CSV'
+
+      expected_csv = file_fixture('affiliate.csv').read
+      generated_csv = AffiliateCsvHelper.new.csv_affiliate_list
+
+      expect(generated_csv).to eq expected_csv
     end
   end
 

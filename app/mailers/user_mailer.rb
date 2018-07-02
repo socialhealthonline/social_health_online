@@ -11,4 +11,9 @@ class UserMailer < ApplicationMailer
     mail to: user.email, subject: '[Social Health Online] Password Reset Request'
   end
 
+  def registration_confirmation(user, password)
+    @user = user
+    @password = password
+    mail to: user.email, subject: '[Social Health Online] Registration Confirmation'
+  end
 end

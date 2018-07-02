@@ -12,7 +12,7 @@ RSpec.describe 'User updates profile' do
   it 'successfully' do
     fill_in 'user_name', with: 'Sam Adams III'
     fill_in 'user_email', with: 'SamAdamsIII@example.com'
-    fill_in 'user_password', with: '1qaz2wsx3edc'
+    fill_in 'profile-password', with: '1qaz2wsx3edc'
     fill_in 'user_password_confirmation', with: '1qaz2wsx3edc'
     click_button 'Update'
     user.reload
@@ -31,15 +31,21 @@ RSpec.describe 'User updates profile' do
     expect(page).to have_form_field_error_for('user_name')
   end
 
-  it 'unsuccessfully with password update' do
-    fill_in 'user_password', with: 'password'
+  it 'unsuccessfully with password update', js: true do
+    fill_in 'profile-password', with: 'password'
     click_button 'Update'
     user.reload
     expect(current_path).to eq '/profile'
     expect(page).to have_text 'must be alphanumeric'
-    expect(page).to have_form_field_error_for('user_password')
-    expect(page).to have_text "doesn't match Password"
+    expect(page).to have_form_field_error_for('profile-password')
+    expect(page).to have_text "doesn't match password"
     expect(page).to have_form_field_error_for('user_password_confirmation')
+  end
+
+  it 'successfully update checkbox field user name' do
+    uncheck 'user_hidden_field_attributes_name'
+    click_button 'Update'
+    expect(page).to have_text 'Your profile was successfully updated'
   end
 
 end

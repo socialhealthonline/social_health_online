@@ -1,0 +1,22 @@
+- page_title 'Report Issues'
+
+.container
+  .row.pt-3.mb-3
+    .col.text-center
+      %h1.text-info Report Issues
+  .row
+    .col-md-12
+      %p.text-center.mb-4.p-2{style: "border: 1px solid black;"}
+        %strong
+          Provide a description of any bugs, glitches, or service abuses you have
+          encountered so they can be addressed.
+
+    .col-md-12
+      .card
+        %p.text-left.px-3.py-2.mb-0 Issues
+        .card-body.text-center.pt-0
+          = form_with url: issues_url, method: :post, local: true do
+            = hidden_field_tag :subject, ''
+            .form-group
+              = text_area_tag :message, params[:message], rows: '6', class: 'form-control', required: true
+            = submit_tag 'Send', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }

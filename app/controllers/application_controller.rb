@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   helper_method :authenticated_user, :mailbox, :conversation
   add_flash_types :error, :success, :info, :warning
+  before_action :disabled_user?
+  before_action :pending_user?
+
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
   def cities
     render json: CS.cities(params[:state], :us).to_json
@@ -10,6 +14,18 @@ class ApplicationController < ActionController::Base
 
   def authenticated_user
     @authenticated_user ||= User.find_by(auth_token: session[:auth_token]) if session[:auth_token]
+  end
+
+  def disabled_user?
+    if authenticated_user&.disabled?
+      session[:auth_token] = nil
+    end
+  end
+  
+  def pending_user?
+    if authenticated_user&.pending?
+      redirect_to profile_url, warning: 'You should first complete your profile!'
+    end
   end
 
   def require_authentication
@@ -37,6 +53,11 @@ class ApplicationController < ActionController::Base
 
   def conversation
     @conversation ||= mailbox.conversations.find(params[:id])
+  end
+
+  def render_404(message = 'Not Found')
+    logger.info "Rendering 404: #{message}"
+    render file: "#{Rails.root}/public/404.html", layout: false, status: 404
   end
 
 end

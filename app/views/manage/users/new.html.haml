@@ -1,0 +1,31 @@
+- page_title 'Add Users'
+
+.container
+  .row
+    .col
+      %br
+      %div
+     
+      %h1.brand-primary.mb-4 Add Users
+
+      .col-12.col-sm-12.col-md-9.col-lg-6.col-xl-6
+        = form_with(url: manage_users_path, local: true) do |f|
+          #scroll-box-users
+            .row.text-center
+              .col
+                %h3 New User Invites
+            .row.text-center
+              .col
+                To invite new Users, insert email addresses in the fields below:
+            .row
+              .col
+                .form-group.col-12.col-sm-12.col-md-12.col-lg-12.col-xl-12
+                  %br
+                  -(1..@available_users_count).map do |i|
+                    = f.text_field "email_#{i}".to_sym, class: "form-control"
+                    %br
+          %br
+          .mb-3.text-center
+            = f.submit 'Send', class: 'btn btn-primary', style: 'border:1px solid black;', data: { disable_with: 'Sending...' }
+            = link_to 'Cancel', manage_users_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'
+        

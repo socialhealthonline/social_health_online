@@ -6,11 +6,11 @@ class EventForCalendarSerializer < ActiveModel::Serializer
   end
 
   def start
-    object.start_at
+    object.start_at.in_time_zone(object.time_zone)
   end
 
   def allDay
-    true
+    false
   end
 
   def color

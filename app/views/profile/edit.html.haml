@@ -1,129 +1,172 @@
+- page_title 'My Profile'
+
 .container
-  .row.pt-5
-    .col
-      %h2.brand-primary My Profile
-  .row.mb-5
+  .row.pt-3
+    .col.pb-4
+      %h1.brand-primary.text-center My Profile
+  .row
     .col
       = form_with model: @user, url: update_profile_url, method: :patch, local: true do |f|
-        .row
-          .col
-            .form-group
-              %label(for="user_name") Name
-              = f.text_field :name, autofocus: true, required: true, class: "form-control #{form_error_class(@user, :name)}"
-              = model_error_display(@user, :name)
-          .col
-            .form-group
-              %label(for="user_display_name") Display Name
-              = f.text_field :display_name, class: "form-control #{form_error_class(@user, :display_name)}"
-              = model_error_display(@user, :display_name)
-        .row
-          .col
-            .form-group
-              %label(for="user_email") Email
-              = f.email_field :email, required: true, class: "form-control #{form_error_class(@user, :email)}"
-              = model_error_display(@user, :email)
-          .col
-            .form-group
-              %label(for="user_phone") Phone
-              = f.text_field :phone, class: "form-control #{form_error_class(@user, :phone)}"
-              = model_error_display(@user, :phone)
-        .row
-          .col
-            .form-group
-              %label(for="user_address") Address
-              = f.text_field :address, class: "form-control #{form_error_class(@user, :address)}"
-              = model_error_display(@user, :address)
-          .col
-            .form-group
-              %label(for="user_city") City
-              = f.text_field :city, class: "form-control #{form_error_class(@user, :city)}"
-              = model_error_display(@user, :city)
-        .row
-          .col
-            .form-group
-              %label(for="user_state") State
-              = f.select :state, US_STATES, {}, { class: "form-control custom-select #{form_error_class(@user, :state)}" }
-              = model_error_display(@user, :state)
-          .col
-            .form-group
-              %label(for="user_zip") Zip
-              = f.text_field :zip, class: "form-control #{form_error_class(@user, :zip)}"
-              = model_error_display(@user, :zip)
-        .row
-          .col
-            .form-group
-              %label(for="user_time_zone") Timezone
-              = f.select(:time_zone, ['Alaska', 'Hawaii', 'Pacific Time (US & Canada)', 'Mountain Time (US & Canada)', 'Central Time (US & Canada)', 'Eastern Time (US & Canada)'].sort, {}, { class: 'custom-select form-control' })
-              = model_error_display(@user, :time_zone)
-          .col
-            .form-group
-              %label(for="user_birthdate") Birthdate (YYYY-MM-DD)
-              = f.text_field :birthdate, class: "flatpickr-date form-control #{form_error_class(@user, :birthdate)}"
-              = model_error_display(@user, :birthdate)
-        .row
-          .col
-            .form-group
-              %label(for="user_gender") Gender
-              = f.select :gender, User::GENDER, {}, { class: "form-control custom-select #{form_error_class(@user, :gender)}" }
-              = model_error_display(@user, :gender)
-          .col
-            .form-group
-              %label(for="user_ethnicity") Race/Ethnicity
-              = f.select :ethnicity, User::ETHNICITY, {}, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
-              = model_error_display(@user, :ethnicity)
-        .row
-          .col
-            .form-group
-              %label(for="user_relationship_status") Relationship Status
-              = f.select :relationship_status, User::RELATIONSHIP_STATUS, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :relationship_status)}" }
-              = model_error_display(@user, :relationship_status)
-          .col
-            .form-group
-              %label(for="user_education_level") Education Level
-              = f.select :education_level, User::EDUCATION_LEVEL, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :education_level)}" }
-              = model_error_display(@user, :education_level)
-        .row
-          .col
-            .form-group
-              %label(for="user_occupation") Occupation
-              = f.text_field :occupation, class: "form-control #{form_error_class(@user, :occupation)}"
-              = model_error_display(@user, :occupation)
-          .col
-            .form-group
-              %label(for="user_languages") Languages
-              = f.text_field :languages, class: "form-control #{form_error_class(@user, :languages)}"
-              = model_error_display(@user, :languages)
-        .row
-          .col
-            .form-group
-              %label(for="user_hobbies") Hobbies
-              = f.text_field :hobbies, class: "form-control #{form_error_class(@user, :hobbies)}"
-              = model_error_display(@user, :hobbies)
-          .col
-            .form-group
-              %label(for="user_pet_peeves") Pet Peeves
-              = f.text_field :pet_peeves, class: "form-control #{form_error_class(@user, :pet_peeves)}"
-              = model_error_display(@user, :pet_peeves)
-        .row
-          .col
-            .form-group
-              %label(for="user_bio") Bio
-              = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@user, :bio)}"
-              = model_error_display(@user, :bio)
-        %hr
-        .row
-          .col
-            %p.text-muted Change your password:
-        .row
-          .col
-            .form-group
-              %label(for="user_password") New Password
-              = f.password_field :password, class: "form-control #{form_error_class(@user, :password)}"
-              = model_error_display(@user, :password)
-          .col
-            .form-group
-              %label(for="user_password_confirmation") Confirm New Password
-              = f.password_field :password_confirmation, class: "form-control #{form_error_class(@user, :password_confirmation)}"
-              = model_error_display(@user, :password_confirmation)
-
-        = f.submit 'Update', class: 'btn btn-primary', data: { disable_with: 'Updating...' }
+        = f.fields_for :hidden_field do |h|
+          .row
+            .col
+              .form-group
+                %label(for="user_name") Name
+                = f.text_field :name, autofocus: true, required: true, class: "form-control #{form_error_class(@user, :name)}"
+                = model_error_display(@user, :name)
+                %div.float-right
+                  %label(for="user_name") Hide Info
+                  = h.check_box :name, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.name) }, '1', '0'
+            .col
+              .form-group
+                %label(for="user_display_name") Display Name
+                = f.text_field :display_name, class: "form-control #{form_error_class(@user, :display_name)}"
+                = model_error_display(@user, :display_name)
+          .row
+            .col-lg-6
+              .form-group
+                %label(for="user_email") Email
+                = f.email_field :email, required: true, class: "form-control #{form_error_class(@user, :email)}"
+                = model_error_display(@user, :email)
+                %div.float-right
+                  %label(for="user_email") Hide Info
+                  = h.check_box :email, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.email) }, '1', '0'
+            .col
+              .form-group
+                %label(for="user_phone") Phone
+                = f.text_field :phone, class: "form-control #{form_error_class(@user, :phone)}"
+                = model_error_display(@user, :phone)
+                %div.float-right
+                  %label(for="user_phone") Hide Info
+                  = h.check_box :phone, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.phone) }, '1', '0'
+          .row
+            .col
+              .form-group
+                %label(for="user_address") Address
+                = f.text_field :address, class: "form-control #{form_error_class(@user, :address)}"
+                = model_error_display(@user, :address)
+                %div.float-right
+                  %label(for="user_address") Hide Info
+                  = h.check_box :address, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.address) }, '1', '0'
+            .col
+              .form-group
+                %label(for="user_city") City
+                = f.text_field :city, class: "form-control #{form_error_class(@user, :city)}"
+                = model_error_display(@user, :city)
+                %div.float-right
+                  %label(for="user_city") Hide Info
+                  = h.check_box :city, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.city) }, '1', '0'
+          .row
+            .col
+              .form-group
+                %label(for="user_state") State
+                = f.select :state, US_STATES, {}, { class: "form-control custom-select #{form_error_class(@user, :state)}" }
+                = model_error_display(@user, :state)
+                %div.float-right
+                  %label(for="user_state") Hide Info
+                  = h.check_box :state, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.state) }, '1', '0'
+            .col
+              .form-group
+                %label(for="user_zip") ZIP Code
+                = f.text_field :zip, class: "form-control #{form_error_class(@user, :zip)}"
+                = model_error_display(@user, :zip)
+                %div.float-right
+                  %label(for="user_zip") Hide Info
+                  = h.check_box :zip, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.zip) }, '1', '0'
+          .row
+            .col
+              .form-group
+                %label(for="user_time_zone") Time Zone
+                = f.select(:time_zone, ['Alaska', 'Hawaii', 'Pacific Time (US & Canada)', 'Mountain Time (US & Canada)', 'Central Time (US & Canada)', 'Eastern Time (US & Canada)'].sort, {}, { class: 'custom-select form-control' })
+                = model_error_display(@user, :time_zone)
+                %div.float-right
+                  %label(for="user_time_zone") Hide Info
+                  = h.check_box :time_zone, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.time_zone) }, '1', '0'
+            .col
+              .form-group
+                %label(for="user_birthdate") Birthdate
+                = f.text_field :birthdate, class: "flatpickr-date form-control #{form_error_class(@user, :birthdate)}"
+                = model_error_display(@user, :birthdate)
+                %div.float-right
+                  %label(for="user_birthdate") Hide Info
+                  = h.check_box :birthdate, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.birthdate) }, '1', '0'
+          .row
+            .col
+              .form-group
+                %label(for="user_gender") Gender
+                = f.select :gender, User::GENDER, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@user, :gender)}" }
+                = model_error_display(@user, :gender)
+                %div.float-right
+                  %label(for="user_gender") Hide Info
+                  = h.check_box :gender, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.gender) }, '1', '0'
+            .col
+              .form-group
+                %label(for="user_ethnicity") Race/Ethnicity
+                = f.select :ethnicity, User::ETHNICITY, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
+                = model_error_display(@user, :ethnicity)
+                %div.float-right
+                  %label(for="user_ethnicity") Hide Info
+                  = h.check_box :ethnicity, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.ethnicity) }, '1', '0'
+          .row
+            .col
+              .form-group
+                %label(for="user_relationship_status") Relationship Status
+                = f.select :relationship_status, User::RELATIONSHIP_STATUS, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :relationship_status)}" }
+                = model_error_display(@user, :relationship_status)
+            .col
+              .form-group
+                %label(for="user_education_level") Education Level
+                = f.select :education_level, User::EDUCATION_LEVEL, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :education_level)}" }
+                = model_error_display(@user, :education_level)
+          .row
+            .col
+              .form-group
+                %label(for="user_occupation") Occupation
+                = f.text_field :occupation, class: "form-control #{form_error_class(@user, :occupation)}"
+                = model_error_display(@user, :occupation)
+            .col
+              .form-group
+                %label(for="user_languages") Languages
+                = f.text_field :languages, class: "form-control #{form_error_class(@user, :languages)}"
+                = model_error_display(@user, :languages)
+          .row
+            .col
+              .form-group
+                %label(for="user_hobbies") Hobbies
+                = f.text_field :hobbies, class: "form-control #{form_error_class(@user, :hobbies)}"
+                = model_error_display(@user, :hobbies)
+            .col
+              .form-group
+                %label(for="user_pet_peeves") Pet Peeves
+                = f.text_field :pet_peeves, class: "form-control #{form_error_class(@user, :pet_peeves)}"
+                = model_error_display(@user, :pet_peeves)
+          .row
+            .col
+              .form-group
+                %label(for="user_bio") Bio
+                = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@user, :bio)}"
+                = model_error_display(@user, :bio)
+          .row
+            .col-6.col-sm-6.col-lg-6.col-xl-6
+            .col
+              .form-group
+                .col-xs-2
+                  = h.check_box :matchmaker, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.matchmaker) }, '1', '0'
+                  %label(for="user_invisible") Hide my profile in Matchmaker 
+          %hr
+          .row
+            .col
+              %p.text-muted Change your password:
+          .row
+            .col
+              .form-group
+                %label(for="user_password") New Password
+                = f.password_field :password, class: "form-control #{form_error_class(@user, :password)}", id: 'profile-password'
+                = model_error_display(@user, :password)
+            .col
+              .form-group
+                %label(for="user_password_confirmation") Confirm New Password
+                = f.password_field :password_confirmation, class: "form-control #{form_error_class(@user, :password_confirmation)}"
+                = model_error_display(@user, :password_confirmation)
+          .row.justify-content-center.pt-1.pb-3
+            = f.submit 'Update', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Updating...' }

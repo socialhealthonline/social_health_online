@@ -4,9 +4,8 @@
     { name: "address", title: "Address" },
     { name: "city", title: "City" },
     { name: "state", title: "State" },
-    { name: "zip", title: "Zip Code" },
+    { name: "zip", title: "ZIP Code" },
     { name: "phone", title: "Phone Number" },
-    { name: "url", title: "URL / Link" }
   ];
 
   $(document).ready(function() {
@@ -17,7 +16,7 @@
       if (filterTypeSelected === "geo") {
         filterForm.innerHTML =
           '<div class="row"><div class="col-md-6">' +
-          '<input type="text" name="city" placeholder="City" id="city-input" class="form-control">' +
+          '<input type="text" name="city" placeholder="City" id="city-input" class="form-control text-center">' +
           "</div>" +
           '<div class="col-md-6">' +
           buildStatesSelector('state-input', 'state') +
@@ -25,8 +24,8 @@
       } else if (filterTypeSelected === "zip") {
         filterForm.innerHTML =
           '<div class="row">' +
-          '<div class="col-md-6 px-2">' +
-          '<input type="text" name="zip" placeholder="Zip Code" id="zip-input" class="form-control">' +
+          '<div class="col-md-12 px-2">' +
+          '<input type="text" name="zip" placeholder="ZIP Code" id="zip-input" class="form-control">' +
           "</div></div>";
       }
     }
@@ -181,6 +180,7 @@
       "<h3>" +
       row.name +
       "</h3>" +
+      "<h6>Address:</h6>" +	
       "<p>" +
       row.full_address +
       "</p>" +

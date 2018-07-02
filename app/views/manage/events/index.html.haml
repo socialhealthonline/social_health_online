@@ -1,38 +1,46 @@
 - page_title 'My Community Events'
 
 .container
-  .row.pt-5
+  .row.pt-3
     .col
-      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
-        %h2.brand-primary My Community Events
-        = link_to new_manage_event_path, class: 'btn btn-primary ml-auto mr-1' do
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3
+        %h1.brand-primary My Community Events
+        = link_to new_manage_event_path, class: 'btn btn-primary ml-auto mr-1 mb-4', style: 'border: 1px solid black;'  do
           %i.fas.fa-plus-circle
           Add Event
-        .dropdown
-          %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+        .dropdown.pb-4
+          %a.btn.btn-primary.dropdown-toggle{:style => 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
             %i.fas.fa-cog
             Manage
-          .dropdown-menu.dropdown-menu-right
+          .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;'}
             = link_to manage_edit_member_path, class: 'dropdown-item' do
               %i.fas.fa-building
-              Profile
-            = link_to manage_social_tracker_users_path, class: 'dropdown-item' do
+              Community Profile
+            = link_to manage_social_tracker_users_path(@member), class: 'dropdown-item' do
               %i.fas.fa-database
               Social Tracker
-  .row
+            = link_to manage_announcements_path, class: 'dropdown-item' do
+              %i.fas.fa.fa-bullhorn
+              Announcements
+            = link_to manage_users_path, class: 'dropdown-item' do
+              %i.fas.fa-user-circle
+              Users
+            = link_to my_community_path, class: 'dropdown-item' do
+              %i.fas.fa-angle-double-left
+              Community Home
+  .row.pb-3
     .col
       - if @events.any?
-        .table-responsive
-          %table.table.table-borderless.align-items-center
+        .table-responsive.text-center{ :style => 'border: 2px solid black; border-radius: 12px;'}
+          %table.table.table-borderless.align-items-center.table-hover
             %thead
               %tr
                 %th(scope="col") Event Title
                 %th(scope="col") Event Type
-                %th(scope="col") Event Date
+                %th(scope="col") Event Date/Time
                 %th(scope="col") Event Location
                 %th(scope="col") Event City
                 %th(scope="col") Event State
-                %th(scope="col")
             %tbody
               - @events.each_with_index do |event, i|
                 %tr.bg-white
@@ -54,6 +62,7 @@
                           %i.far.fa-trash-alt
                           Delete
                 %tr.table-divider
+          %p= paginate @events
       - else
         %p.pb-3.text-muted
           %em No events were found.

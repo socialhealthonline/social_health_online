@@ -4,51 +4,60 @@
       $('#calendar').fullCalendar({
         events: "/communities/#{@member.slug}/events.json",
         header: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'month,agendaWeek,agendaDay,listMonth'
+          left: 'prev',
+          center: 'title,today,listMonth,month',
+          right: 'next'
         }
       });
     });
 
-%section.bg-white.text-dark.height-30
+%section.bg-white.text-dark.pt-3.pb-3
   .container.align-self-end
     .row
       .col-12
         .d-flex.justify-content-between.align-items-center
-          %h1.mb-2= @member.name
+          %h1.mb-2.font-weight-bold.c-pointer{ data: { toggle: 'modal', target: '#community-profile-modal' } }= @member.name
           - if authenticated_user.manager? && authenticated_user.member_id == @member.id
             %div
-              .dropdown
-                %a.btn.btn-primary.dropdown-toggle(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+              .dropdown.mb-3
+                %a.btn.btn-primary.dropdown-toggle{style: 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
                   %i.fas.fa-cog
                   Manage
-                .dropdown-menu.dropdown-menu-right
+                .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;'}
                   = link_to manage_edit_member_path, class: 'dropdown-item' do
                     %i.fas.fa-building
-                    Profile
+                    Community Profile
                   = link_to manage_events_path, class: 'dropdown-item' do
                     %i.fas.fa-map-marker-alt
-                    Events
-                  = link_to manage_social_tracker_users_path, class: 'dropdown-item' do
+                    Community Events
+                  = link_to manage_social_tracker_users_path(@member), class: 'dropdown-item' do
                     %i.fas.fa-database
                     Social Tracker
-      .col-12.col-md-8
+                  = link_to manage_announcements_path, class: 'dropdown-item' do
+                    %i.fas.fa.fa-bullhorn
+                    Announcements
+                  = link_to manage_users_path, class: 'dropdown-item' do
+                    %i.fas.fa-user-circle
+                    Users
+
+      .col-12.col-md-9
+        %p
+          = @member.logo
         - if @member.primary_manager.present?
-          %p
-            %i.fas.fa-user
-            Primary Manager -
+          %p.c-pointer{ data: { toggle: 'modal', target: '#community-profile-modal' } }
+            %i.fas.fa-id-card
+            Community Manager -
             = @member.primary_manager.name
         - if @member.url.present?
           %p
             = link_to @member.url, target: '_blank' do
               %i.fas.fa-external-link-alt
-              Website
+              Visit Website
         - if @member.events_url.present?
           %p
             = link_to @member.events_url, target: '_blank' do
               %i.fas.fa-map-marker-alt
-              Events Webpage
+              Visit Events Webpage
         %p
           %h5 Bio
           = @member.bio
@@ -56,7 +65,7 @@
 %section.flush-with-above.space-0
   %div
     .container
-      .row
+      .row.font-weight-bold
         .col
           %ul.nav.nav-tabs#communityTabs(role="tablist")
             %li.nav-item
@@ -65,17 +74,82 @@
               %a.nav-link#announcements-tab(data-toggle="tab" href="#announcements" role="tab" aria-controls="announcements" aria-selected="true") Announcements
             %li.nav-item
               %a.nav-link#members-tab(data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="false") User List
+- page_title 'My Community'
 
-%section.pt-2
-  .tab-content
+%section.pt-2.pb-2
+  .tab-content.pb-2
     .tab-pane.fade.show.active#events(role="tabpanel" aria-labelledby="events-tab")
+
       .container
         .row
           .col-12
             .card
-              .card-body
+              .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
                 #calendar
     .tab-pane.fade#announcements(role="tabpanel" aria-labelledby="announcements-tab")
       .container
+        .row.mt-4
+          .col.pt-3
+            #scroll-box-announcements{ :style => "border: 2px solid black; border-radius: 12px;" }
+              - @announcements.each do |announcement|
+                .mb-3.text-center
+                  %h5= announcement.title
+                  .announcements-date.mb-2.border-bottom= time_in_cdt(announcement.updated_at, '%m/%d/%Y')
+                  .announcements-text.text-left.pb-2= simple_format(announcement.body)
+              %p= paginate @announcements
+
     .tab-pane.fade#members(role="tabpanel" aria-labelledby="members-tab")
+      %div#profile_partial
       .container
+        .row.my-3.justify-content-center
+          .col-7.pt-3
+            #scroll-box-announcements{ style: "border: 2px solid black; border-radius: 12px; width: 100%;" }
+              %h5.notification-title.border-bottom.mb-2
+                Display Name
+              - @users.each do |user|
+                .mb-3.bg-white.text-center
+                  %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                    data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: user }" } }
+                    =user.display_name
+            %p= paginate @users
+
+
+#community-profile-modal.modal.fade{ 'aria-hidden' => 'true', 'aria-labelledby' => 'CommunityProfileModalLabel', role: 'dialog', tabindex: '-1' }
+  .modal-dialog{ role: 'document' }
+    .modal-content
+      .modal-header
+        %h3#CommunityProfileModalLabel.modal-title= @member.name
+        %button.close{ 'aria-label' => 'Close', 'data-dismiss' => 'modal', type: 'button' }
+          %span{ 'aria-hidden' => 'true' } ×
+      .modal-body
+        %p
+          %strong Address:
+          = @member.address
+        %p
+          %strong City:
+          = @member.city
+        %p
+          %strong State:
+          = @member.state
+        %p
+          %strong ZIP Code:
+          = @member.zip
+        %p
+          %strong Website:
+          = link_to @member.url, @member.url, target: '_blank'
+        %p
+          %strong Events Webpage:
+          = link_to @member.events_url, @member.events_url, target: '_blank'
+        %p
+          %strong Primary Manager:
+          = @member.primary_manager&.name
+        %p
+          %strong Primary Manager Phone:
+          = number_to_phone @member.primary_manager&.phone
+        %p
+          %strong Primary Manager E-mail:
+          = @member.primary_manager&.email
+        %p
+          %strong Bio:
+          = @member.bio
+      .modal-footer

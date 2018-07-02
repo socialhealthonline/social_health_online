@@ -51,7 +51,7 @@ RSpec.describe 'Public pages' do
     it 'views service page successfully' do
       visit service_path
       expect(current_path).to eq service_path
-      expect(page).to have_content 'Our Service'
+      expect(page).to have_content 'Service'
     end
   end
 
