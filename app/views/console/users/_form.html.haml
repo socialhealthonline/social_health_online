@@ -69,7 +69,7 @@
     .form-group
       %label(for="user_group") Group
       = f.text_field :group, class: "form-control #{form_error_class(@user, :group)}"
-      = model_error_display(@user, :group)      
+      = model_error_display(@user, :group)
 .row
   .col
     .card
@@ -86,7 +86,7 @@
           %label.form-check-label(for="user_enabled") Enabled
         %small Enabled to sign in
 
-.mb-5.text-center
+.text-center
   = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
   - if @user.persisted?
     = link_to 'Cancel', console_member_user_path(@member.id, @user), class: 'btn btn-outline-secondary'

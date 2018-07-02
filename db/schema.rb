@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_28_222647) do
+ActiveRecord::Schema.define(version: 2018_06_27_204523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -202,6 +202,7 @@ ActiveRecord::Schema.define(version: 2018_06_28_222647) do
     t.datetime "welcome_kit_date"
     t.string "phone"
     t.string "contact_phone_extension"
+    t.string "stripe_customer_id"
     t.index ["slug"], name: "index_members_on_slug", unique: true
   end
 
@@ -295,6 +296,7 @@ ActiveRecord::Schema.define(version: 2018_06_28_222647) do
     t.date "first_login"
     t.string "phone_extension"
     t.text "group"
+    t.string "favorites"
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["enabled"], name: "index_users_on_enabled"

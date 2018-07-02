@@ -91,29 +91,29 @@
         .row.mt-4
           .col.pt-3
             #scroll-box-announcements{ :style => "border: 2px solid black; border-radius: 12px;" }
-              - @announcements.each do |announcement| 
-                .mb-3
+              - @announcements.each do |announcement|
+                .mb-3.text-center
                   %h5= announcement.title
-                  .announcements-date= time_in_cdt(announcement.updated_at, '%m/%d/%Y')
-                  .announcements-text= simple_format(announcement.body)
+                  .announcements-date.mb-2.border-bottom= time_in_cdt(announcement.updated_at, '%m/%d/%Y')
+                  .announcements-text.text-left.pb-2= simple_format(announcement.body)
               %p= paginate @announcements
-        
+
     .tab-pane.fade#members(role="tabpanel" aria-labelledby="members-tab")
       %div#profile_partial
       .container
         .row.my-3.justify-content-center
           .col-7.pt-3
             #scroll-box-announcements{ style: "border: 2px solid black; border-radius: 12px; width: 100%;" }
-              %h5.notification-title.mb-2
-                %strong Display Name
+              %h5.notification-title.border-bottom.mb-2
+                Display Name
               - @users.each do |user|
-                .mb-3.text-center
+                .mb-3.bg-white.text-center
                   %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: user }" } }
                     =user.display_name
             %p= paginate @users
 
-                       
+
 #community-profile-modal.modal.fade{ 'aria-hidden' => 'true', 'aria-labelledby' => 'CommunityProfileModalLabel', role: 'dialog', tabindex: '-1' }
   .modal-dialog{ role: 'document' }
     .modal-content

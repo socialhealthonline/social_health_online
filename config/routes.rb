@@ -17,11 +17,17 @@ Rails.application.routes.draw do
   get "pricing" => "public#pricing"
   get "support" => "public#support"
   get "news" => "public#news"
+  get "affiliate_agreement" => "public#affiliate_agreement"
+  get "saas_agreement" => "public#saas_agreement"
   get "terms" => "public#terms"
   get "privacy" => "public#privacy"
+  get "faq" => "public#faq"
 
   # Create Member
   resources :members_registration, only: [:new, :create]
+
+  #Stripe webhooks
+  mount StripeEvent::Engine, at: '/stripe_events'
 
   # Contact
   get "contact" => "contact#new"

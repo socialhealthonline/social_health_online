@@ -15,7 +15,7 @@ module AffiliateHelper
     Affiliate.support_types
   end
 
-  def csv_affilialate_list
+  def csv_affiliate_list
     columns = %w[name address city state zip phone url]
     CSV.generate(col_sep: ';',
                  row_sep: "\n",

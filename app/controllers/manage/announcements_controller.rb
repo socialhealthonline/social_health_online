@@ -3,7 +3,7 @@ class Manage::AnnouncementsController < ApplicationController
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
 
   def index
-    @announcements = Announcement.where(member_id: authenticated_user.member.id).page(params[:page])
+    @announcements = Announcement.where(member_id: authenticated_user.member.id).order(created_at: :desc).page(params[:page])
   end
 
   def show; end

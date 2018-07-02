@@ -16,7 +16,7 @@ class Event < ApplicationRecord
   def location_display
     [address, city, state, zip].join(', ')
   end
-  
+
   def rsvp_limit_reached?
     return false unless rsvp_limit
     rsvps.yes.count == rsvp_limit
