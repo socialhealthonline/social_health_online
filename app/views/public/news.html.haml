@@ -6,7 +6,7 @@
       %h1.text-info News
 
       - @news.each do |news|
-        .mb-3.px-2
+        .mb-3
           %p.h5.mb-0= news.title
           %p.border-bottom= time_in_cdt(news.updated_at, '%m/%d/%Y')
           %p= simple_format(news.body)
