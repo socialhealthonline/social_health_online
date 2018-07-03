@@ -18,7 +18,6 @@
         %th= sort_link 'email', 'Email'
         %th= sort_link 'manager', 'Manager'
         %th= sort_link 'last_sign_in_at', 'Last Sign In'
-        %th
       %tbody
         - @admins.each_with_index do |admin, i|
           %tr.bg-white

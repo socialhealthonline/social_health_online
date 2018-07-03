@@ -15,7 +15,6 @@
           %th= sort_link 'title', 'News Title'
           %th= sort_link 'body', 'News Body Preview'
           %th= sort_link 'created_at', 'Added On'
-          %th
       %tbody
         - @news.each.with_index(1) do |news, i|
           %tr.bg-white
