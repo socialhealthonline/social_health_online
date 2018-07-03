@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_27_204523) do
+ActiveRecord::Schema.define(version: 2018_06_28_222647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -197,8 +197,8 @@ ActiveRecord::Schema.define(version: 2018_06_27_204523) do
     t.string "url"
     t.integer "primary_manager_id"
     t.string "events_url"
-    t.string "slug"
     t.boolean "hide_info_on_locator", default: false
+    t.string "slug"
     t.datetime "welcome_kit_date"
     t.string "phone"
     t.string "contact_phone_extension"
@@ -216,6 +216,14 @@ ActiveRecord::Schema.define(version: 2018_06_27_204523) do
   create_table "notifications", force: :cascade do |t|
     t.string "title"
     t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "registrations", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "telephone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -296,7 +304,6 @@ ActiveRecord::Schema.define(version: 2018_06_27_204523) do
     t.date "first_login"
     t.string "phone_extension"
     t.text "group"
-    t.string "favorites"
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["enabled"], name: "index_users_on_enabled"
