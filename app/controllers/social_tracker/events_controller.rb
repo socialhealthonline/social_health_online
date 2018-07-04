@@ -13,11 +13,11 @@ class SocialTracker::EventsController < ApplicationController
     parameters = log_params.to_h
     source = parameters[:source]
 
-    @social_event_log = authenticated_user.social_event_logs.build(parameters.except(:event_category))
-
-    if source.eql? 0
-      @social_event_log.event_category = event_category
+    if source.eql? 1
+      parameters = parameters.except(:event_category)
     end
+
+    @social_event_log = authenticated_user.social_event_logs.build(parameters)
 
     if @social_event_log.save && daily_events_logged < 3
 
