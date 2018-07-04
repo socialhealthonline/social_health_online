@@ -61,7 +61,7 @@ $(document).ready(function() {
     });
 
     var activeTab = localStorage.getItem('activeTab');
-    
+
     if(activeTab){
       $('#communityTabs a[href="' + activeTab + '"]').tab('show');
     }
