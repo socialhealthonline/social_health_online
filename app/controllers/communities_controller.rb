@@ -4,7 +4,7 @@ class CommunitiesController < ApplicationController
   def show
     @member = Member.friendly.find(params[:id]).decorate
     @announcements = @member.announcements.order(created_at: :desc).page(params[:page])
-    @users = @member.users.all_except(authenticated_user.id).where(user_status: :activated).page(params[:page]).per(20)
+    @users = @member.users.all_except(authenticated_user.id).activated.page(params[:page]).per(20)
   end
 
   def explore_communities
