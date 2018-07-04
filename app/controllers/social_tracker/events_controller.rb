@@ -19,10 +19,9 @@ class SocialTracker::EventsController < ApplicationController
 
     @social_event_log = authenticated_user.social_event_logs.build(parameters)
 
-    if @social_event_log.save && daily_events_logged < 3
-
+    if daily_events_logged < 3 && @social_event_log.save
       redirect_to social_tracker_history_url, success: "The event was logged successfully!"
-    elsif daily_events_logged >=3
+    elsif daily_events_logged >= 3
       flash.now[:error] = 'Unsuccessfully logged event. You can log a maximum of 3 events per day.'
       render :new
     else

@@ -2,6 +2,7 @@
   $(window).bind("load", function() {
     let selectedState = $("#social_event_log_state")[0].value;
     displayListOfCities(selectedState);
+    set_category();
 
     $("#social_event_log_state").on("change", function() {
       let selectedState = $("#social_event_log_state")[0].value;
@@ -9,15 +10,7 @@
     });
 
     $("#social_event_log_source").on("change", function() {
-      let source = $("#social_event_log_source")[0].value;
-      console.log(source);
-      if(source === '0'){
-          $('.not_sho_category').hide();
-          $("#social_event_log_event_category").prop("disabled", false);
-        }else if(source === '1'){
-          $('.not_sho_category').show();
-          $("#social_event_log_event_category").prop("disabled", true);
-      }
+        set_category();
     });
   });
   
@@ -36,4 +29,16 @@
       }
     });
   }
+
+    function set_category() {
+        let source = $("#social_event_log_source")[0].value;
+        console.log(source);
+        if (source === '0') {
+            $('.not_sho_category').hide();
+            $("#social_event_log_event_category").prop("disabled", false);
+        } else if (source === '1') {
+            $('.not_sho_category').show();
+            $("#social_event_log_event_category").prop("disabled", true);
+        }
+    }
 })();
