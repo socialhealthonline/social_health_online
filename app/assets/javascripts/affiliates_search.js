@@ -201,7 +201,7 @@
       row.support_type +
       "</p>" +
       "<h6>Support Notes:</h6>" +
-      "<p class=pr-2>" +
+      "<p>" +
       (row.support_notes || "No Support Notes") +
       "</p>" +
       "</div>";
