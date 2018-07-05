@@ -6,7 +6,8 @@ class SocialEventLog < ApplicationRecord
 
   default_scope { order("created_at desc") }
 
-  validates_presence_of :event_date, :state, :city, :event_type, :source, :rating, :venue, :event_category
+  validates_presence_of :event_date, :state, :city, :event_type, :source, :rating, :venue
+  validates_presence_of :event_category, :unless => :source?
 
   validates :state, inclusion: US_STATES.values
 

@@ -1,6 +1,7 @@
 class MembersRegistrationController < ApplicationController
   rescue_from Stripe::CardError do |e|
-    redirect_to new_members_registration_path, error: e.message
+    flash.now[:error] = e.message
+    render :new
   end
 
   def new

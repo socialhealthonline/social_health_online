@@ -144,6 +144,8 @@ GEM
     faraday (0.15.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.23)
+    font-awesome-rails (4.7.0.4)
+      railties (>= 3.2, < 6.0)
     friendly_id (5.2.4)
       activerecord (>= 4.0.0)
     fullcalendar-rails (3.4.0.0)
@@ -393,6 +395,7 @@ DEPENDENCIES
   email_spec
   erb2haml
   factory_bot_rails
+  font-awesome-rails
   friendly_id
   fullcalendar-rails
   gon

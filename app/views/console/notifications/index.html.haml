@@ -15,7 +15,6 @@
           %th= sort_link 'title', 'Notification Title'
           %th= sort_link 'body', 'Notification Body Preview'
           %th= sort_link 'created_at', 'Added On'
-          %th
       %tbody
         - @notifications.each.with_index(1) do |notification, i|
           %tr.bg-white

@@ -2,7 +2,7 @@ class Member < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  has_one :primary_manager, class_name: "User", foreign_key: :id, primary_key: :primary_manager_id
+  has_one :primary_manager, class_name: 'User', foreign_key: :id, primary_key: :primary_manager_id
   has_many :users, inverse_of: :member, dependent: :destroy
   has_many :events, inverse_of: :member, dependent: :destroy
   has_many :announcements, dependent: :destroy

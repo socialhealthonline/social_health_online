@@ -8,6 +8,7 @@ gem "aws-sdk-s3", require: false
 gem 'bcrypt'
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 4.1.0'
+gem 'font-awesome-rails'
 gem 'friendly_id'
 gem 'fullcalendar-rails'
 gem 'hamlit'

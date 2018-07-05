@@ -31,7 +31,6 @@
               %th City
               %th
               %th State
-              %th
           %tbody
           - @events.each do |event|
             %tr.bg-white
@@ -48,4 +47,4 @@
             %tr.table-divider
         %div.container.pagination.justify-content-center
           %p= paginate @events
-        %br 
+        %br

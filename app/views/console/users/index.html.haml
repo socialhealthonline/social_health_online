@@ -23,7 +23,6 @@
           %th= sort_link 'manager', 'Manager'
           %th= sort_link 'last_sign_in_at', 'Last Sign In'
           %th= sort_link 'enabled', 'Status'
-          %th
       %tbody
         - @users.each_with_index do |user, i|
           %tr.bg-white
