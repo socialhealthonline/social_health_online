@@ -193,7 +193,7 @@
       "<p>" +
       '<a href="' +
       (row.url || "#") +
-      '">' +
+      '" target="_blank">' +
       (row.url || "No Website") +
       "</a>" +
       "</p>" +
