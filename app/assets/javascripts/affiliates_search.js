@@ -199,9 +199,9 @@
       "<h6>Support Type:</h6>" +
       "<p>" +
       row.support_type +
-      "</p>" +	  
+      "</p>" +
       "<h6>Support Notes:</h6>" +
-      "<p>" +
+      "<p class=pr-2>" +
       (row.support_notes || "No Support Notes") +
       "</p>" +
       "</div>";
@@ -274,7 +274,7 @@
       "<h6>Support Type:</h6>" +
       "<p>" +
       row.support_type +
-      "</p>" +	  
+      "</p>" +
       "<h6>Support Notes:</h6>" +
       "<p>" +
       (row.support_notes || "No Support Notes") +
