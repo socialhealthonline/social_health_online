@@ -29,7 +29,7 @@
             %td= affiliate.state
             %td= support_types.key(affiliate.support_type)
             %td= affiliate.hide_info_on_locator ? 'Yes' : 'No'
-            %td= short_date affiliate.created_at
+            %td= short_date affiliate.date_added
             %td.w-10.text-right
               .dropdown
                 = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{affiliate.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
