@@ -38,9 +38,9 @@
       %table.table.table-borderless.table-hover
         %thead
           %tr
-            %th Announcement Title
-            %th Announcement Body Preview
-            %th Added On
+            %th= sort_link 'title', 'Announcement Title'
+            %th= sort_link 'body', 'Announcement Body Preview'
+            %th= sort_link 'created_at', 'Added On'
         %tbody
           - @announcements.each.with_index(1) do |announcement, i|
             %tr.bg-white
