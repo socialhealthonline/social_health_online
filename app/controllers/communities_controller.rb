@@ -9,13 +9,13 @@ class CommunitiesController < ApplicationController
 
   def explore_communities
     @communities = Member.where.not("name = ? ", authenticated_user.member.name)
-    @communities = FindUsersCommunities.new(@communities, show_init_scope: true).call(permitted_params)
+    @communities = FindUsersCommunities.new(@communities, show_init_scope: false).call(permitted_params)
   end
 
   def event_search
     @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :desc).page(params[:page]).per(25)
     @events = Event.where("start_at >= ?", Time.zone.now).order(start_at: :desc).page(params[:page])
-    @events = FindUsersCommunities.new(@events, show_init_scope: true).call(permitted_params)
+    @events = FindUsersCommunities.new(@events, show_init_scope: false).call(permitted_params)
   end
 
   private
