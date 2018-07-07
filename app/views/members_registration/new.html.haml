@@ -121,7 +121,8 @@
               = f.check_box :terms_of_service, class: 'form-check-input', id: 'termsCheckBox', 'data-data_capcha': false
               %label{ for: 'termsCheckBox' }
                 I Agree to the
-                %a{ href: saas_agreement_path } SaaS Agreement
+                %a
+                %a{ href: saas_agreement_path, title: 'Saas Agreement', target: '_blank'}> SaaS Agreement
 
         %div
           = recaptcha_tags callback: 'thenCapchaIsSubmited', expired_callback: 'expiredRecapchaCallback'
