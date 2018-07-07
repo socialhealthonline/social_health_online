@@ -75,7 +75,7 @@ class Manage::UsersController < ApplicationController
 
   def sortable_columns
     %w[
-      name display_email user_status manager
+      name display_name email user_status manager
     ]
   end
 
