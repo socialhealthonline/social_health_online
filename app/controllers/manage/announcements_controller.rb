@@ -4,8 +4,7 @@ class Manage::AnnouncementsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @announcements = Announcement.where(member_id: authenticated_user.member.id).order(created_at: :desc).page(params[:page])
-    @announcements = Announcement.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
+    @announcements = Announcement.where(member_id: authenticated_user.member.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def show; end
@@ -47,7 +46,7 @@ class Manage::AnnouncementsController < ApplicationController
       :title,
       :body,
       :created_at
-      
+
     )
   end
 
