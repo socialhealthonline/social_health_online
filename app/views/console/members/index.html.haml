@@ -3,8 +3,11 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.pb-3.border-bottom
   %h1.h3.brand-primary Members
   %div
-    = link_to export_csv_console_members_path, class: 'btn btn-primary btn-export', :style => 'border: 1px solid black;' do
-      Export CSV
+    = link_to export_user_csv_console_members_path, class: 'btn btn-primary btn-export', :style => 'border: 1px solid black;' do
+      Export User CSV
+
+    = link_to export_member_csv_console_members_path, class: 'btn btn-primary btn-export', :style => 'border: 1px solid black;' do
+      Export Member CSV
 
     = link_to new_console_member_path, class: 'btn btn-primary', :style => 'border: 1px solid black;' do
       %i.fas.fa-plus-circle

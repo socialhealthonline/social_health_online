@@ -108,7 +108,8 @@ Rails.application.routes.draw do
     resources :notifications
     resources :members do
       collection do
-        get 'export_csv'
+        get 'export_user_csv'
+        get 'export_member_csv'
       end
       resources :users
     end

@@ -1,6 +1,6 @@
 class Console::MembersController < ConsoleController
   helper_method :sort_column, :sort_direction
-  
+
   def index
     @members = Member.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
@@ -44,9 +44,14 @@ class Console::MembersController < ConsoleController
     redirect_to console_members_url, success: 'The Member was successfully deleted!'
   end
 
-  def export_csv
+  def export_member_csv
     csv = helpers.csv_member_list
     send_data csv, filename: "members-#{Date.today}.csv"
+  end
+
+  def export_user_csv
+    csv = helpers.csv_user_list
+    send_data csv, filename: "users-#{Date.today}.csv"
   end
 
   private
