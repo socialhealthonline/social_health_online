@@ -13,11 +13,8 @@ class CommunitiesController < ApplicationController
   end
 
   def event_search
-    @events = Event.where("start_at >= ?", Time.zone.now)
-	           .where(member_id: authenticated_user.member_id)
-	           .or(Event.where(private: false))
-	           .order(start_at: :desc).page(params[:page]).per(25)
-
+    @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :desc).page(params[:page]).per(25)
+    @events = Event.where("start_at >= ?", Time.zone.now).where(private: false).order(start_at: :desc).page(params[:page])
     @events = FindUsersCommunities.new(@events, show_init_scope: false).call(permitted_params)
   end
 
