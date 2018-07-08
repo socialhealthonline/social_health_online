@@ -10,7 +10,7 @@
     .col
       %p
         %i.fas.fa-portrait{:title => "Event Host"}
-        = @event.member_id
+        = @event.member.name
       %p
         %i.fas.fa-tag{:title => "Event Type"}
         = @event.event_type
