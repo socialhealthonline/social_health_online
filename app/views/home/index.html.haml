@@ -52,3 +52,4 @@
               %td= time_in_cdt(event.start_at, '%m/%d/%Y, %H:%M %p %Z')
               %td= home_events_status(event.status)
             %tr.table-divider
+        %p= paginate @events
