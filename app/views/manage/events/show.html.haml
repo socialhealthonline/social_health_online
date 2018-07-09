@@ -59,7 +59,7 @@
                   =rsvp.user.display_name
               %td.text-center.pr-3= rsvp&.rsvp_status.capitalize
   %p.pt-2.pb-3
-    = link_to 'javascript:history.back()', class: 'btn btn-outline-primary mr-1', :style => 'border: 1px solid black;' do
+    = link_to manage_events_path(@event.id), class: 'btn btn-outline-primary mr-1', style: 'border: 1px solid black;' do
       %i.fas.fa-arrow-left
       Back
     = link_to edit_manage_event_path(@event.id), class: 'btn btn-outline-primary mr-1' do
