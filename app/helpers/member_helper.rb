@@ -30,7 +30,7 @@ module MemberHelper
                  headers: true,
                  write_headers: true,
                  return_headers: true) do |csv|
-      csv << %w[Name Address City State Zip Phone]
+      csv << %w[Member\ Name Address City State Zip Phone]
       Member.find_each.each do |member|
         csv << columns.collect { |name| member.send(name) }
       end
