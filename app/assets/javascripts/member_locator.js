@@ -152,7 +152,6 @@
         });
       });
 
-      displayMarkers(data);
     });
   });
 
