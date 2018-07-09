@@ -1,7 +1,7 @@
 class Console::AffiliatesController < ConsoleController
   helper_method :sort_column, :sort_direction
   def index
-    @affiliates = Affiliate.order("#{sort_column} #{sort_direction}").page(params[:page])
+    @affiliates = Affiliate.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def show

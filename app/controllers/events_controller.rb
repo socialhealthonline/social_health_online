@@ -19,6 +19,8 @@ class EventsController < ApplicationController
   end
 
   def show
+    @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :desc).page(params[:page]).per(5)
+    @events = Event.where("start_at >= ?", Time.zone.now).where(private: false).order(start_at: :desc).page(params[:page])
     @rsvp_switcher = authenticated_user.rsvps.find_by(event_id: params[:id])
     @event = Event.find(params[:id]).decorate
 

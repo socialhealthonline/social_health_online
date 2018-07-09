@@ -37,13 +37,13 @@
       %p
         %strong RSVP List
         .dropdown
-          %a.btn.btn-primary.dropdown-toggle{style: 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+          %a.btn.btn-primary.mb-1.dropdown-toggle{style: 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
             %i.fas.fa-hand-point-right
             RSVP
           .dropdown-menu.dropdown-menu-right#rsvp-dropdown
             - Rsvp.rsvp_statuses.keys.each do |value|
               = @event.link_or_span(value, @rsvp_switcher)
-      %div.table-wrapper-2.table-hover.mb-2{ :style => "border-radius: 12px;" }
+      %div.table-wrapper-2.table-hover{ :style => "border-radius: 12px;" }
         %table.table.table-borderless.text-left.mb-2
           %thead.mdb-color.lighten-4
             %tr
@@ -60,7 +60,46 @@
                   =rsvp.user.display_name
               %td.text-center.pr-3= rsvp&.rsvp_status.capitalize
 
-      %div.mb-3.float-left
+.container
+  .col
+    %div.form-row
+      %div.float-left.pt-3
         = link_to 'javascript:history.back()', class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
           %i.fas.fa-arrow-left
           Back
+
+.container.text-center
+  .col.mt-3
+    %div.form-row
+      %div.col-12
+        %h3.notification-title.justify-content-center.py-2.border-top
+          %strong Similar Events
+      %div.table-wrapper-2.mb-3.table-hover#events-feed{:style => "border-radius: 12px;"}
+        %table.table.text-center
+          %thead.mdb-color.lighten-4
+            %tr
+              %th Event Title
+              %th
+              %th Event Type
+              %th
+              %th Event Date/Time
+              %th
+              %th City
+              %th
+              %th State
+          %tbody
+          - @events.each do |event|
+            %tr.bg-white
+              %td= link_to event.title, community_event_path(authenticated_user.member, event)
+              %td
+              %td= event.event_type
+              %td
+              %td= time_in_cdt(event.start_at, '%m/%d/%Y, %H:%M %p %Z')
+              %td
+              %td= event.city
+              %td
+              %td= event.state
+              %td
+            %tr.table-divider
+        %div.container.pagination.justify-content-center
+          %p= paginate @events

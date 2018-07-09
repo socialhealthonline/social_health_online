@@ -3,7 +3,7 @@ class Console::NotificationsController < ConsoleController
   helper_method :sort_column, :sort_direction
 
   def index
-    @notifications = Notification.order("#{sort_column} #{sort_direction}").page(params[:page])
+    @notifications = Notification.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
   def show; end
