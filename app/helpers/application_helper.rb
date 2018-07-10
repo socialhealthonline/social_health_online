@@ -48,7 +48,7 @@ module ApplicationHelper
   end
 
   def locator_filter_options
-    [["City, State", "geo"], ["Zip Code", "zip"]]
+    [["City/State", "geo"], ["Zip Code", "zip"]]
   end
 
   def active_page(active_page)
