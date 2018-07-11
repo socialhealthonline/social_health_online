@@ -90,7 +90,7 @@
             .form-group
               %label User Seats
               %i.c-pointer.fas.fa-info-circle.fa{:title => '5 User minimum - includes the Account Manager'}
-              = f.number_field :service_capacity, min: 5, value: 5, required: true, class: "form-coof github.com:socialhealthonline/social_health_online into developmentntrol #{form_error_class(@member, :service_capacity)}"
+              = f.number_field :service_capacity, min: 5, value: 5, required: true, class: "form-control #{form_error_class(@member, :service_capacity)}"
               = model_error_display(@member, :service_capacity)
           .col
             .form-group
