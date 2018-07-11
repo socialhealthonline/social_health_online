@@ -43,11 +43,6 @@
       .col-12.col-md-9
         %p
           = @member.logo
-        - if @member.primary_manager.present?
-          %p.c-pointer{ data: { toggle: 'modal', target: '#community-profile-modal' } }
-            %i.fas.fa-id-card
-            Community Manager -
-            = @member.primary_manager.name
         - if @member.url.present?
           %p
             = link_to @member.url, target: '_blank' do
