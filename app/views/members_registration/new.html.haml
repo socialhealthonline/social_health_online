@@ -15,7 +15,7 @@
           .col-lg-6
             .form-group
               %label Member Name
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Name of an organization registering to become a Member'}
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Name of the organization registering to become a Member (e.g., TJ Maxx)'}
               = f.text_field :name, autofocus: true, required: true, class: "form-control #{form_error_class(@member, :name)}"
               = model_error_display(@member, :name)
           .col
@@ -43,11 +43,13 @@
           .col-lg-6
             .form-group
               %label Phone
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the area code and number of the registering organization here in ten digits (e.g., 8662825789)'}
               = f.text_field :phone, required: true, class: "form-control #{form_error_class(@member, :phone)}"
               = model_error_display(@member, :phone)
           .col
             .form-group
               %label Website
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'The website of the registering organization (e.g., www.google.com)'}
               = f.text_field :url, required: true, class: "form-control #{form_error_class(@member, :url)}"
               = model_error_display(@member, :url)
         .row
@@ -66,6 +68,7 @@
           .col-lg-6
             .form-group
               %label Contact Phone
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the area code and number of the person registering for an organization here in ten digits (e.g., 2056105555)'}
               = f.text_field :contact_phone, required: true, class: "form-control #{form_error_class(@member, :contact_phone)}"
               = model_error_display(@member, :contact_phone)
           .col

@@ -110,7 +110,7 @@
           .col-6
             .form-group
               %label(for="group") Group
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'e.g. Sales Team'}
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'e.g., Sales Team'}
               = f.text_field :group, class: "form-control #{form_error_class(@user, :group)}"
               = model_error_display(@user, :group)
           .col-6

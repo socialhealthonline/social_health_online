@@ -130,21 +130,23 @@
           %strong ZIP Code:
           = @member.zip
         %p
+          %strong Phone:
+          = number_to_phone @member.phone
+        %p
           %strong Website:
           = link_to @member.url, @member.url, target: '_blank'
         %p
           %strong Events Webpage:
           = link_to @member.events_url, @member.events_url, target: '_blank'
         %p
-          %strong Primary Manager:
+          %strong Primary Manager Name:
           = @member.primary_manager&.name
+        %p
+          %strong Primary Manager Display Name:
+          = @member.primary_manager&.display_name
         %p
           %strong Primary Manager Phone:
           = number_to_phone @member.primary_manager&.phone
         %p
           %strong Primary Manager Email:
           = @member.primary_manager&.email
-        %p
-          %strong Bio:
-          = @member.bio
-      .modal-footer
