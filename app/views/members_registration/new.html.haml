@@ -15,19 +15,19 @@
           .col-lg-6
             .form-group
               %label Member Name
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Name of the organization registering to become a Member (e.g., TJ Maxx)'}
-              = f.text_field :name, autofocus: true, required: true, class: "form-control #{form_error_class(@member, :name)}"
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Name of the organization registering to become a Member'}
+              = f.text_field :name, :placeholder => "E.g., TJ Maxx", autofocus: true, required: true, class: "form-control #{form_error_class(@member, :name)}"
               = model_error_display(@member, :name)
           .col
             .form-group
               %label Address
-              = f.text_field :address, required: true, class: "form-control #{form_error_class(@member, :address)}"
+              = f.text_field :address, :placeholder => "E.g., 123 Main Street", required: true, class: "form-control #{form_error_class(@member, :address)}"
               = model_error_display(@member, :address)
         .row
           .col-lg-6
             .form-group
               %label City
-              = f.text_field :city, required: true, class: "form-control #{form_error_class(@member, :city)}"
+              = f.text_field :city, :placeholder => "E.g., Springfield", required: true, class: "form-control #{form_error_class(@member, :city)}"
               = model_error_display(@member, :city)
           .col-lg-4
             .form-group
@@ -37,56 +37,56 @@
           .col
             .form-group
               %label ZIP Code
-              = f.text_field :zip, required: true, class: "form-control #{form_error_class(@member, :zip)}"
+              = f.text_field :zip, :placeholder => "E.g., 12345", required: true, class: "form-control #{form_error_class(@member, :zip)}"
               = model_error_display(@member, :zip)
         .row
           .col-lg-6
             .form-group
               %label Phone
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the area code and number of the registering organization here in ten digits (e.g., 8662825789)'}
-              = f.text_field :phone, required: true, class: "form-control #{form_error_class(@member, :phone)}"
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the area code and phone number of the registering organization here in ten digits'}
+              = f.text_field :phone, :placeholder => "E.g., 8662825789", required: true, class: "form-control #{form_error_class(@member, :phone)}"
               = model_error_display(@member, :phone)
           .col
             .form-group
               %label Website
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'The website of the registering organization (e.g., www.google.com)'}
-              = f.text_field :url, required: true, class: "form-control #{form_error_class(@member, :url)}"
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'The website of the registering organization'}
+              = f.text_field :url, :placeholder => "E.g., www.google.com", required: true, class: "form-control #{form_error_class(@member, :url)}"
               = model_error_display(@member, :url)
         .row
           .col-lg-6
             .form-group
               %label Contact Name
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'Name of the person responsible for the registration of an organization'}
-              = f.text_field :contact_name, required: true, class: "form-control #{form_error_class(@member, :contact_name)}"
+              = f.text_field :contact_name, :placeholder => "E.g., John Doe", required: true, class: "form-control #{form_error_class(@member, :contact_name)}"
               = model_error_display(@member, :contact_name)
           .col
             .form-group
               %label Contact Email
-              = f.email_field :contact_email, required: true, class: "form-control #{form_error_class(@member, :contact_email)}"
+              = f.email_field :contact_email, :placeholder => "E.g., johndoe@mail.com", required: true, class: "form-control #{form_error_class(@member, :contact_email)}"
               = model_error_display(@member, :contact_email)
         .row
           .col-lg-6
             .form-group
               %label Contact Phone
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the area code and number of the person registering for an organization here in ten digits (e.g., 2056105555)'}
-              = f.text_field :contact_phone, required: true, class: "form-control #{form_error_class(@member, :contact_phone)}"
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the area code and phone number of the person registering for an organization here in ten digits'}
+              = f.text_field :contact_phone, :placeholder => "E.g., 2056105555", required: true, class: "form-control #{form_error_class(@member, :contact_phone)}"
               = model_error_display(@member, :contact_phone)
           .col
             .form-group
               %label Contact Phone Extension
-              = f.text_field :contact_phone_extension, class: "form-control #{form_error_class(@member, :contact_phone_extension)}"
+              = f.text_field :contact_phone_extension, :placeholder => "E.g., 123", class: "form-control #{form_error_class(@member, :contact_phone_extension)}"
               = model_error_display(@member, :contact_phone_extension)
         .row
           .col-lg-6
             .form-group
               %label Account Manager's Name
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Initial User for an organization and the person who manages their online Community'}
-              = f.text_field :account_manager_name, required: true, class: "form-control #{form_error_class(@member, :account_manager_name)}"
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Initial User for an organization and the person primarily responsible for managing their online Community'}
+              = f.text_field :account_manager_name, :placeholder => "E.g., Jane Doe", required: true, class: "form-control #{form_error_class(@member, :account_manager_name)}"
               = model_error_display(@member, :account_manager_name)
           .col
             #account_manager_email_form.form-group
               %label Account Manager's Email
-              = f.email_field :account_manager_email,  required: true,class: "form-control #{form_error_class(@member, :account_manager_email)}"
+              = f.email_field :account_manager_email, :placeholder => "E.g., janedoe@mail.com", required: true,class: "form-control #{form_error_class(@member, :account_manager_email)}"
               = model_error_display(@member, :account_manager_email)
         .row
           .col-lg-6

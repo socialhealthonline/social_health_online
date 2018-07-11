@@ -180,7 +180,7 @@
       "<h3>" +
       row.name +
       "</h3>" +
-      "<h6>Address:</h6>" +	
+      "<h6>Address:</h6>" +
       "<p>" +
       row.full_address +
       "</p>" +
@@ -199,7 +199,7 @@
       "<h6>Support Type:</h6>" +
       "<p>" +
       row.support_type
-      "</p>" +	
+      "</p>" +
       "</div>";
 
     var infowindow = new google.maps.InfoWindow({
@@ -252,7 +252,7 @@
       "<h3>" +
       row.name +
       "</h3>" +
-      "<h6>Address:</h6>" +	
+      "<h6>Address:</h6>" +
       "<p>" +
       row.full_address +
       "</p>" +
@@ -271,7 +271,7 @@
       "<h6>Support Type:</h6>" +
       "<p>" +
       row.support_type
-      "</p>" +	
+      "</p>" +
       "</div>";
 
       var infowindow = new google.maps.InfoWindow({
