@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   # Create Member
   resources :members_registration, only: [:new, :create]
 
+  # Affiliate Registration
+  get "affiliates_registration" => "affiliates_registration#new"
+  post "affiliates_registration" => "affiliates_registration#create"
+
   #Stripe webhooks
   mount StripeEvent::Engine, at: '/stripe_events'
 

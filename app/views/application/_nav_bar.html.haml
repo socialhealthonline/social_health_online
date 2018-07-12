@@ -71,5 +71,7 @@
                 .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'navbarDropdownMenuLink'}
                   = link_to new_members_registration_path, class: 'dropdown-item' do
                     Member Registration
+                  = link_to affiliates_registration_path, class: 'dropdown-item' do
+                    Affiliate Registration
               %li.nav-item.sign-in-button
                 = link_to 'Sign In', signin_path
