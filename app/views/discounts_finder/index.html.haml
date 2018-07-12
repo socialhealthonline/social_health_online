@@ -28,6 +28,8 @@
               %th
               %th State
               %th
+              %th Website
+              %th
               %th Discount
           %tbody
           - @affiliates.each do |affiliate|
@@ -37,6 +39,8 @@
               %td= affiliate.city
               %td
               %td= affiliate.state
+              %td
+              %td= link_to "Visit Website", affiliate.url, target: :_blank
               %td
               %td.text-left
                 = affiliate.support_notes
