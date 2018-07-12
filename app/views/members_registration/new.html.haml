@@ -81,12 +81,12 @@
             .form-group
               %label Account Manager's Name
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'Initial User for an organization and the person primarily responsible for managing their online Community'}
-              = f.text_field :account_manager_name, :placeholder => "E.g., Jane Doe", required: true, class: "form-control #{form_error_class(@member, :account_manager_name)}"
+              = text_field_tag :account_manager_name, params[:account_manager_name], :placeholder => "E.g., Jane Doe", required: true, class: "form-control #{form_error_class(@member, :account_manager_name)}"
               = model_error_display(@member, :account_manager_name)
           .col
             #account_manager_email_form.form-group
               %label Account Manager's Email
-              = f.email_field :account_manager_email, :placeholder => "E.g., janedoe@mail.com", required: true,class: "form-control #{form_error_class(@member, :account_manager_email)}"
+              = text_field_tag :account_manager_email, params[:account_manager_email], :placeholder => "E.g., janedoe@mail.com", required: true,class: "form-control #{form_error_class(@member, :account_manager_email)}"
               = model_error_display(@member, :account_manager_email)
         .row
           .col-lg-6
@@ -110,7 +110,6 @@
             .form-group.mb-3
               %label Total Price:
               #total-price.form-control.font-weight-bold.text-center
-
 
         .row
           .col
