@@ -133,10 +133,11 @@
           %strong Phone:
           = number_to_phone @member.phone
         %p
+        - if @member.url.present?
           %strong Website:
           = link_to @member.url, @member.url, target: '_blank'
-
         %p
+        - if @member.events_url.present?
           %strong Events Webpage:
           = link_to @member.events_url, @member.events_url, target: '_blank'
         %p
