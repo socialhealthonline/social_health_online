@@ -151,6 +151,9 @@ Rails.application.routes.draw do
   # Affiliates
   get "affiliates_search" => "affiliates#index"
 
+  # Discounts
+  get "discounts_finder" => "discounts_finder#index"
+
   # Issues
   get "issues" => "issues#new"
   post "issues" => "issues#create"

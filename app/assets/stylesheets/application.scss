@@ -164,6 +164,14 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
   display: block;
   overflow: scroll;
   max-height: 300px;
+  font-size: 13px;
+}
+
+#affiliate-search-table-container{
+  display: block;
+  overflow: scroll;
+  max-height: 300px;
+  font-size: 11px;
 }
 
 @media (max-width: 767.98px) {
@@ -198,6 +206,7 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
   display: block;
   overflow: scroll;
   max-height: 300px;
+  font-size: 13px;
 }
 
 #member-locator-table > tr{
@@ -379,7 +388,7 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
 }
 
 .member-list-table {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 #scroll-box-users {

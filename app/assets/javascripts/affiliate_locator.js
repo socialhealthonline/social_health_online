@@ -6,6 +6,7 @@
     { name: "state", title: "State" },
     { name: "zip", title: "ZIP Code" },
     { name: "phone", title: "Phone Number" },
+    { name: "url", title: "Website" },
     { name: "support_type", title: "Support Type" }
   ];
 

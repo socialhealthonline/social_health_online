@@ -8,7 +8,7 @@ class CommunitiesController < ApplicationController
   end
 
   def explore_communities
-    @communities = Member.where.not("name = ? ", authenticated_user.member.name)
+    @communities = Member.where.not("name = ? ", authenticated_user.member.name).page(params[:page]).per(10)
     @communities = FindUsersCommunities.new(@communities, show_init_scope: false).call(permitted_params)
   end
 
