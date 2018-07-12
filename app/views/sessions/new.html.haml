@@ -4,7 +4,7 @@
       %h3.text-center
         %strong Sign In
       .card{ :style => 'border: 2px solid black; border-radius: 12px;' }
-        .card-body.border{ :style => 'border: 2px solid black; border-radius: 12px;' }
+        .card-body
           = form_with url: [:sessions], local: true do
             .form-group
               %label(for="sign-in-email") Email
