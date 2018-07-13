@@ -1,0 +1,82 @@
+- page_title 'Affiliate Registration'
+
+.container
+  .row.pt-3
+    .col.pb-4
+      %h1.brand-primary.text-center
+        Affiliate Registration
+  .row
+    .col
+      = form_with url: affiliates_registration_url, method: :post, local: true do
+        = hidden_field_tag :subject, ''
+      .row
+        .col-lg-6
+          .form-group
+            %label(for="name") Affiliate Name
+            %i.c-pointer.fas.fa-info-circle.fa{:title => 'Name of the organization registering to become an Affiliate'}
+            = text_field_tag :name, params[:name], :placeholder => 'John\'s Family Fun Center', autofocus: true, class: 'form-control', required: true
+        .col
+          .form-group
+            %label(for="address") Address
+            = text_field_tag :address, params[:address], :placeholder => 'E.g., 123 Main Street', class: 'form-control', required: true
+      .row
+        .col-lg-6
+          .form-group
+            %label(for="email") City 
+            = text_field_tag :city, params[:city], class: 'form-control', required: true
+        .col-lg-4
+          .form-group
+            %label(for="state") State
+            = text_field_tag :state, params[:state], class: 'form-control', required: true
+        .col-lg
+          .form-group
+            %label(for="zip") ZIP Code
+            = text_field_tag :zip, params[:zip], class: 'form-control', required: true
+          .form-group
+      .row
+        .col-lg-6
+          .form-group
+            %label(for="phone") Phone 
+            %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the area code and phone number of the registering organization here in ten digits'}
+            = text_field_tag :phone, params[:phone], :placeholder => "E.g., 8662825789", class: 'form-control', required: true
+        .col    
+          .form-group
+            %label(for="url") Website
+            %i.c-pointer.fas.fa-info-circle.fa{:title => 'The website of the registering organization'}
+            =text_field_tag :url, params[:url], :placeholder => "E.g., www.johnsfamilyfun.com", class: 'form-control', required: false
+      .row
+        .col-lg-6
+          .form-group
+            %label(for="contact_name") Contact Name
+            %i.c-pointer.fas.fa-info-circle.fa{:title => 'Name of the person responsible for the registration of an organization'}
+            =text_field_tag :contact_name, params[:contact_name], class: 'form-control', required: true
+        .col-lg
+          .form-group
+            %label(for="contact_email") Contact Email
+            =email_field_tag :contact_email, params[:contact_email], class: 'form-control', required: true
+      .row
+        .col-lg-6
+          .form-group
+            %label(for="contact_phone") Contact Phone
+            %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the area code and phone number of the person registering for an organization here in ten digits'}
+            =text_field_tag :contact_phone, params[:contact_phone],  :placeholder => "E.g., 8662825789", class: 'form-control', require: true
+        .col-lg
+          .form-group
+            %label(for="contact_phone_extension") Contact Phone Extension
+            =text_field_tag :contact_phone_extension, params[:contact_phone_extension], class: 'form-control', require: false
+      .row
+        .col-lg-6
+          .form-group
+            %label(for="support_type") Support Type
+            %i.c-pointer.fas.fa-info-circle.fa{:title => 'Describe what type of support your organization can provide to Social Health Users. Events are opportunites for social activities. Discounts are monetary discounts for goods and services'}
+            =text_field_tag :support_type, params[:support_type], :placeholder => 'Events, Discounts, or Events/Discounts', class: 'form-control', require: true
+        .col-lg
+          .form-group
+            %label(for="support_notes") Support Notes
+            %i.c-pointer.fas.fa-info-circle.fa{:title => 'Describe any discounts available to Social Health Users'}
+            =text_field_tag :support_notes, params[:support_notes], :placeholder => 'E.g, Offer a discount of 10% for groups of three or more', class: 'form-control', require: false
+      .row.mb-3  
+        .col.text-center
+          = submit_tag 'Submit', class: 'btn btn-primary', style: 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
+
+
