@@ -50,7 +50,7 @@
             .form-group
               %label Website
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'The website of the registering organization'}
-              = f.text_field :url, :placeholder => "E.g., www.google.com", required: true, class: "form-control #{form_error_class(@member, :url)}"
+              = f.text_field :url, :placeholder => "E.g., www.tjmaxx.com", required: true, class: "form-control #{form_error_class(@member, :url)}"
               = model_error_display(@member, :url)
         .row
           .col-lg-6
