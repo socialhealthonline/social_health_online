@@ -4,7 +4,7 @@
       %h3.text-center
         %strong Sign In
       .card{ :style => 'border: 2px solid black; border-radius: 12px;' }
-        .card-body
+        .card-body.pb-1
           = form_with url: [:sessions], local: true do
             .form-group
               %label(for="sign-in-email") Email
@@ -15,3 +15,11 @@
                 = link_to 'Forgot Password?', new_password_reset_path
               = password_field_tag :password, nil, required: true, id: 'sign-in-password', class: 'form-control', tabindex: 2
             = submit_tag 'Sign In', class: 'btn btn-primary btn-block', data: { disable_with: 'Please wait...' }, style: 'border: 1px solid black', tabindex: 3
+        .card-footer.pt-1.pb-3.text-center{ :style => 'border-top:none'}
+          Don't have an account?
+          %p
+          = link_to "Register and get started today", new_members_registration_path
+          %div
+          %strong OR
+          %div
+          = link_to "Contact us to request a free demo", contact_path

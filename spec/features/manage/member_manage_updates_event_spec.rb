@@ -30,7 +30,7 @@ RSpec.describe 'Member manager updates event' do
       expect(page).to have_content 'Edit Event'
       fill_in 'event_rsvp_limit', with: 1
       click_button 'Save'
-      expect(page).to have_content "Caution - RSVP Limit cannot be less than the number of recorded 'Yes' responses."
+      expect(page).to have_content "Caution - RSVP attendee limit cannot be less than the number of recorded 'Yes' responses."
     end
   end
 end

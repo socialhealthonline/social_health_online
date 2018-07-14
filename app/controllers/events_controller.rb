@@ -31,7 +31,7 @@ class EventsController < ApplicationController
 
   def create_or_switch_rsvp
     unless UserEventRsvpAnswerService.new(params, authenticated_user).call
-      flash[:error] = 'The RSVP limit for this event is reached'
+      flash[:error] = 'The RSVP attendee limit for this event is reached'
     end
     redirect_to community_event_path(@member, params[:id])
   end
