@@ -14,7 +14,7 @@
           .form-group
             %label(for="name") Affiliate Name
             %i.c-pointer.fas.fa-info-circle.fa{:title => 'Name of the organization registering to become an Affiliate'}
-            = text_field_tag :name, params[:name], :placeholder => 'John\'s Family Fun Center', autofocus: true, class: 'form-control', required: true
+            = text_field_tag :name, params[:name], :placeholder => 'E.g., John\'s Family Fun Center', autofocus: true, class: 'form-control', required: true
         .col
           .form-group
             %label(for="address") Address
@@ -22,7 +22,7 @@
       .row
         .col-lg-6
           .form-group
-            %label(for="email") City 
+            %label(for="email") City
             = text_field_tag :city, params[:city], class: 'form-control', required: true
         .col-lg-4
           .form-group
@@ -36,10 +36,10 @@
       .row
         .col-lg-6
           .form-group
-            %label(for="phone") Phone 
+            %label(for="phone") Phone
             %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the area code and phone number of the registering organization here in ten digits'}
             = text_field_tag :phone, params[:phone], :placeholder => "E.g., 8662825789", class: 'form-control', required: true
-        .col    
+        .col
           .form-group
             %label(for="url") Website
             %i.c-pointer.fas.fa-info-circle.fa{:title => 'The website of the registering organization'}
@@ -75,8 +75,6 @@
             %label(for="support_notes") Support Notes
             %i.c-pointer.fas.fa-info-circle.fa{:title => 'Describe any discounts available to Social Health Users'}
             =text_field_tag :support_notes, params[:support_notes], :placeholder => 'E.g, Offer a discount of 10% for groups of three or more', class: 'form-control', require: false
-      .row.mb-3  
+      .row.mb-3
         .col.text-center
           = submit_tag 'Submit', class: 'btn btn-primary', style: 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
-
-

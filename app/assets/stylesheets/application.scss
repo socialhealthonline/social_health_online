@@ -398,9 +398,12 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
 
 #scroll-box-users {
   height: 500px;
+  margin: auto;
+  width: 80%;
   overflow: auto;
   padding: 24px;
-  border: 1px solid black;
+  border: 2px solid black;
+  border-radius: 12px;
   bottom: 50px;
 }
 
