@@ -49,6 +49,7 @@
             %tr.text-center.bg-white
               %td= link_to "#{event.title}", community_event_path(authenticated_user.member, event)
               %td= event.event_type
-              %td= time_in_cdt(event.start_at, '%m/%d/%Y, %H:%M %p %Z')
+              %td= time_in_cdt(event.start_at, '%m/%d/%Y, %I:%M %p %Z')
               %td= home_events_status(event.status)
             %tr.table-divider
+        %p= paginate @events

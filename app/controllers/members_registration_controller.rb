@@ -9,18 +9,20 @@ class MembersRegistrationController < ApplicationController
   end
 
   def create
-    @member = Member.new(member_params.merge(suspended: true))
-    if verify_recaptcha(model: @member) && @member.save
-      CreateManagerAndSubscriptionService.new(@member,
-                                              manager_name: params[:member][:account_manager_name],
-                                              manager_email: params[:member][:account_manager_email],
-                                              plan: params[:member][:plan],
-                                              card_token: stripe_params['stripeToken']).call
-      flash[:success] = 'Success'
-      redirect_to root_path
-    else
-      flash.now[:error] = 'Please correct the errors to continue.'
-      render :new
+    ActiveRecord::Base.transaction do
+      @member = Member.new(member_params.merge(suspended: true))
+      if verify_recaptcha(model: @member) && @member.save
+        CreateManagerAndSubscriptionService.new(@member,
+                                                manager_name: params[:account_manager_name],
+                                                manager_email: params[:account_manager_email],
+                                                plan: params[:member][:plan],
+                                                card_token: stripe_params['stripeToken']).call
+        flash[:success] = 'Success'
+        redirect_to root_path
+      else
+        flash.now[:error] = 'Please correct the errors to continue.'
+        render :new
+      end
     end
   end
 

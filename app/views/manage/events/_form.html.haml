@@ -56,7 +56,7 @@
         = model_error_display(@event, :url)
     .col-lg-3
       .form-group
-        %label(for="event_rsvp_limit") RSVP Limit
+        %label(for="event_rsvp_limit") RSVP Attendee Limit
         = f.text_field :rsvp_limit, class: "form-control #{form_error_class(@event, :rsvp_limit)}"
         = model_error_display(@event, :rsvp_limit)
   .row

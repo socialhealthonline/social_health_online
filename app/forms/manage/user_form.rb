@@ -15,12 +15,12 @@ class Manage::UserForm
   def validate_fields(params)
     if @user.pending?
       if check_user_status(params)
-        @error = "You can't switch user status"
+        @error = "You can't switch the User status."
       elsif check_user_email(params)
-        @error = "You can't switch user email until he not activated his account"
+        @error = "You can't switch the User email until the account is activated."
       end
     elsif check_if_manager_switch_own_status(params)
-      @error = "You can't switch yourself status"
+      @error = "You can't switch your own status."
     end
     @error
   end

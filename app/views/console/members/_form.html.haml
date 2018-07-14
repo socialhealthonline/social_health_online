@@ -90,7 +90,7 @@
       %label(for="member_primary_manager_id") Primary Manager
       = f.select :primary_manager_id,
           options_from_collection_for_select(@managers, 'id', 'name', @member.primary_manager_id),
-          { include_blank: true }, { class: 'form-control custom-select' } if @managers.present?
+          { include_blank: false }, { class: 'form-control custom-select' } if @managers.present?
       = model_error_display(@member, :primary_manager_id)
   .col-lg-6
     .form-group

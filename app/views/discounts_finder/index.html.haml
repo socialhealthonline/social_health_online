@@ -1,12 +1,12 @@
-- page_title 'Explore Communities'
+- page_title 'Discounts Finder'
 
 .container
   .row
     .col.py-3
-      %h1.text-info.text-center Explore Communities
+      %h1.brand-primary.text-center Discounts Finder
   .row.my-3
     .col
-      = form_with url: [:explore_communities], method: :get, local: true do |f|
+      = form_with url: [:discounts_finder], method: :get, local: true do |f|
         .form-group.form-inline.justify-content-center#explore_communities_form
           %div.form-group.col-12.col-sm-12.col-md-2.col-lg-2
             = f.select(:state, US_STATES, {}, class: "form-control find_by_state", include_blank: 'State', style: "width: 100%;")
@@ -17,26 +17,34 @@
             .col-xs-3.col-md-3.col-sm-3.mx-auto
               = f.button "Search", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
             %h3.notification-title.justify-content-center.mb-2
-              %strong Communities
+              %strong Affiliate Discounts
       %div.table-wrapper-2.table-hover#events-feed{:style => "border-radius: 12px;"}
         %table.table.text-center
           %thead.mdb-color.lighten-4
             %tr
-              %th Community Name
+              %th Affiliate Name
               %th
               %th City
               %th
               %th State
+              %th
+              %th Website
+              %th
+              %th Discount
           %tbody
-          - @communities.each do |community|
+          - @affiliates.each do |affiliate|
             %tr.bg-white
-              %td= link_to community.name, community_path(community.slug)
+              %td= affiliate.name
               %td
-              %td= community.city
+              %td= affiliate.city
               %td
-              %td= community.state
+              %td= affiliate.state
               %td
+              %td= link_to "Visit Website", affiliate.url, target: :_blank
+              %td
+              %td.text-left
+                = affiliate.support_notes
             %tr.table-divider
         %div.container.pagination.justify-content-center
-          %p= paginate @communities unless @communities.empty?
+          %p= paginate @affiliates unless @affiliates.empty?
         %br

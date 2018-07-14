@@ -3,29 +3,17 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.pb-3.border-bottom
   %h1.h3.brand-primary Members
   %div
-    = link_to export_csv_console_members_path, class: 'btn btn-primary btn-export', :style => 'border: 1px solid black;' do
-      Export CSV
+    = link_to export_user_csv_console_members_path, class: 'btn btn-primary btn-export', :style => 'border: 1px solid black;' do
+      Export User CSV
+
+    = link_to export_member_csv_console_members_path, class: 'btn btn-primary btn-export', :style => 'border: 1px solid black;' do
+      Export Member CSV
 
     = link_to new_console_member_path, class: 'btn btn-primary', :style => 'border: 1px solid black;' do
       %i.fas.fa-plus-circle
       Add Member
 
 .row.my-3
-  .col
-    %h5.notification-title
-      %strong Table Filter
-    = form_with url: [:console_members], method: :get, local: true do |f|
-      .form-group.form-inline.justify-content-center#explore_communities_form
-        %div.form-group.col-12.col-sm-12.col-md-2.col-lg-2
-          = f.select(:state, US_STATES, {}, class: "form-control find_by_state", include_blank: 'State', style: "width: 100%;")
-        %div.form-group.col-12.col-sm-12.col-md-4.col-lg-4
-          = f.text_field :city, placeholder: 'City', class: 'form-control find_by_city', style: "width: 100%;"
-      %div.form-row
-        %div.col-12
-          .col-xs-3.col-md-3.col-sm-3.mx-auto
-            = f.button "Filter", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
-          %h3.notification-title.justify-content-center.mb-2.border-bottom
-
 - if @members.any?
   .table-responsive.member-list-table{ :style => 'border: 2px solid black; border-radius: 12px;'}
     %table.table.table-borderless.align-items-center.table-hover

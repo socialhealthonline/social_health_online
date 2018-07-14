@@ -17,7 +17,7 @@
             .col-xs-3.col-md-3.col-sm-3.mx-auto
               = f.button "Search", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
             %h3.notification-title.justify-content-center.mb-2
-              %strong Events
+              %strong Public Events
       %div.table-wrapper-2.table-hover#events-feed{:style => "border-radius: 12px;"}
         %table.table.text-center
           %thead.mdb-color.lighten-4
@@ -38,7 +38,7 @@
               %td
               %td= event.event_type
               %td
-              %td= time_in_cdt(event.start_at, '%m/%d/%Y, %H:%M %p %Z')
+              %td= time_in_cdt(event.start_at, '%m/%d/%Y, %I:%M %p %Z')
               %td
               %td= event.city
               %td
@@ -46,5 +46,5 @@
               %td
             %tr.table-divider
         %div.container.pagination.justify-content-center
-          %p= paginate @events
+          %p= paginate @events unless @events.empty?
         %br

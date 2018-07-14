@@ -38,15 +38,15 @@
       %table.table.table-borderless.table-hover
         %thead
           %tr
-            %th Announcement Title
-            %th Announcement Body Preview
-            %th Added On
+            %th= sort_link 'title', 'Announcement Title'
+            %th= sort_link 'body', 'Announcement Body Preview'
+            %th= sort_link 'created_at', 'Added On'
         %tbody
           - @announcements.each.with_index(1) do |announcement, i|
             %tr.bg-white
               %td= link_to truncate("#{i}. #{announcement.title}"), manage_announcement_path(announcement)
               %td= truncate(announcement.body)
-              %td= time_in_cdt(announcement.created_at, '%m/%d/%Y %H:%M')
+              %td= time_in_cdt(announcement.created_at, '%m/%d/%Y %I:%M')
               %td
                 = link_to edit_manage_announcement_path(announcement), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
                   %i.far.fa-edit
@@ -57,5 +57,5 @@
     %p= paginate @announcements
   - else
     %p.text-muted
-      %em No announcement were found.
+      %em No announcements were found.
 %br

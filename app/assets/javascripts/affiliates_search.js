@@ -6,7 +6,9 @@
     { name: "state", title: "State" },
     { name: "zip", title: "ZIP Code" },
     { name: "phone", title: "Phone Number" },
+    { name: "url", title: "Website" },
     { name: "support_type", title: "Support Type" },
+    { name: "support_notes", title: "Support Notes" }
   ];
 
   $(document).ready(function() {
@@ -17,7 +19,7 @@
       if (filterTypeSelected === "geo") {
         filterForm.innerHTML =
           '<div class="row"><div class="col-md-6">' +
-          '<input type="text" name="city" placeholder="City" id="city-input" class="form-control">' +
+          '<input type="text" name="city" placeholder="City" id="city-input" class="form-control text-center">' +
           "</div>" +
           '<div class="col-md-6">' +
           buildStatesSelector('state-input', 'state') +
@@ -153,7 +155,6 @@
         });
       });
 
-      displayMarkers(data);
     });
   });
 
@@ -193,13 +194,13 @@
       "<p>" +
       '<a href="' +
       (row.url || "#") +
-      '">' +
+      '" target="_blank">' +
       (row.url || "No Website") +
       "</a>" +
       "<h6>Support Type:</h6>" +
       "<p>" +
       row.support_type +
-      "</p>" +	  
+      "</p>" +
       "<h6>Support Notes:</h6>" +
       "<p>" +
       (row.support_notes || "No Support Notes") +
@@ -274,7 +275,7 @@
       "<h6>Support Type:</h6>" +
       "<p>" +
       row.support_type +
-      "</p>" +	  
+      "</p>" +
       "<h6>Support Notes:</h6>" +
       "<p>" +
       (row.support_notes || "No Support Notes") +

@@ -220,6 +220,14 @@ ActiveRecord::Schema.define(version: 2018_06_28_222647) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "registrations", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "telephone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rsvps", force: :cascade do |t|
     t.bigint "event_id"
     t.bigint "user_id"

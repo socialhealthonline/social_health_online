@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   # Create Member
   resources :members_registration, only: [:new, :create]
 
+  # Affiliate Registration
+  get "affiliates_registration" => "affiliates_registration#new"
+  post "affiliates_registration" => "affiliates_registration#create"
+
   #Stripe webhooks
   mount StripeEvent::Engine, at: '/stripe_events'
 
@@ -108,7 +112,8 @@ Rails.application.routes.draw do
     resources :notifications
     resources :members do
       collection do
-        get 'export_csv'
+        get 'export_user_csv'
+        get 'export_member_csv'
       end
       resources :users
     end
@@ -149,6 +154,9 @@ Rails.application.routes.draw do
 
   # Affiliates
   get "affiliates_search" => "affiliates#index"
+
+  # Discounts
+  get "discounts_finder" => "discounts_finder#index"
 
   # Issues
   get "issues" => "issues#new"

@@ -43,11 +43,6 @@
       .col-12.col-md-9
         %p
           = @member.logo
-        - if @member.primary_manager.present?
-          %p.c-pointer{ data: { toggle: 'modal', target: '#community-profile-modal' } }
-            %i.fas.fa-id-card
-            Community Manager -
-            = @member.primary_manager.name
         - if @member.url.present?
           %p
             = link_to @member.url, target: '_blank' do
@@ -56,7 +51,7 @@
         - if @member.events_url.present?
           %p
             = link_to @member.events_url, target: '_blank' do
-              %i.fas.fa-map-marker-alt
+              %i.fas.fa-external-link-alt
               Visit Events Webpage
         %p
           %h5 Bio
@@ -135,21 +130,26 @@
           %strong ZIP Code:
           = @member.zip
         %p
+          %strong Phone:
+          = number_to_phone @member.phone
+        %p
+        - if @member.url.present?
           %strong Website:
           = link_to @member.url, @member.url, target: '_blank'
         %p
+        - if @member.events_url.present?
           %strong Events Webpage:
           = link_to @member.events_url, @member.events_url, target: '_blank'
         %p
-          %strong Primary Manager:
+        %p
+          %strong Primary Manager Name:
           = @member.primary_manager&.name
+        %p
+          %strong Primary Manager Display Name:
+          = @member.primary_manager&.display_name
         %p
           %strong Primary Manager Phone:
           = number_to_phone @member.primary_manager&.phone
         %p
-          %strong Primary Manager E-mail:
+          %strong Primary Manager Email:
           = @member.primary_manager&.email
-        %p
-          %strong Bio:
-          = @member.bio
-      .modal-footer

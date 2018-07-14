@@ -3,7 +3,7 @@ class Console::NewsController < ConsoleController
   helper_method :sort_column, :sort_direction
 
   def index
-    @news = News.order("#{sort_column} #{sort_direction}").page(params[:page])
+    @news = News.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
   def show; end

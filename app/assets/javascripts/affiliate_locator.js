@@ -6,6 +6,7 @@
     { name: "state", title: "State" },
     { name: "zip", title: "ZIP Code" },
     { name: "phone", title: "Phone Number" },
+    { name: "url", title: "Website" },
     { name: "support_type", title: "Support Type" }
   ];
 
@@ -153,7 +154,6 @@
         });
       });
 
-      displayMarkers(data);
     });
   });
 
@@ -181,7 +181,7 @@
       "<h3>" +
       row.name +
       "</h3>" +
-      "<h6>Address:</h6>" +	
+      "<h6>Address:</h6>" +
       "<p>" +
       row.full_address +
       "</p>" +
@@ -193,14 +193,14 @@
       "<p>" +
       '<a href="' +
       (row.url || "#") +
-      '">' +
+      '" target="_blank">' +
       (row.url || "No Website") +
       "</a>" +
       "</p>" +
       "<h6>Support Type:</h6>" +
       "<p>" +
       row.support_type
-      "</p>" +	
+      "</p>" +
       "</div>";
 
     var infowindow = new google.maps.InfoWindow({
@@ -253,7 +253,7 @@
       "<h3>" +
       row.name +
       "</h3>" +
-      "<h6>Address:</h6>" +	
+      "<h6>Address:</h6>" +
       "<p>" +
       row.full_address +
       "</p>" +
@@ -272,7 +272,7 @@
       "<h6>Support Type:</h6>" +
       "<p>" +
       row.support_type
-      "</p>" +	
+      "</p>" +
       "</div>";
 
       var infowindow = new google.maps.InfoWindow({

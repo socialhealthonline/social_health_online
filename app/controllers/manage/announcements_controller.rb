@@ -1,9 +1,10 @@
 class Manage::AnnouncementsController < ApplicationController
   before_action :require_manager
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   def index
-    @announcements = Announcement.where(member_id: authenticated_user.member.id).order(created_at: :desc).page(params[:page])
+    @announcements = Announcement.where(member_id: authenticated_user.member.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
   def show; end
@@ -39,6 +40,28 @@ class Manage::AnnouncementsController < ApplicationController
   end
 
   private
+
+  def announcement_params
+    params.require(:announcement).permit(
+      :title,
+      :body,
+      :created_at
+
+    )
+  end
+
+  def sortable_columns
+    %w[title body created_at]
+  end
+
+  def sort_column
+    logger.debug("SORT:::: #{params[:direction].inspect}")
+    sortable_columns.include?(params[:column]) ? params[:column] : 'title'
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
 
   def set_announcement
     @announcement = Announcement.find(params[:id])
