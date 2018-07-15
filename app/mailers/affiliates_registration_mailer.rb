@@ -1,5 +1,5 @@
 class AffiliatesRegistrationMailer < ApplicationMailer
-  default from: '"Social Health Online" <hello@socialhealthonline.com>'
+  default from: '"Social Health" <sales@socialhealthonline.com>'
 
   def notify(form_params)
     @form_params = form_params
