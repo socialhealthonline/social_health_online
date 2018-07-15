@@ -59,22 +59,22 @@
             .form-group
               %label(for="contact_phone") Contact Phone
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the area code and phone number of the person registering for an organization here in ten digits'}
-              =text_field_tag :contact_phone, params[:contact_phone],  :placeholder => "E.g., 8662825789", class: 'form-control', require: true
+              =text_field_tag :contact_phone, params[:contact_phone],  :placeholder => "E.g., 8662825789", class: 'form-control', required: true
           .col-lg
             .form-group
               %label(for="contact_phone_extension") Contact Phone Extension
-              =text_field_tag :contact_phone_extension, params[:contact_phone_extension], class: 'form-control', require: false
+              =text_field_tag :contact_phone_extension, params[:contact_phone_extension], class: 'form-control', required: false
         .row
           .col-lg-6
             .form-group
               %label(for="support_type") Support Type
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'Describe what type of support your organization can provide to Social Health Users. Events are opportunites for social activities. Discounts are monetary discounts for goods and services'}
-              =text_field_tag :support_type, params[:support_type], :placeholder => 'Events, Discounts, or Events/Discounts', class: 'form-control', require: true
+              =text_field_tag :support_type, params[:support_type], :placeholder => 'Events, Discounts, or Events/Discounts', class: 'form-control', required: true
           .col-lg
             .form-group
               %label(for="support_notes") Support Notes
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'Describe any discounts available to Social Health Users'}
-              =text_field_tag :support_notes, params[:support_notes], :placeholder => 'E.g, Offer a discount of 10% for groups of three or more', class: 'form-control', require: false
+              =text_field_tag :support_notes, params[:support_notes], :placeholder => 'E.g, 10% discount on all purchases', class: 'form-control', required: false
         .row.mb-3
           .col.text-center
             = submit_tag 'Submit', class: 'btn btn-primary', style: 'border: 1px solid black;', data: { disable_with: 'Please wait...' }

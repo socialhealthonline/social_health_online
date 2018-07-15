@@ -3,7 +3,7 @@ class AffiliatesRegistrationMailer < ApplicationMailer
 
   def notify(form_params)
     @form_params = form_params
-    mail to: 'sales@socialhealthonline.com', subject: '[Social Health Online] New Affiliate Registration Submission'
+    mail to: 'sales@socialhealthonline.com', subject: '[Social Health] New Affiliate Registration Submission'
   end
 
 end
