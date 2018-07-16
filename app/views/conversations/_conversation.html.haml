@@ -7,7 +7,7 @@
         %span.badge.badge-danger New
     - else
       %b Recipients:
-      = conversation.recipients.map(&:name).reject { |name| name.eql?(authenticated_user.name) }.join(', ')
+      = conversation.recipients.map(&:display_name).reject { |display_name|  display_name.eql?(authenticated_user.display_name) }.join(', ')
     %br/
     %b Subject:
     = conversation.subject
