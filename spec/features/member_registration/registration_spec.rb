@@ -24,8 +24,8 @@ RSpec.describe 'Explore Communities' do
         fill_in 'member_contact_email', with: 'example@gmail.com'
         fill_in 'member_contact_phone', with: '0123456789'
         fill_in 'member_contact_phone_extension', with: '0123456789'
-        fill_in 'member_account_manager_name', with: 'Test Account Manager Name'
-        fill_in 'member_account_manager_email', with: 'example_manager@gmail.com'
+        fill_in 'account_manager_name', with: 'Test Account Manager Name'
+        fill_in 'account_manager_email', with: 'example_manager@gmail.com'
         fill_in 'member_service_capacity', with: 5
         fill_stripe_elements(4242424242424242)
         check 'termsCheckBox'
@@ -51,8 +51,8 @@ RSpec.describe 'Explore Communities' do
         fill_in 'member_contact_email', with: 'example@gmail.com'
         fill_in 'member_contact_phone', with: '0123456789'
         fill_in 'member_contact_phone_extension', with: '0123456789'
-        fill_in 'member_account_manager_name', with: 'Test Account Manager Name'
-        fill_in 'member_account_manager_email', with: 'example_manager@gmail.com'
+        fill_in 'account_manager_name', with: 'Test Account Manager Name'
+        fill_in 'account_manager_email', with: 'example_manager@gmail.com'
         fill_in 'member_service_capacity', with: 5
         fill_stripe_elements(4242424242424242)
         check 'termsCheckBox'
