@@ -17,6 +17,9 @@
           %th{:scope => 'row'}
             %b From:
             = message.sender.display_name
+            %div
+            %b To:
+            = conversation.recipients.map(&:display_name).reject { |display_name|  display_name.eql?(authenticated_user.display_name) }.join(', ')
             %br/
             = time_in_cdt(message.created_at, '%A, %b %d, %Y at %I:%M%p')
             %br/

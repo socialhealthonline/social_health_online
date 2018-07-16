@@ -2,11 +2,11 @@
   %th{scope: 'row'}
     - unless folder.equal?(:sent)
       %b From:
-      = conversation.messages.last.sender.display_name
+      = conversation.originator.display_name
       - if conversation.is_unread?(authenticated_user)
         %span.badge.badge-danger New
     - else
-      %b Recipients:
+      %b To:
       = conversation.recipients.map(&:display_name).reject { |display_name|  display_name.eql?(authenticated_user.display_name) }.join(', ')
     %br/
     %b Subject:
