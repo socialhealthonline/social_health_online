@@ -14,7 +14,7 @@ RSpec.describe 'Pending User' do
     end
 
     it 'activated user can navigate over pages' do
-      user.update_attribute(:user_status, :activated)
+      user.update_attribute(:user_status, :enabled)
       visit home_path
       expect(current_path).to eq home_path
     end

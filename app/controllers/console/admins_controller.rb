@@ -1,4 +1,5 @@
 class Console::AdminsController < ConsoleController
+  before_action :set_user_status, only: [:create, :update]
   helper_method :sort_column, :sort_direction
 
   def index
@@ -23,7 +24,7 @@ class Console::AdminsController < ConsoleController
   def create
     @admin = User.new(user_params)
     @admin.set_random_password
-
+    
     if @admin.save
       redirect_to console_admin_url(@admin), success: 'The Admin was successfully created!'
     else
@@ -68,7 +69,7 @@ class Console::AdminsController < ConsoleController
       :time_zone,
       :last_sign_in_at,
       :member_id,
-      :enabled,
+      :user_status,
       :manager,
       :admin
     )
@@ -77,7 +78,7 @@ class Console::AdminsController < ConsoleController
   def sortable_columns
     %w[
       name email display_name address city state zip phone gender
-      ethnicity birthdate time_zone last_sign_in_at member_id enabled manager
+      ethnicity birthdate time_zone last_sign_in_at member_id user_status=1 manager
       admin
     ]
   end
@@ -89,6 +90,10 @@ class Console::AdminsController < ConsoleController
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
+
+  def set_user_status
+    params[:user].merge!(user_status: params[:user][:user_status].to_i).permit!
   end
 
 end

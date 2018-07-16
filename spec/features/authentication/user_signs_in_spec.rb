@@ -60,7 +60,7 @@ RSpec.describe 'User signs in' do
     end
 
     it 'with disabled user' do
-      user.update_attribute(:enabled, false)
+      user.update_attribute(:user_status, :disabled)
       fill_in 'email', with: user.email
       fill_in 'password', with: user.password
       click_button 'Sign In'
