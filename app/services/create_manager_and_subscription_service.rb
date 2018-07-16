@@ -37,14 +37,14 @@ class CreateManagerAndSubscriptionService
     if customer
       @member.update!(stripe_customer_id: customer.id)
       Stripe::Subscription.create({
-                                                   customer: customer.id,
-                                                   items: [
-                                                     {
-                                                       plan: @plan,
-                                                       quantity: @member.service_capacity,
-                                                     },
-                                                   ],
-                                                 })
+                                    customer: customer.id,
+                                    items: [
+                                      {
+                                        plan: @plan,
+                                        quantity: @member.service_capacity,
+                                      },
+                                    ]
+                                  })
     end
   rescue Stripe::CardError, ActiveRecord::RecordInvalid => e
     @member.destroy
