@@ -1,5 +1,6 @@
 class Console::UsersController < ConsoleController
   before_action :load_member
+  before_action :set_user_status, only: [:create, :update]
   helper_method :sort_column, :sort_direction
 
   def index
@@ -83,15 +84,15 @@ class Console::UsersController < ConsoleController
       :time_zone,
       :group,
       :last_sign_in_at,
-      :enabled,
-      :manager
+      :manager,
+      :user_status
     )
   end
 
   def sortable_columns
     %w[
       name email display_name address city state zip phone gender
-      ethnicity birthdate time_zone group last_sign_in_at enabled manager
+      ethnicity birthdate time_zone group last_sign_in_at user_status=1 manager
     ]
   end
 
@@ -102,6 +103,10 @@ class Console::UsersController < ConsoleController
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
+
+  def set_user_status
+    params[:user].merge!(user_status: params[:user][:user_status].to_i).permit!
   end
 
 end

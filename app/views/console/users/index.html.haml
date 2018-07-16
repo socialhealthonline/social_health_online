@@ -22,7 +22,7 @@
           %th= sort_link 'email', 'Email'
           %th= sort_link 'manager', 'Manager'
           %th= sort_link 'last_sign_in_at', 'Last Sign In'
-          %th= sort_link 'activated', 'Status'
+          %th= sort_link 'user_status=1', 'Status'
       %tbody
         - @users.each_with_index do |user, i|
           %tr.bg-white
@@ -34,7 +34,7 @@
             %td= user.email
             %td= user.manager? ? 'Yes' : 'No'
             %td= short_date user.last_sign_in_at
-            %td= user.activated? ? 'Enabled' : 'Disabled'
+            %td= user.enabled? ? 'Enabled' : 'Disabled'
             %td.w-10.text-right
               .dropdown
                 = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{user.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do

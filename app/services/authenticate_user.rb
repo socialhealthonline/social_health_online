@@ -18,7 +18,7 @@ class AuthenticateUser
         @flash = 'The email or password you entered was not recognized. Please try again!'
       elsif @user.member&.suspended || @user.disabled?
         @flash = 'Your account has been disabled!'
-      elsif @user.enabled # bad password
+      elsif @user.enabled? # bad password
         @flash = 'The email or password you entered was not recognized. Please try again!'
       end
     end

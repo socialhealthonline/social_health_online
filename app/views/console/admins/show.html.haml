@@ -47,7 +47,7 @@
 
 %p
   %strong Enabled:
-  = @admin.activated? ? 'Yes' : 'No'
+  = @admin.enabled? ? 'Yes' : 'No'
 
 %p
   = link_to console_admins_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do
