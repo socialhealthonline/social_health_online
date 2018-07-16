@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_28_222647) do
+ActiveRecord::Schema.define(version: 2018_07_16_091928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -220,14 +220,6 @@ ActiveRecord::Schema.define(version: 2018_06_28_222647) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "registrations", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "telephone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "rsvps", force: :cascade do |t|
     t.bigint "event_id"
     t.bigint "user_id"
@@ -269,9 +261,7 @@ ActiveRecord::Schema.define(version: 2018_06_28_222647) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
     t.string "email", null: false
-    t.boolean "enabled", default: true, null: false
     t.boolean "admin", default: false, null: false
     t.string "auth_token"
     t.string "password_digest", null: false
@@ -282,14 +272,6 @@ ActiveRecord::Schema.define(version: 2018_06_28_222647) do
     t.datetime "updated_at", null: false
     t.integer "member_id"
     t.string "display_name"
-    t.string "address"
-    t.string "city"
-    t.string "state"
-    t.string "zip"
-    t.string "phone"
-    t.string "gender"
-    t.string "ethnicity"
-    t.date "birthdate"
     t.string "time_zone", default: "Central Time (US & Canada)", null: false
     t.boolean "manager", default: false, null: false
     t.string "relationship_status"
@@ -302,11 +284,19 @@ ActiveRecord::Schema.define(version: 2018_06_28_222647) do
     t.boolean "receive_email", default: false
     t.integer "user_status", default: 0
     t.date "first_login"
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "phone"
+    t.string "gender"
+    t.string "ethnicity"
+    t.date "birthdate"
     t.string "phone_extension"
     t.text "group"
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
-    t.index ["enabled"], name: "index_users_on_enabled"
     t.index ["member_id"], name: "index_users_on_member_id"
     t.index ["password_reset_token"], name: "index_users_on_password_reset_token"
   end
