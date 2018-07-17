@@ -24,7 +24,7 @@
 
 $(document).ready(function() {
   $(".flatpickr-date").flatpickr({
-    allowInput: true,
+    allowInput: false,
     dateFormat: 'Y-m-d'
   });
 

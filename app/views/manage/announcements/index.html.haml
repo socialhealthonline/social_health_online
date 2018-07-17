@@ -46,7 +46,7 @@
             %tr.bg-white
               %td= link_to truncate("#{i}. #{announcement.title}"), manage_announcement_path(announcement)
               %td= truncate(announcement.body)
-              %td= time_in_cdt(announcement.created_at, '%m/%d/%Y %I:%M')
+              %td= time_in_cdt(announcement.created_at, '%m/%d/%Y, %I:%M %p %Z')
               %td
                 = link_to edit_manage_announcement_path(announcement), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
                   %i.far.fa-edit
