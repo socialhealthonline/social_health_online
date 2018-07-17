@@ -152,7 +152,7 @@
               .form-group
                 .col-xs-2
                   = h.check_box :matchmaker, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.matchmaker) }, '1', '0'
-                  %label(for="user_invisible") Hide my profile in Matchmaker 
+                  %label(for="user_invisible") Hide my profile in Matchmaker
           %hr
           .row
             .col
