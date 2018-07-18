@@ -163,9 +163,6 @@
             .col
               -if @user.avatar.attached? && @user.avatar.attachment.valid?
                 = image_tag @user.avatar, alt: 'User Avatar', size: '200x140'
-              %p
-                %strong
-                  Avatar Preview
           .row
             .col
               -if @user.avatar.attached? && @user.avatar.attachment.valid?
