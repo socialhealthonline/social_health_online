@@ -166,6 +166,13 @@
               %p
                 %strong
                   Avatar Preview
+          .row
+            .col
+              -if @user.avatar.attached? && @user.avatar.attachment.valid?
+                = image_tag @user.avatar, alt: 'User avatar', size: '200x140'
+              %p
+                %strong
+                  Avatar Preview
           %hr
           .row
             .col
