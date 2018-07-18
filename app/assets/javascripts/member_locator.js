@@ -81,7 +81,7 @@
               .footable({
                 empty: "No Members",
                 columns: AFFILIATE_TABLE_COLUMNS,
-                rows: data
+                rows: data,
               });
           });
 
@@ -113,7 +113,7 @@
         .footable({
           empty: "No Members",
           columns: AFFILIATE_TABLE_COLUMNS,
-          rows: data
+          rows: data,
         });
       });
 
@@ -154,11 +154,7 @@
       "</p>" +
       "<h6>Website:</h6>" +
       "<p>" +
-      '<a href="' +
-      (row.url || "#") +
-      '" target="_blank">' +
-      (row.url || "No Website") +
-      "</a>" +
+      (row.url || "No Website")
       "</p>" +
       "</div>";
 

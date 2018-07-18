@@ -295,6 +295,7 @@ ActiveRecord::Schema.define(version: 2018_07_16_091928) do
     t.date "first_login"
     t.string "phone_extension"
     t.text "group"
+    t.string "favorites"
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["member_id"], name: "index_users_on_member_id"
