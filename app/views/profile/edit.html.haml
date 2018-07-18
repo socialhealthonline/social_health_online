@@ -147,10 +147,16 @@
                 = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@user, :bio)}"
                 = model_error_display(@user, :bio)
           .row
-            .col-6.col-sm-6.col-lg-6.col-xl-6
+            .col-5.col-sm-6.col-lg-6.col-xl-6
+              .form-group#file-field
+                %label(for="profile_avatar") Avatar
+                = f.file_field :avatar, class: "form-control #{form_error_class(@user, :avatar)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 3.megabytes }
+                = model_error_display(@user, :avatar)
             .col
+              %br
+              %br
               .form-group
-                .col-xs-2
+                #matchmakerCheckboxId.col-xs-2
                   = h.check_box :matchmaker, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.matchmaker) }, '1', '0'
                   %label(for="user_invisible") Hide my profile in Matchmaker
           .row

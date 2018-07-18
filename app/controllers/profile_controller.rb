@@ -52,6 +52,7 @@ class ProfileController < ApplicationController
       :first_login,
       :user_status,
       :phone_extension,
+      :avatar,
       hidden_field_attributes: [:id, prepared_hidden_fields]
     )
   end
