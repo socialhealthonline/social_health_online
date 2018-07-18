@@ -153,6 +153,13 @@
                 .col-xs-2
                   = h.check_box :matchmaker, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.matchmaker) }, '1', '0'
                   %label(for="user_invisible") Hide my profile in Matchmaker
+          .row
+            .col
+              -if @user.avatar.attached? && @user.avatar.attachment.valid?
+                = image_tag @user.avatar, alt: 'User Avatar', size: '200x140'
+              %p
+                %strong
+                  Avatar Preview
           %hr
           .row
             .col
