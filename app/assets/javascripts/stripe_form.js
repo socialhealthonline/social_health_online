@@ -23,10 +23,12 @@ $(document).ready(function() {
   
   document.getElementById('creditOrDebit').addEventListener('click', function() {
     card.mount('#card-element');
+    document.getElementById('debitLabel').style.display = 'block';
   });
 
   document.getElementById('ACHCard').addEventListener('click', function() {
     card.unmount('#card-element');
+    document.getElementById('debitLabel').style.display = 'none';
   });
 
   if(document.getElementById('creditOrDebit').checked) {
@@ -38,10 +40,9 @@ $(document).ready(function() {
         displayError.empty();
       }
     });
-  
+
     $('#payment-form').submit(function( event ) {
       event.preventDefault();
-  
       stripe.createToken(card).then(function(result) {
         if (result.error) {
           var errorElement = $('#card-errors');
@@ -52,7 +53,6 @@ $(document).ready(function() {
       });
     });
   }
-
 
   function stripeTokenHandler(token) {
     var form = document.getElementById('payment-form');

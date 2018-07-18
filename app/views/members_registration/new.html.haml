@@ -107,20 +107,19 @@
               #total-price.form-control.font-weight-bold.text-center
         .row
           .col
-            %div
-              %span
+            %div.form-inline
+              %p#paymentParagraph
                 Please select a payment method:
-              %div.form-check.form-check-inline
+              %div#kekId.form-check.form-check-inline
                 = f.radio_button :brand, 'Credit', id: 'creditOrDebit', class: 'form-check-input', checked: true
-                %label{for: 'creditOrDebit'} Creadit or Debit Card
+                Creadit or Debit Card
               %div.form-check.form-check-inline
                 = f.radio_button :brand, 'ACH', id: 'ACHCard', class: 'form-check-input'
-                %label{for: 'ACHCard'} Checking or Saving Account (ACH Payment)
-
+                Checking or Saving Account (ACH Payment)
         .row
           .col-lg-6
             .form-group
-              %label Credit or Debit Card
+              %label#debitLabel Credit or Debit Card
               #card-element
               %small.text-danger#card-errors{ role: 'alert' }
 
