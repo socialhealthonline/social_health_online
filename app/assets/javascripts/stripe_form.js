@@ -20,28 +20,39 @@ $(document).ready(function() {
 
   var card = elements.create('card', { style: style, hidePostalCode: true} );
   card.mount('#card-element');
-
-  card.addEventListener('change', function(event) {
-    var displayError = $('#card-errors');
-    if (event.error) {
-      displayError.text(event.error.message);
-    } else {
-      displayError.empty();
-    }
+  
+  document.getElementById('creditOrDebit').addEventListener('click', function() {
+    card.mount('#card-element');
   });
 
-  $('#payment-form').submit(function( event ) {
-    event.preventDefault();
+  document.getElementById('ACHCard').addEventListener('click', function() {
+    card.unmount('#card-element');
+  });
 
-    stripe.createToken(card).then(function(result) {
-      if (result.error) {
-        var errorElement = $('#card-errors');
-        errorElement.text(result.error.message);
+  if(document.getElementById('creditOrDebit').checked) {
+    card.addEventListener('change', function(event) {
+      var displayError = $('#card-errors');
+      if (event.error) {
+        displayError.text(event.error.message);
       } else {
-        stripeTokenHandler(result.token);
+        displayError.empty();
       }
     });
-  });
+  
+    $('#payment-form').submit(function( event ) {
+      event.preventDefault();
+  
+      stripe.createToken(card).then(function(result) {
+        if (result.error) {
+          var errorElement = $('#card-errors');
+          errorElement.text(result.error.message);
+        } else {
+          stripeTokenHandler(result.token);
+        }
+      });
+    });
+  }
+
 
   function stripeTokenHandler(token) {
     var form = document.getElementById('payment-form');
