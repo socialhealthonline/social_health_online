@@ -123,4 +123,10 @@ class UserDecorator < ApplicationDecorator
       h.content_tag(:strong, "Bio: ") + object&.bio if object.bio && !object.bio&.empty?
     end
   end
+
+  def user_avatar
+    if object.avatar.attached? && object.avatar.attachment.valid?
+      image_tag object.avatar, alt: 'User avatar', size: '200x140'
+    end
+  end
 end
