@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :rsvps
   has_many :events, through: :rsvps
   has_one :hidden_field
+  has_one_attached :avatar
 
   validates :name, :email, :address, :city, :gender, :ethnicity, :birthdate, :time_zone, presence: true
   validates :group, presence: true, allow_blank: true
@@ -21,6 +22,7 @@ class User < ApplicationRecord
   validates :state, inclusion: US_STATES.values
   validates :phone, format: { with: /\A\d{10}\z/, message: 'must be 10 digits including area code' }
   validates :zip, format: { with: %r{\A[\d]{5}(-[\d]{4})?\z} }
+  validate :avatar_validation
   validates_inclusion_of :gender, in: GENDER
   validates_inclusion_of :ethnicity, in: ETHNICITY
   validates_inclusion_of :relationship_status, in: RELATIONSHIP_STATUS, allow_blank: true
@@ -38,6 +40,16 @@ class User < ApplicationRecord
   has_secure_token :password_reset_token
 
   acts_as_messageable
+
+  def avatar_validation
+    if avatar.attached?
+      if avatar.blob.byte_size > 3.megabytes
+        errors[:avatar] << 'this file exceeds the maximum allowed file size (3 mb)'
+      elsif !avatar.blob.content_type.starts_with?('image/')
+        errors[:avatar] << 'only image file with extension: .jpg, .jpeg, .gif or .png is allowed'
+      end
+    end
+  end
 
   def mailboxer_name
     self.name
