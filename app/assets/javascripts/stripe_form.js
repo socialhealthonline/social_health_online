@@ -54,7 +54,7 @@ $(document).ready(function() {
     card.unmount('#card-element');
     document.getElementById('debitLabel').style.display = 'none';
   });
-  
+
   function stripeTokenHandler(token) {
     var form = document.getElementById('payment-form');
     var hiddenInput = document.createElement('input');
