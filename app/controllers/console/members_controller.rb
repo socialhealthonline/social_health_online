@@ -11,12 +11,11 @@ class Console::MembersController < ConsoleController
 
   def new
     @member = Member.new
-    set_managers_option
   end
 
   def edit
     @member = Member.find params[:id]
-    set_managers_option
+    @managers = @member.managers
   end
 
   def create
@@ -100,7 +99,4 @@ class Console::MembersController < ConsoleController
     %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
 
-  def set_managers_option
-    @managers = User.where(member_id: authenticated_user.member_id, manager: true)
-  end
 end
