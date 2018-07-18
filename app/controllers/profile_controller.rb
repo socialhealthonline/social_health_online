@@ -9,6 +9,7 @@ class ProfileController < ApplicationController
 
   def update
     @user = authenticated_user
+    @user.avatar.attach(params[:user][:avatar]) if params[:user][:avatar]
     unless @user.first_login
       params[:user].merge!(first_login: Date.today) 
       params[:user].merge!(user_status: :enabled)
@@ -16,6 +17,7 @@ class ProfileController < ApplicationController
     if @user.update(user_params)
       redirect_to profile_url, success: 'Your profile was successfully updated!'
     else
+      @user.avatar.purge if @user.errors.messages[:avatar].present?
       flash.now[:error] = 'Please correct the errors to continue.'
       render :edit
     end
@@ -50,6 +52,7 @@ class ProfileController < ApplicationController
       :first_login,
       :user_status,
       :phone_extension,
+      :avatar,
       hidden_field_attributes: [:id, prepared_hidden_fields]
     )
   end
