@@ -30,24 +30,24 @@ $(document).ready(function() {
         displayError.text(event.error.message);
       } else {
       displayError.empty();
-    }
-  });
+      }
+    });
   
-  $('#payment-form').submit(function( event ) {
-    if(card) {
-      event.preventDefault();
-      stripe.createToken(card).then(function(result) {
-        if (result.error) {
-          var errorElement = $('#card-errors');
-          errorElement.text(result.error.message);
-        } else {
-          stripeTokenHandler(result.token);
-        }
-      });
-    }
+    $('#payment-form').submit(function( event ) {
+      if(card) {
+        event.preventDefault();
+        stripe.createToken(card).then(function(result) {
+          if (result.error) {
+            var errorElement = $('#card-errors');
+            errorElement.text(result.error.message);
+          } else {
+            stripeTokenHandler(result.token);
+          }
+        });
+      }
     });
   });
-  
+
   document.getElementById("creditOrDebit").click();
   
   document.getElementById('ACHCard').addEventListener('click', function() {
