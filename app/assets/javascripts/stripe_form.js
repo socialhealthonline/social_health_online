@@ -24,7 +24,7 @@ $(document).ready(function() {
     card.mount('#card-element');
     document.getElementById('debitLabel').style.display = 'block';
   });
-
+ 
   card.addEventListener('change', function(event) {
     var displayError = $('#card-errors');
     if (event.error) {
