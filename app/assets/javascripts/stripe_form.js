@@ -47,7 +47,7 @@ $(document).ready(function() {
       });
     }
   });
-
+ 
   document.getElementById("creditOrDebit").click();
   
   document.getElementById('ACHCard').addEventListener('click', function() {
