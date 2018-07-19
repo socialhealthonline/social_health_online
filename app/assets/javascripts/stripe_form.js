@@ -34,7 +34,7 @@ $(document).ready(function() {
     });
   
     $('#payment-form').submit(function( event ) {
-      if(card) {
+      if(document.getElementById('creditOrDebit').checked) {
         event.preventDefault();
         stripe.createToken(card).then(function(result) {
           if (result.error) {
@@ -53,7 +53,6 @@ $(document).ready(function() {
   document.getElementById('ACHCard').addEventListener('click', function() {
     card.unmount('#card-element');
     document.getElementById('debitLabel').style.display = 'none';
-    card = null;
   });
 
   function stripeTokenHandler(token) {
