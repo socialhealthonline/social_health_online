@@ -33,7 +33,7 @@ $(document).ready(function() {
     displayError.empty();
     }
   });
-
+ 
   $('#payment-form').submit(function( event ) {
     if(document.getElementById('creditOrDebit').checked) {
       event.preventDefault();
