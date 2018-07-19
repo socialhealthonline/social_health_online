@@ -18,7 +18,7 @@ class Member < ApplicationRecord
   validates :terms_of_service, acceptance: true
   validates :service_capacity, numericality: { greater_than: 4 }
 
-  before_validation { |member| member.contact_phone.gsub!(/\D/, "") if member.contact_phone? }
+  before_validation { |member| member.contact_phone.gsub!(/\D/, '') if member.contact_phone? }
   before_validation :add_protocol_to_url
 
   def logo_validation
@@ -37,6 +37,10 @@ class Member < ApplicationRecord
 
   def should_generate_new_friendly_id?
     name_changed?
+  end
+
+  def managers
+    users.where(manager: true)
   end
 
   def social_fitness_csv
@@ -105,11 +109,9 @@ class Member < ApplicationRecord
   end
 
   def status
+    return 'Suspended' if suspended
     active_users = User.where(member_id: self.id)
                        .where.not(last_sign_in_at: 'nil')
-
-    return 'Suspended' if suspended
-
     if active_users.present?
       return 'Active'
     else

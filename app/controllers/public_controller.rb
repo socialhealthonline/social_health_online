@@ -61,7 +61,7 @@ class PublicController < ApplicationController
     city = city.downcase.strip if city
     zip = zip.strip if zip
 
-    affiliates = Affiliate.where(hide_info_on_locator: false)
+    affiliates = Affiliate.where(hide_info_on_locator: false).order("name asc")
 
     if city && state
       #where('name LIKE ?', "%#{search}%")

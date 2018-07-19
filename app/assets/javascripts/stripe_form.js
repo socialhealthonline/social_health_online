@@ -77,7 +77,7 @@ $(document).ready(function() {
   });
 
   function calculate_price() {
-    var multiplier, price, period;
+    var multiplier, year_price, month_price;
     var plan = $('#member_plan').find('option:selected').text();
 
     users = $('#member_service_capacity').val();
@@ -94,17 +94,17 @@ $(document).ready(function() {
         break;
     }
 
-    price = users * multiplier * 12;
+    year_price = users * multiplier * 12;
     if (plan == 'Annual') {
-      price *= 0.97;
-      period = 'year';
+      year_price *= 0.97;
+      $('#total-price').text('$' + year_price.toFixed(2) + ' per year')
     }
     else {
-      price /= 12;
+      month_price = year_price / 12;
       period = 'month';
+      $('#total-price').text('$' + month_price.toFixed(2) + ' per month ($' + year_price + 'per year)')
     }
 
-    $('#total-price').text('$' + price.toFixed(2) + ' per ' + period)
   }
 
 });

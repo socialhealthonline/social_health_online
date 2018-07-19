@@ -85,13 +85,14 @@
       = f.text_field :events_url, class: "form-control #{form_error_class(@member, :events_url)}"
       = model_error_display(@member, :events_url)
 .row
-  .col-lg-6
-    .form-group
-      %label(for="member_primary_manager_id") Primary Manager
-      = f.select :primary_manager_id,
-          options_from_collection_for_select(@managers, 'id', 'name', @member.primary_manager_id),
-          { include_blank: false }, { class: 'form-control custom-select' } if @managers.present?
-      = model_error_display(@member, :primary_manager_id)
+  - if @member.persisted?
+    .col-lg-6
+      .form-group
+        %label(for="member_primary_manager_id") Primary Manager
+        = f.select :primary_manager_id,
+            options_from_collection_for_select(@managers, 'id', 'name', @member.primary_manager_id),
+            { include_blank: false }, { class: 'form-control custom-select' } if @managers.present?
+        = model_error_display(@member, :primary_manager_id)
   .col-lg-6
     .form-group
       %label(for="status")  Status
