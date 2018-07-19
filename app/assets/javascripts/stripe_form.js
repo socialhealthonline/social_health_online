@@ -65,7 +65,6 @@ $(document).ready(function() {
     form.submit();
   }
 
-
   calculate_price();
 
   $('#member_service_capacity').bind('keyup mouseup', function () {
