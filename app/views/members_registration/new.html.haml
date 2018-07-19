@@ -100,16 +100,28 @@
               %label Payment Plan
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'Receive a 3% discount on the total subscription cost via one yearly lump-sum payment'}
               = f.select :plan, STRIPE_PLANS, {}, { class: 'form-control custom-select' }
+        .row.d-flex.justify-content-center
+          .col-lg-3
+            .form-group.mb-3.text-center
+              %label Total Price
+              #total-price.form-control.font-weight-bold.text-center
+        .row
+          .col
+            %div.form-inline
+              %p#paymentParagraph
+                Please select a payment method:
+              %div.form-check.form-check-inline
+                = f.radio_button :brand, 'Credit', id: 'creditOrDebit', class: 'form-check-input'
+                Creadit or Debit Card
+              %div.form-check.form-check-inline
+                = f.radio_button :brand, 'ACH', id: 'ACHCard', class: 'form-check-input'
+                Checking or Saving Account (ACH Payment)
         .row
           .col-lg-6
             .form-group
-              %label Credit or Debit Card
+              %label#debitLabel Credit or Debit Card
               #card-element
               %small.text-danger#card-errors{ role: 'alert' }
-          .col
-            .form-group.mb-3
-              %label Total Price:
-              #total-price.form-control.font-weight-bold.text-center
 
         .row
           .col
