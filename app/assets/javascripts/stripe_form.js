@@ -23,29 +23,29 @@ $(document).ready(function() {
   document.getElementById('creditOrDebit').addEventListener('click', function() {
     card.mount('#card-element');
     document.getElementById('debitLabel').style.display = 'block';
+  });
 
-    card.addEventListener('change', function(event) {
-      var displayError = $('#card-errors');
-      if (event.error) {
-        displayError.text(event.error.message);
-      } else {
-      displayError.empty();
-      }
-    });
-  
-    $('#payment-form').submit(function( event ) {
-      if(document.getElementById('creditOrDebit').checked) {
-        event.preventDefault();
-        stripe.createToken(card).then(function(result) {
-          if (result.error) {
-            var errorElement = $('#card-errors');
-            errorElement.text(result.error.message);
-          } else {
-            stripeTokenHandler(result.token);
-          }
-        });
-      }
-    });
+  card.addEventListener('change', function(event) {
+    var displayError = $('#card-errors');
+    if (event.error) {
+      displayError.text(event.error.message);
+    } else {
+    displayError.empty();
+    }
+  });
+
+  $('#payment-form').submit(function( event ) {
+    if(document.getElementById('creditOrDebit').checked) {
+      event.preventDefault();
+      stripe.createToken(card).then(function(result) {
+        if (result.error) {
+          var errorElement = $('#card-errors');
+          errorElement.text(result.error.message);
+        } else {
+          stripeTokenHandler(result.token);
+        }
+      });
+    }
   });
 
   document.getElementById("creditOrDebit").click();
