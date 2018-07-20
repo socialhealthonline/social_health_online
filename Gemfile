@@ -32,6 +32,7 @@ gem 'select2-rails'
 gem 'draper'
 gem 'image_processing'
 gem "recaptcha", require: "recaptcha/rails"
+gem 'sidekiq'
 
 group :development, :test do
   gem 'awesome_print'
