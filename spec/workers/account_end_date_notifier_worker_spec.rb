@@ -1,4 +1,9 @@
 require 'rails_helper'
 RSpec.describe AccountEndDateNotifierWorker, type: :worker do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#perform_async" do
+    it 'enqueues a account end date notifier worker' do
+      AccountEndDateNotifierWorker.perform_async
+      expect(AccountEndDateNotifierWorker.jobs.size).to eq(1)
+    end
+  end
 end

@@ -60,4 +60,5 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'headless'
+  gem 'rspec-sidekiq'
 end
