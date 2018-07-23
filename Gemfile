@@ -33,6 +33,7 @@ gem 'draper'
 gem 'image_processing'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'sidekiq'
+gem 'sidekiq-scheduler'
 
 group :development, :test do
   gem 'awesome_print'
