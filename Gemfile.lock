@@ -304,6 +304,9 @@ GEM
       rspec-expectations (~> 3.7.0)
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
+    rspec-sidekiq (3.0.3)
+      rspec-core (~> 3.0, >= 3.0.0)
+      sidekiq (>= 2.4.0)
     rspec-support (3.7.1)
     ruby-graphviz (1.2.3)
     ruby-vips (2.0.12)
@@ -423,6 +426,7 @@ DEPENDENCIES
   rails-erd
   recaptcha
   rspec-rails
+  rspec-sidekiq
   sass-rails (~> 5.0)
   select2-rails
   selenium-webdriver
