@@ -62,4 +62,5 @@ group :test do
   gem 'simplecov', require: false
   gem 'headless'
   gem 'rspec-sidekiq'
+  gem 'stripe-ruby-mock', '~> 2.5.4', :require => 'stripe_mock'
 end
