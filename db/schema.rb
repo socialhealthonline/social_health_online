@@ -197,8 +197,8 @@ ActiveRecord::Schema.define(version: 2018_07_20_081617) do
     t.string "url"
     t.integer "primary_manager_id"
     t.string "events_url"
-    t.boolean "hide_info_on_locator", default: false
     t.string "slug"
+    t.boolean "hide_info_on_locator", default: false
     t.datetime "welcome_kit_date"
     t.string "phone"
     t.string "contact_phone_extension"
@@ -263,6 +263,7 @@ ActiveRecord::Schema.define(version: 2018_07_20_081617) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name"
     t.string "email", null: false
     t.boolean "admin", default: false, null: false
     t.string "auth_token"
@@ -274,6 +275,14 @@ ActiveRecord::Schema.define(version: 2018_07_20_081617) do
     t.datetime "updated_at", null: false
     t.integer "member_id"
     t.string "display_name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "phone"
+    t.string "gender"
+    t.string "ethnicity"
+    t.date "birthdate"
     t.string "time_zone", default: "Central Time (US & Canada)", null: false
     t.boolean "manager", default: false, null: false
     t.string "relationship_status"
@@ -286,15 +295,6 @@ ActiveRecord::Schema.define(version: 2018_07_20_081617) do
     t.boolean "receive_email", default: false
     t.integer "user_status", default: 0
     t.date "first_login"
-    t.string "name"
-    t.string "address"
-    t.string "city"
-    t.string "state"
-    t.string "zip"
-    t.string "phone"
-    t.string "gender"
-    t.string "ethnicity"
-    t.date "birthdate"
     t.string "phone_extension"
     t.text "group"
     t.index ["auth_token"], name: "index_users_on_auth_token"

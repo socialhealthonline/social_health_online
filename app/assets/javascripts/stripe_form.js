@@ -101,7 +101,7 @@ $(document).ready(function() {
     else {
       month_price = year_price / 12;
       period = 'month';
-      $('#total-price').text('$' + month_price.toFixed(2) + ' per month ($' + year_price + 'per year)')
+      $('#total-price').text('$' + month_price.toFixed(2) + ' per month ($' + year_price + ' per year)')
     }
 
   }
