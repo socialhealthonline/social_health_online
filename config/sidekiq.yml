@@ -1,0 +1,14 @@
+:verbose: false
+:concurrency: 5
+
+:timeout: 8
+
+staging:
+  :concurrency: 10
+production:
+  :concurrency: 15
+
+:schedule:
+  perform:
+    cron: "10 0 * * *"
+    class: AccountEndDateNotifierWorker

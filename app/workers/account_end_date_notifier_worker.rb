@@ -1,3 +1,5 @@
+require 'sidekiq-scheduler'
+
 class AccountEndDateNotifierWorker
   include Sidekiq::Worker
 
