@@ -53,7 +53,7 @@
               %td= link_to "#{i}. #{user.name}" , edit_manage_user_path(user)
               %td
                 %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
-                    data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: user }" } }
+                    data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user: user }" } }
                   =user.display_name
               %td= truncate(user.email)
               %td= user.user_status.capitalize

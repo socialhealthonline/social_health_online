@@ -29,7 +29,7 @@
             %th(scope="row")= link_to "#{i+1}. #{user.name}", console_member_user_path(@member.id, user)
             %td
               %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
-                  data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user:user }" } }
+                data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user: user }" } }
                 =user.display_name
             %td= user.email
             %td= user.manager? ? 'Yes' : 'No'

@@ -12,8 +12,10 @@ class UserDecorator < ApplicationDecorator
     end
   end
 
-  def user_manager?
-    user.manager? ? 'Yes' : 'No'
+  def user_manager
+    if user.manager?
+      fa_icon "star", title: "Manager"
+    end
   end
 
   def profile_name
@@ -126,7 +128,7 @@ class UserDecorator < ApplicationDecorator
 
   def user_avatar
     if object.avatar.attached? && object.avatar.attachment.valid?
-      image_tag object.avatar, alt: 'User avatar', size: '200x140'
+      image_tag object.avatar, alt: 'User avatar', size: '180x180'
     end
   end
 end
