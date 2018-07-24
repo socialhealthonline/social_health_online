@@ -17,7 +17,7 @@ class MembersRegistrationController < ApplicationController
                                                 manager_email: params[:account_manager_email],
                                                 plan: params[:member][:plan],
                                                 card_token: stripe_params['stripeToken']).call
-        flash[:success] = 'Success'
+        flash[:success] = 'Success!'
         redirect_to root_path
       else
         flash.now[:error] = 'Please correct the errors to continue.'

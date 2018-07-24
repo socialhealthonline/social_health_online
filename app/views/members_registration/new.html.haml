@@ -12,6 +12,8 @@
     .col
       = form_with model: @member, url: members_registration_index_path, method: :post, id: 'payment-form', local: true do |f|
         .row
+          %label.pl-1.font-weight-bold Account Information
+        .row
           .col-lg-6
             .form-group
               %label Member Name
@@ -89,6 +91,14 @@
               = text_field_tag :account_manager_email, params[:account_manager_email], :placeholder => "E.g., janedoe@mail.com", required: true,class: "form-control #{form_error_class(@member, :account_manager_email)}"
               = model_error_display(@member, :account_manager_email)
         .row
+          .col
+            .form-check
+              = f.check_box :hide_info_on_locator, class: 'form-check-input', id: 'hideInfoCheckBox'
+              %label{ for: 'hideInfoCheckBox' } Hide Info on Member Locator
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Organizations that do not want be shown on the Member Locator can check this box'}
+        .row.border-top.py-2
+          %label.pl-1.font-weight-bold Service Cost Estimate
+        .row
           .col-lg-6
             .form-group
               %label User Seats
@@ -101,10 +111,12 @@
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'Receive a 3% discount on the total subscription cost via one yearly lump-sum payment'}
               = f.select :plan, STRIPE_PLANS, {}, { class: 'form-control custom-select' }
         .row.d-flex.justify-content-center
-          .col-lg-4
+          .col-lg-6
             .form-group.mb-3.text-center
               %label Total Price
               #total-price.form-control.font-weight-bold.text-center
+        .row.border-top.py-2
+          %label.pl-1.font-weight-bold Billing Information
         .row
           .col
             %div.form-inline
@@ -115,20 +127,16 @@
                 Credit or Debit Card
               %div.form-check.form-check-inline
                 = f.radio_button :brand, 'ACH', id: 'ACHCard', class: 'form-check-input'
-                Checking or Saving Account (ACH Payment)
-        .row
+                Checking or Savings Account (ACH Payment)
+        .row.justify-content-center
           .col-lg-6
-            .form-group
+            %div.form-group.text-center{style:"margin: 0px;"}
               %label#debitLabel Credit or Debit Card
               #card-element
               %small.text-danger#card-errors{ role: 'alert' }
 
-        .row
-          .col
-            .form-check
-              = f.check_box :hide_info_on_locator, class: 'form-check-input', id: 'hideInfoCheckBox'
-              %label{ for: 'hideInfoCheckBox' } Hide Info on Member Locator
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Organizations that do not want be shown on the Member Locator can check this box'}
+        .row.border-top.py-2
+          %label.pl-1.font-weight-bold Purchase Confirmation
         .row
           .col
             .form-check
@@ -137,7 +145,7 @@
                 I Agree to the
                 %a
                 %a{ href: saas_agreement_path, title: 'Saas Agreement', target: '_blank'}> SaaS Agreement
-
+        .row
         %div
           = recaptcha_tags callback: 'thenCapchaIsSubmited', expired_callback: 'expiredRecapchaCallback'
 

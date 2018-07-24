@@ -149,7 +149,7 @@
           .row
             .col-5.col-sm-6.col-lg-6.col-xl-6
               .form-group#file-field
-                %label(for="profile_avatar") Avatar
+                %label(for="profile_avatar") User Avatar
                 = f.file_field :avatar, class: "form-control #{form_error_class(@user, :avatar)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 3.megabytes }
                 = model_error_display(@user, :avatar)
 
@@ -165,7 +165,7 @@
               .form-group
                 #matchmakerCheckboxId.col-xs-2
                   = h.check_box :matchmaker, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.matchmaker) }, '1', '0'
-                  %label(for="user_invisible") Hide my profile in Matchmaker
+                  %label(for="user_invisible") Hide My Profile in Matchmaker
 
           .row.pt-2.border-top
             .col

@@ -10,6 +10,8 @@
       = form_with url: affiliates_registration_url, method: :post, local: true do
         = hidden_field_tag :subject, ''
         .row
+          %label.pl-1.font-weight-bold Account Information
+        .row
           .col-lg-6
             .form-group
               %label(for="name") Affiliate Name
