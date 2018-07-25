@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe SendPasswordResetRequest do
-  let!(:user) { create(:user, member: create(:member)) }
-  let!(:service) { SendPasswordResetRequest.new(user) }
+  let(:user) { create(:user, member: create(:member)) }
+  let(:service) { SendPasswordResetRequest.new(user) }
 
   describe '#call' do
     context 'given user' do
