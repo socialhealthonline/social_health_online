@@ -11,6 +11,12 @@
       - if is_conversation
         = render 'conversations/form'
       - else
+        -if @active.equal?(:inbox) && messages.none?
+          %p.text-muted.mt-5.text-center
+            %em No messages.
+        -if @active.equal?(:sent) && messages.none?
+          %p.text-muted.mt-5.text-center
+            %em No sent messages.
         - if @active.equal?(:trash) && messages.any?
           .row
             .col
@@ -22,3 +28,6 @@
             %tbody
               = render partial: 'conversations/conversation', collection: messages, locals: { folder: @active }
         = paginate messages
+      -if @active.equal?(:trash) && messages.none?
+        %p.text-muted.mt-5.text-center
+          %em No trashed messages.
