@@ -1,25 +1,49 @@
 require 'rails_helper'
 
 describe RecoverPassword do
-  let(:recover_password_service) { instance_double(RecoverPassword) }
+  let(:expired_user) { create(:user, member: create(:member), password_reset_sent_at: Time.now - 3.hours) }
+  let(:empty_params) { { user: { password: nil } } }
+  let(:user) { create(:user, member: create(:member), password_reset_sent_at: Time.now) }
+  let(:params) { { user: { password: '012345678qwertY', password_confirmation: '012345678qwertY' } } }
 
   describe '#call' do
-    before do
-      allow(recover_password_service).to receive(:success?).and_return(true)
-      allow(recover_password_service).to receive(:expired?).and_return(true)
-      allow(recover_password_service).to receive(:blank_password?).and_return(true)
+    context 'sucessfully recover password' do
+      let(:recover_password) { RecoverPassword.new(user, params) }
+      before { recover_password.call }
+
+      it 'succesfully updates password' do
+        expect(recover_password.success?).to eq(true)
+      end
+
+      it 'has success flash' do
+        expect(recover_password.flash).to eq('Your password was successfully changed. Please sign in.')
+      end
     end
 
-    it 'sucessfully recover password' do
-      expect(recover_password_service.success?).to eq(true)
+    context 'receives expired method' do
+      let(:recover_password) { RecoverPassword.new(expired_user, params) }
+      before { recover_password.call }
+
+      it 'has expired password' do
+        expect(recover_password.expired?).to eq(true)
+      end
+
+      it 'has expired flash' do
+        expect(recover_password.flash).to eq('This password reset request has expired. Please submit another request.')
+      end
     end
 
-    it 'receives expired method' do
-      expect(recover_password_service.expired?).to eq(true)
-    end
+    context 'receives blank password method' do
+      let(:recover_password) { RecoverPassword.new(user, empty_params) }
+      before { recover_password.call }
 
-    it 'receives blank password method' do
-      expect(recover_password_service.blank_password?).to eq(true)
+      it 'has blank password' do
+        expect(recover_password.blank_password?).to eq(true)
+      end
+
+      it 'has expired flash' do
+        expect(user.errors.messages[:password].first).to eq("сan't be blank")
+      end
     end
   end
 end
