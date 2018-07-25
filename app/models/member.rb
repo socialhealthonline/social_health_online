@@ -24,9 +24,9 @@ class Member < ApplicationRecord
   def logo_validation
     if logo.attached?
       if logo.blob.byte_size > 3.megabytes
-        errors[:logo] << 'this file exceeds the maximum allowed file size (3 mb)'
+        errors[:logo] << 'This file exceeds the maximum allowed file size (3 mb).'
       elsif !logo.blob.content_type.starts_with?('image/')
-        errors[:logo] << 'only image file with extension: .jpg, .jpeg, .gif or .png is allowed'
+        errors[:logo] << 'Only image files with extensions .jpg, .jpeg, .gif, or .png are allowed.'
       end
     end
   end

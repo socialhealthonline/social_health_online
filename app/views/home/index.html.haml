@@ -53,3 +53,6 @@
               %td= home_events_status(event.status)
             %tr.table-divider
         %p= paginate @events
+        - if @events.none?
+          %div.text-muted.pb-3.text-center
+            %em No RSVPed events.
