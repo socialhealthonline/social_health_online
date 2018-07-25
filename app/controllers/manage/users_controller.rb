@@ -22,7 +22,7 @@ class Manage::UsersController < ApplicationController
       render :edit
     else
       @user_form.submit(update_user_params)
-      redirect_to edit_manage_user_path(@user), success: 'Profile was successfully updated!'
+      redirect_to manage_users_path(@user), success: 'Profile was successfully updated!'
     end
   end
 
