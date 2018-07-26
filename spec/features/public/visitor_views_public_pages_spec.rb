@@ -40,10 +40,10 @@ RSpec.describe 'Public pages' do
   end
 
   describe 'visitor' do
-    it 'views membership page successfully' do
-      visit membership_path
-      expect(current_path).to eq membership_path
-      expect(page).to have_content 'Membership'
+    it 'views participation page successfully' do
+      visit participation_path
+      expect(current_path).to eq participation_path
+      expect(page).to have_content 'Participation'
     end
   end
 

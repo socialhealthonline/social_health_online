@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get "service" => "public#service"
   get "service_highlights" => "public#service_highlights"
   get "service_screenshots" => "public#service_screenshots"
-  get "membership" => "public#membership"
+  get "participation" => "public#participation"
   get "affiliate_locator" => "public#affiliate_locator"
   get "affiliates" => "public#affiliates"
   get "member_locator" => "public#member_locator"

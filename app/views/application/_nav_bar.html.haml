@@ -20,14 +20,14 @@
                   Service Highlights
                 = link_to service_screenshots_path, class: 'dropdown-item' do
                   Service Screenshots
-            -# %li.nav-item{class: "#{active_nav('membership')}"}
-            -#   = link_to 'Membership', membership_path, class: 'nav-link'
+            -# %li.nav-item{class: "#{active_nav('participation')}"}
+            -#   = link_to 'Participation', participation_path, class: 'nav-link'
             %li.nav-item.dropdown
-              %a.nav-link.dropdown-toggle{href: '/membership', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
-                = 'Membership'
+              %a.nav-link.dropdown-toggle{href: '/participation', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
+                = 'Participation'
               .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'communitiesDropdownMenuLink'}
-                = link_to membership_path, class: 'dropdown-item' do
-                  Membership Information
+                = link_to participation_path, class: 'dropdown-item' do
+                  Participation Information
                 = link_to member_locator_path, class: 'dropdown-item' do
                   Member Locator
                 = link_to affiliate_locator_path, class: 'dropdown-item' do
