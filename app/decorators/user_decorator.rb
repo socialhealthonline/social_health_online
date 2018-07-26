@@ -8,7 +8,7 @@ class UserDecorator < ApplicationDecorator
       params.merge!(disabled: true)
       f.select(:user_status, ['Pending'], {}, params)
     else
-      f.select(:user_status, ['enabled', 'disabled'], {}, params)
+      f.select(:user_status, [['Enabled', 'enabled'], ['Disabled', 'disabled']], {}, params)
     end
   end
 
