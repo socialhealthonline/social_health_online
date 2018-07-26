@@ -42,7 +42,7 @@ describe RecoverPassword do
       end
 
       it 'has expired flash' do
-        expect(user.errors.messages[:password].first).to eq("сan't be blank")
+        expect(user.errors.messages[:password].first).to eq("Can't be blank")
       end
     end
   end
