@@ -77,6 +77,10 @@
               %label(for="support_notes") Support Notes
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'Describe any discounts available to Social Health Users'}
               =text_field_tag :support_notes, params[:support_notes], :placeholder => 'E.g., 10% discount on all purchases', class: 'form-control', required: false
+        .row
+          %div.ml-2.mb-2
+            = recaptcha_tags callback: 'thenCapchaIsSubmited', expired_callback: 'expiredRecapchaCallback'
+
         .row.mb-3
           .col.text-center
             = submit_tag 'Submit', class: 'btn btn-primary', style: 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
