@@ -58,6 +58,10 @@
           %h5 Bio
           = @member.bio
 
+      .col-12.pt-3
+        %p.text-center
+          =link_to 'Contact Manager', new_conversation_path(recipient_id: @member.primary_manager&.id), target: '_blank', class: 'btn btn-primary'
+
 %section.flush-with-above.space-0
   %div
     .container
