@@ -1,19 +1,39 @@
 class CreateManagerAndSubscriptionService
+
+  attr_reader :flash
+
   def initialize(member, params)
     @member = member
+    @payment_method = params[:payment_method]
     @user_name = params[:manager_name]
     @user_email = params[:manager_email]
-    @plan = params[:plan]
-    @card_token = params[:card_token]
+    @stripe_token = params[:stripe_token]
     @password = SecureRandom.hex
+    @flash = 'Success. Credentials will be sent to your email.'
   end
 
   def call
-    create_subscription
-    make_primary_manager(create_manager)
+    create_payment
+    self
   end
 
   private
+
+  def create_payment
+    @payment_method.eql?('card') ? card_payment : ach_payment
+  end
+
+  def card_payment
+    create_customer
+    create_subscription if @customer
+    make_primary_manager(create_manager)
+  end
+
+  def ach_payment
+    create_customer
+    make_primary_manager(create_manager)
+    @flash << ' In 2-3 business days, you’ll receive 2 small (typically less than a dollar) deposits from us. Once you receive them, enter them on verification page to complete the setup.'
+  end
 
   def create_manager
     User.new.tap do |u|
@@ -22,6 +42,7 @@ class CreateManagerAndSubscriptionService
       u.password = @password
       u.member_id = @member.id
       u.manager = true
+      u.user_status = :pending
       u.save!(validate: false)
       UserMailer.registration_confirmation(u, @password).deliver
       HiddenField.create(user_id: u.id)
@@ -32,22 +53,27 @@ class CreateManagerAndSubscriptionService
     @member.update(primary_manager_id: manager.id)
   end
 
-  def create_subscription
-    customer = Stripe::Customer.create(email: @member.contact_email, card: @card_token)
-    if customer
-      @member.update!(stripe_customer_id: customer.id)
-      Stripe::Subscription.create({
-                                    customer: customer.id,
-                                    items: [
-                                      {
-                                        plan: @plan,
-                                        quantity: @member.service_capacity,
-                                      },
-                                    ]
-                                  })
-    end
-  rescue Stripe::CardError, ActiveRecord::RecordInvalid => e
+  def create_customer
+    params = { email: @member.contact_email }
+    key = @payment_method.eql?('card') ? :card : :source
+    params[key] = @stripe_token
+    @customer = Stripe::Customer.create(params)
+    @member.update!(stripe_customer_id: @customer.id, payment_method: @payment_method.to_sym)
+  rescue Stripe::CardError, ActiveRecord::RecordInvalid, Stripe::InvalidRequestError => e
     @member.destroy
     raise e.message
   end
+
+  def create_subscription
+    Stripe::Subscription.create({
+                                  customer: @customer.id,
+                                  items: [
+                                    {
+                                      plan: @member.plan,
+                                      quantity: @member.service_capacity,
+                                    },
+                                  ]
+                                })
+  end
+
 end

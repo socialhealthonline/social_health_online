@@ -56,6 +56,9 @@ Rails.application.routes.draw do
   # My settings
   resource :my_settings, only: [:show, :update]
 
+  # Verify ACH account
+  resource :ach, controller: 'ach', only: [:edit, :update]
+
   # Communities
   resources :members, path: :communities, as: :community, controller: :communities do
     resources :events, only: [:index, :show] do

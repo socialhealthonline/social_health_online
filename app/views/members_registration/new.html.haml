@@ -11,129 +11,167 @@
   .row
     .col
       = form_with model: @member, url: members_registration_index_path, method: :post, id: 'payment-form', local: true do |f|
-        .row
-          %label.pl-1.font-weight-bold Account Information
-        .row
-          .col-lg-6
-            .form-group
-              %label Member Name
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Name of the organization registering to become a Member'}
-              = f.text_field :name, :placeholder => "E.g., TJ Maxx", autofocus: true, required: true, class: "form-control #{form_error_class(@member, :name)}"
-              = model_error_display(@member, :name)
-          .col
-            .form-group
-              %label Address
-              = f.text_field :address, :placeholder => "E.g., 123 Main Street", required: true, class: "form-control #{form_error_class(@member, :address)}"
-              = model_error_display(@member, :address)
-        .row
-          .col-lg-6
-            .form-group
-              %label City
-              = f.text_field :city, :placeholder => "E.g., Springfield", required: true, class: "form-control #{form_error_class(@member, :city)}"
-              = model_error_display(@member, :city)
-          .col-lg-4
-            .form-group
-              %label State
-              = f.select :state, US_STATES, {}, { class: "form-control custom-select #{form_error_class(@member, :state)}" }
-              = model_error_display(@member, :state)
-          .col
-            .form-group
-              %label ZIP Code
-              = f.text_field :zip, :placeholder => "E.g., 12345", required: true, class: "form-control #{form_error_class(@member, :zip)}"
-              = model_error_display(@member, :zip)
-        .row
-          .col-lg-6
-            .form-group
-              %label Phone
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the area code and phone number of the registering organization here in ten digits'}
-              = f.text_field :phone, :placeholder => "E.g., 8662825789", required: true, class: "form-control #{form_error_class(@member, :phone)}"
-              = model_error_display(@member, :phone)
-          .col
-            .form-group
-              %label Website
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'The website of the registering organization'}
-              = f.text_field :url, :placeholder => "E.g., www.tjmaxx.com", required: true, class: "form-control #{form_error_class(@member, :url)}"
-              = model_error_display(@member, :url)
-        .row
-          .col-lg-6
-            .form-group
-              %label Contact Name
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Name of the person responsible for the registration of an organization'}
-              = f.text_field :contact_name, :placeholder => "E.g., John Doe", required: true, class: "form-control #{form_error_class(@member, :contact_name)}"
-              = model_error_display(@member, :contact_name)
-          .col
-            .form-group
-              %label Contact Email
-              = f.email_field :contact_email, :placeholder => "E.g., johndoe@mail.com", required: true, class: "form-control #{form_error_class(@member, :contact_email)}"
-              = model_error_display(@member, :contact_email)
-        .row
-          .col-lg-6
-            .form-group
-              %label Contact Phone
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the area code and phone number of the person registering for an organization here in ten digits'}
-              = f.text_field :contact_phone, :placeholder => "E.g., 2056105555", required: true, class: "form-control #{form_error_class(@member, :contact_phone)}"
-              = model_error_display(@member, :contact_phone)
-          .col
-            .form-group
-              %label Contact Phone Extension
-              = f.text_field :contact_phone_extension, :placeholder => "E.g., 123", class: "form-control #{form_error_class(@member, :contact_phone_extension)}"
-              = model_error_display(@member, :contact_phone_extension)
-        .row
-          .col-lg-6
-            .form-group
-              %label Account Manager's Name
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Initial User for an organization and the person primarily responsible for managing their online Community'}
-              = text_field_tag :account_manager_name, params[:account_manager_name], :placeholder => "E.g., Jane Doe", required: true, class: "form-control #{form_error_class(@member, :account_manager_name)}"
-              = model_error_display(@member, :account_manager_name)
-          .col
-            #account_manager_email_form.form-group
-              %label Account Manager's Email
-              = text_field_tag :account_manager_email, params[:account_manager_email], :placeholder => "E.g., janedoe@mail.com", required: true,class: "form-control #{form_error_class(@member, :account_manager_email)}"
-              = model_error_display(@member, :account_manager_email)
-        .row
-          .col
-            .form-check
-              = f.check_box :hide_info_on_locator, class: 'form-check-input', id: 'hideInfoCheckBox'
-              %label{ for: 'hideInfoCheckBox' } Hide Info on Member Locator
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Organizations that do not want be shown on the Member Locator can check this box'}
-        .row.border-top.py-2
-          %label.pl-1.font-weight-bold Service Cost Estimate
-        .row
-          .col-lg-6
-            .form-group
-              %label User Seats
-              %i.c-pointer.fas.fa-info-circle.fa{:title => '5 User minimum - includes the Account Manager'}
-              = f.number_field :service_capacity, min: 5, value: 5, required: true, class: "form-control #{form_error_class(@member, :service_capacity)}"
-              = model_error_display(@member, :service_capacity)
-          .col
-            .form-group
-              %label Payment Plan
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Receive a 3% discount on the total subscription cost via one yearly lump-sum payment'}
-              = f.select :plan, STRIPE_PLANS, {}, { class: 'form-control custom-select' }
-        .row.d-flex.justify-content-center
-          .col-lg-6
-            .form-group.mb-3.text-center
-              %label Total Price
-              #total-price.form-control.font-weight-bold.text-center
-        .row.border-top.py-2
-          %label.pl-1.font-weight-bold Billing Information
-        .row
-          .col
-            %div.form-inline
-              %p#paymentParagraph
-                Please select a payment method:
-              %div.form-check.form-check-inline
-                = f.radio_button :brand, 'Credit', id: 'creditOrDebit', class: 'form-check-input'
-                Credit or Debit Card
-              %div.form-check.form-check-inline
-                = f.radio_button :brand, 'ACH', id: 'ACHCard', class: 'form-check-input'
-                Checking or Savings Account (ACH Payment)
-        .row.justify-content-center
-          .col-lg-6
-            %div.form-group.text-center{style:"margin: 0px;"}
-              %label#debitLabel Credit or Debit Card
-              #card-element
-              %small.text-danger#card-errors{ role: 'alert' }
+        %h5 Account Information
+        .member-info
+          .row
+            .col-lg-6
+              .form-group
+                %label Member Name
+                %i.c-pointer.fas.fa-info-circle.fa{:title => 'Name of the organization registering to become a Member'}
+                = f.text_field :name, :placeholder => "E.g., TJ Maxx", autofocus: true, required: true, class: "form-control #{form_error_class(@member, :name)}"
+                = model_error_display(@member, :name)
+            .col
+              .form-group
+                %label Address
+                = f.text_field :address, :placeholder => "E.g., 123 Main Street", required: true, class: "form-control #{form_error_class(@member, :address)}"
+                = model_error_display(@member, :address)
+          .row
+            .col-lg-6
+              .form-group
+                %label City
+                = f.text_field :city, :placeholder => "E.g., Springfield", required: true, class: "form-control #{form_error_class(@member, :city)}"
+                = model_error_display(@member, :city)
+            .col-lg-4
+              .form-group
+                %label State
+                = f.select :state, US_STATES, {}, { class: "form-control custom-select #{form_error_class(@member, :state)}" }
+                = model_error_display(@member, :state)
+            .col
+              .form-group
+                %label ZIP Code
+                = f.text_field :zip, :placeholder => "E.g., 12345", required: true, class: "form-control #{form_error_class(@member, :zip)}"
+                = model_error_display(@member, :zip)
+          .row
+            .col-lg-6
+              .form-group
+                %label Phone
+                %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the area code and phone number of the registering organization here in ten digits'}
+                = f.text_field :phone, :placeholder => "E.g., 8662825789", required: true, class: "form-control #{form_error_class(@member, :phone)}"
+                = model_error_display(@member, :phone)
+            .col
+              .form-group
+                %label Website
+                %i.c-pointer.fas.fa-info-circle.fa{:title => 'The website of the registering organization'}
+                = f.text_field :url, :placeholder => "E.g., www.tjmaxx.com", required: true, class: "form-control #{form_error_class(@member, :url)}"
+                = model_error_display(@member, :url)
+          .row
+            .col-lg-6
+              .form-group
+                %label Contact Name
+                %i.c-pointer.fas.fa-info-circle.fa{:title => 'Name of the person responsible for the registration of an organization'}
+                = f.text_field :contact_name, :placeholder => "E.g., John Doe", required: true, class: "form-control #{form_error_class(@member, :contact_name)}"
+                = model_error_display(@member, :contact_name)
+            .col
+              .form-group
+                %label Contact Email
+                = f.email_field :contact_email, :placeholder => "E.g., johndoe@mail.com", required: true, class: "form-control #{form_error_class(@member, :contact_email)}"
+                = model_error_display(@member, :contact_email)
+          .row
+            .col-lg-6
+              .form-group
+                %label Contact Phone
+                %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the area code and phone number of the person registering for an organization here in ten digits'}
+                = f.text_field :contact_phone, :placeholder => "E.g., 2056105555", required: true, class: "form-control #{form_error_class(@member, :contact_phone)}"
+                = model_error_display(@member, :contact_phone)
+            .col
+              .form-group
+                %label Contact Phone Extension
+                = f.text_field :contact_phone_extension, :placeholder => "E.g., 123", class: "form-control #{form_error_class(@member, :contact_phone_extension)}"
+                = model_error_display(@member, :contact_phone_extension)
+          .row
+            .col-lg-6
+              .form-group
+                %label Account Manager's Name
+                %i.c-pointer.fas.fa-info-circle.fa{:title => 'Initial User for an organization and the person primarily responsible for managing their online Community'}
+                = text_field_tag :account_manager_name, params[:account_manager_name], :placeholder => "E.g., Jane Doe", required: true, class: "form-control #{form_error_class(@member, :account_manager_name)}"
+                = model_error_display(@member, :account_manager_name)
+            .col
+              #account_manager_email_form.form-group
+                %label Account Manager's Email
+                = text_field_tag :account_manager_email, params[:account_manager_email], :placeholder => "E.g., janedoe@mail.com", required: true,class: "form-control #{form_error_class(@member, :account_manager_email)}"
+                = model_error_display(@member, :account_manager_email)
+          .row
+            .col
+              .form-check
+                = f.check_box :hide_info_on_locator, class: 'form-check-input', id: 'hideInfoCheckBox'
+                %label{ for: 'hideInfoCheckBox' } Hide Info on Member Locator
+                %i.c-pointer.fas.fa-info-circle.fa{:title => 'Organizations that do not want be shown on the Member Locator can check this box'}
+
+        %h5 Billing Information
+        .billing-info
+          .row.border-top.py-2
+            %label.pl-1.font-weight-bold Service Cost Estimate
+          .row
+            .col-lg-6
+              .form-group
+                %label User Seats
+                %i.c-pointer.fas.fa-info-circle.fa{:title => '5 User minimum - includes the Account Manager'}
+                = f.number_field :service_capacity, min: 5, value: 5, required: true, class: "form-control #{form_error_class(@member, :service_capacity)}"
+                = model_error_display(@member, :service_capacity)
+            .col
+              .form-group
+                %label Payment Plan
+                %i.c-pointer.fas.fa-info-circle.fa{:title => 'Receive a 3% discount on the total subscription cost via one yearly lump-sum payment'}
+                = f.select :plan, STRIPE_PLANS, {}, { class: 'form-control custom-select' }
+          .row.d-flex.justify-content-center
+            .col-lg-4
+              .form-group.mb-3.text-center
+                %label Total Price
+                #total-price.form-control.font-weight-bold.text-center
+          .row
+            .col
+              %div.form-inline
+                %p#paymentParagraph
+                  Please select a payment method:
+                %div.form-check.form-check-inline
+                  = f.radio_button :payment_method, 'card', id: 'creditOrDebit', class: 'form-check-input'
+                  Credit or Debit Card
+                %div.form-check.form-check-inline
+                  = f.radio_button :payment_method, 'ach', id: 'ACHCard', class: 'form-check-input'
+                  Checking or Saving Account (ACH Payment)
+
+          #debitBox
+            %h5 Pay with a Credit or Debit Card
+            .row
+              .col-lg-6
+                .form-group
+                  %label Credit or Debit Card
+                  #card-element
+                  %small.text-danger#card-errors{ role: 'alert' }
+              .col
+                .form-group
+                  %label Billing Address
+                  %input#card_address.form-control{ placeholder: 'E.g., 123 Main Street' }
+            .row
+              .col-lg-6
+                .form-group
+                  %label City
+                  %input#card_city.form-control{ placeholder: 'E.g., Springfield' }
+              .col
+                .form-group
+                  %label State
+                  = select_tag :card_state, options_for_select(US_STATES), { class: 'form-control custom-select' }
+
+          #achBox
+            %h5 Pay with a Bank Account (ACH Payment)
+            %input{ name: 'stripeToken', type: 'hidden' }
+            .row
+              .col-lg-2
+                .form-group
+                  %label Type
+                  %select#ach-type.form-control
+                    %option{ value: 'individual' } Individual
+                    %option{ value: 'company' } Company
+              .col-lg-5
+                .form-group
+                  %label Routing number
+                  %input#routing-number.form-control{ placeholder: 'E.g., 110000000' }
+              .col
+                .form-group
+                  %label Account number
+                  %input#account-number.form-control{ placeholder: 'E.g., 000123456789' }
+            .row
+              .col-lg-12.ach-error
 
         .row.border-top.py-2
           %label.pl-1.font-weight-bold Purchase Confirmation
@@ -142,8 +180,7 @@
             .form-check
               = f.check_box :terms_of_service, class: 'form-check-input', id: 'termsCheckBox', 'data-data_capcha': false
               %label{ for: 'termsCheckBox' }
-                I Agree to the
-                %a
+                = 'I Agree to the '
                 %a{ href: saas_agreement_path, title: 'Saas Agreement', target: '_blank'}> SaaS Agreement
         .row
         %div.mb-2

@@ -1,5 +1,27 @@
 $(document).ready(function() {
 
+  $('#create_member').prop('disabled', true);
+
+  $(document).on('change', '#termsCheckBox', function() {
+    if(this.checked && $('#termsCheckBox').data('data_capcha')) {
+      $('#create_member').prop('disabled', false);
+    } else {
+      $('#create_member').prop('disabled', true);
+    }
+  });
+
+  thenCapchaIsSubmited = function() {
+    $('#termsCheckBox').data('data_capcha', true);
+    if ($('#termsCheckBox')[0].checked) {
+      $('#create_member').prop('disabled', false);
+    }
+  };
+
+  expiredRecapchaCallback = function() {
+    $('#termsCheckBox').data('data_capcha', false);
+    $('#create_member').prop('disabled', true);
+  };
+
   var stripe = Stripe($("meta[name='stripe-key']").attr('content'));
   var elements = stripe.elements();
   var style = {
@@ -22,7 +44,8 @@ $(document).ready(function() {
 
   document.getElementById('creditOrDebit').addEventListener('click', function() {
     card.mount('#card-element');
-    document.getElementById('debitLabel').style.display = 'block';
+    document.getElementById('debitBox').style.display = 'block';
+    document.getElementById('achBox').style.display = 'none';
   });
  
   card.addEventListener('change', function(event) {
@@ -34,28 +57,53 @@ $(document).ready(function() {
     }
   });
 
+  document.getElementById("creditOrDebit").click();
+
+  document.getElementById('ACHCard').addEventListener('click', function() {
+    card.unmount('#card-element');
+    document.getElementById('achBox').style.display = 'block';
+    document.getElementById('debitBox').style.display = 'none';
+  });
+
+  var errorElement = $('.ach-error');
+
   $('#payment-form').submit(function( event ) {
+    event.preventDefault();
     if(document.getElementById('creditOrDebit').checked) {
-      event.preventDefault();
-      stripe.createToken(card).then(function(result) {
+      var tokenData = {
+        address_line1: $('#card_address').val(),
+        address_city: $('#card_city').val(),
+        address_state: $('#card_state').val()
+      };
+
+      stripe.createToken(card, tokenData).then(function (result) {
         if (result.error) {
           var errorElement = $('#card-errors');
           errorElement.text(result.error.message);
         } else {
-          stripeTokenHandler(result.token);
+          stripeCardTokenHandler(result.token);
         }
       });
+    } else {
+      var bankAccountData = {
+        country: 'us',
+        currency: 'usd',
+        routing_number: $('#routing-number').val(),
+        account_number: $('#account-number').val(),
+        account_holder_name: '',
+        account_holder_type: $('#ach-type').val()
+      };
+      if(bankAccountData['account_number'] && bankAccountData['routing_number']){
+        stripe.createToken('bank_account', bankAccountData).then(stripeAchTokenHandler);
+      } else {
+        showAchErrors(errorElement, 'Routing number and Account number can\'t be blank')
+      }
+
     }
+
   });
 
-  document.getElementById("creditOrDebit").click();
-  
-  document.getElementById('ACHCard').addEventListener('click', function() {
-    card.unmount('#card-element');
-    document.getElementById('debitLabel').style.display = 'none';
-  });
-
-  function stripeTokenHandler(token) {
+  function stripeCardTokenHandler(token) {
     var form = document.getElementById('payment-form');
     var hiddenInput = document.createElement('input');
     hiddenInput.setAttribute('type', 'hidden');
@@ -63,6 +111,23 @@ $(document).ready(function() {
     hiddenInput.setAttribute('value', token.id);
     form.appendChild(hiddenInput);
     form.submit();
+  }
+
+  function stripeAchTokenHandler(result) {
+    errorElement.removeClass('visible');
+
+    if (result.token) {
+      var form = document.getElementById('payment-form');
+      $('input[name="stripeToken"]').val(result.token.id);
+      form.submit();
+    } else if (result.error) {
+      showAchErrors(errorElement, result.error.message);
+    }
+  }
+
+  function showAchErrors(element, errors) {
+    element.addClass('visible');
+    element.text(errors);
   }
 
   calculate_price();

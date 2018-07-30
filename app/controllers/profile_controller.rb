@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
   before_action :require_authentication
-  skip_before_action :pending_user?
+  skip_before_action :pending_user
 
   def edit
     @user = authenticated_user

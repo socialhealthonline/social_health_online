@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_20_081617) do
+ActiveRecord::Schema.define(version: 2018_07_29_213307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -204,6 +204,9 @@ ActiveRecord::Schema.define(version: 2018_07_20_081617) do
     t.string "contact_phone_extension"
     t.string "stripe_customer_id"
     t.string "period"
+    t.integer "payment_method"
+    t.string "plan"
+    t.boolean "ach_verified", default: false
     t.index ["period"], name: "index_members_on_period"
     t.index ["slug"], name: "index_members_on_slug", unique: true
   end
