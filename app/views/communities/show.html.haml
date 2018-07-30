@@ -60,7 +60,7 @@
 
       .col-12.pt-3
         %p.text-center
-          =link_to 'Contact Manager', new_conversation_path(recipient_id: @member.primary_manager&.id), target: '_blank', class: 'btn btn-primary'
+          =link_to 'Contact Manager', new_conversation_path(recipient_id: @member.primary_manager&.id), target: '_blank', class: 'btn btn-primary', style: 'border: 1px solid black'
 
 %section.flush-with-above.space-0
   %div
@@ -79,15 +79,25 @@
 %section.pt-2.pb-2
   .tab-content.pb-2
     .tab-pane.fade.show.active#events(role="tabpanel" aria-labelledby="events-tab")
-
+      .row.mt-0.mb-3
+        .col
+          %h3.notification-title
+            %strong
+              Community Events Calendar
       .container
         .row
-          .col-12
+          .col-12.pb-2
             .card
               .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
                 #calendar
+
     .tab-pane.fade#announcements(role="tabpanel" aria-labelledby="announcements-tab")
       .container
+        .row.mt-0.mb-3
+          .col
+            %h3.notification-title.pb-2
+              %strong
+                Community Announcements
         .row.mt-4
           .col.pt-3
             #scroll-box-announcements{ :style => "border: 2px solid black; border-radius: 12px;" }
@@ -104,7 +114,12 @@
     .tab-pane.fade#members(role="tabpanel" aria-labelledby="members-tab")
       %div#profile_partial
       .container
-        .row.my-3.justify-content-center
+        .row.mt-0.mb-3
+          .col
+            %h3.notification-title.pb-3
+              %strong
+                Community User Directory
+        .row.justify-content-center
           .col-7.pt-3
             #scroll-box-announcements{ style: "border: 2px solid black; border-radius: 12px; width: 100%;" }
               %h5.notification-title.border-bottom.mb-2
