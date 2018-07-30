@@ -3,10 +3,16 @@ require 'rails_helper'
 RSpec.describe 'Explore Communities' do
   describe 'Member Registration', js: true do
     context 'Successfully' do
+      let(:service) { CreateManagerAndSubscriptionService.new(nil,
+                                                              payment_method: nil,
+                                                              manager_name: nil,
+                                                              manager_email: nil,
+                                                              stripe_token: nil) }
+
       before do
         visit new_members_registration_path
         allow_any_instance_of(MembersRegistrationController).to receive(:verify_recaptcha).and_return(true)
-        allow_any_instance_of(CreateManagerAndSubscriptionService).to receive(:call).and_return(true)
+        allow_any_instance_of(CreateManagerAndSubscriptionService).to receive(:call).and_return(service)
       end
 
       it 'Visitor visit register page' do
@@ -31,7 +37,7 @@ RSpec.describe 'Explore Communities' do
         check 'termsCheckBox'
         page.execute_script('thenCapchaIsSubmited()')
         click_button 'Submit'
-        expect(page).to have_content('Success')
+        expect(page).to have_content('Success!')
       end
     end
 
