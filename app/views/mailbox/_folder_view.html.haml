@@ -1,7 +1,7 @@
 .container
   .row.pt-3.pb-3.px-2.justify-content-center
     %h1.text-info Messages
-  .row.mb-2
+  .row.mb-4
     .col-12.col-md-3.mb-1.order-md-1
       = link_to 'Compose', new_conversation_path, class: 'btn btn-info mb-3', style: 'border: 1px solid black;'
       .card.card-sm
@@ -12,10 +12,10 @@
         = render 'conversations/form'
       - else
         -if @active.equal?(:inbox) && messages.none?
-          %p.text-muted.mt-5.text-center
+          %p.text-muted.mt-4.pt-3.text-center
             %em No messages.
         -if @active.equal?(:sent) && messages.none?
-          %p.text-muted.mt-5.text-center
+          %p.text-muted.mt-4.pt-3.text-center
             %em No sent messages.
         - if @active.equal?(:trash) && messages.any?
           .row
