@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Contact us' do
 
   it 'is successful' do
+    allow_any_instance_of(MembersRegistrationController).to receive(:verify_recaptcha).and_return(true)
     visit contact_path
     fill_in 'name', with: 'Tom Jones'
     fill_in 'email', with: 'tom@example.com'
