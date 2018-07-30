@@ -29,5 +29,5 @@
               = render partial: 'conversations/conversation', collection: messages, locals: { folder: @active }
         = paginate messages
       -if @active.equal?(:trash) && messages.none?
-        %p.text-muted.mt-4.pb-3.text-center
+        %p.text-muted.mt-4.pb-4.text-center
           %em No trashed messages.
