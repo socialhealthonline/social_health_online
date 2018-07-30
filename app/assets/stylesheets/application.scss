@@ -522,3 +522,20 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
 #userHeader {
   display: block !important;
 }
+
+.ach-error {
+  display: none;
+  font-size: 13px;
+  color: #d9534f;
+}
+
+.ach-error.visible {
+  display: inline;
+}
+
+.billing-info, .member-info {
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
