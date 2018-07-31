@@ -53,7 +53,7 @@ $(document).ready(function() {
     if (event.error) {
       displayError.text(event.error.message);
     } else {
-    displayError.empty();
+      displayError.empty();
     }
   });
 
@@ -79,6 +79,7 @@ $(document).ready(function() {
       stripe.createToken(card, tokenData).then(function (result) {
         if (result.error) {
           var errorElement = $('#card-errors');
+          errorElement.show();
           errorElement.text(result.error.message);
         } else {
           stripeCardTokenHandler(result.token);

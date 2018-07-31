@@ -7,7 +7,6 @@
       %h1.brand-primary.text-center= title
   .row
     .col
-
       = form_with url: ach_path, method: :patch, local: true do |f|
         .row
           .col
@@ -19,4 +18,5 @@
               %label Micro Deposit #2
               = f.text_field :deposit_2, autofocus: true, required: true, class: 'form-control', placeholder: '0.45'
         .row.justify-content-center.pt-1.pb-3
-          = f.submit 'Verify', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Sending...' }
+          = f.submit 'Verify', class: 'btn btn-primary', style: 'border: 1px solid black;',
+          data: { disable_with: 'Sending...' }
