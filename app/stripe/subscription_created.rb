@@ -7,6 +7,7 @@ class SubscriptionCreated
                      account_end_date: Time.at(subscription.current_period_end),
                      period: subscription.plan.nickname,
                      suspended: false )
+      MemberNotifierMailer.ach_charge_success(member).deliver if member.ach
     end
   end
 end

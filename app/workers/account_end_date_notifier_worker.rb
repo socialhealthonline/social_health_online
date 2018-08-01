@@ -3,9 +3,12 @@ require 'sidekiq-scheduler'
 class AccountEndDateNotifierWorker
   include Sidekiq::Worker
 
-  def perform(*args)
-    Member.where("period = ? and account_start_date IS NOT NULL and account_end_date IS NOT NULL", 'Annual').find_each do |m|
-      remain_sixty_days_send_mail(m)
+  def perform
+    Member.where(period: 'Annual', suspended: false).
+      where.not(account_start_date:  nil).
+      where.not(account_end_date: nil).
+      find_each do |m|
+        remain_sixty_days_send_mail(m)
     end
   end
 

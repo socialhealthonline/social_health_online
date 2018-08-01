@@ -9,6 +9,9 @@ production:
   :concurrency: 15
 
 :schedule:
-  perform:
-    cron: "10 0 * * *"
+  account_end_date_notifier_worker:
+    cron: '0 0 * * *'
     class: AccountEndDateNotifierWorker
+  check_ach_deposits_notifier_worker:
+    cron: '0 1 * * *'
+    class: CheckAchDepositsNotifierWorker
