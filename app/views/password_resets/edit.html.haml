@@ -1,8 +1,9 @@
 .container
-  .row.mb-5
+  .row.my-4
     .col-lg-6.ml-auto.mr-auto
-      %h3.text-center.pt-3 Change Password
-      .card
+      %h3.text-center
+        %strong Change Password
+      .card{ :style => 'border: 2px solid black; border-radius: 12px;' }
         .card-body
           .alert.alert-info(role='alert')
             Passwords must be at least <strong>8 characters</strong> long and contain numbers and letters.
@@ -15,4 +16,4 @@
               %label(for='user_password_confirmation') Password Confirmation
               = f.password_field :password_confirmation, class: "form-control #{form_error_class(@user, :password_confirmation)}"
               = model_error_display(@user, :password_confirmation)
-            = f.submit 'Save', class: 'btn btn-block btn-primary', data: { disable_with: 'Saving...' }
+            = f.submit 'Save', class: 'btn btn-block btn-primary', style: 'border: 1px solid black', data: { disable_with: 'Saving...' }
