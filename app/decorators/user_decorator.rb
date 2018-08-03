@@ -128,7 +128,7 @@ class UserDecorator < ApplicationDecorator
 
   def user_avatar
     if object.avatar.attached? && object.avatar.attachment.valid?
-      image_tag object.avatar, alt: 'User avatar', size: '180x180'
+      image_tag object.avatar, alt: 'User Avatar', size: '180x180'
     end
   end
 end
