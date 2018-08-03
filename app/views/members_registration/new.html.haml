@@ -172,13 +172,14 @@
             .row
               .col-lg-12.ach-error
 
+        %h5 Purchase Confirmation
         .row
           .col
             .form-check
               = f.check_box :terms_of_service, class: 'form-check-input', id: 'termsCheckBox', 'data-data_capcha': false
               %label{ for: 'termsCheckBox' }
-                = 'I Agree to the '
-                %a{ href: saas_agreement_path, title: 'Saas Agreement', target: '_blank'}> SaaS Agreement
+                = 'I Have Read and Agree to the '
+                %a{ href: saas_agreement_path, title: 'SaaS Agreement', target: '_blank'}> SaaS Agreement
         .row
         %div.mb-2
           = recaptcha_tags callback: 'thenCapchaIsSubmited', expired_callback: 'expiredRecapchaCallback'

@@ -81,6 +81,14 @@
           %div.ml-2.mb-2
             = recaptcha_tags callback: 'thenCapchaIsSubmited', expired_callback: 'expiredRecapchaCallback'
 
+        .row
+          .col.pb-3
+            %p
+            By submitting this registration form, you confirm that you have read and agree
+            to the&nbsp;
+            %a{ href: affiliate_agreement_path, title: "Affiliate Agreement", target: '_blank' }> Affiliate Agreement.
+            &nbsp
+
         .row.mb-3
           .col.text-center
             = submit_tag 'Submit', class: 'btn btn-primary', style: 'border: 1px solid black;', data: { disable_with: 'Please wait...' }

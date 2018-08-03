@@ -9,7 +9,7 @@
     .col
       = form_with url: users_registration_url, method: :post, local: true do
         = hidden_field_tag :subject, ''
-        %h5.pb-2{:style => 'border-bottom: 2px solid black;'} Account Information 
+        %h5.pb-2{:style => 'border-bottom: 2px solid black;'} Account Information
         .row
           .col-lg-6
             .form-group
@@ -51,6 +51,14 @@
         .row
           %div.ml-2.mb-2
             = recaptcha_tags callback: 'thenCapchaIsSubmited', expired_callback: 'expiredRecapchaCallback'
+
+        .row
+          .col.pb-3
+            %p
+            By submitting this registration form, you confirm that you have read and agree
+            to the&nbsp;
+            %a{ href: terms_path, title: "Terms & Conditions of Use", target: '_blank' }> Terms & Conditions of Use.
+            &nbsp
 
         .row.mb-3
           .col.text-center
