@@ -42,17 +42,17 @@
             .form-group
               %label(for="phone") Phone
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the area code and phone number of the person registering here in ten digits'}
-              =text_field_tag :phone, params[:phone],  :placeholder => "E.g., 8662825789", class: 'form-control', required: true
+              =text_field_tag :phone, params[:phone], :placeholder => "E.g., 8662825789", class: 'form-control', required: true
           .col-lg-3
             .form-group
-              %label(for="displayname") Display Name
+              %label(for="display_name") Display Name
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the display name that you would prefer to use in the service'}
-              = text_field_tag :displayname, params[:displayname], :placeholder => "E.g., Trucker72", class: 'form-control', required: true
+              = text_field_tag :display_name, params[:display_name], :placeholder => "E.g., Trucker72", class: 'form-control', required: true
         .row
           .col-lg-6
             .form-group
-              %label(for="raceethnicity") Race/Ethnicity
-              = text_field_tag :raceethnicity, params[:raceethnicity], :placeholder => "Black, White, Hispanic, Asian, American Indian, Pacific Islander, Other", class: 'form-control', required: true
+              %label(for="race") Race/Ethnicity
+              = text_field_tag :race, params[:race], :placeholder => "Black, White, Hispanic, Asian, American Indian, Pacific Islander, Other", class: 'form-control', required: true
           .col-lg-3
             .form-group
               %label(for="gender") Gender
