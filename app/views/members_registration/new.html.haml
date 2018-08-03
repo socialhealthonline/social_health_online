@@ -99,7 +99,7 @@
 
         %h5 Billing Information
         .billing-info
-          %h5 Service Cost Estimate
+          %h6 Service Cost Estimate
           .row
             .col-lg-6
               .form-group
@@ -130,7 +130,7 @@
                   Checking or Saving Account (ACH Payment)
 
           #debitBox
-            %h5 Pay with a Credit or Debit Card
+            %h6 Pay with a Credit or Debit Card
             .row
               .col-lg-6
                 .form-group
@@ -152,27 +152,26 @@
                   = select_tag :card_state, options_for_select(US_STATES), { class: 'form-control custom-select' }
 
           #achBox
-            %h5 Pay with a Bank Account (ACH Payment)
+            %h6 Pay with a Bank Account (ACH Payment)
             %input{ name: 'stripeToken', type: 'hidden' }
             .row
               .col-lg-2
                 .form-group
-                  %label Type
+                  %label Account Type
                   %select#ach-type.form-control
                     %option{ value: 'individual' } Individual
                     %option{ value: 'company' } Company
               .col-lg-5
                 .form-group
-                  %label Routing number
+                  %label Routing Number
                   %input#routing-number.form-control{ placeholder: 'E.g., 110000000' }
               .col
                 .form-group
-                  %label Account number
+                  %label Account Number
                   %input#account-number.form-control{ placeholder: 'E.g., 000123456789' }
             .row
               .col-lg-12.ach-error
 
-        %h5 Purchase Confirmation
         .row
           .col
             .form-check

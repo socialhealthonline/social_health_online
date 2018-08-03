@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   # Create Member
   resources :members_registration, only: [:new, :create]
 
+  # User Registration
+  get "users_registration" => "users_registration#new"
+  post "users_registration" => "users_registration#create"
+
   # Affiliate Registration
   get "affiliates_registration" => "affiliates_registration#new"
   post "affiliates_registration" => "affiliates_registration#create"
