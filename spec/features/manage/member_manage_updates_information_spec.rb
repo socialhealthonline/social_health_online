@@ -5,7 +5,7 @@ feature 'Member manager updates information', type: :feature do
   let(:manager) { create(:user, :manager, member: member) }
   let(:big_image) { File.new("#{Rails.root}/spec/fixtures/files/big_photo.jpg").path }
   let(:txt_file) { File.new("#{Rails.root}/spec/fixtures/files/test.txt").path }
-  let(:file_size_error) { 'This file exceeds the maximum allowed file size (3 mb).' }
+  let(:file_size_error) { 'This file exceeds the maximum allowed file size (10 mb).' }
   let(:file_extension_error) { 'Only image files with extensions .jpg, .jpeg, .gif, or .png are allowed.' }
 
   before do

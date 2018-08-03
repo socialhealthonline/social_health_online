@@ -43,8 +43,8 @@ class User < ApplicationRecord
 
   def avatar_validation
     if avatar.attached?
-      if avatar.blob.byte_size > 3.megabytes
-        errors[:avatar] << 'This file exceeds the maximum allowed file size (3 mb).'
+      if avatar.blob.byte_size > 10.megabytes
+        errors[:avatar] << 'This file exceeds the maximum allowed file size (10 mb).'
       elsif !avatar.blob.content_type.starts_with?('image/')
         errors[:avatar] << 'Only image files with extensions .jpg, .jpeg, .gif, or .png are allowed.'
       end

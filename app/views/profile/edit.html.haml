@@ -149,8 +149,8 @@
           .row
             .col-12.col-sm-6.col-lg-6.col-xl-6
               .form-group#file-field
-                %label(for="profile_avatar") User Avatar (note: maximum file size is 3 MB)
-                = f.file_field :avatar, class: "form-control #{form_error_class(@user, :avatar)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 3.megabytes }
+                %label(for="profile_avatar") User Avatar (note: maximum file size is 10 MB)
+                = f.file_field :avatar, class: "form-control #{form_error_class(@user, :avatar)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 10.megabytes }
                 = model_error_display(@user, :avatar)
 
           .row
