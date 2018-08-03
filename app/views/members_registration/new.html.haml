@@ -31,12 +31,12 @@
                 %label City
                 = f.text_field :city, placeholder: 'E.g., Springfield', required: true, class: "form-control #{form_error_class(@member, :city)}"
                 = model_error_display(@member, :city)
-            .col-lg-4
+            .col-lg-3
               .form-group
                 %label State
                 = f.select :state, US_STATES, {}, { class: "form-control custom-select #{form_error_class(@member, :state)}" }
                 = model_error_display(@member, :state)
-            .col
+            .col-lg-3
               .form-group
                 %label ZIP Code
                 = f.text_field :zip, placeholder: 'E.g., 12345', required: true, class: "form-control #{form_error_class(@member, :zip)}"

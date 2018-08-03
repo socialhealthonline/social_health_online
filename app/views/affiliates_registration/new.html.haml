@@ -25,11 +25,11 @@
             .form-group
               %label(for="email") City
               = text_field_tag :city, params[:city], class: 'form-control', required: true
-          .col-lg-4
+          .col-lg-3
             .form-group
               %label(for="state") State
               = text_field_tag :state, params[:state], class: 'form-control', required: true
-          .col-lg
+          .col-lg-3
             .form-group
               %label(for="zip") ZIP Code
               = text_field_tag :zip, params[:zip], class: 'form-control', required: true
@@ -70,11 +70,11 @@
             .form-group
               %label(for="support_type") Support Type
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'Describe what type of support your organization can provide to Social Health Users. Events are opportunites for social activities. Discounts are monetary discounts for goods and services'}
-              =text_field_tag :support_type, params[:support_type], :placeholder => 'Events, Discounts, or Events/Discounts', class: 'form-control', required: true
+              =text_field_tag :support_type, params[:support_type], :placeholder => 'Events, Discounts, Events/Discounts', class: 'form-control', required: true
           .col-lg
             .form-group
               %label(for="support_notes") Support Notes
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Describe any discounts available to Social Health Users'}
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Describe any discounts available to Social Health\'s Users'}
               =text_field_tag :support_notes, params[:support_notes], :placeholder => 'E.g., 10% discount on all purchases', class: 'form-control', required: false
 
         .row

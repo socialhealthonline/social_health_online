@@ -13,8 +13,7 @@
         .row
           .col-lg-6
             .form-group
-              %label(for="name") Guest User Name
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Name of the person registering to become a Guest User'}
+              %label(for="name") Name
               = text_field_tag :name, params[:name], autofocus: true, class: 'form-control', required: true
           .col
             .form-group
@@ -25,29 +24,44 @@
             .form-group
               %label(for="email") City
               = text_field_tag :city, params[:city], class: 'form-control', required: true
-          .col-lg-4
+          .col-lg-3
             .form-group
               %label(for="state") State
               = text_field_tag :state, params[:state], class: 'form-control', required: true
-          .col-lg
+          .col-lg-3
             .form-group
               %label(for="zip") ZIP Code
               = text_field_tag :zip, params[:zip], class: 'form-control', required: true
             .form-group
         .row
-          .col-lg-4
+          .col-lg-6
             .form-group
               %label(for="email") Email
               =email_field_tag :email, params[:email], class: 'form-control', required: true
-          .col-lg-4
+          .col-lg-3
             .form-group
               %label(for="phone") Phone
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the area code and phone number of the person registering here in ten digits'}
               =text_field_tag :phone, params[:phone],  :placeholder => "E.g., 8662825789", class: 'form-control', required: true
-          .col-lg-4
+          .col-lg-3
             .form-group
-              %label(for="age") Age
-              = text_field_tag :age, params[:age], class: 'form-control', required: true
+              %label(for="displayname") Display Name
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Provide the display name that you would prefer to use in the service'}
+              = text_field_tag :displayname, params[:displayname], :placeholder => "E.g., Trucker72", class: 'form-control', required: true
+        .row
+          .col-lg-6
+            .form-group
+              %label(for="raceethnicity") Race/Ethnicity
+              = text_field_tag :raceethnicity, params[:raceethnicity], :placeholder => "Black, White, Hispanic, Asian, American Indian, Pacific Islander, Other", class: 'form-control', required: true
+          .col-lg-3
+            .form-group
+              %label(for="gender") Gender
+              = text_field_tag :gender, params[:gender], :placeholder => "Male, Female, Other", class: 'form-control', required: true
+          .col-lg-3
+            .form-group
+              %label(for="birthdate") Birthdate
+              = text_field_tag :birthdate, params[:birthdate], class: 'form-control', required: true
+
         .row
           %div.ml-2.mb-2
             = recaptcha_tags callback: 'thenCapchaIsSubmited', expired_callback: 'expiredRecapchaCallback'
