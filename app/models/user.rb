@@ -70,7 +70,7 @@ class User < ApplicationRecord
   end
 
   def set_random_password
-    self.password = SecureRandom.urlsafe_base64(12, true)
+    self.password = SecureRandom.urlsafe_base64(8, true)
     self.password_confirmation = self.password
   end
 
