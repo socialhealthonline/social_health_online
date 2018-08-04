@@ -14,7 +14,7 @@ class Member < ApplicationRecord
   validates_uniqueness_of :name, case_sensitive: false
   validates :state, inclusion: US_STATES.values
   validates :zip, format: { with: %r{\A[\d]{5}(-[\d]{4})?\z} }
-  validates :phone, :contact_phone, format: { with: /\A\d{10}\z/, message: 'must be 10 digits including area code' }
+  validates :phone, :contact_phone, format: { with: /\A\d{10}\z/, message: 'Must be 10 digits including area code.' }
   validates_format_of :contact_email, with: /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
   validate :logo_validation
   validates :terms_of_service, acceptance: true

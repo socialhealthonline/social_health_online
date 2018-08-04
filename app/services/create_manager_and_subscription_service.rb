@@ -33,7 +33,7 @@ class CreateManagerAndSubscriptionService
     create_customer
     make_primary_manager(create_manager)
     @flash << ' In 2-3 business days, you’ll receive 2 small (typically less than a dollar) deposits from us.' \
-              ' Once you receive them, enter them on verification page to complete the setup.'
+              ' Once you receive them, enter them on the verification page to complete the setup.'
   end
 
   def create_manager
