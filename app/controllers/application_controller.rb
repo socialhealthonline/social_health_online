@@ -27,13 +27,13 @@ class ApplicationController < ActionController::Base
     return if authenticated_user.nil?
     member = authenticated_user.member
     if member.ach? && !member.ach_verified?
-      redirect_to edit_ach_path, warning: 'You should first enter micro deposits to confirm your account'
+      redirect_to edit_ach_path, warning: 'You should first complete ACH verification with microdeposits to confirm your account.'
     end
   end
-  
+
   def pending_user
     if authenticated_user&.pending?
-      redirect_to profile_url, warning: 'You should first complete your profile!'
+      redirect_to profile_url, warning: 'You should first complete your profile. Don\'t forget to update your password before finishing!'
     end
   end
 
