@@ -8,7 +8,7 @@ class CreateManagerAndSubscriptionService
     @user_name = params[:manager_name]
     @user_email = params[:manager_email]
     @stripe_token = params[:stripe_token]
-    @password = SecureRandom.hex(6)
+    @password = SecureRandom.hex
     @flash = 'Success! Credentials will be sent to your email.'
   end
 
