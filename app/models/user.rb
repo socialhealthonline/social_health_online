@@ -20,7 +20,7 @@ class User < ApplicationRecord
   validates_length_of :password, minimum: 8, too_short: 'Must be at least 8 characters.', allow_nil: true
   validates_format_of :password, with: /\A(?=.*[a-z])(?=.*\d).+\z/i, message: 'Must be alphanumeric.', allow_nil: true
   validates :state, inclusion: US_STATES.values
-  validates :phone, format: { with: /\A\d{10}\z/, message: 'Must be 10 digits including area code.' }
+  validates :phone, format: { with: /\A\d{10}\z/, message: 'Must be 10 digits including area code' }
   validates :zip, format: { with: %r{\A[\d]{5}(-[\d]{4})?\z} }
   validate :avatar_validation
   validates_inclusion_of :gender, in: GENDER
