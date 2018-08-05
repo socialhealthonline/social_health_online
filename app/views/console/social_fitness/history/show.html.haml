@@ -12,7 +12,7 @@
   .row
     .col.py-2
       .row
-        .col-lg-6
+        .col-lg-6.mb-2.text-center
           %p
             %strong My social fitness with individuals is:
           %p= RATINGS.key(@log.individuals)
@@ -25,7 +25,7 @@
           %p
             %strong My social fitness with my friends is:
           %p= RATINGS_WITH_NA.key(@log.friends)
-        .col-lg-6
+        .col-lg-6.text-center
           %p
             %strong My social fitness with my colleagues is:
           %p= RATINGS_WITH_NA.key(@log.colleagues)

@@ -1,6 +1,6 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
   %div
-    %h1.h3.brand-primary Social Tracker   
+    %h1.h3.brand-primary Social Tracker
     %nav(aria-label="breadcrumb")
       %ol.breadcrumb
         %li.breadcrumb-item= link_to 'Members', console_social_tracker_members_path
@@ -12,24 +12,24 @@
   .row
     .col.py-4
       .row
-        .col-lg-6
-          %p 
+        .col-lg-6.mb-2.text-center
+          %p
             %strong Event Date:
           %p= short_date(@log.event_date)
-          %p 
+          %p
             %strong Event State:
           %p= US_STATES.key(@log.state)
-          %p 
+          %p
             %strong Event City:
           %p= @log.city
           %p
             %strong Event Type
           %p= @log.event_type
-        .col-lg-6
-          %p 
+        .col-lg-6.text-center
+          %p
             %strong Event Source:
           %p= SocialEventLog::EVENT_SOURCES.key(@log.source)
-          %p 
+          %p
             %strong Event Category:
           %p= @log.event_category
           %p
