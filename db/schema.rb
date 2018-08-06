@@ -197,8 +197,8 @@ ActiveRecord::Schema.define(version: 2018_07_29_213307) do
     t.string "url"
     t.integer "primary_manager_id"
     t.string "events_url"
-    t.string "slug"
     t.boolean "hide_info_on_locator", default: false
+    t.string "slug"
     t.datetime "welcome_kit_date"
     t.string "phone"
     t.string "contact_phone_extension"
@@ -221,6 +221,14 @@ ActiveRecord::Schema.define(version: 2018_07_29_213307) do
   create_table "notifications", force: :cascade do |t|
     t.string "title"
     t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "registrations", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "telephone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
