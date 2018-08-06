@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
   validates :name, :display_name, :email, :address, :city, :gender, :ethnicity, :birthdate, :time_zone, presence: true
   validates :group, presence: true, allow_blank: true
+  validates :guest, presence:true, allow_blank: true 
   validates_uniqueness_of :email, :display_name, case_sensitive: false
   validates_format_of :email, with: /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
   validates_length_of :password, minimum: 8, too_short: 'Must be at least 8 characters.', allow_nil: true

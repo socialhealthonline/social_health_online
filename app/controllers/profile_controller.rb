@@ -46,6 +46,7 @@ class ProfileController < ApplicationController
       :hobbies,
       :pet_peeves,
       :group,
+      :guest,
       :bio,
       :password,
       :password_confirmation,
