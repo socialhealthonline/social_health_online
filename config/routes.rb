@@ -165,9 +165,12 @@ Rails.application.routes.draw do
   # Discounts
   get "discounts_finder" => "discounts_finder#index"
 
-  # Issues
+  # Report Issues
   get "issues" => "issues#new"
   post "issues" => "issues#create"
+
+  # My Achievements
+  get "my_achievements" => "my_achievements#index"
 
   # My Favorites
   get "my_favorites" => "my_favorites#index"

@@ -142,6 +142,14 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
   color: #17a2b8;
 }
 
+.card-header-badges {
+  font-size: .85em;
+}
+
+.card-footer-badges {
+  font-size: .8em;
+}
+
 .our-services li {
   padding-bottom: 0.5em;
 }
@@ -247,6 +255,14 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
   width: 75%;
   border: 2px solid black;
   padding: 24px;
+}
+
+.badges-box {
+  overflow: auto;
+  margin: auto;
+  width: 100%;
+  border: 2px solid black;
+  padding: 15px;
 }
 
 .settings-box {
