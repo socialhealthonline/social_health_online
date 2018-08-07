@@ -13,7 +13,7 @@ class AccountEndDateNotifierWorker
   end
 
   def remain_sixty_days_send_mail(member)
-    if(member.account_end_date - member.account_start_date).to_i == 60
+    if(member.account_end_date - member.account_start_date).to_i == 45
       MemberNotifierMailer.sixty_days_remain(member).deliver
     end
   end
