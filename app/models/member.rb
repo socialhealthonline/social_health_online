@@ -111,14 +111,7 @@ class Member < ApplicationRecord
   end
 
   def status
-    return 'Suspended' if suspended
-    active_users = User.where(member_id: self.id)
-                       .where.not(last_sign_in_at: 'nil')
-    if active_users.present?
-      return 'Active'
-    else
-      return 'Pending'
-    end
+    suspended ? 'Suspended' : 'Active'
   end
 
   private

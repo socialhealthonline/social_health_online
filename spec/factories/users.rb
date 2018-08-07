@@ -2,9 +2,9 @@ FactoryBot.define do
   factory :user do
     sequence(:name) { |n| "Tom Jones #{n}"}
     sequence(:email) { |n| "user#{n}@example.com" }
+    sequence(:display_name) {|n| "Tom #{n}"}
     password 'Password007'
     password_confirmation 'Password007'
-    display_name 'Tom'
     phone '555-555-5555'
     address '123 Main St.'
     city 'Hometown'
