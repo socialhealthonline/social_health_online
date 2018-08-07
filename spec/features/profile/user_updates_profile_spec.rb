@@ -16,7 +16,7 @@ RSpec.describe 'User updates profile' do
     fill_in 'user_password_confirmation', with: '1qaz2wsx3edc'
     click_button 'Update'
     user.reload
-    expect(current_path).to eq profile_path
+    expect(current_path).to eq home_path
     expect(page).to have_text 'Your profile was successfully updated'
     expect(user.name).to eq 'Sam Adams III'
     expect(user.email).to eq 'samadamsiii@example.com'

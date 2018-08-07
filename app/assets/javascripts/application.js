@@ -111,6 +111,12 @@ $(document).ready(function() {
     trigger: 'focus'
   });
 
+  ('#user_birthdate').pickadate({
+    format: 'yyyy-mm-dd',
+    selectYears: true,
+    selectMonths: true
+  });
+
 });
 
 var US_STATES = {
