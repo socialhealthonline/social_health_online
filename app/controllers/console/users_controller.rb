@@ -83,6 +83,7 @@ class Console::UsersController < ConsoleController
       :birthdate,
       :time_zone,
       :group,
+      :guest,
       :last_sign_in_at,
       :manager,
       :user_status
