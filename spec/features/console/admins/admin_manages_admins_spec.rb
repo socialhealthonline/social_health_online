@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Admin mananges admin users' do
+RSpec.describe 'Admin manages admin users' do
 
   let!(:admin) { create(:user, :admin) }
 
