@@ -47,7 +47,7 @@ $(document).ready(function() {
     document.getElementById('debitBox').style.display = 'block';
     document.getElementById('achBox').style.display = 'none';
   });
- 
+
   card.addEventListener('change', function(event) {
     var displayError = $('#card-errors');
     if (event.error) {
@@ -97,7 +97,7 @@ $(document).ready(function() {
       if(bankAccountData['account_number'] && bankAccountData['routing_number']){
         stripe.createToken('bank_account', bankAccountData).then(stripeAchTokenHandler);
       } else {
-        showAchErrors(errorElement, 'Routing number and Account number can\'t be blank')
+        showAchErrors(errorElement, 'Routing Number and/or Account Number can\'t be blank')
       }
 
     }

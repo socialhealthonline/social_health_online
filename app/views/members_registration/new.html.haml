@@ -131,25 +131,12 @@
 
           #debitBox
             %h6 Pay with a Credit or Debit Card
-            .row
+            .row.justify-content-center
               .col-lg-6
                 .form-group
                   %label Credit or Debit Card
                   #card-element
                   %small.text-danger#card-errors{ role: 'alert' }
-              .col
-                .form-group
-                  %label Billing Address
-                  %input#card_address.form-control{ placeholder: 'E.g., 123 Main Street' }
-            .row
-              .col-lg-6
-                .form-group
-                  %label City
-                  %input#card_city.form-control{ placeholder: 'E.g., Springfield' }
-              .col
-                .form-group
-                  %label State
-                  = select_tag :card_state, options_for_select(US_STATES), { class: 'form-control custom-select' }
 
           #achBox
             %h6 Pay with a Bank Account (ACH Payment)
@@ -169,6 +156,12 @@
                 .form-group
                   %label Account Number
                   %input#account-number.form-control{ placeholder: 'E.g., 000123456789' }
+              .row-md.px-2
+                %p.font-weight-bold
+                  ACH Payment Authorization: By submitting this banking information, I am confirming that I have the legal authority to use this bank
+                  account for this transaction and authorize Social Health to electronically debit the account and, if necessary, electronically credit
+                  the account to correct erroneous debits. I acknowledge and understand that I can contact Social Health by
+                  emailing support@socialhealthonline.com to revoke this authorization.
             .row
               .col-lg-12.ach-error
 

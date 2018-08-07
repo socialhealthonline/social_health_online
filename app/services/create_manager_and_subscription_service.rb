@@ -9,7 +9,7 @@ class CreateManagerAndSubscriptionService
     @user_email = params[:manager_email]
     @stripe_token = params[:stripe_token]
     @password = SecureRandom.hex(6)
-    @flash = 'Success! Credentials will be sent to your email.'
+    @flash = 'Success! Sign-in credentials will be sent to you via email.'
   end
 
   def call
@@ -32,8 +32,8 @@ class CreateManagerAndSubscriptionService
   def ach_payment
     create_customer
     make_primary_manager(create_manager)
-    @flash << ' In 2-3 business days, you’ll receive 2 small (typically less than a dollar) deposits from us.' \
-              ' Once you receive them, enter them on the verification page to complete the setup.'
+    @flash << ' In 2-3 business days, you’ll receive 2 small (typically less than a dollar) deposits from Social Health in your bank account.' \
+              ' Once you receive them, you must confirm your receipt via a verification page to finish the setup process.'
   end
 
   def create_manager
