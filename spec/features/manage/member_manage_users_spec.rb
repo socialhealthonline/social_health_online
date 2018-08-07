@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Send invites users and manage them' do
   let(:member) { create(:member) }
   let!(:manager) { create(:user, :manager, member: member) }
-  let!(:user) { create(:user, member: member) }
-  let!(:user_2) { create(:user, member: member, user_status: :pending )}
+  let!(:user) { create(:user, display_name: 'User 1', member: member) }
+  let!(:user_2) { create(:user, member: member, display_name: 'User 2', user_status: :pending )}
 
   before do
     sign_in manager

@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'Member manager updates event' do
   let(:member) { create(:member) }
-  let!(:manager_1) { create(:user, :manager, member: member) }
-  let!(:manager_2) { create(:user, :manager, member: member) }
+  let!(:manager_1) { create(:user, :manager, member: member, display_name: 'User 1') }
+  let!(:manager_2) { create(:user, :manager, member: member, display_name: 'User 2') }
   let!(:event) { create(:event, member: member) }
 
   context 'rsvp limit validation' do

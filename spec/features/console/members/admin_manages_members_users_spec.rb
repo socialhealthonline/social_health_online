@@ -5,7 +5,7 @@ RSpec.describe 'Admin mananges members users' do
   let!(:admin) { create(:user, :admin) }
   let!(:member) { create(:member) }
 
-  describe 'creates a new user' do
+  describe 'creates a new user', js: true do
     before do
       sign_in admin
       visit console_member_users_path(member.id)
@@ -22,6 +22,7 @@ RSpec.describe 'Admin mananges members users' do
       select 'Alabama', from: 'user_state'
       fill_in 'user_zip', with: '55555'
       select 'Eastern Time (US & Canada)', from: 'user_time_zone'
+      page.execute_script("$('#user_birthdate').removeAttr('readonly')")
       fill_in 'user_birthdate', with: '1970-1-1'
       select 'Female', from: 'user_gender'
       select 'Asian', from: 'user_ethnicity'
@@ -42,7 +43,7 @@ RSpec.describe 'Admin mananges members users' do
   end
 
   describe 'edits a user' do
-    let!(:user) { create(:user, member: member) }
+    let!(:user) { create(:user, member: member, display_name: 'User') }
 
     before do
       sign_in admin
@@ -67,7 +68,7 @@ RSpec.describe 'Admin mananges members users' do
   end
 
   describe 'deletes a user' do
-    let!(:user) { create(:user, member: member) }
+    let!(:user) { create(:user, member: member, display_name: 'User') }
 
     before do
       sign_in admin
