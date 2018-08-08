@@ -115,7 +115,11 @@
       .form-check.mb-3
         = f.check_box :hide_info_on_locator, class: 'form-check-input'
         %label.form-check-label(for="hide_info_on_locator") Hide Info on Member Locator
-
+  .col  
+    .form-group  
+      .form-check
+        = f.check_box :public_member, class: 'form-check-input'
+        %label.form-check-label(for="public_member") List as Public Member
 .text-center
   = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }
   - if @member.persisted?
