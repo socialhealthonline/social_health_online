@@ -26,7 +26,7 @@
         filterForm.innerHTML =
           '<div class="row">' +
           '<div class="col-md-12 px-2">' +
-          '<input type="text" name="zip" placeholder="ZIP Code" id="zip-input" class="form-control">' +
+          '<input type="text" name="zip" placeholder="ZIP Code" id="zip-input" class="form-control text-center">' +
           "</div></div>";
       }
     }
