@@ -18,6 +18,6 @@
         .card-body.text-center.pt-0
           = form_with url: invite_guests_url, method: :post, local: true do
             .form-group
-              %label(for="email") Invitation Email
+              %label(for="email") Invitation Email Address
               = email_field_tag :email, params[:email], class: 'form-control', required: true
             = submit_tag 'Send', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
