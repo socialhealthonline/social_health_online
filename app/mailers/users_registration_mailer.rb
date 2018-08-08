@@ -3,7 +3,7 @@ class UsersRegistrationMailer < ApplicationMailer
 
   def notify(form_params)
     @form_params = form_params
-    mail to: 'sales@socialhealthonline.com', subject: 'Social Health - New Guest User Registration Submission'
+    mail to: 'sales@socialhealthonline.com', subject: 'New Guest User Registration Submission - Social Health'
   end
 
 end

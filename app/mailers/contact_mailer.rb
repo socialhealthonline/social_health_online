@@ -3,7 +3,7 @@ class ContactMailer < ApplicationMailer
 
   def notify(form_params)
     @form_params = form_params
-    mail to: 'sales@socialhealthonline.com', subject: 'Social Health - New Contact Submission'
+    mail to: 'sales@socialhealthonline.com', subject: 'New Contact Submission - Social Health'
   end
 
 end
