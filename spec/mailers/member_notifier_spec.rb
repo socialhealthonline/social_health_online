@@ -6,7 +6,7 @@ RSpec.describe MemberNotifierMailer, type: :mailer do
     let(:mail) { MemberNotifierMailer.sixty_days_remain(member) }
 
     it 'renders the subject' do
-      expect(mail.subject).to eql('[Social Health Online] Subscription')
+      expect(mail.subject).to eql('Social Health Online - Subscription')
     end
 
     it 'renders the receiver email' do
