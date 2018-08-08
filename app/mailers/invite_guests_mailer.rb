@@ -5,7 +5,7 @@ class InviteGuestsMailer < ApplicationMailer
     email = @form_params[:email]
 
     mail :to => email,
-         subject: 'Join Me In Social Health Online',
+         subject: 'Join Me - Social Health Online',
          from: "#{authenticated_user.name} <#{authenticated_user.email}>"
   end
 end
