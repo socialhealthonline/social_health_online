@@ -159,6 +159,10 @@ Rails.application.routes.draw do
   # Media Center
   get "media_center" => "media_center#index"
 
+  # Invite Guests
+  get "invite_guests" => "invite_guests#new"
+  post "invite_guests" => "invite_guests#create"
+
   # Affiliates
   get "affiliates_search" => "affiliates#index"
 
