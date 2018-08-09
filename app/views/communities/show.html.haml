@@ -61,6 +61,7 @@
       .col-12.pt-3
         %p.text-center
           =link_to 'Contact Manager', new_conversation_path(recipient_id: @member.primary_manager&.id), target: '_blank', class: 'btn btn-primary', style: 'border: 1px solid black'
+          =link_to 'Suggest Events', event_suggestions_path, class: 'btn btn-primary', style: 'border: 1px solid black'
 
 %section.flush-with-above.space-0
   %div

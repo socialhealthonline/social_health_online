@@ -60,6 +60,9 @@ Rails.application.routes.draw do
   # My settings
   resource :my_settings, only: [:show, :update]
 
+  # Bulletin Board
+  get 'bulletins' => 'bulletins#bulletins'
+
   # Verify ACH account
   resource :ach, controller: 'ach', only: [:edit, :update]
 
@@ -72,6 +75,8 @@ Rails.application.routes.draw do
 
   get 'explore_communities' => 'communities#explore_communities'
   get 'event_search' => 'communities#event_search'
+  get 'event_suggestions' => 'communities#new'
+  post 'event_suggestions' => 'communities#create'
 
   # Manage
   namespace :manage do
@@ -158,6 +163,9 @@ Rails.application.routes.draw do
 
   # Media Center
   get "media_center" => "media_center#index"
+
+  # My Bulletins
+  resources :my_bulletins
 
   # Invite Guests
   get "invite_guests" => "invite_guests#new"

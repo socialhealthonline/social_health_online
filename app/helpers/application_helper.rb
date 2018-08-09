@@ -39,6 +39,10 @@ module ApplicationHelper
     datetime.blank? ? nil : datetime.in_time_zone(time_zone).strftime('%b %d %Y, %l:%M %p %Z')
   end
 
+  def short_date_time_notimezone(datetime)
+    datetime.blank? ? nil : datetime.strftime('%m/%d/%Y, %I:%M %p')
+  end
+
   def time_in_cdt(date, format)
     date.blank? ? nil : date.in_time_zone('Central Time (US & Canada)').strftime(format)
   end

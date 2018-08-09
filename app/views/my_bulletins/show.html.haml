@@ -1,0 +1,37 @@
+.d-flex.justify-content-center.flex-wrap.flex-md-nowrap.align-items-center.py-3.px-2
+  %h1.brand-primary= @bulletin.title
+
+.row.justify-content-center
+  .col-8
+    .settings-box{:style => "border-radius: 12px;"}
+      %p
+      - if @bulletin.event_type.present?
+        %strong  Event Type:
+        = @bulletin.event_type
+      %p
+      - if @bulletin.city.present?
+        %strong  City:
+        = @bulletin.city
+      %p
+      - if @bulletin.state.present?
+        %strong  State:
+        = @bulletin.state
+      %p
+      - if @bulletin.event_datetime.present?
+        %strong  Event Date/Time:
+        = @bulletin.event_datetime
+      %p
+      %p
+        %strong  Posted By:
+        = @authenticated_user.display_name
+      %p
+        %strong  Bulletin Description:
+        = @bulletin.description
+
+.container
+  .col
+    %div.form-row
+      %div.float-left.py-3
+        = link_to 'javascript:history.back()', class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+          %i.fas.fa-arrow-left
+          Back

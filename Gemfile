@@ -34,6 +34,7 @@ gem 'image_processing'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
+gem 'simple_form', '~> 3.2', '>= 3.2.1'
 
 group :development, :test do
   gem 'awesome_print'

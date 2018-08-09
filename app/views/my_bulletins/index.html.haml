@@ -1,0 +1,54 @@
+- page_title 'My Bulletins'
+
+.container
+  .row
+    .col.py-3
+      %h1.brand-primary.text-center My Bulletins
+  .row
+    .col-md-12
+      %p.text-center.mb-4.p-2{style: "border: 1px solid black;"}
+        %strong
+          Post and manage your bulletins here so all Users can find your social events and activity ideas on the service's bulletin board.
+
+- if @bulletins.any?
+  .row.justify-content-center
+    .table-responsive.col-10.text-center{ :style => 'border: 2px solid black; border-radius: 12px;' }
+      %table.table.table-borderless.table-hover
+        %thead
+          %tr
+            %th Bulletin Title
+            %th Event Type
+            %th City
+            %th State
+            %th Event Date/Time
+            %th Added On
+        %tbody
+          - @bulletins.each.with_index(1) do |bulletin, i|
+            %tr.bg-white
+              %td= link_to truncate("#{i}. #{bulletin.title}"), my_bulletin_path(bulletin)
+              %td= bulletin.event_type
+              %td= bulletin.city
+              %td= bulletin.state
+              %td= short_date_time_notimezone(bulletin.event_datetime)
+              %td= time_in_cdt(bulletin.created_at, '%m/%d/%Y')
+              %td.w-10.text-right
+                .dropdown
+                  = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{bulletin.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
+                    %i.fas.fa-ellipsis-h
+                  .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{bulletin.id}")
+                    = link_to edit_my_bulletin_path(bulletin), title: 'Edit', class: 'dropdown-item text-info' do
+                      %i.far.fa-edit
+                      Edit
+                    = link_to my_bulletin_path(bulletin), title: 'Delete', id: "delete_bulletin_#{bulletin.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this bulletin. Press OK to continue.' } do
+                      %i.far.fa-trash-alt
+                      Delete
+            %tr.table-divider
+    %p= paginate @bulletins
+- else
+  %p.text-muted.text-center
+    %em No bulletins were found.
+
+.container
+  .col-12.py-3
+    %p.text-center
+      =link_to 'Post Bulletin', new_my_bulletin_path, class: 'btn btn-primary', style: 'border: 1px solid black'

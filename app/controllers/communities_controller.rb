@@ -1,6 +1,9 @@
 class CommunitiesController < ApplicationController
   before_action :require_authentication
 
+  def new
+  end
+
   def show
     @member = Member.friendly.find(params[:id]).decorate
     @announcements = @member.announcements.order(created_at: :desc).page(params[:page]).per(10)
@@ -16,6 +19,11 @@ class CommunitiesController < ApplicationController
     @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :desc).page(params[:page]).per(10)
     @events = Event.where("start_at >= ?", Time.zone.now).where(private: false).order(start_at: :desc).page(params[:page])
     @events = FindUsersCommunities.new(@events, show_init_scope: false).call(permitted_params)
+  end
+
+  def create
+    EventSuggestionsMailer.notify(params, authenticated_user).deliver_now
+    redirect_to event_suggestions_url, success: "Thank you for your submission. We'll be in touch!"
   end
 
   private

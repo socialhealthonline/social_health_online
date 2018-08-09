@@ -30,6 +30,7 @@
             %strong Event Source:
           %p= SocialEventLog::EVENT_SOURCES.key(@log.source)
           %p
+          - if @log.event_category.present?
             %strong Event Category:
           %p= @log.event_category
           %p
