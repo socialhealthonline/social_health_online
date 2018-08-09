@@ -78,7 +78,8 @@ class Console::MembersController < ConsoleController
       :welcome_kit_date,
       :phone,
       :contact_phone_extension,
-      :primary_manager_id
+      :primary_manager_id,
+      :public_member
     )
   end
 

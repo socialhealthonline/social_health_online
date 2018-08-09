@@ -80,6 +80,9 @@
   %strong Hide Info on Member Locator:
   = @member.hide_info_on_locator? ? 'Yes' : 'No'
 %p
+  %strong Public:
+  = @member.public_member? ? 'Yes' : 'No'
+%p
   = link_to console_members_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do
     %i.fas.fa-arrow-left
     Back
