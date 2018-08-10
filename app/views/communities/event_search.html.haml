@@ -38,7 +38,7 @@
               %td
               %td= event.event_type
               %td
-              %td= time_in_cdt(event.start_at, '%m/%d/%Y, %I:%M %p %Z')
+              %td= short_date_time(event.start_at, event.time_zone)
               %td
               %td= event.city
               %td

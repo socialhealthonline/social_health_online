@@ -17,28 +17,37 @@
         %strong Event Location:
         = @event.location
       %p
+      - if @event.address.present?
         %strong Event Address:
         = @event.address
       %p
+      - if @event.city.present?
         %strong Event City:
         = @event.city
       %p
+      - if @event.state.present?
         %strong Event State:
         = @event.state
       %p
+      - if @event.zip.present?
         %strong Event ZIP Code:
         = @event.zip
       %p
+      - if @event.url.present?
         %strong Event Website:
         = link_to @event.url, @event.url, target: '_blank' if @event.url.present?
       %p
+      - if @event.rsvp_limit.present?
         %strong RSVP Attendee Limit:
         = @event.rsvp_limit
+      %p
       %p
         %strong Event Access:
         = @event.private? ? 'Private' : 'Public'
       %p
+      - if @event.details.present?
         %strong Event Details:
+      %p
       = simple_format @event.details
       %p
         %strong RSVP List

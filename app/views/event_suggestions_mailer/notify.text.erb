@@ -2,10 +2,18 @@ Social Health Online Event Suggestions
 
 Name: <%= @authenticated_user.name %>
 
+Display Name : <%= @authenticated_user.display_name %>
+
 Email: <%= @authenticated_user.email %>
 
 Subject: <% 'Event Suggestions - Social Health Online' %>
 
-Message:
+Event Title: <%= @form_params[:event_title] %>
 
-<% 'Test' %>
+Event Date: <%= @form_params[:event_date] %>
+
+Event Location: <%= @form_params[:event_location] %>
+
+Event Details:
+
+<%= @form_params[:event_details] %>

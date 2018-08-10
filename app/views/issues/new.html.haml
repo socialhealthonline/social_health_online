@@ -13,7 +13,7 @@
 
     .col-md-12
       .card
-        %p.text-left.px-3.py-2.mb-0 Issues
+        %p.text-center.px-3.py-2.mb-0 Issues
         .card-body.text-center.pt-0
           = form_with url: issues_url, method: :post, local: true do
             = hidden_field_tag :subject, ''
