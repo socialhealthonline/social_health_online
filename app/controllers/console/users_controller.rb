@@ -4,7 +4,6 @@ class Console::UsersController < ConsoleController
   helper_method :sort_column, :sort_direction
 
   def index
-    @users = User.where(member_id: @member.id).order(:name).page(params[:page]).per(25)
     @users = User.where(member_id: @member.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 

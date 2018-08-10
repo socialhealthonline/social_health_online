@@ -18,6 +18,7 @@
             %th= sort_link 'state', 'State'
             %th= sort_link 'event_datetime', 'Event Date/Time'
             %th= sort_link 'created_at', 'Added On'
+            %th= sort_link 'created_at', 'Posted By'
         %tbody
           - @bulletins.each.with_index(1) do |bulletin, i|
             %tr.bg-white
@@ -27,6 +28,7 @@
               %td= bulletin.state
               %td= short_date_time_notimezone(bulletin.event_datetime)
               %td= time_in_cdt(bulletin.created_at, '%m/%d/%Y')
+              %td
               %td.w-10.text-right
                 .dropdown
                   = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{bulletin.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
