@@ -107,7 +107,7 @@ class PublicController < ApplicationController
   private
 
   def take_graph_data
-    gon.members_in_states = Member.group(:state).count
+    gon.members_in_states = Member.where.not(public_member: true).group(:state).count
     gon.affiliates_in_states = Affiliate.group(:state).count
   end
 end

@@ -121,6 +121,7 @@ Rails.application.routes.draw do
       end
     end
     resources :news
+    resources :manage_bulletins
     resources :notifications
     resources :members do
       collection do

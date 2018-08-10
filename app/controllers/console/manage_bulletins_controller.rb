@@ -1,9 +1,9 @@
-class MyBulletinsController < ApplicationController
+class Console::ManageBulletinsController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_action :find_bulletin, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bulletins = Bulletin.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+    @bulletins = Bulletin.all.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
   def show
@@ -42,20 +42,20 @@ class MyBulletinsController < ApplicationController
 
   private
 
-    def bulletin_params
-      params.require(:bulletin).permit(:title, :description, :city, :state, :event_date, :event_datetime, :event_type)
-    end
-
-    def find_bulletin
-      @bulletin = Bulletin.find(params[:id])
-    end
-
-    def sort_column
-      %w[title body created_at].include?(params[:column]) ? params[:column] : 'created_at'
-    end
-
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
-    end
-
+  def bulletin_params
+    params.require(:bulletin).permit(:title, :description, :city, :state, :event_date, :event_datetime, :event_type)
   end
+
+  def find_bulletin
+    @bulletin = Bulletin.find(params[:id])
+  end
+
+  def sort_column
+    %w[title body created_at].include?(params[:column]) ? params[:column] : 'created_at'
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
+  end
+
+end

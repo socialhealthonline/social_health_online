@@ -1,4 +1,4 @@
-module BulletinsHelper
+module ManageBulletinsHelper
   def sort_link(column, title = nil)
     title ||= column.titleize
     direction = column == sort_column && sort_direction == 'asc' ? 'desc' : 'asc'

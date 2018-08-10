@@ -29,6 +29,7 @@ EVENT_TYPES = [
 
 EVENT_CATEGORIES = [
   "Affiliate",
+  "Bulletin Board",
   "Community",
   "Matchmaker",
 ].freeze
