@@ -1,4 +1,4 @@
-= form_with model: @bulletin, url: [:my_bulletins], local: true do |f|
+= form_with model: @bulletin, url: [:console_manage_bulletins], local: true do |f|
   .row.justify-content-center
     .col-md-6
       .form-group
@@ -16,23 +16,23 @@
   .row.justify-content-center
     .col-lg-6
       .form-group
-        %label.font-weight-bold(for="event_city") City
+        %label.font-weight-bold(for="city") City
         = f.text_field :city, class: "form-control #{form_error_class(@bulletin, :city)}"
         = model_error_display(@bulletin, :city)
 
   .row.justify-content-center
     .col-lg-6
       .form-group
-        %label.font-weight-bold(for="event_state") State
+        %label.font-weight-bold(for="state") State
         = f.select :state, US_STATES, { include_blank: true }, { class: "#{form_error_class(@bulletin, :state)} form-control custom-select" }
         = model_error_display(@bulletin, :state)
 
   .row.justify-content-center
     .col-md-6
       .form-group
-        %label.font-weight-bold(for="event_datetime") Event Date/Time
-        = f.text_field :event_datetime, class: "flatpickr-date-time form-control #{form_error_class(@bulletin, :event_datetime)}", required: true
-        = model_error_display(@bulletin, :event_datetime)
+        %label.font-weight-bold(for="start_at") Event Date/Time
+        = f.text_field :start_at, class: "flatpickr-date-time form-control #{form_error_class(@bulletin, :start_at)}", required: true
+        = model_error_display(@bulletin, :start_at)
 
   .row.justify-content-center
     .col-md-6
@@ -43,4 +43,4 @@
 
   .mb-3.text-center
     = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, style: 'border: 1px solid black;'
-    = link_to 'Cancel', my_bulletins_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'
+    = link_to 'Cancel', console_manage_bulletins_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'

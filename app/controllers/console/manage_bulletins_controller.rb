@@ -16,7 +16,7 @@ class Console::ManageBulletinsController < ApplicationController
   def create
     @bulletin = Bulletin.new(bulletin_params)
     if @bulletin.save
-      redirect_to my_bulletins_path, success: 'The bulletin was successfully created!'
+      redirect_to console_manage_bulletins_path, success: 'The bulletin was successfully created!'
     else
       flash.now[:error] = 'Please correct the errors to continue.'
       render :new
@@ -28,7 +28,7 @@ class Console::ManageBulletinsController < ApplicationController
 
   def update
     if @bulletin.update(bulletin_params)
-      redirect_to my_bulletins_path, success: 'The bulletin was successfully updated!'
+      redirect_to console_manage_bulletin_path, success: 'The bulletin was successfully updated!'
     else
       flash.now[:error] = 'Please correct the errors to continue.'
       render :edit
@@ -37,13 +37,13 @@ class Console::ManageBulletinsController < ApplicationController
 
   def destroy
     @bulletin.destroy
-    redirect_to my_bulletins_path, success: 'The bulletin was successfully deleted!'
+    redirect_to console_manage_bulletins_path, success: 'The bulletin was successfully deleted!'
   end
 
   private
 
   def bulletin_params
-    params.require(:bulletin).permit(:title, :description, :city, :state, :event_date, :event_datetime, :event_type)
+    params.require(:bulletin).permit(:title, :description, :city, :state, :start_at, :user_id, :display_name, :event_date, :event_datetime, :event_type)
   end
 
   def find_bulletin

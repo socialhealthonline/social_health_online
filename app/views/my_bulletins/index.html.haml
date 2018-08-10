@@ -29,7 +29,7 @@
               %td= bulletin.event_type
               %td= bulletin.city
               %td= bulletin.state
-              %td= short_date_time_notimezone(bulletin.event_datetime)
+              %td= short_date_time_notimezone(bulletin.start_at)
               %td= time_in_cdt(bulletin.created_at, '%m/%d/%Y')
               %td.w-10.text-right
                 .dropdown

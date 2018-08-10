@@ -40,20 +40,18 @@
               %th State
               %th
               %th Posted By
-
           %tbody
           - @bulletins.each do |bulletin|
             %tr.bg-white
-              %td= link_to bulletin.title, my_bulletin_path(authenticated_user, bulletin)
+              %td= link_to bulletin.title, my_bulletin_path(bulletin)
               %td
               %td= bulletin.event_type
               %td
-              %td= short_date_time_notimezone(bulletin.event_datetime)
+              %td= short_date_time_notimezone(bulletin.start_at)
               %td
               %td= bulletin.city
               %td
               %td= bulletin.state
-              %td
               %td
               %td
             %tr.table-divider

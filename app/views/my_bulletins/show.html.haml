@@ -17,13 +17,13 @@
         %strong  State:
         = @bulletin.state
       %p
-      - if @bulletin.event_datetime.present?
+      - if @bulletin.start_at.present?
         %strong  Event Date/Time:
-        = short_date_time_notimezone @bulletin.event_datetime
+        = short_date_time_notimezone @bulletin.start_at
       %p
       %p
         %strong  Posted By:
-        = @authenticated_user.display_name
+        
       %p
         %strong  Bulletin Description:
         = @bulletin.description
