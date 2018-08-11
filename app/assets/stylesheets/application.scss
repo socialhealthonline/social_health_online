@@ -273,6 +273,13 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
   padding: 15px;
 }
 
+.card-box {
+  overflow: auto;
+  margin: auto;
+  width: 90%;
+  padding: 15px;
+}
+
 .notification-title {
   text-align: center;
 }

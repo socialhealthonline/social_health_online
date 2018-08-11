@@ -10,12 +10,12 @@
       %p.text-center.mb-4.p-2{style: "border: 1px solid black;"}
         %strong
           Submit this form to provide the Community Manager with suggestions for the addition of social events you are interested in.
-  .row
+  .row.mb-3
     .col-md-3
     .col-md-6.justify-content-center
-      .card
+      .card.card-box
         %p.text-left.px-3.py-2.mb-0
-        .card-body.text-center.pt-0
+        .card-body.pt-0
           = form_with url: event_suggestions_url, method: :post, local: true do
             .form-group
               %label(for="event_title") Event Title
@@ -25,13 +25,14 @@
               = text_field_tag :event_date, params[:event_date], :placeholder => "E.g., August 5, 2018", autofocus: true, class: 'form-control', required: true
             .form-group
               %label(for="event_location") Event Location
-              = text_field_tag :event_location, params[:event_location], :placeholder => "E.g., Big Time Bowling Alley", autofocus: true, class: 'form-control', required: true
+              = text_field_tag :event_location, params[:event_location], :placeholder => "E.g., Big Time Bowling", autofocus: true, class: 'form-control', required: true
             .form-group
               %label(for="event_details") Event Details
               = text_area_tag :message, params[:event_details], rows: '6', class: 'form-control', required: true
-            = submit_tag 'Send', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
+            .row.justify-content-center
+              = submit_tag 'Send', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
 
-  %p.py-3
+  %p.pb-3
     = link_to my_community_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
       %i.fas.fa-arrow-left
       Back

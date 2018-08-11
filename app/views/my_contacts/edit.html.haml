@@ -1,42 +1,46 @@
 .d-flex.justify-content-center.flex-wrap.flex-md-nowrap.align-items-center.py-3.px-2
   %h1.brand-primary Edit Contact
 
-= form_with model: @contact, url: [:my_contact], local: true do |f|
-  .row.justify-content-center
-    .col-md-6
-      .form-group
-        %label.font-weight-bold(for="name") Contact Name
-        = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@contact, :name)}", required: true
-        = model_error_display(@contact, :name)
+.row.justify-content-center.mb-3
+  .col-md-6
+    .card.card-box
+      .card-body.justify-content-center.pt-0
+      = form_with model: @contact, url: [:my_contact], local: true do |f|
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="name") Contact Name
+              = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@contact, :name)}", required: true
+              = model_error_display(@contact, :name)
 
-  .row.justify-content-center
-    .col-md-6
-      .form-group
-        %label.font-weight-bold(for="display_name") Contact Display Name
-        = f.text_field :display_name, autofocus: true, class: "form-control #{form_error_class(@contact, :display_name)}", required: true
-        = model_error_display(@contact, :display_name)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="display_name") Contact Display Name
+              = f.text_field :display_name, autofocus: true, class: "form-control #{form_error_class(@contact, :display_name)}", required: true
+              = model_error_display(@contact, :display_name)
 
-  .row.justify-content-center
-    .col-lg-6
-      .form-group
-        %label.font-weight-bold(for="city") Contact City
-        = f.text_field :city, class: "form-control #{form_error_class(@contact, :city)}"
-        = model_error_display(@contact, :city)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="city") Contact City
+              = f.text_field :city, class: "form-control #{form_error_class(@contact, :city)}"
+              = model_error_display(@contact, :city)
 
-  .row.justify-content-center
-    .col-lg-6
-      .form-group
-        %label.font-weight-bold(for="state") Contact State
-        = f.select :state, US_STATES, { include_blank: true }, { class: "#{form_error_class(@contact, :state)} form-control custom-select" }
-        = model_error_display(@contact, :state)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="state") Contact State
+              = f.select :state, US_STATES, { include_blank: true }, { class: "#{form_error_class(@contact, :state)} form-control custom-select" }
+              = model_error_display(@contact, :state)
 
-  .row.justify-content-center
-    .col-md-6
-      .form-group
-        %label.font-weight-bold(for="notes") Notes
-        = f.text_area :notes, autofocus: true, class: "form-control #{form_error_class(@contact, :notes)}"
-        = model_error_display(@contact, :notes)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="notes") Notes
+              = f.text_area :notes, autofocus: true, class: "form-control #{form_error_class(@contact, :notes)}"
+              = model_error_display(@contact, :notes)
 
-  .mb-3.text-center
-    = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, style: 'border: 1px solid black;'
-    = link_to 'Cancel', my_contacts_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'
+        .mb-3.text-center
+          = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, style: 'border: 1px solid black;'
+          = link_to 'Cancel', my_contacts_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'

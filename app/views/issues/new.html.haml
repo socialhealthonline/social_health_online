@@ -11,9 +11,10 @@
           Provide a description of any bugs, glitches, or service abuses you have
           encountered so they can be addressed.
 
-    .col-md-12
+    .col-md-3
+    .col-md-6.justify-content-center
       .card
-        %p.text-center.px-3.py-2.mb-0 Issues
+        %p.px-3.py-2.mb-0 Issues
         .card-body.text-center.pt-0
           = form_with url: issues_url, method: :post, local: true do
             = hidden_field_tag :subject, ''
