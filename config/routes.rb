@@ -189,7 +189,7 @@ Rails.application.routes.draw do
   get "my_favorites" => "my_favorites#index"
 
   # My Contacts
-  get "my_contacts" => "my_contacts#index"
+  resources :my_contacts
 
   require 'sidekiq/web'
   if Rails.env.production?
