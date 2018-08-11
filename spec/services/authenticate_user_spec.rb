@@ -15,7 +15,7 @@ describe AuthenticateUser do
       end
 
       it 'successfully authenticate user flash' do
-        expect(authenticate_user.flash).to eq("Welcome back, #{user.name}!")
+        expect(authenticate_user.flash).to eq("Welcome, #{user.name}!")
       end
     end
 
