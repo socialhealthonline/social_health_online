@@ -120,6 +120,12 @@
       .form-check
         = f.check_box :public_member, class: 'form-check-input'
         %label.form-check-label(for="public_member") List as Public Member
+  .col
+    .form-group
+      .form-check
+        = f.check_box :hide_suggest_events, class: 'form-check-input'
+        %label.form-check-label(for="hide_suggest_events") Show Suggest Events
+.row
 .text-center
   = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }
   - if @member.persisted?

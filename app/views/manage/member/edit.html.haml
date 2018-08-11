@@ -108,6 +108,12 @@
               %label(for="member_logo") Member Logo (note: maximum file size is 10 MB)
               = f.file_field :logo, class: "form-control #{form_error_class(@member, :logo)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 10.megabytes }
               = model_error_display(@member, :logo)
+          .col-lg-4
+            .card
+              .card-body
+                .form-check
+                  = f.check_box :hide_suggest_events, class: 'form-check-input'
+                  %label.form-check-label(for="hide_suggest_events") Show Suggest Events Feature in Your Community
         .row
           .col-lg-4
             %p.text-muted Logo Preview:

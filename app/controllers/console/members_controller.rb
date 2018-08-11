@@ -79,6 +79,7 @@ class Console::MembersController < ConsoleController
       :phone,
       :contact_phone_extension,
       :primary_manager_id,
+      :hide_suggest_events,
       :public_member
     )
   end

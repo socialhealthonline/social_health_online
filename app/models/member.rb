@@ -11,7 +11,7 @@ class Member < ApplicationRecord
   has_one_attached :logo
 
   validates :name, :address, :city, :state, :zip, :contact_name, :contact_email, :contact_phone, :phone, :service_capacity, presence: true
-  validates :public_member, presence: true, allow_blank: true
+  validates :hide_suggest_events, :public_member, presence: true, allow_blank: true
   validates_uniqueness_of :name, case_sensitive: false
   validates :state, inclusion: US_STATES.values
   validates :zip, format: { with: %r{\A[\d]{5}(-[\d]{4})?\z} }

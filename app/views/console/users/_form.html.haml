@@ -96,6 +96,21 @@
           %label.form-check-label(for="user_enabled") Enabled
         %small Enabled to sign in
 
+.row.pt-2.border-top
+  .col
+    %p.text-muted Change the Password:
+.row
+  .col
+    .form-group
+      %label(for="user_password") New Password
+      = f.password_field :password, class: "form-control #{form_error_class(@user, :password)}"
+      = model_error_display(@user, :password)
+  .col
+    .form-group
+      %label(for="user_password_confirmation") Confirm New Password
+      = f.password_field :password_confirmation, class: "form-control #{form_error_class(@user, :password_confirmation)}"
+      = model_error_display(@user, :password_confirmation)
+
 .text-center
   = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }
   - if @user.persisted?

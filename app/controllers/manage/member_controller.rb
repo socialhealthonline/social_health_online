@@ -32,7 +32,8 @@ class Manage::MemberController < ApplicationController
       :bio,
       :url,
       :events_url,
-      :primary_manager_id
+      :primary_manager_id,
+      :hide_suggest_events
     )
   end
 

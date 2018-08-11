@@ -85,7 +85,9 @@ class Console::UsersController < ConsoleController
       :guest,
       :last_sign_in_at,
       :manager,
-      :user_status
+      :user_status,
+      :password,
+      :password_confirmation
     )
   end
 

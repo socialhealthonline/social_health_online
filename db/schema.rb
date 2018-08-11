@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_10_212642) do
+ActiveRecord::Schema.define(version: 2018_08_11_123437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -223,6 +223,7 @@ ActiveRecord::Schema.define(version: 2018_08_10_212642) do
     t.string "plan"
     t.boolean "ach_verified", default: false
     t.boolean "public_member", default: false
+    t.boolean "hide_suggest_events", default: false
     t.index ["period"], name: "index_members_on_period"
     t.index ["slug"], name: "index_members_on_slug", unique: true
   end
