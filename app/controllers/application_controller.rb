@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :authenticated_user, :mailbox, :conversation, :current_user
+  helper_method :authenticated_user, :mailbox, :conversation
   add_flash_types :error, :success, :info, :warning
   before_action :disabled_user
   before_action :unpaid_user
@@ -15,10 +15,6 @@ class ApplicationController < ActionController::Base
 
   def authenticated_user
     @authenticated_user ||= User.find_by(auth_token: session[:auth_token]) if session[:auth_token]
-  end
-
-  def current_user
-    @current_user ||= session[:current_user_id] && User.find_by_id(session[:current_user_id])
   end
 
   def disabled_user
@@ -72,7 +68,5 @@ class ApplicationController < ActionController::Base
     logger.info "Rendering 404: #{message}"
     render file: "#{Rails.root}/public/404.html", layout: false, status: 404
   end
-
-  helper_method :current_user
 
 end

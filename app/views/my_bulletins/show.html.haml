@@ -2,7 +2,7 @@
   %h1.brand-primary= @bulletin.title
 
 .row.justify-content-center
-  .col-10
+  .col-9
     .settings-box{:style => "border-radius: 12px;"}
       %p
       - if @bulletin.event_type.present?
@@ -23,9 +23,9 @@
       %p
       %p
         %strong  Posted By:
-        
+
       %p
-        %strong  Bulletin Description:
+        %strong  Description:
         = @bulletin.description
 
 .container

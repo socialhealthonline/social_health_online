@@ -1,12 +1,12 @@
 .container
   .row.pt-3
     .col
-      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3
+      .d-flex.justify-content-center.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3
         %h1.brand-primary
           = @event.title
-
-  .row
-    .col
+.container
+  .row.justify-content-center.text-center
+    .col-8
       %p
         %strong Event Type:
         =@event.event_type
@@ -50,9 +50,14 @@
       %p
       = simple_format @event.details
       %p
+
+.container.text-center
+  .row
+    .col
+      %p
         %strong RSVP List
-      %div.table-wrapper-2.mb-2.ml-0{ :style => "border-radius: 12px;" }
-        %table.table.table-borderless
+      %div.table-wrapper-2.table-hover{ :style => "border-radius: 12px;" }
+        %table.table.table-borderless.text-left.mb-2
           %thead.mdb-color.lighten-4
             %tr
               %th
@@ -67,7 +72,9 @@
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: rsvp.user }" } }
                   =rsvp.user.display_name
               %td.text-center.pr-3= rsvp&.rsvp_status.capitalize
-  %p.pt-2.pb-3
+
+.container
+  %p.pt-2.py-3
     = link_to manage_events_path(@event.id), class: 'btn btn-outline-primary mr-1', style: 'border: 1px solid black;' do
       %i.fas.fa-arrow-left
       Back
