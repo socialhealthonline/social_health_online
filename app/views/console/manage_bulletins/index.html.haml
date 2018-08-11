@@ -13,7 +13,6 @@
         %thead
           %tr
             %th= sort_link 'title', 'Bulletin Title'
-            %th= sort_link 'event_type', 'Event Type'
             %th= sort_link 'city', 'City'
             %th= sort_link 'state', 'State'
             %th= sort_link 'event_datetime', 'Event Date/Time'
@@ -23,7 +22,6 @@
           - @bulletins.each.with_index(1) do |bulletin, i|
             %tr.bg-white
               %td= link_to truncate("#{i}. #{bulletin.title}"), console_manage_bulletin_path(bulletin)
-              %td= bulletin.event_type
               %td= bulletin.city
               %td= bulletin.state
               %td= short_date_time_notimezone(bulletin.start_at)

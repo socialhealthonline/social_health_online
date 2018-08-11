@@ -31,8 +31,6 @@
             %tr
               %th Bulletin Title
               %th
-              %th Event Type
-              %th
               %th Event Date/Time
               %th
               %th City
@@ -44,8 +42,6 @@
           - @bulletins.each do |bulletin|
             %tr.bg-white
               %td= link_to bulletin.title, my_bulletin_path(bulletin)
-              %td
-              %td= bulletin.event_type
               %td
               %td= short_date_time_notimezone(bulletin.start_at)
               %td

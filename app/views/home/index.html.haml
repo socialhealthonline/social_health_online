@@ -41,16 +41,16 @@
           %thead.mdb-color.lighten-4.text-center
             %tr
               %th Event Title
-              %th Event Type
               %th Event Date/Time
               %th RSVP
+              %th Hosted By
           %tbody
           - @events.each do |event|
             %tr.text-center.bg-white
               %td= link_to "#{event.title}", community_event_path(authenticated_user.member, event)
-              %td= event.event_type
               %td= short_date_time(event.start_at, event.time_zone)
               %td= home_events_status(event.status)
+              %td= event.member.name
             %tr.table-divider
         %p= paginate @events
         - if @events.none?

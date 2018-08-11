@@ -37,12 +37,12 @@
               = link_to bulletins_path, class: 'dropdown-item' do
                 %i.fas.fa-thumbtack
                 Bulletin Board
-              = link_to affiliates_search_path, class: 'dropdown-item' do
-                %i.fas.fa-search
-                Affiliate Search
               = link_to discounts_finder_path, class: 'dropdown-item' do
                 %i.fas.fa-hand-holding-usd
                 Discounts Finder
+              = link_to affiliates_search_path, class: 'dropdown-item' do
+                %i.fas.fa-search
+                Affiliate Search
 
           %li.nav-item.dropdown.mr-1.my-1
             %a.dropdown-toggle.btn.btn-primary.px-1#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}

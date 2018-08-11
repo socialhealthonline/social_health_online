@@ -27,7 +27,7 @@
     .col-lg-6
       .form-group
         %label.font-weight-bold(for="state") State
-        = f.select :state, US_STATES, { include_blank: true }, { class: "#{form_error_class(@bulletin, :state)} form-control custom-select" }
+        = f.select :state, US_STATES, { required: true }, { class: "#{form_error_class(@bulletin, :state)} form-control custom-select" }
         = model_error_display(@bulletin, :state)
 
   .row.justify-content-center

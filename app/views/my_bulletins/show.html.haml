@@ -5,9 +5,15 @@
   .col-9
     .settings-box{:style => "border-radius: 12px;"}
       %p
+        %strong  Posted By:
+      %p
       - if @bulletin.event_type.present?
         %strong  Event Type:
         = @bulletin.event_type
+      %p
+      - if @bulletin.start_at.present?
+        %strong  Event Date/Time:
+        = short_date_time_notimezone @bulletin.start_at
       %p
       - if @bulletin.city.present?
         %strong  City:
@@ -17,13 +23,6 @@
         %strong  State:
         = @bulletin.state
       %p
-      - if @bulletin.start_at.present?
-        %strong  Event Date/Time:
-        = short_date_time_notimezone @bulletin.start_at
-      %p
-      %p
-        %strong  Posted By:
-
       %p
         %strong  Description:
         = @bulletin.description

@@ -88,25 +88,26 @@
             %tr
               %th Event Title
               %th
-              %th Event Type
-              %th
               %th Event Date/Time
               %th
               %th City
               %th
               %th State
+              %th
+              %th Hosted By
+              %th
           %tbody
           - @events.each do |event|
             %tr.bg-white
               %td= link_to event.title, community_event_path(authenticated_user.member, event)
-              %td
-              %td= event.event_type
               %td
               %td= short_date_time(event.start_at, event.time_zone)
               %td
               %td= event.city
               %td
               %td= event.state
+              %td
+              %td= event.member.name
               %td
             %tr.table-divider
         %div.container.pagination.justify-content-center
