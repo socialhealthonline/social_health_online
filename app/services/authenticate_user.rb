@@ -39,6 +39,6 @@ class AuthenticateUser
 
   def set_authenticated_user_attributes
     @authenticated = true
-    @flash = "Welcome back, #{@user.name}!"
+    @flash = "Welcome, #{@user.name}!"
   end
 end
