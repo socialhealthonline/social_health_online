@@ -30,9 +30,13 @@ class Console::MembersController < ConsoleController
 
   def update
     @member = Member.find params[:id]
+    @member.logo.attach(params[:member][:logo]) if params[:member][:logo]
     if @member.update(member_params)
       redirect_to console_member_url(@member.id), success: 'The Member was successfully updated!'
     else
+      @member.logo.purge if @member.errors.messages[:logo].present?
+      @managers = @member.managers
+      flash.now[:error] = 'Please correct the errors to continue.'
       render :edit
     end
   end
