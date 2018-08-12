@@ -4,7 +4,7 @@ class Manage::SocialTracker::HistoryController < ApplicationController
 
   def users
     @member = Member.friendly.find(params[:name])
-    @users = User.where(member_id: authenticated_user.member.id)
+    @users = User.where(member_id: authenticated_user.member.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
 
     if ['name', 'display_name'].include?(params[:column])
       @users = @users.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
@@ -30,7 +30,7 @@ class Manage::SocialTracker::HistoryController < ApplicationController
   def user_history
     @member = Member.friendly.find params[:name]
     @user = @member.users.find(params[:id])
-    @social_event_logs = @user.social_event_logs.page params[:page]
+    @social_event_logs = @user.social_event_logs.page(params[:page]).per(25)
   end
 
   def show

@@ -54,7 +54,7 @@
                 = link_to manage_announcement_path(announcement), title: 'Delete', id: "delete_announcement_#{announcement.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this notification. Press OK to continue.' } do
                   %i.far.fa-trash-alt
             %tr.table-divider
-    %p= paginate @announcements
+      %p= paginate @announcements
   - else
     %p.pb-3.text-muted.text-center
       %em No announcements have been made.

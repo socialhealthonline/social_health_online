@@ -4,7 +4,7 @@ class Console::AdminsController < ConsoleController
 
   def index
     @admins = User.where(admin: true).order(:name)
-    @admins = @admins.order("#{sort_column} #{sort_direction}").page(params[:page])
+    @admins = @admins.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
   def show
@@ -24,7 +24,7 @@ class Console::AdminsController < ConsoleController
   def create
     @admin = User.new(user_params)
     @admin.set_random_password
-    
+
     if @admin.save
       redirect_to console_admin_url(@admin), success: 'The Admin was successfully created!'
     else

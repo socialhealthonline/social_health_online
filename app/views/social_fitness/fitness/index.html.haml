@@ -18,7 +18,7 @@
                     %tr
                       %td= link_to short_date(log.created_at), social_fitness_path(log), class: 'text-info'
                     %tr.table-divider
-            = paginate @social_fitness_logs
+              = paginate @social_fitness_logs
           - else
             %p.text-muted
               %em No social fitness entries.

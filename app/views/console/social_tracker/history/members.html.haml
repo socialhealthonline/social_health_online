@@ -25,6 +25,7 @@
                   %i(class="fas fa-download")
                   Export CSV
           %tr.table-divider
+    %p= paginate @members
 - else
   %p.text-muted
     %em No Members were found.

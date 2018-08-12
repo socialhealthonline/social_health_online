@@ -17,7 +17,7 @@ class SocialFitness::FitnessController < ApplicationController
   end
 
   def index
-    @social_fitness_logs = authenticated_user.social_fitness_logs.page params[:page]
+    @social_fitness_logs = authenticated_user.social_fitness_logs.page(params[:page]).per(25)
   end
 
   def show

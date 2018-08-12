@@ -23,7 +23,7 @@
                       %td= truncate(log.venue, :length => 30)
                       %td= RATINGS.key(log.rating)
                     %tr.table-divider
-            = paginate @social_event_logs
+              = paginate @social_event_logs
           - else
             %p.text-muted
               %em You have not logged any social events.

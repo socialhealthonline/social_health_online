@@ -11,13 +11,13 @@ class CommunitiesController < ApplicationController
   end
 
   def explore_communities
-    @communities = Member.where.not("name = ? ", authenticated_user.member.name).page(params[:page]).per(10)
+    @communities = Member.where.not("name = ? ", authenticated_user.member.name)
     @communities = FindUsersCommunities.new(@communities, show_init_scope: false).call(permitted_params)
   end
 
   def event_search
-    @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :desc).page(params[:page]).per(10)
-    @events = Event.where("start_at >= ?", Time.zone.now).where(private: false).order(start_at: :desc).page(params[:page])
+    @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :desc)
+    @events = Event.where("start_at >= ?", Time.zone.now).where(private: false).order(start_at: :desc)
     @events = FindUsersCommunities.new(@events, show_init_scope: false).call(permitted_params)
   end
 
@@ -29,6 +29,6 @@ class CommunitiesController < ApplicationController
   private
 
     def permitted_params
-      params.permit(:state, :city, :zip, :page).reject{|_, v| v.blank?}
+      params.permit(:name, :state, :city, :zip, :public_member, :page).reject{|_, v| v.blank?}
     end
 end
