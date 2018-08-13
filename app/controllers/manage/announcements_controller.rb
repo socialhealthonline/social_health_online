@@ -46,7 +46,6 @@ class Manage::AnnouncementsController < ApplicationController
       :title,
       :body,
       :created_at
-
     )
   end
 
