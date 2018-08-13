@@ -54,3 +54,62 @@
                 %i.fas.fa-baseball-ball.fa-3x
               .card-footer-badges.pb-3.text-center
                 You leveled up by logging 20 events.
+        .row
+          - if @social_event_Logs.size > 49
+            .card.pricing.card.my-2.col-4.px-1
+              .card-header-badges.pt-3.text-center
+                %strong On Fire
+              .card-body.brand-primary.px-2
+                %i.fas.fa-fire.fa-3x
+              .card-footer-badges.pb-3.text-center
+                Keep it up! You've logged 50 events.
+          - if @social_event_Logs.size > 99
+            .card.pricing.card.my-2.col-4.px-1
+              .card-header-badges.pt-3.text-center
+                %strong Kaboom!
+              .card-body.brand-primary.px-2
+                %i.fas.fa-bomb.fa-3x
+              .card-footer-badges.pb-3.text-center
+                You are the bomb! You've logged 100 events.
+          - if @social_event_Logs.size > 199
+            .card.pricing.card.my-2.col-4.px-1
+              .card-header-badges.pt-3.text-center
+                %strong Checkmate
+              .card-body.brand-primary.px-2
+                %i.fas.fa-chess-king.fa-3x
+              .card-footer-badges.pb-3.text-center
+                You are a grand social master. You've logged 500 events.
+        .row
+          - if @social_event_Logs.size > 499
+            .card.pricing.card.my-2.col-4.px-1
+              .card-header-badges.pt-3.text-center
+                %strong Supersonic
+              .card-body.brand-primary.px-2
+                %i.fas.fa-fighter-jet.fa-3x
+              .card-footer-badges.pb-3.text-center
+                You are breaking the social sound barrier! You've logged 500 events.
+          - if @social_event_Logs.size > 999
+            .card.pricing.card.my-2.col-4.px-1
+              .card-header-badges.pt-3.text-center
+                %strong Seeing Straight
+              .card-body.brand-primary.px-2
+                %i.fas.fa-glasses.fa-3x
+              .card-footer-badges.pb-3.text-center
+                Is this for real? You've logged 1,000 events.
+          - if @social_event_Logs.size > 4999
+            .card.pricing.card.my-2.col-4.px-1
+              .card-header-badges.pt-3.text-center
+                %strong Going Nuclear
+              .card-body.brand-primary.px-2
+                %i.fas.fa-atom.fa-3x
+              .card-footer-badges.pb-3.text-center
+                You are the Mother of All Socializers. You've logged 5,000 events.
+        .row
+          - if @social_event_Logs.size > 499
+            .card.pricing.card.my-2.col-4.px-1.justify-content-center
+              .card-header-badges.pt-3.text-center
+                %strong You're still here?
+              .card-body.brand-primary.px-2
+                %i.fas.fa-question.fa-3x
+              .card-footer-badges.pb-3.text-center
+                You have logged 10,000 events!
