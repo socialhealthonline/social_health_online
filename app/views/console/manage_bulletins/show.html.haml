@@ -1,11 +1,16 @@
-.d-flex.justify-content-center.flex-wrap.flex-md-nowrap.align-items-center.py-3.px-2
-  %h1.brand-primary= @bulletin.title
+%nav(aria-label="breadcrumb")
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to 'Manage Bulletins', console_manage_bulletins_path
+
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.pb-3.border-bottom
+  %h1.h3.brand-primary= @bulletin.title
 
 .row.justify-content-center
   .col-9
     .settings-box{:style => "border-radius: 12px;"}
       %p
         %strong  Posted By:
+        = @bulletin.user.display_name
       %p
       - if @bulletin.event_type.present?
         %strong  Event Type:

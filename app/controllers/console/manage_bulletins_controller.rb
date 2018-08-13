@@ -15,6 +15,7 @@ class Console::ManageBulletinsController < ConsoleController
 
   def create
     @bulletin = Bulletin.new(bulletin_params)
+    @bulletin.user = authenticated_user
     if @bulletin.save
       redirect_to console_manage_bulletins_path, success: 'The bulletin was successfully created!'
     else
@@ -24,6 +25,11 @@ class Console::ManageBulletinsController < ConsoleController
   end
 
   def edit
+    if @bulletin.user.id != authenticated_user.id
+      redirect_to my_bulletins_path
+    else
+      render :edit
+    end
   end
 
   def update

@@ -6,6 +6,7 @@
     .settings-box{:style => "border-radius: 12px;"}
       %p
         %strong  Posted By:
+        = @bulletin.user.display_name
       %p
       - if @bulletin.event_type.present?
         %strong  Event Type:
