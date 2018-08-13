@@ -1,15 +1,16 @@
 - page_title 'Manage Bulletins'
 
-.container
-  .row
-    .col.py-3
-      %h1.brand-primary.text-center Manage Bulletins
-
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.pb-3.border-bottom
+  %h1.h3.brand-primary Manage Bulletins
+  %div
+    = link_to new_console_manage_bulletin_path, class: 'btn btn-primary', style: 'border: 1px solid black' do
+      %i.fas.fa-plus-circle
+      Post Bulletin
 
 - if @bulletins.any?
   .row.justify-content-center
-    .table-responsive.col-10.text-center{ :style => 'border: 2px solid black; border-radius: 12px;' }
-      %table.table.table-borderless.table-hover
+    .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
+      %table.table.table-borderless.align-items-center.table-hover
         %thead
           %tr
             %th= sort_link 'title', 'Bulletin Title'
@@ -43,8 +44,3 @@
 - else
   %p.text-muted.text-center
     %em No bulletins were found.
-
-.container
-  .col-12.py-3
-    %p.text-center
-      =link_to 'Post Bulletin', new_console_manage_bulletin_path, class: 'btn btn-primary', style: 'border: 1px solid black'

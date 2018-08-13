@@ -43,7 +43,7 @@ end
 private
 
   def contact_params
-    params.require(:contact).permit(:name, :notes, :city, :state, :display_name)
+    params.require(:contact).permit(:name, :notes, :city, :state, :user_id, :display_name)
   end
 
   def find_contact
