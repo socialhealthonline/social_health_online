@@ -13,12 +13,22 @@ class CommunitiesController < ApplicationController
   def explore_communities
     @communities = Member.where.not("name = ? ", authenticated_user.member.name)
     @communities = FindUsersCommunities.new(@communities, show_init_scope: false).call(permitted_params)
+    unless @communities.kind_of?(Array)
+      @communities = @communities.page(params[:page]).per(10)
+    else
+      @communities = Kaminari.paginate_array(@communities).page(params[:page]).per(10)
+    end
   end
 
   def event_search
     @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :desc)
     @events = Event.where("start_at >= ?", Time.zone.now).where(private: false).order(start_at: :desc)
     @events = FindUsersCommunities.new(@events, show_init_scope: false).call(permitted_params)
+    unless @events.kind_of?(Array)
+      @events = @events.page(params[:page]).per(10)
+    else
+      @events = Kaminari.paginate_array(@events).page(params[:page]).per(10)
+    end
   end
 
   def create

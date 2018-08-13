@@ -4,7 +4,12 @@ class DiscountsFinderController < ApplicationController
   def index
     @affiliates = Affiliate.where.not(support_notes: [nil, ''])
     @affiliates = FindUsersCommunities.new(@affiliates, show_init_scope: false).call(permitted_params)
-  end
+      unless @affiliates.kind_of?(Array)
+        @affiliates = @affiliates.page(params[:page]).per(10)
+      else
+        @affiliates = Kaminari.paginate_array(@affiliates).page(params[:page]).per(10)
+      end
+    end
 
   private
 
