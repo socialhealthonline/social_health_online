@@ -9,9 +9,9 @@
       %p.pt-3.text-center.mt-3
         = link_to 'Request Free Demo Account', contact_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
 
-  %section.space-xs.text-center.bg-white{:style => 'border-top: 1px solid black;'}
+  %section.space-xs.text-center.bg-white.py-4{:style => 'border-top: 1px solid black;'}
     .container
-      .row
+      .row.pb-4
         .col.text-center
           = link_to image_tag('social.svg', height: '70'), service_path
           %h5.text-info
@@ -21,12 +21,18 @@
         .col.text-center
           = link_to image_tag('handshake.svg', height: '70'), service_path
           %h5.text-info
-            %a{ href: service_path, title: 'Meet' }>
+            %a{ href: service_path, title: 'Greet' }>
               %strong Greet.
           %span Develop relationships with others at events.
         .col.text-center
           = link_to image_tag('total-cart.svg', height: '70'), service_path
           %h5.text-info
-            %a{ href: service_path, title: 'Meet' }>
+            %a{ href: service_path, title: 'Benefit' }>
               %Strong Benefit.
           %span Log your involvement in events for rewards.
+      .row.pt-4.border-top
+        .col.text-center
+          %h5.text-info
+            %span Proud to Collaborate with All Organizations Wanting to Make Your Social Life More Rewarding
+          %p
+          Our diverse array of Affiliates includes excellent organizations of all varieties

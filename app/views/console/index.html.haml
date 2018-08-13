@@ -5,23 +5,29 @@
   %div
 
 .container
-  .row
-    .col-md-8.col-lg-4
+  .row.justify-content-center
+    .col-md-6.col-lg-4
       .card.pricing.card-md
         .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
           %h5 Total Affiliates
-          %span.display-4
+          %span.font-weight-bold.display-5
             #{ Affiliate.all.count }
     .col-md-6.col-lg-4
       .card.pricing.card-md
         .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
           %h5 Total Members
-          %span.display-4
+          %span.font-weight-bold.display-5
+            #{ Member.where.not(public_member: true).count }
+  .row.justify-content-center
+    .col-md-6.col-lg-4
+      .card.pricing.card-md
+        .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
+          %h5 Total Communities
+          %span.font-weight-bold.display-5
             #{ Member.all.count }
     .col-md-6.col-lg-4
-      .card.pricing.card-lmd
+      .card.pricing.card-md
         .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
           %h5 Total Users
-          %span.display-4          
+          %span.font-weight-bold.display-5
             #{ User.all.count }
-

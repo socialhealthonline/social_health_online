@@ -15,7 +15,7 @@ class Console::UsersController < ConsoleController
     if @member.users.count < @member.service_capacity
       @user = User.new
     else
-      redirect_to console_member_users_url(@member.id), error: 'You have reached your service capacity. If you would like to increase it, please contact us at support@socialhealthonline.com.'
+      redirect_to console_member_users_url(@member.id), error: 'You have reached the service capacity.'
     end
   end
 
@@ -93,7 +93,7 @@ class Console::UsersController < ConsoleController
 
   def sortable_columns
     %w[
-      name email display_name address city state zip phone gender
+      name email display_name address city state zip phone gender guest
       ethnicity birthdate time_zone group last_sign_in_at user_status=1 manager
     ]
   end

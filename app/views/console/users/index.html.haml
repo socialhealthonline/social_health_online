@@ -4,6 +4,7 @@
     %li.breadcrumb-item= link_to @member.name, console_member_path(@member.id)
     %li.breadcrumb-item.active(aria-current="page") Users
 
+%div#profile_partial
 - if @member.users.length < @member.service_capacity
   .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
     %h1.h3.brand-primary Users
@@ -22,6 +23,7 @@
           %th= sort_link 'email', 'Email'
           %th= sort_link 'manager', 'Manager'
           %th= sort_link 'last_sign_in_at', 'Last Sign In'
+          %th= sort_link 'guest', 'Guest'
           %th= sort_link 'user_status=1', 'Status'
       %tbody
         - @users.each_with_index do |user, i|
@@ -34,6 +36,7 @@
             %td= user.email
             %td= user.manager? ? 'Yes' : 'No'
             %td= short_date user.last_sign_in_at
+            %td= user.guest? ? 'Yes' : 'No'
             %td= user.user_status.capitalize
             %td.w-10.text-right
               .dropdown

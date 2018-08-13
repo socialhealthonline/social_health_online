@@ -1,0 +1,35 @@
+- page_title 'Careers'
+
+.container
+  .row
+    .col.py-3
+      %h1.text-info Careers
+
+.row.justify-content-center.mb-3
+  .col-md-10
+    .card.card-box
+      .card-body.justify-content-center.py-0
+
+        .row
+          .col
+            %h3.text-center
+              %strong Open Positions
+
+        .row
+          .col.my-3
+            %div.pb-2.px-2{style: "border: 2px solid black; border-radius: 12px;"}
+              %div.mt-2.text-center
+                %h4 Sales Director
+              %div.mt-2
+              <strong>Description:</strong>
+              %div.mt-2
+              <strong>  Responsibilities:</strong>
+              %div.mt-2
+              %strong
+                <strong>Desired Skills/Experience:</strong>
+              %div.mt-2
+              <strong> How to Apply:</strong>
+              Submit your resume to&nbsp;
+              %a{ href: 'mailto:sales@socialhealthonline.com',
+                 title: 'sales@socialhealthonline.com',
+                 target: '_blank'}> sales@socialhealthonline.com

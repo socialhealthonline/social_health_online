@@ -5,6 +5,9 @@ class PublicController < ApplicationController
   def about
   end
 
+  def careers
+  end
+
   def join
   end
 
