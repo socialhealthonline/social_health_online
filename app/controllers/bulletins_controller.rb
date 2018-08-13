@@ -2,7 +2,7 @@ class BulletinsController < ApplicationController
   before_action :require_authentication
 
   def bulletins
-    @bulletins = Bulletin.all.page(params[:page])
+    @bulletins = Bulletin.where('start_at > ?', Date.today).all.page(params[:page])
     @bulletins = FindUsersCommunities.new(@bulletins, show_init_scope: false).call(permitted_params)
   end
 

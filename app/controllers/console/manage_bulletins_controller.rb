@@ -1,4 +1,4 @@
-class Console::ManageBulletinsController < ApplicationController
+class Console::ManageBulletinsController < ConsoleController
   helper_method :sort_column, :sort_direction
   before_action :find_bulletin, only: [:show, :edit, :update, :destroy]
 

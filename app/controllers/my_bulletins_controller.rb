@@ -3,7 +3,7 @@ class MyBulletinsController < ApplicationController
   before_action :find_bulletin, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bulletins = Bulletin.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+    @bulletins = Bulletin.where(user_id: authenticated_user.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
   def show
@@ -15,6 +15,7 @@ class MyBulletinsController < ApplicationController
 
   def create
     @bulletin = Bulletin.new(bulletin_params)
+    @bulletin.user = authenticated_user
     if @bulletin.save
       redirect_to my_bulletins_path, success: 'The bulletin was successfully created!'
     else
@@ -24,10 +25,15 @@ class MyBulletinsController < ApplicationController
   end
 
   def edit
+    if @bulletin.user.id != authenticated_user.id
+      redirect_to my_bulletins_path
+    else
+      render :edit
+    end
   end
 
   def update
-    if @bulletin.update(bulletin_params)
+    if @bulletin.user.id == authenticated_user.id && @bulletin.update(bulletin_params)
       redirect_to my_bulletins_path, success: 'The bulletin was successfully updated!'
     else
       flash.now[:error] = 'Please correct the errors to continue.'

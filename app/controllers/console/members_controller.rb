@@ -15,7 +15,7 @@ class Console::MembersController < ConsoleController
 
   def edit
     @member = Member.find params[:id]
-    @managers = @member.managers
+    @managers = (@member.managers + User.where(admin: true).all).uniq { |u| u.id }
   end
 
   def create
