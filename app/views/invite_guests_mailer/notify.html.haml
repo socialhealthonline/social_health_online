@@ -9,4 +9,4 @@
 %p
   <strong>Message:</strong> I am inviting you to join me in a new app called Social Health Online. You can join as a Guest User by going to:
 %p
-  = link_to 'Guest User Registration', users_registration_url(@form_params[:email])
+  = link_to 'Guest User Registration', users_registration_url(email: @form_params[:email])
