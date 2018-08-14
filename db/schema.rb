@@ -72,9 +72,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_114331) do
     t.datetime "updated_at", null: false
     t.string "city"
     t.string "state"
-    t.date "event_date"
     t.string "event_type"
-    t.datetime "event_datetime"
     t.integer "user_id"
     t.string "display_name"
     t.datetime "start_at"
@@ -328,6 +326,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_114331) do
     t.date "first_login"
     t.string "phone_extension"
     t.text "group"
+    t.string "favorites"
     t.boolean "guest", default: false
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
