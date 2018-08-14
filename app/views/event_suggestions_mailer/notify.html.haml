@@ -4,7 +4,7 @@
   <strong>Name:</strong> #{@authenticated_user.name}
 
 %p
-  <strong>Name:</strong> #{@authenticated_user.display_name}
+  <strong>Display Name:</strong> #{@authenticated_user.display_name}
 
 %p
   <strong>Email:</strong> #{@authenticated_user.email}
@@ -13,15 +13,15 @@
   <strong>Subject:</strong> Event Suggestions - Social Health Online
 
 %p
-  <strong>Event Title:</strong> = @form_params[:event_title]
+  <strong>Event Title:</strong> #{@form_params[:event_title]}
 
 %p
-  <strong>Event Date:</strong> = @form_params[:event_date]
+  <strong>Event Date:</strong> #{@form_params[:event_date]}
 
 %p
-  <strong>Event Location:</strong> = @form_params[:event_location]
+  <strong>Event Location:</strong> #{@form_params[:event_location]}
 
 %p
   <strong>Event Details:</strong>
 %p
-  = @form_params[:event_details]
+  #{@form_params[:event_details]}
