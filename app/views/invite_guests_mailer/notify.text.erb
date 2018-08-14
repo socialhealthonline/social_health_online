@@ -1,9 +1,11 @@
-Social Health Online Guest User Invite
+Social Health Online Guest User Invitation
 
 Name: <%= @authenticated_user.name %>
 
 Email: <%= @authenticated_user.email %>
 
-Subject: <% 'Join Me - Social Health Online' %>
+Message: <% 'I am inviting you to join me in a social wellness app called Social Health Online. You can register as a Guest User by going to:' %>
 
-Message: <% 'I am inviting you to join me in a social wellness app called Social Health Online. You can register as a Guest User by going to www.socialhealthonline.com.' %>
+<p>
+<%= link_to 'https://www.socialhealthonline.com/users_registration', target: '_blank' %>
+</p>

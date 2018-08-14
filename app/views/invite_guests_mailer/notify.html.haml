@@ -1,4 +1,4 @@
-%p Social Health Online Guest User Invite
+%p Social Health Online Guest User Invitation
 
 %p
   <strong>Name:</strong> #{@authenticated_user.name}
@@ -7,4 +7,6 @@
   <strong>Email:</strong> #{@authenticated_user.email}
 
 %p
-  <strong>Message:</strong> I am inviting you to join me in a new app called Social Health Online. You can join as a Guest User by going to www.socialhealthonline.com/users_registration.
+  <strong>Message:</strong> I am inviting you to join me in a new app called Social Health Online. You can join as a Guest User by going to:
+%p
+  = link_to 'https://www.socialhealthonline.com/users_registration', target: '_blank' do
