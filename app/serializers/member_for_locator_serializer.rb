@@ -8,4 +8,9 @@ class MemberForLocatorSerializer < ActiveModel::Serializer
   def phone
     number_to_phone object.phone
   end
+
+  def url
+    object.url.blank? ? "" : link_to(object.url, object.url, target: "_blank")
+  end
+
 end

@@ -2,6 +2,8 @@ class Member < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  enum payment_method: %i[card ach]
+
   has_one :primary_manager, class_name: 'User', foreign_key: :id, primary_key: :primary_manager_id
   has_many :users, inverse_of: :member, dependent: :destroy
   has_many :events, inverse_of: :member, dependent: :destroy
@@ -9,24 +11,25 @@ class Member < ApplicationRecord
   has_one_attached :logo
 
   validates :name, :address, :city, :state, :zip, :contact_name, :contact_email, :contact_phone, :phone, :service_capacity, presence: true
+  validates :hide_suggest_events, :public_member, presence: true, allow_blank: true
   validates_uniqueness_of :name, case_sensitive: false
   validates :state, inclusion: US_STATES.values
   validates :zip, format: { with: %r{\A[\d]{5}(-[\d]{4})?\z} }
-  validates :phone, :contact_phone, format: { with: /\A\d{10}\z/, message: 'must be 10 digits including area code' }
+  validates :phone, :contact_phone, format: { with: /\A\d{10}\z/, message: 'Must be 10 digits including area code' }
   validates_format_of :contact_email, with: /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
   validate :logo_validation
   validates :terms_of_service, acceptance: true
   validates :service_capacity, numericality: { greater_than: 4 }
 
-  before_validation { |member| member.contact_phone.gsub!(/\D/, "") if member.contact_phone? }
+  before_validation { |member| member.contact_phone.gsub!(/\D/, '') if member.contact_phone? }
   before_validation :add_protocol_to_url
 
   def logo_validation
     if logo.attached?
-      if logo.blob.byte_size > 3.megabytes
-        errors[:logo] << 'this file exceeds the maximum allowed file size (3 mb)'
+      if logo.blob.byte_size > 10.megabytes
+        errors[:logo] << 'This file exceeds the maximum allowed file size (10 mb).'
       elsif !logo.blob.content_type.starts_with?('image/')
-        errors[:logo] << 'only image file with extension: .jpg, .jpeg, .gif or .png is allowed'
+        errors[:logo] << 'Only image files with extensions .jpg, .jpeg, .gif, or .png are allowed.'
       end
     end
   end
@@ -37,6 +40,10 @@ class Member < ApplicationRecord
 
   def should_generate_new_friendly_id?
     name_changed?
+  end
+
+  def managers
+    users.where(manager: true)
   end
 
   def social_fitness_csv
@@ -105,16 +112,7 @@ class Member < ApplicationRecord
   end
 
   def status
-    active_users = User.where(member_id: self.id)
-                       .where.not(last_sign_in_at: 'nil')
-
-    return 'Suspended' if suspended
-
-    if active_users.present?
-      return 'Active'
-    else
-      return 'Pending'
-    end
+    suspended ? 'Suspended' : 'Active'
   end
 
   private

@@ -2,6 +2,7 @@ EVENT_TYPES = [
   "Art/Photography",
   "Career/Business",
   "Dance/Theater",
+  "Date/Romance",
   "Family/Kids",
   "Fashion/Beauty",
   "Festivals/Fairs",
@@ -28,6 +29,7 @@ EVENT_TYPES = [
 
 EVENT_CATEGORIES = [
   "Affiliate",
+  "Bulletin Board",
   "Community",
   "Matchmaker",
 ].freeze

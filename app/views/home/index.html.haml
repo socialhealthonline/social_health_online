@@ -13,7 +13,7 @@
         - @notifications.each do |notification|
           .mb-3.text-center
             %h5= notification.title
-            .notification-date.mb-2.border-bottom= time_in_cdt(notification.updated_at , '%m/%d/%Y')
+            .notification-date.mb-2.border-bottom= time_in_cdt(notification.updated_at, '%m/%d/%Y')
             .notification-text.text-left.pb-2= simple_format(notification.body)
         %p= paginate @notifications
 
@@ -41,15 +41,18 @@
           %thead.mdb-color.lighten-4.text-center
             %tr
               %th Event Title
-              %th Event Type
               %th Event Date/Time
               %th RSVP
+              %th Hosted By
           %tbody
           - @events.each do |event|
             %tr.text-center.bg-white
               %td= link_to "#{event.title}", community_event_path(authenticated_user.member, event)
-              %td= event.event_type
-              %td= time_in_cdt(event.start_at, '%m/%d/%Y, %I:%M %p %Z')
+              %td= short_date_time(event.start_at, event.time_zone)
               %td= home_events_status(event.status)
+              %td= event.member.name
             %tr.table-divider
         %p= paginate @events
+        - if @events.none?
+          %div.text-muted.pb-3.text-center
+            %em No RSVPed events.

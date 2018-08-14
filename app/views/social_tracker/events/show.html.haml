@@ -14,14 +14,16 @@
             %strong Event City:
           %p= @log.city
           %p
-            %strong Event Type
+            %strong Event Type:
           %p= @log.event_type
         .col-lg-6.text-center
           %p
             %strong Event Source:
           %p= SocialEventLog::EVENT_SOURCES.key(@log.source)
           %p
+          - if @log.event_category.present?
             %strong Event Category:
+          %p
           %p= @log.event_category
           %p
             %strong Event Location:

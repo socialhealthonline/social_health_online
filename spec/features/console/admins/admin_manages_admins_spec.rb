@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Admin mananges admin users' do
+RSpec.describe 'Admin manages admin users' do
 
   let!(:admin) { create(:user, :admin) }
 
@@ -28,7 +28,7 @@ RSpec.describe 'Admin mananges admin users' do
       check 'user_manager'
       select admin.member.name, from: 'user_member_id'
       click_button 'Save'
-      expect(page).to have_content 'The Admin was successfully created'
+      expect(page).to have_content 'The Admin was successfully created!'
       expect(current_path).to eq console_admin_path(User.last)
       expect(User.last.manager).to eq true
       expect(User.last.admin).to eq true
@@ -46,7 +46,7 @@ RSpec.describe 'Admin mananges admin users' do
 
   describe 'edits an admin' do
     let!(:admin) { create(:user, :admin) }
-    let!(:admin_to_edit) { create(:user, :admin) }
+    let!(:admin_to_edit) { create(:user, :admin, display_name: 'User Admin') }
 
     before do
       sign_in admin
@@ -70,7 +70,7 @@ RSpec.describe 'Admin mananges admin users' do
 
   describe 'deletes an admin' do
     let!(:admin) { create(:user, :admin) }
-    let!(:admin_to_edit) { create(:user, :admin) }
+    let!(:admin_to_edit) { create(:user, :admin, display_name: 'User Admin') }
 
     before do
       sign_in admin

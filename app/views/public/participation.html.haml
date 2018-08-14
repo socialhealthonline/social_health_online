@@ -1,12 +1,12 @@
 %script{:src => "https://www.gstatic.com/charts/loader.js", :type => "text/javascript"}
 =javascript_include_tag 'geocharts'
 
-- page_title 'Membership Information'
+- page_title 'Participation Information'
 
 .container
   .row
     .col.py-3
-      %h1.text-info Membership Information
+      %h1.text-info Participation Information
 
       %p.h3 Collaborating to Improve Social Wellness
       %p
@@ -14,7 +14,7 @@
         to social events or discounts, people and organizations can collaborate with Social Health to support the
         service and become Members or Affiliates.
 
-      #Members  
+      #Members
         %p.h3 Members
         %p
           Our Members are a cornerstone for our service because they are the gatekeepers that
@@ -30,7 +30,7 @@
 
         .geochart{ id: 'members_chart' }
         %p.py-3.text-center
-          = link_to 'Go to Member Locator', member_locator_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;' 
+          = link_to 'Go to Member Locator', member_locator_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
 
       #Affiliates
         %p.h3 Affiliates
@@ -45,11 +45,11 @@
 
         .geochart{ id: 'affiliates_chart' }
         %p.py-3.text-center
-          = link_to 'Go to Affiliate Locator', affiliate_locator_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;' 
+          = link_to 'Go to Affiliate Locator', affiliate_locator_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
 
         %p.h3 Become a Member or Affiliate
         %p
-          Contact us today to learn more about how our service can benefit you as a Member or Affiliate of Social Health!
+          Contact us to learn more about our free demo accounts and to discover how our service can benefit you as a Member or Affiliate of Social Health!
 
         %p.text-center.mt-3
-          = link_to 'Contact Us', contact_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;' 
+          = link_to 'Contact Us', contact_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'

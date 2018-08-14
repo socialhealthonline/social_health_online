@@ -3,7 +3,7 @@ class Manage::MemberController < ApplicationController
 
   def edit
     @member = Member.find authenticated_user.member_id
-    @managers = User.where(member_id: authenticated_user.member_id, manager: true)
+    @managers = @member.managers
   end
 
   def update
@@ -13,7 +13,7 @@ class Manage::MemberController < ApplicationController
       redirect_to manage_edit_member_url, success: 'Your Community information was successfully updated!'
     else
       @member.logo.purge if @member.errors.messages[:logo].present?
-      @managers = User.where(member_id: authenticated_user.member_id, manager: true)
+      @managers = @member.managers
       flash.now[:error] = 'Please correct the errors to continue.'
       render :edit
     end
@@ -28,10 +28,12 @@ class Manage::MemberController < ApplicationController
       :city,
       :state,
       :zip,
+      :phone,
       :bio,
       :url,
       :events_url,
-      :primary_manager_id
+      :primary_manager_id,
+      :hide_suggest_events
     )
   end
 

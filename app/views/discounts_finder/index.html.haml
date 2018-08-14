@@ -4,6 +4,14 @@
   .row
     .col.py-3
       %h1.brand-primary.text-center Discounts Finder
+
+
+  .row
+    .col-md-12
+      %p.text-center.mb-4.p-2{style: "border: 1px solid black;"}
+        %strong
+          Make purchases with your User Discount Card or the applicable coupon codes to take advantage of the discounts listed below.
+
   .row.my-3
     .col
       = form_with url: [:discounts_finder], method: :get, local: true do |f|
@@ -47,4 +55,4 @@
             %tr.table-divider
         %div.container.pagination.justify-content-center
           %p= paginate @affiliates unless @affiliates.empty?
-        %br
+        

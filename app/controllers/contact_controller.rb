@@ -4,12 +4,12 @@ class ContactController < ApplicationController
   end
 
   def create
-    if params[:subject].present? # ignore scripted submissions
-      redirect_to contact_url
-    else
-      # send email
+    if verify_recaptcha
       ContactMailer.notify(params).deliver_now
       redirect_to contact_url, success: "Thanks for contacting us. We'll be in touch!"
+    else
+      flash.now[:error] = 'Please correct the errors to continue.'
+      render :new
     end
   end
 

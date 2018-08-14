@@ -18,7 +18,7 @@ module ApplicationHelper
 
   def model_error_display(model, attribute)
     if field_with_error?(model, attribute)
-      content_tag(:small, "#{model.errors[attribute].first.downcase}", class: 'text-danger')
+      content_tag(:small, "#{model.errors[attribute].first.capitalize}", class: 'text-danger')
     end
   end
 
@@ -37,6 +37,10 @@ module ApplicationHelper
 
   def short_date_time(datetime, time_zone)
     datetime.blank? ? nil : datetime.in_time_zone(time_zone).strftime('%b %d %Y, %l:%M %p %Z')
+  end
+
+  def short_date_time_notimezone(datetime)
+    datetime.blank? ? nil : datetime.strftime('%m/%d/%Y, %I:%M %p')
   end
 
   def time_in_cdt(date, format)

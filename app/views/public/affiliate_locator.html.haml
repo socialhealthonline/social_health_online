@@ -1,11 +1,11 @@
 - page_title 'Affiliate Locator'
 %script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGfsf8dSa4hJAJQ3K6PNZI3LCIfRNZWUI")
-= javascript_include_tag "affiliate_locator"
+= javascript_include_tag 'affiliate_locator'
 .container-fluid
   .row
     .col-lg-8.col-xs-12.pt-3
 
-      %h1.text-info.pb-1 Affiliate Locator
+      %h1.text-info.text-center.pb-1 Affiliate Locator
 
       .col-xs-12
         .row.justify-content-center
@@ -16,11 +16,10 @@
           .col-xs-12.col-md-7
             .row.justify-content-center#affiliate-filter-btn-group
               .col-xs-5.col-md-7.mb-1
-                = button_tag "Search", class: "form-control btn btn-primary", id: "affiliate-filter-button", style: "border: 1px solid black;"
+                = button_tag "Search", class: "form-control btn btn-primary", id: "affiliate-filter-button", style: 'border: 1px solid black;'
 
       #affiliate-locator-table-container
-        %table.footable.table.table-striped.my-2.table-hover#affiliate-locator-table{'data-sorting': "true", "style": "display: table;"}
-
+        %table.footable.table.table-striped.my-2.table-hover#affiliate-locator-table{'data-sorting': "true", "style": "display: table;", "data-paging": "true"}
 
     .col-md-12.col-lg-4.pt-2.pb-3
       %p(id="affiliate-locator-map")

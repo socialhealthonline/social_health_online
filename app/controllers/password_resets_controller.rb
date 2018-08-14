@@ -1,5 +1,6 @@
 class PasswordResetsController < ApplicationController
-  skip_before_action :pending_user?
+  skip_before_action :unpaid_user
+  skip_before_action :pending_user
 
   def new
     @user = User.find_by(email: params[:email]&.downcase)

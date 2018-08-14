@@ -45,6 +45,10 @@
   = @user.group
 
 %p
+  %strong Guest:
+  = @user.guest? ? 'Yes' : 'No'
+
+%p
   %strong Account Manager:
   = @user.manager? ? 'Yes' : 'No'
 

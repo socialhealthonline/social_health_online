@@ -13,6 +13,10 @@
   = @affiliate.full_address
 
 %p
+  %strong Phone:
+  = number_to_phone @affiliate.phone
+
+%p
   %strong Contact Name:
   = @affiliate.contact_name
 
@@ -22,7 +26,7 @@
 
 %p
   %strong Contact Phone:
-  = number_to_phone @affiliate.phone
+  = number_to_phone @affiliate.contact_phone
 
 %p
   %strong Contact Phone Extension:

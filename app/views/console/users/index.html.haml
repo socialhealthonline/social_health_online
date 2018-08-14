@@ -4,6 +4,7 @@
     %li.breadcrumb-item= link_to @member.name, console_member_path(@member.id)
     %li.breadcrumb-item.active(aria-current="page") Users
 
+%div#profile_partial
 - if @member.users.length < @member.service_capacity
   .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.border-bottom
     %h1.h3.brand-primary Users
@@ -13,7 +14,7 @@
         Add User
 
 - if @users.any?
-  .table-responsive.mb-3{ :style => 'border: 2px solid black; border-radius: 12px;' }
+  .table-responsive.user-list-table.mb-3{ :style => 'border: 2px solid black; border-radius: 12px;' }
     %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
@@ -22,19 +23,21 @@
           %th= sort_link 'email', 'Email'
           %th= sort_link 'manager', 'Manager'
           %th= sort_link 'last_sign_in_at', 'Last Sign In'
-          %th= sort_link 'enabled', 'Status'
+          %th= sort_link 'guest', 'Guest'
+          %th= sort_link 'user_status=1', 'Status'
       %tbody
         - @users.each_with_index do |user, i|
           %tr.bg-white
             %th(scope="row")= link_to "#{i+1}. #{user.name}", console_member_user_path(@member.id, user)
             %td
               %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
-                  data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user:user }" } }
+                data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user: user }" } }
                 =user.display_name
             %td= user.email
             %td= user.manager? ? 'Yes' : 'No'
             %td= short_date user.last_sign_in_at
-            %td= user.enabled? ? 'Enabled' : 'Disabled'
+            %td= user.guest? ? 'Yes' : 'No'
+            %td= user.user_status.capitalize
             %td.w-10.text-right
               .dropdown
                 = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{user.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do

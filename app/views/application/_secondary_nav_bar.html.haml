@@ -34,12 +34,16 @@
               = link_to matchmaker_path, class: 'dropdown-item' do
                 %i.fas.fa-comments
                 Matchmaker
-              = link_to affiliates_search_path, class: 'dropdown-item' do
-                %i.fas.fa-search
-                Affiliate Search
+              = link_to bulletins_path, class: 'dropdown-item' do
+                %i.fas.fa-thumbtack
+                Bulletin Board
               = link_to discounts_finder_path, class: 'dropdown-item' do
                 %i.fas.fa-hand-holding-usd
                 Discounts Finder
+              = link_to affiliates_search_path, class: 'dropdown-item' do
+                %i.fas.fa-search
+                Affiliate Search
+
           %li.nav-item.dropdown.mr-1.my-1
             %a.dropdown-toggle.btn.btn-primary.px-1#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
               %i.fas.fa-database
@@ -73,3 +77,6 @@
               = link_to media_center_path, class: 'dropdown-item' do
                 %i.fas.fa-folder
                 Media Center
+              = link_to invite_guests_path, class: 'dropdown-item' do
+                %i.fas.fa-share-square
+                Invite Guests

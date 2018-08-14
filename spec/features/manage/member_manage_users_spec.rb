@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Send invites users and manage them' do
   let(:member) { create(:member) }
   let!(:manager) { create(:user, :manager, member: member) }
-  let!(:user) { create(:user, member: member) }
-  let!(:user_2) { create(:user, member: member, user_status: :pending )}
+  let!(:user) { create(:user, display_name: 'User 1', member: member) }
+  let!(:user_2) { create(:user, member: member, display_name: 'User 2', user_status: :pending )}
 
   before do
     sign_in manager
@@ -21,7 +21,7 @@ RSpec.describe 'Send invites users and manage them' do
       fill_in 'email_1', with: 'email1@gmail.com'
       fill_in 'email_2', with: 'email2@gmail.com'
       click_button 'Send'
-      expect(page).to have_content('Invitations successfully sent!')
+      expect(page).to have_content('Invitation(s) successfully sent!')
     end
   end
 

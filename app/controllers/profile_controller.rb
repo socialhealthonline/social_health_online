@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
   before_action :require_authentication
-  skip_before_action :pending_user?
+  skip_before_action :pending_user
 
   def edit
     @user = authenticated_user
@@ -9,13 +9,15 @@ class ProfileController < ApplicationController
 
   def update
     @user = authenticated_user
+    @user.avatar.attach(params[:user][:avatar]) if params[:user][:avatar]
     unless @user.first_login
-      params[:user].merge!(first_login: Date.today) 
-      params[:user].merge!(user_status: :activated)
+      params[:user].merge!(first_login: Date.today)
+      params[:user].merge!(user_status: :enabled)
     end
     if @user.update(user_params)
-      redirect_to profile_url, success: 'Your profile was successfully updated!'
+      redirect_to home_url, success: 'Your profile was successfully updated!'
     else
+      @user.avatar.purge if @user.errors.messages[:avatar].present?
       flash.now[:error] = 'Please correct the errors to continue.'
       render :edit
     end

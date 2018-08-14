@@ -24,7 +24,7 @@
 
 $(document).ready(function() {
   $(".flatpickr-date").flatpickr({
-    allowInput: true,
+    allowInput: false,
     dateFormat: 'Y-m-d'
   });
 
@@ -69,9 +69,9 @@ $(document).ready(function() {
 
   communityTabsOnLoad();
 
-  $('#member_logo').change(function(){
-    var max_exceeded_message = 'this file exceeds the maximum allowed file size (3 mb)';
-    var ext_error_message = 'only image file with extension: .jpg, .jpeg, .gif or .png is allowed';
+  $('#member_logo, #user_avatar').change(function(){
+    var max_exceeded_message = 'This file exceeds the maximum allowed file size (10 mb).';
+    var ext_error_message = 'Only image files with extensions .jpg, .jpeg, .gif, or .png are allowed.';
     var allowed_extension = ["jpg", 'jpeg', 'gif', 'png'];
 
     var input = $(this);
@@ -111,27 +111,6 @@ $(document).ready(function() {
     trigger: 'focus'
   });
 
-  $('#create_member').prop('disabled', true);
-
-  $(document).on('change', '#termsCheckBox', function() {
-    if(this.checked && $('#termsCheckBox').data('data_capcha')) {
-      $('#create_member').prop('disabled', false);
-    } else {
-      $('#create_member').prop('disabled', true);
-    }
-  });
-
-  thenCapchaIsSubmited = function() {
-    $('#termsCheckBox').data('data_capcha', true);
-    if ($('#termsCheckBox')[0].checked) {
-      $('#create_member').prop('disabled', false);
-    }
-  };
-
-  expiredRecapchaCallback = function() {
-    $('#termsCheckBox').data('data_capcha', false);
-    $('#create_member').prop('disabled', true);
-  }
 });
 
 var US_STATES = {

@@ -142,6 +142,18 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
   color: #17a2b8;
 }
 
+.card-header-badges {
+  font-size: .85em;
+}
+
+.card-footer-badges {
+  font-size: .8em;
+}
+
+.career-box{
+  font-size: .8em;
+}
+
 .our-services li {
   padding-bottom: 0.5em;
 }
@@ -241,19 +253,34 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
  }
 
 #scroll-box {
-  height: 265px;
+  height: 165px;
   overflow: auto;
   margin: auto;
-  width: 75%;
+  width: 85%;
   border: 2px solid black;
   padding: 24px;
+}
+
+.badges-box {
+  overflow: auto;
+  margin: auto;
+  width: 85%;
+  border: 2px solid black;
+  padding: 15px;
 }
 
 .settings-box {
   overflow: auto;
   margin: auto;
-  width: 75%;
+  width: 80%;
   border: 2px solid black;
+  padding: 15px;
+}
+
+.card-box {
+  overflow: auto;
+  margin: auto;
+  width: 90%;
   padding: 15px;
 }
 
@@ -323,7 +350,7 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
 }
 
 #events-feed {
-  width: 75% !important;
+  width: 85% !important;
   margin: auto;
 }
 
@@ -393,6 +420,18 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
 }
 
 .member-list-table {
+  font-size: 13px;
+}
+
+.user-list-table {
+  font-size: 13px;
+}
+
+.affiliate-list-table {
+  font-size: 13px;
+}
+
+.admin-list-table {
   font-size: 13px;
 }
 
@@ -470,4 +509,64 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
 
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
+}
+
+#paymentParagraph {
+  float: left;
+  margin-right: 10px;
+}
+
+#matchmakerCheckboxId {
+  margin-top: 5px;
+}
+
+#userHeader {
+  display: block !important;
+}
+
+#paymentParagraph {
+  float: left;
+  margin-right: 10px;
+}
+
+#matchmakerCheckboxId {
+  margin-top: 5px;
+}
+
+#userHeader {
+  display: block !important;
+}
+
+#paymentParagraph {
+  float: left;
+  margin-right: 10px;
+}
+
+#matchmakerCheckboxId {
+  margin-top: 5px;
+}
+
+#userHeader {
+  display: block !important;
+}
+
+.ach-error {
+  display: none;
+  font-size: 13px;
+  color: #d9534f;
+}
+
+.ach-error.visible {
+  display: inline;
+}
+
+.billing-info, .member-info, .guest-info, .affiliate-info {
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+#card-errors {
+  display: none;
 }

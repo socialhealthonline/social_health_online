@@ -85,13 +85,14 @@
       = f.text_field :events_url, class: "form-control #{form_error_class(@member, :events_url)}"
       = model_error_display(@member, :events_url)
 .row
-  .col-lg-6
-    .form-group
-      %label(for="member_primary_manager_id") Primary Manager
-      = f.select :primary_manager_id,
-          options_from_collection_for_select(@managers, 'id', 'name', @member.primary_manager_id),
-          { include_blank: false }, { class: 'form-control custom-select' } if @managers.present?
-      = model_error_display(@member, :primary_manager_id)
+  - if @member.persisted?
+    .col-lg-6
+      .form-group
+        %label(for="member_primary_manager_id") Primary Manager
+        = f.select :primary_manager_id,
+            options_from_collection_for_select(@managers, 'id', 'name', @member.primary_manager_id),
+            { include_blank: false }, { class: 'form-control custom-select' } if @managers.present?
+        = model_error_display(@member, :primary_manager_id)
   .col-lg-6
     .form-group
       %label(for="status")  Status
@@ -114,8 +115,31 @@
       .form-check.mb-3
         = f.check_box :hide_info_on_locator, class: 'form-check-input'
         %label.form-check-label(for="hide_info_on_locator") Hide Info on Member Locator
+  .col
+    .form-group
+      .form-check
+        = f.check_box :public_member, class: 'form-check-input'
+        %label.form-check-label(for="public_member") List as Public Member
+  .col
+    .form-group
+      .form-check
+        = f.check_box :hide_suggest_events, class: 'form-check-input'
+        %label.form-check-label(for="hide_suggest_events") Show Suggest Events
 
-.text-center
+.row.pt-2.border-top
+  .col-lg-6
+    .form-group#file-field
+      %label(for="member_logo") Member Logo (note: maximum file size is 10 MB)
+      = f.file_field :logo, class: "form-control #{form_error_class(@member, :logo)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 10.megabytes }
+      = model_error_display(@member, :logo)
+
+  .col-lg-6
+    %p.text-muted Logo Preview:
+    -if @member.logo.attached? && @member.logo.attachment.valid?
+      = image_tag @member.logo, alt: 'Member logo', size: '180x180'
+
+.row
+.text-center.py-3
   = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }
   - if @member.persisted?
     = link_to 'Cancel', console_member_path(@member.id), class: 'btn btn-outline-secondary', :style => 'border: 1px solid black;'

@@ -6,9 +6,12 @@ class AffiliatesRegistrationController < ApplicationController
   def create
     if params[:subject].present?
       redirect_to affiliates_registration_url
-    else
+    elsif verify_recaptcha
       AffiliatesRegistrationMailer.notify(params).deliver_now
-      redirect_to affiliates_registration_url, success: "Thank you for your interest in becoming an Affiliate. We will review your submission and determine if you're a good candidate for our Affiliate program within one week. We will follow up with you soon!"
+      redirect_to affiliates_registration_url, success: "Thank you for your interest in becoming an Affiliate. We will review your submission and follow up with you soon!"
+    else
+      flash.now[:error] = 'Please correct the errors to continue.'
+      render :new
     end
   end
 end

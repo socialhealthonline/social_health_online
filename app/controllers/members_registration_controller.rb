@@ -1,5 +1,5 @@
 class MembersRegistrationController < ApplicationController
-  rescue_from Stripe::CardError do |e|
+  rescue_from Stripe::CardError, Stripe::InvalidRequestError do |e|
     flash.now[:error] = e.message
     render :new
   end
@@ -12,12 +12,12 @@ class MembersRegistrationController < ApplicationController
     ActiveRecord::Base.transaction do
       @member = Member.new(member_params.merge(suspended: true))
       if verify_recaptcha(model: @member) && @member.save
-        CreateManagerAndSubscriptionService.new(@member,
-                                                manager_name: params[:account_manager_name],
-                                                manager_email: params[:account_manager_email],
-                                                plan: params[:member][:plan],
-                                                card_token: stripe_params['stripeToken']).call
-        flash[:success] = 'Success'
+        result = CreateManagerAndSubscriptionService.new(@member,
+                                                         payment_method: params[:member][:payment_method],
+                                                         manager_name: params[:account_manager_name],
+                                                         manager_email: params[:account_manager_email],
+                                                         stripe_token: stripe_params['stripeToken']).call
+        flash[:success] = result.flash
         redirect_to root_path
       else
         flash.now[:error] = 'Please correct the errors to continue.'
@@ -47,7 +47,8 @@ class MembersRegistrationController < ApplicationController
       :contact_phone_extension,
       :service_capacity,
       :hide_info_on_locator,
-      :terms_of_service
+      :terms_of_service,
+      :plan
     )
   end
 end

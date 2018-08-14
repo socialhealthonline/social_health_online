@@ -18,7 +18,7 @@ RSpec.describe FindUsersCommunities do
 
     context 'success filter' do
       let!(:member_2) { create(:member) }
-      let!(:user_2) { create(:user, state: 'AL', city: 'Hometown', zip: '35210', member: member_1) }
+      let!(:user_2) { create(:user, display_name: 'User 2', state: 'AL', city: 'Hometown', zip: '35210', member: member_1) }
 
       before(:each) do
         expect(@communities.size).to eq(1)

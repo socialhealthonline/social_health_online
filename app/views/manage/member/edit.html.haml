@@ -74,39 +74,52 @@
               = f.text_field :events_url, class: "form-control #{form_error_class(@member, :events_url)}"
               = model_error_display(@member, :events_url)
         .row
-          .col-lg-4
+          .col-lg-3
             .form-group
               %label(for="member_contact_name") Contact Name
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'Name of the person responsible for approving and maintaining the registration of your organization as a Member with Social Health'}
               = f.text_field :contact_name, class: "form-control #{form_error_class(@member, :contact_name)}"
               = model_error_display(@member, :contact_name)
-          .col-lg-4
+          .col-lg-3
             .form-group
               %label(for="member_contact_email") Contact Email
               = f.email_field :contact_email, class: "form-control #{form_error_class(@member, :contact_email)}"
               = model_error_display(@member, :contact_email)
-          .col-lg-4
+          .col-lg-3
             .form-group
               %label(for="member_contact_phone") Contact Phone
               = f.text_field :contact_phone, class: "form-control #{form_error_class(@member, :contact_phone)}"
               = model_error_display(@member, :contact_phone)
-        .row
-          .col-lg-6
+          .col-lg-3
             .form-group
               %label(for="member_primary_manager_id") Primary Manager
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'This User acts as your Account Manager in Social Health Online and is publicly displayed as the primary point of contact for your Community'}
               = f.select :primary_manager_id, options_from_collection_for_select(@managers, 'id', 'name', @member.primary_manager_id), { include_blank: false }, { class: 'form-control custom-select' }
               = model_error_display(@member, :primary_manager_id)
-          .col-lg-6
-            .form-group#file-field
-              %label(for="member_logo") Logo
-              = f.file_field :logo, class: "form-control #{form_error_class(@member, :logo)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 3.megabytes }
-              = model_error_display(@member, :logo)
         .row
           .col
             .form-group
               %label(for="member_bio") Bio
               = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@member, :bio)}"
               = model_error_display(@member, :bio)
-        .mb-3.text-center
-          = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, :style => 'border: 1px solid black;'
+        .row
+          .col-lg-4
+            .form-group#file-field
+              %label(for="member_logo") Member Logo (note: maximum file size is 10 MB)
+              = f.file_field :logo, class: "form-control #{form_error_class(@member, :logo)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 10.megabytes }
+              = model_error_display(@member, :logo)
+          .col-lg-4
+            .card
+              .card-body
+                .form-check
+                  = f.check_box :hide_suggest_events, class: 'form-check-input'
+                  %label.form-check-label(for="hide_suggest_events") Show the Suggest Events Button
+        .row
+          .col-lg-4
+            %p.text-muted Logo Preview:
+            -if @member.logo.attached? && @member.logo.attachment.valid?
+              = image_tag @member.logo, alt: 'Member logo', size: '180x180'
+
+
+        .my-3.text-center
+          = f.submit 'Update', class: 'btn btn-primary', data: { disable_with: 'Updating...' }, :style => 'border: 1px solid black;'

@@ -70,6 +70,13 @@
       %label(for="user_group") Group
       = f.text_field :group, class: "form-control #{form_error_class(@user, :group)}"
       = model_error_display(@user, :group)
+  .col
+    .card
+      .card-body
+        .form-check
+          = f.check_box :guest, class: 'form-check-input'
+          %label.form-check-label(for="guest") Guest
+        %small Guest User account
 .row
   .col
     .card
@@ -82,9 +89,27 @@
     .card
       .card-body
         .form-check.mb-1
-          = f.check_box :enabled, class: 'form-check-input'
+          - if @user.enabled?
+            = f.check_box :user_status, class: 'form-check-input', checked: true
+          - else
+            = f.check_box :user_status, class: 'form-check-input', checked: false
           %label.form-check-label(for="user_enabled") Enabled
         %small Enabled to sign in
+
+.row.pt-2.border-top
+  .col
+    %p.text-muted Change the Password:
+.row
+  .col
+    .form-group
+      %label(for="user_password") New Password
+      = f.password_field :password, class: "form-control #{form_error_class(@user, :password)}"
+      = model_error_display(@user, :password)
+  .col
+    .form-group
+      %label(for="user_password_confirmation") Confirm New Password
+      = f.password_field :password_confirmation, class: "form-control #{form_error_class(@user, :password_confirmation)}"
+      = model_error_display(@user, :password_confirmation)
 
 .text-center
   = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }

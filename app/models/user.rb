@@ -3,7 +3,7 @@ class User < ApplicationRecord
   GENDER = ['Male', 'Female', 'Other']
   RELATIONSHIP_STATUS = ['Single', 'In a Relationship', 'Married', 'Other']
   EDUCATION_LEVEL = ['High School', 'College', 'Advanced Graduate', 'Other']
-  enum user_status: %i[pending activated disabled]
+  enum user_status: %i[disabled enabled pending]
 
   belongs_to :member, inverse_of: :users
   has_many :social_event_logs
@@ -11,16 +11,18 @@ class User < ApplicationRecord
   has_many :rsvps
   has_many :events, through: :rsvps
   has_one :hidden_field
+  has_one_attached :avatar
 
-  validates :name, :email, :address, :city, :gender, :ethnicity, :birthdate, :time_zone, presence: true
-  validates :group, presence: true, allow_blank: true
-  validates_uniqueness_of :email, case_sensitive: false
+  validates :name, :display_name, :email, :address, :city, :gender, :ethnicity, :birthdate, :time_zone, presence: true
+  validates :group, :guest, presence: true, allow_blank: true
+  validates_uniqueness_of :email, :display_name, case_sensitive: false
   validates_format_of :email, with: /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
-  validates_length_of :password, minimum: 8, too_short: 'must be at least 8 characters', allow_nil: true
-  validates_format_of :password, with: /\A(?=.*[a-z])(?=.*\d).+\z/i, message: 'must be alphanumeric', allow_nil: true
+  validates_length_of :password, minimum: 8, too_short: 'Must be at least 8 characters.', allow_nil: true
+  validates_format_of :password, with: /\A(?=.*[a-z])(?=.*\d).+\z/i, message: 'Must be alphanumeric.', allow_nil: true
   validates :state, inclusion: US_STATES.values
-  validates :phone, format: { with: /\A\d{10}\z/, message: 'must be 10 digits including area code' }
+  validates :phone, format: { with: /\A\d{10}\z/, message: 'Must be 10 digits including area code' }
   validates :zip, format: { with: %r{\A[\d]{5}(-[\d]{4})?\z} }
+  validate :avatar_validation
   validates_inclusion_of :gender, in: GENDER
   validates_inclusion_of :ethnicity, in: ETHNICITY
   validates_inclusion_of :relationship_status, in: RELATIONSHIP_STATUS, allow_blank: true
@@ -31,13 +33,23 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :hidden_field
 
   scope :all_except, ->(user) { where.not(id: user) }
-  scope :matchmaker, ->(user) { where("hidden_fields.user_id != ? and hidden_fields.settings @> ?", user.id, { matchmaker: '0' }.to_json).where(user_status: :activated) }
+  scope :matchmaker, ->(user) { where("hidden_fields.user_id != ? and hidden_fields.settings @> ?", user.id, { matchmaker: '0' }.to_json).where(user_status: :enabled) }
 
   has_secure_password
   has_secure_token :auth_token
   has_secure_token :password_reset_token
 
   acts_as_messageable
+
+  def avatar_validation
+    if avatar.attached?
+      if avatar.blob.byte_size > 10.megabytes
+        errors[:avatar] << 'This file exceeds the maximum allowed file size (10 mb).'
+      elsif !avatar.blob.content_type.starts_with?('image/')
+        errors[:avatar] << 'Only image files with extensions .jpg, .jpeg, .gif, or .png are allowed.'
+      end
+    end
+  end
 
   def mailboxer_name
     self.name
@@ -58,7 +70,7 @@ class User < ApplicationRecord
   end
 
   def set_random_password
-    self.password = SecureRandom.urlsafe_base64(32, true)
+    self.password = SecureRandom.urlsafe_base64(6, true)
     self.password_confirmation = self.password
   end
 

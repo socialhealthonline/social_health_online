@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20180811120011_add_hide_suggest_events_to_members.rb

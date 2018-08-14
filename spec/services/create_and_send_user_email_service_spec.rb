@@ -10,12 +10,9 @@ RSpec.describe CreateAndSendUserEmailService do
 
   describe '#call' do
     context 'given new users' do
-      before do
-        @service.call
-      end
 
       it 'sends emails' do
-        expect(ActionMailer::Base.deliveries.count).to eq(5)
+        expect{ @service.call }.to change{ ActionMailer::Base.deliveries.count }.by(5)
       end
     end
 

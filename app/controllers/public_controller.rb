@@ -5,6 +5,9 @@ class PublicController < ApplicationController
   def about
   end
 
+  def careers
+  end
+
   def join
   end
 
@@ -17,7 +20,7 @@ class PublicController < ApplicationController
   def service_screenshots
   end
 
-  def membership
+  def participation
     take_graph_data
   end
 
@@ -43,7 +46,7 @@ class PublicController < ApplicationController
   end
 
   def news
-    @news = News.order('updated_at desc').page(params[:page])
+    @news = News.order('updated_at desc').page(params[:page]).per(10)
   end
 
   def affiliate_locator
@@ -61,7 +64,7 @@ class PublicController < ApplicationController
     city = city.downcase.strip if city
     zip = zip.strip if zip
 
-    affiliates = Affiliate.where(hide_info_on_locator: false)
+    affiliates = Affiliate.where(hide_info_on_locator: false).order("name asc")
 
     if city && state
       #where('name LIKE ?', "%#{search}%")
@@ -107,7 +110,7 @@ class PublicController < ApplicationController
   private
 
   def take_graph_data
-    gon.members_in_states = Member.group(:state).count
+    gon.members_in_states = Member.where.not(public_member: true).group(:state).count
     gon.affiliates_in_states = Affiliate.group(:state).count
   end
 end

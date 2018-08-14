@@ -17,34 +17,34 @@
             .col-xs-3.col-md-3.col-sm-3.mx-auto
               = f.button "Search", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
             %h3.notification-title.justify-content-center.mb-2
-              %strong Public Events
+              %strong Community Events
       %div.table-wrapper-2.table-hover#events-feed{:style => "border-radius: 12px;"}
         %table.table.text-center
           %thead.mdb-color.lighten-4
             %tr
               %th Event Title
               %th
-              %th Event Type
-              %th
               %th Event Date/Time
               %th
               %th City
               %th
               %th State
+              %th
+              %th Hosted By
           %tbody
           - @events.each do |event|
             %tr.bg-white
               %td= link_to event.title, community_event_path(authenticated_user.member, event)
               %td
-              %td= event.event_type
-              %td
-              %td= time_in_cdt(event.start_at, '%m/%d/%Y, %I:%M %p %Z')
+              %td= short_date_time(event.start_at, event.time_zone)
               %td
               %td= event.city
               %td
               %td= event.state
               %td
+              %td= event.member.name
+              %td
             %tr.table-divider
         %div.container.pagination.justify-content-center
           %p= paginate @events unless @events.empty?
-        %br
+        

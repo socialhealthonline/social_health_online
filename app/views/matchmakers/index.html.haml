@@ -7,7 +7,7 @@
 
   .row.pt-3
     .col
-      %p.text-center.p-2{style: "border: 1px solid black;"}
+      %p.text-center.mb-4.p-2{style: "border: 1px solid black;"}
         %strong
           Use Matchmaker to search for Users in your area, become acquainted with them, and plan activities together.
 
@@ -24,7 +24,7 @@
             .col-xs-3.col-md-3.col-sm-3.mx-auto
               = f.button "Search", class: "form-control btn btn-primary mb-3", style: 'border: 1px solid black;'
             %h3.notification-title.justify-content-center.mb-2
-              %strong Users
+              %strong Participating Users
       %div.table-wrapper-2#events-feed{:style => "border-radius: 12px;"}
         %table.table.text-center
           %thead.mdb-color.lighten-4
@@ -51,4 +51,4 @@
               %td
         %div.container.pagination.justify-content-center
           %p= paginate @users unless @users.empty?
-        %br
+        

@@ -11,12 +11,11 @@ class Console::MembersController < ConsoleController
 
   def new
     @member = Member.new
-    set_managers_option
   end
 
   def edit
     @member = Member.find params[:id]
-    set_managers_option
+    @managers = (@member.managers + User.where(admin: true).all).uniq { |u| u.id }
   end
 
   def create
@@ -31,9 +30,13 @@ class Console::MembersController < ConsoleController
 
   def update
     @member = Member.find params[:id]
+    @member.logo.attach(params[:member][:logo]) if params[:member][:logo]
     if @member.update(member_params)
       redirect_to console_member_url(@member.id), success: 'The Member was successfully updated!'
     else
+      @member.logo.purge if @member.errors.messages[:logo].present?
+      @managers = @member.managers
+      flash.now[:error] = 'Please correct the errors to continue.'
       render :edit
     end
   end
@@ -79,7 +82,9 @@ class Console::MembersController < ConsoleController
       :welcome_kit_date,
       :phone,
       :contact_phone_extension,
-      :primary_manager_id
+      :primary_manager_id,
+      :hide_suggest_events,
+      :public_member
     )
   end
 
@@ -100,7 +105,4 @@ class Console::MembersController < ConsoleController
     %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
 
-  def set_managers_option
-    @managers = User.where(member_id: authenticated_user.member_id, manager: true)
-  end
 end

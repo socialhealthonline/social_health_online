@@ -8,12 +8,14 @@ class UserDecorator < ApplicationDecorator
       params.merge!(disabled: true)
       f.select(:user_status, ['Pending'], {}, params)
     else
-      f.select(:user_status, ['activated', 'disabled'], {}, params)
+      f.select(:user_status, [['Enabled', 'enabled'], ['Disabled', 'disabled']], {}, params)
     end
   end
 
-  def user_manager?
-    user.manager? ? 'Yes' : 'No'
+  def user_manager
+    if user.manager?
+      fa_icon "star", title: "Manager"
+    end
   end
 
   def profile_name
@@ -121,6 +123,12 @@ class UserDecorator < ApplicationDecorator
   def profile_bio
     h.content_tag :p do
       h.content_tag(:strong, "Bio: ") + object&.bio if object.bio && !object.bio&.empty?
+    end
+  end
+
+  def user_avatar
+    if object.avatar.attached? && object.avatar.attachment.valid?
+      image_tag object.avatar, alt: 'User Avatar', size: '180x180'
     end
   end
 end

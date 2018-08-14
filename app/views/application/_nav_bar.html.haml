@@ -1,9 +1,9 @@
 .nav-container
-  .bg-info.navbar-dark{:style => 'border-bottom: 1px solid black;'}
+  .bg-info.navbar-dark{:style => 'border-bottom: 1px solid black; border-top: 1px solid black;'}
     .container
       %nav.navbar.navbar-expand-lg.py-1
         = link_to root_path, class: 'navbar-brand' do
-          = image_tag 'logo.png', alt: 'Social Health Online', height: '40'
+          = image_tag 'logo.png', alt: 'Social Health', height: '40'
         %button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
           %span.navbar-toggler-icon
         .collapse.navbar-collapse.justify-content-between#navbarNav
@@ -20,14 +20,14 @@
                   Service Highlights
                 = link_to service_screenshots_path, class: 'dropdown-item' do
                   Service Screenshots
-            -# %li.nav-item{class: "#{active_nav('membership')}"}
-            -#   = link_to 'Membership', membership_path, class: 'nav-link'
+            -# %li.nav-item{class: "#{active_nav('participation')}"}
+            -#   = link_to 'Participation', participation_path, class: 'nav-link'
             %li.nav-item.dropdown
-              %a.nav-link.dropdown-toggle{href: '/membership', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
-                = 'Membership'
+              %a.nav-link.dropdown-toggle{href: '/participation', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
+                = 'Participation'
               .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'communitiesDropdownMenuLink'}
-                = link_to membership_path, class: 'dropdown-item' do
-                  Membership Information
+                = link_to participation_path, class: 'dropdown-item' do
+                  Participation Information
                 = link_to member_locator_path, class: 'dropdown-item' do
                   Member Locator
                 = link_to affiliate_locator_path, class: 'dropdown-item' do
@@ -39,7 +39,11 @@
             %li.nav-item{class: "#{active_nav('support')}"}
               = link_to 'Support', support_path, class: 'nav-link'
             %li.nav-item{class: "#{active_nav('news')}"}
+              = link_to 'Blog', "http://blog.socialhealthonline.com/", target: '_blank', class: 'nav-link'
+            %li.nav-item{class: "#{active_nav('news')}"}
               = link_to 'News', news_path, class: 'nav-link'
+            %li.nav-item{class: "#{active_nav('contact')}"}
+              = link_to 'Careers', careers_path, class: 'nav-link'
             %li.nav-item{class: "#{active_nav('contact')}"}
               = link_to 'Contact', contact_path, class: 'nav-link'
           %ul.navbar-nav.font-weight-bold
@@ -55,6 +59,12 @@
                   = link_to profile_path, class: 'dropdown-item' do
                     %i.fas.fa-user
                     My Profile
+                  = link_to my_achievements_path, class: 'dropdown-item' do
+                    %i.fas.fa-award
+                    My Achievements
+                  = link_to my_bulletins_path, class: 'dropdown-item' do
+                    %i.fas.fa-sticky-note
+                    My Bulletins
                   = link_to my_settings_path, class: 'dropdown-item' do
                     %i.fas.fa-wrench
                     My Settings
@@ -73,5 +83,7 @@
                     Member Registration
                   = link_to affiliates_registration_path, class: 'dropdown-item' do
                     Affiliate Registration
+                  = link_to users_registration_path, class: 'dropdown-item' do
+                    Guest User Registration
               %li.nav-item.sign-in-button
                 = link_to 'Sign In', signin_path

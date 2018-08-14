@@ -5,7 +5,7 @@ RSpec.describe 'User signs in' do
   describe 'successfully' do
     it 'with redirect from subsequent signin_path request' do
       sign_in create(:user)
-      expect(page).to have_content('Welcome back')
+      expect(page).to have_content('Welcome')
       expect(current_path).to eq home_path
       visit signin_path
       expect(current_path).to eq home_path
@@ -19,7 +19,7 @@ RSpec.describe 'User signs in' do
       click_button 'Sign In'
       user.reload
       expect(current_path).to eq home_path
-      expect(page).to have_content("Welcome back, #{user.name}!")
+      expect(page).to have_content("Welcome, #{user.name}!")
       expect(user.last_sign_in_at).to_not be nil
     end
 
@@ -32,7 +32,7 @@ RSpec.describe 'User signs in' do
       fill_in 'password', with: user.password
       click_button 'Sign In'
       expect(current_path).to eq console_root_path
-      expect(page).to have_content('Welcome back')
+      expect(page).to have_content('Welcome)
     end
   end
 
@@ -60,7 +60,7 @@ RSpec.describe 'User signs in' do
     end
 
     it 'with disabled user' do
-      user.update_attribute(:enabled, false)
+      user.update_attribute(:user_status, :disabled)
       fill_in 'email', with: user.email
       fill_in 'password', with: user.password
       click_button 'Sign In'

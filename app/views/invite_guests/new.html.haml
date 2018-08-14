@@ -1,0 +1,23 @@
+- page_title 'Invite Guests'
+
+.container
+  .row
+    .col.py-3
+      %h1.brand-primary.text-center Invite Guests
+
+  .row
+    .col-md-12
+      %p.text-center.mb-4.p-2{style: "border: 1px solid black;"}
+        %strong
+          Send email invitations to friends, family, and others so they know they should join you in Social Health Online as Guest Users.
+  .row
+    .col-md-3
+    .col-md-6.justify-content-center
+      .card
+        %p.text-left.px-3.py-2.mb-0
+        .card-body.text-center.pt-0
+          = form_with url: invite_guests_url, method: :post, local: true do
+            .form-group
+              %label(for="email") Invitation Email Address
+              = email_field_tag :email, params[:email], class: 'form-control', required: true
+            = submit_tag 'Send', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }

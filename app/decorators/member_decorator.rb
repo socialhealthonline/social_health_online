@@ -4,7 +4,7 @@ class MemberDecorator < ApplicationDecorator
 
   def logo
     if object.logo.attached? && object.logo.attachment.valid?
-      image_tag object.logo.variant(resize: '180x180'), class: 'c-pointer', alt: 'Community logo',
+      image_tag object.logo.variant(resize: '180x180'), class: 'c-pointer', alt: 'Community Logo',
                 data: { toggle: 'modal', target: '#community-profile-modal' }
     end
   end

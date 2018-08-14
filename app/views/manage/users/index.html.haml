@@ -3,7 +3,7 @@
 %div#profile_partial
 .container
   %br
-  .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top
+  .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.pb-2
     %h1.brand-primary My Community Users
     %div
       - if authenticated_user.manager?
@@ -53,7 +53,7 @@
               %td= link_to "#{i}. #{user.name}" , edit_manage_user_path(user)
               %td
                 %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
-                    data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: user }" } }
+                    data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user: user }" } }
                   =user.display_name
               %td= truncate(user.email)
               %td= user.user_status.capitalize
@@ -65,8 +65,7 @@
                 = link_to manage_user_path(user), title: 'Delete', id: "delete_user_#{user.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this user. Press OK to continue.' } do
                   %i.far.fa-trash-alt
             %tr.table-divider
-    %p= paginate @users
-    %br
+      %p= paginate @users      
   - else
-    %p.text-muted
-      %em No users were found.
+    %p.pb-3.text-muted.text-center
+      %em No Users are present.

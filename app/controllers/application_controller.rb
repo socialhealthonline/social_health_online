@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   helper_method :authenticated_user, :mailbox, :conversation
   add_flash_types :error, :success, :info, :warning
-  before_action :disabled_user?
-  before_action :pending_user?
+  before_action :disabled_user
+  before_action :unpaid_user
+  before_action :pending_user
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
@@ -16,15 +17,23 @@ class ApplicationController < ActionController::Base
     @authenticated_user ||= User.find_by(auth_token: session[:auth_token]) if session[:auth_token]
   end
 
-  def disabled_user?
+  def disabled_user
     if authenticated_user&.disabled?
       session[:auth_token] = nil
     end
   end
-  
-  def pending_user?
+
+  def unpaid_user
+    return if authenticated_user.nil?
+    member = authenticated_user.member
+    if member.ach? && !member.ach_verified?
+      redirect_to edit_ach_path, warning: 'You should first complete ACH verification with microdeposits to confirm your account.'
+    end
+  end
+
+  def pending_user
     if authenticated_user&.pending?
-      redirect_to profile_url, warning: 'You should first complete your profile!'
+      redirect_to profile_url, warning: 'You should first complete your profile. Don\'t forget to update your password before finishing!'
     end
   end
 

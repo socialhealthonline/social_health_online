@@ -5,11 +5,12 @@ Rails.application.routes.draw do
 
   # Public pages
   get "about-us" => "public#about"
+  get "careers" => "public#careers"
   get "join" => "public#join"
   get "service" => "public#service"
   get "service_highlights" => "public#service_highlights"
   get "service_screenshots" => "public#service_screenshots"
-  get "membership" => "public#membership"
+  get "participation" => "public#participation"
   get "affiliate_locator" => "public#affiliate_locator"
   get "affiliates" => "public#affiliates"
   get "member_locator" => "public#member_locator"
@@ -25,6 +26,10 @@ Rails.application.routes.draw do
 
   # Create Member
   resources :members_registration, only: [:new, :create]
+
+  # User Registration
+  get "users_registration" => "users_registration#new"
+  post "users_registration" => "users_registration#create"
 
   # Affiliate Registration
   get "affiliates_registration" => "affiliates_registration#new"
@@ -56,6 +61,12 @@ Rails.application.routes.draw do
   # My settings
   resource :my_settings, only: [:show, :update]
 
+  # Bulletin Board
+  get 'bulletins' => 'bulletins#bulletins'
+
+  # Verify ACH account
+  resource :ach, controller: 'ach', only: [:edit, :update]
+
   # Communities
   resources :members, path: :communities, as: :community, controller: :communities do
     resources :events, only: [:index, :show] do
@@ -65,6 +76,8 @@ Rails.application.routes.draw do
 
   get 'explore_communities' => 'communities#explore_communities'
   get 'event_search' => 'communities#event_search'
+  get 'event_suggestions' => 'communities#new'
+  post 'event_suggestions' => 'communities#create'
 
   # Manage
   namespace :manage do
@@ -109,6 +122,7 @@ Rails.application.routes.draw do
       end
     end
     resources :news
+    resources :manage_bulletins
     resources :notifications
     resources :members do
       collection do
@@ -152,20 +166,39 @@ Rails.application.routes.draw do
   # Media Center
   get "media_center" => "media_center#index"
 
+  # My Bulletins
+  resources :my_bulletins
+
+  # Invite Guests
+  get "invite_guests" => "invite_guests#new"
+  post "invite_guests" => "invite_guests#create"
+
   # Affiliates
   get "affiliates_search" => "affiliates#index"
 
   # Discounts
   get "discounts_finder" => "discounts_finder#index"
 
-  # Issues
+  # Report Issues
   get "issues" => "issues#new"
   post "issues" => "issues#create"
+
+  # My Achievements
+  get "my_achievements" => "my_achievements#index"
 
   # My Favorites
   get "my_favorites" => "my_favorites#index"
 
   # My Contacts
-  get "my_contacts" => "my_contacts#index"
+  resources :my_contacts
+
+  require 'sidekiq/web'
+  if Rails.env.production?
+    Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
+      [user, password] == [Rails.application.credentials.production.dig(:sidekiq, :login),
+                           Rails.application.credentials.production.dig(:sidekiq, :password)]
+    end
+  end
+  mount Sidekiq::Web => '/sidekiq'
 
 end

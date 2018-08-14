@@ -2,12 +2,12 @@
   %th{scope: 'row'}
     - unless folder.equal?(:sent)
       %b From:
-      = conversation.messages.last.sender.display_name
+      = conversation.originator.display_name
       - if conversation.is_unread?(authenticated_user)
         %span.badge.badge-danger New
     - else
-      %b Recipients:
-      = conversation.recipients.map(&:name).reject { |name| name.eql?(authenticated_user.name) }.join(', ')
+      %b To:
+      = conversation.recipients.map(&:display_name).reject { |display_name|  display_name.eql?(authenticated_user.display_name) }.join(', ')
     %br/
     %b Subject:
     = conversation.subject
@@ -21,5 +21,5 @@
     - if conversation.is_trashed?(authenticated_user)
       = link_to 'Restore', untrash_conversation_path(conversation), class: 'btn btn-sm btn-primary btn-block mt-1', style: 'border: 1px solid black;', method: :post
     - else
-      = link_to 'Move to trash', trash_conversation_path(conversation), class: 'btn btn-sm btn-danger btn-block', style: 'border: 1px solid black;', method: :post, data: { confirm: 'Are you sure?' }
+      = link_to 'Move to Trash', trash_conversation_path(conversation), class: 'btn btn-sm btn-danger btn-block', style: 'border: 1px solid black;', method: :post, data: { confirm: 'Are you sure?' }
 %tr.table-divider

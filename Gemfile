@@ -7,7 +7,7 @@ gem 'active_model_serializers'
 gem "aws-sdk-s3", require: false
 gem 'bcrypt'
 gem 'bootsnap', require: false
-gem 'bootstrap', '~> 4.1.0'
+gem 'bootstrap', '~> 4.1', '>= 4.1.1'
 gem 'font-awesome-rails'
 gem 'friendly_id'
 gem 'fullcalendar-rails'
@@ -32,6 +32,9 @@ gem 'select2-rails'
 gem 'draper'
 gem 'image_processing'
 gem "recaptcha", require: "recaptcha/rails"
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
+gem 'whenever', '~> 0.9.4'
 
 group :development, :test do
   gem 'awesome_print'
@@ -59,4 +62,6 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'headless'
+  gem 'rspec-sidekiq'
+  gem 'stripe-ruby-mock', '~> 2.5.4', :require => 'stripe_mock'
 end

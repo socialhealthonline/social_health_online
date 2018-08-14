@@ -3,7 +3,7 @@
 .container
   .row
     .col.py-3
-      .row
+      .row.pb-3.mb-3
         .col-7
           %h1.text-info My Community Social Tracker
         .col-5
@@ -48,6 +48,7 @@
                 %td= user.total_social_events_logged
                 %td= short_date(user.last_social_event_log_date) || "No Logs"
                 %tr.table-divider
+          %p= paginate @users
       - else
-        %p.text-muted.my-4
+        %p.pb-3.text-muted.text-center
           %em No Users were found.

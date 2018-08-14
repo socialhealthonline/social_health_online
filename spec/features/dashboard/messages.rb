@@ -47,7 +47,7 @@ feature 'User manage messages', type: :feature, js: true do
     before do
       visit mailbox_sent_path
       click_link 'View'
-      click_link 'Move to trash'
+      click_link 'Move to Trash'
       page.driver.browser.switch_to.alert.accept
       visit mailbox_trash_path
     end
@@ -57,7 +57,7 @@ feature 'User manage messages', type: :feature, js: true do
     end
 
     it 'empties trash' do
-      click_link 'Empty trash'
+      click_link 'Empty Trash'
       page.driver.browser.switch_to.alert.accept
       expect(page).to have_no_content 'Some subject'
     end

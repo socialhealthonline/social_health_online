@@ -16,7 +16,7 @@ RSpec.describe 'User updates profile' do
     fill_in 'user_password_confirmation', with: '1qaz2wsx3edc'
     click_button 'Update'
     user.reload
-    expect(current_path).to eq profile_path
+    expect(current_path).to eq home_path
     expect(page).to have_text 'Your profile was successfully updated'
     expect(user.name).to eq 'Sam Adams III'
     expect(user.email).to eq 'samadamsiii@example.com'
@@ -36,9 +36,9 @@ RSpec.describe 'User updates profile' do
     click_button 'Update'
     user.reload
     expect(current_path).to eq '/profile'
-    expect(page).to have_text 'must be alphanumeric'
+    expect(page).to have_text 'Must be alphanumeric'
     expect(page).to have_form_field_error_for('profile-password')
-    expect(page).to have_text "doesn't match password"
+    expect(page).to have_text "Doesn't match password"
     expect(page).to have_form_field_error_for('user_password_confirmation')
   end
 

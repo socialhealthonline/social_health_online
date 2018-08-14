@@ -89,7 +89,10 @@
     .card
       .card-body
         .form-check.mb-1
-          = f.check_box :enabled, class: 'form-check-input'
+          - if @admin.enabled?
+            = f.check_box :user_status, class: 'form-check-input', checked: true
+          - else
+            = f.check_box :user_status, class: 'form-check-input', checked: false
           %label.form-check-label(for="user_enabled") Enabled
         %small Enabled to sign in
 

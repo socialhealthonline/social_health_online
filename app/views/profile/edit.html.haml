@@ -147,16 +147,29 @@
                 = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@user, :bio)}"
                 = model_error_display(@user, :bio)
           .row
-            .col-6.col-sm-6.col-lg-6.col-xl-6
-            .col
-              .form-group
-                .col-xs-2
-                  = h.check_box :matchmaker, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.matchmaker) }, '1', '0'
-                  %label(for="user_invisible") Hide my profile in Matchmaker 
-          %hr
+            .col-12.col-sm-6.col-lg-6.col-xl-6
+              .form-group#file-field
+                %label(for="profile_avatar") User Avatar (note: maximum file size is 10 MB)
+                = f.file_field :avatar, class: "form-control #{form_error_class(@user, :avatar)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 10.megabytes }
+                = model_error_display(@user, :avatar)
+
           .row
             .col
-              %p.text-muted Change your password:
+              %p.text-muted Avatar Preview:
+              -if @user.avatar.attached? && @user.avatar.attachment.valid?
+                = image_tag @user.avatar, alt: 'User avatar', size: '180x180'
+
+          .row
+            .col
+              %br
+              .form-group
+                #matchmakerCheckboxId.col-xs-2
+                  = h.check_box :matchmaker, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.matchmaker) }, '1', '0'
+                  %label(for="user_invisible") Hide My Profile in Matchmaker
+
+          .row.pt-2.border-top
+            .col
+              %p.text-muted Change Your Password:
           .row
             .col
               .form-group

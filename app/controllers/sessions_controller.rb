@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
-  skip_before_action :pending_user?
-  
+  skip_before_action :unpaid_user
+  skip_before_action :pending_user
+
   def new
     redirect_to home_url if authenticated_user
   end

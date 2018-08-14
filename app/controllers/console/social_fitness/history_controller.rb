@@ -3,7 +3,7 @@ class Console::SocialFitness::HistoryController < ConsoleController
 
   def members
     @members = Member.all
-    @members = Member.order("#{sort_column} #{sort_direction}").page(params[:page])
+    @members = Member.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def users

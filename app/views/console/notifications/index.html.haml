@@ -20,15 +20,15 @@
           %tr.bg-white
             %td= link_to truncate("#{i}. #{notification.title}"), console_notification_path(notification)
             %td= truncate(notification.body)
-            %td= time_in_cdt(notification.created_at, '%Y-%m-%d %I:%M')
+            %td= time_in_cdt(notification.created_at, '%m/%d/%Y, %I:%M %p %Z')
             %td
               = link_to edit_console_notification_path(notification), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
                 %i.far.fa-edit
               &nbsp;
               = link_to console_notification_path(notification), title: 'Delete', id: "delete_notification_#{notification.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this notification. Press OK to continue.' } do
                 %i.far.fa-trash-alt
-          %tr.table-divider
-  %p= paginate @notifications
+                %tr.table-divider
+    %p= paginate @notifications
 - else
-  %p.text-muted
+  %p.text-muted.text-center
     %em No notifications were found.

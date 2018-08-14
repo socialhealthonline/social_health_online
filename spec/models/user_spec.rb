@@ -4,7 +4,6 @@ RSpec.describe User do
 
   it { should have_db_index :auth_token }
   it { should have_db_index :member_id }
-  it { should have_db_index :enabled }
   it { should have_db_index :email }
   it { should have_db_index :password_reset_token }
 
@@ -29,7 +28,7 @@ RSpec.describe User do
   end
 
   describe 'password validation' do
-    it { should validate_length_of(:password).is_at_least(8).on(:create).with_message('must be at least 8 characters') }
+    it { should validate_length_of(:password).is_at_least(8).on(:create).with_message('Must be at least 8 characters.') }
     it { should_not allow_values('ABCdefgh', '12345678').for(:password) }
     it { should allow_value('ABCd5678').for(:password) }
   end

@@ -3,7 +3,7 @@
 .container
   .row.pt-3
     .col
-      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3
+      .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.mb-3
         %h1.brand-primary My Community Events
         = link_to new_manage_event_path, class: 'btn btn-primary ml-auto mr-1 mb-4', style: 'border: 1px solid black;'  do
           %i.fas.fa-plus-circle
@@ -64,5 +64,5 @@
                 %tr.table-divider
           %p= paginate @events
       - else
-        %p.pb-3.text-muted
-          %em No events were found.
+        %p.pb-3.text-muted.text-center
+          %em No events have been made.

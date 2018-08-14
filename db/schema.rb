@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_28_222647) do
+ActiveRecord::Schema.define(version: 2018_08_14_114331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,30 @@ ActiveRecord::Schema.define(version: 2018_06_28_222647) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_announcements_on_member_id"
+  end
+
+  create_table "bulletins", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "city"
+    t.string "state"
+    t.string "event_type"
+    t.integer "user_id"
+    t.string "display_name"
+    t.datetime "start_at"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "display_name"
+    t.string "city"
+    t.string "state"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "user_id"
   end
 
   create_table "event_categories", force: :cascade do |t|
@@ -197,12 +221,19 @@ ActiveRecord::Schema.define(version: 2018_06_28_222647) do
     t.string "url"
     t.integer "primary_manager_id"
     t.string "events_url"
-    t.boolean "hide_info_on_locator", default: false
     t.string "slug"
+    t.boolean "hide_info_on_locator", default: false
     t.datetime "welcome_kit_date"
     t.string "phone"
     t.string "contact_phone_extension"
     t.string "stripe_customer_id"
+    t.string "period"
+    t.integer "payment_method"
+    t.string "plan"
+    t.boolean "ach_verified", default: false
+    t.boolean "public_member", default: false
+    t.boolean "hide_suggest_events", default: false
+    t.index ["period"], name: "index_members_on_period"
     t.index ["slug"], name: "index_members_on_slug", unique: true
   end
 
@@ -216,14 +247,6 @@ ActiveRecord::Schema.define(version: 2018_06_28_222647) do
   create_table "notifications", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "registrations", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "telephone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -271,7 +294,6 @@ ActiveRecord::Schema.define(version: 2018_06_28_222647) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email", null: false
-    t.boolean "enabled", default: true, null: false
     t.boolean "admin", default: false, null: false
     t.string "auth_token"
     t.string "password_digest", null: false
@@ -304,9 +326,10 @@ ActiveRecord::Schema.define(version: 2018_06_28_222647) do
     t.date "first_login"
     t.string "phone_extension"
     t.text "group"
+    t.string "favorites"
+    t.boolean "guest", default: false
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
-    t.index ["enabled"], name: "index_users_on_enabled"
     t.index ["member_id"], name: "index_users_on_member_id"
     t.index ["password_reset_token"], name: "index_users_on_password_reset_token"
   end

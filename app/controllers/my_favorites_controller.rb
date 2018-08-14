@@ -1,7 +1,7 @@
 class MyFavoritesController < ApplicationController
 before_action :require_authentication
 
-def my_favorites
+def index
 end
 
 end

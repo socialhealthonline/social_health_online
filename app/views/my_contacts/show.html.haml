@@ -1,0 +1,30 @@
+.d-flex.justify-content-center.flex-wrap.flex-md-nowrap.align-items-center.py-3.px-2
+  %h1.brand-primary= @contact.name
+
+.row.justify-content-center
+  .col-9
+    .settings-box{:style => "border-radius: 12px;"}
+      %p
+      - if @contact.display_name.present?
+        %strong  Display Name:
+        = @contact.display_name
+      %p
+      - if @contact.city.present?
+        %strong  City:
+        = @contact.city
+      %p
+      - if @contact.state.present?
+        %strong  State:
+        = @contact.state
+      %p
+      %p
+        %strong  Notes:
+        = @contact.notes
+
+.container
+  .col
+    %div.form-row
+      %div.float-left.py-3
+        = link_to my_contacts_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+          %i.fas.fa-arrow-left
+          Back

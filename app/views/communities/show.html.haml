@@ -2,6 +2,7 @@
   :javascript
     $(document).ready(function() {
       $('#calendar').fullCalendar({
+        themeSystem: 'standard',
         events: "/communities/#{@member.slug}/events.json",
         header: {
           left: 'prev',
@@ -57,6 +58,12 @@
           %h5 Bio
           = @member.bio
 
+      .col-12.pt-3
+        %p.text-center
+          =link_to 'Contact Manager', new_conversation_path(recipient_id: @member.primary_manager&.id), target: '_blank', class: 'btn btn-primary', style: 'border: 1px solid black'
+          - if @member.hide_suggest_events?
+            =link_to 'Suggest Events', event_suggestions_path, class: 'btn btn-primary', style: 'border: 1px solid black'
+
 %section.flush-with-above.space-0
   %div
     .container
@@ -72,17 +79,27 @@
 - page_title 'My Community'
 
 %section.pt-2.pb-2
-  .tab-content.pb-2
+  .tab-content.pb-2{ :style => "overflow:hidden;" }
     .tab-pane.fade.show.active#events(role="tabpanel" aria-labelledby="events-tab")
-
+      .row.mt-0.mb-3
+        .col
+          %h3.notification-title
+            %strong
+              Community Events Calendar
       .container
         .row
-          .col-12
+          .col-12.pb-2
             .card
               .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
                 #calendar
+
     .tab-pane.fade#announcements(role="tabpanel" aria-labelledby="announcements-tab")
       .container
+        .row.mt-0.mb-3
+          .col
+            %h3.notification-title.pb-2.mb-1
+              %strong
+                Community Announcements
         .row.mt-4
           .col.pt-3
             #scroll-box-announcements{ :style => "border: 2px solid black; border-radius: 12px;" }
@@ -92,11 +109,19 @@
                   .announcements-date.mb-2.border-bottom= time_in_cdt(announcement.updated_at, '%m/%d/%Y')
                   .announcements-text.text-left.pb-2= simple_format(announcement.body)
               %p= paginate @announcements
+              - if @announcements.none?
+                %p.text-muted.mt-5.text-center
+                  %em No announcements have been made.
 
     .tab-pane.fade#members(role="tabpanel" aria-labelledby="members-tab")
       %div#profile_partial
       .container
-        .row.my-3.justify-content-center
+        .row.mt-0.mb-3
+          .col
+            %h3.notification-title.pb-3.mb-1
+              %strong
+                Community User Directory
+        .row.justify-content-center
           .col-7.pt-3
             #scroll-box-announcements{ style: "border: 2px solid black; border-radius: 12px; width: 100%;" }
               %h5.notification-title.border-bottom.mb-2

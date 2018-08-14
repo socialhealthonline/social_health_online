@@ -3,42 +3,42 @@
 .container.text-center
   .row.pt-3.mb-2
     .col
-      %h1= @event.title
+      %h1.brand-primary= @event.title
 
     %div
   .row
     .col
       %p
-        %i.fas.fa-portrait{:title => "Event Host"}
+        %i.c-pointer.fas.fa-portrait{:title => "Event Host"}
         = @event.member.name
       %p
-        %i.fas.fa-tag{:title => "Event Type"}
+        %i.c-pointer.fas.fa-tag{:title => "Event Type"}
         = @event.event_type
       %p
-        %i.far.fa-calendar-alt{:title => "Event Date/Time"}
+        %i.c-pointer.far.fa-calendar-alt{:title => "Event Date/Time"}
         = short_date_time @event.start_at, @event.time_zone
       %p
-        %i.fas.fa-image{:title => "Event Location"}
+        %i.c-pointer.fas.fa-image{:title => "Event Location"}
         = @event.location
       %p
       - if @event.address.present?
-        %i.fas.fa-map-marker{:title => "Event Address"}
+        %i.c-pointer.fas.fa-map-marker{:title => "Event Address"}
         = @event.location_display
       %p
       - if @event.url.present?
-        %i.fas.fa-globe{:title => "Event Website"}
+        %i.c-pointer.fas.fa-globe{:title => "Event Website"}
         = link_to @event.url, @event.url, target: '_blank'
       %p
       %p
-        %i.fas.fa-door-open{:title => "Event Access"}
+        %i.c-pointer.fas.fa-door-open{:title => "Event Access"}
         = @event.private? ? 'Private' : 'Public'
       %p
       -if @event.details.present?
-        %i.fas.fa-sticky-note{:title => "Event Details"}
+        %i.c-pointer.fas.fa-file-alt{:title => "Event Details"}
         = @event.details
       %p
       -if @event.rsvp_limit.present?
-        %i.fas.fa-exclamation-triangle{:title => "RSVP Attendee Limit"}
+        %i.c-pointer.fas.fa-exclamation-triangle{:title => "RSVP Attendee Limit"}
         = @event.rsvp_limit
         Attendees Allowed
       %p
@@ -67,7 +67,8 @@
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: rsvp.user }" } }
                   =rsvp.user.display_name
               %td.text-center.pr-3= rsvp&.rsvp_status.capitalize
-
+            %div.container.pagination.justify-content-center
+            
 .container
   .col
     %div.form-row
@@ -88,25 +89,26 @@
             %tr
               %th Event Title
               %th
-              %th Event Type
-              %th
               %th Event Date/Time
               %th
               %th City
               %th
               %th State
+              %th
+              %th Hosted By
+              %th
           %tbody
           - @events.each do |event|
             %tr.bg-white
               %td= link_to event.title, community_event_path(authenticated_user.member, event)
               %td
-              %td= event.event_type
-              %td
-              %td= time_in_cdt(event.start_at, '%m/%d/%Y, %I:%M %p %Z')
+              %td= short_date_time(event.start_at, event.time_zone)
               %td
               %td= event.city
               %td
               %td= event.state
+              %td
+              %td= event.member.name
               %td
             %tr.table-divider
         %div.container.pagination.justify-content-center

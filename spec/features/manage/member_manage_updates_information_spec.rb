@@ -2,11 +2,11 @@ require 'rails_helper'
 
 feature 'Member manager updates information', type: :feature do
   let(:member) { create(:member) }
-  let(:manager) { create(:user, :manager, member: member) }
+  let(:manager) { create(:user, :manager, member: member, display_name: 'User 1') }
   let(:big_image) { File.new("#{Rails.root}/spec/fixtures/files/big_photo.jpg").path }
   let(:txt_file) { File.new("#{Rails.root}/spec/fixtures/files/test.txt").path }
-  let(:file_size_error) { 'this file exceeds the maximum allowed file size (3 mb)' }
-  let(:file_extension_error) { 'only image file with extension: .jpg, .jpeg, .gif or .png is allowed' }
+  let(:file_size_error) { 'This file exceeds the maximum allowed file size (10 mb).' }
+  let(:file_extension_error) { 'Only image files with extensions .jpg, .jpeg, .gif, or .png are allowed.' }
 
   before do
     sign_in manager

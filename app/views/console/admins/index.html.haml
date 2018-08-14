@@ -9,7 +9,7 @@
       Add Admin
 
 - if @admins.any?
-  .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
+  .table-responsive.admin-list-table{ :style => 'border: 2px solid black; border-radius: 12px;' }
     %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
@@ -41,3 +41,4 @@
                     %i.far.fa-trash-alt
                     Delete
           %tr.table-divider
+    %p= paginate @admins
