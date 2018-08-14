@@ -4,7 +4,7 @@ class IssuesMailer < ApplicationMailer
     @authenticated_user = authenticated_user
 
     mail to: 'support@socialhealthonline.com',
-         subject: 'New Issue(s) - Social Health Online',
+         subject: 'New Issue - Social Health Online',
          from: "#{authenticated_user.name} <#{authenticated_user.email}>"
   end
 end
