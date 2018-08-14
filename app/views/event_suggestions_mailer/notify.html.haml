@@ -10,9 +10,6 @@
   <strong>Email:</strong> #{@authenticated_user.email}
 
 %p
-  <strong>Subject:</strong> Event Suggestions - Social Health Online
-
-%p
   <strong>Event Title:</strong> #{@form_params[:event_title]}
 
 %p
@@ -24,4 +21,4 @@
 %p
   <strong>Event Details:</strong>
 %p
-  #{@form_params[:event_details]}
+  = #{@form_params[:event_details]}
