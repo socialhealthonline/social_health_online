@@ -6,14 +6,10 @@ Display Name : <%= @authenticated_user.display_name %>
 
 Email: <%= @authenticated_user.email %>
 
-Subject: <% 'Event Suggestions - Social Health Online' %>
-
 Event Title: <%= @form_params[:event_title] %>
 
 Event Date: <%= @form_params[:event_date] %>
 
 Event Location: <%= @form_params[:event_location] %>
 
-Event Details:
-
-<%= @form_params[:event_details] %>
+Event Details: <%= @form_params[:event_details] %>

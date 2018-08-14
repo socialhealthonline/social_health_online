@@ -4,6 +4,11 @@ class BulletinsController < ApplicationController
   def bulletins
     @bulletins = Bulletin.where('start_at > ?', Date.today).all.page(params[:page])
     @bulletins = FindUsersCommunities.new(@bulletins, show_init_scope: false).call(permitted_params)
+    unless @bulletins.kind_of?(Array)
+      @bulletins = @bulletins.page(params[:page]).per(10)
+    else
+      @bulletins = Kaminari.paginate_array(@bulletins).page(params[:page]).per(10)
+    end
   end
 
   private
