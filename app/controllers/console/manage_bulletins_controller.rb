@@ -26,7 +26,7 @@ class Console::ManageBulletinsController < ConsoleController
 
   def edit
     if @bulletin.user.id != authenticated_user.id
-      redirect_to my_bulletins_path
+      redirect_to console_manage_bulletin_path
     else
       render :edit
     end
