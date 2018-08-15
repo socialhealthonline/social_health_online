@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_114331) do
     t.integer "user_id"
     t.string "display_name"
     t.datetime "start_at"
+    t.integer "likes"
   end
 
   create_table "contacts", force: :cascade do |t|
