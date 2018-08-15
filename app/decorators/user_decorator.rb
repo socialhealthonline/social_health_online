@@ -74,13 +74,13 @@ class UserDecorator < ApplicationDecorator
 
   def profile_gender
     h.content_tag :p do
-      h.content_tag(:strong, "Gender: ") + object&.gender if object.hidden_field.gender.eql?('0')
+      h.content_tag(:strong, "Gender: ") + object&.gender if object.gender && !object.gender&.empty?
     end
   end
 
   def profile_ethnicity
     h.content_tag :p do
-      h.content_tag(:strong, "Race/Ethnicity: ") + object&.ethnicity if object.hidden_field.ethnicity.eql?('0')
+      h.content_tag(:strong, "Race/Ethnicity: ") + object&.ethnicity if object.ethnicity && !object.ethnicity&.empty?
     end
   end
 

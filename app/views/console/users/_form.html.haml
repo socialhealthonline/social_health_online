@@ -57,12 +57,12 @@
   .col
     .form-group
       %label(for="user_gender") Gender
-      = f.select :gender, User::GENDER, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@user, :gender)}" }
+      = f.select :gender, User::GENDER, {include_blank: true}, { class: "form-control custom-select #{form_error_class(@user, :gender)}" }
       = model_error_display(@user, :gender)
   .col
     .form-group
       %label(for="user_ethnicity") Race/Ethnicity
-      = f.select :ethnicity, User::ETHNICITY, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
+      = f.select :ethnicity, User::ETHNICITY, {include_blank: true}, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
       = model_error_display(@user, :ethnicity)
 .row
   .col-6
