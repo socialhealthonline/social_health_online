@@ -4,7 +4,6 @@
   .row.mb-4
     .col-12.col-md-3.mb-1.order-md-1
       = link_to 'Compose', new_conversation_path, class: 'btn btn-info mb-1', style: 'border: 1px solid black;'
-      %p
       .card.card-sm
         .list-group.list-group-flush
           = render 'mailbox/folders'
