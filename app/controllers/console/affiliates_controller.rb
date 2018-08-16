@@ -2,6 +2,7 @@ class Console::AffiliatesController < ConsoleController
   helper_method :sort_column, :sort_direction
   def index
     @affiliates = Affiliate.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
+    @affiliates = FindUsersCommunities.new(@affiliates, show_init_scope: true).call(permitted_params)
   end
 
   def show
@@ -48,6 +49,10 @@ class Console::AffiliatesController < ConsoleController
   end
 
   private
+
+  def permitted_params
+    params.permit(:state).reject{|_, v| v.blank?}
+  end
 
   def affiliate_params
     params.require(:affiliate).permit(

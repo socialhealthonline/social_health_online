@@ -8,6 +8,16 @@
       %i.fas.fa-plus-circle
       Post Bulletin
 
+.row.mt-2
+  .col-12.col-md-4.col-lg-6
+    %h5.pt-1.mb-0.brand-primary Filter - By State
+    .col-12.col.md-4.col-lg-6.justify-content-center
+      = form_with url: [:console_manage_bulletins], method: :get, local: true do |f|
+        .form-group.form-inline.justify-content-center#explore_communities_form
+        = f.select(:state, US_STATES, {}, class: "form-control find_by_state", include_blank: 'State', style: "width: 100%;")
+        %p
+        = f.button "Filter", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
+
 - if @bulletins.any?
   .row.justify-content-center
     .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }

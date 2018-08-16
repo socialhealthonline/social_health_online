@@ -4,6 +4,7 @@ class Console::SocialFitness::HistoryController < ConsoleController
   def members
     @members = Member.all
     @members = Member.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
+    @members = FindUsersCommunities.new(@members, show_init_scope: true).call(permitted_params)
   end
 
   def users
@@ -35,6 +36,10 @@ class Console::SocialFitness::HistoryController < ConsoleController
   end
 
   private
+
+    def permitted_params
+      params.permit(:state).reject{|_, v| v.blank?}
+    end
 
     def member_params
       params.require(:member).permit(

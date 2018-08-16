@@ -4,6 +4,7 @@ class Console::ManageBulletinsController < ConsoleController
 
   def index
     @bulletins = Bulletin.all.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+    @bulletins = FindUsersCommunities.new(@bulletins, show_init_scope: true).call(permitted_params)
   end
 
   def show
@@ -47,6 +48,10 @@ class Console::ManageBulletinsController < ConsoleController
   end
 
   private
+
+  def permitted_params
+    params.permit(:state).reject{|_, v| v.blank?}
+  end
 
   def bulletin_params
     params.require(:bulletin).permit(:title, :description, :city, :state, :start_at, :user_id, :display_name, :event_date, :event_datetime, :event_type)
