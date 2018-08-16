@@ -38,7 +38,7 @@
             %td= user.name
             %td= user.city
             %td= user.state
-            %td= user.phone
+            %td= number_to_phone (user.phone)
             %td= user.email
             %td= user.guest? ? 'Yes' : 'No'
             %td= user.member.name
