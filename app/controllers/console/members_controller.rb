@@ -2,8 +2,13 @@ class Console::MembersController < ConsoleController
   helper_method :sort_column, :sort_direction
 
   def index
-    @members = Member.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
+    @members = Member.order("#{sort_column} #{sort_direction}")
     @members = FindUsersCommunities.new(@members, show_init_scope: true).call(permitted_params)
+    unless @members.kind_of?(Array)
+      @members = @members.page(params[:page]).per(25)
+    else
+      @members = Kaminari.paginate_array(@members).page(params[:page]).per(25)
+    end
   end
 
   def show

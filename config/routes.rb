@@ -113,6 +113,7 @@ Rails.application.routes.draw do
   get "home" => "home#index"
 
   # Console
+  get "lookups" => 'console#lookups'
   get "console" => "console#index"
   namespace :console do
     root to: "console#index", as: "root"

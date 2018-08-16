@@ -1,0 +1,49 @@
+- page_title 'User Lookup'
+
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.pb-3.border-bottom
+  %h3.brand-primary User Lookup
+  %div
+
+.row.mt-2
+  .col-12.col-md-4.col-lg-6
+    %h5.pt-1.mb-0.brand-primary Filter - By Display Name
+    .col-12.col.md-4.col-lg-6.justify-content-center
+      = form_with url: [:lookups], method: :get, local: true do |f|
+        .form-group.form-inline.justify-content-center#explore_communities_form
+        = f.text_field :display_name, placeholder: 'Display Name', class: 'form-control find_by_city', style: "width: 100%;"
+        %p
+        = f.button "Filter", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
+
+%div#profile_partial
+- if @users.any?
+  .table-responsive.lookup-list-table{ :style => 'border: 2px solid black; border-radius: 12px;'}
+    %table.table.table-borderless.align-items-center.table-hover
+      %thead
+        %tr
+          %th= sort_link 'display_name', 'Display Name'
+          %th= sort_link 'name', 'Name'
+          %th= sort_link 'city', 'City'
+          %th= sort_link 'state', 'State'
+          %th= sort_link 'phone', 'Phone'
+          %th= sort_link 'email', 'Email'
+          %th= sort_link 'guest', 'Guest'
+          %th Host Member
+      %tbody
+        - @users.each do |user|
+          %tr.bg-white
+            %td
+              %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user: user }" } }
+                =user.display_name
+            %td= user.name
+            %td= user.city
+            %td= user.state
+            %td= user.phone
+            %td= user.email
+            %td= user.guest? ? 'Yes' : 'No'
+            %td= user.member.name
+          %tr.table-divider
+    %p= paginate @users
+- else
+  %p.text-muted.text-center
+    %em No Users were found.

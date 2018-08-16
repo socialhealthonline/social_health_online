@@ -420,19 +420,25 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
 }
 
 .member-list-table {
-  font-size: 13px;
+  font-size: 12px;
+}
+
+.lookup-list-table {
+  font-size: 12px;
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
 .user-list-table {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .affiliate-list-table {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .admin-list-table {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 #scroll-box-users {

@@ -1,8 +1,13 @@
 class Console::AffiliatesController < ConsoleController
   helper_method :sort_column, :sort_direction
   def index
-    @affiliates = Affiliate.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
+    @affiliates = Affiliate.order("#{sort_column} #{sort_direction}")
     @affiliates = FindUsersCommunities.new(@affiliates, show_init_scope: true).call(permitted_params)
+    unless @affiliates.kind_of?(Array)
+      @affiliates = @affiliates.page(params[:page]).per(25)
+    else
+      @affiliates = Kaminari.paginate_array(@affiliates).page(params[:page]).per(25)
+    end
   end
 
   def show

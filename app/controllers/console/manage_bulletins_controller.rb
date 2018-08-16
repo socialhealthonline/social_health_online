@@ -3,8 +3,13 @@ class Console::ManageBulletinsController < ConsoleController
   before_action :find_bulletin, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bulletins = Bulletin.all.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+    @bulletins = Bulletin.all.order("#{sort_column} #{sort_direction}")
     @bulletins = FindUsersCommunities.new(@bulletins, show_init_scope: true).call(permitted_params)
+    unless @bulletins.kind_of?(Array)
+      @bulletins = @bulletins.page(params[:page]).per(10)
+    else
+      @bulletins = Kaminari.paginate_array(@bulletins).page(params[:page]).per(10)
+    end
   end
 
   def show
