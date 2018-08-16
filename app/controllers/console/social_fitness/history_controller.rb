@@ -36,8 +36,8 @@ class Console::SocialFitness::HistoryController < ConsoleController
   end
 
   def destroy
-    # SocialEventLog.destroy(params[:id])
-    # redirect_to console_social_tracker_members_path, success:"Log was successfully deleted."
+    SocialFitnessLog.destroy(params[:id])
+    redirect_to console_social_fitness_members_path, success:"Log was successfully deleted."
   end
 
   private

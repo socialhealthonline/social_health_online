@@ -6,8 +6,8 @@ class User < ApplicationRecord
   enum user_status: %i[disabled enabled pending]
 
   belongs_to :member, inverse_of: :users
-  has_many :social_event_logs
-  has_many :social_fitness_logs
+  has_many :social_event_logs, dependent: :destroy
+  has_many :social_fitness_logs, dependent: :destroy
   has_many :rsvps
   has_many :events, through: :rsvps
   has_one :hidden_field

@@ -1,3 +1,5 @@
 =link_to 'View Profile', fetch_user_path(user_id: user.id), {"data-target" => "#profileModal", "data-toggle" => "modal", remote: true}
 %br
 =link_to 'Send Message', new_conversation_path(recipient_id: user.id), target: '_blank'
+%br
+=link_to 'Add to Contacts', my_contacts_path(display_name: user.display_name), target: '_blank'
