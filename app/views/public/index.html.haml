@@ -51,17 +51,22 @@
           = image_tag 'smf.jpg', class: 'img-fluid'
       .row.pt-4.border-top
         .col.text-center
-          %h5.text-info
+          %h5.mb-2.text-info
             %span Use Our Service to Create the Social Life You Want
-          %ul
-            Easily manage your social wellness in one place with our comprehensive platform. Our features support the strengthening of relationships by encouraging and facilitating participation in virtually all social activities.
-            %p
-            %li Users have home Communities that they share with others from their local area so they can easily meet people and find events
-            %p
-            %li All Users get access to event suggestions and special discounts from our Affiliates
-            %p
-            %li Tools are supplied to Users to assess and track their social wellness
-            %p
-            %li A Bulletin Board is provided so that Users can organize and advertise their own social events
-
-          = link_to 'See More Features', service_highlights_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
+      .row
+        .col.text-left
+          Easily manage your social wellness in one place with our comprehensive platform. Our service's features support the strengthening of
+          relationships by encouraging participation in virtually all social activities.
+      .row.mb-3.px-2
+        .col-md-3
+        .col-md-6.text-left
+          &nbsp
+          %li Users have home Communities that they share with others from their local area so they can easily meet people and find events
+          %p
+          %li All Users get access to event suggestions and special discounts from our Affiliates
+          %p
+          %li Tools are supplied to Users so they can assess and track their social wellness
+          %p
+          %li A Bulletin Board and Matchmaker are provided so that Users can organize and advertise their own social events with groups and individuals
+      .row.justify-content-center
+        = link_to 'See More Features', service_highlights_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
