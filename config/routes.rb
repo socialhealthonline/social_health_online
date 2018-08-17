@@ -105,7 +105,7 @@ Rails.application.routes.draw do
     post "log" => "fitness#create"
     get "history" => "fitness#index"
     get "history/:id" => "fitness#show"
-    get "resources" => "fitness#resources"
+    get "assets" => "fitness#assets"
     get "plan" => "fitness#plan"
   end
 
