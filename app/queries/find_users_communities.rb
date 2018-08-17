@@ -10,6 +10,7 @@ class FindUsersCommunities
     scoped = filter_by_state(initial_scope, params[:state])
     scoped = filter_by_city(scoped, params[:city])
     scoped = filter_by_zip(scoped, params[:zip])
+    scoped = filter_by_display_name(scoped, params[:display_name])
     scoped = paginate(scoped, params[:page])
     @show_init_scope = true if params[:state]
     @show_init_scope ? scoped : []
@@ -27,6 +28,10 @@ class FindUsersCommunities
 
     def filter_by_zip(scoped, zip = nil)
       zip ? scoped.where(zip: zip) : scoped
+    end
+
+    def filter_by_display_name(scoped, display_name = nil)
+      display_name ? scoped.where(display_name: display_name) : scoped
     end
 
     def paginate(scoped, page_number = 0)
