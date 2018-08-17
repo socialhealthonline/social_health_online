@@ -1,5 +1,5 @@
 EVENT_TYPES = [
-  "All"
+  "All",
   "Art/Photography",
   "Career/Business",
   "Dance/Theater",
