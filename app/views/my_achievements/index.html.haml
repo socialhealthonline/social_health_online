@@ -38,6 +38,14 @@
                 %i.fas.fa-trophy.fa-3x
               .card-footer-badges.pb-3.text-center
                 You logged your first event.
+          - if @social_event_Logs.size > 4
+            .card.pricing.card.my-2.col-4.px-1
+              .card-header-badges.pt-3.text-center
+                %strong Halfway
+              .card-body.brand-primary.px-2
+                %i.fas.fa-thermometer-half.fa-3x
+              .card-footer-badges.pb-3.text-center
+                You are halfway to level 1! Don't stop now!
           - if @social_event_Logs.size > 9
             .card.pricing.card.my-2.col-4.px-1
               .card-header-badges.pt-3.text-center
@@ -45,24 +53,33 @@
               .card-body.brand-primary.px-2
                 %i.fas.fa-arrow-up.fa-3x
               .card-footer-badges.pb-3.text-center
-                You leveled up by logging 10 events.
+                You've leveled up by logging 10 events.
+        .row
           - if @social_event_Logs.size > 19
             .card.pricing.card.my-2.col-4.px-1
               .card-header-badges.pt-3.text-center
-                %strong 2nd Base
+                %strong Second Base
               .card-body.brand-primary.px-2
                 %i.fas.fa-baseball-ball.fa-3x
               .card-footer-badges.pb-3.text-center
-                You leveled up by logging 20 events.
-        .row
+                You leveled up again by logging 20 events.
+          - if @social_event_Logs.size > 29
+            .card.pricing.card.my-2.col-4.px-1
+              .card-header-badges.pt-3.text-center
+                %strong Social Roller
+              .card-body.brand-primary.px-2
+                %i.fas.fa-dice-three.fa-3x
+              .card-footer-badges.pb-3.text-center
+                You've made it to level 3 already? Well done!
           - if @social_event_Logs.size > 49
             .card.pricing.card.my-2.col-4.px-1
               .card-header-badges.pt-3.text-center
-                %strong On Fire
+                %strong You're On Fire
               .card-body.brand-primary.px-2
                 %i.fas.fa-fire.fa-3x
               .card-footer-badges.pb-3.text-center
-                Keep it up! You've logged 50 events.
+                Keep it up! You've leveled up 5 times!
+        .row
           - if @social_event_Logs.size > 99
             .card.pricing.card.my-2.col-4.px-1
               .card-header-badges.pt-3.text-center
@@ -78,8 +95,7 @@
               .card-body.brand-primary.px-2
                 %i.fas.fa-chess-king.fa-3x
               .card-footer-badges.pb-3.text-center
-                You are a grand social master. You've logged 200 events.
-        .row
+                You are a grand social master. You've made it to level 20!
           - if @social_event_Logs.size > 499
             .card.pricing.card.my-2.col-4.px-1
               .card-header-badges.pt-3.text-center
@@ -87,7 +103,8 @@
               .card-body.brand-primary.px-2
                 %i.fas.fa-fighter-jet.fa-3x
               .card-footer-badges.pb-3.text-center
-                You are breaking the social sound barrier! You've logged 500 events.
+                You've broken the social sound barrier! You're at level 50!
+        .row
           - if @social_event_Logs.size > 999
             .card.pricing.card.my-2.col-4.px-1
               .card-header-badges.pt-3.text-center
@@ -104,12 +121,11 @@
                 %i.fas.fa-atom.fa-3x
               .card-footer-badges.pb-3.text-center
                 You are the Mother of All Socializers. You've logged 5,000 events.
-        .row
           - if @social_event_Logs.size > 9999
             .card.pricing.card.my-2.col-4.px-1.justify-content-center
               .card-header-badges.pt-3.text-center
-                %strong Why?
+                %strong How?
               .card-body.brand-primary.px-2
                 %i.fas.fa-question.fa-3x
               .card-footer-badges.pb-3.text-center
-                You have logged 10,000 events!
+                You have defied the odds and made it to level 1000.
