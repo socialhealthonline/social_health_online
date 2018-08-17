@@ -67,7 +67,7 @@ class Console::ManageBulletinsController < ConsoleController
   end
 
   def sort_column
-    %w[title body created_at].include?(params[:column]) ? params[:column] : 'created_at'
+    %w[title city state start_at created_at display_name].include?(params[:column]) ? params[:column] : 'created_at'
   end
 
   def sort_direction

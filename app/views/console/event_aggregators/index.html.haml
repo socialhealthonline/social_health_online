@@ -1,0 +1,55 @@
+- page_title 'Event Aggregators'
+
+%div#profile_partial
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.pb-3.border-bottom
+  %h1.h3.brand-primary Event Aggregators
+  %div
+    = link_to new_console_event_aggregator_path, class: 'btn btn-primary', style: 'border: 1px solid black' do
+      %i.fas.fa-plus-circle
+      Add Link
+
+.row.mt-2
+  .col-12.col-md-4.col-lg-6
+    %h5.pt-1.mb-0.brand-primary Filter - By State
+    .col-12.col.md-4.col-lg-6.justify-content-center
+      = form_with url: [:console_event_aggregators], method: :get, local: true do |f|
+        .form-group.form-inline.justify-content-center#explore_communities_form
+        = f.select(:state, US_STATES, {}, class: "form-control find_by_state", include_blank: 'State', style: "width: 100%;")
+        %p
+        = f.button "Filter", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
+
+- if @resources.any?
+  .row.justify-content-center
+    .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
+      %table.table.table-borderless.align-items-center.table-hover
+        %thead
+          %tr
+            %th= sort_link 'title', 'Site Name'
+            %th= sort_link 'event_type', 'Main Event Type'
+            %th= sort_link 'city', 'City'
+            %th= sort_link 'state', 'State'
+            %th= sort_link 'url', 'Website'
+        %tbody
+          - @resources.each.with_index(1) do |resource, i|
+            %tr.bg-white
+              %td= link_to truncate("#{i}. #{resource.name}"), console_event_aggregator_path(resource)
+              %td= resource.event_type
+              %td= resource.city
+              %td= resource.state
+              %td= link_to "Visit Website", resource.url, target: :_blank
+              %td.w-10.text-right
+                .dropdown
+                  = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{resource.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
+                    %i.fas.fa-ellipsis-h
+                  .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{resource.id}")
+                    = link_to edit_console_event_aggregator_path(resource), title: 'Edit', class: 'dropdown-item text-info' do
+                      %i.far.fa-edit
+                      Edit
+                    = link_to console_event_aggregator_path(resource), title: 'Delete', id: "delete_resource_#{resource.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this link. Press OK to continue.' } do
+                      %i.far.fa-trash-alt
+                      Delete
+            %tr.table-divider
+      %p= paginate @resources
+- else
+  %p.text-muted.text-center
+    %em No links were found.

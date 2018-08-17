@@ -18,7 +18,7 @@ class BulletinsController < ApplicationController
     end
 
     def permitted_params
-      params.permit(:state, :city, :zip, :page).reject{|_, v| v.blank?}
+      params.permit(:state, :city, :page).reject{|_, v| v.blank?}
     end
 
     def find_bulletin

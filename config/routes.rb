@@ -124,6 +124,7 @@ Rails.application.routes.draw do
     end
     resources :news
     resources :manage_bulletins
+    resources :event_aggregators
     resources :notifications
     resources :members do
       collection do
@@ -180,6 +181,9 @@ Rails.application.routes.draw do
 
   # Discounts
   get "discounts_finder" => "discounts_finder#index"
+
+  # Discounts
+  get "event_aggregators" => "event_aggregators#index"
 
   # Report Issues
   get "issues" => "issues#new"

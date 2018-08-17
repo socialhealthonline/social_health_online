@@ -1,19 +1,19 @@
-- page_title 'Discounts Finder'
+- page_title 'Event Aggregators'
 
 .container
   .row
     .col.py-3
-      %h1.brand-primary.text-center Discounts Finder
+      %h1.brand-primary.text-center Event Aggregators
 
   .row
     .col-md-12
       %p.text-center.mb-4.p-2{style: "border: 1px solid black;"}
         %strong
-          Make purchases with your User Discount Card or the applicable coupon codes to take advantage of the discounts listed below.
+          The links below go to event aggregation sites Social Health has vetted and listed for Users to explore to find more local events.
 
   .row.my-3
     .col
-      = form_with url: [:discounts_finder], method: :get, local: true do |f|
+      = form_with url: [:event_aggregators], method: :get, local: true do |f|
         .form-group.form-inline.justify-content-center#explore_communities_form
           %div.form-group.col-12.col-sm-12.col-md-2.col-lg-2
             = f.select(:state, US_STATES, {}, class: "form-control find_by_state", include_blank: 'State', style: "width: 100%;")
@@ -24,33 +24,34 @@
             .col-xs-3.col-md-3.col-sm-3.mx-auto
               = f.button "Search", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
             %h3.notification-title.justify-content-center.mb-2
-              %strong Affiliate Discounts
+              %strong Recommended Event Sites
       %div.table-wrapper-2.table-hover#events-feed{:style => "border-radius: 12px;"}
         %table.table.text-center
           %thead.mdb-color.lighten-4
             %tr
-              %th Affiliate Name
+              %th Site Name
               %th
-              %th Discount
+              %th Main Event Type
               %th
               %th City
               %th
               %th State
               %th
               %th Website
+
           %tbody
-          - @affiliates.each do |affiliate|
+          - @resources.each do |resource|
             %tr.bg-white
-              %td= affiliate.name
+              %td= resource.name
               %td
-              %td= affiliate.support_notes
+              %td= resource.event_type
               %td
-              %td= affiliate.city
+              %td= resource.city
               %td
-              %td= affiliate.state
+              %td= resource.state
               %td
-              %td= link_to "Visit Website", affiliate.url, target: :_blank
+              %td= link_to "Visit Website", resource.url, target: :_blank
               %td
             %tr.table-divider
         %div.container.pagination.justify-content-center
-          %p= paginate @affiliates unless @affiliates.empty?
+          %p= paginate @resources unless @resources.empty?
