@@ -1,9 +1,9 @@
-- page_title 'History'
+- page_title 'Tracker History'
 
 .container
   .row
     .col.py-3
-      %h1.text-info.text-center History
+      %h1.text-info.text-center Tracker History
       .row.justify-content-center.text-center
         .col-12
           - if @social_event_logs.any?
@@ -25,5 +25,5 @@
                     %tr.table-divider
               = paginate @social_event_logs
           - else
-            %p.text-muted
+            %p.text-muted.text-center
               %em You have not logged any social events.

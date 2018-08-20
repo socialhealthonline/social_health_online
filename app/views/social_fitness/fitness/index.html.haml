@@ -1,9 +1,9 @@
-- page_title 'History'
+- page_title 'Fitness History'
 
 .container
   .row
     .col.py-3
-      %h1.text-info.text-center History
+      %h1.text-info.text-center Fitness History
       .row.text-center
         .col-sm-4.offset-sm-4
           - if @social_fitness_logs.any?
@@ -20,5 +20,5 @@
                     %tr.table-divider
               = paginate @social_fitness_logs
           - else
-            %p.text-muted
+            %p.text-muted.text-center
               %em No social fitness entries.

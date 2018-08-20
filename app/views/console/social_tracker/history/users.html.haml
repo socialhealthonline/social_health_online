@@ -30,7 +30,7 @@
             %td= short_date(user.last_social_event_log_date) || "No Logs"
           %tr.table-divider
 - else
-  %p.text-muted
+  %p.text-muted.text-center
     %em No Users were found.
 %p.mt-2
   = link_to console_social_tracker_members_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do

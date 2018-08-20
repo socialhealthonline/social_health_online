@@ -54,9 +54,10 @@
             = link_to @member.events_url, target: '_blank' do
               %i.fas.fa-external-link-alt
               Visit Events Webpage
-        %p
-          %h5 Bio
-          = @member.bio
+        - if @member.bio.present?
+          %p
+            %h5 Bio
+            = @member.bio
 
       .col-12.pt-3
         %p.text-center
