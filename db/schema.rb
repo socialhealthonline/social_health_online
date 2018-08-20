@@ -72,13 +72,10 @@ ActiveRecord::Schema.define(version: 2018_08_17_142017) do
     t.datetime "updated_at", null: false
     t.string "city"
     t.string "state"
-    t.date "event_date"
     t.string "event_type"
-    t.datetime "event_datetime"
     t.integer "user_id"
     t.string "display_name"
     t.datetime "start_at"
-    t.integer "likes"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -334,11 +331,12 @@ ActiveRecord::Schema.define(version: 2018_08_17_142017) do
     t.text "hobbies"
     t.text "pet_peeves"
     t.text "bio"
-    t.boolean "receive_email", default: true
+    t.boolean "receive_email", default: false
     t.integer "user_status", default: 0
     t.date "first_login"
     t.string "phone_extension"
     t.text "group"
+    t.string "favorites"
     t.boolean "guest", default: false
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"

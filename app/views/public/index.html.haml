@@ -30,41 +30,78 @@
             %a{ href: service_path, title: 'Benefit' }>
               %Strong Benefit.
           %span Log your involvement in events for rewards.
-      .row.pt-4.border-top
-        .col.text-center
-          %h5.text-info
-            %span Proud to Collaborate with All Organizations Wanting to Make Your Social Life More Rewarding
-          %p
-            Our diverse array of Affiliates includes:
-      .row.pt-4
-        .col-md-2
-          = image_tag'avondale.jpg', class: 'img-fluid'
-        .col-md-2
-          = image_tag'rmp.jpg', class: 'img-fluid'
-        .col-md-2
-          = image_tag'regions.jpg', class: 'img-fluid'
-        .col-md-2
-          = image_tag'sloss.jpg', class: 'img-fluid'
-        .col-md-2
-          = image_tag 'alys.jpg', class: 'img-fluid'
-        .col-md-2.pb-4
-          = image_tag 'smf.jpg', class: 'img-fluid'
-      .row.pt-4.border-top
-        .col.text-center
-          %h5.mb-2.text-info
-            %span Use Our Service to Create the Social Life You Want
-      .row
-        .col.text-left
-          Easily manage your social wellness in one place with our comprehensive platform. Our service's features support the strengthening of
-          relationships by encouraging participation in virtually all social activities:
-      .row.mb-3.px-2
-        .col-md-3
-        .col-md-6.pl-3.pr-1.text-left
-          &nbsp
-          %li Users have home Communities that they share with others from their local area so they can easily meet people and find events.
-          %p
-          %li All Users get access to event suggestions and special discounts from our Affiliates.
-          %p
-          %li A Bulletin Board and Matchmaker are provided so that Users can organize and advertise their own social events with groups and individuals.
-      .row.justify-content-center
-        = link_to 'See More Features', service_highlights_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
+      .row.py-4.border-top
+        .col-md-4.text-center
+          %h4.text-info
+            =link_to root_path(:anchor => "Affiliates") do
+              Affiliates
+        .col-md-4.text-center
+          %h4.text-info
+            =link_to root_path(:anchor => "Members") do
+              Members 
+        .col-md-4.text-center
+          %h4.text-info
+            =link_to root_path(:anchor => "Users") do
+              Users
+      #Affiliates
+        .row.pt-4.border-top
+          .col.text-center
+            %h5.text-info
+              %span Proud to Collaborate with All Organizations Wanting to Make Your Social Life More Rewarding
+            %p
+              Our diverse array of Affiliates includes:
+        .row.pt-4
+          .col-md-2
+            = image_tag'avondale.jpg', class: 'img-fluid'
+          .col-md-2
+            = image_tag'rmp.jpg', class: 'img-fluid'
+          .col-md-2
+            = image_tag'regions.jpg', class: 'img-fluid'
+          .col-md-2
+            = image_tag'sloss.jpg', class: 'img-fluid'
+          .col-md-2
+            = image_tag 'alys.jpg', class: 'img-fluid'
+          .col-md-2.pb-4
+            = image_tag 'smf.jpg', class: 'img-fluid'
+        .row.pb-4.justify-content-center
+          = link_to 'Become an Affiliate', affiliates_registration_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
+      #Members
+        .row.pt-4.border-top
+          .col.text-center
+            %h5.mb-2.text-info
+              Members
+        .row
+          .col.mb-4.text-left
+            %p
+              Our Members are a cornerstone for our service because they are the gatekeepers that
+              enroll Users and provide important guidance to Users through their Community management. The
+              costs of becoming a Member are low and the organizations that take on this role will be making
+              a significant investment towards the improvement of the wellness of countless people and communities.
+            %p
+              Being a Member is ideal for employers looking to enhance their employees' work/life balance,
+              morale, and performance, healthcare organizations seeking new ways of promoting better behaviors
+              to improve health outcomes and lower medical costs, educators wanting to encourage youth fellowship
+              and volunteerism, and community organizations aiming to motivate their patrons and supporters
+              to engage in more of their local area’s social events.
+        .row.pb-4.justify-content-center
+          = link_to 'Become a Member', new_members_registration_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
+      #Users
+        .row.pt-4.border-top
+          .col.text-center
+            %h5.mb-2.text-info
+              %span Use Our Service to Create the Social Life You Want
+        .row
+          .col.text-left
+            Easily manage your social wellness in one place with our comprehensive platform. Our service's features support the strengthening of
+            relationships by encouraging participation in virtually all social activities:
+        .row.mb-3.px-2
+          .col-md-3
+          .col-md-6.pl-3.pr-1.text-left
+            %p
+            %li Users have home Communities that they share with others from their local area so they can easily meet people and find events.
+            %p
+            %li All Users get access to event suggestions and special discounts from our Affiliates.
+            %p
+            %li A Bulletin Board and Matchmaker are provided so that Users can organize and advertise their own social events with groups and individuals.
+        .row.justify-content-center
+          = link_to 'See More Features', service_highlights_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
