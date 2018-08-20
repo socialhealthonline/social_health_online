@@ -22,7 +22,7 @@ class CommunitiesController < ApplicationController
 
   def event_search
     @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :desc)
-    @events = Event.where("start_at >= ?", Time.zone.now).where(private: false).order(start_at: :desc)
+    @events = Event.where("start_at between ? and ?", Date.today, 90.days.from_now).where(private: false).order(start_at: :desc)
     @events = FindUsersCommunities.new(@events, show_init_scope: false).call(permitted_params)
     unless @events.kind_of?(Array)
       @events = @events.page(params[:page]).per(10)
