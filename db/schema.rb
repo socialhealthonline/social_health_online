@@ -334,7 +334,7 @@ ActiveRecord::Schema.define(version: 2018_08_17_142017) do
     t.text "hobbies"
     t.text "pet_peeves"
     t.text "bio"
-    t.boolean "receive_email", default: false
+    t.boolean "receive_email", default: true
     t.integer "user_status", default: 0
     t.date "first_login"
     t.string "phone_extension"

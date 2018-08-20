@@ -8,12 +8,15 @@
         .container.px-2
           .row
             .col-12.col-md-3.mb-1.order-md-1.px-2
-              .card.card-sm
+              .card.card-sm.mb-0
                 .list-group.list-group-flush
                   = link_to console_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.fas.fa-tachometer-alt
                       Console
+                %a.nav-link.text-center.font-weight-bold.dropdown-toggle{href: '/service_accounts', :style => 'border: 1px solid black;', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
+                  = 'Service Accounts'
+                .dropdown-menu.py-0.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'communitiesDropdownMenuLink'}
                   = link_to console_members_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.fas.fa-building
@@ -30,6 +33,11 @@
                     %div
                       %i.fas.fa-book
                       User Lookup
+              .card.card-sm.mb-0
+                .list-group.list-group-flush
+                %a.nav-link.text-center.font-weight-bold.dropdown-toggle{href: '/service_management', :style => 'border: 1px solid black;', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
+                  = 'Service Management'
+                .dropdown-menu.py-0.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'communitiesDropdownMenuLink'}
                   = link_to console_manage_bulletins_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.fas.fa-thumbtack
@@ -46,6 +54,11 @@
                     %div
                       %i.far.fa-bell
                       Notifications
+              .card.card-sm.mb-0
+                .list-group.list-group-flush
+                %a.nav-link.text-center.font-weight-bold.dropdown-toggle{href: '/service_logs', :style => 'border: 1px solid black;', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
+                  = 'Service Logs'
+                .dropdown-menu.py-0.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'communitiesDropdownMenuLink'}
                   = link_to console_social_tracker_members_path, class: 'list-group-item d-flex justify-content-center px-1 bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.fas.fa-database
@@ -54,14 +67,14 @@
                     %div
                       %i.fas.fa-heartbeat
                       Social Fitness
-                  = link_to 'https://dashboard.stripe.com/login', target: '_blank', :style => 'border: 1px solid black;', class: "list-group-item d-flex justify-content-center bg-primary text-white" do
-                    %div
-                      %i.fa.fa-money
-                      Stripe Billing
-                  = link_to home_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
-                    %div
-                      %i.fas.fa-home
-                      Home
+                = link_to 'https://dashboard.stripe.com/login', target: '_blank', :style => 'border: 1px solid black;', class: "list-group-item d-flex justify-content-center bg-primary text-white" do
+                  %div
+                    %i.fa.fa-money
+                    Stripe Billing
+                = link_to home_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
+                  %div
+                    %i.fas.fa-home
+                    Home
             .col-12.col-md-9.mb-1.order-md-2
               - unless flash.empty?
                 = render partial: 'flash', locals: { flash: flash }
