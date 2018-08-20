@@ -170,6 +170,9 @@
           = link_to @member.events_url, @member.events_url, target: '_blank'
         %p
         %p
+          %strong Organization Type:
+          = @member.org_type
+        %p
           %strong Primary Manager Name:
           = @member.primary_manager&.name
         %p

@@ -4,10 +4,11 @@ class Affiliate < ApplicationRecord
 
   enum support_types: SUPPORT_TYPES
 
-  validates :name,:address, :city, :state, :zip, :support_type, :contact_phone,
+  validates :name,:address, :city, :state, :zip, :support_type, :contact_phone, :org_type,
             :contact_email, :contact_name, :date_added, presence: true
   validates_uniqueness_of :name, case_sensitive: false
   validates :state, inclusion: US_STATES.values
+  validates :org_type, inclusion: ORG_TYPES
   validates :support_type, inclusion: Affiliate.support_types.values
   validates :zip, format: { with: %r{\A[\d]{5}(-[\d]{4})?\z} }
   validates :phone, format: { with: /\A\d{10}\z/, message: 'Must be 10 digits including area code', allow_blank: true }

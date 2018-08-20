@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_17_142017) do
+ActiveRecord::Schema.define(version: 2018_08_20_203505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2018_08_17_142017) do
     t.string "support_notes"
     t.datetime "date_added"
     t.string "contact_phone"
+    t.string "org_type"
   end
 
   create_table "announcements", force: :cascade do |t|
@@ -234,6 +235,7 @@ ActiveRecord::Schema.define(version: 2018_08_17_142017) do
     t.boolean "ach_verified", default: false
     t.boolean "public_member", default: false
     t.boolean "hide_suggest_events", default: false
+    t.string "org_type"
     t.index ["period"], name: "index_members_on_period"
     t.index ["slug"], name: "index_members_on_slug", unique: true
   end

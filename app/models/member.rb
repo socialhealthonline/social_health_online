@@ -10,10 +10,11 @@ class Member < ApplicationRecord
   has_many :announcements, dependent: :destroy
   has_one_attached :logo
 
-  validates :name, :address, :city, :state, :zip, :contact_name, :contact_email, :contact_phone, :phone, :service_capacity, presence: true
+  validates :name, :address, :city, :org_type, :state, :zip, :contact_name, :contact_email, :contact_phone, :phone, :service_capacity, presence: true
   validates :hide_suggest_events, :public_member, presence: true, allow_blank: true
   validates_uniqueness_of :name, case_sensitive: false
   validates :state, inclusion: US_STATES.values
+  validates :org_type, inclusion: ORG_TYPES
   validates :zip, format: { with: %r{\A[\d]{5}(-[\d]{4})?\z} }
   validates :phone, :contact_phone, format: { with: /\A\d{10}\z/, message: 'Must be 10 digits including area code' }
   validates_format_of :contact_email, with: /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i

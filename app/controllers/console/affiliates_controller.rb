@@ -75,6 +75,7 @@ class Console::AffiliatesController < ConsoleController
       :contact_phone_extension,
       :contact_email,
       :support_notes,
+      :org_type,
       :date_added
     )
   end

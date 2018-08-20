@@ -37,6 +37,10 @@
   = link_to @affiliate.url, @affiliate.url, target: '_blank' if @affiliate.url.present?
 
 %p
+  %strong Organization Type:
+  = @affiliate.org_type
+
+%p
   %strong Support Type:
   = Affiliate::SUPPORT_TYPES[@affiliate.support_type]
 

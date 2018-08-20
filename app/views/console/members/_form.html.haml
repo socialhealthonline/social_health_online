@@ -85,15 +85,20 @@
       = f.text_field :events_url, class: "form-control #{form_error_class(@member, :events_url)}"
       = model_error_display(@member, :events_url)
 .row
+  .col-lg-4
+    .form-group
+      %label(for="member_org_type") Organization Type
+      = f.select :org_type, ORG_TYPES, {}, { class: "form-control custom-select #{form_error_class(@member, :org_type)}" }
+      = model_error_display(@member, :org_type)
   - if @member.persisted?
-    .col-lg-6
+    .col-lg-4
       .form-group
         %label(for="member_primary_manager_id") Primary Manager
         = f.select :primary_manager_id,
             options_from_collection_for_select(@managers, 'id', 'name', @member.primary_manager_id),
             { include_blank: false }, { class: 'form-control custom-select' } if @managers.present?
         = model_error_display(@member, :primary_manager_id)
-  .col-lg-6
+  .col-lg-4
     .form-group
       %label(for="status")  Status
       = f.label @member.status, class: "form-control disabled readonly #{form_error_class(@member, :status)}"

@@ -62,12 +62,17 @@
               = f.text_field :phone, class: "form-control #{form_error_class(@member, :phone)}"
               = model_error_display(@member, :phone)
         .row
-          .col-lg-6
+          .col-lg-4
+            .form-group
+              %label(for="member_org_type") Organization Type
+              = f.select :org_type, ORG_TYPES, {}, { class: "form-control custom-select #{form_error_class(@member, :org_type)}" }
+              = model_error_display(@member, :org_type)
+          .col-lg-4
             .form-group
               %label(for="member_url") Website
               = f.text_field :url, class: "form-control #{form_error_class(@member, :url)}"
               = model_error_display(@member, :url)
-          .col-lg-6
+          .col-lg-4
             .form-group
               %label(for="member_events_url") Events Webpage
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'If your organization already maintains an events page on another site, you can link Users to it with this field'}

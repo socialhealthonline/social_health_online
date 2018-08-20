@@ -69,6 +69,11 @@
   %strong Events Webpage:
   - if @member.events_url.present?
     = link_to @member.events_url, @member.events_url, target: '_blank'
+
+%p
+  %strong Organization Type:
+  = @member.org_type
+
 %p
   %strong Bio:
   = truncate(@member.bio, length: 100)
@@ -76,12 +81,15 @@
 %p
   %strong Status:
   = @member.status
+
 %p
   %strong Hide Info on Member Locator:
   = @member.hide_info_on_locator? ? 'Yes' : 'No'
+
 %p
   %strong Public:
   = @member.public_member? ? 'Yes' : 'No'
+  
 %p
   = link_to console_members_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do
     %i.fas.fa-arrow-left
