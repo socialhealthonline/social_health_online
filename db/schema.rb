@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 2018_08_17_142017) do
     t.integer "user_id"
     t.string "display_name"
     t.datetime "start_at"
-    t.integer "likes"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -337,6 +336,7 @@ ActiveRecord::Schema.define(version: 2018_08_17_142017) do
     t.date "first_login"
     t.string "phone_extension"
     t.text "group"
+    t.string "favorites"
     t.boolean "guest", default: false
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
