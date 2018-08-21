@@ -5,7 +5,7 @@ ORG_TYPES = [
   "Education",
   "Event Planning & Services",
   "Financial Services",
-  "Food",
+  "Food/Beverages",
   "Health & Medical",
   "Home Services",
   "Hotels & Travel",
