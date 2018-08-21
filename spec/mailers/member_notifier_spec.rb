@@ -1,9 +1,9 @@
 require "rails_helper"
 
 RSpec.describe MemberNotifierMailer, type: :mailer do
-  describe 'sixty_days_remain' do
+  describe 'charge_reminder' do
     let(:member) { create(:member, account_start_date: Time.now + 305.days, account_end_date: Time.now + 1.year, period: 'Annual', suspended: false ) }
-    let(:mail) { MemberNotifierMailer.sixty_days_remain(member) }
+    let(:mail) { MemberNotifierMailer.charge_reminder(member) }
 
     it 'renders the subject' do
       expect(mail.subject).to eql('Subscription - Social Health Online')
