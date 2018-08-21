@@ -1,5 +1,6 @@
 class CommunitiesController < ApplicationController
   before_action :require_authentication
+  helper_method :sort_column, :sort_direction
 
   def new
   end
@@ -11,7 +12,7 @@ class CommunitiesController < ApplicationController
   end
 
   def explore_communities
-    @communities = Member.where.not("name = ? ", authenticated_user.member.name)
+    @communities = Member.where.not("name = ? ", authenticated_user.member.name).order(city: :asc)
     @communities = FindUsersCommunities.new(@communities, show_init_scope: false).call(permitted_params)
     unless @communities.kind_of?(Array)
       @communities = @communities.page(params[:page]).per(10)
@@ -40,5 +41,20 @@ class CommunitiesController < ApplicationController
 
     def permitted_params
       params.permit(:name, :state, :city, :zip, :public_member, :page).reject{|_, v| v.blank?}
+    end
+
+    def sortable_columns
+      %w[
+        name city state public_member title start_at
+      ]
+    end
+
+    def sort_column
+      logger.debug("SORT:::: #{params[:direction].inspect}")
+      sortable_columns.include?(params[:column]) ? params[:column] : 'name'
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
     end
 end
