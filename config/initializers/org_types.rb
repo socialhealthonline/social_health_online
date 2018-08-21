@@ -18,7 +18,7 @@ ORG_TYPES = [
   "Public Services & Government",
   "Real Estate",
   "Religious Organizations",
-  "Restaurants",
+  "Restaurants/Cafes",
   "Shopping",
   "Sports & Active Life",
   "Technology"
