@@ -1,5 +1,5 @@
 %nav.bg-gray.navbar-dark{:style => 'border-bottom: 1px solid black;'}
-  .container
+  .container.px-0
     .row
       .col
         %ul.nav.py-1.font-weight-bold.justify-content-center
@@ -28,6 +28,18 @@
 
           %li.nav-item.dropdown.mr-1.my-1
             %a.btn.btn-primary.dropdown-toggle.px-1#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
+              %i.fas.fa-store-alt
+              Affiliates
+            .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'communitiesDropdownMenuLink'}
+              = link_to discounts_finder_path, class: 'dropdown-item' do
+                %i.fas.fa-hand-holding-usd
+                Discounts Finder
+              = link_to affiliates_search_path, class: 'dropdown-item' do
+                %i.fas.fa-search
+                Affiliate Search
+
+          %li.nav-item.dropdown.mr-1.my-1
+            %a.btn.btn-primary.dropdown-toggle.px-1#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
               %i.fas.fa-walking
               Activities
             .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'communitiesDropdownMenuLink'}
@@ -40,12 +52,6 @@
               = link_to event_aggregators_path, class: 'dropdown-item' do
                 %i.fas.fa-link
                 Event Links
-              = link_to discounts_finder_path, class: 'dropdown-item' do
-                %i.fas.fa-hand-holding-usd
-                Discounts Finder
-              = link_to affiliates_search_path, class: 'dropdown-item' do
-                %i.fas.fa-search
-                Affiliate Search
 
           %li.nav-item.dropdown.mr-1.my-1
             %a.dropdown-toggle.btn.btn-primary.px-1#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}

@@ -10,7 +10,7 @@
     .col-md-12
       %p.text-center.mb-4.p-2{style: "border: 1px solid black;"}
         %strong
-          This board allows all Users to promote and share their personal social events and activity ideas with everyone in the service.
+          This board allows all Users to share their personal social events and activity ideas with everyone in the service.
 
   .row.my-3
     .col
@@ -50,11 +50,10 @@
               %td
               %td= bulletin.state
               %td
-              %td 
+              %td
                 %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: bulletin.user }" } }
                   =bulletin.user.display_name
             %tr.table-divider
         %div.container.pagination.justify-content-center
           %p= paginate @bulletins unless @bulletins.empty?
-        
