@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_20_203505) do
+ActiveRecord::Schema.define(version: 2018_08_22_004821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2018_08_20_203505) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_id"
+    t.integer "user_id"
   end
 
   create_table "event_categories", force: :cascade do |t|
@@ -333,7 +333,7 @@ ActiveRecord::Schema.define(version: 2018_08_20_203505) do
     t.text "hobbies"
     t.text "pet_peeves"
     t.text "bio"
-    t.boolean "receive_email", default: false
+    t.boolean "receive_email", default: true
     t.integer "user_status", default: 0
     t.date "first_login"
     t.string "phone_extension"
