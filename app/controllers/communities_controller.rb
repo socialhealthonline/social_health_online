@@ -8,7 +8,7 @@ class CommunitiesController < ApplicationController
   def show
     @member = Member.friendly.find(params[:id]).decorate
     @announcements = @member.announcements.order(created_at: :desc).page(params[:page]).per(10)
-    @users = @member.users.all_except(authenticated_user.id).enabled.page(params[:page]).per(10)
+    @users = @member.users.all_except(authenticated_user.id).order("#{sort_column} #{sort_direction}").enabled.page(params[:page]).per(10)
   end
 
   def explore_communities
@@ -45,7 +45,7 @@ class CommunitiesController < ApplicationController
 
     def sortable_columns
       %w[
-        name city state public_member title start_at
+        name city state public_member title start_at display_name
       ]
     end
 

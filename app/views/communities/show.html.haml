@@ -128,7 +128,7 @@
           .col-7.pt-3
             #scroll-box-announcements{ style: "border: 2px solid black; border-radius: 12px; width: 100%;" }
               %h5.notification-title.border-bottom.mb-2
-                Display Name
+                %th= sort_link 'display_name', 'Display Name'
               - @users.each do |user|
                 .mb-3.bg-white.text-center
                   %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
