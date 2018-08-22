@@ -5,7 +5,7 @@ ORG_TYPES = [
   "Education",
   "Event Planning & Services",
   "Financial Services",
-  "Food",
+  "Food/Beverages",
   "Health & Medical",
   "Home Services",
   "Hotels & Travel",
@@ -18,7 +18,7 @@ ORG_TYPES = [
   "Public Services & Government",
   "Real Estate",
   "Religious Organizations",
-  "Restaurants",
+  "Restaurants/Cafes",
   "Shopping",
   "Sports & Active Life",
   "Technology"

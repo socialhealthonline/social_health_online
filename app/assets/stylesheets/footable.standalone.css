@@ -37,6 +37,7 @@
 .footable-details.table > thead:first-child > tr:first-child > td {
 	border-top: 0;
 }
+
 .footable.table > thead > tr > th,
 .footable.table > tbody > tr > th,
 .footable.table > tfoot > tr > th,
@@ -60,6 +61,7 @@
 .footable-details.table > thead > tr > td {
 	vertical-align: bottom;
 	border-bottom: 2px solid #ddd;
+	color: #17a2b8;
 }
 .footable.table-condensed > thead > tr > th,
 .footable.table-condensed > tbody > tr > th,
@@ -737,6 +739,7 @@ table.footable > tfoot > tr > th.footable-sortable {
 	position: relative;
 	padding-right: 30px;
 	cursor: pointer;
+	color: #17a2b8;
 }
 td.footable-sortable > span.fooicon,
 th.footable-sortable > span.fooicon {
@@ -766,6 +769,7 @@ table.footable-sorting-disabled th.footable-sortable.footable-desc > span.fooico
 table.footable-sorting-disabled th.footable-sortable:hover > span.fooicon {
 	opacity: 0;
 	visibility: hidden;
+	color: #17a2b8;
 }
 .footable-paging-external ul.pagination,
 table.footable > tfoot > tr.footable-paging > td > ul.pagination {
