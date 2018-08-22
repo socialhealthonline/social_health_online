@@ -198,13 +198,4 @@ Rails.application.routes.draw do
   # My Contacts
   resources :my_contacts
 
-  require 'sidekiq/web'
-  if Rails.env.production?
-    Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
-      [user, password] == [Rails.application.credentials.production.dig(:sidekiq, :login),
-                           Rails.application.credentials.production.dig(:sidekiq, :password)]
-    end
-  end
-  mount Sidekiq::Web => '/sidekiq'
-
 end
