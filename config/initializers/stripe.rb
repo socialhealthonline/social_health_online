@@ -12,6 +12,7 @@ StripeEvent.signing_secrets = [
 ]
 
 StripeEvent.configure do |events|
+  events.subscribe 'charge.succeeded', ChargeSucceeded.new
   events.subscribe 'customer.subscription.created', SubscriptionCreated.new
   events.subscribe 'charge.failed', ChargeFailed.new
   events.all EventLogger.new(Rails.logger)
