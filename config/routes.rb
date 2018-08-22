@@ -195,6 +195,9 @@ Rails.application.routes.draw do
   # My Favorites
   get "my_favorites" => "my_favorites#index"
 
+  # Sitemap
+  get "sitemap" => "sitemap#index"
+
   # My Contacts
   resources :my_contacts
 
