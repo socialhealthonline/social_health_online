@@ -1,6 +1,6 @@
 %nav(aria-label="breadcrumb")
   %ol.breadcrumb
-    %li.breadcrumb-item= link_to 'Event Links', console_event_aggregators_path
+    %li.breadcrumb-item= link_to 'Event Links', console_event_links_path
 
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.pb-3.border-bottom
   %h1.h3.brand-primary= @resource.name
@@ -29,6 +29,6 @@
   .col
     %div.form-row
       %div.float-left.py-3
-        = link_to console_event_aggregators_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+        = link_to console_event_links_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
           %i.fas.fa-arrow-left
           Back
