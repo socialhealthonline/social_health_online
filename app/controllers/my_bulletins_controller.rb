@@ -49,7 +49,7 @@ class MyBulletinsController < ApplicationController
   private
 
     def bulletin_params
-      params.require(:bulletin).permit(:title, :description, :city, :state, :start_at, :event_date, :event_datetime, :user_id, :display_name, :event_type)
+      params.require(:bulletin).permit(:title, :description, :city, :state, :start_at, :event_date, :location, :event_datetime, :user_id, :display_name, :event_type)
     end
 
     def find_bulletin

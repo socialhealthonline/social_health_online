@@ -59,7 +59,7 @@ class Console::ManageBulletinsController < ConsoleController
   end
 
   def bulletin_params
-    params.require(:bulletin).permit(:title, :description, :city, :state, :start_at, :user_id, :display_name, :event_date, :event_datetime, :event_type)
+    params.require(:bulletin).permit(:title, :description, :city, :state, :start_at, :user_id, :location, :display_name, :event_date, :event_datetime, :event_type)
   end
 
   def find_bulletin

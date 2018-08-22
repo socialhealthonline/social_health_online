@@ -20,6 +20,10 @@
         %strong  Event Date/Time:
         = short_date_time_notimezone @bulletin.start_at
       %p
+      - if @bulletin.location.present?
+        %strong  Location:
+        = @bulletin.location
+      %p
       - if @bulletin.city.present?
         %strong  City:
         = @bulletin.city
