@@ -338,7 +338,6 @@ ActiveRecord::Schema.define(version: 2018_08_22_004821) do
     t.date "first_login"
     t.string "phone_extension"
     t.text "group"
-    t.string "favorites"
     t.boolean "guest", default: false
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"

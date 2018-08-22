@@ -10,5 +10,6 @@ FactoryBot.define do
     contact_phone '555-555-5555'
     phone '5555555555'
     service_capacity 100
+    org_type 'Automotive'
   end
 end
