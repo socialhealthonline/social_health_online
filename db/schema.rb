@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 2018_08_22_124937) do
     t.integer "user_id"
     t.string "display_name"
     t.datetime "start_at"
-    t.integer "likes"
     t.string "location"
   end
 
@@ -89,7 +88,7 @@ ActiveRecord::Schema.define(version: 2018_08_22_124937) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_id"
+    t.integer "user_id"
   end
 
   create_table "event_categories", force: :cascade do |t|
@@ -335,11 +334,12 @@ ActiveRecord::Schema.define(version: 2018_08_22_124937) do
     t.text "hobbies"
     t.text "pet_peeves"
     t.text "bio"
-    t.boolean "receive_email", default: false
+    t.boolean "receive_email", default: true
     t.integer "user_status", default: 0
     t.date "first_login"
     t.string "phone_extension"
     t.text "group"
+    t.string "favorites"
     t.boolean "guest", default: false
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
