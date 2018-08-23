@@ -1,4 +1,4 @@
-class Console::EventAggregatorsController < ConsoleController
+class Console::EventLinksController < ConsoleController
   helper_method :sort_column, :sort_direction
   before_action :find_resource, only: [:show, :edit, :update, :destroy]
 
@@ -22,7 +22,7 @@ class Console::EventAggregatorsController < ConsoleController
   def create
     @resource = Resource.new(resource_params)
     if @resource.save
-      redirect_to console_event_aggregators_path, success: 'The link was successfully created!'
+      redirect_to console_event_links_path, success: 'The link was successfully created!'
     else
       flash.now[:error] = 'Please correct the errors to continue.'
       render :new
@@ -34,7 +34,7 @@ class Console::EventAggregatorsController < ConsoleController
 
   def update
     if @resource.update(resource_params)
-      redirect_to console_event_aggregator_path, success: 'The link was successfully updated!'
+      redirect_to console_event_link_path, success: 'The link was successfully updated!'
     else
       flash.now[:error] = 'Please correct the errors to continue.'
       render :edit
@@ -43,7 +43,7 @@ class Console::EventAggregatorsController < ConsoleController
 
   def destroy
     @resource.destroy
-    redirect_to console_event_aggregators_path, success: 'The link was successfully deleted!'
+    redirect_to console_event_links_path, success: 'The link was successfully deleted!'
   end
 
   private

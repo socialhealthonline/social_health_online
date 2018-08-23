@@ -124,7 +124,7 @@ Rails.application.routes.draw do
     end
     resources :news
     resources :manage_bulletins
-    resources :event_aggregators
+    resources :event_links
     resources :notifications
     resources :members do
       collection do
@@ -183,7 +183,7 @@ Rails.application.routes.draw do
   get "discounts_finder" => "discounts_finder#index"
 
   # Discounts
-  get "event_aggregators" => "event_aggregators#index"
+  get "event_links" => "event_links#index"
 
   # Report Issues
   get "issues" => "issues#new"
@@ -194,6 +194,9 @@ Rails.application.routes.draw do
 
   # My Favorites
   get "my_favorites" => "my_favorites#index"
+
+  # Sitemap
+  get "sitemap" => "sitemap#index"
 
   # My Contacts
   resources :my_contacts
