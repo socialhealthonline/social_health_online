@@ -3,13 +3,8 @@
 .container
   .row
     .col.py-3
-      %h1.brand-primary.text-center Invitation Reminder
+      %h1.brand-primary.text-left Invitation Reminder
 
-  .row
-    .col-md-12
-      %p.text-center.mb-4.p-2{style: "border: 1px solid black;"}
-        %strong
-          Send an email to remind a pending User that they have been invited to join your Community in Social Health Online.
   .row
     .col-md-3
     .col-md-6.justify-content-center
@@ -18,14 +13,8 @@
         .card-body.text-center.pt-0
           = form_with url: invitation_reminder_url, method: :post, local: true do
             .form-group
-              %label(for="email") Reminder Email Address
+              %label(for="email") Pending User Email Address
               = email_field_tag :email, params[:email], class: 'form-control', required: true
             = submit_tag 'Send', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
-
-.container
-  .col
-    %div.form-row
-      %div.float-left.pb-3
-        = link_to 'javascript:history.back()', class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
-          %i.fas.fa-arrow-left
-          Back
+            = link_to 'javascript:history.back()', class: 'btn btn-outline-secondary', style: 'border: 1px solid black;' do
+              Cancel
