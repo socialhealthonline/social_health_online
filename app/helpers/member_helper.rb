@@ -10,13 +10,13 @@ module MemberHelper
   end
 
   def csv_user_list
-    columns = %w[name display_name email phone address city state zip guest]
+    columns = %w[name display_name email phone address city state zip guest user_status member_id]
     CSV.generate(col_sep: ';',
                  row_sep: "\n",
                  headers: true,
                  write_headers: true,
                  return_headers: true) do |csv|
-      csv << %w[Name DisplayName Email Phone Address City State Zip GuestUser]
+      csv << %w[Name Display\ Name Email Phone Address City State Zip Guest Status Member\ ID]
       User.find_each do |user|
         csv << columns.collect { |name| user.send(name) }
       end
@@ -24,13 +24,13 @@ module MemberHelper
   end
 
   def csv_member_list
-    columns = %w[name address city state zip phone]
+    columns = %w[name address city state zip phone url org_type]
     CSV.generate(col_sep: ';',
                  row_sep: "\n",
                  headers: true,
                  write_headers: true,
                  return_headers: true) do |csv|
-      csv << %w[Member\ Name Address City State Zip Phone]
+      csv << %w[Member\ Name Address City State Zip Phone URL Org\ Type]
       Member.find_each.each do |member|
         csv << columns.collect { |name| member.send(name) }
       end
