@@ -176,6 +176,10 @@ Rails.application.routes.draw do
   get "invite_guests" => "invite_guests#new"
   post "invite_guests" => "invite_guests#create"
 
+  # Invitation Reminder
+  get "invitation_reminder" => "invitation_reminder#new"
+  post "invitation_reminder" => "invitation_reminder#create"
+
   # Affiliates
   get "affiliates_search" => "affiliates#index"
 

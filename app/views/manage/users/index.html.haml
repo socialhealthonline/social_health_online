@@ -61,11 +61,14 @@
               %td
                 = link_to edit_manage_user_path(user), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
                   %i.far.fa-edit
-                &nbsp;
+                %p
                 = link_to manage_user_path(user), title: 'Delete', id: "delete_user_#{user.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this user. Press OK to continue.' } do
                   %i.far.fa-trash-alt
+                %p
+                - if user.user_status=="pending"
+                  = link_to "", invitation_reminder_path(email: user.email), title: 'Invitation Reminder', class: 'far fa-lightbulb btn btn-sm btn-outline-primary', style: 'border: 1px solid black'
             %tr.table-divider
-      %p= paginate @users      
+      %p= paginate @users
   - else
     %p.pb-3.text-muted.text-center
       %em No Users are present.
