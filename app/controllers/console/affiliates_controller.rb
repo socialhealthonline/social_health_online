@@ -34,9 +34,11 @@ class Console::AffiliatesController < ConsoleController
 
   def update
     @affiliate = Affiliate.find params[:id]
+    @affiliate.logo.attach(params[:affiliate][:logo]) if params[:affiliate][:logo]
     if @affiliate.update(affiliate_params)
-      redirect_to console_affiliate_url(@affiliate), success: 'The Affiliate was successfully updated!'
+      redirect_to console_affiliate_url(@affiliate.id), success: 'The Affiliate was successfully updated!'
     else
+      @affiliate.logo.purge if @affiliate.errors.messages[:logo].present?
       flash.now[:error] = 'Please correct the errors to continue.'
       render :edit
     end
