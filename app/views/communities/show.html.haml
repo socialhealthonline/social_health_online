@@ -75,7 +75,7 @@
               %a.nav-link#announcements-tab(data-toggle="tab" href="#announcements" role="tab" aria-controls="announcements" aria-selected="true") Announcements
             - if @member.public_member==false
               %li.nav-item
-                %a.nav-link.active#events-tab(data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false") Events
+                %a.nav-link#events-tab(data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false") Events
             %li.nav-item
               %a.nav-link#members-tab(data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="false") User List
 - page_title 'Communities'
@@ -103,7 +103,7 @@
                   %em No announcements have been made.
 
     - if @member.public_member==false
-      .tab-pane.fade.show.active#events(role="tabpanel" aria-labelledby="events-tab")
+      .tab-pane.fade#events(role="tabpanel" aria-labelledby="events-tab")
         .row.mt-0.mb-3
           .col
             %h3.notification-title

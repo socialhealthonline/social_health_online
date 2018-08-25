@@ -8,7 +8,7 @@ class CommunitiesController < ApplicationController
   def show
     @member = Member.friendly.find(params[:id]).decorate
     @announcements = @member.announcements.order(created_at: :desc).page(params[:page]).per(10)
-    @users = @member.users.all_except(authenticated_user.id).order("#{sort_column} #{sort_direction}").enabled.page(params[:page]).per(10)
+    @users = @member.users.order("#{sort_column} #{sort_direction}").enabled.page(params[:page]).per(10)
   end
 
   def explore_communities
@@ -55,6 +55,6 @@ class CommunitiesController < ApplicationController
     end
 
     def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
     end
 end

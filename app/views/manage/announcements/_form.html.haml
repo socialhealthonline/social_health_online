@@ -1,12 +1,12 @@
 = form_with(model: @announcement, url: [:manage, @announcement], local: true) do |f|
-  .row
-    .col
+  .row.justify-content-center
+    .col-9
       .form-group
         %label Title
         = f.text_field :title, class: "form-control #{form_error_class(@announcement, :title)}"
         = model_error_display(@announcement, :title)
-  .row
-    .col
+  .row.justify-content-center
+    .col-9
       .form-group
         %label Body
         = f.text_area :body, rows: 12, class: "form-control #{form_error_class(@announcement, :body)}"
