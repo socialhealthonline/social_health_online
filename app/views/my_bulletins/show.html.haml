@@ -20,6 +20,10 @@
         %strong  Location:
         = @bulletin.location
       %p
+      - if @bulletin.address.present?
+        %strong  Address:
+        = @bulletin.address
+      %p
       - if @bulletin.city.present?
         %strong  City:
         = @bulletin.city

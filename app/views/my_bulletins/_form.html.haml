@@ -34,6 +34,13 @@
         .row.justify-content-center
           .col-lg-10
             .form-group
+              %label(for="address") Address
+              = f.text_field :address, class: "form-control #{form_error_class(@bulletin, :address)}"
+              = model_error_display(@bulletin, :address)
+
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
               %label(for="city") City
               = f.text_field :city, class: "form-control #{form_error_class(@bulletin, :city)}"
               = model_error_display(@bulletin, :city)

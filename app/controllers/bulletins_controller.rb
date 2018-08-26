@@ -14,7 +14,7 @@ class BulletinsController < ApplicationController
   private
 
     def bulletin_params
-      params.require(:bulletin).permit(:title, :description, :start_at, :city, :state, :user_id, :location, :display_name, :event_date, :event_datetime, :event_type)
+      params.require(:bulletin).permit(:title, :description, :address, :start_at, :city, :state, :user_id, :location, :display_name, :event_date, :event_datetime, :event_type)
     end
 
     def permitted_params
