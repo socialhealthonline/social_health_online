@@ -31,7 +31,7 @@ class SocialTracker::EventsController < ApplicationController
   end
 
   def index
-    @social_event_logs = authenticated_user.social_event_logs.page(params[:page]).per(25)
+    @social_event_logs = authenticated_user.social_event_logs.page(params[:page]).per(20)
   end
 
   def show

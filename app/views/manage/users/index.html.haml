@@ -58,17 +58,21 @@
               %td= truncate(user.email)
               %td= user.user_status.capitalize
               %td= user.manager? ? 'Yes' : 'No'
-              %td
-                = link_to edit_manage_user_path(user), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
-                  %i.far.fa-edit
-                %p
-                = link_to manage_user_path(user), title: 'Delete', id: "delete_user_#{user.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this user. Press OK to continue.' } do
-                  %i.far.fa-trash-alt
-                %p
-                - if user.user_status=="pending"
-                  = link_to "", invitation_reminder_path(email: user.email), title: 'Invitation Reminder', class: 'far fa-lightbulb btn btn-sm btn-outline-primary', style: 'border: 1px solid black'
+              %td.w-10.text-right
+                .dropdown
+                  = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{user.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
+                    %i.fas.fa-ellipsis-h
+                  .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{user.id}")
+                    = link_to edit_manage_user_path(user), title: 'Edit', class: 'dropdown-item text-info' do
+                      %i.far.fa-edit
+                      Edit
+                    = link_to manage_user_path(user), title: 'Delete', id: "delete_user_#{user.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this User. Press OK to continue.' } do
+                      %i.far.fa-trash-alt
+                      Delete
+                    - if user.user_status=="pending"
+                      = link_to invitation_reminder_path(email: user.email), title: 'Invitation Reminder', class: 'dropdown-item text-info' do
+                        %i.far.fa-lightbulb
+                        Invitation Reminder
             %tr.table-divider
       %p= paginate @users
-  - else
-    %p.pb-3.text-muted.text-center
-      %em No Users are present.
+%br
