@@ -2,8 +2,11 @@
   .row.pt-3
     .col
       .d-flex.justify-content-center.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3
-        %h1.brand-primary
-          = @event.title
+        %h1.brand-primary= @event.title
+      %p.text-center
+        -if @event.logo.attached? && @event.logo.attachment.valid?
+          = image_tag @event.logo, alt: 'Event Logo', size: '200x200'
+
 .container
   .row.justify-content-center.text-center
     .col-8
@@ -82,6 +85,6 @@
     = link_to edit_manage_event_path(@event.id), class: 'btn btn-outline-primary mr-1' do
       %i.far.fa-edit
       Edit
-    = link_to manage_events_path(@event.id), method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'Please confirm that you wish to delete this event. Press OK to continue.' } do
+    = link_to manage_event_path(@event.id), title: 'Delete', id: "delete_event_#{@event.id}", class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this event. Press OK to continue.' } do
       %i.far.fa-trash-alt
       Delete

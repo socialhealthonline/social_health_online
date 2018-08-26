@@ -4,7 +4,7 @@
   .row.pt-3.mb-2
     .col
       %h1.brand-primary= @event.title
-
+      = @event.logo
     %div
   .row
     .col
@@ -68,7 +68,7 @@
                   =rsvp.user.display_name
               %td.text-center.pr-3= rsvp&.rsvp_status.capitalize
             %div.container.pagination.justify-content-center
-            
+
 .container
   .col
     %div.form-row

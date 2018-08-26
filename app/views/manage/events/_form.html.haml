@@ -74,6 +74,16 @@
           {},
           { class: "form-control #{form_error_class(@event, :private)}"})
         = model_error_display(@event, :private)
+  .row
+    .col-lg-4
+      .form-group#file-field
+        %label(for="event_logo") Event Logo (note: maximum file size is 10 MB)
+        = f.file_field :logo, class: "form-control #{form_error_class(@event, :logo)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 10.megabytes }
+        = model_error_display(@event, :logo)
+    .col-lg-4
+      %p.text-muted Logo Preview:
+      -if @event.logo.attached? && @event.logo.attachment.valid?
+        = image_tag @event.logo, alt: 'Event Logo', size: '200x200'
   .mb-3.text-center
     = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, style: 'border: 1px solid black;'
     - if @event.persisted?

@@ -33,11 +33,12 @@ class Manage::EventsController < ApplicationController
 
   def update
     @event = Event.find_by!(member_id: authenticated_user.member_id, id: params[:id])
+    @event.logo.attach(params[:event][:logo]) if params[:event][:logo]
     if @event.update(event_params)
       redirect_to manage_event_url(@event), success: 'The event was successfully updated!'
     else
-      #flash.now[:error] = 'Please correct the errors to continue.'
-      update_action_flash_error
+      @event.logo.purge if @event.errors.messages[:logo].present?
+      flash.now[:error] = 'Please correct the errors to continue.'
       render :edit
     end
   end

@@ -1,6 +1,13 @@
 class EventDecorator < Draper::Decorator
   delegate_all
-  include Rails.application.routes.url_helpers 
+  include Draper::LazyHelpers
+  include Rails.application.routes.url_helpers
+
+  def logo
+    if object.logo.attached? && object.logo.attachment.valid?
+      image_tag object.logo, alt: 'Event Logo', size: '200x200'
+    end
+  end
 
   def link_or_span(value, rsvp_switcher)
     if object.rsvp_limit_reached? && rsvp_switcher&.rsvp_status != 'yes'
