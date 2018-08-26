@@ -21,7 +21,7 @@
         = short_date_time_notimezone @bulletin.start_at
       %p
       - if @bulletin.location.present?
-        %strong  Location:
+        %strong  Location/Address:
         = @bulletin.location
       %p
       - if @bulletin.address.present?
