@@ -80,6 +80,7 @@
         %label(for="event_logo") Event Logo (note: maximum file size is 10 MB)
         = f.file_field :logo, class: "form-control #{form_error_class(@event, :logo)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 10.megabytes }
         = model_error_display(@event, :logo)
+  .row      
     .col-lg-4
       %p.text-muted Logo Preview:
       -if @event.logo.attached? && @event.logo.attachment.valid?
