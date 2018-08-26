@@ -27,7 +27,7 @@
         .row.justify-content-center
           .col-lg-10
             .form-group
-              %label(for="location") Location/Address
+              %label(for="location") Location
               = f.text_field :location, class: "form-control #{form_error_class(@bulletin, :location)}"
               = model_error_display(@bulletin, :location)
 
