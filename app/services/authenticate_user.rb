@@ -20,6 +20,8 @@ class AuthenticateUser
         @flash = 'Your account has been disabled!'
       elsif @user.enabled? # bad password
         @flash = 'The email or password you entered was not recognized. Please try again!'
+      elsif @user.pending? # pending User
+        @flash = 'Before signing in you must activate your account with the link in your Registration Confirmation email!'
       end
     end
     self
