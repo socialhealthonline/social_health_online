@@ -30,6 +30,11 @@
             %a{ href: service_path, title: 'Benefit' }>
               %Strong Benefit.
           %span Log your involvement in events for rewards.
+      .row.pb-4
+        .col.text-center
+          %h5.text-info
+            One Sweepstakes Winner Is Selected Every Week to Reward Users for Their Participation In Social Events
+          %span Users who log their involvement in social events automatically become eligible to win $25 Amazon eGift Cards.
       .row.pt-4.border-top
         .col.text-center
           %h5.text-info
@@ -52,7 +57,7 @@
       .row.justify-content-center
         .col.mb-4.text-left.text-center
           %p
-            With our service, Social Health Online, we aim to bring people and organizations together like nobody else.
+            With our service, Social Health Online, we aim to bring people together like nobody else.
       .row.pb-4.justify-content-center
         = link_to 'More About Us', about_us_path, class: 'btn btn-lg btn-info mt-1', style: 'border: 1px solid black;'
       #Members
@@ -60,14 +65,23 @@
           .col.text-center
             %h5.mb-2.text-info
               The Members
-        .row
-          .col.mb-4.text-left
-            %p
-              Our Member organizations are a cornerstone for our service because they are the gatekeepers that
-              enroll Users and manage Communities. Being a Member is ideal for employers, healthcare organizations, educators,
-              community organizations and countless other types of organizations.
-        .row.pb-4.justify-content-center
-          = link_to 'Become A Member', new_members_registration_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
+      .row
+        .col.mb-3.text-left
+          %p.pb-2
+            Our Member organizations are a cornerstone for our service because they are the gatekeepers that
+            enroll Users and manage Communities. Being a Member is ideal for employers, healthcare organizations, educators,
+            community organizations and countless other types of organizations.
+            .row.justify-content-center
+              .col-md-6.col-lg-4
+                .card.pricing.card-lg
+                  .card-body.border
+                    %h5
+                    %span.display-3.price-collapse.collapse.show $1
+                    %span.text-small per User / month
+                    %span.h6.font-weight-bold Annual Subscription
+                    %span.text-small Minimum of 5 Users Per Member Account
+                    %p.py-1
+                    = link_to 'Become a Member', new_members_registration_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
       #Users
         .row.pt-4.border-top
           .col.text-center
@@ -98,7 +112,7 @@
             %h5.text-info
               %span Proud to Collaborate with All Organizations Wanting to Make Your Social Life More Rewarding
             %p
-              Our diverse array of Affiliates includes:
+              Affiliates support the Users by providing events information and discounts to encourage more social activity. Our diverse array of Affiliates includes:
         .row.pt-4
           .col-md-2
             = image_tag'avondale.jpg', class: 'img-fluid'
