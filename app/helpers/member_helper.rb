@@ -16,7 +16,7 @@ module MemberHelper
                  headers: true,
                  write_headers: true,
                  return_headers: true) do |csv|
-      csv << %w[Name Display\ Name Email Phone Address City State Zip Guest Status Member\ ID Total Events Logged Last\ Logged\ Event]
+      csv << %w[Name Display\ Name Email Phone Address City State Zip Guest Status Member\ ID Total\ Events\ Logged Last\ Logged\ Event]
       User.find_each do |user|
         csv << columns.collect { |name| user.send(name) }
       end
