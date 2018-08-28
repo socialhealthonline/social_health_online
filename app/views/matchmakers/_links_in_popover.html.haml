@@ -3,7 +3,3 @@
 - if authenticated_user.display_name == user.display_name
 -else
   =link_to 'Send Message', new_conversation_path(recipient_id: user.id), target: '_blank'
-%br
-- if authenticated_user.display_name == user.display_name
--else
-  =link_to 'Add to Contacts', my_contacts_path(display_name: user.display_name), target: '_blank'

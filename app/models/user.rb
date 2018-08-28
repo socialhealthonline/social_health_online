@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :social_event_logs, dependent: :destroy
   has_many :social_fitness_logs, dependent: :destroy
   has_many :rsvps
+  has_many :bulletins
   has_many :events, through: :rsvps
   has_one :hidden_field
   has_one_attached :avatar
