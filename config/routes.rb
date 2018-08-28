@@ -107,7 +107,7 @@ Rails.application.routes.draw do
     get "history/:id" => "fitness#show"
     get "assets" => "fitness#assets"
     get "plan" => "fitness#plan"
-    get "plan_details" => "fitness#plan_details"
+    get "console/fitness_plans/:id" => "fitness#plan_details", as: :plan_details
   end
 
   # Dashboard

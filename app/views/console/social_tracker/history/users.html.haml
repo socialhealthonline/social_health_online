@@ -14,8 +14,8 @@
     %table.table.table-borderless.align-items-center.table-hover
       %thead
         %tr
-          %th Name
-          %th Display Name
+          %th= sort_link 'name', 'Name'
+          %th= sort_link 'display_name', 'Display Name'
           %th Total Events Logged
           %th Last Logged Event
       %tbody
@@ -27,7 +27,7 @@
                   data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: user }" } }
                 =user.display_name
             %td= user.total_social_events_logged
-            %td= short_date(user.last_social_event_log_date) || "No Logs"
+            %td= short_date(user.last_social_event_log_date) || "No logs"
           %tr.table-divider
 - else
   %p.text-muted.text-center

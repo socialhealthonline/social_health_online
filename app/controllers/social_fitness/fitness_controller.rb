@@ -1,5 +1,6 @@
 class SocialFitness::FitnessController < ApplicationController
   before_action :require_authentication
+  before_action :set_target, only: [:plan_details]
 
   def new
     @social_fitness_log = SocialFitnessLog.new
@@ -32,6 +33,7 @@ class SocialFitness::FitnessController < ApplicationController
   end
 
   def plan_details
+    render :plan_details
   end
 
   private

@@ -49,7 +49,7 @@ class Console::EventLinksController < ConsoleController
   private
 
   def permitted_params
-    params.permit(:city, :state).reject{|_, v| v.blank?}
+    params.permit(:name, :city, :state).reject{|_, v| v.blank?}
   end
 
   def resource_params
@@ -61,7 +61,7 @@ class Console::EventLinksController < ConsoleController
   end
 
   def sort_column
-    %w[name event_type city state url].include?(params[:column])
+    %w[name event_type city state url].include?(params[:column]) ? params[:column] : 'name'
   end
 
   def sort_direction

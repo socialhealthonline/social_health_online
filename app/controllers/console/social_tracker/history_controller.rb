@@ -14,7 +14,7 @@ class Console::SocialTracker::HistoryController < ConsoleController
 
   def users
     @member = Member.friendly.find(params[:name])
-    @users = @member.users
+    @users = @member.users.order("#{sort_column} #{sort_direction}")
   end
 
   def user_history
@@ -55,7 +55,7 @@ class Console::SocialTracker::HistoryController < ConsoleController
     end
 
     def sortable_columns
-      %w[name city state]
+      %w[name display_name city state]
     end
 
     def sort_column

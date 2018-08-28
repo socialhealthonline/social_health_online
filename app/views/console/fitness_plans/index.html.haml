@@ -14,13 +14,17 @@
       %table.table.table-borderless.align-items-center.table-hover
         %thead
           %tr
-            %th Monthly Plan
-            %th Added On
+            %th
+            %th= sort_link 'month', 'Monthly Plan'
+            %th
+            %th= sort_link 'created_at', 'Added On'
 
         %tbody
           - @targets.each.with_index(1) do |target, i|
             %tr.bg-white
+              %td
               %td= link_to truncate("#{i}. #{target.month}"), console_fitness_plan_path(target)
+              %td
               %td= time_in_cdt(target.created_at, '%m/%d/%Y, %I:%M %p %Z')
               %td.w-10.text-right
                 .dropdown
@@ -36,5 +40,5 @@
             %tr.table-divider
       %p= paginate @targets
 - else
-  %p.text-muted.text-center
+  %p.pt-2.text-muted.text-center
     %em No fitness plans were found.

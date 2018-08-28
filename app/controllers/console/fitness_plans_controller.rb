@@ -1,8 +1,9 @@
 class Console::FitnessPlansController < ConsoleController
+  helper_method :sort_column, :sort_direction
   before_action :set_target, only: [:show, :edit, :update, :destroy]
 
   def index
-    @targets = Target.all.order(created_at: :desc).page(params[:page]).per(10)
+    @targets = Target.all.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
   def show
@@ -46,6 +47,14 @@ class Console::FitnessPlansController < ConsoleController
 
   def target_params
     params.require(:target).permit(:month, :weekone, :weektwo, :weekthree, :weekfour, :weekfive, :targetone, :targettwo, :targetthree, :targetfour, :targetfive)
+  end
+
+  def sort_column
+    %w[month created_at].include?(params[:column]) ? params[:column] : 'month'
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
   end
 
 end

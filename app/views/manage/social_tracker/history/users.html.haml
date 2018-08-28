@@ -46,7 +46,7 @@
                       data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: user }" } }
                     =user.display_name
                 %td= user.total_social_events_logged
-                %td= short_date(user.last_social_event_log_date) || "No Logs"
+                %td= short_date(user.last_social_event_log_date) || "No logs"
                 %tr.table-divider
           %p= paginate @users
       - else

@@ -14,7 +14,7 @@ class Console::SocialFitness::HistoryController < ConsoleController
 
   def users
     @member = Member.friendly.find(params[:name])
-    @users  = @member.users
+    @users  = @member.users.order("#{sort_column} #{sort_direction}")
   end
 
   def user_history

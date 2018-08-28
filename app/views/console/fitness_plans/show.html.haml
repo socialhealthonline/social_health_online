@@ -7,39 +7,40 @@
 
 .row.justify-content-center.text-center
   .col-9
-    .settings-box{:style => "border-radius: 12px;"}
-      %p
+    .settings-box.pb-0{:style => "border-radius: 12px;"}
+      %p.mb-1
         %strong  Week One:
         = @target.weekone
-      %p.pb-2
+      %p
         %strong  Social Target:
         = @target.targetone
-      %p
+      %p.mb-1
         %strong  Week Two:
         = @target.weektwo
-      %p.pb-2
+      %p
         %strong  Social Target:
         = @target.targettwo
-      %p
+      %p.mb-1
         %strong  Week Three:
         = @target.weekthree
-      %p.pb-2
+      %p
         %strong  Social Target:
         = @target.targetthree
-      %p
+      %p.mb-1
         %strong  Week Four:
         = @target.weekfour
-      %p.pb-2
+      %p
         %strong  Social Target:
         = @target.targetfour
-      %p
+      %p.mb-1
       - if @target.weekfive.present?
         %strong  Week Five:
         = @target.weekfive
-      %p
+      %p.mb-1
       - if @target.targetfive.present?
         %strong  Social Target:
         = @target.targetfive
+        %p.pb-2
 .container
   .col
     %div.form-row
