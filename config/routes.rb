@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   get "contact" => "contact#new"
   post "contact" => "contact#create"
 
-  # Matchmaker
+  # Matchmakere
   get 'matchmaker' => 'matchmakers#index'
   get 'fetch_user' => 'matchmakers#fetch_user'
 
@@ -125,6 +125,7 @@ Rails.application.routes.draw do
     resources :news
     resources :manage_bulletins
     resources :event_links
+    resources :fitness_plans
     resources :notifications
     resources :members do
       collection do

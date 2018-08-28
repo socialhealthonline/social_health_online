@@ -1,0 +1,74 @@
+.row.justify-content-center.mb-3
+  .col-md-8
+    .card.card-box
+      .card-body.justify-content-center.pt-0
+      = form_with model: @target, url: [:console_fitness_plans], local: true do |f|
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="title") Month and Year
+              = f.text_field :month, autofocus: true, :placeholder => "E.g., July 2018", class: "form-control #{form_error_class(@target, :month)}", required: true
+              = model_error_display(@target, :month)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Week One
+              = f.text_field :weekone, autofocus: true, :placeholder => "E.g., July 30th - August 5th", class: "form-control #{form_error_class(@target, :weekone)}"
+              = model_error_display(@target, :weekone)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Social Target
+              = f.text_field :targetone, autofocus: true, :placeholder => "E.g., See fireworks with a friend.", class: "form-control #{form_error_class(@target, :targetone)}"
+              = model_error_display(@target, :targetone)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Week Two
+              = f.text_field :weektwo, autofocus: true, class: "form-control #{form_error_class(@target, :weektwo)}"
+              = model_error_display(@target, :weektwo)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Social Target
+              = f.text_field :targettwo, autofocus: true, class: "form-control #{form_error_class(@target, :targettwo)}"
+              = model_error_display(@target, :targettwo)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Week Three
+              = f.text_field :weekthree, autofocus: true, class: "form-control #{form_error_class(@target, :weekthree)}"
+              = model_error_display(@target, :weekthree)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Social Target
+              = f.text_field :targetthree, autofocus: true, class: "form-control #{form_error_class(@target, :targetthree)}"
+              = model_error_display(@target, :targetthree)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Week Four
+              = f.text_field :weekfour, autofocus: true, class: "form-control #{form_error_class(@target, :weekfour)}"
+              = model_error_display(@target, :weekfour)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Social Target
+              = f.text_field :targetfour, autofocus: true, class: "form-control #{form_error_class(@target, :targetfour)}"
+              = model_error_display(@target, :targetfour)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Week Five
+              = f.text_field :weekfive, autofocus: true, class: "form-control #{form_error_class(@target, :weekfive)}"
+              = model_error_display(@target, :weekfive)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Social Target
+              = f.text_field :targetfive, autofocus: true, class: "form-control #{form_error_class(@target, :targetfive)}"
+              = model_error_display(@target, :targetfive)
+        .mb-3.text-center
+          = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, style: 'border: 1px solid black;'
+          = link_to 'Cancel', console_fitness_plans_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'

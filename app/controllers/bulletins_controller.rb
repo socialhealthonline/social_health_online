@@ -21,10 +21,6 @@ class BulletinsController < ApplicationController
       params.permit(:state, :city, :page).reject{|_, v| v.blank?}
     end
 
-    def find_bulletin
-      @bulletin = Bulletin.find(params[:id])
-    end
-
     def sortable_columns
       %w[
         display_name title city state start_at

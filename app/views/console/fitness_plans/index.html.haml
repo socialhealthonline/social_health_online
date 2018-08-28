@@ -1,0 +1,40 @@
+- page_title 'Fitness Plans'
+
+%div#profile_partial
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.pb-3.border-bottom
+  %h1.h3.brand-primary Fitness Plans
+  %div
+    = link_to new_console_fitness_plan_path, class: 'btn btn-primary', style: 'border: 1px solid black' do
+      %i.fas.fa-plus-circle
+      Add Fitness Plan
+
+- if @targets.any?
+  .row.justify-content-center
+    .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
+      %table.table.table-borderless.align-items-center.table-hover
+        %thead
+          %tr
+            %th Date
+            %th Added On
+
+        %tbody
+          - @targets.each.with_index(1) do |target, i|
+            %tr.bg-white
+              %td= link_to truncate("#{i}. #{target.month}"), console_fitness_plan_path(target)
+              %td= time_in_cdt(target.created_at, '%m/%d/%Y, %I:%M %p %Z')
+              %td.w-10.text-right
+                .dropdown
+                  = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{target.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
+                    %i.fas.fa-ellipsis-h
+                  .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{target.id}")
+                    = link_to edit_console_fitness_plan_path(target), title: 'Edit', class: 'dropdown-item text-info' do
+                      %i.far.fa-edit
+                      Edit
+                    = link_to console_fitness_plan_path(target), title: 'Delete', id: "delete_target_#{target.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this fitness plan. Press OK to continue.' } do
+                      %i.far.fa-trash-alt
+                      Delete
+            %tr.table-divider
+      %p= paginate @targets
+- else
+  %p.text-muted.text-center
+    %em No fitness plans were found.

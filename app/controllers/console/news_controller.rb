@@ -16,7 +16,6 @@ class Console::NewsController < ConsoleController
 
   def create
     @news = News.new(news_params)
-
     if @news.save
       redirect_to console_news_path(@news), success: 'News was successfully created.'
     else

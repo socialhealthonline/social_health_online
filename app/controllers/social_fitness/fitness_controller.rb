@@ -28,6 +28,10 @@ class SocialFitness::FitnessController < ApplicationController
   end
 
   def plan
+    @targets = Target.all.order(created_at: :desc).page(params[:page]).per(10)
+  end
+
+  def fitness_details
   end
 
   private
@@ -44,4 +48,13 @@ class SocialFitness::FitnessController < ApplicationController
       :overall
     )
   end
+
+  def set_target
+    @target = Target.find(params[:id])
+  end
+
+  def target_params
+    params.require(:target).permit(:month, :weekone, :weektwo, :weekthree, :weekfour, :weekfive, :targetone, :targettwo, :targetthree, :targetfour, :targetfive)
+  end
+
 end

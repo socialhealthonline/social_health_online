@@ -1,0 +1,45 @@
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.pb-3.border-bottom
+  %h1.h3.brand-primary= @target.month
+
+.row.justify-content-center.text-center
+  .col-9
+    .settings-box{:style => "border-radius: 12px;"}
+      %p
+        %strong  Week One:
+        = @target.weekone
+      %p.pb-2
+        %strong  Social Target:
+        = @target.targetone
+      %p
+        %strong  Week Two:
+        = @target.weektwo
+      %p.pb-2
+        %strong  Social Target:
+        = @target.targettwo
+      %p
+        %strong  Week Three:
+        = @target.weekthree
+      %p.pb-2
+        %strong  Social Target:
+        = @target.targetthree
+      %p
+        %strong  Week Four:
+        = @target.weekfour
+      %p.pb-2
+        %strong  Social Target:
+        = @target.targetfour
+      %p
+      - if @target.weekfive.present?
+        %strong  Week Five:
+        = @target.weekfive
+      %p
+      - if @target.targetfive.present?
+        %strong  Social Target:
+        = @target.targetfive
+.container
+  .col
+    %div.form-row
+      %div.float-left.py-3
+        = link_to social_fitness_plan_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+          %i.fas.fa-arrow-left
+          Back

@@ -1,9 +1,9 @@
-- page_title 'Fitness Plan'
+- page_title 'Fitness Plans'
 
 .container
   .row
     .col.py-3
-      %h1.text-info.text-center Fitness Plan
+      %h1.text-info.text-center Fitness Plans
 
   .row.mb-3
     .col
@@ -14,23 +14,17 @@
           different aspects of our social lives, this fitness plan acts as a general
           guide with weekly social targets for improving your wellness with others.
 
-  .row
+  .row.my-3
     .col
-      %h3.text-center
-        %strong August 2018
-
-  .row
-    .col.my-3.text-center
-      %div.pb-2{style: "border: 2px solid black; border-radius: 12px;"}
-        %div.mt-2
-          %strong Week One (July 30th - August 5th)
-        Social Target: Discover a new favorite tune by seeing a musical show with a group.
-        %div.mt-2
-          %strong Week Two (August 6th - August 12th)
-        Social Target: Stay cool and have fun while learning by visiting a museum with a friend.
-        %div.mt-2
-          %strong Week Three (August 13th - August 19th)
-        Social Target: Take your week's stress out on some pins by bowling with a family member.
-        %div.mt-2
-          %strong Week Four (August 20th - August 27th)
-        Social Target: Have a hot cup of joe on a date at a comfy coffee shop.
+      %div.table-wrapper-2.table-hover#events-feed{:style => "border-radius: 12px; width: 75%;"}
+        %table.table.text-center
+          %thead.mdb-color.lighten-4
+            %tr
+              %th Date
+          %tbody
+          - @targets.each do |target|
+            %tr.bg-white
+              %td= link_to target.month, social_fitness_path(target)
+            %tr.table-divider
+        %div.container.pagination.justify-content-center
+          %p= paginate @targets unless @targets.empty?

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_26_181012) do
+ActiveRecord::Schema.define(version: 2018_08_27_201209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2018_08_26_181012) do
     t.integer "user_id"
     t.string "display_name"
     t.datetime "start_at"
+    t.integer "likes"
     t.string "location"
     t.string "address"
   end
@@ -305,6 +306,22 @@ ActiveRecord::Schema.define(version: 2018_08_26_181012) do
     t.index ["user_id"], name: "index_social_fitness_logs_on_user_id"
   end
 
+  create_table "targets", force: :cascade do |t|
+    t.string "month"
+    t.string "weekone"
+    t.string "weektwo"
+    t.string "weekthree"
+    t.string "weekfour"
+    t.string "weekfive"
+    t.string "targetone"
+    t.string "targettwo"
+    t.string "targetthree"
+    t.string "targetfour"
+    t.string "targetfive"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email", null: false
@@ -340,7 +357,6 @@ ActiveRecord::Schema.define(version: 2018_08_26_181012) do
     t.date "first_login"
     t.string "phone_extension"
     t.text "group"
-    t.string "favorites"
     t.boolean "guest", default: false
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
