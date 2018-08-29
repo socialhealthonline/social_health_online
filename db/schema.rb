@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 2018_08_27_201209) do
     t.integer "user_id"
     t.string "display_name"
     t.datetime "start_at"
-    t.integer "likes"
     t.string "location"
     t.string "address"
   end
@@ -357,6 +356,7 @@ ActiveRecord::Schema.define(version: 2018_08_27_201209) do
     t.date "first_login"
     t.string "phone_extension"
     t.text "group"
+    t.string "favorites"
     t.boolean "guest", default: false
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
