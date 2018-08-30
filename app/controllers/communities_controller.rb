@@ -11,6 +11,10 @@ class CommunitiesController < ApplicationController
     @users = @member.users.order("#{sort_column} #{sort_direction}").enabled.page(params[:page]).per(10)
   end
 
+  def leaderboard
+    @users = User.where(member_id: authenticated_user.member_id, hide_info_on_leaderboard: false).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+  end
+
   def explore_communities
     @communities = Member.where.not("name = ? ", authenticated_user.member.name).order(city: :asc)
     @communities = FindUsersCommunities.new(@communities, show_init_scope: false).call(permitted_params)
@@ -40,7 +44,7 @@ class CommunitiesController < ApplicationController
   private
 
     def permitted_params
-      params.permit(:name, :state, :city, :zip, :public_member, :page).reject{|_, v| v.blank?}
+      params.permit(:name, :state, :city, :zip, :social_event_logs, :public_member, :page).reject{|_, v| v.blank?}
     end
 
     def sortable_columns

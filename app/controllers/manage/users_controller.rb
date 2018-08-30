@@ -68,7 +68,8 @@ class Manage::UsersController < ApplicationController
       :password,
       :password_confirmation,
       :manager,
-      :user_status
+      :user_status,
+      :hide_info_on_leaderboard
     )
   end
 

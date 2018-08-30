@@ -72,12 +72,19 @@
         .col
           %ul.nav.nav-tabs#communityTabs(role="tablist")
             %li.nav-item
-              %a.nav-link#announcements-tab(data-toggle="tab" href="#announcements" role="tab" aria-controls="announcements" aria-selected="true") Announcements
+              %a.nav-link.px-1#announcements-tab(data-toggle="tab" href="#announcements" role="tab" aria-controls="announcements" aria-selected="true") Announcements
             - if @member.public_member==false
               %li.nav-item
-                %a.nav-link#events-tab(data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false") Events
+                %a.nav-link.px-1#events-tab(data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false") Events
             %li.nav-item
-              %a.nav-link#members-tab(data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="false") User List
+              %a.nav-link.px-1#members-tab(data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="false") Users
+            - if authenticated_user.member_id == @member.id
+              %div
+                .dropdown
+                  %a.nav-link.px-1.pt-2#more-tab(data-toggle="dropdown" href="#" role="tab" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") More
+                  .dropdown-menu.dropdown-menu-right.text-center{:style => 'border: 1px solid black; border-radius: 12px;'}
+                    = link_to 'Leaderboard' , leaderboard_path, class: 'dropdown-item px-2'
+
 - page_title 'Communities'
 
 %section.pt-2.pb-2

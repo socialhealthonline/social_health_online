@@ -1,0 +1,36 @@
+- page_title 'Community Leaderboard'
+
+%div#profile_partial
+
+.container
+  .row
+    .col.py-3
+      %h1.text-info.text-center Community Leaderboard
+
+  .row
+    .col-md-12
+      %p.text-center.mb-4.p-2{style: "border: 1px solid black;"}
+        %strong
+          This leaderboard provides a snapshot of the logged event totals for the Users in this Community who choose to share their progress with others.
+
+  .row.mb-3.justify-content-center
+    .col-md-3
+      .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
+        %table.table.table-borderless.align-items-center.table-hover
+          %thead
+            %tr
+              %th= sort_link 'display_name', 'Display Name'
+              %th Total Events Logged
+          %tbody
+            - @users.each do |user|
+              %tr.bg-white
+                %td
+                  %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                      data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: user }" } }
+                    =user.display_name
+                %td= user.total_social_events_logged
+
+  %p.pb-3
+    = link_to my_community_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+      %i.fas.fa-arrow-left
+      Back

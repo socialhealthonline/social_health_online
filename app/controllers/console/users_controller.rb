@@ -87,7 +87,8 @@ class Console::UsersController < ConsoleController
       :manager,
       :user_status,
       :password,
-      :password_confirmation
+      :password_confirmation,
+      :hide_info_on_leaderboard
     )
   end
 

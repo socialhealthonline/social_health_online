@@ -15,7 +15,7 @@ class MySettingsController < ApplicationController
   private
 
   def settings_params
-    params.require(:user).permit(:receive_email)
+    params.require(:user).permit(:receive_email, :hide_info_on_leaderboard)
   end
 
 end

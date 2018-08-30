@@ -5,12 +5,6 @@
     .col.text-center
       %h1.brand-primary My Settings
 
-  .row.my-3
-    .col
-      %h3.notification-title
-        %strong
-          Messages
-
       = form_for authenticated_user, url: my_settings_path do |f|
         .row.mb-2
           .settings-box.pb-0{:style => "border-radius: 12px;"}
@@ -18,7 +12,12 @@
               .form-group
                 .form-check
                   = f.check_box :receive_email, class: 'form-check-input'
-                  %label.form-check-label.pl-1(for="receive_email") Receive Email Notifications for Messages
+                  %label.form-check-label.pl-1(for="receive_email") Disable Email Notifications for My Messages
+            .col
+              .form-group
+                .form-check
+                  = f.check_box :hide_info_on_leaderboard, class: 'form-check-input'
+                  %label.form-check-label.pl-1(for="hide_info_on_leaderboard") Hide My Total Events Logged on Community Leaderboard
 
-        .row.justify-content-center.pt-1
+        .row.justify-content-center.pt-1.pb-3
           = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }
