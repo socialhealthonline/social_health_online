@@ -11,12 +11,12 @@
     .col-md-12
       %p.text-center.mb-4.p-2{style: "border: 1px solid black;"}
         %strong
-          This leaderboard provides a snapshot of the logged event totals for the Users in this Community who choose to share their progress with others.
+          This leaderboard shows a tally of the events logged by the Users who've chosen to share their progress with the Community.
 
   .row.mb-3.justify-content-center
-    .col-md-3
+    .col-md-4
       .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
-        %table.table.table-borderless.align-items-center.table-hover
+        %table.table.align-items-center.text-center.table-hover.table-sm
           %thead
             %tr
               %th= sort_link 'display_name', 'Display Name'
@@ -29,6 +29,9 @@
                       data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: user }" } }
                     =user.display_name
                 %td= user.total_social_events_logged
+          %tr.table-divider
+        %div.container.pagination.justify-content-center
+          %p= paginate @users unless @users.empty?
 
   %p.pb-3
     = link_to my_community_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
