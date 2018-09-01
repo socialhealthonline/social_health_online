@@ -1,0 +1,46 @@
+.container{ :style => "overflow:hidden;" }
+  .d-flex.justify-content-center.flex-wrap.flex-md-nowrap.align-items-center.py-3.px-2
+    %h1.brand-primary= @challenge.name
+
+.container{ :style => "overflow:hidden;" }
+  .row.justify-content-center
+    .col-lg-8
+      .settings-box.text-center{:style => "border-radius: 12px;"}
+        %p
+          %strong Challenge Type:
+          = @challenge.challenge_type
+        %p
+        - if @challenge.challenge_start_date.present?
+          %strong Challenge Start Date:
+          = short_date @challenge.challenge_start_date
+        %p
+        - if @challenge.challenge_end_date.present?
+          %strong Challenge End Date:
+          = short_date @challenge.challenge_end_date
+        %p
+        - if @challenge.location.present?
+          %strong Location:
+          = @challenge.location
+        %p
+        - if @challenge.address.present?
+          %strong Address:
+          = @challenge.location_display
+        %p
+        - if @challenge.prize.present?
+          %strong Prize:
+          = @challenge.prize
+        %p
+        %p
+          %strong Description:
+          = @challenge.description
+        %p
+        - if @challenge.winner.present?
+          %strong Winner:
+          = @challenge.winner
+
+
+.container
+  %p.pt-2.py-3
+    = link_to 'javascript:history.back()', class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+      %i.fas.fa-arrow-left
+      Back

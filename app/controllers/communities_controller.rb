@@ -15,6 +15,18 @@ class CommunitiesController < ApplicationController
     @users = User.where(member_id: authenticated_user.member_id, hide_info_on_leaderboard: false).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
+  def challenge_index
+    @challenges = Challenge.where(member_id: authenticated_user.member_id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+  end
+
+  def challenge_new
+  end
+
+  def challenge_create
+    ChallengeCompletedMailer.notify(params, authenticated_user).deliver_now
+    redirect_to challenge_new_url, success: "Thank you for your submission. We'll be in touch!"
+  end
+
   def explore_communities
     @communities = Member.where.not("name = ? ", authenticated_user.member.name).order(city: :asc)
     @communities = FindUsersCommunities.new(@communities, show_init_scope: false).call(permitted_params)
@@ -44,12 +56,12 @@ class CommunitiesController < ApplicationController
   private
 
     def permitted_params
-      params.permit(:name, :state, :city, :zip, :social_event_logs, :public_member, :page).reject{|_, v| v.blank?}
+      params.permit(:name, :display_name, :completion_date, :state, :city, :location, :created_at, :address, :winner, :prize, :description, :verification_code, :zip, :social_event_logs, :public_member, :challenge_type, :challenge_start_date, :challenge_end_date, :page).reject{|_, v| v.blank?}
     end
 
     def sortable_columns
       %w[
-        name city state public_member title start_at display_name
+        name city state public_member title start_at display_name challenge_type challenge_end_date challenge_start_date prize winner
       ]
     end
 
@@ -60,5 +72,9 @@ class CommunitiesController < ApplicationController
 
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
+    end
+
+    def challenge_params
+      params.require(:challenge).permit(:name, :completion_date, :challenge_type, :location, :address, :city, :state, :zip, :verification_code, :winner, :prize, :challenge_start_date, :challenge_end_date, :description, :created_at)
     end
 end

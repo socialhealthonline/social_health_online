@@ -7,35 +7,27 @@
     .col-lg-8
       .settings-box.text-center{:style => "border-radius: 12px;"}
         %p
-          %strong  Posted By:
+          %strong Posted By:
           = @bulletin.user.display_name
         %p
         - if @bulletin.event_type.present?
-          %strong  Event Type:
+          %strong Event Type:
           = @bulletin.event_type
         %p
         - if @bulletin.start_at.present?
-          %strong  Event Date/Time:
+          %strong Event Date/Time:
           = short_date_time_notimezone @bulletin.start_at
         %p
         - if @bulletin.location.present?
-          %strong  Location:
+          %strong Location:
           = @bulletin.location
         %p
         - if @bulletin.address.present?
-          %strong  Address:
-          = @bulletin.address
-        %p
-        - if @bulletin.city.present?
-          %strong  City:
-          = @bulletin.city
-        %p
-        - if @bulletin.state.present?
-          %strong  State:
-          = @bulletin.state
+          %strong Address:
+          = @bulletin.location_display
         %p
         %p
-          %strong  Description:
+          %strong Description:
           = @bulletin.description
 
 .container

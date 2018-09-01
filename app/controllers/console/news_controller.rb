@@ -1,6 +1,7 @@
 class Console::NewsController < ConsoleController
   before_action :set_news, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
+  before_action :require_admin
 
   def index
     @news = News.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)

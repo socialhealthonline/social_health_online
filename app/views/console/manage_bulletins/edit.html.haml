@@ -58,6 +58,13 @@
         .row.justify-content-center
           .col-lg-10
             .form-group
+              %label(for="zip") ZIP Code
+              = f.text_field :city, class: "form-control #{form_error_class(@bulletin, :zip)}"
+              = model_error_display(@bulletin, :zip)
+
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
               %label(for="description") Description
               = f.text_area :description, autofocus: true, class: "form-control #{form_error_class(@bulletin, :description)}", required: true
               = model_error_display(@bulletin, :description)

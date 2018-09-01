@@ -33,6 +33,7 @@ class Manage::MemberController < ApplicationController
       :url,
       :events_url,
       :primary_manager_id,
+      :hide_challenges,
       :hide_suggest_events,
       :org_type
     )

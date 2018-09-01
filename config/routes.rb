@@ -79,6 +79,9 @@ Rails.application.routes.draw do
   get 'leaderboard' => 'communities#leaderboard'
   get 'event_suggestions' => 'communities#new'
   post 'event_suggestions' => 'communities#create'
+  get 'challenge_new' => 'communities#challenge_new'
+  get 'challenge_index' => 'communities#challenge_index'
+  post 'challenge_new' => 'communities#challenge_create'
 
   # Manage
   namespace :manage do
@@ -91,7 +94,12 @@ Rails.application.routes.draw do
     end
     resources :events
     resources :announcements
-    resources :users
+    resources :challenges
+    resources :users do
+      collection do
+        get 'export_user_csv'
+      end
+    end
   end
 
   namespace :social_tracker do
@@ -131,6 +139,7 @@ Rails.application.routes.draw do
     resources :notifications
     resources :members do
       collection do
+        get 'export_global_user_csv'
         get 'export_user_csv'
         get 'export_member_csv'
       end

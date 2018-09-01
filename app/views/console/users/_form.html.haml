@@ -76,7 +76,7 @@
         .form-check
           = f.check_box :guest, class: 'form-check-input'
           %label.form-check-label(for="guest") Guest
-        %small Guest User account
+        %small Guest User Account
 .row
   .col
     .card
@@ -84,7 +84,7 @@
         .form-check.mb-1
           = f.check_box :manager, class: 'form-check-input'
           %label.form-check-label(for="user_manager") Account Manager
-        %small Manager for the Member account
+        %small Manager for the Member Account
   .col
     .card
       .card-body
@@ -94,7 +94,7 @@
           - else
             = f.check_box :user_status, class: 'form-check-input', checked: false
           %label.form-check-label(for="user_enabled") Enabled
-        %small Enabled to sign in
+        %small Enabled to Sign In
 
 .row.pt-2.border-top
   .col

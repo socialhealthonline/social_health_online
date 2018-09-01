@@ -1,5 +1,7 @@
 class Console::AffiliatesController < ConsoleController
+  before_action :require_admin
   helper_method :sort_column, :sort_direction
+  
   def index
     @affiliates = Affiliate.order("#{sort_column} #{sort_direction}")
     @affiliates = FindUsersCommunities.new(@affiliates, show_init_scope: true).call(permitted_params)

@@ -4,7 +4,8 @@
   %h1.h3.brand-primary Affiliates
   %div
     = link_to export_csv_console_affiliates_path, class: 'btn btn-primary btn-export', :style => 'border: 1px solid black;' do
-      Export CSV
+      %i.fas.fa-file-export
+      Export Affiliate CSV
 
     = link_to new_console_affiliate_path, class: 'btn btn-primary', :style => 'border: 1px solid black;' do
       %i.fas.fa-plus-circle

@@ -41,6 +41,11 @@ class Manage::UsersController < ApplicationController
     redirect_to manage_users_path
   end
 
+  def export_user_csv
+    csv = helpers.csv_member_user_list
+    send_data csv, filename: "users-#{Date.today}.csv"
+  end
+
   private
 
   def update_user_params
@@ -75,7 +80,7 @@ class Manage::UsersController < ApplicationController
 
   def sortable_columns
     %w[
-      name display_name email user_status manager
+      name display_name email group user_status manager
     ]
   end
 

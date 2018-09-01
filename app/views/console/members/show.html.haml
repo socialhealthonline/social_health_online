@@ -7,14 +7,19 @@
 
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.pb-3.border-bottom
   %h1.h3.brand-primary= @member.name
-  .dropdown
-    %a.btn.btn-primary.dropdown-toggle{:style => 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
-      %i.fas.fa-cog
-      Manage
-    .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;'}
-      = link_to console_member_users_path(@member.id), class: 'dropdown-item' do
-        %i.fas.fa-user-circle
-        Users
+  .row
+    %div.float-right
+      = link_to export_user_csv_console_members_path, class: 'btn btn-primary btn-export', :style => 'border: 1px solid black;' do
+        %i.fas.fa-file-export
+        Export User CSV
+    .dropdown
+      %a.btn.btn-primary.dropdown-toggle{:style => 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+        %i.fas.fa-cog
+        Manage
+      .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;'}
+        = link_to console_member_users_path(@member.id), class: 'dropdown-item' do
+          %i.fas.fa-user-circle
+          Users
 
 %p
   %strong Address:
@@ -89,7 +94,7 @@
 %p
   %strong Public:
   = @member.public_member? ? 'Yes' : 'No'
-  
+
 %p
   = link_to console_members_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do
     %i.fas.fa-arrow-left

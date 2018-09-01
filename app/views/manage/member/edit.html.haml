@@ -20,6 +20,9 @@
           = link_to manage_announcements_path, class: 'dropdown-item' do
             %i.fas.fa.fa-bullhorn
             Announcements
+          = link_to manage_challenges_path, class: 'dropdown-item' do
+            %i.fas.fa.fa-puzzle-piece
+            Challenges
           = link_to manage_users_path, class: 'dropdown-item' do
             %i.fas.fa-user-circle
             Users
@@ -98,7 +101,7 @@
           .col-lg-3
             .form-group
               %label(for="member_primary_manager_id") Primary Manager
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'This User acts as your Account Manager in Social Health Online and is publicly displayed as the primary point of contact for your Community'}
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'This User acts as your Account Manager in Social Health Online and is the principal Manager for your Community'}
               = f.select :primary_manager_id, options_from_collection_for_select(@managers, 'id', 'name', @member.primary_manager_id), { include_blank: false }, { class: 'form-control custom-select' }
               = model_error_display(@member, :primary_manager_id)
         .row
@@ -119,6 +122,12 @@
                 .form-check
                   = f.check_box :hide_suggest_events, class: 'form-check-input'
                   %label.form-check-label(for="hide_suggest_events") Show the Suggest Events Button
+          .col-lg-4
+            .card
+              .card-body
+                .form-check
+                  = f.check_box :hide_challenges, class: 'form-check-input'
+                  %label.form-check-label(for="hide_challenges") Hide the Challenges Button
         .row
           .col-lg-4
             %p.text-muted Logo Preview:

@@ -1,5 +1,6 @@
 class Console::MembersController < ConsoleController
   helper_method :sort_column, :sort_direction
+  before_action :require_admin
 
   def index
     @members = Member.order("#{sort_column} #{sort_direction}")
@@ -63,6 +64,11 @@ class Console::MembersController < ConsoleController
     send_data csv, filename: "users-#{Date.today}.csv"
   end
 
+  def export_global_user_csv
+    csv = helpers.csv_global_user_list
+    send_data csv, filename: "users-#{Date.today}.csv"
+  end
+
   private
 
   def permitted_params
@@ -87,6 +93,7 @@ class Console::MembersController < ConsoleController
       :events_url,
       :suspended,
       :hide_info_on_locator,
+      :hide_challenges,
       :column,
       :direction,
       :welcome_kit_date,
@@ -94,7 +101,7 @@ class Console::MembersController < ConsoleController
       :contact_phone_extension,
       :primary_manager_id,
       :hide_suggest_events,
-      :public_member, 
+      :public_member,
       :org_type
     )
   end

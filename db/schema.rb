@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_30_182242) do
+ActiveRecord::Schema.define(version: 2018_08_31_214309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,32 @@ ActiveRecord::Schema.define(version: 2018_08_30_182242) do
     t.integer "likes"
     t.string "location"
     t.string "address"
+    t.string "zip"
+  end
+
+  create_table "challenges", force: :cascade do |t|
+    t.string "name"
+    t.date "challenge_start_date"
+    t.date "challenge_end_date"
+    t.string "description"
+    t.string "url"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "address"
+    t.string "location"
+    t.string "prize"
+    t.string "verification_code"
+    t.string "email"
+    t.integer "user_id"
+    t.string "display_name"
+    t.string "challenge_type"
+    t.string "challenge_level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "member_id"
+    t.date "completion_date"
+    t.string "winner"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -238,6 +264,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_182242) do
     t.boolean "public_member", default: false
     t.boolean "hide_suggest_events", default: false
     t.string "org_type"
+    t.boolean "hide_challenges", default: false
     t.index ["period"], name: "index_members_on_period"
     t.index ["slug"], name: "index_members_on_slug", unique: true
   end

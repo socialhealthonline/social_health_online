@@ -82,7 +82,7 @@
             .col-lg-6
               .form-group
                 %label Account Manager's Name
-                %i.c-pointer.fas.fa-info-circle.fa{ title: 'Initial User for an organization and the person primarily responsible for managing their online Community' }
+                %i.c-pointer.fas.fa-info-circle.fa{ title: 'Initial User for an organization and the person chiefly responsible for managing their online Community as the Primary Manager' }
                 = text_field_tag :account_manager_name, params[:account_manager_name], placeholder: "E.g., Jane Doe", required: true, class: "form-control #{form_error_class(@member, :account_manager_name)}"
                 = model_error_display(@member, :account_manager_name)
             .col

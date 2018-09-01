@@ -1,6 +1,7 @@
 class Console::FitnessPlansController < ConsoleController
   helper_method :sort_column, :sort_direction
   before_action :set_target, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:index, :new, :create, :edit, :update, :destroy]
 
   def index
     @targets = Target.all.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)

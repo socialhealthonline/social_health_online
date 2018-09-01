@@ -20,7 +20,7 @@ class ConsoleController < ApplicationController
   private
 
     def permitted_params
-      params.permit(:display_name, :name, :city, :state, :phone, :email, :member_name).reject{|_, v| v.blank?}
+      params.permit(:display_name, :name, :city, :state, :phone, :group, :email, :member_name).reject{|_, v| v.blank?}
     end
 
     def sort_column

@@ -1,6 +1,7 @@
 class Console::EventLinksController < ConsoleController
   helper_method :sort_column, :sort_direction
   before_action :find_resource, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin
 
   def index
     @resources = Resource.all.order("#{sort_column} #{sort_direction}")

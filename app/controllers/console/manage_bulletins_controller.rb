@@ -1,6 +1,7 @@
 class Console::ManageBulletinsController < ConsoleController
   helper_method :sort_column, :sort_direction
   before_action :find_bulletin, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin
 
   def index
     @bulletins = Bulletin.all.order("#{sort_column} #{sort_direction}")
@@ -59,7 +60,7 @@ class Console::ManageBulletinsController < ConsoleController
   end
 
   def bulletin_params
-    params.require(:bulletin).permit(:title, :description, :city, :address, :state, :start_at, :user_id, :location, :display_name, :event_date, :event_datetime, :event_type)
+    params.require(:bulletin).permit(:title, :description, :city, :address, :state, :zip, :start_at, :user_id, :location, :display_name, :event_date, :event_datetime, :event_type)
   end
 
   def find_bulletin

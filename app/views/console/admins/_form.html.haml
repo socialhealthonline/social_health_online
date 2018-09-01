@@ -71,7 +71,7 @@
         .form-check.mb-1
           = f.check_box :manager, class: 'form-check-input'
           %label.form-check-label(for="user_manager") Account Manager
-        %small Manager for their Member account and Community
+        %small Manager for the Member Account
   .col
     .form-group
       %label(for="user_member_id") Member
@@ -84,7 +84,7 @@
         .form-check.mb-1
           = f.check_box :admin, class: 'form-check-input'
           %label.form-check-label(for="user_admin") Admin
-        %small Site Admin privileges
+        %small Site Admin Privileges
   .col
     .card
       .card-body
@@ -94,7 +94,7 @@
           - else
             = f.check_box :user_status, class: 'form-check-input', checked: false
           %label.form-check-label(for="user_enabled") Enabled
-        %small Enabled to sign in
+        %small Enabled to Sign In
 
 .mb-4.text-center
   = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }

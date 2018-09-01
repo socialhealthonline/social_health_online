@@ -1,4 +1,5 @@
 class Console::AdminsController < ConsoleController
+  before_action :require_admin
   before_action :set_user_status, only: [:create, :update]
   helper_method :sort_column, :sort_direction
 
