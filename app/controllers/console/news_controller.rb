@@ -18,7 +18,7 @@ class Console::NewsController < ConsoleController
   def create
     @news = News.new(news_params)
     if @news.save
-      redirect_to console_news_path(@news), success: 'News was successfully created.'
+      redirect_to console_news_index_path, success: 'News was successfully created.'
     else
       flash.now[:error] = 'Please correct the errors to continue.'
       render :new
@@ -27,7 +27,7 @@ class Console::NewsController < ConsoleController
 
   def update
     if @news.update(news_params)
-      redirect_to console_news_path(@news), success: 'News was successfully updated.'
+      redirect_to console_news_index_path, success: 'News was successfully updated.'
     else
       render :edit
     end
