@@ -75,7 +75,7 @@
         .col
           %ul.nav.nav-tabs#communityTabs(role="tablist")
             %li.nav-item
-              %a.nav-link.px-1#announcements-tab(data-toggle="tab" href="#announcements" role="tab" aria-controls="announcements" aria-selected="true") Announcements
+              %a.nav-link.px-1.active#announcements-tab(data-toggle="tab" href="#announcements" role="tab" aria-controls="announcements" aria-selected="true") Announcements
             - if @member.public_member==false
               %li.nav-item
                 %a.nav-link.px-1#events-tab(data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false") Events
