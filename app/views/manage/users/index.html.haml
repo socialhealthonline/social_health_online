@@ -45,8 +45,8 @@
                 %i.fas.fa-file-export
                 Export User CSV
 
-  %h6.mt-2= "Service Capacity: #{@service_capacity}"
-  %h6= "Current User Total: #{@users_count}"
+  %h6.font-weight-bold.mt-2= "Service Capacity: #{@service_capacity}"
+  %h6.font-weight-bold= "Current User Total: #{@users_count}"
 
 
   - if @users.any?

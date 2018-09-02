@@ -23,38 +23,38 @@
         = model_error_display(@challenge, :challenge_end_date)
     .col-6
       .form-group
-        %label Location
+        %label Challenge Location
         = f.text_field :location, class: "form-control #{form_error_class(@challenge, :location)}"
         = model_error_display(@challenge, :location)
     .col-6
       .form-group
-        %label Address
+        %label Challenge Address
         = f.text_field :address, class: "form-control #{form_error_class(@challenge, :address)}"
         = model_error_display(@challenge, :address)
     .col-6
       .form-group
-        %label City
+        %label Challenge City
         = f.text_field :city, class: "form-control #{form_error_class(@challenge, :address)}"
         = model_error_display(@challenge, :city)
     .col-6
       .form-group
-        %label(for="state") State
+        %label(for="state") Challenge State
         = f.select :state, US_STATES, { required: true }, { class: "#{form_error_class(@challenge, :state)} form-control custom-select" }
         = model_error_display(@challenge, :state)
     .col-6
       .form-group
-        %label ZIP Code
+        %label Challenge ZIP Code
         = f.text_field :zip, class: "form-control #{form_error_class(@challenge, :zip)}"
         = model_error_display(@challenge, :zip)
         .row.justify-content-center
     .col-6
       .form-group
-        %label Prize
+        %label Challenge Prize
         = f.text_field :prize, class: "form-control #{form_error_class(@challenge, :prize)}"
         = model_error_display(@challenge, :prize)
     .col-6
       .form-group
-        %label Description
+        %label Challenge Details
         = f.text_area :description, class: "form-control #{form_error_class(@challenge, :description)}", required: true
         = model_error_display(@challenge, :description)
     .col-6
@@ -63,14 +63,14 @@
         %i.c-pointer.fas.fa-info-circle.fa{ title: 'Optional code to distribute to the Users during a challenge for the purpose of verifying actual challenge completion via its submission by the Users'}
         = f.text_field :verification_code, class: "form-control #{form_error_class(@challenge, :verification_code)}"
         = model_error_display(@challenge, :verification_code)
-    .col-6
+    .col-6.border-top.pt-2
       .form-group
-        %label Winner (Post-Challenge Completion)
+        %label Challenge Winner
         = f.text_field :winner, class: "form-control #{form_error_class(@challenge, :location)}"
         = model_error_display(@challenge, :winner)
-    .col-6
+    .col-6.border-top.pt-2
       .form-group
-        %label Winner Selection Date (Post-Challenge Completion)
+        %label Winner Selection Date
         = f.text_field :completion_date, class: "flatpickr-date form-control #{form_error_class(@challenge, :completion_date)}"
         = model_error_display(@challenge, :completion_date)
 
@@ -78,6 +78,6 @@
   .mb-3.text-center
     = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, style: 'border: 1px solid black;'
     - if @challenge.persisted?
-      = link_to 'Cancel', manage_challenge_path(@challenge), class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'
+      = link_to 'Cancel', manage_challenges_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'
     - else
       = link_to 'Cancel', manage_challenges_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'

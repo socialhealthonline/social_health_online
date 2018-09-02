@@ -21,15 +21,15 @@
         = short_date_time_notimezone @bulletin.start_at
       %p
       - if @bulletin.location.present?
-        %strong Location:
+        %strong Event Location:
         = @bulletin.location
       %p
       - if @bulletin.address.present?
-        %strong Address:
+        %strong Event Address:
         = @bulletin.location_display
       %p
       %p
-        %strong Description:
+        %strong Event Details:
         = @bulletin.description
 
 .container

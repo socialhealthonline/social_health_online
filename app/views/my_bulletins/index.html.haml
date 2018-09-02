@@ -8,7 +8,7 @@
     .col-md-12
       %p.text-center.mb-4.p-2{style: "border: 1px solid black;"}
         %strong
-          Post and manage your social bulletins here to share personal events and activity ideas with all Users on the bulletin board. Don't forget that 30 days after you post a bulletin it will be automatically deleted. 
+          Post and manage your social bulletins here to share personal events and activity ideas with all Users on the bulletin board. Don't forget that 30 days after you post a bulletin it will be automatically deleted.
 
 - if @bulletins.any?
   .row.justify-content-center
@@ -17,8 +17,8 @@
         %thead
           %tr
             %th= sort_link 'title', 'Bulletin Title'
-            %th= sort_link 'city', 'City'
-            %th= sort_link 'state', 'State'
+            %th= sort_link 'city', 'Event City'
+            %th= sort_link 'state', 'Event State'
             %th= sort_link 'event_datetime', 'Event Date/Time'
             %th= sort_link 'created_at', 'Added On'
         %tbody

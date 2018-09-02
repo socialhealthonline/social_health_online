@@ -41,14 +41,13 @@
       %table.table.table-borderless.table-hover
         %thead
           %tr
-            %th= sort_link 'name', 'Name'
-            %th= sort_link 'challenge_type', 'Type'
+            %th= sort_link 'name', 'Challenge Name'
+            %th= sort_link 'challenge_type', 'Challenge Type'
             %th= sort_link 'challenge_start_date', 'Start Date'
             %th= sort_link 'challenge_end_date', 'End Date'
             %th= sort_link 'verification_code', 'Verification Code'
             %th= sort_link 'winner', 'Winner'
             %th= sort_link 'completion_date', 'Winner Selection Date'
-            %th= sort_link 'created_at', 'Added On'
         %tbody
           - @challenges.each.with_index(1) do |challenge, i|
             %tr.bg-white
@@ -59,7 +58,6 @@
               %td= challenge.verification_code
               %td= challenge.winner
               %td= short_date(challenge.completion_date)
-              %td= time_in_cdt(challenge.created_at, '%m/%d/%Y')
               %td.w-10.text-right
                 .dropdown
                   = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{challenge.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do

@@ -4,7 +4,7 @@ class ChallengeCompletedMailer < ApplicationMailer
     @authenticated_user = authenticated_user
 
     mail :to => authenticated_user.member.primary_manager.email,
-         subject: 'Challenge Completed - Social Health Online',
+         subject: 'Community Challenge Completed - Social Health Online',
          from: "#{authenticated_user.name} <#{authenticated_user.email}>"
   end
 end

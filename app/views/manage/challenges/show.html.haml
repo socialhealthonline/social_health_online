@@ -5,7 +5,7 @@
 .container{ :style => "overflow:hidden;" }
   .row.justify-content-center
     .col-lg-8
-      .settings-box.text-center{:style => "border-radius: 12px;"}
+      .settings-box.text-center.pb-0{:style => "border-radius: 12px;"}
         %p
           %strong Challenge Type:
           = @challenge.challenge_type
@@ -19,25 +19,25 @@
           = short_date @challenge.challenge_end_date
         %p
         - if @challenge.location.present?
-          %strong Location:
+          %strong Challenge Location:
           = @challenge.location
         %p
         - if @challenge.address.present?
-          %strong Address:
+          %strong Challenge Address:
           = @challenge.location_display
         %p
         - if @challenge.prize.present?
-          %strong Prize:
+          %strong Challenge Prize:
           = @challenge.prize
         %p
         %p
-          %strong Description:
+          %strong Challenge Details:
           = @challenge.description
         %p
         - if @challenge.winner.present?
-          %strong Winner:
+          %strong Challenge Winner:
           = @challenge.winner
-
+          %p.pb-2
 
 .container
   %p.pt-2.py-3

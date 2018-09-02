@@ -82,9 +82,3 @@
     = link_to manage_events_path(@event.id), class: 'btn btn-outline-primary mr-1', style: 'border: 1px solid black;' do
       %i.fas.fa-arrow-left
       Back
-    = link_to edit_manage_event_path(@event.id), class: 'btn btn-outline-primary mr-1' do
-      %i.far.fa-edit
-      Edit
-    = link_to manage_event_path(@event.id), title: 'Delete', id: "delete_event_#{@event.id}", class: 'btn btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this event. Press OK to continue.' } do
-      %i.far.fa-trash-alt
-      Delete

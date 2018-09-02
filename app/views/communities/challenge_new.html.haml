@@ -22,8 +22,8 @@
                   %label(for="name") Challenge Name
                   = text_field_tag :name, params[:name], :placeholder => "E.g., Soup Kitchen Sweepstakes", autofocus: true, class: 'form-control', required: true
                 .form-group
-                  %label(for="completion_date") Challenge Completion Date
-                  = text_field_tag :completion_date, params[:completion_date], :placeholder => "E.g., January 5, 2018", autofocus: true, class: 'form-control', required: true
+                  %label(for="challenge_completion_date") Challenge Completion Date
+                  = text_field_tag :challenge_completion_date, params[:challenge_completion_date], :placeholder => "E.g., January 5, 2018", autofocus: true, class: 'form-control', required: true
                 .form-group
                   %label(for="verification_code") Challenge Verification Code (Only If Applicable to the Challenge)
                   = text_field_tag :verification_code, params[:verification_code], :placeholder => "E.g., A1B2C3", autofocus: true, class: 'form-control'
