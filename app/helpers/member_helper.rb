@@ -38,13 +38,13 @@ module MemberHelper
   end
 
   def csv_member_list
-    columns = %w[name address city state zip phone url public_member org_type service_capacity]
+    columns = %w[name address city state zip phone url public_member charity_waiver org_type service_capacity]
     CSV.generate(col_sep: ';',
                  row_sep: "\n",
                  headers: true,
                  write_headers: true,
                  return_headers: true) do |csv|
-      csv << %w[Member\ Name Address City State Zip Phone URL Public Org\ Type User\ Seats]
+      csv << %w[Member\ Name Address City State Zip Phone URL Public Fee\ Waiver Org\ Type User\ Seats]
       Member.find_each.each do |member|
         csv << columns.collect { |name| member.send(name) }
       end

@@ -11,6 +11,7 @@
         %label Challenge Type
         = f.text_field :challenge_type, placeholder: 'E.g., Sweepstakes, Contest, Etc.', class: "form-control #{form_error_class(@challenge, :challenge_type)}", required: true
         = model_error_display(@challenge, :challenge_type)
+  .row.justify-content-center
     .col-6
       .form-group
         %label(for="challenge_start_date") Challenge Start Date
@@ -21,6 +22,7 @@
         %label(for="challenge_end_date") Challenge End Date
         = f.text_field :challenge_end_date, class: "flatpickr-date form-control #{form_error_class(@challenge, :challenge_end_date)}", required: true
         = model_error_display(@challenge, :challenge_end_date)
+  .row.justify-content-center
     .col-6
       .form-group
         %label Challenge Location
@@ -31,6 +33,7 @@
         %label Challenge Address
         = f.text_field :address, class: "form-control #{form_error_class(@challenge, :address)}"
         = model_error_display(@challenge, :address)
+  .row.justify-content-center
     .col-6
       .form-group
         %label Challenge City
@@ -41,6 +44,7 @@
         %label(for="state") Challenge State
         = f.select :state, US_STATES, { required: true }, { class: "#{form_error_class(@challenge, :state)} form-control custom-select" }
         = model_error_display(@challenge, :state)
+  .row.justify-content-center
     .col-6
       .form-group
         %label Challenge ZIP Code
@@ -52,7 +56,8 @@
         %label Challenge Prize
         = f.text_field :prize, class: "form-control #{form_error_class(@challenge, :prize)}"
         = model_error_display(@challenge, :prize)
-    .col-6
+  .row.justify-content-center
+    .col-lg-6
       .form-group
         %label Challenge Details
         = f.text_area :description, class: "form-control #{form_error_class(@challenge, :description)}", required: true
@@ -63,6 +68,7 @@
         %i.c-pointer.fas.fa-info-circle.fa{ title: 'Optional code to distribute to the Users during a challenge for the purpose of verifying actual challenge completion via its submission by the Users'}
         = f.text_field :verification_code, class: "form-control #{form_error_class(@challenge, :verification_code)}"
         = model_error_display(@challenge, :verification_code)
+  .row.justify-content-center
     .col-6.border-top.pt-2
       .form-group
         %label Challenge Winner

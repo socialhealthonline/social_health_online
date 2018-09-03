@@ -96,6 +96,10 @@
   = @member.public_member? ? 'Yes' : 'No'
 
 %p
+  %strong Service Fee Waiver - Charitable Org:
+  = @member.charity_waiver? ? 'Yes' : 'No'
+
+%p
   = link_to console_members_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do
     %i.fas.fa-arrow-left
     Back
