@@ -40,7 +40,7 @@
               =f.select :event_category, EVENT_CATEGORIES, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_category)}" }
               = model_error_display(@social_event_log, :event_category)
             .form-group
-              %label(for="social_event_log_venue") Event Location (e.g., Central Park, my house, etc.)
+              %label(for="social_event_log_venue") Event Location (E.g., Central Park, my house, etc.)
               = f.text_field :venue, class: "form-control #{form_error_class(@social_event_log, :venue)}"
               = model_error_display(@social_event_log, :venue)
             .form-group
