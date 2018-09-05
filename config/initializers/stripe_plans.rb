@@ -1,11 +1,11 @@
 STRIPE_PLANS = if Rails.env.production?
                  {
-                   Monthly: 'plan_D6JtC9HwOZsR69',
-                   Annual: 'plan_D8hmuJAa05mPhk'
+                   Monthly: 'plan_DVVfJm6bmyYQtm',
+                   Annual: 'plan_DVVfUzzanSpWwy'
                  }
                else
                  {
-                   Monthly: 'plan_D7C6wrHdqSWmG2',
-                   Annual: 'plan_D8Cd1PBcQBAvRm'
+                   Monthly: 'plan_DVVYdBvc0KnhhV',
+                   Annual: 'plan_DVW4C1tgbb49Fy'
                  }
                end
