@@ -32,6 +32,10 @@
                               "aria-valuenow" => "#{@progress}", :role => "progressbar", :style => "width:#{@progress}%"}
               ="#{@progress}%"
 
+    .col-12.pt-3
+      %p.text-center
+        =link_to 'Log Events', social_tracker_log_path, class: 'btn btn-primary', style: 'border: 1px solid black'
+
   .row.my-3
     .col
       %h3.notification-title

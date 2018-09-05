@@ -25,7 +25,7 @@
                   %label(for="challenge_completion_date") Challenge Completion Date
                   = text_field_tag :challenge_completion_date, params[:challenge_completion_date], :placeholder => "E.g., January 5, 2018", autofocus: true, class: 'form-control', required: true
                 .form-group
-                  %label(for="verification_code") Challenge Verification Code (Only If Applicable to the Challenge)
+                  %label(for="verification_code") Challenge Verification Code (note: only provide information here when it is applicable to completed challenges)
                   = text_field_tag :verification_code, params[:verification_code], :placeholder => "E.g., A1B2C3", autofocus: true, class: 'form-control'
                 .row.justify-content-center
                   = submit_tag 'Send', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
