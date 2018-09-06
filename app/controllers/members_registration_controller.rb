@@ -40,6 +40,7 @@ class MembersRegistrationController < ApplicationController
       :state,
       :zip,
       :phone,
+      :org_type,
       :url,
       :contact_name,
       :contact_email,
