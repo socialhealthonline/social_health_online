@@ -42,12 +42,17 @@
                 = f.text_field :zip, placeholder: 'E.g., 12345', required: true, class: "form-control #{form_error_class(@member, :zip)}"
                 = model_error_display(@member, :zip)
           .row
-            .col-lg-6
+            .col-lg-3
               .form-group
                 %label Phone
                 %i.c-pointer.fas.fa-info-circle.fa{ title: 'Provide the area code and phone number of the registering organization here in ten digits' }
                 = f.text_field :phone, placeholder: 'E.g., 8662825789', required: true, class: "form-control #{form_error_class(@member, :phone)}"
                 = model_error_display(@member, :phone)
+            .col-lg-3
+              .form-group
+                %label Organization Type
+                %i.c-pointer.fas.fa-info-circle.fa{ title: 'Select a category type your organization falls under' }
+                = f.select :org_type, ORG_TYPES, {}, { class: "form-control custom-select #{form_error_class(@member, :org_type)}" }
             .col
               .form-group
                 %label Website
