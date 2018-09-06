@@ -20,9 +20,8 @@
               = f.select :state, US_STATES, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :state)}" }
               = model_error_display(@social_event_log, :state)
             .form-group
-              %label(for="social_event_log_city")
-                Event City (note: if the city is not listed below, select the nearest metro area)
-              = f.select :city, {}, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :city)}" }
+              %label(for="social_event_log_city") Event City
+              = f.text_field :city, class: "form-control #{form_error_class(@social_event_log, :city)}"
               = model_error_display(@social_event_log, :city)
             .form-group
               %label(for="social_event_log_event_type") Event Type
