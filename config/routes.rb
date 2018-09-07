@@ -208,6 +208,9 @@ Rails.application.routes.draw do
   # My Achievements
   get "my_achievements" => "my_achievements#index"
 
+  # My Events
+  get "my_events" => "my_events#index"
+
   # My Favorites
   get "my_favorites" => "my_favorites#index"
 

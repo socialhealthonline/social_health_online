@@ -1,0 +1,31 @@
+- page_title 'My Events'
+
+.container
+  .row
+    .col.py-3
+      %h1.text-info.text-center My Events
+
+  .row.my-3
+    .col
+      %h3.notification-title
+        %strong My Social Events
+      %div.table-wrapper-2.table-hover#events-feed{:style => "border-radius: 12px;"}
+        %table.table
+          %thead.mdb-color.lighten-4.text-center
+            %tr
+              %th Event Title
+              %th Event Date/Time
+              %th RSVP
+              %th Hosted By
+          %tbody
+          - @events.each do |event|
+            %tr.text-center.bg-white
+              %td= link_to "#{event.title}", community_event_path(authenticated_user.member, event)
+              %td= short_date_time(event.start_at, event.time_zone)
+              %td= home_events_status(event.status)
+              %td= event.member.name
+            %tr.table-divider
+        %p= paginate @events
+        - if @events.none?
+          %div.text-muted.pb-3.text-center
+            %em No RSVPed events.
