@@ -60,3 +60,7 @@
         - if @events.none?
           %div.text-muted.pb-3.text-center
             %em No RSVPed events.
+
+    .col-12.pt-3
+      %p.text-center
+        =link_to 'Event Search', event_search_path, class: 'btn btn-primary', style: 'border: 1px solid black'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_03_141321) do
+ActiveRecord::Schema.define(version: 2018_09_07_161345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2018_09_03_141321) do
     t.integer "user_id"
     t.string "display_name"
     t.datetime "start_at"
+    t.integer "likes"
     t.string "location"
     t.string "address"
     t.string "zip"
@@ -86,7 +87,6 @@ ActiveRecord::Schema.define(version: 2018_09_03_141321) do
     t.string "name"
     t.date "challenge_start_date"
     t.date "challenge_end_date"
-    t.string "description"
     t.string "url"
     t.string "city"
     t.string "state"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2018_09_03_141321) do
     t.bigint "member_id"
     t.date "completion_date"
     t.string "winner"
+    t.text "description"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -384,7 +385,6 @@ ActiveRecord::Schema.define(version: 2018_09_03_141321) do
     t.date "first_login"
     t.string "phone_extension"
     t.text "group"
-    t.string "favorites"
     t.boolean "guest", default: false
     t.boolean "hide_info_on_leaderboard", default: false
     t.index ["auth_token"], name: "index_users_on_auth_token"
