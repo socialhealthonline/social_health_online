@@ -68,10 +68,6 @@ Rails.application.routes.draw do
   # Verify ACH account
   resource :ach, controller: 'ach', only: [:edit, :update]
 
-  # Rewards Winners
-  get "rewards_winners" => "rewards_winners#index"
-  get "console/rewards/:id" => "rewards_winners#reward_details", as: :reward_details, controller: :rewards_winners
-
   # Communities
   resources :members, path: :communities, as: :community, controller: :communities do
     resources :events, only: [:index, :show] do
@@ -126,6 +122,10 @@ Rails.application.routes.draw do
     get "console/fitness_plans/:id" => "fitness#plan_details", as: :plan_details
   end
 
+  # Rewards
+  resources :rewards, only: [:index, :reward_details] do
+    get "console/rewards/:id" => "rewards#reward_details", as: :reward_details
+  end
   # Dashboard
   get "home" => "home#index"
 

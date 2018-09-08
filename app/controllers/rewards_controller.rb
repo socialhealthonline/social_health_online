@@ -1,4 +1,4 @@
-class RewardsWinnersController < ApplicationController
+class RewardsController < ApplicationController
   before_action :require_authentication
   before_action :set_reward, only: [:reward_details]
 

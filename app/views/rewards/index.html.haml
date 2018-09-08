@@ -27,7 +27,7 @@
             %tbody.bg-white
               - @rewards.each do |reward|
                 %tr
-                  %td= link_to (reward.month), reward_details_path(reward), class: 'text-info'
+                  %td= link_to (reward.month), console_reward_path(reward)
                 %tr.table-divider
           = paginate @rewards
   - else

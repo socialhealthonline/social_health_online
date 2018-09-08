@@ -1,0 +1,54 @@
+.container{ :style => "overflow:hidden;" }
+  .row
+    .col.py-3
+      %h1.brand-primary.text-center= @reward.month
+.container{ :style => "overflow:hidden;" }
+  .row.justify-content-center.text-center
+    .col-lg-8
+      .settings-box.pb-2{:style => "border-radius: 12px;"}
+        %p.mb-2
+        - if @reward.periodone.present?
+          %strong  Period:
+          = @reward.periodone
+        %p.mb-1
+        - if @reward.winnersone.present?
+          %strong  Winners:
+          = @reward.winnersone
+        %p.mb-2
+        - if @reward.periodtwo.present?
+          %strong  Period:
+          = @reward.periodtwo
+        %p.mb-1
+        - if @reward.winnerstwo.present?
+          %strong  Winners:
+          = @reward.winnerstwo
+        %p.mb-2
+        - if @reward.periodthree.present?
+          %strong  Period:
+          = @reward.periodthree
+        %p.mb-1
+        - if @reward.winnersthree.present?
+          %strong  Winners:
+          = @reward.winnersthree
+        %p.mb-2
+        - if @reward.periodfour.present?
+          %strong  Period:
+          = @reward.periodfour
+        %p.mb-1
+        - if @reward.winnersfour.present?
+          %strong  Winners:
+          = @reward.winnersfour
+        %p.mb-2
+        - if @reward.periodfive.present?
+          %strong  Period:
+          = @reward.periodfive
+        %p.mb-1
+        - if @reward.winnersfive.present?
+          %strong  Winners
+          = @reward.winnersfive
+          %p.pb-2
+.container
+  %p.pt-2.py-3
+    = link_to 'javascript:history.back()', class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+      %i.fas.fa-arrow-left
+      Back
