@@ -72,10 +72,14 @@
               %i.fas.fa-list-alt.fa-2x.pt-2{:title => 'Fitness Plans'}
               <p class ="under_label_text">Fitness Plans</p>
             %span.px-1
+            = link_to rewards_winners_path do
+              %i.fas.fa-dollar-sign.fa-2x.pr-1.pt-2{:title => 'Rewards Winners'}
+              <p class ="under_label_text">Rewards Winners</p>
+          .row.justify-content-center.text-center.font-weight-bold.pt-3
             = link_to media_center_path do
               %i.fas.fa-folder.fa-2x.pr-1.pt-2{:title => 'Media Center'}
               <p class ="under_label_text">Media Center</p>
-          .row.justify-content-center.text-center.font-weight-bold.pt-3
+            %span.px-1
             = link_to sitemap_path do
               %i.fas.fa-th.fa-2x.pt-2{:title => 'Sitemap'}
               <p class ="under_label_text">Sitemap</p>
@@ -87,19 +91,23 @@
             = link_to profile_path do
               %i.fas.fa-user.fa-2x.pt-2{:title => 'My Profile'}
               <p class ="under_label_text">My Profile</p>
-            %span.px-1
+          .row.justify-content-center.text-center.font-weight-bold.pt-3
             = link_to my_achievements_path do
               %i.fas.fa-award.fa-2x.pt-2{:title => 'My Achievements'}
               <p class ="under_label_text">My Achievements</p>
-          .row.justify-content-center.text-center.font-weight-bold.pt-3
+            %span.px-1
             = link_to my_bulletins_path do
               %i.fas.fa-sticky-note.fa-2x.pt-2{:title => 'My Bulletins'}
               <p class ="under_label_text">My Bulletins</p>
             %span.px-1
+            = link_to my_events_path do
+              %i.fas.fa-calendar.fa-2x.pt-2{:title => 'My Events'}
+              <p class ="under_label_text">My Events</p>
+            %span.px-1
             = link_to my_settings_path do
               %i.fas.fa-wrench.fa-2x.pt-2{:title => 'My Settings'}
               <p class ="under_label_text">My Settings</p>
-            %span.px-1
+          .row.justify-content-center.text-center.font-weight-bold.pt-3
             = link_to issues_path do
               %i.fas.fa-flag.fa-2x.pt-2{:title => 'Report Issues'}
               <p class ="under_label_text">Report Issues</p>

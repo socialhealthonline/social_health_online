@@ -9,7 +9,7 @@
         .row.justify-content-center
           .col-lg-10
             .form-group
-              %label(for="title") Month and Year
+              %label(for="title") Plan Month and Year
               = f.text_field :month, autofocus: true, class: "form-control #{form_error_class(@target, :month)}", required: true
               = model_error_display(@target, :month)
         .row.justify-content-center

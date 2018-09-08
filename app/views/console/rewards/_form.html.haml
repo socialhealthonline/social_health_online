@@ -1,0 +1,74 @@
+.row.justify-content-center.mb-3
+  .col-md-8
+    .card.card-box
+      .card-body.justify-content-center.pt-0
+      = form_with model: @reward, url: [:console_rewards], local: true do |f|
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="title") Notice Month and Year
+              = f.text_field :month, autofocus: true, :placeholder => "E.g., August 2018", class: "form-control #{form_error_class(@reward, :month)}", required: true
+              = model_error_display(@reward, :month)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Period One
+              = f.text_field :periodone, autofocus: true, :placeholder => "E.g., July 30th - August 5th OR August 2018", class: "form-control #{form_error_class(@reward, :periodone)}", required: true
+              = model_error_display(@reward, :periodone)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Winners
+              = f.text_area :winnersone, autofocus: true, :placeholder => "E.g., State - Member - Display Name - Prize; State - Member - Display Name - Prize; Etc. ", class: "form-control #{form_error_class(@reward, :winnersone)}", required: true
+              = model_error_display(@reward, :winnersone)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Period Two
+              = f.text_field :periodtwo, autofocus: true, class: "form-control #{form_error_class(@reward, :periodtwo)}"
+              = model_error_display(@reward, :periodtwo)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Winners
+              = f.text_area :winnerstwo, autofocus: true, class: "form-control #{form_error_class(@reward, :winnerstwo)}"
+              = model_error_display(@reward, :winnerstwo)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Period Three
+              = f.text_field :periodthree, autofocus: true, class: "form-control #{form_error_class(@reward, :periodthree)}"
+              = model_error_display(@reward, :periodthree)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Winners
+              = f.text_area :winnersthree, autofocus: true, class: "form-control #{form_error_class(@reward, :winnersthree)}"
+              = model_error_display(@reward, :winnersthree)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Period Four
+              = f.text_field :periodfour, autofocus: true, class: "form-control #{form_error_class(@reward, :periodfour)}"
+              = model_error_display(@reward, :periodfour)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Winners
+              = f.text_area :winnersfour, autofocus: true, class: "form-control #{form_error_class(@reward, :winnersfour)}"
+              = model_error_display(@reward, :winnersfour)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Period Five
+              = f.text_field :periodfive, autofocus: true, class: "form-control #{form_error_class(@reward, :periodfive)}"
+              = model_error_display(@reward, :periodfive)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Winners
+              = f.text_area :winnersfive, autofocus: true, class: "form-control #{form_error_class(@reward, :winnersfive)}"
+              = model_error_display(@reward, :winnersfive)
+        .mb-3.text-center
+          = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, style: 'border: 1px solid black;'
+          = link_to 'Cancel', console_rewards_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'

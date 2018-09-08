@@ -17,6 +17,10 @@
             .notification-text.text-left.pb-2= simple_format(notification.body)
         %p= paginate @notifications
 
+    .col-12.pt-3
+      %p.text-center
+        =link_to 'Rewards Winners', rewards_winners_path, class: 'btn btn-primary', style: 'border: 1px solid black'
+
   .row.my-3
     .col
       %h3.notification-title

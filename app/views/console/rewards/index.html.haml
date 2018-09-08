@@ -1,0 +1,44 @@
+- page_title 'Rewards Winners'
+
+%div#profile_partial
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.pb-3.border-bottom
+  %h1.h3.brand-primary Rewards Winners
+  %div
+    = link_to new_console_reward_path, class: 'btn btn-primary', style: 'border: 1px solid black' do
+      %i.fas.fa-plus-circle
+      Add Rewards Notice
+
+- if @rewards.any?
+  .row.justify-content-center
+    .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;'}
+      %table.table.table-borderless.align-items-center.table-hover
+        %thead
+          %tr
+            %th
+            %th= sort_link 'month', 'Results'
+            %th
+            %th= sort_link 'created_at', 'Added On'
+
+        %tbody
+          - @rewards.each.with_index(1) do |reward, i|
+            %tr.bg-white
+              %td
+              %td= link_to truncate("#{i}. #{reward.month}"), console_reward_path(reward)
+              %td
+              %td= time_in_cdt(reward.created_at, '%m/%d/%Y, %I:%M %p %Z')
+              %td.w-10.text-right
+                .dropdown
+                  = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{reward.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
+                    %i.fas.fa-ellipsis-h
+                  .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{reward.id}")
+                    = link_to edit_console_reward_path(reward), title: 'Edit', class: 'dropdown-item text-info' do
+                      %i.far.fa-edit
+                      Edit
+                    = link_to console_reward_path(reward), title: 'Delete', id: "delete_reward_#{reward.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this rewards notice. Press OK to continue.' } do
+                      %i.far.fa-trash-alt
+                      Delete
+            %tr.table-divider
+      %p= paginate @rewards
+- else
+  %p.pt-2.text-muted.text-center
+    %em No sweepstakes results were found.

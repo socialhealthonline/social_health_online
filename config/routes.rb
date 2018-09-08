@@ -42,10 +42,6 @@ Rails.application.routes.draw do
   get "contact" => "contact#new"
   post "contact" => "contact#create"
 
-  # Matchmakere
-  get 'matchmaker' => 'matchmakers#index'
-  get 'fetch_user' => 'matchmakers#fetch_user'
-
   # Authentication vanity routes
   get "signin" => "sessions#new", as: "signin"
   delete "signout" => "sessions#destroy", as: "signout"
@@ -61,11 +57,20 @@ Rails.application.routes.draw do
   # My settings
   resource :my_settings, only: [:show, :update]
 
+  # Matchmaker
+  get 'matchmaker' => 'matchmakers#index'
+  get 'fetch_user' => 'matchmakers#fetch_user'
+
   # Bulletin Board
   get 'bulletins' => 'bulletins#bulletins'
 
+
   # Verify ACH account
   resource :ach, controller: 'ach', only: [:edit, :update]
+
+  # Rewards Winners
+  get "rewards_winners" => "rewards_winners#index"
+  get "console/rewards/:id" => "rewards_winners#reward_details", as: :reward_details, controller: :rewards_winners
 
   # Communities
   resources :members, path: :communities, as: :community, controller: :communities do
@@ -102,6 +107,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # Social Tracker
   namespace :social_tracker do
     get "log" => "events#new"
     post "log" => "events#create"
@@ -109,6 +115,7 @@ Rails.application.routes.draw do
     get "history/:id" => "events#show"
   end
 
+  # Social Fitness
   namespace :social_fitness do
     get "log" => "fitness#new"
     post "log" => "fitness#create"
@@ -133,6 +140,7 @@ Rails.application.routes.draw do
       end
     end
     resources :news
+    resources :rewards
     resources :manage_bulletins
     resources :event_links
     resources :fitness_plans

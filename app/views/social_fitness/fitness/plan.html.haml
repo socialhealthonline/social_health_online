@@ -13,6 +13,11 @@
           While every person is unique, and we all need to exercise
           different aspects of our social lives, this fitness plan acts as a general
           guide with weekly social targets for improving your wellness with others.
+
+  .row.my-3
+    .col
+      %h3.notification-title
+        %strong Monthly Plans
   - if @targets.any?
     .row.text-center.mb-3
       .col-sm-4.offset-sm-4
@@ -20,7 +25,7 @@
           %table.table.align-items-center.text-center.table-hover.table-sm
             %thead.mdb-color.lighten-4
               %tr
-                %th Monthly Plan
+                %th Plans
             %tbody
             - @targets.each do |target|
               %tr.bg-white
