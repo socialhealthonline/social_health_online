@@ -78,22 +78,36 @@
             %h5.mb-2.text-info
               The Members
       .row
-        .col.mb-3.text-left
-          %p.pb-2
-            Our Member organizations are a cornerstone for our service because they are the gatekeepers that
-            enroll Users and manage Communities. Being a Member is ideal for employers, healthcare organizations, educators,
-            community organizations and countless other types of organizations.
-            .row.justify-content-center
-              .col-md-6.col-lg-4
-                .card.pricing.card-lg
-                  .card-body.border
-                    %h5
-                    %span.display-3.price-collapse.collapse.show $1
-                    %span.text-small Per User / Month
-                    %span.h6.font-weight-bold Annual Subscription
-                    %span.text-small Minimum of 5 Users Per Member Account
-                    %p.py-1
-                    = link_to 'Become A Member', new_members_registration_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
+        .col.text-left
+          Our Member organizations are a cornerstone for our service because they are the gatekeepers that
+          enroll Users and manage Communities. Being a Member is beneficial for all types of organizations, including employers,
+          interest groups, and educators, because of the valuable results our service can provide:
+      .row.mb-3.px-2
+        .col-md-3
+        .col-md-6.pl-3.pr-1.text-left
+          %p
+          %li
+            %a{ href: 'https://hero-health.org/wp-content/uploads/2015/02/HPP-Business-Leader-Survey-Full-Report_FINAL.pdf',
+              title: 'Recognizable improvements in people\'s morale and level of engagement in organizations.', target: '_blank' }> Recognizable improvements in people's morale and level of engagement in organizations.
+          %p
+          %li
+            %a{ href: 'https://www.liebertpub.com/doi/full/10.1089/pop.2011.0083',
+              title: 'Sustainable increases in the adoption of healthy behaviors.', target: '_blank' }> Sustainable increases in the adoption of healthy behaviors.
+          %p
+          %li
+            %a{ href: 'https://pdfs.semanticscholar.org/672b/12e1fb6138f955e8153e7fffbf20aa73c559.pdf',
+              title: 'Simultaneous growth of productivity and reduction of health risks.', target: '_blank' }> Simultaneous growth of productivity and reduction of health risks.
+      .row.justify-content-center
+        .col-md-6.col-lg-4
+          .card.pricing.card-lg.mb-4
+            .card-body.border
+              %h5
+              %span.display-3.price-collapse.collapse.show $1
+              %span.text-small Per User / Month
+              %span.h6.font-weight-bold Annual Subscription
+              %span.text-small Minimum of 5 Users Per Member Account
+              %p.py-1
+              = link_to 'Become A Member', new_members_registration_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
       #Users
         .row.pt-4.border-top
           .col.text-center
