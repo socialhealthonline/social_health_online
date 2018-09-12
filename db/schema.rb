@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_171749) do
+ActiveRecord::Schema.define(version: 2018_09_12_152659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -296,19 +296,14 @@ ActiveRecord::Schema.define(version: 2018_09_07_171749) do
 
   create_table "rewards", force: :cascade do |t|
     t.string "source_type"
-    t.string "month"
-    t.string "periodone"
-    t.string "periodtwo"
-    t.string "periodthree"
-    t.string "periodfour"
-    t.string "periodfive"
-    t.text "winnersone"
-    t.text "winnerstwo"
-    t.text "winnersthree"
-    t.text "winnersfour"
-    t.text "winnersfive"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "period"
+    t.string "display_name"
+    t.integer "member_id"
+    t.integer "user_id"
+    t.string "prize"
+    t.string "state"
   end
 
   create_table "rsvps", force: :cascade do |t|
