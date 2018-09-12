@@ -383,7 +383,8 @@ table.footable > tbody > tr > td, table.footable > tbody > tr > th {
 #scroll-box-announcements {
   height: 265px;
   overflow: auto;
-  width: 100%;
+  margin: auto;
+  width: 85%;
   padding: 24px;
   position: relative;
   bottom: 50px;

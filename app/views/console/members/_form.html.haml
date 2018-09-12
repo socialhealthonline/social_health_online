@@ -129,6 +129,11 @@
   .col-lg-4
     .form-group
       .form-check
+        = f.check_box :charity_waiver, class: 'form-check-input'
+        %label.form-check-label(for="charity_waiver") Service Fee Waiver - Charitable Org
+  .col-lg-4
+    .form-group
+      .form-check
         = f.check_box :hide_suggest_events, class: 'form-check-input'
         %label.form-check-label(for="hide_suggest_events") Show Suggest Events Button
   .col-lg-4
@@ -136,11 +141,7 @@
       .form-check
         = f.check_box :hide_challenges, class: 'form-check-input'
         %label.form-check-label(for="hide_challenges") Hide the Challenges Button
-  .col-lg-4
-    .form-group
-      .form-check
-        = f.check_box :charity_waiver, class: 'form-check-input'
-        %label.form-check-label(for="charity_waiver") Service Fee Waiver - Charitable Org
+
 
 .row.pt-2.border-top
   .col-lg-6
