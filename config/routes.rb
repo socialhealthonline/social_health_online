@@ -123,9 +123,8 @@ Rails.application.routes.draw do
   end
 
   # Rewards
-  resources :rewards, only: [:index, :reward_details] do
-    get "console/rewards/:id" => "rewards#reward_details", as: :reward_details
-  end
+  get "rewards" => "rewards#index"
+
   # Dashboard
   get "home" => "home#index"
 

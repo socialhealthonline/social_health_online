@@ -1,13 +1,8 @@
 class RewardsController < ApplicationController
   before_action :require_authentication
-  before_action :set_reward, only: [:reward_details]
 
   def index
     @rewards = Reward.all.order(created_at: :desc).page(params[:page]).per(10)
-  end
-
-  def reward_details
-    render :reward_details
   end
 
   private
@@ -17,7 +12,7 @@ class RewardsController < ApplicationController
   end
 
   def reward_params
-    params.require(:reward).permit(:month, :source_type, :periodone, :periodtwo, :periodthree, :periodfour, :periodfive, :winnersone, :winnerstwo, :winnersthree, :winnersfour, :winnersfive)
+    params.require(:reward).permit(:period, :display_name, :member_name, :state, :prize, :created_at)
   end
 
 end

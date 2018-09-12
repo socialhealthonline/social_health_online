@@ -47,11 +47,11 @@ class Console::RewardsController < ConsoleController
   end
 
   def reward_params
-    params.require(:reward).permit(:month, :source_type, :periodone, :periodtwo, :periodthree, :periodfour, :periodfive, :winnersone, :winnerstwo, :winnersthree, :winnersfour, :winnersfive)
+    params.require(:reward).permit(:period, :display_name, :member_name, :state, :prize, :created_at)
   end
 
   def sort_column
-    %w[month created_at].include?(params[:column]) ? params[:column] : 'month'
+    %w[month created_at].include?(params[:column]) ? params[:column] : 'period'
   end
 
   def sort_direction

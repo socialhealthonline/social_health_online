@@ -1,3 +1,3 @@
 class Reward < ApplicationRecord
-  validates :month, presence: true
+  validates :period, presence: true
 end

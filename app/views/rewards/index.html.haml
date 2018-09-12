@@ -9,7 +9,7 @@
     .col
       %p.text-center.p-2{style: "border: 1px solid black;"}
         %strong
-          The winners of our sweepstakes are shown here, so visit this page regularly to see if you've been selected for a reward!
+          The winners of our sweepstakes are shown here, so visit this page regularly to see if you've been selected for a reward.
 
   .row.my-3
     .col
@@ -17,18 +17,25 @@
         %strong Sweepstakes Results
   - if @rewards.any?
     .row.text-center.mb-3
-      .col-sm-4.offset-sm-4
-        .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
-          %table.table.align-items-center.text-center.table-hover.table-sm
+      .col
+        %div.table-wrapper-2.table-hover#events-feed{:style => "border-radius: 12px;"}
+          %table.table.text-center
             %thead.mdb-color.lighten-4
               %tr
-                %th
-                  Results
+                %th Period
+                %th Display Name
+                %th Member
+                %th State
+                %th Prize
             %tbody.bg-white
               - @rewards.each do |reward|
                 %tr
-                  %td= link_to (reward.month), console_reward_path(reward)
-                %tr.table-divider
+                  %td= reward.period
+                  %td= reward.display_name
+                  %td= reward.member_name
+                  %td= reward.state
+                  %td= reward.prize
+                  %tr.table-divider
           = paginate @rewards
   - else
     %p.text-muted.text-center
