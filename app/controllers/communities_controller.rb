@@ -12,7 +12,7 @@ class CommunitiesController < ApplicationController
   end
 
   def leaderboard
-    @users = User.where(member_id: authenticated_user.member_id, hide_info_on_leaderboard: false).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+    @users = User.where(member_id: authenticated_user.member_id, user_status: :enabled, hide_info_on_leaderboard: false).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
   def challenge_index
