@@ -5,9 +5,15 @@
     .col.py-3
       %h1.text-info.text-center My Achievements
 
+  .row
+    .col-md-12
+      %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
+        %strong
+          You deserve credit for the time and energy you devote towards your participation in social events, so as you log more events your increased social activity will be recognized here.
+
   .row.mb-3
     .col
-      %h3.notification-title
+      %h3.notification-title.mb-2
         %strong My Social Health
       %div.table-wrapper-2.py-2#events-feed{:style => "border-radius: 12px;"}
         %h5.notification-title Social Health Level
@@ -21,7 +27,7 @@
               ="#{@progress}%"
   .row.mb-3
     .col
-      %h3.notification-title
+      %h3.notification-title.mb-2
         %strong My Merit Badges
       .py-2.px-2.badges-box{:style => "border-radius: 12px; overflow-x:hidden;"}
         .row-justify-content-center

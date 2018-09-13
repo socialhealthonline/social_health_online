@@ -7,7 +7,7 @@
 
   .row.my-3
     .col
-      %h3.notification-title
+      %h3.notification-title.mb-2
         %strong Notifications
       #scroll-box{:style => "border-radius: 12px;"}
         - @notifications.each do |notification|
@@ -23,7 +23,7 @@
 
   .row.my-3
     .col
-      %h3.notification-title
+      %h3.notification-title.mb-2
         %strong My Social Health
       %div.table-wrapper-2.py-2#events-feed{:style => "border-radius: 12px;"}
         %h5.notification-title Social Health Level
@@ -42,7 +42,7 @@
 
   .row.my-3
     .col
-      %h3.notification-title
+      %h3.notification-title.mb-2
         %strong My Social Events
       %div.table-wrapper-2.table-hover#events-feed{:style => "border-radius: 12px;"}
         %table.table

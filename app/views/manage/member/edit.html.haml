@@ -101,7 +101,7 @@
           .col-lg-3
             .form-group
               %label(for="member_primary_manager_id") Primary Manager
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'This User acts as your Account Manager for Social Health Online and is the principal Manager for your Community'}
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'This User performs as your organization\'s principal Community Manager in Social Health Online'}
               = f.select :primary_manager_id, options_from_collection_for_select(@managers, 'id', 'name', @member.primary_manager_id), { include_blank: false }, { class: 'form-control custom-select' }
               = model_error_display(@member, :primary_manager_id)
         .row
