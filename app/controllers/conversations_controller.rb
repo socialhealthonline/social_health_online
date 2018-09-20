@@ -39,7 +39,7 @@ class ConversationsController < ApplicationController
       conversation.opt_out(authenticated_user)
       conversation.mark_as_deleted(authenticated_user)
     end
-    redirect_to mailbox_trash_path
+    redirect_to mailbox_inbox_path
   end
 
   private
