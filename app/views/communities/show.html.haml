@@ -65,8 +65,6 @@
       .col-12.pt-3
         %p.text-center
           =link_to 'Contact Manager', new_conversation_path(recipient_id: @member.primary_manager&.id), target: '_blank', class: 'btn btn-primary', style: 'border: 1px solid black'
-          - if @member.hide_suggest_events?
-            =link_to 'Suggest Events', event_suggestions_path, class: 'btn btn-primary', style: 'border: 1px solid black'
 
 %section.flush-with-above.space-0
   %div
@@ -121,6 +119,10 @@
             %h3.notification-title.pb-1
               %strong
                 Community Events Calendar
+        - if @member.hide_suggest_events?
+          .row
+            .col.text-center.mt-1.mb-3
+              =link_to 'Suggest Events', event_suggestions_path, class: 'btn btn-primary', style: 'border: 1px solid black'
         .container
           .row
             .col-12.pb-4
@@ -133,9 +135,19 @@
       .container
         .row.mt-0.mb-2
           .col
-            %h3.notification-title.pb-1.mb-3
+            %h3.notification-title.pb-0.mb-0
               %strong
                 Community User Directory
+        .row.justify-content-center.mt-0.mb-2
+          .col-md-4.mb-2.pb-1.text-center
+            %h5.pt-0.mb-0 Filter - By Display Name
+            <p class ="font-weight-bold mb-2 under_label_text">(note: case sensitive)</p>
+            .col-md-12.justify-content-center
+              = form_with url: "/communities/#{@member.slug}/", method: :get, local: true do |f|
+                .form-group.form-inline.justify-content-center#explore_communities_form
+                = f.text_field :display_name, placeholder: 'Display Name', class: 'form-control find_by_city', style: "width: 100%;"
+                %p
+                = f.button "Filter", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
         .row.justify-content-center
           .col-7.pt-3.pb-1
             #scroll-box-announcements{ style: "border: 2px solid black; border-radius: 12px; width: 100%;" }
@@ -147,7 +159,6 @@
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: user }" } }
                     =user.display_name
               %p= paginate @users
-
 #community-profile-modal.modal.fade{ 'aria-hidden' => 'true', 'aria-labelledby' => 'CommunityProfileModalLabel', role: 'dialog', tabindex: '-1' }
   .modal-dialog{ role: 'document' }
     .modal-content
