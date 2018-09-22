@@ -55,5 +55,8 @@
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: bulletin.user }" } }
                   =bulletin.user.display_name
             %tr.table-divider
-        %div.container.pagination.justify-content-center
-          %p= paginate @bulletins unless @bulletins.empty?
+        %p= paginate @bulletins
+        - if @bulletins.none?
+          %p.text-muted.mb-3.text-center
+            %em No search results.
+%br

@@ -103,12 +103,17 @@
       %label(for="user_bio") Bio
       = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@user, :bio)}"
       = model_error_display(@user, :bio)
-.row
-  .col-6
+.row.pt-2.border-top
+  .col
     .form-group
       %label(for="user_group") Group
       = f.text_field :group, class: "form-control #{form_error_class(@user, :group)}"
       = model_error_display(@user, :group)
+  .col
+    .form-group
+      %label(for="user_member_id") Member Name
+      = f.select :member_id, options_from_collection_for_select(@members, :id, :name, @admin.member_id), {include_blank: true}, { class: "custom-select form-control #{form_error_class(@admin, :member)}" }
+      = model_error_display(@admin, :member)
 .row
   .col
     .card
@@ -117,12 +122,6 @@
           = f.check_box :manager, class: 'form-check-input'
           %label.form-check-label(for="user_manager") Manager
         %small User Performs as a Community Manager
-  .col
-    .form-group
-      %label(for="user_member_id") Member Name
-      = f.select :member_id, options_from_collection_for_select(@members, :id, :name, @admin.member_id), {include_blank: true}, { class: "custom-select form-control #{form_error_class(@admin, :member)}" }
-      = model_error_display(@admin, :member)
-.row
   .col
     .card
       .card-body

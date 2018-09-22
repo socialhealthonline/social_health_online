@@ -17,21 +17,21 @@
     .col
       %h3.notification-title
         %strong Monthly Plans
-  - if @targets.any?
-    .row.text-center.mb-3
-      .col-sm-4.offset-sm-4
-        .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
-          %table.table.align-items-center.text-center.table-hover.table-sm
-            %thead.mdb-color.lighten-4
-              %tr
-                %th Plans
-            %tbody
-            - @targets.each do |target|
-              %tr.bg-white
-                %td= link_to target.month, social_fitness_plan_details_path(target)
-              %tr.table-divider
-          %div.container.pagination.justify-content-center
-            %p= paginate @targets
-  - else
-    %p.pb-3.text-muted.text-center
-      %em No fitness plans were found.
+
+  .row.text-center.mb-3
+    .col-sm-4.offset-sm-4
+      .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
+        %table.table.align-items-center.text-center.table-hover.table-sm
+          %thead.mdb-color.lighten-4
+            %tr
+              %th Plans
+          %tbody
+          - @targets.each do |target|
+            %tr.bg-white
+              %td= link_to target.month, social_fitness_plan_details_path(target)
+            %tr.table-divider
+        %div.container.pagination.justify-content-center
+          %p= paginate @targets
+          - if @targets.none?
+            %p.pb-3.text-muted.text-center
+              %em No fitness plans were found.

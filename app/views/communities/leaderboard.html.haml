@@ -17,7 +17,7 @@
   .row.mb-3.justify-content-center
     .col-md-4
       .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
-        %table.table.align-items-center.text-center.table-hover.table-sm
+        %table.table.align-items-center.text-center.table-hover.table-sm.mb-4
           %thead
             %tr
               %th= sort_link 'display_name', 'Display Name'
@@ -33,6 +33,9 @@
           %tr.table-divider
         %div.container.pagination.justify-content-center
           %p= paginate @users unless @users.empty?
+          - if @users.none?
+            %p.pb-5.text-muted.text-center
+              %em No User progress is available.
 
   %p.pb-3
     = link_to my_community_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do

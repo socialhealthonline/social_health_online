@@ -109,7 +109,7 @@
       %label(for="member_bio") Bio
       = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@member, :bio)}"
       = model_error_display(@member, :bio)
-.row
+.row.pt-2.border-top
   .col-lg-4
     .form-group
       .form-check.mb-3

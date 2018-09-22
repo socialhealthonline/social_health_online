@@ -36,34 +36,33 @@
             %i.fas.fa-plus-circle
             Add Announcement
 
-  - if @announcements.any?
-    .table-responsive.text-center{ :style => 'border: 2px solid black; border-radius: 12px;'}
-      %table.table.table-borderless.table-hover
-        %thead
-          %tr
-            %th= sort_link 'title', 'Announcement Title'
-            %th= sort_link 'body', 'Announcement Body Preview'
-            %th= sort_link 'created_at', 'Added On'
-        %tbody
-          - @announcements.each.with_index(1) do |announcement, i|
-            %tr.bg-white
-              %td= link_to truncate("#{i}. #{announcement.title}"), manage_announcement_path(announcement)
-              %td= truncate(announcement.body)
-              %td= time_in_cdt(announcement.created_at, '%m/%d/%Y')
-              %td.w-10.text-right
-                .dropdown
-                  = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{announcement.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
-                    %i.fas.fa-ellipsis-h
-                  .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{announcement.id}")
-                    = link_to edit_manage_announcement_path(announcement), title: 'Edit', class: 'dropdown-item text-info' do
-                      %i.far.fa-edit
-                      Edit
-                    = link_to manage_announcement_path(announcement), title: 'Delete', id: "delete_announcement_#{announcement.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this announcement. Press OK to continue.' } do
-                      %i.far.fa-trash-alt
-                      Delete
-            %tr.table-divider
-      %p= paginate @announcements
-  - else
-    %p.pb-3.text-muted.text-center
-      %em No announcements have been made.
+  .table-responsive.text-center{ :style => 'border: 2px solid black; border-radius: 12px;'}
+    %table.table.table-borderless.table-hover
+      %thead
+        %tr
+          %th= sort_link 'title', 'Announcement Title'
+          %th= sort_link 'body', 'Announcement Body Preview'
+          %th= sort_link 'created_at', 'Added On'
+      %tbody
+        - @announcements.each.with_index(1) do |announcement, i|
+          %tr.bg-white
+            %td= link_to truncate("#{i}. #{announcement.title}"), manage_announcement_path(announcement)
+            %td= truncate(announcement.body)
+            %td= time_in_cdt(announcement.created_at, '%m/%d/%Y')
+            %td.w-10.text-right
+              .dropdown
+                = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{announcement.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
+                  %i.fas.fa-ellipsis-h
+                .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{announcement.id}")
+                  = link_to edit_manage_announcement_path(announcement), title: 'Edit', class: 'dropdown-item text-info' do
+                    %i.far.fa-edit
+                    Edit
+                  = link_to manage_announcement_path(announcement), title: 'Delete', id: "delete_announcement_#{announcement.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this announcement. Press OK to continue.' } do
+                    %i.far.fa-trash-alt
+                    Delete
+          %tr.table-divider
+    %p= paginate @announcements
+    - if @announcements.none?
+      %p.pb-3.text-muted.text-center
+        %em No announcements have been made.
 %br

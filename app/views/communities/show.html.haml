@@ -141,7 +141,7 @@
         .row.justify-content-center.mt-0.mb-2
           .col-md-3.mb-2.pb-1.text-center
             %h5.pt-0.mb-0 Filter - By Display Name
-            <p class ="font-weight-bold mb-2 under_label_text">(note: case sensitive)</p>
+            <p class ="font-weight-bold mb-2 under_label_text">(note: full display name required and case sensitive)</p>
             .col-md-12.justify-content-center
               = form_with url: "/communities/#{@member.slug}/", method: :get, local: true do |f|
                 .form-group.form-inline.justify-content-center#explore_communities_form
@@ -159,6 +159,9 @@
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: user }" } }
                     =user.display_name
               %p= paginate @users
+              - if @users.none?
+                %p.text-muted.mt-5.text-center
+                  %em No Users were found.
 #community-profile-modal.modal.fade{ 'aria-hidden' => 'true', 'aria-labelledby' => 'CommunityProfileModalLabel', role: 'dialog', tabindex: '-1' }
   .modal-dialog{ role: 'document' }
     .modal-content

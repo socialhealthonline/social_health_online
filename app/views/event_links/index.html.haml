@@ -55,3 +55,6 @@
             %tr.table-divider
         %div.container.pagination.justify-content-center
           %p= paginate @resources unless @resources.empty?
+          - if @resources.none?
+            %p.text-muted.mb-3.text-center
+              %em No search results.

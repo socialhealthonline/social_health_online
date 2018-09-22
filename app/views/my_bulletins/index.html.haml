@@ -1,6 +1,6 @@
 - page_title 'My Bulletins'
 
-.container
+.container{:style => "overflow-x:hidden;"}
   .row
     .col.py-3
       %h1.brand-primary.text-center My Bulletins
@@ -13,7 +13,7 @@
   %h3.notification-title.justify-content-center.mb-2
     %strong Posted Bulletins
 
-- if @bulletins.any?
+.container{:style => "overflow-x:hidden;"}
   .row.justify-content-center
     .table-responsive.col-10.text-center{ :style => 'border: 2px solid black; border-radius: 12px;' }
       %table.table.table-borderless.table-hover
@@ -45,11 +45,11 @@
                       Delete
             %tr.table-divider
       %p= paginate @bulletins
-- else
-  %p.text-muted.text-center.pt-2.mb-1
-    %em No bulletins were found.
+      - if @bulletins.none?
+        %p.text-muted.mb-3.text-center
+          %em No bulletins have been posted.
 
-.container
+.container{:style => "overflow-x:hidden;"}
   .col-12.py-3
     %p.text-center
       =link_to 'Post Bulletin', new_my_bulletin_path, class: 'btn btn-primary', style: 'border: 1px solid black'

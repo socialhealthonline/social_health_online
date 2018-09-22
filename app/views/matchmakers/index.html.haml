@@ -51,3 +51,6 @@
               %td
         %div.container.pagination.justify-content-center
           %p= paginate @users unless @users.empty?
+          - if @users.none?
+            %p.text-muted.mb-3.text-center
+              %em No search results.

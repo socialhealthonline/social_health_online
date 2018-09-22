@@ -50,3 +50,6 @@
             %tr.table-divider
         %div.container.pagination.justify-content-center
           %p= paginate @communities unless @communities.empty?
+          - if @communities.none?
+            %p.text-muted.mb-3.text-center
+              %em No search results.
