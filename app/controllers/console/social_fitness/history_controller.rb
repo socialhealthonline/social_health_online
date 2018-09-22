@@ -51,12 +51,13 @@ class Console::SocialFitness::HistoryController < ConsoleController
       params.require(:member).permit(
         :name,
         :city,
-        :state
+        :state,
+        :display_name
       )
     end
 
     def sortable_columns
-      %w[name city state]
+      %w[name city state display_name]
     end
 
     def sort_column

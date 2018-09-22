@@ -18,7 +18,7 @@
         .row.justify-content-center
           .col-lg-10
             .form-group
-              %label(for="") Member
+              %label(for="") Member Name
               = f.text_field :member_name, autofocus: true, class: "form-control #{form_error_class(@reward, :member_name)}"
               = model_error_display(@reward, :member_name)
         .row.justify-content-center

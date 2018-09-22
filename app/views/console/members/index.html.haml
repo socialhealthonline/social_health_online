@@ -35,9 +35,9 @@
           %th(scope="col")= sort_link('state', 'State')
           %th(scope="col")= sort_link('service_capacity', 'User Seats')
           %th(scope="col")= sort_link('account_start_date', 'Account Start Date')
-          %th(scope="col")= sort_link('welcome_kit_date', 'Welcome Kit Date')
-          %th(scope="col")= sort_link('public_member', 'Public')
-          %th(scope="col")= sort_link('charity_waiver', 'Fee Waiver')
+          %th(scope="col") Welcome Kit Date
+          %th(scope="col") Public
+          %th(scope="col") Fee Waiver
           %th(scope="col") Status
       %tbody
         - @members.each_with_index do |member, i|
@@ -62,6 +62,9 @@
                   = link_to console_member_path(member.id), title: 'Delete', id: "delete_member_#{member.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this member. Press OK to continue.' } do
                     %i.far.fa-trash-alt
                     Delete
+                  = link_to console_member_users_path(member.id), class: 'dropdown-item' do
+                    %i.fas.fa-user-circle
+                    Users
           %tr.table-divider
     %p= paginate @members
 - else

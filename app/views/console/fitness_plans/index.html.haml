@@ -14,7 +14,6 @@
       %table.table.table-borderless.align-items-center.table-hover
         %thead
           %tr
-            %th
             %th= sort_link 'month', 'Plans'
             %th
             %th= sort_link 'created_at', 'Added On'
@@ -22,7 +21,6 @@
         %tbody
           - @targets.each.with_index(1) do |target, i|
             %tr.bg-white
-              %td
               %td= link_to truncate("#{i}. #{target.month}"), console_fitness_plan_path(target)
               %td
               %td= time_in_cdt(target.created_at, '%m/%d/%Y, %I:%M %p %Z')

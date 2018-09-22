@@ -66,6 +66,51 @@
       = model_error_display(@admin, :ethnicity)
 .row
   .col
+    .form-group
+      %label(for="user_relationship_status") Relationship Status
+      = f.select :relationship_status, User::RELATIONSHIP_STATUS, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :relationship_status)}" }
+      = model_error_display(@user, :relationship_status)
+  .col
+    .form-group
+      %label(for="user_education_level") Education Level
+      = f.select :education_level, User::EDUCATION_LEVEL, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :education_level)}" }
+      = model_error_display(@user, :education_level)
+.row
+  .col
+    .form-group
+      %label(for="user_occupation") Occupation
+      = f.text_field :occupation, class: "form-control #{form_error_class(@user, :occupation)}"
+      = model_error_display(@user, :occupation)
+  .col
+    .form-group
+      %label(for="user_languages") Languages
+      = f.text_field :languages, class: "form-control #{form_error_class(@user, :languages)}"
+      = model_error_display(@user, :languages)
+.row
+  .col
+    .form-group
+      %label(for="user_hobbies") Hobbies
+      = f.text_field :hobbies, class: "form-control #{form_error_class(@user, :hobbies)}"
+      = model_error_display(@user, :hobbies)
+  .col
+    .form-group
+      %label(for="user_pet_peeves") Pet Peeves
+      = f.text_field :pet_peeves, class: "form-control #{form_error_class(@user, :pet_peeves)}"
+      = model_error_display(@user, :pet_peeves)
+.row
+  .col
+    .form-group
+      %label(for="user_bio") Bio
+      = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@user, :bio)}"
+      = model_error_display(@user, :bio)
+.row
+  .col-6
+    .form-group
+      %label(for="user_group") Group
+      = f.text_field :group, class: "form-control #{form_error_class(@user, :group)}"
+      = model_error_display(@user, :group)
+.row
+  .col
     .card
       .card-body
         .form-check.mb-1
@@ -74,7 +119,7 @@
         %small User Performs as a Community Manager
   .col
     .form-group
-      %label(for="user_member_id") Member
+      %label(for="user_member_id") Member Name
       = f.select :member_id, options_from_collection_for_select(@members, :id, :name, @admin.member_id), {include_blank: true}, { class: "custom-select form-control #{form_error_class(@admin, :member)}" }
       = model_error_display(@admin, :member)
 .row
@@ -95,7 +140,20 @@
             = f.check_box :user_status, class: 'form-check-input', checked: false
           %label.form-check-label(for="user_enabled") Enabled
         %small Enabled to Sign In
-
+.row.pt-2.border-top
+  .col
+    %p.text-muted Change the Password (note: at least 8 characters long and contain numbers and letters)
+.row
+  .col
+    .form-group
+      %label(for="user_password") New Password
+      = f.password_field :password, class: "form-control #{form_error_class(@user, :password)}"
+      = model_error_display(@user, :password)
+  .col
+    .form-group
+      %label(for="user_password_confirmation") Confirm New Password
+      = f.password_field :password_confirmation, class: "form-control #{form_error_class(@user, :password_confirmation)}"
+      = model_error_display(@user, :password_confirmation)
 .mb-4.text-center
   = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }
   - if @admin.persisted?

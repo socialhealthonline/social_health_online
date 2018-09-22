@@ -26,9 +26,9 @@
           %th= sort_link 'city', 'City'
           %th= sort_link 'state', 'State'
           %th= sort_link 'email', 'Email'
-          %th= sort_link 'status', 'Status'
-          %th= sort_link 'guest', 'Guest'
-          %th Host Member
+          %th Guest
+          %th Member Name
+          %th Status
       %tbody
         - @users.each do |user|
           %tr.bg-white
@@ -40,9 +40,9 @@
             %td= user.city
             %td= user.state
             %td= user.email
-            %td= user.user_status.capitalize
             %td= user.guest? ? 'Yes' : 'No'
             %td= user.member.name
+            %td= user.user_status.capitalize
           %tr.table-divider
     %p= paginate @users
 - else

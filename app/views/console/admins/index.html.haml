@@ -18,6 +18,8 @@
         %th= sort_link 'email', 'Email'
         %th= sort_link 'manager', 'Manager'
         %th= sort_link 'last_sign_in_at', 'Last Sign In'
+        %th Member Name
+        %th Status
       %tbody
         - @admins.each_with_index do |admin, i|
           %tr.bg-white
@@ -29,6 +31,8 @@
             %td= admin.email
             %td= admin.manager? ? 'Yes' : 'No'
             %td= short_date admin.last_sign_in_at
+            %td= admin.member.name
+            %td= admin.user_status.capitalize
             %td.w-10.text-right
               .dropdown
                 = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{admin.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
