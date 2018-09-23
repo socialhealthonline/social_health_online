@@ -15,10 +15,10 @@
         %thead
           %tr
             %th= sort_link 'period', 'Period'
-            %th= sort_link 'period', 'Display Name'
-            %th= sort_link 'period', 'Member Name'
-            %th= sort_link 'period', 'State'
-            %th= sort_link 'period', 'Prize'
+            %th= sort_link 'display_name', 'Display Name'
+            %th= sort_link 'member_name', 'Member Name'
+            %th= sort_link 'state', 'State'
+            %th= sort_link 'prize', 'Prize'
         %tbody
           - @rewards.each.with_index(1) do |reward, i|
             %tr.bg-white
