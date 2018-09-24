@@ -14,6 +14,18 @@
           This leaderboard shows a tally of the events logged by the Users who've chosen to share their progress with the Community.
   %h3.notification-title.justify-content-center.mb-2
     %strong Logged Events Tally
+
+  .row.justify-content-center
+    .col-md-3.mb-0.pb-0.text-center
+      %h5.pt-0.mb-0 Filter - By Display Name
+      <p class ="font-weight-bold mb-2 under_label_text">(note: full display name required and case sensitive)</p>
+      .col-md-12.justify-content-center
+        = form_with url: [:leaderboard], method: :get, local: true do |f|
+          .form-group.form-inline.justify-content-center#explore_communities_form
+          = f.text_field :display_name, placeholder: 'Display Name', class: 'form-control find_by_city', style: "width: 100%;"
+          %p
+          = f.button "Filter", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
+
   .row.mb-3.justify-content-center
     .col-md-4
       .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
