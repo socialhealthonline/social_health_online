@@ -15,7 +15,7 @@
                 = f.text_field :name, autofocus: true, required: true, class: "form-control #{form_error_class(@user, :name)}"
                 = model_error_display(@user, :name)
                 %div.float-right
-                  %label(for="user_name") Hide Info in Public Profile
+                  %label(for="user_name") Hide Profile Info
                   = h.check_box :name, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.name) }, '1', '0'
             .col
               .form-group
@@ -29,7 +29,7 @@
                 = f.email_field :email, required: true, class: "form-control #{form_error_class(@user, :email)}"
                 = model_error_display(@user, :email)
                 %div.float-right
-                  %label(for="user_email") Hide Info in Public Profile
+                  %label(for="user_email") Hide Profile Info
                   = h.check_box :email, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.email) }, '1', '0'
             .col
               .form-group
@@ -37,7 +37,7 @@
                 = f.text_field :phone, class: "form-control #{form_error_class(@user, :phone)}"
                 = model_error_display(@user, :phone)
                 %div.float-right
-                  %label(for="user_phone") Hide Info in Public Profile
+                  %label(for="user_phone") Hide Profile Info
                   = h.check_box :phone, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.phone) }, '1', '0'
           .row
             .col
@@ -46,7 +46,7 @@
                 = f.text_field :address, class: "form-control #{form_error_class(@user, :address)}"
                 = model_error_display(@user, :address)
                 %div.float-right
-                  %label(for="user_address") Hide Info in Public Profile
+                  %label(for="user_address") Hide Profile Info
                   = h.check_box :address, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.address) }, '1', '0'
             .col
               .form-group
@@ -54,7 +54,7 @@
                 = f.text_field :city, class: "form-control #{form_error_class(@user, :city)}"
                 = model_error_display(@user, :city)
                 %div.float-right
-                  %label(for="user_city") Hide Info in Public Profile
+                  %label(for="user_city") Hide Profile Info
                   = h.check_box :city, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.city) }, '1', '0'
           .row
             .col
@@ -63,7 +63,7 @@
                 = f.select :state, US_STATES, {}, { class: "form-control custom-select #{form_error_class(@user, :state)}" }
                 = model_error_display(@user, :state)
                 %div.float-right
-                  %label(for="user_state") Hide Info in Public Profile
+                  %label(for="user_state") Hide Profile Info
                   = h.check_box :state, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.state) }, '1', '0'
             .col
               .form-group
@@ -71,7 +71,7 @@
                 = f.text_field :zip, class: "form-control #{form_error_class(@user, :zip)}"
                 = model_error_display(@user, :zip)
                 %div.float-right
-                  %label(for="user_zip") Hide Info in Public Profile
+                  %label(for="user_zip") Hide Profile Info
                   = h.check_box :zip, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.zip) }, '1', '0'
           .row
             .col
@@ -80,7 +80,7 @@
                 = f.select(:time_zone, ['Alaska', 'Hawaii', 'Pacific Time (US & Canada)', 'Mountain Time (US & Canada)', 'Central Time (US & Canada)', 'Eastern Time (US & Canada)'].sort, {}, { class: 'custom-select form-control' })
                 = model_error_display(@user, :time_zone)
                 %div.float-right
-                  %label(for="user_time_zone") Hide Info in Public Profile
+                  %label(for="user_time_zone") Hide Profile Info
                   = h.check_box :time_zone, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.time_zone) }, '1', '0'
             .col
               .form-group
@@ -88,7 +88,7 @@
                 = f.text_field :birthdate, class: "flatpickr-date form-control #{form_error_class(@user, :birthdate)}"
                 = model_error_display(@user, :birthdate)
                 %div.float-right
-                  %label(for="user_birthdate") Hide Info in Public Profile
+                  %label(for="user_birthdate") Hide Profile Info
                   = h.check_box :birthdate, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.birthdate) }, '1', '0'
           .row
             .col
