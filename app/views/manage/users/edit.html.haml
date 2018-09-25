@@ -99,7 +99,7 @@
         .row
           .col
             .form-group
-              %label(for="user_hobbies") Hobbies
+              %label(for="user_hobbies") Other Interests
               = f.text_field :hobbies, class: "form-control #{form_error_class(@user, :hobbies)}"
               = model_error_display(@user, :hobbies)
           .col
