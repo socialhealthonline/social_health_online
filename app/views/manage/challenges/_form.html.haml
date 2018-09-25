@@ -70,7 +70,7 @@
         = f.text_field :verification_code, class: "form-control #{form_error_class(@challenge, :verification_code)}"
         = model_error_display(@challenge, :verification_code)
   .row.border-top.pt-2
-    %h5 Post-Challenge Completion
+  %h5 Post-Challenge Completion
   .row.justify-content-center
     .col-6.pt-2
       .form-group
@@ -82,7 +82,6 @@
         %label Winner Selection Date
         = f.text_field :completion_date, class: "flatpickr-date form-control #{form_error_class(@challenge, :completion_date)}"
         = model_error_display(@challenge, :completion_date)
-
 
   .mb-3.text-center
     = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, style: 'border: 1px solid black;'
