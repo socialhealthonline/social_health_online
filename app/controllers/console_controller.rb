@@ -11,9 +11,9 @@ class ConsoleController < ApplicationController
     @users = User.all.order("#{sort_column} #{sort_direction}")
     @users = FindUsersCommunities.new(@users, show_init_scope: true).call(permitted_params)
     unless @users.kind_of?(Array)
-      @users = @users.page(params[:page]).per(20)
+      @users = @users.page(params[:page]).per(25)
     else
-      @users = Kaminari.paginate_array(@users).page(params[:page]).per(20)
+      @users = Kaminari.paginate_array(@users).page(params[:page]).per(25)
     end
   end
 

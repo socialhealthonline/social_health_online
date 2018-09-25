@@ -31,6 +31,16 @@ class CommunitiesController < ApplicationController
     @challenges = Challenge.where(member_id: authenticated_user.member_id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
+  def user_finder
+    @users = User.where(member_id: authenticated_user.member_id, user_status: :enabled, hide_info_on_user_finder: false).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
+    @users = FindUsersCommunities.new(@users, show_init_scope: true).call(permitted_params)
+    unless @users.kind_of?(Array)
+      @users = @users.page(params[:page]).per(25)
+    else
+      @users = Kaminari.paginate_array(@users).page(params[:page]).per(25)
+    end
+  end
+
   def challenge_new
   end
 
@@ -68,7 +78,7 @@ class CommunitiesController < ApplicationController
   private
 
     def permitted_params
-      params.permit(:name, :display_name, :completion_date, :state, :city, :location, :created_at, :address, :winner, :prize, :description, :verification_code, :zip, :social_event_logs, :public_member, :challenge_type, :challenge_start_date, :challenge_end_date, :page).reject{|_, v| v.blank?}
+      params.permit(:name, :display_name, :interest_types, :completion_date, :state, :city, :location, :created_at, :address, :winner, :prize, :description, :verification_code, :zip, :social_event_logs, :public_member, :challenge_type, :challenge_start_date, :challenge_end_date, :page).reject{|_, v| v.blank?}
     end
 
     def sortable_columns

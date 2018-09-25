@@ -84,6 +84,8 @@ class Manage::UsersController < ApplicationController
       :password_confirmation,
       :manager,
       :user_status,
+      :interest_types,
+      :hide_info_on_user_finder,
       :hide_info_on_leaderboard
     )
   end

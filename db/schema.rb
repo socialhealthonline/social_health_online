@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_12_154215) do
+ActiveRecord::Schema.define(version: 2018_09_25_061108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -400,6 +400,8 @@ ActiveRecord::Schema.define(version: 2018_09_12_154215) do
     t.text "group"
     t.boolean "guest", default: false
     t.boolean "hide_info_on_leaderboard", default: false
+    t.string "interest_types"
+    t.boolean "hide_info_on_user_finder", default: false
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["member_id"], name: "index_users_on_member_id"

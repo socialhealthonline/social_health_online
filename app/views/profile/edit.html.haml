@@ -126,10 +126,16 @@
           .row
             .col
               .form-group
+                %label(for="user_interest_types") Primary Interest
+                = f.select :interest_types, INTEREST_TYPES,   { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :interest_types)}" }
+                = model_error_display(@user, :interest_types)
+            .col
+              .form-group
                 %label(for="user_hobbies") Other Interests
                 = f.text_field :hobbies, class: "form-control #{form_error_class(@user, :hobbies)}"
                 = model_error_display(@user, :hobbies)
-            .col
+          .row
+            .col-6
               .form-group
                 %label(for="user_pet_peeves") Pet Peeves
                 = f.text_field :pet_peeves, class: "form-control #{form_error_class(@user, :pet_peeves)}"
@@ -143,12 +149,19 @@
           .row
             .col-lg-6
               .card
-                .card-body
+                .card-body.text-center
                   .form-group
                     .form-check
                       #matchmakerCheckboxId.col-xs-2
                         = h.check_box :matchmaker, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.matchmaker) }, '1', '0'
                         %label(for="user_invisible") Hide My Profile in Matchmaker
+            .col-lg-6
+              .card.pb-2
+                .card-body.pl-4.text-center
+                  .form-group
+                    .form-check
+                      = f.check_box :hide_info_on_user_finder, class: 'form-check-input'
+                      %label.form-check-label.pl-1(for="hide_info_on_user_finder") Hide My Profile in User Finder
           .row
             .col-8.col-sm-6.col-lg-6.col-xl-6
               .form-group#file-field

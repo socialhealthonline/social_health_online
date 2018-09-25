@@ -108,6 +108,12 @@ class UserDecorator < ApplicationDecorator
     end
   end
 
+  def profile_interest_types
+    h.content_tag :p do
+      h.content_tag(:strong, "Primary Interest: ") + object&.interest_types if object.interest_types && !object.interest_types&.empty?
+    end
+  end
+
   def profile_hobbies
     h.content_tag :p do
       h.content_tag(:strong, "Other Interests: ") + object&.hobbies if object.hobbies && !object.hobbies&.empty?
