@@ -20,7 +20,7 @@ class User < ApplicationRecord
   validates_format_of :email, with: /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
   validates_length_of :password, minimum: 8, too_short: 'Must be at least 8 characters.', allow_nil: true
   validates_format_of :password, with: /\A(?=.*[a-z])(?=.*\d).+\z/i, message: 'Must be alphanumeric.', allow_nil: true
-  validates :interest_types, inclusion: INTEREST_TYPES
+  validates_inclusion_of  :interest_types, in: INTEREST_TYPES, allow_blank: true
   validates :state, inclusion: US_STATES.values
   validates :phone, format: { with: /\A\d{10}\z/, message: 'Must be 10 digits including area code' }
   validates :zip, format: { with: %r{\A[\d]{5}(-[\d]{4})?\z} }

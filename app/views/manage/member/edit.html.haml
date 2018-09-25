@@ -68,7 +68,7 @@
           .col-lg-4
             .form-group
               %label(for="member_org_type") Organization Type
-              = f.select :org_type, ORG_TYPES, {}, { class: "form-control custom-select #{form_error_class(@member, :org_type)}" }
+              = f.select :org_type, ORG_TYPES, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@member, :org_type)}" }
               = model_error_display(@member, :org_type)
           .col-lg-4
             .form-group
@@ -113,16 +113,22 @@
         .row
           .col-lg-4
             .card
-              .card-body
+              .card-body.text-center
                 .form-check
                   = f.check_box :hide_suggest_events, class: 'form-check-input'
-                  %label.form-check-label(for="hide_suggest_events") Show the Suggest Events Button
+                  %label.form-check-label(for="hide_suggest_events") Suggest Events - Show the Suggest Events Button
           .col-lg-4
             .card
-              .card-body
+              .card-body.text-center
                 .form-check
                   = f.check_box :hide_challenges, class: 'form-check-input'
-                  %label.form-check-label(for="hide_challenges") Hide the Challenges Button
+                  %label.form-check-label(for="hide_challenges") Challenges - Hide the Challenges Button
+          .col-lg-4
+            .card
+              .card-body.text-center
+                .form-check
+                  = f.check_box :hide_info_on_locator, class: 'form-check-input'
+                  %label.form-check-label(for="hide_info_on_locator") Member Locator - Hide Info on Member Locator
         .row
           .col-lg-4
             .form-group#file-field

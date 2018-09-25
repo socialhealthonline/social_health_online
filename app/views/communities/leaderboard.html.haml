@@ -12,8 +12,6 @@
       %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
         %strong
           This leaderboard shows a tally of the events logged by the Users who've chosen to share their progress with the Community.
-  %h3.notification-title.justify-content-center.mb-2
-    %strong Logged Events Tally
 
   .row.justify-content-center
     .col-md-3.mb-0.pb-0.text-center
@@ -25,6 +23,9 @@
           = f.text_field :display_name, placeholder: 'Display Name', class: 'form-control find_by_city', style: "width: 100%;"
           %p
           = f.button "Filter", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
+  .row.justify-content-center
+    %h3.notification-title.justify-content-center.mb-2
+      %strong Logged Events Tally
 
   .row.mb-3.justify-content-center
     .col-md-4

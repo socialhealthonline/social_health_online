@@ -125,8 +125,8 @@
           .col-6
             .form-group
               %label(for="group") Group
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'E.g., Sales Team, Alpha, etc.'}
-              = f.text_field :group, class: "form-control #{form_error_class(@user, :group)}"
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'Use this field to manage large groups of Users through categorization'}
+              = f.text_field :group, placeholder: 'E.g., Sales Team, White Hall Dormitory, Alpha, etc.', class: "form-control #{form_error_class(@user, :group)}"
               = model_error_display(@user, :group)
           .col-6
             .form-group
@@ -136,11 +136,10 @@
         .row
           .col-6
             .card
-              .card-body
+              .card-body.text-center
                 .form-check.mb-1
                   = f.check_box :manager, class: 'form-check-input'
-                  %label.form-check-label(for="user_manager") Manager
-                %small User Performs as a Community Manager
+                  %label.form-check-label(for="user_manager") Manager - User Performs as a Community Manager
         .row.pt-2.border-top
           .col
             %p.text-muted Change the Password (note: at least 8 characters long and contain numbers and letters)

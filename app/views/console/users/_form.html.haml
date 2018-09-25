@@ -117,29 +117,26 @@
       = model_error_display(@user, :group)
   .col
     .card
-      .card-body
+      .card-body.text-center
         .form-check
           = f.check_box :guest, class: 'form-check-input'
-          %label.form-check-label(for="guest") Guest
-        %small Guest User Account
+          %label.form-check-label(for="guest") Guest - Guest User Account
 .row
   .col
     .card
-      .card-body
+      .card-body.text-center
         .form-check.mb-1
           = f.check_box :manager, class: 'form-check-input'
-          %label.form-check-label(for="user_manager") Manager
-        %small User Performs as a Community Manager
+          %label.form-check-label(for="user_manager") Manager - User Performs as a Community Manager
   .col
     .card
-      .card-body
+      .card-body.text-center
         .form-check.mb-1
           - if @user.enabled?
             = f.check_box :user_status, class: 'form-check-input', checked: true
           - else
             = f.check_box :user_status, class: 'form-check-input', checked: false
-          %label.form-check-label(for="user_enabled") Enabled
-        %small Enabled to Sign In
+          %label.form-check-label(for="user_enabled") Enabled Account - Enabled to Sign In
 
 .row.pt-2.border-top
   .col

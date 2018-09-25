@@ -7,7 +7,7 @@
 .row.mt-2
   .col-12.col-md-4.col-lg-6
     %h5.pt-1.mb-0.brand-primary Filter - By Display Name
-    <p class ="font-weight-bold under_label_text brand-primary">(note: case sensitive)</p>
+    <p class ="font-weight-bold under_label_text brand-primary">(note: full display name required and case sensitive)</p>
     .col-12.col.md-4.col-lg-6.justify-content-center
       = form_with url: [:lookups], method: :get, local: true do |f|
         .form-group.form-inline.justify-content-center#explore_communities_form

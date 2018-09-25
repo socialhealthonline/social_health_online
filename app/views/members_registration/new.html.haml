@@ -52,7 +52,7 @@
               .form-group
                 %label Organization Type
                 %i.c-pointer.fas.fa-info-circle.fa{ title: 'Select the descriptive category your organization falls under' }
-                = f.select :org_type, ORG_TYPES, {}, { class: "form-control custom-select #{form_error_class(@member, :org_type)}" }
+                = f.select :org_type, ORG_TYPES, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@member, :org_type)}" }
             .col
               .form-group
                 %label Website
@@ -80,7 +80,7 @@
                 = model_error_display(@member, :contact_phone)
             .col
               .form-group
-                %label Contact Phone Extension
+                %label Contact Phone Extension (Optional)
                 = f.text_field :contact_phone_extension, placeholder: 'E.g., 123', class: "form-control #{form_error_class(@member, :contact_phone_extension)}"
                 = model_error_display(@member, :contact_phone_extension)
           .row
@@ -95,13 +95,6 @@
                 %label Primary Manager's Email
                 = text_field_tag :account_manager_email, params[:account_manager_email], placeholder: "E.g., janedoe@mail.com", required: true, class: "form-control #{form_error_class(@member, :account_manager_email)}"
                 = model_error_display(@member, :account_manager_email)
-          .row
-            .col
-              .form-check
-                = f.check_box :hide_info_on_locator, class: 'form-check-input', id: 'hideInfoCheckBox'
-                %label{ for: 'hideInfoCheckBox' } Hide Info on Member Locator
-                %i.c-pointer.fas.fa-info-circle.fa{ title: 'Organizations that do not want be shown on the Member Locator can check this box'}
-
         %h5 Billing Information
         .billing-info
           %h6 Service Cost Estimate

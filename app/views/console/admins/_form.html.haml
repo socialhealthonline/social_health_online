@@ -123,28 +123,25 @@
 .row
   .col
     .card
-      .card-body
+      .card-body.text-center
         .form-check.mb-1
           = f.check_box :manager, class: 'form-check-input'
-          %label.form-check-label(for="user_manager") Manager
-        %small User Performs as a Community Manager
+          %label.form-check-label(for="user_manager") Manager - User Performs as a Community Manager
   .col
     .card
-      .card-body
+      .card-body.text-center
         .form-check.mb-1
           = f.check_box :admin, class: 'form-check-input'
-          %label.form-check-label(for="user_admin") Admin
-        %small Site Admin Privileges
+          %label.form-check-label(for="user_admin") Admin - Site Admin Privileges Granted
   .col
     .card
-      .card-body
+      .card-body.text-center
         .form-check.mb-1
           - if @admin.enabled?
             = f.check_box :user_status, class: 'form-check-input', checked: true
           - else
             = f.check_box :user_status, class: 'form-check-input', checked: false
-          %label.form-check-label(for="user_enabled") Enabled
-        %small Enabled to Sign In
+          %label.form-check-label(for="user_enabled") Enabled Account - Enabled to Sign In
 .row.pt-2.border-top
   .col
     %p.text-muted Change the Password (note: at least 8 characters long and contain numbers and letters)
