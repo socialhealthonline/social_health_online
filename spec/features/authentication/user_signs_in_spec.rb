@@ -32,7 +32,7 @@ RSpec.describe 'User signs in' do
       fill_in 'password', with: user.password
       click_button 'Sign In'
       expect(current_path).to eq console_root_path
-      expect(page).to have_content('Welcome)
+      expect(page).to have_content('Welcome')
     end
   end
 

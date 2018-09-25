@@ -7,7 +7,9 @@
 .container
   .row
     .col-md-4.col-lg-4
-      %h5.pt-1.mb-0.brand-primary Affiliates
+      %h5.pt-1.mb-0.brand-primary
+        %a{ href: console_affiliates_path, title: 'Affiliates' }>
+          Affiliates
       .card.pricing.card-md
         .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
           %h6 Total Affiliates
@@ -15,10 +17,12 @@
             #{ Affiliate.all.count }
   .row.border-top
     .col-md-4.col-lg-4
-      %h5.pt-1.mb-0.brand-primary Members
+      %h5.pt-1.mb-0.brand-primary
+        %a{ href: console_members_path, title: 'Members' }>
+          Members
       .card.pricing.card-md
         .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
-          %h6 Total Communities
+          %h6 Total Members
           %span.font-weight-bold.display-5
             #{ Member.all.count }
     .col-md-4.col-lg-4.mt-4
@@ -35,7 +39,9 @@
             #{ Member.where(public_member: true).count }
   .row.border-top
     .col-md-4.col-lg-4
-      %h5.pt-1.mb-0.brand-primary Users
+      %h5.pt-1.mb-0.brand-primary
+        %a{ href: lookups_path, title: 'Users' }>
+          Users
       .card.pricing.card-md
         .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
           %h6 Total Users

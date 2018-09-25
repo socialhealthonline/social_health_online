@@ -32,8 +32,6 @@ gem 'select2-rails'
 gem 'draper'
 gem 'image_processing'
 gem "recaptcha", require: "recaptcha/rails"
-gem 'sidekiq'
-gem 'sidekiq-scheduler'
 gem 'whenever', '~> 0.9.4'
 
 group :development, :test do
@@ -62,6 +60,5 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'headless'
-  gem 'rspec-sidekiq'
   gem 'stripe-ruby-mock', '~> 2.5.4', :require => 'stripe_mock'
 end

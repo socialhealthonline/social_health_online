@@ -22,47 +22,50 @@
             = link_to manage_announcements_path, class: 'dropdown-item' do
               %i.fas.fa.fa-bullhorn
               Announcements
+            = link_to manage_challenges_path, class: 'dropdown-item' do
+              %i.fas.fa.fa-puzzle-piece
+              Challenges
             = link_to manage_users_path, class: 'dropdown-item' do
               %i.fas.fa-user-circle
-              Users
+              Community Users
             = link_to my_community_path, class: 'dropdown-item' do
               %i.fas.fa-angle-double-left
               Community Home
   .row.pb-3
     .col
-      - if @events.any?
-        .table-responsive.text-center{ :style => 'border: 2px solid black; border-radius: 12px;'}
-          %table.table.table-borderless.align-items-center.table-hover
-            %thead
-              %tr
-                %th= sort_link 'title', 'Event Title'
-                %th= sort_link 'event_type', 'Event Type'
-                %th= sort_link 'start_at', 'Event Date/Time'
-                %th= sort_link 'location', 'Event Location'
-                %th= sort_link 'city', 'Event City'
-                %th= sort_link 'state', 'Event State'
-            %tbody
-              - @events.each.with_index(1) do |event, i|
-                %tr.bg-white
-                  %th= link_to "#{i}. #{event.title}" , manage_event_path(event)
-                  %td= event.event_type
-                  %td= short_date_time(event.start_at, event.time_zone)
-                  %td= event.location
-                  %td= event.city
-                  %td= event.state
-                  %td.w-10.text-right
-                    .dropdown
-                      = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{event.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
-                        %i.fas.fa-ellipsis-h
-                      .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{event.id}")
-                        = link_to edit_manage_event_path(event), title: 'Edit', class: 'dropdown-item text-info' do
-                          %i.far.fa-edit
-                          Edit
-                        = link_to manage_event_path(event), title: 'Delete', id: "delete_event_#{event.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this event. Press OK to continue.' } do
-                          %i.far.fa-trash-alt
-                          Delete
-                %tr.table-divider
-          %p= paginate @events
-      - else
-        %p.pb-3.text-muted.text-center
-          %em No events have been made.
+      .table-responsive.text-center{ :style => 'border: 2px solid black; border-radius: 12px;'}
+        %table.table.table-borderless.align-items-center.table-hover
+          %thead
+            %tr
+              %th= sort_link 'title', 'Event Title'
+              %th= sort_link 'event_type', 'Event Type'
+              %th= sort_link 'start_at', 'Event Date/Time'
+              %th= sort_link 'location', 'Event Location'
+              %th= sort_link 'city', 'Event City'
+              %th= sort_link 'state', 'Event State'
+          %tbody
+            - @events.each.with_index(1) do |event, i|
+              %tr.bg-white
+                %th= link_to "#{i}. #{event.title}" , manage_event_path(event)
+                %td= event.event_type
+                %td= short_date_time(event.start_at, event.time_zone)
+                %td= event.location
+                %td= event.city
+                %td= event.state
+                %td.w-10.text-right
+                  .dropdown
+                    = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{event.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
+                      %i.fas.fa-ellipsis-h
+                    .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{event.id}")
+                      = link_to edit_manage_event_path(event), title: 'Edit', class: 'dropdown-item text-info' do
+                        %i.far.fa-edit
+                        Edit
+                      = link_to manage_event_path(event), title: 'Delete', id: "delete_event_#{event.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this event. Press OK to continue.' } do
+                        %i.far.fa-trash-alt
+                        Delete
+              %tr.table-divider
+        %p= paginate @events
+        - if @events.none?
+          %p.pb-3.pt-1.text-muted.text-center
+            %em No events have been made.
+%br

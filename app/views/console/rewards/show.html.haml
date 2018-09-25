@@ -1,0 +1,31 @@
+%nav(aria-label="breadcrumb")
+  %ol.breadcrumb
+    %li.breadcrumb-item= link_to 'Rewards Winners', console_rewards_path
+
+.container
+  .row.justify-content-center.text-center
+    .col-lg-8
+      .settings-box{:style => "border-radius: 12px;"}
+        %p
+          %strong Period:
+          = @reward.period
+        %p
+          %strong Display Name:
+          = @reward.display_name
+        %p
+          %strong Member Name:
+          = @reward.member_name
+        %p
+          %strong State:
+          = @reward.state
+        %p
+          %strong Prize:
+          = @reward.prize
+
+.container
+  .col
+    %div.form-row
+      %div.float-left.py-3
+        = link_to console_rewards_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+          %i.fas.fa-arrow-left
+          Back

@@ -20,13 +20,12 @@
               = f.select :state, US_STATES, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :state)}" }
               = model_error_display(@social_event_log, :state)
             .form-group
-              %label(for="social_event_log_city")
-                Event City (note: if the city is not listed below, select the nearest metro area)
-              = f.select :city, {}, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :city)}" }
+              %label(for="social_event_log_city") Event City
+              = f.text_field :city, class: "form-control #{form_error_class(@social_event_log, :city)}"
               = model_error_display(@social_event_log, :city)
             .form-group
               %label(for="social_event_log_event_type") Event Type
-              =f.select :event_type, EVENT_TYPES, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_type)}" }
+              =f.select :event_type, EVENT_TYPES, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_type)}" }
               = model_error_display(@social_event_log, :event_type)
           .col-lg-6
             .form-group
@@ -40,8 +39,8 @@
               =f.select :event_category, EVENT_CATEGORIES, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_category)}" }
               = model_error_display(@social_event_log, :event_category)
             .form-group
-              %label(for="social_event_log_venue") Event Location (e.g., Central Park, my house, etc.)
-              = f.text_field :venue, class: "form-control #{form_error_class(@social_event_log, :venue)}"
+              %label(for="social_event_log_venue") Event Location
+              = f.text_field :venue, placeholder: 'E.g., Central Park, my house, etc.', class: "form-control #{form_error_class(@social_event_log, :venue)}"
               = model_error_display(@social_event_log, :venue)
             .form-group
               %label(for="social_event_log_rating") Event Rating

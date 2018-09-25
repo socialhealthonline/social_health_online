@@ -1,0 +1,76 @@
+- page_title 'My Community Challenges'
+
+%br
+.container.pb-3
+  .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3
+    %h1.brand-primary My Community Challenges
+    %div
+      - if authenticated_user.manager?
+        %div.float-right.new_manage_user_button
+          .dropdown.mb-2
+            %a.btn.btn-primary.dropdown-toggle{:style => 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+              %i.fas.fa-cog
+              Manage
+            .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;'}
+              = link_to manage_edit_member_path, class: 'dropdown-item' do
+                %i.fas.fa-building
+                Community Profile
+              = link_to manage_events_path, class: 'dropdown-item' do
+                %i.fas.fa-map-marker-alt
+                Community Events
+              = link_to manage_announcements_path, class: 'dropdown-item' do
+                %i.fas.fa.fa-bullhorn
+                Announcements
+              = link_to manage_social_tracker_users_path(authenticated_user.member), class: 'dropdown-item' do
+                %i.fas.fa-database
+                Social Tracker
+              = link_to manage_users_path, class: 'dropdown-item' do
+                %i.fas.fa-user-circle
+                Community Users
+              = link_to my_community_path, class: 'dropdown-item' do
+                %i.fas.fa-angle-double-left
+                Community Home
+
+        %div.float-right
+          = link_to new_manage_challenge_path, class: 'btn btn-primary px-1', style: 'border: 1px solid black;' do
+            %i.fas.fa-plus-circle
+            Add Challenge
+
+  .table-responsive.text-center{ :style => 'border: 2px solid black; border-radius: 12px;'}
+    %table.table.table-borderless.table-hover
+      %thead
+        %tr
+          %th= sort_link 'name', 'Challenge Name'
+          %th= sort_link 'challenge_type', 'Challenge Type'
+          %th= sort_link 'challenge_start_date', 'Start Date'
+          %th= sort_link 'challenge_end_date', 'End Date'
+          %th= sort_link 'verification_code', 'Verification Code'
+          %th= sort_link 'winner', 'Winner'
+          %th= sort_link 'completion_date', 'Winner Selection Date'
+      %tbody
+        - @challenges.each.with_index(1) do |challenge, i|
+          %tr.bg-white
+            %td= link_to truncate("#{i}. #{challenge.name}"), manage_challenge_path(challenge)
+            %td= challenge.challenge_type
+            %td= short_date(challenge.challenge_start_date)
+            %td= short_date(challenge.challenge_end_date)
+            %td= challenge.verification_code
+            %td= challenge.winner
+            %td= short_date(challenge.completion_date)
+            %td.w-10.text-right
+              .dropdown
+                = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{challenge.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
+                  %i.fas.fa-ellipsis-h
+                .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{challenge.id}")
+                  = link_to edit_manage_challenge_path(challenge), title: 'Edit', class: 'dropdown-item text-info' do
+                    %i.far.fa-edit
+                    Edit
+                  = link_to manage_challenge_path(challenge), title: 'Delete', id: "delete_challenge_#{challenge.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this challenge. Press OK to continue.' } do
+                    %i.far.fa-trash-alt
+                    Delete
+          %tr.table-divider
+    %p= paginate @challenges
+    - if @challenges.none?
+      %p.pb-3.pt-1.text-muted.text-center
+        %em No challenges have been made.
+%br

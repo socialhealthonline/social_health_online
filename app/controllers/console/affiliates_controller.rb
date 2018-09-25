@@ -1,7 +1,15 @@
 class Console::AffiliatesController < ConsoleController
+  before_action :require_admin
   helper_method :sort_column, :sort_direction
+  
   def index
-    @affiliates = Affiliate.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
+    @affiliates = Affiliate.order("#{sort_column} #{sort_direction}")
+    @affiliates = FindUsersCommunities.new(@affiliates, show_init_scope: true).call(permitted_params)
+    unless @affiliates.kind_of?(Array)
+      @affiliates = @affiliates.page(params[:page]).per(25)
+    else
+      @affiliates = Kaminari.paginate_array(@affiliates).page(params[:page]).per(25)
+    end
   end
 
   def show
@@ -28,9 +36,11 @@ class Console::AffiliatesController < ConsoleController
 
   def update
     @affiliate = Affiliate.find params[:id]
+    @affiliate.logo.attach(params[:affiliate][:logo]) if params[:affiliate][:logo]
     if @affiliate.update(affiliate_params)
-      redirect_to console_affiliate_url(@affiliate), success: 'The Affiliate was successfully updated!'
+      redirect_to console_affiliate_url(@affiliate.id), success: 'The Affiliate was successfully updated!'
     else
+      @affiliate.logo.purge if @affiliate.errors.messages[:logo].present?
       flash.now[:error] = 'Please correct the errors to continue.'
       render :edit
     end
@@ -49,6 +59,10 @@ class Console::AffiliatesController < ConsoleController
 
   private
 
+  def permitted_params
+    params.permit(:state).reject{|_, v| v.blank?}
+  end
+
   def affiliate_params
     params.require(:affiliate).permit(
       :name,
@@ -65,6 +79,7 @@ class Console::AffiliatesController < ConsoleController
       :contact_phone_extension,
       :contact_email,
       :support_notes,
+      :org_type,
       :date_added
     )
   end

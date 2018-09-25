@@ -57,14 +57,59 @@
   .col
     .form-group
       %label(for="user_gender") Gender
-      = f.select :gender, User::GENDER, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@user, :gender)}" }
+      = f.select :gender, User::GENDER, {include_blank: true}, { class: "form-control custom-select #{form_error_class(@user, :gender)}" }
       = model_error_display(@user, :gender)
   .col
     .form-group
       %label(for="user_ethnicity") Race/Ethnicity
-      = f.select :ethnicity, User::ETHNICITY, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
+      = f.select :ethnicity, User::ETHNICITY, {include_blank: true}, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
       = model_error_display(@user, :ethnicity)
 .row
+  .col
+    .form-group
+      %label(for="user_relationship_status") Relationship Status
+      = f.select :relationship_status, User::RELATIONSHIP_STATUS, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :relationship_status)}" }
+      = model_error_display(@user, :relationship_status)
+  .col
+    .form-group
+      %label(for="user_education_level") Education Level
+      = f.select :education_level, User::EDUCATION_LEVEL, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :education_level)}" }
+      = model_error_display(@user, :education_level)
+.row
+  .col
+    .form-group
+      %label(for="user_occupation") Occupation
+      = f.text_field :occupation, class: "form-control #{form_error_class(@user, :occupation)}"
+      = model_error_display(@user, :occupation)
+  .col
+    .form-group
+      %label(for="user_languages") Languages
+      = f.text_field :languages, class: "form-control #{form_error_class(@user, :languages)}"
+      = model_error_display(@user, :languages)
+.row
+  .col
+    .form-group
+      %label(for="user_interest_types") Primary Interest
+      = f.select :interest_types, INTEREST_TYPES,   { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :interest_types)}" }
+      = model_error_display(@user, :interest_types)
+  .col
+    .form-group
+      %label(for="user_hobbies") Other Interests
+      = f.text_field :hobbies, class: "form-control #{form_error_class(@user, :hobbies)}"
+      = model_error_display(@user, :hobbies)
+.row
+  .col-6
+    .form-group
+      %label(for="user_pet_peeves") Pet Peeves
+      = f.text_field :pet_peeves, class: "form-control #{form_error_class(@user, :pet_peeves)}"
+      = model_error_display(@user, :pet_peeves)
+.row
+  .col
+    .form-group
+      %label(for="user_bio") Bio
+      = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@user, :bio)}"
+      = model_error_display(@user, :bio)
+.row.pt-2.border-top
   .col-6
     .form-group
       %label(for="user_group") Group
@@ -72,33 +117,30 @@
       = model_error_display(@user, :group)
   .col
     .card
-      .card-body
+      .card-body.text-center
         .form-check
           = f.check_box :guest, class: 'form-check-input'
-          %label.form-check-label(for="guest") Guest
-        %small Guest User account
+          %label.form-check-label(for="guest") Guest - Guest User Account
 .row
   .col
     .card
-      .card-body
+      .card-body.text-center
         .form-check.mb-1
           = f.check_box :manager, class: 'form-check-input'
-          %label.form-check-label(for="user_manager") Account Manager
-        %small Manager for the Member account
+          %label.form-check-label(for="user_manager") Manager - User Performs as a Community Manager
   .col
     .card
-      .card-body
+      .card-body.text-center
         .form-check.mb-1
           - if @user.enabled?
             = f.check_box :user_status, class: 'form-check-input', checked: true
           - else
             = f.check_box :user_status, class: 'form-check-input', checked: false
-          %label.form-check-label(for="user_enabled") Enabled
-        %small Enabled to sign in
+          %label.form-check-label(for="user_enabled") Enabled Account - Enabled to Sign In
 
 .row.pt-2.border-top
   .col
-    %p.text-muted Change the Password:
+    %p.text-muted Change the Password (note: at least 8 characters long and contain numbers and letters)
 .row
   .col
     .form-group

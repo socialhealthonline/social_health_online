@@ -4,7 +4,7 @@ class EventSuggestionsMailer < ApplicationMailer
     @authenticated_user = authenticated_user
 
     mail :to => authenticated_user.member.primary_manager.email,
-         subject: 'Event Suggestions - Social Health Online',
+         subject: 'Community Event Suggestions - Social Health Online',
          from: "#{authenticated_user.name} <#{authenticated_user.email}>"
   end
 end

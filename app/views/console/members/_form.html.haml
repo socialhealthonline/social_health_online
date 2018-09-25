@@ -85,15 +85,20 @@
       = f.text_field :events_url, class: "form-control #{form_error_class(@member, :events_url)}"
       = model_error_display(@member, :events_url)
 .row
+  .col-lg-4
+    .form-group
+      %label(for="member_org_type") Organization Type
+      = f.select :org_type, ORG_TYPES, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@member, :org_type)}" }
+      = model_error_display(@member, :org_type)
   - if @member.persisted?
-    .col-lg-6
+    .col-lg-4
       .form-group
         %label(for="member_primary_manager_id") Primary Manager
         = f.select :primary_manager_id,
             options_from_collection_for_select(@managers, 'id', 'name', @member.primary_manager_id),
             { include_blank: false }, { class: 'form-control custom-select' } if @managers.present?
         = model_error_display(@member, :primary_manager_id)
-  .col-lg-6
+  .col-lg-4
     .form-group
       %label(for="status")  Status
       = f.label @member.status, class: "form-control disabled readonly #{form_error_class(@member, :status)}"
@@ -104,27 +109,50 @@
       %label(for="member_bio") Bio
       = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@member, :bio)}"
       = model_error_display(@member, :bio)
-.row
-  .col-lg-2
-    .form-group
-      .form-check.mb-3
-        = f.check_box :suspended, class: 'form-check-input'
-        %label.form-check-label(for="member_suspended") Suspended
+.row.pt-2.border-top
   .col-lg-4
-    .form-group
-      .form-check.mb-3
-        = f.check_box :hide_info_on_locator, class: 'form-check-input'
-        %label.form-check-label(for="hide_info_on_locator") Hide Info on Member Locator
-  .col
-    .form-group
-      .form-check
-        = f.check_box :public_member, class: 'form-check-input'
-        %label.form-check-label(for="public_member") List as Public Member
-  .col
-    .form-group
-      .form-check
-        = f.check_box :hide_suggest_events, class: 'form-check-input'
-        %label.form-check-label(for="hide_suggest_events") Show Suggest Events
+    .card
+      .card-body.text-center
+        .form-group
+          .form-check.mb-3
+            = f.check_box :suspended, class: 'form-check-input'
+            %label.form-check-label(for="member_suspended") Suspended Account - Member Account Suspended
+  .col-lg-4
+    .card
+      .card-body.text-center
+        .form-group
+          .form-check.mb-3
+            = f.check_box :hide_info_on_locator, class: 'form-check-input'
+            %label.form-check-label(for="hide_info_on_locator") Member Locator - Hide Info on Member Locator
+  .col-lg-4
+    .card
+      .card-body.text-center
+        .form-group
+          .form-check
+            = f.check_box :public_member, class: 'form-check-input'
+            %label.form-check-label(for="public_member") Public Member - List as Public Member
+.row
+  .col-lg-4
+    .card
+      .card-body.text-center
+        .form-group
+          .form-check
+            = f.check_box :charity_waiver, class: 'form-check-input'
+            %label.form-check-label(for="charity_waiver") Service Fee Waiver - Charitable Org
+  .col-lg-4
+    .card
+      .card-body.text-center
+        .form-group
+          .form-check
+            = f.check_box :hide_suggest_events, class: 'form-check-input'
+            %label.form-check-label(for="hide_suggest_events") Suggest Events - Show Suggest Events Button
+  .col-lg-4
+    .card
+      .card-body.text-center
+        .form-group
+          .form-check
+            = f.check_box :hide_challenges, class: 'form-check-input'
+            %label.form-check-label(for="hide_challenges") Challenges - Hide the Challenges Button
 
 .row.pt-2.border-top
   .col-lg-6
@@ -136,7 +164,7 @@
   .col-lg-6
     %p.text-muted Logo Preview:
     -if @member.logo.attached? && @member.logo.attachment.valid?
-      = image_tag @member.logo, alt: 'Member logo', size: '180x180'
+      = image_tag @member.logo, alt: 'Member Logo', size: '200x200'
 
 .row
 .text-center.py-3

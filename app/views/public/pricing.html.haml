@@ -4,44 +4,25 @@
   .row
     .col.py-3
       %h1.text-info Pricing
-
-      %p.h3 Plans for All Organizations
-
+      %p.h3 An Affordable and Inclusive Service
       %p
-      Organizations can become Members by purchasing subscriptions through
-      our website to host Users and manage Communities in Social Health Online.
+      Organizations can become Members by purchasing subscriptions to host Users and manage Communities in Social Health Online.
 
-  .row
+  .row.justify-content-center
     .col-md-6.col-lg-4
       .card.pricing.card-lg
         .card-body.border
-          %h5 5 - 100 Users
-          %span.display-3.price-collapse.collapse.show $6
-          %span.text-small per User / month
-          %span.h6 Annual Subscription
+          %h5
+          %span.display-3.price-collapse.collapse.show $1
+          %span.text-small Per User / Month
+          %span.h6.font-weight-bold Annual Subscription
+          %span.text-small Minimum of 5 Users Per Member Account
+          %p.py-1
           = link_to 'Get Started', new_members_registration_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
-    .col-md-6.col-lg-4
-      .card.pricing.card-lg
-        .card-body.border
-          %h5 101 - 250 Users
-          %span.display-3 $5
-          %span.text-small per User / month
-          %span.h6 Annual Subscription
-          = link_to 'Get Started', new_members_registration_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
-    .col-md-6.col-lg-4
-      .card.pricing.card-lg
-        .card-body.border
-          %h5 > 250 Users
-          %span.display-3 $4
-          %span.text-small per User / month
-          %span.h6 Annual Subscription
-          = link_to 'Get Started', new_members_registration_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;' 
   .row
     .col
-
       %p
-        A minimum purchase order of 5 User accounts is required. Subscriptions will renew automatically
-        at the end of the annual service term unless cancellation is requested at least 30 days prior to renewal.
+        Subscriptions will renew automatically at the end of the annual service term unless cancellation is requested at least 30 days prior to renewal.
         Members may choose to recoup subscription costs from the Users they host. Members that pay for their
         subscriptions upfront with one lump-sum payment receive a 3% discount. There are no setup fees.
 
@@ -51,3 +32,11 @@
         If you are not satisfied with the service during the first month of your subscription,
         you may cancel your contract without penalty. If you have paid the entire subscription cost upfront,
         the remaining balance will be refunded. No other refunds are provided.
+
+  .row
+    .col.pb-3
+      %p.h3 Our Commitment to Charitable Organizations
+      %p
+      We don't want to deny access to our service to the countless organizations that are working tirelessly to better people's lives but have limited financial means
+      because of their nonprofit status and philanthropic pursuits. Therefore, charitable organizations can contact us and request a waiver of the service fees to join
+      Social Health Online as Members at no cost.

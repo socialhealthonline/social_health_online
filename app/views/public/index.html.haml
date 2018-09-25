@@ -1,4 +1,4 @@
-.main-container
+.main-container{:style => "overflow-x:hidden;"}
   #hero
     .container
       %h1.mb-4.text-light.text-center
@@ -7,7 +7,7 @@
         Social Health is dedicated to improving the wellness of people and their communities by promoting
         healthier social lives with rewards and incentives.
       %p.pt-3.text-center.mt-3
-        = link_to 'Request Free Demo Account', contact_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
+        = link_to 'Contact Us For More Info', contact_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
 
   %section.space-xs.text-center.bg-white.py-4{:style => 'border-top: 1px solid black;'}
     .container
@@ -17,7 +17,7 @@
           %h5.text-info
             %a{ href: service_path, title: 'Meet' }>
               %strong Meet.
-          %span Attend or host social events.
+          %span Participate in social events.
         .col.text-center
           = link_to image_tag('handshake.svg', height: '70'), service_path
           %h5.text-info
@@ -30,22 +30,127 @@
             %a{ href: service_path, title: 'Benefit' }>
               %Strong Benefit.
           %span Log your involvement in events for rewards.
+      .row.pb-4
+        .col.text-center
+          %h5.text-info
+            One Sweepstakes Winner Is Selected Every Week to Reward Users for Their Participation in Social Events
+          %span Users who log their involvement in social events automatically become eligible to win $25 Amazon eGift Cards.
+      .row.border-top
+        .col.text-center.mt-4
+          %h5.text-info
+            Why You Should Care About Promoting Everyone's Social Wellness
+      .row
+        .col.mb-3.text-left
+          %p.pb-2
+          Despite technological advances making communicating with others easier than ever before, people are rapidly growing more socially disconnected.
+          In-person social circles are shrinking across the world and, as a result, people of all ages and backgrounds are experiencing more preventable
+          health issues that impact every aspect of their lives. We aim to turn this costly trend around by facilitating greater participation in social activities.
+      .row.pb-4.justify-content-center
+        = link_to "Why Social Wellness Matters", service_path, class: 'btn btn-lg btn-info mt-1', style: 'border: 1px solid black;'
       .row.pt-4.border-top
         .col.text-center
           %h5.text-info
-            %span Proud to Collaborate with All Organizations Wanting to Make Your Social Life More Rewarding
+            %span Our Inclusive Approach to Social Wellness Is What Makes Us Different
+      .row.py-4.justify-content-center
+        .col-3.col-md-3.px-0.text-center
+          %h5.text-info.font-weight-bold
+            =link_to root_path(:anchor => "Members") do
+              Members
+        %i.ml-2.md-1.brand-primary.fas.fa-arrows-alt-h.fa-2x
+        .col-3.col-md-3.px-0.text-center
+          %h5.text-info.font-weight-bold
+            =link_to root_path(:anchor => "Users") do
+              Users
+        %i.mr-2.md-1.brand-primary.fas.fa-arrows-alt-h.fa-2x
+        .col-3.col-md-3.px-0.text-center
+          %h5.text-info.font-weight-bold
+            =link_to root_path(:anchor => "Affiliates") do
+              Affiliates
+      .row.justify-content-center
+        .col.mb-4.text-left.text-center
           %p
-            Our diverse array of Affiliates includes
-      .row.pt-4
-        .col-md-2
-          = image_tag'avondale.jpg', class: 'img-fluid'
-        .col-md-2
-          = image_tag'rmp.jpg', class: 'img-fluid'
-        .col-md-2
-          = image_tag'regions.jpg', class: 'img-fluid'
-        .col-md-2
-          = image_tag'sloss.jpg', class: 'img-fluid'
-        .col-md-2
-          = image_tag 'alys.jpg', class: 'img-fluid'
-        .col-md-2
-          = image_tag 'smf.jpg', class: 'img-fluid'
+            With our service, Social Health Online, we bring people together like nobody else.
+      .row.pb-4.justify-content-center
+        = link_to 'More About Us', about_us_path, class: 'btn btn-lg btn-info mt-1', style: 'border: 1px solid black;'
+      #Members
+        .row.pt-4.border-top
+          .col.text-center
+            %h5.mb-2.text-info
+              The Members
+      .row
+        .col.text-left
+          Our Member organizations are a cornerstone for our service because they are the gatekeepers that
+          enroll Users and manage Communities. Being a Member is beneficial for all types of organizations, including employers,
+          interest groups, and educators, because of the valuable results our service can provide:
+      .row.mb-3.px-2
+        .col-md-3
+        .col-md-7.pl-3.pr-1.text-left
+          %p
+          %li
+            %a{ href: 'https://hero-health.org/wp-content/uploads/2015/02/HPP-Business-Leader-Survey-Full-Report_FINAL.pdf',
+              title: 'Recognizable improvements in people\'s morale and level of engagement in organizations.', target: '_blank' }> Recognizable improvements in people's morale and level of engagement in organizations.
+          %p
+          %li
+            %a{ href: 'https://www.liebertpub.com/doi/full/10.1089/pop.2011.0083',
+              title: 'Sustainable increases in the adoption of healthy behaviors.', target: '_blank' }> Sustainable increases in the adoption of healthy behaviors.
+          %p
+          %li
+            %a{ href: 'https://pdfs.semanticscholar.org/672b/12e1fb6138f955e8153e7fffbf20aa73c559.pdf',
+              title: 'Productivity growth accompanied by a reduction of health risks.', target: '_blank' }> Productivity growth accompanied by a reduction of health risks.
+      .row.justify-content-center
+        .col-md-6.col-lg-4
+          .card.pricing.card-lg.mb-4
+            .card-body.border
+              %h5
+              %span.display-3.price-collapse.collapse.show $1
+              %span.text-small Per User / Month
+              %span.h6.font-weight-bold Annual Subscription
+              %span.text-small Minimum of 5 Users Per Member Account
+              %p.py-1
+              = link_to 'Become A Member', new_members_registration_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
+      #Users
+        .row.pt-4.border-top
+          .col.text-center
+            %h5.mb-2.text-info
+              %span Use Our Service to Create the Social Life You Want
+        .row
+          .col.text-left
+            Easily manage your social wellness in one place with our comprehensive platform by joining as a User through a Member organization or registering for free as a Guest User through our website.
+            Our service's features support the strengthening of relationships by encouraging participation in virtually all social activities:
+        .row.mb-3.px-2
+          .col-md-3
+          .col-md-6.pl-3.pr-1.text-left
+            %p
+            %li The Users have home Communities that they share with others from their local area so they can easily meet people and find events.
+            %p
+            %li Users may engage in Community Challenges to become more social through competitions with others.
+            %p
+            %li A Bulletin Board and Matchmaker are provided so that Users can organize and advertise their own social events with groups and individuals.
+        .row.pb-4.justify-content-center
+          = link_to 'See More Features', service_highlights_path, class: 'btn btn-lg btn-info mt-1 px-4', style: 'border: 1px solid black;'
+          .col-md-3.pt-2
+            %strong OR
+          %p
+          = link_to "Become A Guest User", users_registration_path, class: 'btn btn-lg btn-info mt-1', style: 'border: 1px solid black;'
+      #Affiliates
+        .row.pt-4.border-top
+          .col.text-center
+            %h5.text-info
+              %span Proud to Collaborate with All Organizations Wanting to Make Your Social Life More Rewarding
+            %p
+              The Affiliates support our service by providing event information and special discounts to all Users. Our diverse array of Affiliates includes:
+        .row.pt-4
+          .col-md-2
+            = image_tag'avondale.jpg', class: 'img-fluid'
+          .col-md-2
+            = image_tag'rmp.jpg', class: 'img-fluid'
+          .col-md-2
+            = image_tag'regions.jpg', class: 'img-fluid mb-4'
+          .col-md-2
+            = image_tag'sloss.jpg', class: 'img-fluid'
+          .col-md-2
+            = image_tag 'alys.jpg', class: 'img-fluid'
+          .col-md-2.pb-4
+            = image_tag 'smf.jpg', class: 'img-fluid'
+        .row.justify-content-center
+          = link_to 'Become An Affiliate', affiliates_registration_path, class: 'btn btn-lg btn-info mt-2', style: 'border: 1px solid black;'

@@ -1,0 +1,51 @@
+- page_title 'Community Challenges'
+
+.container{:style => "overflow-x:hidden;"}
+  .row
+    .col.py-3
+      %h1.brand-primary.text-center Community Challenges
+  .row
+    .col-md-12
+      %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
+        %strong
+          Here you will find the social challenges posted for your Community. Who knows what a little friendly competition might bring!
+
+.container{:style => "overflow-x:hidden;"}
+  %h3.notification-title.justify-content-center.mb-2
+    %strong Challenge Index
+  .row.justify-content-center
+    .table-responsive.col-10.text-center{ :style => 'border: 2px solid black; border-radius: 12px;' }
+      %table.table.text-center.table-hover
+        %thead
+          %tr
+            %th Challenge Name
+            %th Challenge Type
+            %th Start Date
+            %th End Date
+            %th Prize
+            %th Winner
+
+        %tbody
+          - @challenges.each.with_index(1) do |challenge, i|
+            %tr.bg-white
+              %td= link_to truncate("#{i}. #{challenge.name}"), manage_challenge_path(challenge)
+              %td= challenge.challenge_type
+              %td= short_date(challenge.challenge_start_date)
+              %td= short_date(challenge.challenge_end_date)
+              %td= challenge.prize
+              %td= challenge.winner
+            %tr.table-divider
+      %p= paginate @challenges
+      - if @challenges.none?
+        %p.pb-3.pt-1.text-muted.text-center
+          %em No challenges have been made.
+
+.container
+  .col-12.py-3
+    %p.text-center
+      =link_to 'Challenge Completed', challenge_new_path, class: 'btn btn-primary', style: 'border: 1px solid black'
+
+  %p.pb-3
+    = link_to my_community_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+      %i.fas.fa-arrow-left
+      Back

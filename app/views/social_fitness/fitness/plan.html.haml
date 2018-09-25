@@ -1,36 +1,37 @@
-- page_title 'Fitness Plan'
+- page_title 'Fitness Plans'
 
 .container
   .row
     .col.py-3
-      %h1.text-info.text-center Fitness Plan
+      %h1.text-info.text-center Fitness Plans
 
   .row.mb-3
     .col
       %p.text-center.p-2{style: "border: 1px solid black;"}
         %strong
           Building the strength of your relationships through social exercise is important.
-          While every person is unique, and we all need to exercise
-          different aspects of our social lives, this fitness plan acts as a general
-          guide with weekly social targets for improving your wellness with others.
+          These fitness plans act as general guides with weekly social targets for improving
+          your wellness with others.
 
-  .row
+  .row.mt-3.mb-2
     .col
-      %h3.text-center
-        %strong August 2018
+      %h3.notification-title
+        %strong Monthly Plans
 
-  .row
-    .col.my-3.text-center
-      %div.pb-2{style: "border: 2px solid black; border-radius: 12px;"}
-        %div.mt-2
-          %strong Week One (July 30th - August 5th)
-        Social Target: Discover a new favorite tune by seeing a musical show with a group.
-        %div.mt-2
-          %strong Week Two (August 6th - August 12th)
-        Social Target: Stay cool and have fun while learning by visiting a museum with a friend.
-        %div.mt-2
-          %strong Week Three (August 13th - August 19th)
-        Social Target: Take your week's stress out on some pins by bowling with a family member.
-        %div.mt-2
-          %strong Week Four (August 20th - August 27th)
-        Social Target: Have a hot cup of joe on a date at a comfy coffee shop.
+  .row.text-center.mb-3
+    .col-sm-4.offset-sm-4
+      .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
+        %table.table.align-items-center.text-center.table-hover.table-sm
+          %thead.mdb-color.lighten-4
+            %tr
+              %th Plans
+          %tbody
+          - @targets.each do |target|
+            %tr.bg-white
+              %td= link_to target.month, social_fitness_plan_details_path(target)
+            %tr.table-divider
+        %div.container.pagination.justify-content-center
+          %p= paginate @targets
+          - if @targets.none?
+            %p.pb-3.text-muted.text-center
+              %em No fitness plans were found.

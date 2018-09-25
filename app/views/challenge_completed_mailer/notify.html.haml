@@ -1,0 +1,19 @@
+%p Social Health Online Community Challenge Completed
+
+%p
+  <strong>Name:</strong> #{@authenticated_user.name}
+
+%p
+  <strong>Display Name:</strong> #{@authenticated_user.display_name}
+
+%p
+  <strong>Email:</strong> #{@authenticated_user.email}
+
+%p
+  <strong>Challenge Name:</strong> #{@form_params[:name]}
+
+%p
+  <strong>Challenge Completion Date:</strong> #{@form_params[:challenge_completion_date]}
+
+%p
+  <strong>Challenge Verification Code:</strong> #{@form_params[:verification_code]}

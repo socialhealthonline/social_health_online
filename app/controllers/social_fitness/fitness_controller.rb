@@ -1,5 +1,6 @@
 class SocialFitness::FitnessController < ApplicationController
   before_action :require_authentication
+  before_action :set_target, only: [:plan_details]
 
   def new
     @social_fitness_log = SocialFitnessLog.new
@@ -24,10 +25,15 @@ class SocialFitness::FitnessController < ApplicationController
     @log = authenticated_user.social_fitness_logs.find(params[:id])
   end
 
-  def resources
+  def assets
   end
 
   def plan
+    @targets = Target.all.order(created_at: :desc).page(params[:page]).per(10)
+  end
+
+  def plan_details
+    render :plan_details
   end
 
   private
@@ -44,4 +50,13 @@ class SocialFitness::FitnessController < ApplicationController
       :overall
     )
   end
+
+  def set_target
+    @target = Target.find(params[:id])
+  end
+
+  def target_params
+    params.require(:target).permit(:month, :weekone, :weektwo, :weekthree, :weekfour, :weekfive, :targetone, :targettwo, :targetthree, :targetfour, :targetfive)
+  end
+
 end

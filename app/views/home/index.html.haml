@@ -7,7 +7,7 @@
 
   .row.my-3
     .col
-      %h3.notification-title
+      %h3.notification-title.mb-2
         %strong Notifications
       #scroll-box{:style => "border-radius: 12px;"}
         - @notifications.each do |notification|
@@ -16,10 +16,17 @@
             .notification-date.mb-2.border-bottom= time_in_cdt(notification.updated_at, '%m/%d/%Y')
             .notification-text.text-left.pb-2= simple_format(notification.body)
         %p= paginate @notifications
+        - if @notifications.none?
+          %p.mt-4.text-muted.text-center
+            %em No notifications have been made.
+
+    .col-12.pt-3
+      %p.text-center
+        =link_to 'Rewards Winners', rewards_path, class: 'btn btn-primary', style: 'border: 1px solid black'
 
   .row.my-3
     .col
-      %h3.notification-title
+      %h3.notification-title.mb-2
         %strong My Social Health
       %div.table-wrapper-2.py-2#events-feed{:style => "border-radius: 12px;"}
         %h5.notification-title Social Health Level
@@ -32,9 +39,13 @@
                               "aria-valuenow" => "#{@progress}", :role => "progressbar", :style => "width:#{@progress}%"}
               ="#{@progress}%"
 
+    .col-12.pt-3
+      %p.text-center
+        =link_to 'Log Events', social_tracker_log_path, class: 'btn btn-primary', style: 'border: 1px solid black'
+
   .row.my-3
     .col
-      %h3.notification-title
+      %h3.notification-title.mb-2
         %strong My Social Events
       %div.table-wrapper-2.table-hover#events-feed{:style => "border-radius: 12px;"}
         %table.table
@@ -55,4 +66,8 @@
         %p= paginate @events
         - if @events.none?
           %div.text-muted.pb-3.text-center
-            %em No RSVPed events.
+            %em No RSVP'd events.
+
+    .col-12.pt-3
+      %p.text-center
+        =link_to 'Event Search', event_search_path, class: 'btn btn-primary', style: 'border: 1px solid black'

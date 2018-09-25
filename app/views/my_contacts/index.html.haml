@@ -6,7 +6,7 @@
       %h1.text-info.text-center My Contacts
   .row
     .col-md-12
-      %p.text-center.mb-4.p-2{style: "border: 1px solid black;"}
+      %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
         %strong
           Create and manage your social contacts here to easily coordinate activities with the Users you have connected with.
 
@@ -16,37 +16,23 @@
       %table.table.table-borderless.table-hover
         %thead
           %tr
-            %th= sort_link 'name', 'Contact Name'
             %th= sort_link 'display_name', 'Display Name'
-            %th= sort_link 'city', 'City'
-            %th= sort_link 'state', 'State'
             %th= sort_link 'created_at', 'Added On'
         %tbody
-          - @contacts.each.with_index(1) do |contact, i|
+          - @contacts.each do |contact|
             %tr.bg-white
-              %td= link_to truncate("#{i}. #{contact.name}"), my_contact_path(contact)
-              %td= contact.display_name
-              %td= contact.city
-              %td= contact.state
+              %td
+                %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                  data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user: user }" } }
+                  =user.display_name
               %td= time_in_cdt(contact.created_at, '%m/%d/%Y')
               %td.w-10.text-right
                 .dropdown
-                  = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{contact.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
-                    %i.fas.fa-ellipsis-h
-                  .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{contact.id}")
-                    = link_to edit_my_contact_path(contact), title: 'Edit', class: 'dropdown-item text-info' do
-                      %i.far.fa-edit
-                      Edit
-                    = link_to my_contact_path(contact), title: 'Delete', id: "delete_contact_#{contact.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this contact. Press OK to continue.' } do
-                      %i.far.fa-trash-alt
-                      Delete
+                  = link_to my_contact_path(contact), title: 'Delete', id: "delete_contact_#{contact.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this contact. Press OK to continue.' } do
+                    %i.far.fa-trash-alt
+                    Delete
             %tr.table-divider
       %p= paginate @contacts
 - else
   %p.text-muted.text-center
     %em No contacts were found.
-
-.container
-.col-12.py-3
-  %p.text-center
-    =link_to 'Add Contact', new_my_contact_path, class: 'btn btn-primary', style: 'border: 1px solid black'

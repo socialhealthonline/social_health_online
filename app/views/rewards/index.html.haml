@@ -1,0 +1,42 @@
+- page_title 'Rewards Winners'
+
+.container
+  .row
+    .col.py-3
+      %h1.text-info.text-center Rewards Winners
+
+  .row.mb-3
+    .col
+      %p.text-center.p-2{style: "border: 1px solid black;"}
+        %strong
+          The winners of our sweepstakes are shown here, so visit this page regularly to see if you've been selected for a reward.
+
+  .row.mt-3.mb-2
+    .col
+      %h3.notification-title
+        %strong Sweepstakes Results
+  - if @rewards.any?
+    .row.text-center.mb-3
+      .col
+        %div.table-wrapper-2.table-hover#events-feed{:style => "border-radius: 12px;"}
+          %table.table.text-center
+            %thead.mdb-color.lighten-4
+              %tr
+                %th Period
+                %th Display Name
+                %th Member Name
+                %th State
+                %th Prize
+            %tbody.bg-white
+              - @rewards.each do |reward|
+                %tr
+                  %td= reward.period
+                  %td= reward.display_name
+                  %td= reward.member_name
+                  %td= reward.state
+                  %td= reward.prize
+                  %tr.table-divider
+          = paginate @rewards
+  - else
+    %p.text-muted.text-center.mb-3
+      %em No rewards winners.

@@ -42,10 +42,6 @@ Rails.application.routes.draw do
   get "contact" => "contact#new"
   post "contact" => "contact#create"
 
-  # Matchmaker
-  get 'matchmaker' => 'matchmakers#index'
-  get 'fetch_user' => 'matchmakers#fetch_user'
-
   # Authentication vanity routes
   get "signin" => "sessions#new", as: "signin"
   delete "signout" => "sessions#destroy", as: "signout"
@@ -61,8 +57,13 @@ Rails.application.routes.draw do
   # My settings
   resource :my_settings, only: [:show, :update]
 
+  # Matchmaker
+  get 'matchmaker' => 'matchmakers#index'
+  get 'fetch_user' => 'matchmakers#fetch_user'
+
   # Bulletin Board
   get 'bulletins' => 'bulletins#bulletins'
+
 
   # Verify ACH account
   resource :ach, controller: 'ach', only: [:edit, :update]
@@ -76,8 +77,13 @@ Rails.application.routes.draw do
 
   get 'explore_communities' => 'communities#explore_communities'
   get 'event_search' => 'communities#event_search'
+  get 'leaderboard' => 'communities#leaderboard'
+  get 'user_finder' => 'communities#user_finder'
   get 'event_suggestions' => 'communities#new'
   post 'event_suggestions' => 'communities#create'
+  get 'challenge_new' => 'communities#challenge_new'
+  get 'challenge_index' => 'communities#challenge_index'
+  post 'challenge_new' => 'communities#challenge_create'
 
   # Manage
   namespace :manage do
@@ -90,9 +96,15 @@ Rails.application.routes.draw do
     end
     resources :events
     resources :announcements
-    resources :users
+    resources :challenges
+    resources :users do
+      collection do
+        get 'export_user_csv'
+      end
+    end
   end
 
+  # Social Tracker
   namespace :social_tracker do
     get "log" => "events#new"
     post "log" => "events#create"
@@ -100,19 +112,25 @@ Rails.application.routes.draw do
     get "history/:id" => "events#show"
   end
 
+  # Social Fitness
   namespace :social_fitness do
     get "log" => "fitness#new"
     post "log" => "fitness#create"
     get "history" => "fitness#index"
     get "history/:id" => "fitness#show"
-    get "resources" => "fitness#resources"
+    get "assets" => "fitness#assets"
     get "plan" => "fitness#plan"
+    get "console/fitness_plans/:id" => "fitness#plan_details", as: :plan_details
   end
+
+  # Rewards
+  get "rewards" => "rewards#index"
 
   # Dashboard
   get "home" => "home#index"
 
   # Console
+  get "lookups" => 'console#lookups'
   get "console" => "console#index"
   namespace :console do
     root to: "console#index", as: "root"
@@ -122,10 +140,14 @@ Rails.application.routes.draw do
       end
     end
     resources :news
+    resources :rewards
     resources :manage_bulletins
+    resources :event_links
+    resources :fitness_plans
     resources :notifications
     resources :members do
       collection do
+        get 'export_global_user_csv'
         get 'export_user_csv'
         get 'export_member_csv'
       end
@@ -147,6 +169,7 @@ Rails.application.routes.draw do
       get "members/:name/users" => "history#users", as: :member
       get "members/:name/users/:id/" => "history#user_history", as: :member_user
       get "members/:name/users/:user_id/history/:id" => "history#show", as: :member_user_social_fitness_log
+      delete "members/:name/users/:user_id/history/:id" => "history#destroy", as: :delete_social_fitness_log
     end
   end
 
@@ -173,11 +196,18 @@ Rails.application.routes.draw do
   get "invite_guests" => "invite_guests#new"
   post "invite_guests" => "invite_guests#create"
 
+  # Invitation Reminder
+  get "invitation_reminder" => "invitation_reminder#new"
+  post "invitation_reminder" => "invitation_reminder#create"
+
   # Affiliates
   get "affiliates_search" => "affiliates#index"
 
   # Discounts
   get "discounts_finder" => "discounts_finder#index"
+
+  # Discounts
+  get "event_links" => "event_links#index"
 
   # Report Issues
   get "issues" => "issues#new"
@@ -186,19 +216,16 @@ Rails.application.routes.draw do
   # My Achievements
   get "my_achievements" => "my_achievements#index"
 
+  # My Events
+  get "my_events" => "my_events#index"
+
   # My Favorites
   get "my_favorites" => "my_favorites#index"
 
+  # Sitemap
+  get "sitemap" => "sitemap#index"
+
   # My Contacts
   resources :my_contacts
-
-  require 'sidekiq/web'
-  if Rails.env.production?
-    Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
-      [user, password] == [Rails.application.credentials.production.dig(:sidekiq, :login),
-                           Rails.application.credentials.production.dig(:sidekiq, :password)]
-    end
-  end
-  mount Sidekiq::Web => '/sidekiq'
 
 end

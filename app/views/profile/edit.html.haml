@@ -15,7 +15,7 @@
                 = f.text_field :name, autofocus: true, required: true, class: "form-control #{form_error_class(@user, :name)}"
                 = model_error_display(@user, :name)
                 %div.float-right
-                  %label(for="user_name") Hide Info
+                  %label(for="user_name") Hide Profile Info
                   = h.check_box :name, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.name) }, '1', '0'
             .col
               .form-group
@@ -29,7 +29,7 @@
                 = f.email_field :email, required: true, class: "form-control #{form_error_class(@user, :email)}"
                 = model_error_display(@user, :email)
                 %div.float-right
-                  %label(for="user_email") Hide Info
+                  %label(for="user_email") Hide Profile Info
                   = h.check_box :email, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.email) }, '1', '0'
             .col
               .form-group
@@ -37,7 +37,7 @@
                 = f.text_field :phone, class: "form-control #{form_error_class(@user, :phone)}"
                 = model_error_display(@user, :phone)
                 %div.float-right
-                  %label(for="user_phone") Hide Info
+                  %label(for="user_phone") Hide Profile Info
                   = h.check_box :phone, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.phone) }, '1', '0'
           .row
             .col
@@ -46,7 +46,7 @@
                 = f.text_field :address, class: "form-control #{form_error_class(@user, :address)}"
                 = model_error_display(@user, :address)
                 %div.float-right
-                  %label(for="user_address") Hide Info
+                  %label(for="user_address") Hide Profile Info
                   = h.check_box :address, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.address) }, '1', '0'
             .col
               .form-group
@@ -54,7 +54,7 @@
                 = f.text_field :city, class: "form-control #{form_error_class(@user, :city)}"
                 = model_error_display(@user, :city)
                 %div.float-right
-                  %label(for="user_city") Hide Info
+                  %label(for="user_city") Hide Profile Info
                   = h.check_box :city, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.city) }, '1', '0'
           .row
             .col
@@ -63,7 +63,7 @@
                 = f.select :state, US_STATES, {}, { class: "form-control custom-select #{form_error_class(@user, :state)}" }
                 = model_error_display(@user, :state)
                 %div.float-right
-                  %label(for="user_state") Hide Info
+                  %label(for="user_state") Hide Profile Info
                   = h.check_box :state, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.state) }, '1', '0'
             .col
               .form-group
@@ -71,7 +71,7 @@
                 = f.text_field :zip, class: "form-control #{form_error_class(@user, :zip)}"
                 = model_error_display(@user, :zip)
                 %div.float-right
-                  %label(for="user_zip") Hide Info
+                  %label(for="user_zip") Hide Profile Info
                   = h.check_box :zip, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.zip) }, '1', '0'
           .row
             .col
@@ -80,7 +80,7 @@
                 = f.select(:time_zone, ['Alaska', 'Hawaii', 'Pacific Time (US & Canada)', 'Mountain Time (US & Canada)', 'Central Time (US & Canada)', 'Eastern Time (US & Canada)'].sort, {}, { class: 'custom-select form-control' })
                 = model_error_display(@user, :time_zone)
                 %div.float-right
-                  %label(for="user_time_zone") Hide Info
+                  %label(for="user_time_zone") Hide Profile Info
                   = h.check_box :time_zone, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.time_zone) }, '1', '0'
             .col
               .form-group
@@ -88,25 +88,19 @@
                 = f.text_field :birthdate, class: "flatpickr-date form-control #{form_error_class(@user, :birthdate)}"
                 = model_error_display(@user, :birthdate)
                 %div.float-right
-                  %label(for="user_birthdate") Hide Info
+                  %label(for="user_birthdate") Hide Profile Info
                   = h.check_box :birthdate, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.birthdate) }, '1', '0'
           .row
             .col
               .form-group
                 %label(for="user_gender") Gender
-                = f.select :gender, User::GENDER, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@user, :gender)}" }
+                = f.select :gender, User::GENDER, {include_blank: true}, { class: "form-control custom-select #{form_error_class(@user, :gender)}" }
                 = model_error_display(@user, :gender)
-                %div.float-right
-                  %label(for="user_gender") Hide Info
-                  = h.check_box :gender, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.gender) }, '1', '0'
             .col
               .form-group
                 %label(for="user_ethnicity") Race/Ethnicity
-                = f.select :ethnicity, User::ETHNICITY, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
+                = f.select :ethnicity, User::ETHNICITY, {include_blank: true}, { class: "form-control custom-select #{form_error_class(@user, :ethnicity)}" }
                 = model_error_display(@user, :ethnicity)
-                %div.float-right
-                  %label(for="user_ethnicity") Hide Info
-                  = h.check_box :ethnicity, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.ethnicity) }, '1', '0'
           .row
             .col
               .form-group
@@ -132,10 +126,16 @@
           .row
             .col
               .form-group
-                %label(for="user_hobbies") Hobbies
+                %label(for="user_interest_types") Primary Interest
+                = f.select :interest_types, INTEREST_TYPES,   { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :interest_types)}" }
+                = model_error_display(@user, :interest_types)
+            .col
+              .form-group
+                %label(for="user_hobbies") Other Interests
                 = f.text_field :hobbies, class: "form-control #{form_error_class(@user, :hobbies)}"
                 = model_error_display(@user, :hobbies)
-            .col
+          .row
+            .col-6
               .form-group
                 %label(for="user_pet_peeves") Pet Peeves
                 = f.text_field :pet_peeves, class: "form-control #{form_error_class(@user, :pet_peeves)}"
@@ -147,29 +147,36 @@
                 = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@user, :bio)}"
                 = model_error_display(@user, :bio)
           .row
-            .col-12.col-sm-6.col-lg-6.col-xl-6
+            .col-lg-6
+              .card
+                .card-body.text-center
+                  .form-group
+                    .form-check
+                      #matchmakerCheckboxId.col-xs-2
+                        = h.check_box :matchmaker, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.matchmaker) }, '1', '0'
+                        %label(for="user_invisible") Matchmaker - Hide My Profile in Matchmaker
+            .col-lg-6
+              .card.pb-2
+                .card-body.pl-4.text-center
+                  .form-group
+                    .form-check
+                      = f.check_box :hide_info_on_user_finder, class: 'form-check-input'
+                      %label.form-check-label.pl-1(for="hide_info_on_user_finder") User Finder - Hide My Profile in User Finder
+          .row
+            .col-8.col-sm-6.col-lg-6.col-xl-6
               .form-group#file-field
                 %label(for="profile_avatar") User Avatar (note: maximum file size is 10 MB)
                 = f.file_field :avatar, class: "form-control #{form_error_class(@user, :avatar)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 10.megabytes }
                 = model_error_display(@user, :avatar)
-
           .row
-            .col
+            .col.mb-3
               %p.text-muted Avatar Preview:
               -if @user.avatar.attached? && @user.avatar.attachment.valid?
-                = image_tag @user.avatar, alt: 'User avatar', size: '180x180'
-
-          .row
-            .col
-              %br
-              .form-group
-                #matchmakerCheckboxId.col-xs-2
-                  = h.check_box :matchmaker, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.matchmaker) }, '1', '0'
-                  %label(for="user_invisible") Hide My Profile in Matchmaker
+                = image_tag @user.avatar, alt: 'User avatar', size: '200x200'
 
           .row.pt-2.border-top
             .col
-              %p.text-muted Change Your Password:
+              %p.text-muted Change Your Password (note: at least 8 characters long and contain numbers and letters)
           .row
             .col
               .form-group

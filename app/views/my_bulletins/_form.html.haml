@@ -20,20 +20,6 @@
         .row.justify-content-center
           .col-lg-10
             .form-group
-              %label(for="city") City
-              = f.text_field :city, class: "form-control #{form_error_class(@bulletin, :city)}"
-              = model_error_display(@bulletin, :city)
-
-        .row.justify-content-center
-          .col-lg-10
-            .form-group
-              %label(for="state") State
-              = f.select :state, US_STATES, { required: true }, { class: "#{form_error_class(@bulletin, :state)} form-control custom-select" }
-              = model_error_display(@bulletin, :state)
-
-        .row.justify-content-center
-          .col-lg-10
-            .form-group
               %label(for="start_at") Event Date/Time
               = f.text_field :start_at, class: "flatpickr-date-time form-control #{form_error_class(@bulletin, :start_at)}", required: true
               = model_error_display(@bulletin, :start_at)
@@ -41,7 +27,42 @@
         .row.justify-content-center
           .col-lg-10
             .form-group
-              %label(for="description") Description
+              %label(for="location") Event Location
+              = f.text_field :location, class: "form-control #{form_error_class(@bulletin, :location)}"
+              = model_error_display(@bulletin, :location)
+
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="address") Event Address
+              = f.text_field :address, class: "form-control #{form_error_class(@bulletin, :address)}"
+              = model_error_display(@bulletin, :address)
+
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="city") Event City
+              = f.text_field :city, class: "form-control #{form_error_class(@bulletin, :city)}"
+              = model_error_display(@bulletin, :city)
+
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="state") Event State
+              = f.select :state, US_STATES, { required: true }, { class: "#{form_error_class(@bulletin, :state)} form-control custom-select" }
+              = model_error_display(@bulletin, :state)
+
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="zip") Event ZIP Code
+              = f.text_field :zip, class: "form-control #{form_error_class(@bulletin, :zip)}"
+              = model_error_display(@bulletin, :zip)
+
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="description") Event Details
               = f.text_area :description, autofocus: true, class: "form-control #{form_error_class(@bulletin, :description)}", required: true
               = model_error_display(@bulletin, :description)
 

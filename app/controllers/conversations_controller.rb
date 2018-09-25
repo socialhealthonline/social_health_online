@@ -6,7 +6,7 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    recipients = User.where(id: conversation_params[:recipients])
+    recipients = User.where(id: conversation_params[:recipients], user_status: :enabled)
     authenticated_user.send_message(recipients, conversation_params[:body], conversation_params[:subject])
     flash[:success] = 'Your message was successfully sent!'
     redirect_to mailbox_inbox_path
@@ -39,7 +39,7 @@ class ConversationsController < ApplicationController
       conversation.opt_out(authenticated_user)
       conversation.mark_as_deleted(authenticated_user)
     end
-    redirect_to mailbox_trash_path
+    redirect_to mailbox_inbox_path
   end
 
   private

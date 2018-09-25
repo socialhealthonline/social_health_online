@@ -1,0 +1,91 @@
+= form_with(model: @challenge, url: [:manage, @challenge], local: true) do |f|
+  %h5 Pre-Challenge Completion
+  .row.justify-content-center
+    .col-6
+      .form-group
+        %label Challenge Name
+        = f.text_field :name, class: "form-control #{form_error_class(@challenge, :name)}", required: true
+        = model_error_display(@challenge, :name)
+        .row.justify-content-center
+    .col-6
+      .form-group
+        %label Challenge Type
+        = f.text_field :challenge_type, placeholder: 'E.g., Sweepstakes, Contest, Etc.', class: "form-control #{form_error_class(@challenge, :challenge_type)}", required: true
+        = model_error_display(@challenge, :challenge_type)
+  .row.justify-content-center
+    .col-6
+      .form-group
+        %label(for="challenge_start_date") Challenge Start Date
+        = f.text_field :challenge_start_date, class: "flatpickr-date form-control #{form_error_class(@challenge, :challenge_start_date)}", required: true
+        = model_error_display(@challenge, :challenge_start_date)
+    .col-6
+      .form-group
+        %label(for="challenge_end_date") Challenge End Date
+        = f.text_field :challenge_end_date, class: "flatpickr-date form-control #{form_error_class(@challenge, :challenge_end_date)}", required: true
+        = model_error_display(@challenge, :challenge_end_date)
+  .row.justify-content-center
+    .col-6
+      .form-group
+        %label Challenge Location
+        = f.text_field :location, class: "form-control #{form_error_class(@challenge, :location)}"
+        = model_error_display(@challenge, :location)
+    .col-6
+      .form-group
+        %label Challenge Address
+        = f.text_field :address, class: "form-control #{form_error_class(@challenge, :address)}"
+        = model_error_display(@challenge, :address)
+  .row.justify-content-center
+    .col-6
+      .form-group
+        %label Challenge City
+        = f.text_field :city, class: "form-control #{form_error_class(@challenge, :address)}"
+        = model_error_display(@challenge, :city)
+    .col-6
+      .form-group
+        %label(for="state") Challenge State
+        = f.select :state, US_STATES, { required: true }, { class: "#{form_error_class(@challenge, :state)} form-control custom-select" }
+        = model_error_display(@challenge, :state)
+  .row.justify-content-center
+    .col-6
+      .form-group
+        %label Challenge ZIP Code
+        = f.text_field :zip, class: "form-control #{form_error_class(@challenge, :zip)}"
+        = model_error_display(@challenge, :zip)
+        .row.justify-content-center
+    .col-6
+      .form-group
+        %label Challenge Prize
+        = f.text_field :prize, class: "form-control #{form_error_class(@challenge, :prize)}"
+        = model_error_display(@challenge, :prize)
+  .row.justify-content-center
+    .col-lg-6
+      .form-group
+        %label Challenge Details
+        = f.text_area :description, class: "form-control #{form_error_class(@challenge, :description)}", required: true
+        = model_error_display(@challenge, :description)
+    .col-6
+      .form-group
+        %label Challenge Verification Code
+        %i.c-pointer.fas.fa-info-circle.fa{ title: 'Optional code to distribute to the Users during a challenge for the purpose of verifying actual challenge completion via its submission by the Users'}
+        = f.text_field :verification_code, class: "form-control #{form_error_class(@challenge, :verification_code)}"
+        = model_error_display(@challenge, :verification_code)
+  .row.border-top.pt-2
+  %h5 Post-Challenge Completion
+  .row.justify-content-center
+    .col-6
+      .form-group
+        %label Challenge Winner
+        = f.text_field :winner, class: "form-control #{form_error_class(@challenge, :location)}"
+        = model_error_display(@challenge, :winner)
+    .col-6
+      .form-group
+        %label Winner Selection Date
+        = f.text_field :completion_date, class: "flatpickr-date form-control #{form_error_class(@challenge, :completion_date)}"
+        = model_error_display(@challenge, :completion_date)
+
+  .mb-3.text-center
+    = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, style: 'border: 1px solid black;'
+    - if @challenge.persisted?
+      = link_to 'Cancel', manage_challenges_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'
+    - else
+      = link_to 'Cancel', manage_challenges_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'

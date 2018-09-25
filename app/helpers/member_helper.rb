@@ -10,13 +10,27 @@ module MemberHelper
   end
 
   def csv_user_list
-    columns = %w[name display_name email phone address city state zip guest]
+    columns = %w[name display_name email phone address city state zip guest user_status total_social_events_logged last_social_event_log_date]
     CSV.generate(col_sep: ';',
                  row_sep: "\n",
                  headers: true,
                  write_headers: true,
                  return_headers: true) do |csv|
-      csv << %w[Name DisplayName Email Phone Address City State Zip GuestUser]
+      csv << %w[Name Display\ Name Email Phone Address City State Zip Guest Status Total\ Events\ Logged Last\ Logged\ Event]
+      User.where(member_id: authenticated_user.member.id).find_each do |user|
+        csv << columns.collect { |name| user.send(name) }
+      end
+    end
+  end
+
+  def csv_global_user_list
+    columns = %w[name display_name email phone address city state zip guest user_status member_id total_social_events_logged last_social_event_log_date]
+    CSV.generate(col_sep: ';',
+                 row_sep: "\n",
+                 headers: true,
+                 write_headers: true,
+                 return_headers: true) do |csv|
+      csv << %w[Name Display\ Name Email Phone Address City State Zip Guest Status Member\ ID Total\ Events\ Logged Last\ Logged\ Event]
       User.find_each do |user|
         csv << columns.collect { |name| user.send(name) }
       end
@@ -24,13 +38,13 @@ module MemberHelper
   end
 
   def csv_member_list
-    columns = %w[name address city state zip phone]
+    columns = %w[name address city state zip phone url public_member charity_waiver org_type service_capacity]
     CSV.generate(col_sep: ';',
                  row_sep: "\n",
                  headers: true,
                  write_headers: true,
                  return_headers: true) do |csv|
-      csv << %w[Member\ Name Address City State Zip Phone]
+      csv << %w[Member\ Name Address City State Zip Phone URL Public Fee\ Waiver Org\ Type User\ Seats]
       Member.find_each.each do |member|
         csv << columns.collect { |name| member.send(name) }
       end

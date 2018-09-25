@@ -1,5 +1,5 @@
 class MemberForLocatorSerializer < ActiveModel::Serializer
-  attributes :name, :address, :city, :zip, :url, :phone, :full_address, :state
+  attributes :name, :address, :city, :zip, :url, :phone, :full_address, :state, :org_type
   include ActionView::Helpers
   # def state
   #   US_STATES.key(object.state)

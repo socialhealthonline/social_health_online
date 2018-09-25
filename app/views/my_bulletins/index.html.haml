@@ -1,24 +1,27 @@
 - page_title 'My Bulletins'
 
-.container
+.container{:style => "overflow-x:hidden;"}
   .row
     .col.py-3
       %h1.brand-primary.text-center My Bulletins
   .row
     .col-md-12
-      %p.text-center.mb-4.p-2{style: "border: 1px solid black;"}
+      %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
         %strong
-          Post and manage your social bulletins here to share personal events and activity ideas with all Users on the bulletin board.
+          Post and manage your social bulletins here to share personal events and activity ideas with all Users on the bulletin board. Don't forget that 30 days after you post a bulletin it will be automatically deleted.
 
-- if @bulletins.any?
+  %h3.notification-title.justify-content-center.mb-2
+    %strong Posted Bulletins
+
+.container{:style => "overflow-x:hidden;"}
   .row.justify-content-center
     .table-responsive.col-10.text-center{ :style => 'border: 2px solid black; border-radius: 12px;' }
       %table.table.table-borderless.table-hover
         %thead
           %tr
             %th= sort_link 'title', 'Bulletin Title'
-            %th= sort_link 'city', 'City'
-            %th= sort_link 'state', 'State'
+            %th= sort_link 'city', 'Event City'
+            %th= sort_link 'state', 'Event State'
             %th= sort_link 'event_datetime', 'Event Date/Time'
             %th= sort_link 'created_at', 'Added On'
         %tbody
@@ -42,11 +45,11 @@
                       Delete
             %tr.table-divider
       %p= paginate @bulletins
-- else
-  %p.text-muted.text-center
-    %em No bulletins were found.
+      - if @bulletins.none?
+        %p.text-muted.mb-3.text-center
+          %em No bulletins have been posted.
 
-.container
+.container{:style => "overflow-x:hidden;"}
   .col-12.py-3
     %p.text-center
       =link_to 'Post Bulletin', new_my_bulletin_path, class: 'btn btn-primary', style: 'border: 1px solid black'

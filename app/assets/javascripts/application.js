@@ -69,7 +69,7 @@ $(document).ready(function() {
 
   communityTabsOnLoad();
 
-  $('#member_logo, #user_avatar').change(function(){
+  $('#member_logo, #event_logo, #affiliate_logo, #user_avatar').change(function(){
     var max_exceeded_message = 'This file exceeds the maximum allowed file size (10 mb).';
     var ext_error_message = 'Only image files with extensions .jpg, .jpeg, .gif, or .png are allowed.';
     var allowed_extension = ["jpg", 'jpeg', 'gif', 'png'];

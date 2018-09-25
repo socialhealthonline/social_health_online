@@ -1,0 +1,20 @@
+- page_title 'Invitation Reminder'
+
+.container
+  .row
+    .col.py-3
+      %h1.brand-primary.text-left Invitation Reminder
+
+  .row
+    .col-md-3
+    .col-md-6.justify-content-center
+      .card
+        %p.text-left.px-3.py-2.mb-0
+        .card-body.text-center.pt-0
+          = form_with url: invitation_reminder_url, method: :post, local: true do
+            .form-group
+              %label(for="email") Pending User Email Address
+              = email_field_tag :email, params[:email], class: 'form-control', required: true
+            = submit_tag 'Send', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
+            = link_to 'javascript:history.back()', class: 'btn btn-outline-secondary', style: 'border: 1px solid black;' do
+              Cancel

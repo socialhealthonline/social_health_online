@@ -74,13 +74,13 @@ class UserDecorator < ApplicationDecorator
 
   def profile_gender
     h.content_tag :p do
-      h.content_tag(:strong, "Gender: ") + object&.gender if object.hidden_field.gender.eql?('0')
+      h.content_tag(:strong, "Gender: ") + object&.gender if object.gender && !object.gender&.empty?
     end
   end
 
   def profile_ethnicity
     h.content_tag :p do
-      h.content_tag(:strong, "Race/Ethnicity: ") + object&.ethnicity if object.hidden_field.ethnicity.eql?('0')
+      h.content_tag(:strong, "Race/Ethnicity: ") + object&.ethnicity if object.ethnicity && !object.ethnicity&.empty?
     end
   end
 
@@ -108,9 +108,15 @@ class UserDecorator < ApplicationDecorator
     end
   end
 
+  def profile_interest_types
+    h.content_tag :p do
+      h.content_tag(:strong, "Primary Interest: ") + object&.interest_types if object.interest_types && !object.interest_types&.empty?
+    end
+  end
+
   def profile_hobbies
     h.content_tag :p do
-      h.content_tag(:strong, "Hobbies: ") + object&.hobbies if object.hobbies && !object.hobbies&.empty?
+      h.content_tag(:strong, "Other Interests: ") + object&.hobbies if object.hobbies && !object.hobbies&.empty?
     end
   end
 
@@ -128,7 +134,7 @@ class UserDecorator < ApplicationDecorator
 
   def user_avatar
     if object.avatar.attached? && object.avatar.attachment.valid?
-      image_tag object.avatar, alt: 'User Avatar', size: '180x180'
+      image_tag object.avatar, alt: 'User Avatar', size: '200x200'
     end
   end
 end

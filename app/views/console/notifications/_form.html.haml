@@ -2,19 +2,19 @@
   .row
     .col
       .form-group
-        %label Title
+        %label Notification Title
         = f.text_field :title, class: "form-control #{form_error_class(@notification, :title)}"
         = model_error_display(@notification, :title)
   .row
     .col
       .form-group
-        %label Body
+        %label Notification Body
         = f.text_area :body, rows: 12, class: "form-control #{form_error_class(@notification, :body)}"
         = model_error_display(@notification, :body)
 
   .mb-3.text-center
     = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }
     - if @notification.persisted?
-      = link_to 'Cancel', console_notification_path(@notification), class: 'btn btn-outline-secondary', :style => 'border: 1px solid black;'
+      = link_to 'Cancel', console_notifications_path, class: 'btn btn-outline-secondary', :style => 'border: 1px solid black;'
     - else
       = link_to 'Cancel', console_notifications_path, class: 'btn btn-outline-secondary', :style => 'border: 1px solid black;'

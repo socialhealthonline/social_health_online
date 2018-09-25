@@ -1,0 +1,43 @@
+.row.justify-content-center.mb-3
+  .col-md-6
+    .card.card-box
+      .card-body.justify-content-center.pt-0
+      = form_with model: @resource, url: [:console_event_links], local: true do |f|
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="name") Site Name
+              = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@resource, :name)}", required: true
+              = model_error_display(@resource, :name)
+
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="event_type") Event Type
+              = f.select :event_type, EVENT_TYPES, { include_blank: true }, { class: "#{form_error_class(@resource, :event_type)} form-control custom-select" }
+              = model_error_display(@resource, :event_type)
+
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="city") City
+              = f.text_field :city, class: "form-control #{form_error_class(@resource, :city)}"
+              = model_error_display(@resource, :city)
+
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="state") State
+              = f.select :state, US_STATES, { required: true }, { class: "#{form_error_class(@resource, :state)} form-control custom-select" }
+              = model_error_display(@resource, :state)
+
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="url") Website
+              = f.text_field :url, class: "form-control #{form_error_class(@resource, :url)}", required: true
+              = model_error_display(@resource, :url)
+
+        .mb-3.text-center
+          = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, style: 'border: 1px solid black;'
+          = link_to 'Cancel', console_event_links_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'

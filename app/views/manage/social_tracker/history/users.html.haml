@@ -3,7 +3,7 @@
 .container
   .row
     .col.py-3
-      .row.pb-3.mb-3
+      .row.pb-3
         .col-7
           %h1.text-info My Community Social Tracker
         .col-5
@@ -21,22 +21,24 @@
               = link_to manage_announcements_path, class: 'dropdown-item' do
                 %i.fas.fa.fa-bullhorn
                 Announcements
+              = link_to manage_challenges_path, class: 'dropdown-item' do
+                %i.fas.fa.fa-puzzle-piece
+                Challenges
               = link_to manage_users_path, class: 'dropdown-item' do
                 %i.fas.fa-user-circle
-                Users
+                Community Users
               = link_to my_community_path, class: 'dropdown-item' do
                 %i.fas.fa-angle-double-left
                 Community Home
 
-      - if @member.users.any?
-        .table-responsive.mt-3.text-center{ :style => 'border: 2px solid black; border-radius: 12px;' }
+        .table-responsive.mt-3.mx-2.text-center{ :style => 'border: 2px solid black; border-radius: 12px;' }
           %table.table.table-borderless.align-items-center.table-hover(id="social-tracker-history-table")
             %thead
               %tr
                 %th= sort_link 'name', 'Name'
                 %th= sort_link 'display_name', 'Display Name'
-                %th= sort_link 'total_social_events_logged', 'Total Events Logged'
-                %th= sort_link 'last_social_event_log_date', 'Last Logged Event'
+                %th Total Events Logged
+                %th Last Logged Event
             %tbody
             - @users.each.with_index(1) do |user, i|
               %tr.bg-white
@@ -46,9 +48,9 @@
                       data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: user }" } }
                     =user.display_name
                 %td= user.total_social_events_logged
-                %td= short_date(user.last_social_event_log_date) || "No Logs"
+                %td= short_date(user.last_social_event_log_date) || "No logs"
                 %tr.table-divider
           %p= paginate @users
-      - else
-        %p.pb-3.text-muted.text-center
-          %em No Users were found.
+          - if @member.users.none?
+            %p.pb-3.text-muted.text-center
+              %em No Users were found.

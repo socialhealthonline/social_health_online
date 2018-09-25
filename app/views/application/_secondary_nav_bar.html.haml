@@ -8,9 +8,10 @@
               %i.fas.fa-home
               Home
           %li.nav-item.mr-1
-            = link_to mailbox_inbox_path, class: 'btn btn-primary px-1 my-1' do
+            = link_to mailbox_inbox_path, class: 'btn btn-primary px-1 my-1 text-left' do
               %i.fas.fa-envelope
               Messages
+              %span.badge.badge-danger= unread_messages_count
           %li.nav-item.dropdown.mr-1
             %a.btn.btn-primary.dropdown-toggle.px-1.my-1#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
               %i.fas.fa-users
@@ -28,6 +29,18 @@
 
           %li.nav-item.dropdown.mr-1.my-1
             %a.btn.btn-primary.dropdown-toggle.px-1#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
+              %i.fas.fa-store-alt
+              Affiliates
+            .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'communitiesDropdownMenuLink'}
+              = link_to discounts_finder_path, class: 'dropdown-item' do
+                %i.fas.fa-hand-holding-usd
+                Discounts Finder
+              = link_to affiliates_search_path, class: 'dropdown-item' do
+                %i.fas.fa-location-arrow
+                Affiliate Search
+
+          %li.nav-item.dropdown.mr-1.my-1
+            %a.btn.btn-primary.dropdown-toggle.px-1#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
               %i.fas.fa-walking
               Activities
             .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'communitiesDropdownMenuLink'}
@@ -37,12 +50,9 @@
               = link_to bulletins_path, class: 'dropdown-item' do
                 %i.fas.fa-thumbtack
                 Bulletin Board
-              = link_to discounts_finder_path, class: 'dropdown-item' do
-                %i.fas.fa-hand-holding-usd
-                Discounts Finder
-              = link_to affiliates_search_path, class: 'dropdown-item' do
-                %i.fas.fa-search
-                Affiliate Search
+              = link_to event_links_path, class: 'dropdown-item' do
+                %i.fas.fa-link
+                Event Links
 
           %li.nav-item.dropdown.mr-1.my-1
             %a.dropdown-toggle.btn.btn-primary.px-1#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
@@ -54,7 +64,7 @@
                 Log Events
               = link_to social_tracker_history_path, class: 'dropdown-item' do
                 %i.fas.fa-history
-                History
+                Tracker History
             %li.nav-item.dropdown.mr-1.my-1
               %a.dropdown-toggle.btn.btn-primary.px-1#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
                 %i.fas.fa-heartbeat
@@ -64,19 +74,25 @@
                   %i.fas.fa-pencil-alt
                   Self-Assessment
                 = link_to social_fitness_history_path, class: 'dropdown-item' do
-                  %i.fas.fa-history
-                  History
+                  %i.fas.fa-notes-medical
+                  Fitness History
                 = link_to social_fitness_plan_path, class: 'dropdown-item' do
                   %i.fas.fa-list-alt
-                  Fitness Plan
+                  Fitness Plans
           %li.nav-item.dropdown.my-1
             %a.dropdown-toggle.btn.btn-primary.px-1#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
               %i.fas.fa-toolbox
               Tools
             .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'communitiesDropdownMenuLink'}
+              = link_to rewards_path, class: 'dropdown-item' do
+                %i.fas.fa-dollar-sign
+                Rewards Winners
               = link_to media_center_path, class: 'dropdown-item' do
                 %i.fas.fa-folder
                 Media Center
+              = link_to sitemap_path, class: 'dropdown-item' do
+                %i.fas.fa-th
+                Sitemap
               = link_to invite_guests_path, class: 'dropdown-item' do
                 %i.fas.fa-share-square
                 Invite Guests

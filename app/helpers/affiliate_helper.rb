@@ -16,13 +16,13 @@ module AffiliateHelper
   end
 
   def csv_affiliate_list
-    columns = %w[name address city state zip phone url]
+    columns = %w[name address city state zip phone url support_type org_type]
     CSV.generate(col_sep: ';',
                  row_sep: "\n",
                  headers: true,
                  write_headers: true,
                  return_headers: true) do |csv|
-      csv << %w[Name Address City State Zip Phone URL]
+      csv << %w[Affiliate\ Name Address City State Zip Phone URL Support\ Type Org\ Type]
       Affiliate.find_each do |affiliate|
         csv << columns.collect { |name| affiliate.send(name) }
       end

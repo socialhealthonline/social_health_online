@@ -3,6 +3,8 @@ class Event < ApplicationRecord
   has_many :rsvps
   has_many :users, :through => :rsvps
 
+  has_one_attached :logo, dependent: :destroy
+
   validates :title, :start_at, :event_type, :location, presence: true
   validates :address, :city, :zip, presence: false
   validates :event_type, inclusion: EVENT_TYPES
@@ -21,6 +23,16 @@ class Event < ApplicationRecord
   def rsvp_limit_reached?
     return false unless rsvp_limit
     rsvps.yes.count == rsvp_limit
+  end
+
+  def logo_validation
+    if logo.attached?
+      if logo.blob.byte_size > 10.megabytes
+        errors[:logo] << 'This file exceeds the maximum allowed file size (10 mb).'
+      elsif !logo.blob.content_type.starts_with?('image/')
+        errors[:logo] << 'Only image files with extensions .jpg, .jpeg, .gif, or .png are allowed.'
+      end
+    end
   end
 
   private

@@ -1,14 +1,21 @@
 class Console::SocialFitness::HistoryController < ConsoleController
+  before_action :require_admin
   helper_method :sort_column, :sort_direction
 
   def members
     @members = Member.all
-    @members = Member.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
+    @members = Member.order("#{sort_column} #{sort_direction}")
+    @members = FindUsersCommunities.new(@members, show_init_scope: true).call(permitted_params)
+    unless @members.kind_of?(Array)
+      @members = @members.page(params[:page]).per(25)
+    else
+      @members = Kaminari.paginate_array(@members).page(params[:page]).per(25)
+    end
   end
 
   def users
     @member = Member.friendly.find(params[:name])
-    @users  = @member.users
+    @users  = @member.users.order("#{sort_column} #{sort_direction}")
   end
 
   def user_history
@@ -30,22 +37,27 @@ class Console::SocialFitness::HistoryController < ConsoleController
   end
 
   def destroy
-    # SocialEventLog.destroy(params[:id])
-    # redirect_to console_social_tracker_members_path, success:"Log was successfully deleted."
+    SocialFitnessLog.destroy(params[:id])
+    redirect_to console_social_fitness_member_path, success:"Log was successfully deleted."
   end
 
   private
+
+    def permitted_params
+      params.permit(:state).reject{|_, v| v.blank?}
+    end
 
     def member_params
       params.require(:member).permit(
         :name,
         :city,
-        :state
+        :state,
+        :display_name
       )
     end
 
     def sortable_columns
-      %w[name city state]
+      %w[name city state display_name]
     end
 
     def sort_column

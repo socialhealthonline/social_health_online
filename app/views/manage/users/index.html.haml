@@ -1,7 +1,7 @@
 - page_title 'My Community Users'
 
 %div#profile_partial
-.container
+.container.pb-3
   %br
   .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.pb-2
     %h1.brand-primary My Community Users
@@ -25,47 +25,84 @@
               = link_to manage_announcements_path, class: 'dropdown-item' do
                 %i.fas.fa-bullhorn
                 Announcements
+              = link_to manage_challenges_path, class: 'dropdown-item' do
+                %i.fas.fa.fa-puzzle-piece
+                Challenges
               = link_to my_community_path, class: 'dropdown-item' do
                 %i.fas.fa-angle-double-left
                 Community Home
 
         %div.float-right
-          = link_to new_manage_user_path, class: 'btn btn-primary', style: 'border: 1px solid black;' do
-            %i.fas.fa-plus-circle
-            Add Users
-  %h6.mt-2= "Service Capacity: #{@service_capacity}"
-  %h6= "Current User Total: #{@users_count}"
+          .dropdown
+            %a.btn.btn-primary.dropdown-toggle{style: 'border: 1px solid black'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+              %i.fas.fa-user-cog
+              Users
+            .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;'}
+              = link_to new_manage_user_path, class: 'dropdown-item' do
+                %i.fas.fa-plus-circle
+                Add Users
+              = link_to export_user_csv_manage_users_path, class: 'dropdown-item' do
+                %i.fas.fa-file-export
+                Export User CSV
 
+  .row.justify-content-center.mb-2
+    .col-5
+      %h6.text-left.font-weight-bold= "Service Capacity: #{@service_capacity}"
+    .col-5
+      %h6.text-right.font-weight-bold= "Current User Total: #{@users_count}"
 
-  - if @users.any?
-    .table-responsive.text-center{ :style => 'border: 2px solid black; border-radius: 12px;'}
-      %table.table.table-borderless.table-hover
-        %thead
-          %tr
-            %th= sort_link 'name', 'Name'
-            %th= sort_link 'display_name', 'Display Name'
-            %th= sort_link 'email', 'Email'
-            %th= sort_link 'user_status', 'Status'
-            %th= sort_link 'manager', 'Manager'
-        %tbody
-          - @users.each.with_index(1) do |user, i|
-            %tr.bg-white
-              %td= link_to "#{i}. #{user.name}" , edit_manage_user_path(user)
-              %td
-                %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
-                    data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user: user }" } }
-                  =user.display_name
-              %td= truncate(user.email)
-              %td= user.user_status.capitalize
-              %td= user.manager? ? 'Yes' : 'No'
-              %td
-                = link_to edit_manage_user_path(user), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
-                  %i.far.fa-edit
-                &nbsp;
-                = link_to manage_user_path(user), title: 'Delete', id: "delete_user_#{user.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this user. Press OK to continue.' } do
-                  %i.far.fa-trash-alt
-            %tr.table-divider
-      %p= paginate @users      
-  - else
-    %p.pb-3.text-muted.text-center
-      %em No Users are present.
+  .row.justify-content-center.mt-0
+    .col-md-3.mb-2.pb-1.text-center
+      %h5.pt-0.mb-0 Filter - By Name
+      <p class ="font-weight-bold mb-2 under_label_text">(note: full name required and case sensitive)</p>
+      .col-md-12.justify-content-center
+        = form_with url: [:manage_users], method: :get, local: true do |f|
+          .form-group.form-inline.justify-content-center#explore_communities_form
+          = f.text_field :name, placeholder: 'Name', class: 'form-control find_by_city', style: "width: 100%;"
+          %p
+          = f.button "Filter", class: "form-control btn btn-primary", style: "border: 1px solid black"
+
+  .table-responsive.text-center{ :style => 'border: 2px solid black; border-radius: 12px;'}
+    %table.table.table-borderless.table-hover
+      %thead
+        %tr
+          %th= sort_link 'name', 'Name'
+          %th= sort_link 'display_name', 'Display Name'
+          %th= sort_link 'email', 'Email'
+          %th= sort_link 'user_status', 'Status'
+          %th= sort_link 'manager', 'Manager'
+          %th Group
+      %tbody
+        - @users.each.with_index(1) do |user, i|
+          %tr.bg-white
+            %td= link_to "#{i}. #{user.name}" , edit_manage_user_path(user)
+            %td
+              %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                  data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user: user }" } }
+                =user.display_name
+            %td= truncate(user.email)
+            %td= user.user_status.capitalize
+            %td= user.manager? ? 'Yes' : 'No'
+            %td= user.group
+            %td.w-10.text-right
+              .dropdown
+                = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{user.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
+                  %i.fas.fa-ellipsis-h
+                .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{user.id}")
+                  = link_to edit_manage_user_path(user), title: 'Edit', class: 'dropdown-item text-info' do
+                    %i.far.fa-edit
+                    Edit
+                  = link_to manage_user_path(user), title: 'Delete', id: "delete_user_#{user.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this User. Press OK to continue.' } do
+                    %i.far.fa-trash-alt
+                    Delete
+                  - if user.user_status=="pending"
+                    = link_to invitation_reminder_path(email: user.email), title: 'Invitation Reminder', class: 'dropdown-item text-info' do
+                      %i.far.fa-lightbulb
+                      Invitation Reminder
+          %tr.table-divider
+    %p= paginate @users
+    - if @users.none?
+      %div.text-muted.pb-3.text-center
+        %em No Users were found.
+
+%br

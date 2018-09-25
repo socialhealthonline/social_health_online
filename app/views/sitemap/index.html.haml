@@ -1,0 +1,117 @@
+- page_title 'Sitemap'
+
+.container{:style => "overflow-x:hidden;"}
+  .row
+    .col.py-3
+      %h1.brand-primary.text-center Sitemap
+
+  .row
+    .col-md-3
+    .col-md-6.justify-content-center.px-1
+      .card
+        %p.text-center.px-3.py-2.mb-0
+        .card-body.text-center.pt-0.px-1
+          .row.justify-content-center.text-center.font-weight-bold
+            = link_to home_path do
+              %i.fas.fa-home.fa-2x.pt-2{:title => 'Home'}
+              <p class ="under_label_text">Home</p>
+            %span.px-1
+            =link_to mailbox_inbox_path do
+              %i.fas.fa-envelope.fa-2x.pt-2{:title => 'Messages'}
+              <p class ="under_label_text">Messages</p>
+            %span.px-1
+            =link_to my_community_path do
+              %i.fas.fa-building.fa-2x.pt-2{:title => 'My Community'}
+              <p class ="under_label_text">My Community</p>
+            %span.px-1
+            = link_to explore_communities_path do
+              %i.fas.fa-compass.fa-2x.pt-2{:title => 'Explore Communities'}
+              <p class ="under_label_text">Explore Communities</p>
+          .row.justify-content-center.text-center.font-weight-bold.pt-3
+            =link_to event_search_path do
+              %i.fas.fa-search.fa-2x.pl-0.pt-2{:title => 'Event Search'}
+              <p class ="under_label_text">Event Search</p>
+            %span.px-1
+            =link_to discounts_finder_path do
+              %i.fas.fa-hand-holding-usd.fa-2x.pt-2{:title => 'Discounts Finder'}
+              <p class ="under_label_text">Discounts Finder</p>
+            %span.px-1
+            = link_to affiliates_search_path do
+              %i.fas.fa-location-arrow.fa-2x.pt-2{:title => 'Affiliate Search'}
+              <p class ="under_label_text">Affiliate Search</p>
+            %span.px-1
+            = link_to matchmaker_path do
+              %i.fas.fa-comments.fa-2x.pr-0.pt-2{:title => 'Matchmaker'}
+              <p class ="under_label_text">Matchmaker</p>
+          .row.justify-content-center.text-center.font-weight-bold.pt-3
+            = link_to bulletins_path do
+              %i.fas.fa-thumbtack.fa-2x.pt-2{:title => 'Bulletin Board'}
+              <p class ="under_label_text">Bulletin Board</p>
+            %span.px-1
+            = link_to event_links_path do
+              %i.fas.fa-link.fa-2x.pt-2{:title => 'Event Links'}
+              <p class ="under_label_text">Event Links</p>
+            %span.px-1
+            = link_to social_tracker_log_path do
+              %i.fas.fa-check.fa-2x.pt-2{:title => 'Log Events'}
+              <p class ="under_label_text">Log Events</p>
+            %span.px-1
+            = link_to social_tracker_history_path do
+              %i.fas.fa-history.fa-2x.pt-2{:title => 'Tracker History'}
+              <p class ="under_label_text">Tracker History</p>
+          .row.justify-content-center.text-center.font-weight-bold.pt-3
+            = link_to social_fitness_log_path do
+              %i.fas.fa-pencil-alt.fa-2x.pl-1.pt-2{:title => 'Self Assessment'}
+              <p class ="under_label_text">Self Assessment</p>
+            %span.px-1
+            = link_to social_fitness_history_path do
+              %i.fas.fa-notes-medical.fa-2x.pt-2{:title => 'Fitness History'}
+              <p class ="under_label_text">Fitness History</p>
+            %span.px-1
+            = link_to social_fitness_plan_path do
+              %i.fas.fa-list-alt.fa-2x.pt-2{:title => 'Fitness Plans'}
+              <p class ="under_label_text">Fitness Plans</p>
+            %span.px-1
+            = link_to rewards_path do
+              %i.fas.fa-dollar-sign.fa-2x.pr-1.pt-2{:title => 'Rewards Winners'}
+              <p class ="under_label_text">Rewards Winners</p>
+          .row.justify-content-center.text-center.font-weight-bold.pt-3
+            = link_to media_center_path do
+              %i.fas.fa-folder.fa-2x.pr-1.pt-2{:title => 'Media Center'}
+              <p class ="under_label_text">Media Center</p>
+            %span.px-1
+            = link_to sitemap_path do
+              %i.fas.fa-th.fa-2x.pt-2{:title => 'Sitemap'}
+              <p class ="under_label_text">Sitemap</p>
+            %span.px-1
+            = link_to invite_guests_path do
+              %i.fas.fa-share-square.fa-2x.pt-2{:title => 'Invite Guests'}
+              <p class ="under_label_text">Invite Guests</p>
+            %span.px-1
+            = link_to profile_path do
+              %i.fas.fa-user.fa-2x.pt-2{:title => 'My Profile'}
+              <p class ="under_label_text">My Profile</p>
+          .row.justify-content-center.text-center.font-weight-bold.pt-3
+            = link_to my_achievements_path do
+              %i.fas.fa-award.fa-2x.pt-2{:title => 'My Achievements'}
+              <p class ="under_label_text">My Achievements</p>
+            %span.px-1
+            = link_to my_bulletins_path do
+              %i.fas.fa-sticky-note.fa-2x.pt-2{:title => 'My Bulletins'}
+              <p class ="under_label_text">My Bulletins</p>
+            %span.px-1
+            = link_to my_events_path do
+              %i.fas.fa-calendar.fa-2x.pt-2{:title => 'My Events'}
+              <p class ="under_label_text">My Events</p>
+            %span.px-1
+            = link_to my_settings_path do
+              %i.fas.fa-wrench.fa-2x.pt-2{:title => 'My Settings'}
+              <p class ="under_label_text">My Settings</p>
+          .row.justify-content-center.text-center.font-weight-bold.pt-3
+            = link_to issues_path do
+              %i.fas.fa-flag.fa-2x.pt-2{:title => 'Report Issues'}
+              <p class ="under_label_text">Report Issues</p>
+            %span.px-1
+            = link_to signout_path, method: :delete, id: 'nav-signout', data: { confirm: 'Are you sure you would like to sign out? Press OK to continue.' } do
+              %i.fas.fa-sign-out-alt.fa-2x.pt-2{:title => 'Sign Out'}
+              <p class ="under_label_text">Sign Out</p>

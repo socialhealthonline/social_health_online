@@ -37,6 +37,10 @@
   = link_to @affiliate.url, @affiliate.url, target: '_blank' if @affiliate.url.present?
 
 %p
+  %strong Organization Type:
+  = @affiliate.org_type
+
+%p
   %strong Support Type:
   = Affiliate::SUPPORT_TYPES[@affiliate.support_type]
 
@@ -49,7 +53,7 @@
   = short_date @affiliate.date_added
 
 %p
-  %strong Hide Info - Pending Approval:
+  %strong Hide Info on Affiliate Locator:
   = @affiliate.hide_info_on_locator ? 'Yes' : 'No'
 
 %p

@@ -1,0 +1,56 @@
+- page_title 'Community Leaderboard'
+
+%div#profile_partial
+
+.container
+  .row
+    .col.py-3
+      %h1.text-info.text-center Community Leaderboard
+
+  .row
+    .col-md-12
+      %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
+        %strong
+          This leaderboard shows a tally of the events logged by the Users who've chosen to share their progress with the Community.
+
+  .row.justify-content-center
+    .col-md-3.mb-0.pb-0.text-center
+      %h5.pt-0.mb-0 Filter - By Display Name
+      <p class ="font-weight-bold mb-2 under_label_text">(note: full display name required and case sensitive)</p>
+      .col-md-12.justify-content-center
+        = form_with url: [:leaderboard], method: :get, local: true do |f|
+          .form-group.form-inline.justify-content-center#explore_communities_form
+          = f.text_field :display_name, placeholder: 'Display Name', class: 'form-control find_by_city', style: "width: 100%;"
+          %p
+          = f.button "Filter", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
+  .row.justify-content-center
+    %h3.notification-title.justify-content-center.mb-2
+      %strong Logged Events Tally
+
+  .row.mb-3.justify-content-center
+    .col-md-4
+      .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
+        %table.table.align-items-center.text-center.table-hover.table-sm.mb-4
+          %thead
+            %tr
+              %th= sort_link 'display_name', 'Display Name'
+              %th Total Events Logged
+          %tbody
+            - @users.each do |user|
+              %tr.bg-white
+                %td
+                  %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                      data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: user }" } }
+                    =user.display_name
+                %td= user.total_social_events_logged
+          %tr.table-divider
+        %div.container.pagination.justify-content-center
+          %p= paginate @users unless @users.empty?
+          - if @users.none?
+            %p.pb-5.text-muted.text-center
+              %em No User progress is available.
+
+  %p.pb-3
+    = link_to my_community_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+      %i.fas.fa-arrow-left
+      Back

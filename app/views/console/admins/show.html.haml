@@ -39,21 +39,21 @@
   = @admin.time_zone
 
 %p
-  %strong Member:
+  %strong Member Name:
   = @admin.member.name
 %p
-  %strong Account Manager:
+  %strong Manager:
   = @admin.manager? ? 'Yes' : 'No'
 
-%p
-  %strong Enabled:
-  = @admin.enabled? ? 'Yes' : 'No'
+  %p
+    %strong Status:
+    = @admin.user_status.capitalize
 
 %p
   = link_to console_admins_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do
     %i.fas.fa-arrow-left
     Back
-  &nbsp 
+  &nbsp
   = link_to edit_console_admin_path(@admin), class: 'btn btn-outline-primary' do
     %i.far.fa-edit
     Edit

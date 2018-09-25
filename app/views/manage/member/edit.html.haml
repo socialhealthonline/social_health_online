@@ -20,9 +20,12 @@
           = link_to manage_announcements_path, class: 'dropdown-item' do
             %i.fas.fa.fa-bullhorn
             Announcements
+          = link_to manage_challenges_path, class: 'dropdown-item' do
+            %i.fas.fa.fa-puzzle-piece
+            Challenges
           = link_to manage_users_path, class: 'dropdown-item' do
             %i.fas.fa-user-circle
-            Users
+            Community Users
           = link_to my_community_path, class: 'dropdown-item' do
             %i.fas.fa-angle-double-left
             Community Home
@@ -62,12 +65,17 @@
               = f.text_field :phone, class: "form-control #{form_error_class(@member, :phone)}"
               = model_error_display(@member, :phone)
         .row
-          .col-lg-6
+          .col-lg-4
+            .form-group
+              %label(for="member_org_type") Organization Type
+              = f.select :org_type, ORG_TYPES, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@member, :org_type)}" }
+              = model_error_display(@member, :org_type)
+          .col-lg-4
             .form-group
               %label(for="member_url") Website
               = f.text_field :url, class: "form-control #{form_error_class(@member, :url)}"
               = model_error_display(@member, :url)
-          .col-lg-6
+          .col-lg-4
             .form-group
               %label(for="member_events_url") Events Webpage
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'If your organization already maintains an events page on another site, you can link Users to it with this field'}
@@ -93,7 +101,7 @@
           .col-lg-3
             .form-group
               %label(for="member_primary_manager_id") Primary Manager
-              %i.c-pointer.fas.fa-info-circle.fa{:title => 'This User acts as your Account Manager in Social Health Online and is publicly displayed as the primary point of contact for your Community'}
+              %i.c-pointer.fas.fa-info-circle.fa{:title => 'This User performs as your organization\'s principal Community Manager in Social Health Online'}
               = f.select :primary_manager_id, options_from_collection_for_select(@managers, 'id', 'name', @member.primary_manager_id), { include_blank: false }, { class: 'form-control custom-select' }
               = model_error_display(@member, :primary_manager_id)
         .row
@@ -104,21 +112,34 @@
               = model_error_display(@member, :bio)
         .row
           .col-lg-4
+            .card
+              .card-body.text-center
+                .form-check
+                  = f.check_box :hide_suggest_events, class: 'form-check-input'
+                  %label.form-check-label(for="hide_suggest_events") Suggest Events - Show the Suggest Events Button
+          .col-lg-4
+            .card
+              .card-body.text-center
+                .form-check
+                  = f.check_box :hide_challenges, class: 'form-check-input'
+                  %label.form-check-label(for="hide_challenges") Challenges - Hide the Challenges Button
+          .col-lg-4
+            .card
+              .card-body.text-center
+                .form-check
+                  = f.check_box :hide_info_on_locator, class: 'form-check-input'
+                  %label.form-check-label(for="hide_info_on_locator") Member Locator - Hide Info on Member Locator
+        .row
+          .col-lg-4
             .form-group#file-field
               %label(for="member_logo") Member Logo (note: maximum file size is 10 MB)
               = f.file_field :logo, class: "form-control #{form_error_class(@member, :logo)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 10.megabytes }
               = model_error_display(@member, :logo)
-          .col-lg-4
-            .card
-              .card-body
-                .form-check
-                  = f.check_box :hide_suggest_events, class: 'form-check-input'
-                  %label.form-check-label(for="hide_suggest_events") Show the Suggest Events Button
         .row
           .col-lg-4
             %p.text-muted Logo Preview:
             -if @member.logo.attached? && @member.logo.attachment.valid?
-              = image_tag @member.logo, alt: 'Member logo', size: '180x180'
+              = image_tag @member.logo, alt: 'Member Logo', size: '200x200'
 
 
         .my-3.text-center

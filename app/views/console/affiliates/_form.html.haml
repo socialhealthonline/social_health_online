@@ -27,17 +27,22 @@
         = f.text_field :zip, class: "form-control #{form_error_class(@affiliate, :zip)}"
         = model_error_display(@affiliate, :zip)
   .row
-    .col-lg-4
+    .col-lg-3
       .form-group
         %label(for="affiliate_phone") Phone
         = f.text_field :phone, class: "form-control #{form_error_class(@affiliate, :phone)}"
         = model_error_display(@affiliate, :phone)
-    .col-lg-4
+    .col-lg-3
       .form-group
         %label(for="affiliate_url") Website
         = f.text_field :url, class: "form-control #{form_error_class(@affiliate, :url)}"
         = model_error_display(@affiliate, :url)
-    .col-lg-4
+    .col-lg-3
+      .form-group
+        %label(for="affiliate_org_type") Organization Type
+        = f.select :org_type, ORG_TYPES, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@affiliate, :org_type)}" }
+        = model_error_display(@affiliate, :org_type)
+    .col-lg-3
       .form-group
         %label(for="date_added") Date Added
         = f.date_field :date_added, class: "flatpickr-date form-control #{form_error_class(@affiliate, :date_added)}"
@@ -75,13 +80,28 @@
         = f.text_area :support_notes, class: "form-control #{form_error_class(@affiliate, :support_notes)}"
         = model_error_display(@affiliate, :support_notes)
   .row
-    .col-lg-5
-      .form-group
-        .form-check.mb-3
-          = f.check_box :hide_info_on_locator, class: 'form-check-input'
-          %label.form-check-label(for="hide_info_on_locator") Hide Info - Pending Approval
+    .col-lg-6
+      .card
+        .card-body.text-center
+          .form-group
+            .form-check.mb-3
+              = f.check_box :hide_info_on_locator, class: 'form-check-input'
+              %label.form-check-label(for="hide_info_on_locator") Affiliate Locator - Hide Info on Affiliate Locator
+  .row.pt-2.border-top
+    .col-lg-6
+      .form-group#file-field
+        %label(for="affiliate_logo") Affiliate Logo (note: maximum file size is 10 MB)
+        = f.file_field :logo, class: "form-control #{form_error_class(@affiliate, :logo)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 10.megabytes }
+        = model_error_display(@affiliate, :logo)
 
-  .text-center
+    .col-lg-6
+      %p.text-muted Logo Preview:
+      -if @affiliate.logo.attached? && @affiliate.logo.attachment.valid?
+        = image_tag @affiliate.logo, alt: 'Affiliate Logo', size: '200x200'
+
+
+
+  .text-center.py-3
     = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }
     - if @affiliate.persisted?
       = link_to 'Cancel', console_affiliate_path(@affiliate), class: 'btn btn-outline-secondary', :style => 'border: 1px solid black;'

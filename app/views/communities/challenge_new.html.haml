@@ -1,0 +1,36 @@
+- page_title 'Community Challenge Completed'
+
+.container
+  .row
+    .col.py-3
+      %h1.text-info.text-center Community Challenge Completed
+
+      .row
+        .col-md-12
+          %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
+            %strong
+              Submit this form to confirm that you've completed a challenge!
+
+      .row.mb-3
+        .col-md-3
+        .col-md-6.justify-content-center
+          .card.card-box
+            %p.text-left.px-3.py-2.mb-0
+            .card-body.pt-0
+              = form_with url: challenge_new_url, method: :post, local: true do
+                .form-group
+                  %label(for="name") Challenge Name
+                  = text_field_tag :name, params[:name], :placeholder => "E.g., Soup Kitchen Sweepstakes", autofocus: true, class: 'form-control', required: true
+                .form-group
+                  %label(for="challenge_completion_date") Challenge Completion Date
+                  = text_field_tag :challenge_completion_date, params[:challenge_completion_date], :placeholder => "E.g., January 5, 2018", autofocus: true, class: 'form-control', required: true
+                .form-group
+                  %label(for="verification_code") Challenge Verification Code (note: only provide information here when it is applicable to completed challenges)
+                  = text_field_tag :verification_code, params[:verification_code], :placeholder => "E.g., A1B2C3", autofocus: true, class: 'form-control'
+                .row.justify-content-center
+                  = submit_tag 'Send', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
+
+  %p.pb-3
+    = link_to challenge_index_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+      %i.fas.fa-arrow-left
+      Back

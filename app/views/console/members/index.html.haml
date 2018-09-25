@@ -3,17 +3,28 @@
 .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.pb-3.border-bottom
   %h1.h3.brand-primary Members
   %div
-    = link_to export_user_csv_console_members_path, class: 'btn btn-primary btn-export', :style => 'border: 1px solid black;' do
-      Export User CSV
+    = link_to export_global_user_csv_console_members_path, class: 'btn btn-primary btn-export', :style => 'border: 1px solid black;' do
+      %i.fas.fa-file-export
+      Export Global User CSV
 
     = link_to export_member_csv_console_members_path, class: 'btn btn-primary btn-export', :style => 'border: 1px solid black;' do
+      %i.fas.fa-file-export
       Export Member CSV
 
     = link_to new_console_member_path, class: 'btn btn-primary', :style => 'border: 1px solid black;' do
       %i.fas.fa-plus-circle
       Add Member
 
-.row.my-3
+.row.mt-2
+  .col-12.col-md-4.col-lg-6
+    %h5.pt-1.mb-0.brand-primary Filter - By State
+    .col-12.col.md-4.col-lg-6.justify-content-center
+      = form_with url: [:console_members], method: :get, local: true do |f|
+        .form-group.form-inline.justify-content-center#explore_communities_form
+        = f.select(:state, US_STATES, {}, class: "form-control find_by_state", include_blank: 'State', style: "width: 100%;")
+        %p
+        = f.button "Filter", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
+
 - if @members.any?
   .table-responsive.member-list-table{ :style => 'border: 2px solid black; border-radius: 12px;'}
     %table.table.table-borderless.align-items-center.table-hover
@@ -24,8 +35,9 @@
           %th(scope="col")= sort_link('state', 'State')
           %th(scope="col")= sort_link('service_capacity', 'User Seats')
           %th(scope="col")= sort_link('account_start_date', 'Account Start Date')
-          %th(scope="col")= sort_link('welcome_kit_date', 'Welcome Kit Date')
-          %th(scope="col")= sort_link('public_member', 'Public')
+          %th(scope="col") Welcome Kit Date
+          %th(scope="col") Public
+          %th(scope="col") Fee Waiver
           %th(scope="col") Status
       %tbody
         - @members.each_with_index do |member, i|
@@ -37,6 +49,7 @@
             %td= short_date member.account_start_date
             %td= short_date member.welcome_kit_date
             %td= member.public_member? ? 'Yes' : 'No'
+            %td= member.charity_waiver? ? 'Yes' : 'No'
             %td= member.status
             %td.w-10.text-right
               .dropdown
@@ -49,8 +62,11 @@
                   = link_to console_member_path(member.id), title: 'Delete', id: "delete_member_#{member.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this member. Press OK to continue.' } do
                     %i.far.fa-trash-alt
                     Delete
+                  = link_to console_member_users_path(member.id), class: 'dropdown-item' do
+                    %i.fas.fa-user-circle
+                    Users
           %tr.table-divider
     %p= paginate @members
 - else
-  %p.text-muted
+  %p.text-muted.text-center
     %em No Members were found.

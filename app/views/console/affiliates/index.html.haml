@@ -4,11 +4,22 @@
   %h1.h3.brand-primary Affiliates
   %div
     = link_to export_csv_console_affiliates_path, class: 'btn btn-primary btn-export', :style => 'border: 1px solid black;' do
-      Export CSV
+      %i.fas.fa-file-export
+      Export Affiliate CSV
 
     = link_to new_console_affiliate_path, class: 'btn btn-primary', :style => 'border: 1px solid black;' do
       %i.fas.fa-plus-circle
       Add Affiliate
+
+.row.mt-2
+  .col-12.col-md-4.col-lg-6
+    %h5.pt-1.mb-0.brand-primary Filter - By State
+    .col-12.col.md-4.col-lg-6.justify-content-center
+      = form_with url: [:console_affiliates], method: :get, local: true do |f|
+        .form-group.form-inline.justify-content-center#explore_communities_form
+        = f.select(:state, US_STATES, {}, class: "form-control find_by_state", include_blank: 'State', style: "width: 100%;")
+        %p
+        = f.button "Filter", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
 
 - if @affiliates.any?
   .table-responsive.affiliate-list-table{ :style => 'border: 2px solid black; border-radius: 12px;' }
@@ -18,18 +29,20 @@
           %th= sort_link 'name', 'Affiliate Name'
           %th= sort_link 'city', 'City'
           %th= sort_link 'state', 'State'
-          %th= sort_link 'support_type', 'Support Type'
-          %th= sort_link 'hide_info_on_locator', 'Hidden'
           %th= sort_link 'date_added', 'Date Added'
+          %th= sort_link 'org_type', 'Organization Type'
+          %th Support Type
+          %th Hidden
       %tbody
         - @affiliates.each_with_index do |affiliate, i|
           %tr.bg-white
             %th(scope="row")= link_to "#{i+1}. #{affiliate.name}", console_affiliate_path(affiliate.id)
             %td= affiliate.city
             %td= affiliate.state
+            %td= short_date affiliate.date_added
+            %td= affiliate.org_type
             %td= support_types.key(affiliate.support_type)
             %td= affiliate.hide_info_on_locator ? 'Yes' : 'No'
-            %td= short_date affiliate.date_added
             %td.w-10.text-right
               .dropdown
                 = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{affiliate.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
@@ -44,5 +57,5 @@
           %tr.table-divider
     %p= paginate @affiliates
 - else
-  %p.text-muted
+  %p.text-muted.text-center
     %em No Affiliates were found.

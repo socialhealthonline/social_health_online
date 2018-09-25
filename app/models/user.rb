@@ -6,25 +6,25 @@ class User < ApplicationRecord
   enum user_status: %i[disabled enabled pending]
 
   belongs_to :member, inverse_of: :users
-  has_many :social_event_logs
-  has_many :social_fitness_logs
+  has_many :social_event_logs, dependent: :destroy
+  has_many :social_fitness_logs, dependent: :destroy
   has_many :rsvps
+  has_many :bulletins
   has_many :events, through: :rsvps
   has_one :hidden_field
   has_one_attached :avatar
 
-  validates :name, :display_name, :email, :address, :city, :gender, :ethnicity, :birthdate, :time_zone, presence: true
-  validates :group, :guest, presence: true, allow_blank: true
+  validates :name, :display_name, :email, :address, :city, :birthdate, :time_zone, presence: true
+  validates :hide_info_on_leaderboard, :hide_info_on_user_finder, :gender, :ethnicity, :group, :guest, presence: true, allow_blank: true
   validates_uniqueness_of :email, :display_name, case_sensitive: false
   validates_format_of :email, with: /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
   validates_length_of :password, minimum: 8, too_short: 'Must be at least 8 characters.', allow_nil: true
   validates_format_of :password, with: /\A(?=.*[a-z])(?=.*\d).+\z/i, message: 'Must be alphanumeric.', allow_nil: true
+  validates_inclusion_of  :interest_types, in: INTEREST_TYPES, allow_blank: true
   validates :state, inclusion: US_STATES.values
   validates :phone, format: { with: /\A\d{10}\z/, message: 'Must be 10 digits including area code' }
   validates :zip, format: { with: %r{\A[\d]{5}(-[\d]{4})?\z} }
   validate :avatar_validation
-  validates_inclusion_of :gender, in: GENDER
-  validates_inclusion_of :ethnicity, in: ETHNICITY
   validates_inclusion_of :relationship_status, in: RELATIONSHIP_STATUS, allow_blank: true
   validates_inclusion_of :education_level, in: EDUCATION_LEVEL, allow_blank: true
 

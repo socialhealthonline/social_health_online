@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_14_114331) do
+ActiveRecord::Schema.define(version: 2018_09_25_061108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_114331) do
     t.string "support_notes"
     t.datetime "date_added"
     t.string "contact_phone"
+    t.string "org_type"
   end
 
   create_table "announcements", force: :cascade do |t|
@@ -76,6 +77,35 @@ ActiveRecord::Schema.define(version: 2018_08_14_114331) do
     t.integer "user_id"
     t.string "display_name"
     t.datetime "start_at"
+    t.integer "likes"
+    t.string "location"
+    t.string "address"
+    t.string "zip"
+  end
+
+  create_table "challenges", force: :cascade do |t|
+    t.string "name"
+    t.date "challenge_start_date"
+    t.date "challenge_end_date"
+    t.string "url"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "address"
+    t.string "location"
+    t.string "prize"
+    t.string "verification_code"
+    t.string "email"
+    t.integer "user_id"
+    t.string "display_name"
+    t.string "challenge_type"
+    t.string "challenge_level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "member_id"
+    t.date "completion_date"
+    t.string "winner"
+    t.text "description"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -86,7 +116,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_114331) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_id"
+    t.integer "user_id"
   end
 
   create_table "event_categories", force: :cascade do |t|
@@ -233,6 +263,9 @@ ActiveRecord::Schema.define(version: 2018_08_14_114331) do
     t.boolean "ach_verified", default: false
     t.boolean "public_member", default: false
     t.boolean "hide_suggest_events", default: false
+    t.string "org_type"
+    t.boolean "hide_challenges", default: false
+    t.boolean "charity_waiver", default: false
     t.index ["period"], name: "index_members_on_period"
     t.index ["slug"], name: "index_members_on_slug", unique: true
   end
@@ -249,6 +282,29 @@ ActiveRecord::Schema.define(version: 2018_08_14_114331) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "resources", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.string "state"
+    t.string "url"
+    t.string "event_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rewards", force: :cascade do |t|
+    t.string "source_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "period"
+    t.string "display_name"
+    t.integer "member_id"
+    t.integer "user_id"
+    t.string "prize"
+    t.string "state"
+    t.string "member_name"
   end
 
   create_table "rsvps", force: :cascade do |t|
@@ -291,6 +347,22 @@ ActiveRecord::Schema.define(version: 2018_08_14_114331) do
     t.index ["user_id"], name: "index_social_fitness_logs_on_user_id"
   end
 
+  create_table "targets", force: :cascade do |t|
+    t.string "month"
+    t.string "weekone"
+    t.string "weektwo"
+    t.string "weekthree"
+    t.string "weekfour"
+    t.string "weekfive"
+    t.string "targetone"
+    t.string "targettwo"
+    t.string "targetthree"
+    t.string "targetfour"
+    t.string "targetfive"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email", null: false
@@ -321,13 +393,15 @@ ActiveRecord::Schema.define(version: 2018_08_14_114331) do
     t.text "hobbies"
     t.text "pet_peeves"
     t.text "bio"
-    t.boolean "receive_email", default: false
+    t.boolean "receive_email", default: true
     t.integer "user_status", default: 0
     t.date "first_login"
     t.string "phone_extension"
     t.text "group"
-    t.string "favorites"
     t.boolean "guest", default: false
+    t.boolean "hide_info_on_leaderboard", default: false
+    t.string "interest_types"
+    t.boolean "hide_info_on_user_finder", default: false
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["member_id"], name: "index_users_on_member_id"

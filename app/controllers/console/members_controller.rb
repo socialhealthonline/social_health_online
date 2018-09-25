@@ -1,8 +1,15 @@
 class Console::MembersController < ConsoleController
   helper_method :sort_column, :sort_direction
+  before_action :require_admin
 
   def index
-    @members = Member.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
+    @members = Member.order("#{sort_column} #{sort_direction}")
+    @members = FindUsersCommunities.new(@members, show_init_scope: true).call(permitted_params)
+    unless @members.kind_of?(Array)
+      @members = @members.page(params[:page]).per(25)
+    else
+      @members = Kaminari.paginate_array(@members).page(params[:page]).per(25)
+    end
   end
 
   def show
@@ -57,7 +64,16 @@ class Console::MembersController < ConsoleController
     send_data csv, filename: "users-#{Date.today}.csv"
   end
 
+  def export_global_user_csv
+    csv = helpers.csv_global_user_list
+    send_data csv, filename: "users-#{Date.today}.csv"
+  end
+
   private
+
+  def permitted_params
+    params.permit(:state).reject{|_, v| v.blank?}
+  end
 
   def member_params
     params.require(:member).permit(
@@ -77,6 +93,7 @@ class Console::MembersController < ConsoleController
       :events_url,
       :suspended,
       :hide_info_on_locator,
+      :hide_challenges,
       :column,
       :direction,
       :welcome_kit_date,
@@ -84,7 +101,9 @@ class Console::MembersController < ConsoleController
       :contact_phone_extension,
       :primary_manager_id,
       :hide_suggest_events,
-      :public_member
+      :public_member,
+      :charity_waiver,
+      :org_type
     )
   end
 

@@ -1,0 +1,41 @@
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+  %h1.h3.brand-primary Edit Rewards Notice
+
+.row.justify-content-center.mb-3
+  .col-md-8
+    .card.card-box
+      .card-body.justify-content-center.pt-0
+      = form_with model: @reward, url: [:console_reward], local: true do |f|
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Period
+              = f.text_field :period, autofocus: true, :placeholder => "E.g., July 30th - August 5th OR August 2018", class: "form-control #{form_error_class(@reward, :period)}", required: true
+              = model_error_display(@reward, :period)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Display Name
+              = f.text_field :display_name, autofocus: true, class: "form-control #{form_error_class(@reward, :display_name)}"
+              = model_error_display(@reward, :display_name)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Member Name
+              = f.text_field :member_name, autofocus: true, class: "form-control #{form_error_class(@reward, :member_name)}"
+              = model_error_display(@reward, :member_name)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") State
+              = f.select :state, US_STATES, { required: true }, { class: "#{form_error_class(@reward, :state)} form-control custom-select" }
+              = model_error_display(@reward, :state)
+        .row.justify-content-center
+          .col-lg-10
+            .form-group
+              %label(for="") Prize
+              = f.text_field :prize, autofocus: true, class: "form-control #{form_error_class(@reward, :prize)}"
+              = model_error_display(@reward, :prize)
+        .mb-3.text-center
+          = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, style: 'border: 1px solid black;'
+          = link_to 'Cancel', console_rewards_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'

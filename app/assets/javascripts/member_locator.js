@@ -6,7 +6,8 @@
     { name: "state", title: "State" },
     { name: "zip", title: "ZIP Code" },
     { name: "phone", title: "Phone Number" },
-    { name: "url", title: "Website" }
+    { name: "url", title: "Website" },
+    { name: "org_type", title: "Organization Type" }
   ];
 
   $(document).ready(function() {

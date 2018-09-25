@@ -13,14 +13,14 @@ feature 'Community Users List', type: :feature, js: true do
 
   context 'User is on the page' do
     it 'User is displayed on the community page' do
-      click_link 'User List'
+      click_link 'Users'
       expect(page).to have_content user_2.name
     end
   end
 
   context 'User is not on the page' do
     it 'Disabled user is not displayed on the community page' do
-      click_link 'User List'
+      click_link 'Users'
       expect(page).to have_no_content user_3.name
     end
   end

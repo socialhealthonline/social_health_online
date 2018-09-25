@@ -30,10 +30,6 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   config.expose_dsl_globally = true
 
-  RSpec::Sidekiq.configure do |config|
-    config.warn_when_jobs_not_processed_by_sidekiq = false
-  end
-
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

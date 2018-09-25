@@ -1,7 +1,7 @@
 class MemberNotifierPreview < ActionMailer::Preview
 
-  def sixty_days_remain
-    MemberNotifierMailer.sixty_days_remain(Member.first)
+  def charge_reminder
+    MemberNotifierMailer.charge_reminder(Member.first)
   end
 
   def check_ach_deposits

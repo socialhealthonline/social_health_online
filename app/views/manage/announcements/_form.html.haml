@@ -1,20 +1,20 @@
 = form_with(model: @announcement, url: [:manage, @announcement], local: true) do |f|
-  .row
-    .col
+  .row.justify-content-center
+    .col-9
       .form-group
-        %label Title
+        %label Announcement Title
         = f.text_field :title, class: "form-control #{form_error_class(@announcement, :title)}"
         = model_error_display(@announcement, :title)
-  .row
-    .col
+  .row.justify-content-center
+    .col-9
       .form-group
-        %label Body
+        %label Announcement Body
         = f.text_area :body, rows: 12, class: "form-control #{form_error_class(@announcement, :body)}"
         = model_error_display(@announcement, :body)
 
   .mb-3.text-center
     = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, style: 'border: 1px solid black;'
     - if @announcement.persisted?
-      = link_to 'Cancel', manage_announcement_path(@announcement), class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'
+      = link_to 'Cancel', manage_announcements_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'
     - else
       = link_to 'Cancel', manage_announcements_path, class: 'btn btn-outline-secondary', style: 'border: 1px solid black;'

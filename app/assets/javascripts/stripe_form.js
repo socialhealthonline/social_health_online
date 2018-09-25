@@ -147,19 +147,7 @@ $(document).ready(function() {
 
     users = $('#member_service_capacity').val();
 
-    switch (true) {
-      case (users < 101):
-        multiplier = 6;
-        break;
-      case (users < 251):
-        multiplier = 5;
-        break;
-      default:
-        multiplier = 4;
-        break;
-    }
-
-    year_price = users * multiplier * 12;
+    year_price = users * 12;
     if (plan == 'Annual') {
       year_price *= 0.97;
       $('#total-price').text('$' + year_price.toFixed(2) + ' per year')

@@ -10,7 +10,7 @@ class MembersRegistrationController < ApplicationController
 
   def create
     ActiveRecord::Base.transaction do
-      @member = Member.new(member_params.merge(suspended: true))
+      @member = Member.new(member_params)
       if verify_recaptcha(model: @member) && @member.save
         result = CreateManagerAndSubscriptionService.new(@member,
                                                          payment_method: params[:member][:payment_method],
@@ -40,6 +40,7 @@ class MembersRegistrationController < ApplicationController
       :state,
       :zip,
       :phone,
+      :org_type,
       :url,
       :contact_name,
       :contact_email,

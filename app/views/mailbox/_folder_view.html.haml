@@ -3,27 +3,22 @@
     %h1.text-info Messages
   .row.mb-4
     .col-12.col-md-3.mb-1.order-md-1
-      = link_to 'Compose', new_conversation_path, class: 'btn btn-info mb-1', style: 'border: 1px solid black;'
-      %p
-      .card.card-sm
+      = link_to 'Compose', new_conversation_path, class: 'btn btn-info mb-2', style: 'border: 1px solid black;'
+      .card.card-sm.mb-2
         .list-group.list-group-flush
           = render 'mailbox/folders'
+      = link_to 'Empty Trash', mark_as_deleted_conversations_path, class: 'btn btn-danger mb-3', style: 'border: 1px solid black;', method: :post,
+data: { confirm: 'Are you sure?' }
     .col-12.col-md-9.mb-1.order-md-2
       - if is_conversation
         = render 'conversations/form'
       - else
         -if @active.equal?(:inbox) && messages.none?
           %p.text-muted.mt-4.pt-3.text-center
-            %em No messages.
+            %em No messages received.
         -if @active.equal?(:sent) && messages.none?
           %p.text-muted.mt-4.pt-3.text-center
             %em No sent messages.
-        - if @active.equal?(:trash) && messages.any?
-          .row
-            .col
-              .float-right
-                = link_to 'Empty Trash', mark_as_deleted_conversations_path, class: 'btn btn-danger mb-3', style: 'border: 1px solid black;', method: :post,
-         data: { confirm: 'Are you sure?' }
         .table-responsive
           %table.table.table-borderless.align-items-center.messages-box
             %tbody

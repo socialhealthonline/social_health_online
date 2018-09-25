@@ -5,12 +5,11 @@
     .col.py-3
       %h1.brand-primary.text-center Discounts Finder
 
-
   .row
     .col-md-12
-      %p.text-center.mb-4.p-2{style: "border: 1px solid black;"}
+      %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
         %strong
-          Make purchases with your User Discount Card or the applicable coupon codes to take advantage of the discounts listed below.
+          Make purchases with your User Discount Card or the applicable coupon codes to take advantage of discounts listed here.
 
   .row.my-3
     .col
@@ -19,7 +18,7 @@
           %div.form-group.col-12.col-sm-12.col-md-2.col-lg-2
             = f.select(:state, US_STATES, {}, class: "form-control find_by_state", include_blank: 'State', style: "width: 100%;")
           %div.form-group.col-12.col-sm-12.col-md-4.col-lg-4
-            = f.text_field :city, placeholder: 'City', class: 'form-control find_by_city', style: "width: 100%;"
+            = f.text_field :city, placeholder: 'City (note: case sensitive)', class: 'form-control find_by_city', style: "width: 100%;"
         %div.form-row
           %div.col-12
             .col-xs-3.col-md-3.col-sm-3.mx-auto
@@ -32,17 +31,19 @@
             %tr
               %th Affiliate Name
               %th
+              %th Discount
+              %th
               %th City
               %th
               %th State
               %th
               %th Website
-              %th
-              %th Discount
           %tbody
           - @affiliates.each do |affiliate|
             %tr.bg-white
               %td= affiliate.name
+              %td
+              %td= affiliate.support_notes
               %td
               %td= affiliate.city
               %td
@@ -50,9 +51,9 @@
               %td
               %td= link_to "Visit Website", affiliate.url, target: :_blank
               %td
-              %td.text-left
-                = affiliate.support_notes
             %tr.table-divider
         %div.container.pagination.justify-content-center
           %p= paginate @affiliates unless @affiliates.empty?
-        
+          - if @affiliates.none?
+            %p.text-muted.mb-3.text-center
+              %em No search results.

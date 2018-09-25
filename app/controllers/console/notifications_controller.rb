@@ -1,6 +1,7 @@
 class Console::NotificationsController < ConsoleController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
+  before_action :require_admin
 
   def index
     @notifications = Notification.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
@@ -18,7 +19,7 @@ class Console::NotificationsController < ConsoleController
     @notification = Notification.new(notification_params)
 
     if @notification.save
-      redirect_to console_notification_path(@notification), success: 'Notification was successfully created.'
+      redirect_to console_notifications_path, success: 'Notification was successfully created.'
     else
       flash.now[:error] = 'Please correct the errors to continue.'
       render :new
@@ -27,7 +28,7 @@ class Console::NotificationsController < ConsoleController
 
   def update
     if @notification.update(notification_params)
-      redirect_to console_notifications_path(@notifications), success: 'Notification was successfully updated.'
+      redirect_to console_notifications_path, success: 'Notification was successfully updated.'
     else
       render :edit
     end

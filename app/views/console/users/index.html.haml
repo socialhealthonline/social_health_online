@@ -23,8 +23,8 @@
           %th= sort_link 'email', 'Email'
           %th= sort_link 'manager', 'Manager'
           %th= sort_link 'last_sign_in_at', 'Last Sign In'
-          %th= sort_link 'guest', 'Guest'
-          %th= sort_link 'user_status=1', 'Status'
+          %th Guest
+          %th Status
       %tbody
         - @users.each_with_index do |user, i|
           %tr.bg-white
@@ -52,7 +52,7 @@
           %tr.table-divider
     %p= paginate @users
 - else
-  %p.text-muted
+  %p.text-muted.text-center
     %em No Users were found.
 
 %div.mb-3

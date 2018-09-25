@@ -21,13 +21,18 @@
             %td= link_to truncate("#{i}. #{notification.title}"), console_notification_path(notification)
             %td= truncate(notification.body)
             %td= time_in_cdt(notification.created_at, '%m/%d/%Y, %I:%M %p %Z')
-            %td
-              = link_to edit_console_notification_path(notification), title: 'Edit', class: 'btn btn-sm btn-outline-primary' do
-                %i.far.fa-edit
-              &nbsp;
-              = link_to console_notification_path(notification), title: 'Delete', id: "delete_notification_#{notification.id}", class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this notification. Press OK to continue.' } do
-                %i.far.fa-trash-alt
-                %tr.table-divider
+            %td.w-10.text-right
+              .dropdown
+                = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{notification.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
+                  %i.fas.fa-ellipsis-h
+                .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{notification.id}")
+                  = link_to edit_console_notification_path(notification), title: 'Edit', class: 'dropdown-item text-info' do
+                    %i.far.fa-edit
+                    Edit
+                  = link_to console_notification_path(notification), title: "Delete", id: "delete_notification_#{notification.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this notification. Press OK to continue.' } do
+                    %i.far.fa-trash-alt
+                    Delete
+          %tr.table-divider
     %p= paginate @notifications
 - else
   %p.text-muted.text-center

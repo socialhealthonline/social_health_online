@@ -5,15 +5,18 @@
     = render 'nav_bar'
     .main-container
       %section.pt-3.pb-0
-        .container.px-3
+        .container.px-3{:style => "overflow-x:hidden;"}
           .row
             .col-12.col-md-3.mb-1.order-md-1.px-2
-              .card.card-sm
+              .card.card-sm.mb-0
                 .list-group.list-group-flush
                   = link_to console_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.fas.fa-tachometer-alt
                       Console
+                %a.nav-link.text-center.font-weight-bold.dropdown-toggle{href: '/service_accounts', :style => 'border: 1px solid black;', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
+                  = 'Service Accounts'
+                .dropdown-menu.py-0.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'communitiesDropdownMenuLink'}
                   = link_to console_members_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.fas.fa-building
@@ -26,10 +29,31 @@
                     %div
                       %i.fas.fa-shield-alt
                       Admins
+                  = link_to lookups_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
+                    %div
+                      %i.fas.fa-book
+                      User Lookup
+              .card.card-sm.mb-0
+                .list-group.list-group-flush
+                %a.nav-link.text-center.font-weight-bold.dropdown-toggle{href: '/service_management', :style => 'border: 1px solid black;', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
+                  = 'Service Management'
+                .dropdown-menu.py-0.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'communitiesDropdownMenuLink'}
                   = link_to console_manage_bulletins_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.fas.fa-thumbtack
                       Manage Bulletins
+                  = link_to console_fitness_plans_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
+                    %div
+                      %i.fas.fa-list-alt
+                      Fitness Plans
+                  = link_to console_event_links_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white px-1', :style => 'border: 1px solid black;' do
+                    %div
+                      %i.fas.fa-link
+                      Event Links
+                  = link_to console_rewards_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
+                    %div
+                      %i.fas.fa-dollar-sign
+                      Rewards Winners
                   = link_to console_news_index_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.far.fa-newspaper
@@ -38,6 +62,11 @@
                     %div
                       %i.far.fa-bell
                       Notifications
+              .card.card-sm.mb-0
+                .list-group.list-group-flush
+                %a.nav-link.text-center.font-weight-bold.dropdown-toggle{href: '/service_logs', :style => 'border: 1px solid black;', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
+                  = 'Service Logs'
+                .dropdown-menu.py-0.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'communitiesDropdownMenuLink'}
                   = link_to console_social_tracker_members_path, class: 'list-group-item d-flex justify-content-center px-1 bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.fas.fa-database
@@ -46,14 +75,14 @@
                     %div
                       %i.fas.fa-heartbeat
                       Social Fitness
-                  = link_to 'https://dashboard.stripe.com/login', target: '_blank', :style => 'border: 1px solid black;', class: "list-group-item d-flex justify-content-center bg-primary text-white" do
-                    %div
-                      %i.fa.fa-money
-                      Stripe Billing
-                  = link_to home_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
-                    %div
-                      %i.fas.fa-home
-                      Home
+                = link_to 'https://dashboard.stripe.com/login', target: '_blank', :style => 'border: 1px solid black;', class: "list-group-item d-flex justify-content-center bg-primary text-white" do
+                  %div
+                    %i.fa.fa-money
+                    Stripe Billing
+                = link_to home_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
+                  %div
+                    %i.fas.fa-home
+                    Home
             .col-12.col-md-9.mb-1.order-md-2
               - unless flash.empty?
                 = render partial: 'flash', locals: { flash: flash }

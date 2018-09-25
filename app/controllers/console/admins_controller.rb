@@ -1,9 +1,10 @@
 class Console::AdminsController < ConsoleController
+  before_action :require_admin
   before_action :set_user_status, only: [:create, :update]
   helper_method :sort_column, :sort_direction
 
   def index
-    @admins = User.where(admin: true).order(:name)
+    @admins = User.where(admin: true)
     @admins = @admins.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 

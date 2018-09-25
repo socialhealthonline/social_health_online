@@ -1,10 +1,11 @@
 class Console::UsersController < ConsoleController
+  before_action :require_admin
   before_action :load_member
   before_action :set_user_status, only: [:create, :update]
   helper_method :sort_column, :sort_direction
 
   def index
-    @users = User.where(member_id: @member.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
+    @users = User.where(member_id: @member.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def show
@@ -87,7 +88,10 @@ class Console::UsersController < ConsoleController
       :manager,
       :user_status,
       :password,
-      :password_confirmation
+      :password_confirmation,
+      :interest_types,
+      :hide_info_on_leaderboard,
+      :hide_info_on_user_finder
     )
   end
 

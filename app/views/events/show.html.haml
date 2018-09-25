@@ -4,7 +4,7 @@
   .row.pt-3.mb-2
     .col
       %h1.brand-primary= @event.title
-
+      = @event.logo
     %div
   .row
     .col
@@ -15,7 +15,7 @@
         %i.c-pointer.fas.fa-tag{:title => "Event Type"}
         = @event.event_type
       %p
-        %i.c-pointer.far.fa-calendar-alt{:title => "Event Date/Time"}
+        %i.c-pointer.far.fa-clock{:title => "Event Date/Time"}
         = short_date_time @event.start_at, @event.time_zone
       %p
         %i.c-pointer.fas.fa-image{:title => "Event Location"}
@@ -68,7 +68,7 @@
                   =rsvp.user.display_name
               %td.text-center.pr-3= rsvp&.rsvp_status.capitalize
             %div.container.pagination.justify-content-center
-            
+
 .container
   .col
     %div.form-row
@@ -91,9 +91,9 @@
               %th
               %th Event Date/Time
               %th
-              %th City
+              %th Event City
               %th
-              %th State
+              %th Event State
               %th
               %th Hosted By
               %th
