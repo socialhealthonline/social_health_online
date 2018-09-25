@@ -72,12 +72,12 @@
   .row.border-top.pt-2
   %h5 Post-Challenge Completion
   .row.justify-content-center
-    .col-6.pt-2
+    .col-6
       .form-group
         %label Challenge Winner
         = f.text_field :winner, class: "form-control #{form_error_class(@challenge, :location)}"
         = model_error_display(@challenge, :winner)
-    .col-6.pt-2
+    .col-6
       .form-group
         %label Winner Selection Date
         = f.text_field :completion_date, class: "flatpickr-date form-control #{form_error_class(@challenge, :completion_date)}"
