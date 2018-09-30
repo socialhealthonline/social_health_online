@@ -23,8 +23,8 @@
           %th= sort_link 'email', 'Email'
           %th= sort_link 'manager', 'Manager'
           %th= sort_link 'last_sign_in_at', 'Last Sign In'
-          %th= sort_link 'guest', 'Guest'
-          %th= sort_link 'user_status=1', 'Status'
+          %th Guest
+          %th Status
       %tbody
         - @users.each_with_index do |user, i|
           %tr.bg-white

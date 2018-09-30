@@ -51,7 +51,7 @@ class Console::RewardsController < ConsoleController
   end
 
   def sort_column
-    %w[month created_at].include?(params[:column]) ? params[:column] : 'period'
+    %w[period display_name member_name state prize].include?(params[:column]) ? params[:column] : 'period'
   end
 
   def sort_direction

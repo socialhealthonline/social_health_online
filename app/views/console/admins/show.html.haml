@@ -39,15 +39,15 @@
   = @admin.time_zone
 
 %p
-  %strong Member:
+  %strong Member Name:
   = @admin.member.name
 %p
   %strong Manager:
   = @admin.manager? ? 'Yes' : 'No'
 
-%p
-  %strong Enabled:
-  = @admin.enabled? ? 'Yes' : 'No'
+  %p
+    %strong Status:
+    = @admin.user_status.capitalize
 
 %p
   = link_to console_admins_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do

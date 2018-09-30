@@ -18,7 +18,7 @@
           %div.form-group.col-12.col-sm-12.col-md-2.col-lg-2
             = f.select(:state, US_STATES, {}, class: "form-control find_by_state", include_blank: 'State', style: "width: 100%;")
           %div.form-group.col-12.col-sm-12.col-md-4.col-lg-4
-            = f.text_field :city, placeholder: 'City', class: 'form-control find_by_city', style: "width: 100%;"
+            = f.text_field :city, placeholder: 'City (note: case sensitive)', class: 'form-control find_by_city', style: "width: 100%;"
         %div.form-row
           %div.col-12
             .col-xs-3.col-md-3.col-sm-3.mx-auto
@@ -54,3 +54,6 @@
             %tr.table-divider
         %div.container.pagination.justify-content-center
           %p= paginate @affiliates unless @affiliates.empty?
+          - if @affiliates.none?
+            %p.text-muted.mb-3.text-center
+              %em No search results.

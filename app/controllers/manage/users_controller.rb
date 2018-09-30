@@ -6,7 +6,13 @@ class Manage::UsersController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @users = User.where(member_id: authenticated_user.member.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25).decorate
+    @users = User.where(member_id: authenticated_user.member.id).order("#{sort_column} #{sort_direction}").page(params[:page])
+    @users = FindUsersCommunities.new(@users, show_init_scope: true).call(permitted_params)
+    unless @users.kind_of?(Array)
+      @users = @users.page(params[:page]).per(25)
+    else
+      @users = Kaminari.paginate_array(@users).page(params[:page]).per(25)
+    end
   end
 
   def new
@@ -48,6 +54,10 @@ class Manage::UsersController < ApplicationController
 
   private
 
+  def permitted_params
+    params.permit(:display_name, :name, :city, :state, :phone, :group, :email, :member_name).reject{|_, v| v.blank?}
+  end
+
   def update_user_params
     params.require(:user).permit(
       :name,
@@ -74,6 +84,8 @@ class Manage::UsersController < ApplicationController
       :password_confirmation,
       :manager,
       :user_status,
+      :interest_types,
+      :hide_info_on_user_finder,
       :hide_info_on_leaderboard
     )
   end

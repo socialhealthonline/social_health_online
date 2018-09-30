@@ -78,6 +78,7 @@ Rails.application.routes.draw do
   get 'explore_communities' => 'communities#explore_communities'
   get 'event_search' => 'communities#event_search'
   get 'leaderboard' => 'communities#leaderboard'
+  get 'user_finder' => 'communities#user_finder'
   get 'event_suggestions' => 'communities#new'
   post 'event_suggestions' => 'communities#create'
   get 'challenge_new' => 'communities#challenge_new'

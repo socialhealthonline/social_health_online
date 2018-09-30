@@ -6,19 +6,18 @@
       %h1.text-info.text-center Fitness History
       .row.text-center
         .col-sm-4.offset-sm-4
-          - if @social_fitness_logs.any?
-            .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
-              %table.table.align-items-center.text-center.table-hover.table-sm
-                %thead.row-borderless
+          .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
+            %table.table.align-items-center.text-center.table-hover.table-sm
+              %thead.row-borderless
+                %tr
+                  %th
+                    Log Date
+              %tbody.bg-white
+                - @social_fitness_logs.each do |log|
                   %tr
-                    %th
-                      Log Date
-                %tbody.bg-white
-                  - @social_fitness_logs.each do |log|
-                    %tr
-                      %td= link_to short_date(log.created_at), social_fitness_path(log), class: 'text-info'
-                    %tr.table-divider
-              = paginate @social_fitness_logs
-          - else
-            %p.text-muted.text-center.mb-1
-              %em No social fitness entries.
+                    %td= link_to short_date(log.created_at), social_fitness_path(log), class: 'text-info'
+                  %tr.table-divider
+            = paginate @social_fitness_logs
+            - if @social_fitness_logs.none?
+              %p.text-muted.text-center.mb-3
+                %em No social fitness entries have been logged.

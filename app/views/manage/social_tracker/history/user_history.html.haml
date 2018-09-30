@@ -5,25 +5,24 @@
         .col-12.mb-3
           %h1.text-info=@user.name
 
-        .row
-          .col-sm-4.offset-sm-4
-          - if @social_event_logs.any?
-            .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
-              %table.table.align-items-center.text-center.table-hover.table-sm
-                %thead
-                  %tr
-                    %th Log Date
-                    %th Event Date
-                %tbody
-                  - @social_event_logs.each do |log|
-                    %tr.bg-white
-                      %td= short_date(log.created_at)
-                      %td= short_date(log.event_date)
-                    %tr.table-divider
-              = paginate @social_event_logs
-          - else
-            %p.text-muted.my-4
-              %em No social event logs were found.
+      .row
+        .col-sm-4.offset-sm-4
+          .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
+            %table.table.align-items-center.text-center.table-hover.table-sm
+              %thead
+                %tr
+                  %th Log Date
+                  %th Event Date
+              %tbody
+                - @social_event_logs.each do |log|
+                  %tr.bg-white
+                    %td= short_date(log.created_at)
+                    %td= short_date(log.event_date)
+                  %tr.table-divider
+            = paginate @social_event_logs
+            - if @social_event_logs.none?
+              %p.text-muted.text-center.my-4
+                %em No social events have been logged.
 
       %p.py-3
         = link_to manage_social_tracker_users_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do

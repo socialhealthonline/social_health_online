@@ -5,7 +5,7 @@ class Console::UsersController < ConsoleController
   helper_method :sort_column, :sort_direction
 
   def index
-    @users = User.where(member_id: @member.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(20)
+    @users = User.where(member_id: @member.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def show
@@ -89,7 +89,9 @@ class Console::UsersController < ConsoleController
       :user_status,
       :password,
       :password_confirmation,
-      :hide_info_on_leaderboard
+      :interest_types,
+      :hide_info_on_leaderboard,
+      :hide_info_on_user_finder
     )
   end
 

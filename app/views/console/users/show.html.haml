@@ -53,8 +53,8 @@
   = @user.manager? ? 'Yes' : 'No'
 
 %p
-  %strong Enabled:
-  = @user.enabled? ? 'Yes' : 'No'
+  %strong Status:
+  = @user.user_status.capitalize
 
 %p
   = link_to console_member_users_path, class: 'btn btn-outline-primary', :style => 'border: 1px solid black;' do

@@ -15,11 +15,12 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   validates :name, :display_name, :email, :address, :city, :birthdate, :time_zone, presence: true
-  validates :hide_info_on_leaderboard, :gender, :ethnicity, :group, :guest, presence: true, allow_blank: true
+  validates :hide_info_on_leaderboard, :hide_info_on_user_finder, :gender, :ethnicity, :group, :guest, presence: true, allow_blank: true
   validates_uniqueness_of :email, :display_name, case_sensitive: false
   validates_format_of :email, with: /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
   validates_length_of :password, minimum: 8, too_short: 'Must be at least 8 characters.', allow_nil: true
   validates_format_of :password, with: /\A(?=.*[a-z])(?=.*\d).+\z/i, message: 'Must be alphanumeric.', allow_nil: true
+  validates_inclusion_of  :interest_types, in: INTEREST_TYPES, allow_blank: true
   validates :state, inclusion: US_STATES.values
   validates :phone, format: { with: /\A\d{10}\z/, message: 'Must be 10 digits including area code' }
   validates :zip, format: { with: %r{\A[\d]{5}(-[\d]{4})?\z} }

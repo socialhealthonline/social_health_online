@@ -8,9 +8,10 @@
               %i.fas.fa-home
               Home
           %li.nav-item.mr-1
-            = link_to mailbox_inbox_path, class: 'btn btn-primary px-1 my-1' do
+            = link_to mailbox_inbox_path, class: 'btn btn-primary px-1 my-1 text-left' do
               %i.fas.fa-envelope
               Messages
+              %span.badge.badge-danger= unread_messages_count
           %li.nav-item.dropdown.mr-1
             %a.btn.btn-primary.dropdown-toggle.px-1.my-1#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
               %i.fas.fa-users

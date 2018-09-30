@@ -84,6 +84,7 @@
                 .dropdown
                   %a.nav-link.px-1.pt-2#more-tab(data-toggle="dropdown" href="#" role="tab" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") More
                   .dropdown-menu.dropdown-menu-right.text-center{:style => 'border: 1px solid black; border-radius: 12px;'}
+                    = link_to 'User Finder' , user_finder_path, class: 'dropdown-item px-2'
                     = link_to 'Leaderboard' , leaderboard_path, class: 'dropdown-item px-2'
                     - if @member.hide_challenges==false
                       = link_to 'Challenges' , challenge_index_path, class: 'dropdown-item px-2'
@@ -140,12 +141,11 @@
                 Community User Directory
         .row.justify-content-center.mt-0.mb-2
           .col-md-3.mb-2.pb-1.text-center
-            %h5.pt-0.mb-0 Filter - By Display Name
-            <p class ="font-weight-bold mb-2 under_label_text">(note: case sensitive)</p>
+            %h5 Filter - By Primary Interest
             .col-md-12.justify-content-center
               = form_with url: "/communities/#{@member.slug}/", method: :get, local: true do |f|
                 .form-group.form-inline.justify-content-center#explore_communities_form
-                = f.text_field :display_name, placeholder: 'Display Name', class: 'form-control find_by_city', style: "width: 100%;"
+                  = f.select(:interest_types, INTEREST_TYPES, { include_blank: true }, class: "form-control find_by_interest_types", style: "width: 100%;")
                 %p
                 = f.button "Filter", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
         .row.justify-content-center
@@ -159,6 +159,9 @@
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: user }" } }
                     =user.display_name
               %p= paginate @users
+              - if @users.none?
+                %p.text-muted.mt-5.text-center
+                  %em No Users were found.
 #community-profile-modal.modal.fade{ 'aria-hidden' => 'true', 'aria-labelledby' => 'CommunityProfileModalLabel', role: 'dialog', tabindex: '-1' }
   .modal-dialog{ role: 'document' }
     .modal-content
