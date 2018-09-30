@@ -23,8 +23,8 @@
             %tr.bg-white
               %td
                 %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
-                  data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user: user }" } }
-                  =user.display_name
+                  data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user: contact.contact }" } }
+                  =contact.contact.display_name
               %td= time_in_cdt(contact.created_at, '%m/%d/%Y')
               %td.w-10.text-right
                 .dropdown

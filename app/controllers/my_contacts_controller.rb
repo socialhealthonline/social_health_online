@@ -3,14 +3,29 @@ helper_method :sort_column, :sort_direction
 before_action :find_contact, only: [:show, :edit, :update, :destroy]
 
 def index
-  @contacts = Contact.where(name: authenticated_user.name).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+  @contacts = Contact.where(user_id: authenticated_user.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
 end
 
 def show
 end
 
 def new
-  @contact = Contact.new
+  contact = Contact.where(contact_id: params[:contact_id], user_id: authenticated_user.id)
+
+  if contact.present?
+    redirect_to my_contacts_path
+  else
+    contact = Contact.new
+
+    user = User.find(params[:contact_id])
+
+    contact.user_id = authenticated_user.id
+    contact.contact_id = user.id
+    contact.save
+
+    redirect_to my_contacts_path, success: 'The contact was successfully created'
+  end
+
 end
 
 def create

@@ -1,6 +1,7 @@
 - if user.user_status == 'enabled'
   =link_to 'View Profile', fetch_user_path(user_id: user.id), {"data-target" => "#profileModal", "data-toggle" => "modal", remote: true}
   %br
-  - if authenticated_user.display_name == user.display_name
-  - else
+  - unless authenticated_user.display_name == user.display_name
     =link_to 'Send Message', new_conversation_path(recipient_id: user.id), target: '_blank'
+    %br
+    =link_to 'Add to Contacts', new_my_contact_path(contact_id: user.id), target: '_blank'

@@ -63,7 +63,7 @@
               %td= home_events_status(event.status)
               %td= event.member.name
             %tr.table-divider
-        %p= paginate @events
+        %p= paginate @events, param_name: :event_page
         - if @events.none?
           %div.text-muted.pb-3.text-center
             %em No RSVP'd events.

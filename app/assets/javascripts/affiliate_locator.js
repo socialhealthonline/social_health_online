@@ -2,6 +2,7 @@
   var AFFILIATE_TABLE_COLUMNS = [
     { name: "name", title: "Name" },
     { name: "address", title: "Address" },
+    { name: "full_address", title: "Address", visible: false },
     { name: "city", title: "City" },
     { name: "state", title: "State" },
     { name: "zip", title: "ZIP Code" },
@@ -74,7 +75,19 @@
                   .children()
                   .each(function (id, child) {
                     $(child).on("click", function() {
-                      row = data[id];
+                      row = $(child).data('__FooTableRow__').value;
+                      displayMarker(row);
+                    });
+                  });
+              }
+            })
+            .on({
+              "after.ft.paging": function(e, ft, pager) {
+                $("#affiliate-locator-table > tbody")
+                  .children()
+                  .each(function (id, child) {
+                    $(child).on("click", function() {
+                      row = $(child).data('__FooTableRow__').value;
                       displayMarker(row);
                     });
                   });
@@ -106,7 +119,20 @@
               .children()
               .each(function(id, child) {
                 $(child).on("click", function() {
-                  row = data[id];
+                  row = $(child).data('__FooTableRow__').value;
+                  displayMarker(row);
+                });
+              });
+          }
+        })
+        .on({
+          "after.ft.paging": function(e, ft, pager) {
+            $("#affiliate-locator-table > tbody")
+              .children()
+              .each(function(id, child) {
+                $(child).on("click", function() {
+                  row = $(child).data('__FooTableRow__').value;
+			console.log(row);
                   displayMarker(row);
                 });
               });

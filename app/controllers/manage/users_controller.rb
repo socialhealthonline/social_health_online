@@ -6,7 +6,7 @@ class Manage::UsersController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @users = User.where(member_id: authenticated_user.member.id).order("#{sort_column} #{sort_direction}").page(params[:page])
+    @users = User.where(member_id: authenticated_user.member.id).order("\"#{sort_column}\" #{sort_direction}").page(params[:page])
     @users = FindUsersCommunities.new(@users, show_init_scope: true).call(permitted_params)
     unless @users.kind_of?(Array)
       @users = @users.page(params[:page]).per(25)

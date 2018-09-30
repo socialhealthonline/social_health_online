@@ -71,7 +71,7 @@
           %th= sort_link 'email', 'Email'
           %th= sort_link 'user_status', 'Status'
           %th= sort_link 'manager', 'Manager'
-          %th Group
+          %th= sort_link 'group', 'Group'
       %tbody
         - @users.each.with_index(1) do |user, i|
           %tr.bg-white
