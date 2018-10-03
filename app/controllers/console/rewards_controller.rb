@@ -17,7 +17,7 @@ class Console::RewardsController < ConsoleController
   def create
     @reward = Reward.new(reward_params)
     if @reward.save
-      redirect_to console_rewards_path, success: 'The rewards notice was successfully created!'
+      redirect_to console_rewards_path, success: 'The rewards winner was successfully created!'
     else
       flash.now[:error] = 'Please correct the errors to continue.'
       render :new
@@ -29,7 +29,7 @@ class Console::RewardsController < ConsoleController
 
   def update
     if @reward.update(reward_params)
-      redirect_to console_rewards_path, success: 'The rewards notice was successfully updated!'
+      redirect_to console_rewards_path, success: 'The rewards winner was successfully updated!'
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class Console::RewardsController < ConsoleController
 
   def destroy
     @reward.destroy
-    redirect_to console_rewards_path, success: 'The rewards notice was successfully deleted!'
+    redirect_to console_rewards_path, success: 'The rewards winner was successfully deleted!'
   end
 
   private

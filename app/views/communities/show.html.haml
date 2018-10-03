@@ -159,7 +159,7 @@
                   %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: user }" } }
                     =user.display_name
-              %p= paginate @users
+              %p= paginate @users, param_name: :user_page
               - if @users.none?
                 %p.text-muted.mt-5.text-center
                   %em No Users were found.

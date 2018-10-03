@@ -6,7 +6,7 @@
   %div
     = link_to new_console_reward_path, class: 'btn btn-primary', style: 'border: 1px solid black' do
       %i.fas.fa-plus-circle
-      Add Rewards Notice
+      Add Rewards Winner
 
 - if @rewards.any?
   .row.justify-content-center
@@ -35,11 +35,11 @@
                     = link_to edit_console_reward_path(reward), title: 'Edit', class: 'dropdown-item text-info' do
                       %i.far.fa-edit
                       Edit
-                    = link_to console_reward_path(reward), title: 'Delete', id: "delete_reward_#{reward.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this rewards notice. Press OK to continue.' } do
+                    = link_to console_reward_path(reward), title: 'Delete', id: "delete_reward_#{reward.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this rewards winner. Press OK to continue.' } do
                       %i.far.fa-trash-alt
                       Delete
             %tr.table-divider
       %p= paginate @rewards
 - else
   %p.pt-2.text-muted.text-center
-    %em No rewards notices were found.
+    %em No rewards winners were found.
