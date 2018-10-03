@@ -1,7 +1,7 @@
 - page_title 'Event Links'
 
 %div#profile_partial
-.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3.pb-3.border-bottom
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.pb-3.border-bottom
   %h1.h3.brand-primary Event Links
   %div
     = link_to new_console_event_link_path, class: 'btn btn-primary', style: 'border: 1px solid black' do
@@ -16,7 +16,8 @@
         .form-group.form-inline.justify-content-center#explore_communities_form
         = f.select(:state, US_STATES, {}, class: "form-control find_by_state", include_blank: 'State', style: "width: 100%;")
         %p
-        = f.button "Filter", class: "form-control btn btn-primary mb-3", style: "border: 1px solid black"
+        = f.button "Filter", class: "form-control btn btn-primary mb-2", style: "border: 1px solid black"
+        = link_to "Undo Filter", {:onclick => "history.go(0)" }, class: 'btn btn-primary mb-3 col-12', style: 'border: 1px solid black'
 
 - if @resources.any?
   .row.justify-content-center

@@ -60,7 +60,8 @@
           .form-group.form-inline.justify-content-center#explore_communities_form
           = f.text_field :name, placeholder: 'Name', class: 'form-control find_by_city', style: "width: 100%;"
           %p
-          = f.button "Filter", class: "form-control btn btn-primary", style: "border: 1px solid black"
+          = f.button "Filter", class: "form-control btn btn-primary mb-2", style: "border: 1px solid black"
+          = link_to "Undo Filter", {:onclick => "history.go(0)" }, class: 'btn btn-primary', style: 'border: 1px solid black'
 
   .table-responsive.text-center{ :style => 'border: 2px solid black; border-radius: 12px;'}
     %table.table.table-borderless.table-hover
