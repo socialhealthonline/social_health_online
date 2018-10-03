@@ -90,7 +90,7 @@
   .col
     .form-group
       %label(for="user_interest_types") Primary Interest
-      = f.select :interest_types, INTEREST_TYPES,   { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :interest_types)}" }
+      = f.select :interest_types, INTEREST_TYPES, {}, { class: "form-control custom-select #{form_error_class(@user, :interest_types)}" }
       = model_error_display(@user, :interest_types)
   .col
     .form-group

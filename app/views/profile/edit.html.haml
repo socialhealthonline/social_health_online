@@ -16,7 +16,7 @@
                 = f.text_field :name, autofocus: true, required: true, class: "form-control #{form_error_class(@user, :name)}"
                 = model_error_display(@user, :name)
                 %div.float-right
-                  %label(for="user_name") Hide Profile Info 
+                  %label(for="user_name") Hide Profile Info
                   = h.check_box :name, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.name) }, '1', '0'
             .col
               .form-group
@@ -127,8 +127,8 @@
           .row
             .col
               .form-group
-                %label(for="user_interest_types") Primary Interest
-                = f.select :interest_types, INTEREST_TYPES,   { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :interest_types)}" }
+                %label(for="user_interest_types") Primary Interest *
+                = f.select :interest_types, INTEREST_TYPES, {}, { class: "form-control custom-select #{form_error_class(@user, :interest_types)}" }
                 = model_error_display(@user, :interest_types)
             .col
               .form-group
