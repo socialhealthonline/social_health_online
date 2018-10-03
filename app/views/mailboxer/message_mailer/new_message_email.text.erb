@@ -1,7 +1,7 @@
 You have a new message
 
 -----------------------------------------------
-From: <%= @user.display_name %>
+From: <%= @authenticated_user.display_name %>
 Subject: <%= @subject %>
 Message: <%= @message.body.html_safe? ? @message.body : strip_tags(@message.body) %>
 -----------------------------------------------
