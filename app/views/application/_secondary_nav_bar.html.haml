@@ -47,9 +47,6 @@
               = link_to matchmaker_path, class: 'dropdown-item' do
                 %i.fas.fa-comments
                 Matchmaker
-              = link_to bulletins_path, class: 'dropdown-item' do
-                %i.fas.fa-thumbtack
-                Bulletin Board
               = link_to event_links_path, class: 'dropdown-item' do
                 %i.fas.fa-link
                 Event Links
@@ -65,20 +62,6 @@
               = link_to social_tracker_history_path, class: 'dropdown-item' do
                 %i.fas.fa-history
                 Tracker History
-            %li.nav-item.dropdown.mr-1.my-1
-              %a.dropdown-toggle.btn.btn-primary.px-1#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
-                %i.fas.fa-heartbeat
-                Social Fitness
-              .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'communitiesDropdownMenuLink'}
-                = link_to social_fitness_log_path, class: 'dropdown-item' do
-                  %i.fas.fa-pencil-alt
-                  Self-Assessment
-                = link_to social_fitness_history_path, class: 'dropdown-item' do
-                  %i.fas.fa-notes-medical
-                  Fitness History
-                = link_to social_fitness_plan_path, class: 'dropdown-item' do
-                  %i.fas.fa-list-alt
-                  Fitness Plans
           %li.nav-item.dropdown.my-1
             %a.dropdown-toggle.btn.btn-primary.px-1#communitiesDropdownMenuLink{href: '#', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
               %i.fas.fa-toolbox
@@ -93,6 +76,9 @@
               = link_to sitemap_path, class: 'dropdown-item' do
                 %i.fas.fa-th
                 Sitemap
+              = link_to issues_path, class: 'dropdown-item' do
+                %i.fas.fa-flag
+                Report Issues
               = link_to invite_guests_path, class: 'dropdown-item' do
                 %i.fas.fa-share-square
                 Invite Guests

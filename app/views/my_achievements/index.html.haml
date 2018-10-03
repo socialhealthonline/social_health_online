@@ -9,7 +9,7 @@
     .col-md-12
       %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
         %strong
-          You deserve credit for taking more time to participate in social events, so as you log events your social health level will increase and you'll get merit badges. Also, as more social fitness self-assessments are logged your fitness tier will rise.
+          You deserve credit for taking more time to participate in social events, so as you log events your social health level will increase and you'll earn merit badges.
 
   .row.mb-3
     .col
@@ -135,19 +135,3 @@
                 %i.fas.fa-question.fa-3x
               .card-footer-badges.pb-3.text-center
                 You have defied the odds and made it to level 1000.
-
-  .row.mb-3
-    .col
-      %h3.notification-title.mb-2
-        %strong My Fitness Tier
-      .py-2.px-2.badges-box{:style => "border-radius: 12px; overflow-x:hidden;"}
-        .row.justify-content-center.font-weight-bold
-          %i.c-pointer.mx-2.px-2.brand-primary.fa.fa-heart.fa-2x{:title => 'Tier 1'}
-          - if @social_fitness_Logs.size > 11
-            %i.c-pointer.mx-2.px-2.brand-primary.fa.fa-heart.fa-2x{:title => 'Tier 2'}
-          - if @social_fitness_Logs.size > 23
-            %i.c-pointer.mx-2.px-2.brand-primary.fa.fa-heart.fa-2x{:title => 'Tier 3'}
-          - if @social_fitness_Logs.size > 35
-            %i.c-pointer.mx-2.px-2.brand-primary.fa.fa-heart.fa-2x{:title => 'Tier 4'}
-          - if @social_fitness_Logs.size > 47
-            %i.c-pointer.mx-2.px-2.brand-primary.fa.fa-heart.fa-2x{:title => 'Tier 5'}
