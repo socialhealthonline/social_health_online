@@ -7,7 +7,7 @@
     <h1>You have a new message</h1>
     <blockquote>
       <p>
-        <strong>From:</strong> <%= user.display_name %><br>
+        <strong>From:</strong> <%= @user.display_name %><br>
         <strong>Subject:</strong> <%= @subject %><br>
         <strong>Message:</strong> <%= raw @message.body %>
       </p>
