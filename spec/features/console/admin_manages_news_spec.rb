@@ -19,7 +19,7 @@ RSpec.describe 'Admin manages news' do
       end
 
       it 'render success message' do
-        expect(page).to have_content 'News was successfully created.'
+        expect(page).to have_content 'News was successfully created!'
       end
 
       it 'show news' do
@@ -70,7 +70,7 @@ RSpec.describe 'Admin manages news' do
 
     context 'successfully' do
       it 'render success message' do
-        expect(page).to have_content 'News was successfully deleted.'
+        expect(page).to have_content 'News was successfully deleted!'
       end
 
       it 'show console index news' do

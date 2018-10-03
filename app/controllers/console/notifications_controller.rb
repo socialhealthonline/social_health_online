@@ -19,7 +19,7 @@ class Console::NotificationsController < ConsoleController
     @notification = Notification.new(notification_params)
 
     if @notification.save
-      redirect_to console_notifications_path, success: 'Notification was successfully created.'
+      redirect_to console_notifications_path, success: 'Notification was successfully created!'
     else
       flash.now[:error] = 'Please correct the errors to continue.'
       render :new
@@ -28,7 +28,7 @@ class Console::NotificationsController < ConsoleController
 
   def update
     if @notification.update(notification_params)
-      redirect_to console_notifications_path, success: 'Notification was successfully updated.'
+      redirect_to console_notifications_path, success: 'Notification was successfully updated!'
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Console::NotificationsController < ConsoleController
 
   def destroy
     @notification.destroy
-    redirect_to console_notifications_path, success: 'Notification was successfully deleted.'
+    redirect_to console_notifications_path, success: 'Notification was successfully deleted!'
   end
 
   private

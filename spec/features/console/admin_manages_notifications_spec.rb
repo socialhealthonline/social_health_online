@@ -19,7 +19,7 @@ RSpec.describe 'Admin manages notifications' do
       end
 
       it 'render success message' do
-        expect(page).to have_content 'Notification was successfully created.'
+        expect(page).to have_content 'Notification was successfully created!'
       end
 
       it 'show notification' do
@@ -70,7 +70,7 @@ RSpec.describe 'Admin manages notifications' do
 
     context 'successfully' do
       it 'render success message' do
-        expect(page).to have_content 'Notification was successfully deleted.'
+        expect(page).to have_content 'Notification was successfully deleted!'
       end
 
       it 'show console index notifications' do

@@ -19,7 +19,7 @@ class Manage::AnnouncementsController < ApplicationController
     @announcement = Announcement.new(announcement_params)
 
     if @announcement.save
-      redirect_to manage_announcements_path, success: 'Announcement was successfully created.'
+      redirect_to manage_announcements_path, success: 'Announcement was successfully created!'
     else
       flash.now[:error] = 'Please correct the errors to continue.'
       render :new
@@ -28,7 +28,7 @@ class Manage::AnnouncementsController < ApplicationController
 
   def update
     if @announcement.update(announcement_params)
-      redirect_to manage_announcements_path, success: 'Announcement was successfully updated.'
+      redirect_to manage_announcements_path, success: 'Announcement was successfully updated!'
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Manage::AnnouncementsController < ApplicationController
 
   def destroy
     @announcement.destroy
-    redirect_to manage_announcements_path, success: 'Announcement was successfully deleted.'
+    redirect_to manage_announcements_path, success: 'Announcement was successfully deleted!'
   end
 
   private

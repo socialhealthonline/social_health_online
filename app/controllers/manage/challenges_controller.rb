@@ -19,7 +19,7 @@ class Manage::ChallengesController < ApplicationController
     @challenge = Challenge.new(challenge_params)
 
     if @challenge.save
-      redirect_to manage_challenges_path, success: 'Challenge was successfully created.'
+      redirect_to manage_challenges_path, success: 'Challenge was successfully created!'
     else
       flash.now[:error] = 'Please correct the errors to continue.'
       render :new
@@ -28,7 +28,7 @@ class Manage::ChallengesController < ApplicationController
 
   def update
     if @challenge.update(challenge_params)
-      redirect_to manage_challenges_path, success: 'Challenge was successfully updated.'
+      redirect_to manage_challenges_path, success: 'Challenge was successfully updated!'
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Manage::ChallengesController < ApplicationController
 
   def destroy
     @challenge.destroy
-    redirect_to manage_challenges_path, success: 'Challenge was successfully deleted.'
+    redirect_to manage_challenges_path, success: 'Challenge was successfully deleted!'
   end
 
   private
