@@ -2,6 +2,7 @@ class MyAchievementsController < ApplicationController
 before_action :require_authentication
 
   def index
+    @social_fitness_Logs = SocialFitnessLog.where(user_id: authenticated_user.id)
     @social_event_Logs = SocialEventLog.where(user_id: authenticated_user.id)
 
     next_level = 10

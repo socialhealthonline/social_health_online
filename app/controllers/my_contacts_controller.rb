@@ -23,7 +23,7 @@ def new
     contact.contact_id = user.id
     contact.save
 
-    redirect_to my_contacts_path, success: 'The contact was successfully created'
+    redirect_to my_contacts_path, success: 'The contact was successfully created!'
   end
 
 end

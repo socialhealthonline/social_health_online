@@ -8,31 +8,30 @@
     .col-md-12
       %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
         %strong
-          Create and manage your social contacts here to easily coordinate activities with the Users you have connected with.
+          Manage your contacts here to easily communicate and coordinate activities with the Users you have connected with.
 
-- if @contacts.any?
-  .row.justify-content-center
-    .table-responsive.col-10.text-center{ :style => 'border: 2px solid black; border-radius: 12px;' }
-      %table.table.table-borderless.table-hover
-        %thead
-          %tr
-            %th= sort_link 'display_name', 'Display Name'
-            %th= sort_link 'created_at', 'Added On'
-        %tbody
+
+  .row.mb-3.justify-content-center
+    .col-md-4
+      .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
+        %table.table.align-items-center.text-center.table-hover.table-sm.mb-4
+          %thead
+            %tr
+              %th= sort_link 'display_name', 'Display Name'
+          %tbody
           - @contacts.each do |contact|
             %tr.bg-white
               %td
                 %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
                   data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user: contact.contact }" } }
                   =contact.contact.display_name
-              %td= time_in_cdt(contact.created_at, '%m/%d/%Y')
               %td.w-10.text-right
                 .dropdown
                   = link_to my_contact_path(contact), title: 'Delete', id: "delete_contact_#{contact.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this contact. Press OK to continue.' } do
                     %i.far.fa-trash-alt
                     Delete
             %tr.table-divider
-      %p= paginate @contacts
-- else
-  %p.text-muted.text-center
-    %em No contacts were found.
+        %p= paginate @contacts
+        - if @contacts.none?
+          %div.text-muted.pb-3.text-center
+            %em No contacts were found.

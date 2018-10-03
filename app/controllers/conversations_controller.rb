@@ -20,7 +20,7 @@ class ConversationsController < ApplicationController
   def reply
     authenticated_user.reply_to_conversation(conversation, message_params[:body], nil, false)
     conversation.recipients.reject { |r| r.eql? authenticated_user }.each { |r| conversation.untrash(r) }
-    flash[:success] = 'Your reply message was successfully sent!'
+    flash[:success] = 'Your reply was successfully sent!'
     redirect_to conversation_path(conversation)
   end
 

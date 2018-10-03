@@ -1,8 +1,9 @@
-You have a new reply
+You have a new message
 
 -----------------------------------------------
+From: <%= user.display_name %>
 Subject: <%= @subject %>
-Reply: <%= @message.body.html_safe? ? @message.body : strip_tags(@message.body) %>
+Message: <%= @message.body.html_safe? ? @message.body : strip_tags(@message.body) %>
 -----------------------------------------------
 
 Visit <%= root_url %> to check your messages.

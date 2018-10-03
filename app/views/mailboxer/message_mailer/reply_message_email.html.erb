@@ -4,11 +4,12 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>You have a new reply</h1>
+    <h1>You have a new message</h1>
     <blockquote>
       <p>
+        <strong>From:</strong> <%= user.display_name %><br>
         <strong>Subject:</strong> <%= @subject %><br>
-        <strong>Reply:</strong> <%= raw @message.body %>
+        <strong>Message:</strong> <%= raw @message.body %>
       </p>
     </blockquote>
     <p>
