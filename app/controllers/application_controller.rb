@@ -61,8 +61,7 @@ class ApplicationController < ActionController::Base
   end
 
   def conversation
-    @conversation ||= mailbox.conversations.find(params[:id])
-    @conversation ||= mailbox.conversation.new
+    @conversation = Conversation.find(params[:conversation_id])
   end
 
   def render_404(message = 'Not Found')
