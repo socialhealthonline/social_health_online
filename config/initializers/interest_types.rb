@@ -43,7 +43,7 @@ INTEREST_TYPES = [
   "Tennis",
   "Theater",
   "Traveling",
-  "TV",
+  "TV Shows",
   "Video Games",
   "Volunteering",
   "Watching Sports",

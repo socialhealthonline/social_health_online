@@ -15,28 +15,28 @@
     .col
       %h3.notification-title
         %strong Sweepstakes Results
-  - if @rewards.any?
-    .row.text-center.mb-3
-      .col
-        %div.table-wrapper-2.table-hover#events-feed{:style => "border-radius: 12px;"}
-          %table.table.text-center
-            %thead.mdb-color.lighten-4
+
+  .row.text-center.mb-3
+    .col
+      %div.table-wrapper-2.table-hover#events-feed{:style => "border-radius: 12px;"}
+        %table.table.text-center
+          %thead.mdb-color.lighten-4
+            %tr
+              %th Period
+              %th Display Name
+              %th Member Name
+              %th State
+              %th Prize
+          %tbody.bg-white
+            - @rewards.each do |reward|
               %tr
-                %th Period
-                %th Display Name
-                %th Member Name
-                %th State
-                %th Prize
-            %tbody.bg-white
-              - @rewards.each do |reward|
-                %tr
-                  %td= reward.period
-                  %td= reward.display_name
-                  %td= reward.member_name
-                  %td= reward.state
-                  %td= reward.prize
-                  %tr.table-divider
-          = paginate @rewards
-  - else
-    %p.text-muted.text-center.mb-3
-      %em No rewards winners.
+                %td= reward.period
+                %td= reward.display_name
+                %td= reward.member_name
+                %td= reward.state
+                %td= reward.prize
+                %tr.table-divider
+        %p= paginate @rewards
+        - if @rewards.none?
+          %div.text-muted.pb-3.text-center
+            %em No rewards winners.

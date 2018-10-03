@@ -6,26 +6,27 @@
       %h1.brand-primary.text-center My Profile
   .row
     .col
+      * Indicates required field
       = form_with model: @user, url: update_profile_url, method: :patch, local: true do |f|
         = f.fields_for :hidden_field do |h|
-          .row
+          .row.pt-2
             .col
               .form-group
-                %label(for="user_name") Name
+                %label(for="user_name") Name *
                 = f.text_field :name, autofocus: true, required: true, class: "form-control #{form_error_class(@user, :name)}"
                 = model_error_display(@user, :name)
                 %div.float-right
-                  %label(for="user_name") Hide Profile Info
+                  %label(for="user_name") Hide Profile Info 
                   = h.check_box :name, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.name) }, '1', '0'
             .col
               .form-group
-                %label(for="user_display_name") Display Name
+                %label(for="user_display_name") Display Name *
                 = f.text_field :display_name, class: "form-control #{form_error_class(@user, :display_name)}"
                 = model_error_display(@user, :display_name)
           .row
             .col-lg-6
               .form-group
-                %label(for="user_email") Email
+                %label(for="user_email") Email *
                 = f.email_field :email, required: true, class: "form-control #{form_error_class(@user, :email)}"
                 = model_error_display(@user, :email)
                 %div.float-right
@@ -33,7 +34,7 @@
                   = h.check_box :email, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.email) }, '1', '0'
             .col
               .form-group
-                %label(for="user_phone") Phone
+                %label(for="user_phone") Phone *
                 = f.text_field :phone, class: "form-control #{form_error_class(@user, :phone)}"
                 = model_error_display(@user, :phone)
                 %div.float-right
@@ -42,7 +43,7 @@
           .row
             .col
               .form-group
-                %label(for="user_address") Address
+                %label(for="user_address") Address *
                 = f.text_field :address, class: "form-control #{form_error_class(@user, :address)}"
                 = model_error_display(@user, :address)
                 %div.float-right
@@ -50,7 +51,7 @@
                   = h.check_box :address, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.address) }, '1', '0'
             .col
               .form-group
-                %label(for="user_city") City
+                %label(for="user_city") City *
                 = f.text_field :city, class: "form-control #{form_error_class(@user, :city)}"
                 = model_error_display(@user, :city)
                 %div.float-right
@@ -59,7 +60,7 @@
           .row
             .col
               .form-group
-                %label(for="user_state") State
+                %label(for="user_state") State *
                 = f.select :state, US_STATES, {}, { class: "form-control custom-select #{form_error_class(@user, :state)}" }
                 = model_error_display(@user, :state)
                 %div.float-right
@@ -67,7 +68,7 @@
                   = h.check_box :state, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.state) }, '1', '0'
             .col
               .form-group
-                %label(for="user_zip") ZIP Code
+                %label(for="user_zip") ZIP Code *
                 = f.text_field :zip, class: "form-control #{form_error_class(@user, :zip)}"
                 = model_error_display(@user, :zip)
                 %div.float-right
@@ -76,7 +77,7 @@
           .row
             .col
               .form-group
-                %label(for="user_time_zone") Time Zone
+                %label(for="user_time_zone") Time Zone *
                 = f.select(:time_zone, ['Alaska', 'Hawaii', 'Pacific Time (US & Canada)', 'Mountain Time (US & Canada)', 'Central Time (US & Canada)', 'Eastern Time (US & Canada)'].sort, {}, { class: 'custom-select form-control' })
                 = model_error_display(@user, :time_zone)
                 %div.float-right
@@ -84,7 +85,7 @@
                   = h.check_box :time_zone, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.time_zone) }, '1', '0'
             .col
               .form-group
-                %label(for="user_birthdate") Birthdate
+                %label(for="user_birthdate") Birthdate *
                 = f.text_field :birthdate, class: "flatpickr-date form-control #{form_error_class(@user, :birthdate)}"
                 = model_error_display(@user, :birthdate)
                 %div.float-right

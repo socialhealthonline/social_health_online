@@ -9,7 +9,7 @@
     .col
       %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
         %strong
-          Search for Users in your area, become acquainted with them, and plan activities together with this feature.
+          Search for Users in your area who have common interests, become acquainted with them, and plan activities together with this feature.
 
   .row.my-3
     .col
@@ -36,6 +36,7 @@
               %th
               %th State
               %th
+              %th Primary Interest
           %tbody
           - @users.each do |user|
             %tr
@@ -49,6 +50,7 @@
               %td
               %td= user.state
               %td
+              %td= user.interest_types
         %div.container.pagination.justify-content-center
           %p= paginate @users unless @users.empty?
           - if @users.none?

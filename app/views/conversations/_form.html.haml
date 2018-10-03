@@ -2,7 +2,7 @@
   .form-group.resipients-box
     = f.label :recipients
     = f.select(:recipients, User.where.not(id: authenticated_user.id).where(user_status: :enabled).collect {|p| [ p.display_name, p.id ] }, {},
-    { multiple: true, required: true, class: 'form-control resipients-select', data: { placeholder: 'Type display names of recipients here' } })
+    { multiple: true, required: true, class: 'form-control resipients-select', data: { placeholder: 'Type the display names of recipients here' } })
   .form-group
     = f.label :subject
     = f.text_field :subject, placeholder: 'Type your subject here', class: 'form-control', required: true

@@ -13,18 +13,13 @@
           These fitness plans act as general guides with weekly social targets for improving
           your wellness with others.
 
-  .row.mt-3.mb-2
-    .col
-      %h3.notification-title
-        %strong Monthly Plans
-
   .row.text-center.mb-3
     .col-sm-4.offset-sm-4
       .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
         %table.table.align-items-center.text-center.table-hover.table-sm
           %thead.mdb-color.lighten-4
             %tr
-              %th Plans
+              %th Monthly Plans
           %tbody
           - @targets.each do |target|
             %tr.bg-white
