@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  acts_as_paranoid
   ETHNICITY = ['Black', 'White', 'Hispanic', 'Asian', 'American Indian', 'Pacific Islander', 'Other']
   GENDER = ['Male', 'Female', 'Other']
   RELATIONSHIP_STATUS = ['Single', 'In a Relationship', 'Married', 'Other']
