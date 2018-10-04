@@ -42,8 +42,9 @@
   = number_to_phone @member.contact_phone
 
 %p
-  %strong Contact Phone Extension:
-  = number_to_phone @member.contact_phone_extension
+  - if @member.contact_phone_extension.present?
+    %strong Contact Phone Extension:
+    = number_to_phone @member.contact_phone_extension
 
 %p
   %strong User Seats:
@@ -54,12 +55,14 @@
   = short_date @member.account_start_date
 
 %p
-  %strong Welcome Kit Date:
-  = short_date @member.welcome_kit_date
+  - if @member.welcome_kit_date.present?
+    %strong Welcome Kit Date:
+    = short_date @member.welcome_kit_date
 
 %p
-  %strong Account End Date:
-  = short_date @member.account_end_date
+  - if @member.account_end_date.present?
+    %strong Account End Date:
+    = short_date @member.account_end_date
 
 %p
   %strong Primary Manager:
@@ -67,12 +70,11 @@
 
 %p
   %strong Website:
-  - if @member.url.present?
-    = link_to @member.url, @member.url, target: '_blank'
+  = link_to @member.url, @member.url, target: '_blank'
 
 %p
-  %strong Events Webpage:
   - if @member.events_url.present?
+    %strong Events Webpage:
     = link_to @member.events_url, @member.events_url, target: '_blank'
 
 %p
@@ -80,8 +82,9 @@
   = @member.org_type
 
 %p
-  %strong Bio:
-  = truncate(@member.bio, length: 100)
+  - if @member.bio.present?
+    %strong Bio:
+    = truncate(@member.bio, length: 100)
 
 %p
   %strong Status:

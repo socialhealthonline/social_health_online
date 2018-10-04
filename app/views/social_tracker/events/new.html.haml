@@ -14,7 +14,7 @@
           .col-lg-6
             .form-group
               %label(for="social_event_log_event_date") Event Date
-              = f.text_field :event_date, class: "flatpickr-date form-control #{form_error_class(@social_event_log, :event_date)}", required: true 
+              = f.text_field :event_date, class: "flatpickr-date form-control #{form_error_class(@social_event_log, :event_date)}", required: true
               = model_error_display(@social_event_log, :event_date)
             .form-group
               %label(for="social_event_log_state") Event State
@@ -25,7 +25,7 @@
               = f.text_field :city, class: "form-control #{form_error_class(@social_event_log, :city)}", required: true
               = model_error_display(@social_event_log, :city)
             .form-group
-              %label(for="social_event_log_event_type") Event Type
+              %label(for="social_event_log_event_type") Event Type(s)
               =f.select :event_type, EVENT_TYPES, {}, { class: "form-control custom-select #{form_error_class(@social_event_log, :event_type)}" }
               = model_error_display(@social_event_log, :event_type)
           .col-lg-6

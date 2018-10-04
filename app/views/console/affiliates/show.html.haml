@@ -29,8 +29,9 @@
   = number_to_phone @affiliate.contact_phone
 
 %p
-  %strong Contact Phone Extension:
-  = @affiliate.contact_phone_extension
+  - if @affiliate.contact_phone_extension.present?
+    %strong Contact Phone Extension:
+    = @affiliate.contact_phone_extension
 
 %p
   %strong Website:
@@ -45,8 +46,9 @@
   = Affiliate::SUPPORT_TYPES[@affiliate.support_type]
 
 %p
-  %strong Support Notes:
-  = @affiliate.support_notes
+  - if @affiliate.support_notes.present?
+    %strong Support Notes:
+    = @affiliate.support_notes
 
 %p
   %strong Date Added:

@@ -52,7 +52,7 @@
               .form-group
                 %label Organization Type
                 %i.c-pointer.fas.fa-info-circle.fa{ title: 'Select the descriptive category your organization falls under' }
-                = f.select :org_type, ORG_TYPES, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@member, :org_type)}" }
+                = f.select :org_type, ORG_TYPES, {}, { class: "form-control custom-select #{form_error_class(@member, :org_type)}" }
             .col
               .form-group
                 %label Website

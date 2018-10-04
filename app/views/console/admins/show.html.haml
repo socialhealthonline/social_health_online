@@ -27,12 +27,14 @@
   = short_date @admin.birthdate
 
 %p
-  %strong Gender:
-  = @admin.gender
+  - if @admin.gender.present?
+    %strong Gender:
+    = @admin.gender
 
 %p
-  %strong Race/Ethnicity:
-  = @admin.ethnicity
+  - if @admin.ethnicity.present?
+    %strong Race/Ethnicity:
+    = @admin.ethnicity
 
 %p
   %strong Time Zone:

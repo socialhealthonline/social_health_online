@@ -68,7 +68,7 @@
           .col-lg-4
             .form-group
               %label(for="member_org_type") Organization Type
-              = f.select :org_type, ORG_TYPES, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@member, :org_type)}" }
+              = f.select :org_type, ORG_TYPES, {}, { class: "form-control custom-select #{form_error_class(@member, :org_type)}" }
               = model_error_display(@member, :org_type)
           .col-lg-4
             .form-group

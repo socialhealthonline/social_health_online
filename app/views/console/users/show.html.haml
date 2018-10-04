@@ -29,20 +29,23 @@
   = short_date @user.birthdate
 
 %p
-  %strong Gender:
-  = @user.gender
+  - if @user.gender.present?
+    %strong Gender:
+    = @user.gender
 
 %p
-  %strong Race/Ethnicity:
-  = @user.ethnicity
+  - if @user.ethnicity.present?
+    %strong Race/Ethnicity:
+    = @user.ethnicity
 
 %p
   %strong Time Zone:
   = @user.time_zone
 
 %p
-  %strong Group:
-  = @user.group
+  - if @user.group.present?
+    %strong Group:
+    = @user.group
 
 %p
   %strong Guest:

@@ -17,8 +17,8 @@
         .row.justify-content-center
           .col-lg-10
             .form-group
-              %label(for="event_type") Event Type *
-              = f.select :event_type, EVENT_TYPES, { include_blank: true }, { class: "#{form_error_class(@bulletin, :event_type)} form-control custom-select" }
+              %label(for="event_type") Event Type(s) *
+              = f.select :event_type, EVENT_TYPES, {}, { class: "#{form_error_class(@bulletin, :event_type)} form-control custom-select" }
               = model_error_display(@bulletin, :event_type)
 
         .row.justify-content-center
