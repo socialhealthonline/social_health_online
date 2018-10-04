@@ -155,7 +155,7 @@
                     .form-check
                       #matchmakerCheckboxId.col-xs-2
                         = h.check_box :matchmaker, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.matchmaker) }, '1', '0'
-                        %label(for="user_invisible") Matchmaker - Hide My Profile in Matchmaker
+                        %label(for="user_invisible") User Match - Hide My Profile in User Match
             .col-lg-6
               .card.pb-2
                 .card-body.pl-4.text-center
