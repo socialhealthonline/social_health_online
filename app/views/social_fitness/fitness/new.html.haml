@@ -10,7 +10,8 @@
           Reflect on the many aspects of your social fitness and indicate your perception of them
           below to track your progress towards your personal goals.
       = form_with model: @social_fitness_log, url: social_fitness_log_path(@social_fitness_log), local: true, class: "pt-3" do |f|
-        .row
+        * All fields are required
+        .row.mt-2
           .col-lg-6
             .form-group
               %label(for="social_fitness_log_individuals")

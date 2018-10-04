@@ -50,7 +50,7 @@
               %td
               %td= user.state
               %td
-              %td= user.interest_types
+              %td= user.interest_types.presence || 'N/A'
         %div.container.pagination.justify-content-center
           %p= paginate @users unless @users.empty?
           - if @users.none?

@@ -1,15 +1,17 @@
 = form_with(model: @notification, url: [:console, @notification], local: true) do |f|
   .row
+    * All fields are required
+  .row.mt-2
     .col
       .form-group
         %label Notification Title
-        = f.text_field :title, class: "form-control #{form_error_class(@notification, :title)}"
+        = f.text_field :title, class: "form-control #{form_error_class(@notification, :title)}", required: true
         = model_error_display(@notification, :title)
   .row
     .col
       .form-group
         %label Notification Body
-        = f.text_area :body, rows: 12, class: "form-control #{form_error_class(@notification, :body)}"
+        = f.text_area :body, rows: 12, class: "form-control #{form_error_class(@notification, :body)}", required: true
         = model_error_display(@notification, :body)
 
   .mb-3.text-center

@@ -5,42 +5,43 @@
     .col.pb-3
       %h1.brand-primary Edit User
   .row
+    * Indicates required field
+  .row.mt-2
     .col
       = form_with model: @user, url: [:manage, @user], method: :patch, local: true do |f|
         %h5 User Profile
-        * Indicates required field
-        .row.mt-2
+        .row
           .col
             .form-group
               %label(for="user_name") Name *
-              = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@user, :name)}"
+              = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@user, :name)}", required: true
               = model_error_display(@user, :name)
           .col
             .form-group
               %label(for="user_display_name") Display Name *
-              = f.text_field :display_name, class: "form-control #{form_error_class(@user, :display_name)}"
+              = f.text_field :display_name, class: "form-control #{form_error_class(@user, :display_name)}", required: true
               = model_error_display(@user, :display_name)
         .row
           .col
             .form-group
               %label(for="user_email") Email *
-              = f.email_field :email, class: "form-control #{form_error_class(@user, :email)}"
+              = f.email_field :email, class: "form-control #{form_error_class(@user, :email)}", required: true
               = model_error_display(@user, :email)
           .col
             .form-group
               %label(for="user_phone") Phone *
-              = f.text_field :phone, class: "form-control #{form_error_class(@user, :phone)}"
+              = f.text_field :phone, class: "form-control #{form_error_class(@user, :phone)}", required: true
               = model_error_display(@user, :phone)
         .row
           .col
             .form-group
               %label(for="user_address") Address *
-              = f.text_field :address, class: "form-control #{form_error_class(@user, :address)}"
+              = f.text_field :address, class: "form-control #{form_error_class(@user, :address)}", required: true
               = model_error_display(@user, :address)
           .col
             .form-group
               %label(for="user_city") City *
-              = f.text_field :city, class: "form-control #{form_error_class(@user, :city)}"
+              = f.text_field :city, class: "form-control #{form_error_class(@user, :city)}", required: true
               = model_error_display(@user, :city)
         .row
           .col
@@ -51,7 +52,7 @@
           .col
             .form-group
               %label(for="user_zip") ZIP Code *
-              = f.text_field :zip, class: "form-control #{form_error_class(@user, :zip)}"
+              = f.text_field :zip, class: "form-control #{form_error_class(@user, :zip)}", required: true
               = model_error_display(@user, :zip)
         .row
           .col
@@ -62,7 +63,7 @@
           .col
             .form-group
               %label(for="user_birthdate") Birthdate *
-              = f.text_field :birthdate, class: "flatpickr-date form-control #{form_error_class(@user, :birthdate)}"
+              = f.text_field :birthdate, class: "flatpickr-date form-control #{form_error_class(@user, :birthdate)}", required: true
               = model_error_display(@user, :birthdate)
         .row
           .col

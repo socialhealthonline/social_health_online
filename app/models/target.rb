@@ -1,3 +1,3 @@
 class Target < ApplicationRecord
-  validates :month, presence: true
+  validates :month, :weekone, :targetone, :weektwo, :targettwo, :weekthree, :targetthree, :weekfour, :targetfour, presence: true
 end

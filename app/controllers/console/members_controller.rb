@@ -109,7 +109,7 @@ class Console::MembersController < ConsoleController
 
   def sortable_columns
     %w[
-      name address city state zip contact_name contact_email
+      name address city state zip contact_name contact_email org_type
       contact_phone service_capacity account_start_date account_end_date
       suspended
     ]

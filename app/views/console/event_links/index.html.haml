@@ -35,7 +35,7 @@
             %tr.bg-white
               %td= link_to truncate("#{i}. #{resource.name}"), console_event_link_path(resource)
               %td= resource.event_type
-              %td= resource.city
+              %td= resource.city.presence || 'N/A'
               %td= resource.state
               %td= link_to "Visit Website", resource.url, target: :_blank
               %td.w-10.text-right

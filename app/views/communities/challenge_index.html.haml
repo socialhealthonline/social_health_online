@@ -32,8 +32,8 @@
               %td= challenge.challenge_type
               %td= short_date(challenge.challenge_start_date)
               %td= short_date(challenge.challenge_end_date)
-              %td= challenge.prize
-              %td= challenge.winner
+              %td= challenge.prize.presence || 'N/A'
+              %td= challenge.winner.presence || 'N/A'
             %tr.table-divider
       %p= paginate @challenges
       - if @challenges.none?

@@ -9,7 +9,7 @@
       - if authenticated_user.manager?
         %div.float-right.new_manage_user_button
           .dropdown
-            %a.btn.btn-primary.dropdown-toggle{style: 'border: 1px solid black'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+            %a.btn.btn-primary.dropdown-toggle.mb-4{style: 'border: 1px solid black'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
               %i.fas.fa-cog
               Manage
             .dropdown-menu.dropdown-menu-right{:style => 'border: 1px solid black;'}
@@ -84,7 +84,7 @@
             %td= truncate(user.email)
             %td= user.user_status.capitalize
             %td= user.manager? ? 'Yes' : 'No'
-            %td= user.group
+            %td= user.group.presence || 'N/A'
             %td.w-10.text-right
               .dropdown
                 = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{user.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do

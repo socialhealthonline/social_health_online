@@ -16,60 +16,60 @@
           .col-lg-10
             .form-group
               %label(for="") Week One
-              = f.text_field :weekone, autofocus: true, class: "form-control #{form_error_class(@target, :weekone)}"
+              = f.text_field :weekone, autofocus: true, class: "form-control #{form_error_class(@target, :weekone)}", required: true
               = model_error_display(@target, :weekone)
         .row.justify-content-center
           .col-lg-10
             .form-group
               %label(for="") Social Target
-              = f.text_field :targetone, autofocus: true, class: "form-control #{form_error_class(@target, :targetone)}"
+              = f.text_field :targetone, autofocus: true, class: "form-control #{form_error_class(@target, :targetone)}", required: true
               = model_error_display(@target, :targetone)
         .row.justify-content-center
           .col-lg-10
             .form-group
               %label(for="") Week Two
-              = f.text_field :weektwo, autofocus: true, class: "form-control #{form_error_class(@target, :weektwo)}"
+              = f.text_field :weektwo, autofocus: true, class: "form-control #{form_error_class(@target, :weektwo)}", required: true
               = model_error_display(@target, :weektwo)
         .row.justify-content-center
           .col-lg-10
             .form-group
               %label(for="") Social Target
-              = f.text_field :targettwo, autofocus: true, class: "form-control #{form_error_class(@target, :targettwo)}"
+              = f.text_field :targettwo, autofocus: true, class: "form-control #{form_error_class(@target, :targettwo)}", required: true
               = model_error_display(@target, :targettwo)
         .row.justify-content-center
           .col-lg-10
             .form-group
               %label(for="") Week Three
-              = f.text_field :weekthree, autofocus: true, class: "form-control #{form_error_class(@target, :weekthree)}"
+              = f.text_field :weekthree, autofocus: true, class: "form-control #{form_error_class(@target, :weekthree)}", required: true
               = model_error_display(@target, :weekthree)
         .row.justify-content-center
           .col-lg-10
             .form-group
               %label(for="") Social Target
-              = f.text_field :targetthree, autofocus: true, class: "form-control #{form_error_class(@target, :targetthree)}"
+              = f.text_field :targetthree, autofocus: true, class: "form-control #{form_error_class(@target, :targetthree)}", required: true
               = model_error_display(@target, :targetthree)
         .row.justify-content-center
           .col-lg-10
             .form-group
               %label(for="") Week Four
-              = f.text_field :weekfour, autofocus: true, class: "form-control #{form_error_class(@target, :weekfour)}"
+              = f.text_field :weekfour, autofocus: true, class: "form-control #{form_error_class(@target, :weekfour)}", required: true
               = model_error_display(@target, :weekfour)
         .row.justify-content-center
           .col-lg-10
             .form-group
               %label(for="") Social Target
-              = f.text_field :targetfour, autofocus: true, class: "form-control #{form_error_class(@target, :targetfour)}"
+              = f.text_field :targetfour, autofocus: true, class: "form-control #{form_error_class(@target, :targetfour)}", required: true
               = model_error_display(@target, :targetfour)
         .row.justify-content-center
           .col-lg-10
             .form-group
-              %label(for="") Week Five
+              %label(for="") Week Five (Optional)
               = f.text_field :weekfive, autofocus: true, class: "form-control #{form_error_class(@target, :weekfive)}"
               = model_error_display(@target, :weekfive)
         .row.justify-content-center
           .col-lg-10
             .form-group
-              %label(for="") Social Target
+              %label(for="") Social Target (Optional)
               = f.text_field :targetfive, autofocus: true, class: "form-control #{form_error_class(@target, :targetfive)}"
               = model_error_display(@target, :targetfive)
         .mb-3.text-center

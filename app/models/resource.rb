@@ -1,5 +1,5 @@
 class Resource < ApplicationRecord
-validates :name, :state, presence: true
+validates :name, :state, :event_type, :url, presence: true
 
 before_validation :add_protocol_to_url
 

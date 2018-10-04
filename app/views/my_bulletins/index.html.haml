@@ -28,7 +28,7 @@
           - @bulletins.each.with_index(1) do |bulletin, i|
             %tr.bg-white
               %td= link_to truncate("#{i}. #{bulletin.title}"), my_bulletin_path(bulletin)
-              %td= bulletin.city
+              %td= bulletin.city.presence || 'N/A' 
               %td= bulletin.state
               %td= short_date_time_notimezone(bulletin.start_at)
               %td= time_in_cdt(bulletin.created_at, '%m/%d/%Y')

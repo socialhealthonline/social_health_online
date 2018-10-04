@@ -1,15 +1,16 @@
 = form_with(model: @announcement, url: [:manage, @announcement], local: true) do |f|
-  .row.justify-content-center
+  .row.justify-content-center.mt-2
     .col-9
-      .form-group
+      * All fields are required
+      .form-group.mt-2
         %label Announcement Title
-        = f.text_field :title, class: "form-control #{form_error_class(@announcement, :title)}"
+        = f.text_field :title, class: "form-control #{form_error_class(@announcement, :title)}", required: true
         = model_error_display(@announcement, :title)
   .row.justify-content-center
     .col-9
       .form-group
-        %label Announcement Body
-        = f.text_area :body, rows: 12, class: "form-control #{form_error_class(@announcement, :body)}"
+        %label Announcement Body 
+        = f.text_area :body, rows: 12, class: "form-control #{form_error_class(@announcement, :body)}", required: true
         = model_error_display(@announcement, :body)
 
   .mb-3.text-center

@@ -46,7 +46,7 @@
               %td
               %td= short_date_time_notimezone(bulletin.start_at)
               %td
-              %td= bulletin.city
+              %td= bulletin.city.presence || 'N/A'
               %td
               %td= bulletin.state
               %td

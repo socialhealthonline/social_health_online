@@ -3,18 +3,18 @@
     .col-lg-6
       .form-group
         %label(for="affiliate_name") Affiliate Name
-        = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@affiliate, :name)}"
+        = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@affiliate, :name)}", required: true
         = model_error_display(@affiliate, :name)
     .col-lg-6
       .form-group
         %label(for="affiliate_address") Address
-        = f.text_field :address, class: "form-control #{form_error_class(@affiliate, :address)}"
+        = f.text_field :address, class: "form-control #{form_error_class(@affiliate, :address)}", required: true
         = model_error_display(@affiliate, :address)
   .row
     .col-lg-4
       .form-group
         %label(for="affiliate_city") City
-        = f.text_field :city, class: "form-control #{form_error_class(@affiliate, :city)}"
+        = f.text_field :city, class: "form-control #{form_error_class(@affiliate, :city)}", required: true
         = model_error_display(@affiliate, :city)
     .col-lg-4
       .form-group
@@ -24,49 +24,49 @@
     .col-lg-4
       .form-group
         %label(for="affiliate_zip") ZIP Code
-        = f.text_field :zip, class: "form-control #{form_error_class(@affiliate, :zip)}"
+        = f.text_field :zip, class: "form-control #{form_error_class(@affiliate, :zip)}", required: true
         = model_error_display(@affiliate, :zip)
   .row
     .col-lg-3
       .form-group
         %label(for="affiliate_phone") Phone
-        = f.text_field :phone, class: "form-control #{form_error_class(@affiliate, :phone)}"
+        = f.text_field :phone, class: "form-control #{form_error_class(@affiliate, :phone)}", required: true
         = model_error_display(@affiliate, :phone)
     .col-lg-3
       .form-group
         %label(for="affiliate_url") Website
-        = f.text_field :url, class: "form-control #{form_error_class(@affiliate, :url)}"
+        = f.text_field :url, class: "form-control #{form_error_class(@affiliate, :url)}", required: true
         = model_error_display(@affiliate, :url)
     .col-lg-3
       .form-group
         %label(for="affiliate_org_type") Organization Type
-        = f.select :org_type, ORG_TYPES, {prompt: ""}, { class: "form-control custom-select #{form_error_class(@affiliate, :org_type)}" }
+        = f.select :org_type, ORG_TYPES, {}, { class: "form-control custom-select #{form_error_class(@affiliate, :org_type)}" }
         = model_error_display(@affiliate, :org_type)
     .col-lg-3
       .form-group
         %label(for="date_added") Date Added
-        = f.date_field :date_added, class: "flatpickr-date form-control #{form_error_class(@affiliate, :date_added)}"
+        = f.date_field :date_added, class: "flatpickr-date form-control #{form_error_class(@affiliate, :date_added)}", required: true
         = model_error_display(@affiliate, :date_added)
   .row
     .col-lg-4
       .form-group
         %label(for="affiliate_contact_name") Contact Name
-        = f.text_field :contact_name, class: "form-control #{form_error_class(@affiliate, :contact_name)}"
+        = f.text_field :contact_name, class: "form-control #{form_error_class(@affiliate, :contact_name)}", required: true
         = model_error_display(@affiliate, :contact_name)
     .col-lg-4
       .form-group
         %label(for="affiliate_contact_email") Contact Email
-        = f.email_field :contact_email, class: "form-control #{form_error_class(@affiliate, :contact_email)}"
+        = f.email_field :contact_email, class: "form-control #{form_error_class(@affiliate, :contact_email)}", required: true
         = model_error_display(@affiliate, :contact_email)
     .col-lg-4
       .form-group
         %label(for="affiliate_contact_phone") Contact Phone
-        = f.text_field :contact_phone, class: "form-control #{form_error_class(@affiliate, :contact_phone)}"
+        = f.text_field :contact_phone, class: "form-control #{form_error_class(@affiliate, :contact_phone)}", required: true
         = model_error_display(@affiliate, :contact_phone)
   .row
-    .col-lg-3
+    .col-lg-4
       .form-group
-        %label(for="affiliate_contact_phone_extension") Contact Phone Extension
+        %label(for="affiliate_contact_phone_extension") Contact Phone Extension (Optional)
         = f.text_field :contact_phone_extension, class: "form-control #{form_error_class(@affiliate, :contact_phone_extension)}"
         = model_error_display(@affiliate, :contact_phone_extension)
     .col-lg-3
@@ -74,9 +74,9 @@
         %label(for="affiliate_support_type") Support Type
         = f.select :support_type, support_types, {}, { class: 'form-control custom-select' }
         = model_error_display(@affiliate, :support_type)
-    .col-lg-6
+    .col-lg-5
       .form-group
-        %label(for="affiliate_support_notes") Support Notes
+        %label(for="affiliate_support_notes") Support Notes (Optional)
         = f.text_area :support_notes, class: "form-control #{form_error_class(@affiliate, :support_notes)}"
         = model_error_display(@affiliate, :support_notes)
   .row

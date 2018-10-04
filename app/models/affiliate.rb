@@ -6,7 +6,7 @@ class Affiliate < ApplicationRecord
 
   has_one_attached :logo
 
-  validates :name,:address, :city, :state, :zip, :support_type, :contact_phone, :org_type,
+  validates :name, :address, :city, :state, :zip, :support_type, :contact_phone, :org_type,
             :contact_email, :contact_name, :date_added, presence: true
   validates_uniqueness_of :name, case_sensitive: false
   validates :state, inclusion: US_STATES.values

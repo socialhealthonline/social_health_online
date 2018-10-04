@@ -5,22 +5,23 @@
       = form_with model: @bulletin, url: [:my_bulletins], local: true do |f|
         .row.justify-content-center
           .col-lg-10
-            .form-group
-              %label(for="title") Bulletin Title
+            * Indicates required field
+            .form-group.mt-2
+              %label(for="title") Bulletin Title *
               = f.text_field :title, autofocus: true, class: "form-control #{form_error_class(@bulletin, :title)}", required: true
               = model_error_display(@bulletin, :title)
 
         .row.justify-content-center
           .col-lg-10
             .form-group
-              %label(for="event_type") Event Type
-              = f.select :event_type, EVENT_TYPES, { include_blank: true }, { class: "#{form_error_class(@bulletin, :event_type)} form-control custom-select" }
+              %label(for="event_type") Event Type(s) *
+              = f.select :event_type, EVENT_TYPES, {}, { class: "#{form_error_class(@bulletin, :event_type)} form-control custom-select" }
               = model_error_display(@bulletin, :event_type)
 
         .row.justify-content-center
           .col-lg-10
             .form-group
-              %label(for="start_at") Event Date/Time
+              %label(for="start_at") Event Date/Time *
               = f.text_field :start_at, class: "flatpickr-date-time form-control #{form_error_class(@bulletin, :start_at)}", required: true
               = model_error_display(@bulletin, :start_at)
 
@@ -48,7 +49,7 @@
         .row.justify-content-center
           .col-lg-10
             .form-group
-              %label(for="state") Event State
+              %label(for="state") Event State *
               = f.select :state, US_STATES, { required: true }, { class: "#{form_error_class(@bulletin, :state)} form-control custom-select" }
               = model_error_display(@bulletin, :state)
 
@@ -62,7 +63,7 @@
         .row.justify-content-center
           .col-lg-10
             .form-group
-              %label(for="description") Event Details
+              %label(for="description") Event Details *
               = f.text_area :description, autofocus: true, class: "form-control #{form_error_class(@bulletin, :description)}", required: true
               = model_error_display(@bulletin, :description)
 

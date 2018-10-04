@@ -1,15 +1,17 @@
 = form_with(model: @news, url: [:console, @news], local: true) do |f|
   .row
+  * All fields are required
+  .row.mt-2
     .col
       .form-group
         %label News Title
-        = f.text_field :title, class: "form-control #{form_error_class(@news, :title)}"
+        = f.text_field :title, class: "form-control #{form_error_class(@news, :title)}", required: true
         = model_error_display(@news, :title)
   .row
     .col
       .form-group
         %label News Body
-        = f.text_area :body, rows: 12, class: "form-control #{form_error_class(@news, :body)}"
+        = f.text_area :body, rows: 12, class: "form-control #{form_error_class(@news, :body)}", required: true
         = model_error_display(@news, :body)
 
   .mb-3.text-center

@@ -36,18 +36,18 @@
           .col-lg-6
             .form-group
               %label(for="member_name")Member Name
-              = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@member, :name)}"
+              = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@member, :name)}", required: true
               = model_error_display(@member, :name)
           .col-lg-6
             .form-group
               %label(for="member_address") Address
-              = f.text_field :address, class: "form-control #{form_error_class(@member, :address)}"
+              = f.text_field :address, class: "form-control #{form_error_class(@member, :address)}", required: true
               = model_error_display(@member, :address)
         .row
           .col-lg-3
             .form-group
               %label(for="member_city") City
-              = f.text_field :city, class: "form-control #{form_error_class(@member, :city)}"
+              = f.text_field :city, class: "form-control #{form_error_class(@member, :city)}", required: true
               = model_error_display(@member, :city)
           .col-lg-3
             .form-group
@@ -57,12 +57,12 @@
           .col-lg-3
             .form-group
               %label(for="member_zip") ZIP Code
-              = f.text_field :zip, class: "form-control #{form_error_class(@member, :zip)}"
+              = f.text_field :zip, class: "form-control #{form_error_class(@member, :zip)}", required: true
               = model_error_display(@member, :zip)
           .col-lg-3
             .form-group
               %label(for="member_phone") Phone
-              = f.text_field :phone, class: "form-control #{form_error_class(@member, :phone)}"
+              = f.text_field :phone, class: "form-control #{form_error_class(@member, :phone)}", required: true
               = model_error_display(@member, :phone)
         .row
           .col-lg-4
@@ -73,11 +73,11 @@
           .col-lg-4
             .form-group
               %label(for="member_url") Website
-              = f.text_field :url, class: "form-control #{form_error_class(@member, :url)}"
+              = f.text_field :url, class: "form-control #{form_error_class(@member, :url)}", required: true
               = model_error_display(@member, :url)
           .col-lg-4
             .form-group
-              %label(for="member_events_url") Events Webpage
+              %label(for="member_events_url") Events Webpage (Optional)
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'If your organization already maintains an events page on another site, you can link Users to it with this field'}
               = f.text_field :events_url, class: "form-control #{form_error_class(@member, :events_url)}"
               = model_error_display(@member, :events_url)
@@ -86,18 +86,24 @@
             .form-group
               %label(for="member_contact_name") Contact Name
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'Name of the person responsible for approving and maintaining the registration of your organization as a Member with Social Health'}
-              = f.text_field :contact_name, class: "form-control #{form_error_class(@member, :contact_name)}"
+              = f.text_field :contact_name, class: "form-control #{form_error_class(@member, :contact_name)}", required: true
               = model_error_display(@member, :contact_name)
           .col-lg-3
             .form-group
               %label(for="member_contact_email") Contact Email
-              = f.email_field :contact_email, class: "form-control #{form_error_class(@member, :contact_email)}"
+              = f.email_field :contact_email, class: "form-control #{form_error_class(@member, :contact_email)}", required: true
               = model_error_display(@member, :contact_email)
           .col-lg-3
             .form-group
               %label(for="member_contact_phone") Contact Phone
-              = f.text_field :contact_phone, class: "form-control #{form_error_class(@member, :contact_phone)}"
+              = f.text_field :contact_phone, class: "form-control #{form_error_class(@member, :contact_phone)}", required: true
               = model_error_display(@member, :contact_phone)
+          .col-lg-3
+            .form-group
+              %label(for="member_contact_phone_extension") Contact Phone Extension (Optional)
+              = f.text_field :contact_phone_extension, class: "form-control #{form_error_class(@member, :contact_phone_extension)}"
+              = model_error_display(@member, :contact_phone_extension)
+        .row
           .col-lg-3
             .form-group
               %label(for="member_primary_manager_id") Primary Manager
@@ -107,7 +113,7 @@
         .row
           .col
             .form-group
-              %label(for="member_bio") Bio
+              %label(for="member_bio") Bio (Optional)
               = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@member, :bio)}"
               = model_error_display(@member, :bio)
         .row

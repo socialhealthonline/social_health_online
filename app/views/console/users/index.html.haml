@@ -13,6 +13,18 @@
         %i.fas.fa-plus-circle
         Add User
 
+.row
+  .col-12.col-md-4.col-lg-6
+    %h5.mb-0.brand-primary Filter - By Name
+    <p class ="font-weight-bold under_label_text brand-primary">(note: full name required and case sensitive)</p>
+    .col-12.col.md-4.col-lg-6.justify-content-center
+      = form_with url: console_member_users_path(@member.id), method: :get, local: true do |f|
+        .form-group.form-inline.justify-content-center#explore_communities_form
+        = f.text_field :name, placeholder: 'Name', class: 'form-control find_by_city', style: "width: 100%;"
+        %p
+        = f.button "Filter", class: "form-control btn btn-primary mb-2", style: "border: 1px solid black"
+        = link_to "Undo Filter", {:onclick => "history.go(0)" }, class: 'form-control btn btn-primary mb-3', style: 'border: 1px solid black'
+
 - if @users.any?
   .table-responsive.user-list-table.mb-3{ :style => 'border: 2px solid black; border-radius: 12px;' }
     %table.table.table-borderless.align-items-center.table-hover

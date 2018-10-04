@@ -11,7 +11,7 @@ class Member < ApplicationRecord
   has_many :challenges, dependent: :destroy
   has_one_attached :logo
 
-  validates :name, :address, :city, :org_type, :state, :zip, :contact_name, :contact_email, :contact_phone, :url, :phone, :service_capacity, presence: true
+  validates :name, :address, :city, :account_start_date, :org_type, :state, :zip, :contact_name, :contact_email, :contact_phone, :url, :phone, :service_capacity, presence: true
   validates :hide_challenges, :hide_suggest_events, :charity_waiver, :public_member, presence: true, allow_blank: true
   validates_uniqueness_of :name, case_sensitive: false
   validates :state, inclusion: US_STATES.values

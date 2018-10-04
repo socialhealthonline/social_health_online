@@ -5,7 +5,8 @@
       = form_with model: @resource, url: [:console_event_links], local: true do |f|
         .row.justify-content-center
           .col-lg-10
-            .form-group
+            * All fields are required
+            .form-group.mt-2
               %label(for="name") Site Name
               = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@resource, :name)}", required: true
               = model_error_display(@resource, :name)

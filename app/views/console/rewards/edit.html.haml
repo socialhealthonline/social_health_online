@@ -7,7 +7,8 @@
       = form_with model: @reward, url: [:console_reward], local: true do |f|
         .row.justify-content-center
           .col-lg-10
-            .form-group
+            * All fields are required
+            .form-group.mt-2
               %label(for="") Period
               = f.text_field :period, autofocus: true, :placeholder => "E.g., July 30th - August 5th OR August 2018", class: "form-control #{form_error_class(@reward, :period)}", required: true
               = model_error_display(@reward, :period)

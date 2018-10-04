@@ -20,21 +20,8 @@
         %strong Event Location:
         = @event.location
       %p
-      - if @event.address.present?
         %strong Event Address:
-        = @event.address
-      %p
-      - if @event.city.present?
-        %strong Event City:
-        = @event.city
-      %p
-      - if @event.state.present?
-        %strong Event State:
-        = @event.state
-      %p
-      - if @event.zip.present?
-        %strong Event ZIP Code:
-        = @event.zip
+        = @event.location_display
       %p
       - if @event.url.present?
         %strong Event Website:

@@ -36,7 +36,7 @@
           %th(scope="col")= sort_link('state', 'State')
           %th(scope="col")= sort_link('service_capacity', 'User Seats')
           %th(scope="col")= sort_link('account_start_date', 'Account Start Date')
-          %th(scope="col") Welcome Kit Date
+          %th(scope="col")= sort_link('org_type', 'Organization Type')
           %th(scope="col") Public
           %th(scope="col") Fee Waiver
           %th(scope="col") Status
@@ -48,7 +48,7 @@
             %td= member.state
             %td= member.service_capacity
             %td= short_date member.account_start_date
-            %td= short_date member.welcome_kit_date
+            %td= member.org_type
             %td= member.public_member? ? 'Yes' : 'No'
             %td= member.charity_waiver? ? 'Yes' : 'No'
             %td= member.status

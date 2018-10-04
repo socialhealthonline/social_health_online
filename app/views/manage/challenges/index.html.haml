@@ -7,7 +7,7 @@
     %div
       - if authenticated_user.manager?
         %div.float-right.new_manage_user_button
-          .dropdown.mb-2
+          .dropdown.mb-4
             %a.btn.btn-primary.dropdown-toggle{:style => 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
               %i.fas.fa-cog
               Manage
@@ -54,9 +54,9 @@
             %td= challenge.challenge_type
             %td= short_date(challenge.challenge_start_date)
             %td= short_date(challenge.challenge_end_date)
-            %td= challenge.verification_code
-            %td= challenge.winner
-            %td= short_date(challenge.completion_date)
+            %td= challenge.verification_code.presence || 'N/A'
+            %td= challenge.winner.presence || 'N/A'
+            %td= short_date(challenge.completion_date).presence || 'N/A'
             %td.w-10.text-right
               .dropdown
                 = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{challenge.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
