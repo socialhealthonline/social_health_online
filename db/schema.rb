@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_30_193453) do
+ActiveRecord::Schema.define(version: 2018_10_04_221137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2018_09_30_193453) do
     t.integer "user_id"
     t.string "display_name"
     t.datetime "start_at"
+    t.integer "likes"
     t.string "location"
     t.string "address"
     t.string "zip"
@@ -117,6 +118,8 @@ ActiveRecord::Schema.define(version: 2018_09_30_193453) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "contact_id"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_contacts_on_deleted_at"
   end
 
   create_table "event_categories", force: :cascade do |t|
@@ -190,6 +193,8 @@ ActiveRecord::Schema.define(version: 2018_09_30_193453) do
     t.string "subject", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_mailboxer_conversations_on_deleted_at"
   end
 
   create_table "mailboxer_notifications", id: :serial, force: :cascade do |t|
@@ -208,7 +213,9 @@ ActiveRecord::Schema.define(version: 2018_09_30_193453) do
     t.datetime "created_at", null: false
     t.boolean "global", default: false
     t.datetime "expires"
+    t.datetime "deleted_at"
     t.index ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id"
+    t.index ["deleted_at"], name: "index_mailboxer_notifications_on_deleted_at"
     t.index ["notified_object_id", "notified_object_type"], name: "index_mailboxer_notifications_on_notified_object_id_and_type"
     t.index ["notified_object_type", "notified_object_id"], name: "mailboxer_notifications_notified_object"
     t.index ["sender_id", "sender_type"], name: "index_mailboxer_notifications_on_sender_id_and_sender_type"
@@ -398,12 +405,13 @@ ActiveRecord::Schema.define(version: 2018_09_30_193453) do
     t.date "first_login"
     t.string "phone_extension"
     t.text "group"
-    t.string "favorites"
     t.boolean "guest", default: false
     t.boolean "hide_info_on_leaderboard", default: false
     t.string "interest_types"
     t.boolean "hide_info_on_user_finder", default: false
+    t.datetime "deleted_at"
     t.index ["auth_token"], name: "index_users_on_auth_token"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email"
     t.index ["member_id"], name: "index_users_on_member_id"
     t.index ["password_reset_token"], name: "index_users_on_password_reset_token"
