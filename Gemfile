@@ -33,6 +33,7 @@ gem 'draper'
 gem 'image_processing'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'whenever', '~> 0.9.4'
+gem 'paranoia', '~> 2.1', '>= 2.1.5'
 
 group :development, :test do
   gem 'awesome_print'
