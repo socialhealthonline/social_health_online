@@ -36,7 +36,7 @@ RSpec.describe 'Send invites users and manage them' do
       fill_in 'email_2', with: 'email2@gmail.com'
       fill_in 'email_3', with: 'email2@gmail.com'
       click_button 'Send'
-      expect(page).to have_content('A User with email address email2@gmail.com already exists!')
+      expect(page).to have_content('User with email: email2@gmail.com already exists!')
     end
   end
 
