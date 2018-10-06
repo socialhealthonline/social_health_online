@@ -1,5 +1,7 @@
 * Indicates required field
 .row.pt-2
+%h5 User Profile
+.row
   .col
     .form-group
       %label(for="user_name") Name *
@@ -69,53 +71,55 @@
   .col
     .form-group
       %label(for="user_relationship_status") Relationship Status
-      = f.select :relationship_status, User::RELATIONSHIP_STATUS, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :relationship_status)}" }
-      = model_error_display(@user, :relationship_status)
+      = f.select :relationship_status, User::RELATIONSHIP_STATUS, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@admin, :relationship_status)}" }
+      = model_error_display(@admin, :relationship_status)
   .col
     .form-group
       %label(for="user_education_level") Education Level
-      = f.select :education_level, User::EDUCATION_LEVEL, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@user, :education_level)}" }
-      = model_error_display(@user, :education_level)
+      = f.select :education_level, User::EDUCATION_LEVEL, { include_blank: true }, { class: "form-control custom-select #{form_error_class(@admin, :education_level)}" }
+      = model_error_display(@admin, :education_level)
 .row
   .col
     .form-group
       %label(for="user_occupation") Occupation
-      = f.text_field :occupation, class: "form-control #{form_error_class(@user, :occupation)}"
-      = model_error_display(@user, :occupation)
+      = f.text_field :occupation, class: "form-control #{form_error_class(@admin, :occupation)}"
+      = model_error_display(@admin, :occupation)
   .col
     .form-group
       %label(for="user_languages") Languages
-      = f.text_field :languages, class: "form-control #{form_error_class(@user, :languages)}"
-      = model_error_display(@user, :languages)
+      = f.text_field :languages, class: "form-control #{form_error_class(@admin, :languages)}"
+      = model_error_display(@admin, :languages)
 .row
   .col
     .form-group
       %label(for="user_interest_types") Primary Interest *
-      = f.select :interest_types, INTEREST_TYPES, {}, { class: "form-control custom-select #{form_error_class(@user, :interest_types)}" }
-      = model_error_display(@user, :interest_types)
+      = f.select :interest_types, INTEREST_TYPES, {}, { class: "form-control custom-select #{form_error_class(@admin, :interest_types)}" }
+      = model_error_display(@admin, :interest_types)
   .col
     .form-group
       %label(for="user_hobbies") Other Interests
-      = f.text_field :hobbies, class: "form-control #{form_error_class(@user, :hobbies)}"
-      = model_error_display(@user, :hobbies)
+      = f.text_field :hobbies, class: "form-control #{form_error_class(@admin, :hobbies)}"
+      = model_error_display(@admin, :hobbies)
 .row
   .col-6
     .form-group
       %label(for="user_pet_peeves") Pet Peeves
-      = f.text_field :pet_peeves, class: "form-control #{form_error_class(@user, :pet_peeves)}"
-      = model_error_display(@user, :pet_peeves)
+      = f.text_field :pet_peeves, class: "form-control #{form_error_class(@admin, :pet_peeves)}"
+      = model_error_display(@admin, :pet_peeves)
 .row
   .col
     .form-group
       %label(for="user_bio") Bio
-      = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@user, :bio)}"
-      = model_error_display(@user, :bio)
-.row.pt-2.border-top
+      = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@admin, :bio)}"
+      = model_error_display(@admin, :bio)
+.row.border-top
+  %h5.mt-2 Manage User
+.row
   .col
     .form-group
       %label(for="user_group") Group
-      = f.text_field :group, class: "form-control #{form_error_class(@user, :group)}"
-      = model_error_display(@user, :group)
+      = f.text_field :group, class: "form-control #{form_error_class(@admin, :group)}"
+      = model_error_display(@admin, :group)
   .col
     .form-group
       %label(for="user_member_id") Member Name

@@ -109,7 +109,7 @@
       %label(for="member_bio") Bio (Optional)
       = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@member, :bio)}"
       = model_error_display(@member, :bio)
-.row.pt-2.border-top
+.row
   .col-lg-4
     .card
       .card-body.text-center
@@ -153,8 +153,7 @@
           .form-check
             = f.check_box :hide_challenges, class: 'form-check-input'
             %label.form-check-label(for="hide_challenges") Challenges - Hide the Challenges Button
-
-.row.pt-2.border-top
+.row
   .col-lg-6
     .form-group#file-field
       %label(for="member_logo") Member Logo (note: maximum file size is 10 MB)

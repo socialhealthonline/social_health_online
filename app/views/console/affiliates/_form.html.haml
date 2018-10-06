@@ -87,7 +87,7 @@
             .form-check.mb-3
               = f.check_box :hide_info_on_locator, class: 'form-check-input'
               %label.form-check-label(for="hide_info_on_locator") Affiliate Locator - Hide Info on Affiliate Locator
-  .row.pt-2.border-top
+  .row
     .col-lg-6
       .form-group#file-field
         %label(for="affiliate_logo") Affiliate Logo (note: maximum file size is 10 MB)
@@ -98,8 +98,6 @@
       %p.text-muted Logo Preview:
       -if @affiliate.logo.attached? && @affiliate.logo.attachment.valid?
         = image_tag @affiliate.logo, alt: 'Affiliate Logo', size: '200x200'
-
-
 
   .text-center.py-3
     = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }

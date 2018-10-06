@@ -88,16 +88,21 @@ class Console::UsersController < ConsoleController
       :ethnicity,
       :birthdate,
       :time_zone,
+      :relationship_status,
+      :education_level,
+      :occupation,
+      :languages,
+      :hobbies,
+      :pet_peeves,
       :group,
       :guest,
+      :bio,
       :last_sign_in_at,
       :manager,
       :user_status,
       :password,
       :password_confirmation,
       :interest_types,
-      :hide_info_on_leaderboard,
-      :hide_info_on_user_finder
     )
   end
 

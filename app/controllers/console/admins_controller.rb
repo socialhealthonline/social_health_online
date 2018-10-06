@@ -72,13 +72,24 @@ class Console::AdminsController < ConsoleController
       :member_id,
       :user_status,
       :manager,
+      :relationship_status,
+      :education_level,
+      :occupation,
+      :languages,
+      :hobbies,
+      :pet_peeves,
+      :user_status,
+      :password,
+      :password_confirmation,
+      :interest_types,
+      :group,
       :admin
     )
   end
 
   def sortable_columns
     %w[
-      name email display_name address city state zip phone gender
+      name email display_name address city state zip phone gender interest_types
       ethnicity birthdate time_zone last_sign_in_at member_id user_status=1 manager
       admin
     ]
