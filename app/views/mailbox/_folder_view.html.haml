@@ -1,23 +1,24 @@
 .container
   .row.pt-3.pb-3.px-2.justify-content-center
     %h1.text-info Messages
-  .row.mb-4
+  .row.mb-4.justify-content-center
     .col-12.col-md-3.mb-1.order-md-1
       = link_to 'Compose', new_conversation_path, class: 'btn btn-info mb-2', style: 'border: 1px solid black;'
+      = link_to 'Contacts', my_contacts_path, class: 'btn btn-info mb-2', style: 'border: 1px solid black', target: '_blank'
       .card.card-sm.mb-2
         .list-group.list-group-flush
           = render 'mailbox/folders'
       = link_to 'Empty Trash', mark_as_deleted_conversations_path, class: 'btn btn-danger mb-3', style: 'border: 1px solid black;', method: :post,
 data: { confirm: 'Are you sure?' }
-    .col-12.col-md-9.mb-1.order-md-2
+    .col-11.col-md-9.mb-1.pt-4.order-md-2{style: "border: 2px solid black; border-radius: 12px"}
       - if is_conversation
         = render 'conversations/form'
       - else
         -if @active.equal?(:inbox) && messages.none?
-          %p.text-muted.mt-4.pt-3.text-center
+          %p.text-muted.mt-4.mb-4.py-3.text-center
             %em No messages received.
         -if @active.equal?(:sent) && messages.none?
-          %p.text-muted.mt-4.pt-3.text-center
+          %p.text-muted.mt-4.mb-4.py-3.text-center
             %em No sent messages.
         .table-responsive
           %table.table.table-borderless.align-items-center.messages-box
@@ -25,5 +26,5 @@ data: { confirm: 'Are you sure?' }
               = render partial: 'conversations/conversation', collection: messages, locals: { folder: @active }
         = paginate messages
       -if @active.equal?(:trash) && messages.none?
-        %p.text-muted.mt-4.pb-4.text-center
+        %p.text-muted.mt-3.mb-2.pt-2.pb-5.text-center
           %em No trashed messages.

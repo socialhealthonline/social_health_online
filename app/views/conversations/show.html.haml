@@ -2,15 +2,16 @@
   .row.pt-3
     .col
       %h1.text-info.text-center Messages
-  .row.pt-3.pb-3
+  .row.pt-3.pb-3.justify-content-center
     .col-12.col-md-3.mb-1.order-md-1
       = link_to 'Compose', new_conversation_path, class: 'btn btn-info mb-2', style: 'border: 1px solid black;'
+      = link_to 'Contacts', my_contacts_path, class: 'btn btn-info mb-2', style: 'border: 1px solid black', target: '_blank'
       .card.card-sm.mb-2
         .list-group.list-group-flush
           = render 'mailbox/folders'
       = link_to 'Empty Trash', mark_as_deleted_conversations_path, class: 'btn btn-danger mb-3', style: 'border: 1px solid black;', method: :post,
     data: { confirm: 'Are you sure?' }
-    .col-12.col-md-9.mb-1.order-md-2
+    .col-11.col-md-9.mb-1.py-4.order-md-2{style: "border: 2px solid black; border-radius: 12px"}
       = render partial: 'messages'
       = form_for :message, url: reply_conversation_path(conversation) do |f|
         .form-group
