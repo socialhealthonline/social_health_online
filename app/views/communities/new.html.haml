@@ -15,7 +15,7 @@
     .col-md-6.justify-content-center
       .card.card-box
         %p.text-left.px-3.py-2.mb-0
-        .card-body.pt-0
+        .card-body.py-0
           = form_with url: event_suggestions_url, method: :post, local: true do
             * All fields are required
             .form-group.mt-2
@@ -28,10 +28,10 @@
               %label(for="event_location") Event Location
               = text_field_tag :event_location, params[:event_location], :placeholder => "E.g., Big Time Bowling", autofocus: true, class: 'form-control', required: true
             .form-group
-              %label(for="event_details") Event Details 
+              %label(for="event_details") Event Details
               = text_area_tag :event_details, params[:event_details], rows: '6', class: 'form-control', required: true
             .row.justify-content-center
-              = submit_tag 'Send', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
+              = submit_tag 'Send', class: 'btn btn-primary mb-1', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
 
   %p.pb-3
     = link_to my_community_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do

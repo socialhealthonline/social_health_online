@@ -81,6 +81,8 @@ Rails.application.routes.draw do
   get 'user_finder' => 'communities#user_finder'
   get 'event_suggestions' => 'communities#new'
   post 'event_suggestions' => 'communities#create'
+  get 'announcement_suggestions' => 'communities#new_suggest'
+  post 'announcement_suggestions' => 'communities#create_suggest'
   get 'challenge_new' => 'communities#challenge_new'
   get 'challenge_index' => 'communities#challenge_index'
   post 'challenge_new' => 'communities#challenge_create'
@@ -199,6 +201,10 @@ Rails.application.routes.draw do
   # Invitation Reminder
   get "invitation_reminder" => "invitation_reminder#new"
   post "invitation_reminder" => "invitation_reminder#create"
+
+  # Event Reminder
+  get "event_reminder" => "event_reminder#new"
+  post "event_reminder" => "event_reminder#create"
 
   # Affiliates
   get "affiliates_search" => "affiliates#index"

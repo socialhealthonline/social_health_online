@@ -1,0 +1,46 @@
+- page_title 'Event Reminder'
+
+.container
+  .row
+    .col.py-3
+      %h1.brand-primary.text-center Event Reminder
+
+  .row
+    .col-md-12
+      %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
+        %strong
+          Email an event reminder to yourself or someone you know to plan for an upcoming social activity.
+
+  .row
+    .col-md-3
+    .col-md-6.justify-content-center
+      .card
+        %p.text-left.px-3.py-2.mb-0
+        .card-body.text-left.pt-0
+          = form_with url: event_reminder_url, method: :post, local: true do
+            .form-group.mt-2
+              %label(for="email") Event Reminder Email Address
+              = email_field_tag :email, params[:email], class: 'form-control', required: true
+            .form-group
+              %label(for="event_title") Event Title
+              = text_field_tag :title, params[:title], autofocus: true, class: 'form-control', required: true
+            .form-group
+              %label(for="event_type") Event Type
+              = text_field_tag :type, params[:type], autofocus: true, class: 'form-control', required: true
+            .form-group
+              %label(for="event_start_at") Event Date/Time
+              = text_field_tag :start_at, params[:start_at], autofocus: true, class: 'form-control', required: true
+            .form-group
+              %label(for="event_location") Event Location
+              = text_field_tag :location, params[:location], autofocus: true, class: 'form-control', required: true
+            .form-group
+              %label(for="event_address") Event Address
+              = text_field_tag :address, params[:address], autofocus: true, class: 'form-control', required: true
+            .form-group
+              %label(for="event_date") Event Notes (Optional)
+              = text_area_tag :notes, params[:notes], autofocus: true, class: 'form-control'
+            .row.justify-content-center
+              = submit_tag 'Send', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
+              &nbsp
+              = link_to 'javascript:history.back()', class: 'btn btn-outline-secondary', style: 'border: 1px solid black;' do
+                Cancel

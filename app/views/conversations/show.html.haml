@@ -14,6 +14,7 @@
     .col-11.col-md-9.mb-1.py-4.order-md-2{style: "border: 2px solid black; border-radius: 12px"}
       = render partial: 'messages'
       = form_for :message, url: reply_conversation_path(conversation) do |f|
-        .form-group
-          = f.text_area :body, placeholder: 'Reply Message', rows: 4, class: 'form-control', required: true
+        .form-group.font-weight-bold
+          = f.label :message
+          = f.text_area :body, placeholder: 'Type your reply here', rows: 4, class: 'form-control', required: true
         = f.submit 'Reply', class: 'btn btn-primary float-right', style: 'border: 1px solid black;'

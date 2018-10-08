@@ -2,6 +2,9 @@ class CommunitiesController < ApplicationController
   before_action :require_authentication
   helper_method :sort_column, :sort_direction
 
+  def new_suggest
+  end
+
   def new
   end
 
@@ -73,6 +76,11 @@ class CommunitiesController < ApplicationController
   def create
     EventSuggestionsMailer.notify(params, authenticated_user).deliver_now
     redirect_to event_suggestions_url, success: "Thank you for your submission. We'll be in touch!"
+  end
+
+  def create_suggest
+    AnnouncementSuggestionsMailer.notify(params, authenticated_user).deliver_now
+    redirect_to announcement_suggestions_url, success: "Thank you for your submission. We'll be in touch!"
   end
 
   private

@@ -112,21 +112,21 @@
 .row
   .col-lg-4
     .card
-      .card-body.text-center
+      .card-body.text-center.px-1
         .form-group
           .form-check.mb-3
             = f.check_box :suspended, class: 'form-check-input'
             %label.form-check-label(for="member_suspended") Suspended Account - Member Account Suspended
   .col-lg-4
     .card
-      .card-body.text-center
+      .card-body.text-center.px-1
         .form-group
           .form-check.mb-3
             = f.check_box :hide_info_on_locator, class: 'form-check-input'
             %label.form-check-label(for="hide_info_on_locator") Member Locator - Hide Info on Member Locator
   .col-lg-4
     .card
-      .card-body.text-center
+      .card-body.text-center.px-1
         .form-group
           .form-check
             = f.check_box :public_member, class: 'form-check-input'
@@ -134,18 +134,26 @@
 .row
   .col-lg-4
     .card
-      .card-body.text-center
+      .card-body.text-center.px-1
         .form-group
           .form-check
             = f.check_box :charity_waiver, class: 'form-check-input'
             %label.form-check-label(for="charity_waiver") Service Fee Waiver - Charitable Org
   .col-lg-4
     .card
-      .card-body.text-center
+      .card-body.text-center.px-1
         .form-group
           .form-check
             = f.check_box :hide_suggest_events, class: 'form-check-input'
             %label.form-check-label(for="hide_suggest_events") Suggest Events - Show Suggest Events Button
+  .col-lg-4
+    .card
+      .card-body.text-center.px-1
+        .form-group
+          .form-check
+            = f.check_box :hide_suggest_announcements, class: 'form-check-input'
+            %label.form-check-label(for="hide_suggest_announcements") Suggest Announcements - Show Suggest Announcements Button
+.row
   .col-lg-4
     .card
       .card-body.text-center
