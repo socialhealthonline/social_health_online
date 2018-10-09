@@ -36,6 +36,7 @@ class Manage::MemberController < ApplicationController
       :primary_manager_id,
       :hide_challenges,
       :hide_suggest_events,
+      :hide_suggest_announcements,
       :org_type,
       :contact_phone_extension
     )

@@ -1,0 +1,33 @@
+- page_title 'Community Announcement Suggestions'
+
+.container
+  .row
+    .col.py-3
+      %h1.text-info.text-center Community Announcement Suggestions
+
+  .row
+    .col-md-12
+      %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
+        %strong
+          Submit this form to provide suggestions for the addition of more announcements relevant to the Community.
+  .row.mb-3
+    .col-md-3
+    .col-md-6.justify-content-center
+      .card.card-box
+        %p.text-left.px-3.py-2.mb-0
+        .card-body.py-0
+          = form_with url: announcement_suggestions_url, method: :post, local: true do
+            * All fields are required
+            .form-group.mt-2
+              %label(for="announcement_title") Announcement Title
+              = text_field_tag :announcement_title, params[:announcement_title], :placeholder => "E.g., Pat Won the Employee of the Month Award", autofocus: true, class: 'form-control', required: true
+            .form-group
+              %label(for="announcement_details") Announcement Details
+              = text_area_tag :announcement_details, params[:announcement_details], autofocus: true, class: 'form-control', required: true
+            .row.justify-content-center
+              = submit_tag 'Send', class: 'btn btn-primary mb-1', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
+
+  %p.pb-3
+    = link_to my_community_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+      %i.fas.fa-arrow-left
+      Back

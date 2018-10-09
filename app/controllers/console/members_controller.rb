@@ -101,6 +101,7 @@ class Console::MembersController < ConsoleController
       :contact_phone_extension,
       :primary_manager_id,
       :hide_suggest_events,
+      :hide_suggest_announcements,
       :public_member,
       :charity_waiver,
       :org_type

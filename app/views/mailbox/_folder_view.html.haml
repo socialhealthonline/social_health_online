@@ -10,7 +10,7 @@
           = render 'mailbox/folders'
       = link_to 'Empty Trash', mark_as_deleted_conversations_path, class: 'btn btn-danger mb-3', style: 'border: 1px solid black;', method: :post,
 data: { confirm: 'Are you sure?' }
-    .col-11.col-md-9.mb-1.pt-4.order-md-2{style: "border: 2px solid black; border-radius: 12px"}
+    .col-11.col-md-9.mb-1.pt-4.pb-3.order-md-2{style: "border: 2px solid black; border-radius: 12px"}
       - if is_conversation
         = render 'conversations/form'
       - else

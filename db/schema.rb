@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_10_07_221250) do
+=======
+ActiveRecord::Schema.define(version: 2018_10_07_225224) do
+>>>>>>> 021709e74e1639ba6436833d4c7d7b56add94e22
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -272,8 +276,12 @@ ActiveRecord::Schema.define(version: 2018_10_07_221250) do
     t.string "org_type"
     t.boolean "hide_challenges", default: false
     t.boolean "charity_waiver", default: false
+<<<<<<< HEAD
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_members_on_deleted_at"
+=======
+    t.boolean "hide_suggest_announcements", default: false
+>>>>>>> 021709e74e1639ba6436833d4c7d7b56add94e22
     t.index ["period"], name: "index_members_on_period"
     t.index ["slug"], name: "index_members_on_slug", unique: true
   end

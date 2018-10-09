@@ -95,23 +95,28 @@
   .tab-content.pt-1.pb-0{ :style => "overflow:hidden;" }
     .tab-pane.fade.show.active#announcements(role="tabpanel" aria-labelledby="announcements-tab")
       .container
-        .row.mt-0.mb-3
+        .row.mt-0.mb-1
           .col
-            %h3.notification-title.mb-1
+            %h3.notification-title.pb-1
               %strong
                 Community Announcements
-        .row.mt-4
-          .col.pt-3.pb-1
-            #scroll-box-announcements{ :style => "border: 2px solid black; border-radius: 12px;" }
-              - @announcements.each do |announcement|
-                .mb-3.text-center
-                  %h5= announcement.title
-                  .announcements-date.mb-2.border-bottom= time_in_cdt(announcement.updated_at, '%m/%d/%Y')
-                  .announcements-text.text-left.pb-2= simple_format(announcement.body)
-              %p= paginate @announcements
-              - if @announcements.none?
-                %p.text-muted.mt-5.text-center
-                  %em No announcements have been made.
+        - if @member.hide_suggest_announcements?
+          .row
+            .col.text-center.mt-1.mb-2.pb-1
+              =link_to 'Suggest Announcements', announcement_suggestions_path, class: 'btn btn-primary', style: 'border: 1px solid black'
+        .container
+          .row.mt-4
+            .col.pt-3.pb-1
+              #scroll-box-announcements{ :style => "border: 2px solid black; border-radius: 12px;" }
+                - @announcements.each do |announcement|
+                  .mb-3.text-center
+                    %h5= announcement.title
+                    .announcements-date.mb-2.border-bottom= time_in_cdt(announcement.updated_at, '%m/%d/%Y')
+                    .announcements-text.text-left.pb-2= simple_format(announcement.body)
+                %p= paginate @announcements
+                - if @announcements.none?
+                  %p.text-muted.mt-5.text-center
+                    %em No announcements have been made.
 
     - if @member.public_member==false
       .tab-pane.fade#events(role="tabpanel" aria-labelledby="events-tab")

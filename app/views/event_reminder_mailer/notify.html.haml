@@ -1,0 +1,28 @@
+%p Social Health Online Event Reminder
+
+%p
+  <strong>Name:</strong> #{@authenticated_user.name}
+
+%p
+  <strong>Display Name:</strong> #{@authenticated_user.display_name}
+
+%p
+  <strong>Email:</strong> #{@authenticated_user.email}
+
+%p
+  <strong>Event Title:</strong> #{@form_params[:title]}
+
+%p
+  <strong>Event Type:</strong> #{@form_params[:type]}
+
+%p
+  <strong>Event Date/Time:</strong> #{@form_params[:start_at]}
+
+%p
+  <strong>Event Location:</strong> #{@form_params[:location]}
+
+%p
+  <strong>Event Address:</strong> #{@form_params[:address]}
+
+%p
+  <strong>Email Notes:</strong> #{@form_params[:notes]}
