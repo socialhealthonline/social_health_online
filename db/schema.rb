@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_04_221137) do
+ActiveRecord::Schema.define(version: 2018_10_07_221250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 2018_10_04_221137) do
     t.integer "user_id"
     t.string "display_name"
     t.datetime "start_at"
-    t.integer "likes"
     t.string "location"
     t.string "address"
     t.string "zip"
@@ -273,6 +272,8 @@ ActiveRecord::Schema.define(version: 2018_10_04_221137) do
     t.string "org_type"
     t.boolean "hide_challenges", default: false
     t.boolean "charity_waiver", default: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_members_on_deleted_at"
     t.index ["period"], name: "index_members_on_period"
     t.index ["slug"], name: "index_members_on_slug", unique: true
   end
@@ -405,6 +406,7 @@ ActiveRecord::Schema.define(version: 2018_10_04_221137) do
     t.date "first_login"
     t.string "phone_extension"
     t.text "group"
+    t.string "favorites"
     t.boolean "guest", default: false
     t.boolean "hide_info_on_leaderboard", default: false
     t.string "interest_types"

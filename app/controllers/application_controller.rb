@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   helper_method :authenticated_user, :mailbox, :conversation
   add_flash_types :error, :success, :info, :warning
   before_action :disabled_user
+  before_action :suspended_member
   before_action :unpaid_user
   before_action :pending_user
 
@@ -20,6 +21,14 @@ class ApplicationController < ActionController::Base
   def disabled_user
     if authenticated_user&.disabled?
       session[:auth_token] = nil
+    end
+  end
+
+  def suspended_member
+    if !authenticated_user&.admin? && authenticated_user&.member&.suspended?
+      session[:auth_token] = nil
+
+      redirect_to signin_url, error: 'Your group has been suspended'
     end
   end
 

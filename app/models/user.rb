@@ -5,6 +5,8 @@ class User < ApplicationRecord
   EDUCATION_LEVEL = ['High School', 'College', 'Advanced Graduate', 'Other']
   enum user_status: %i[disabled enabled pending]
 
+  acts_as_paranoid
+
   belongs_to :member, inverse_of: :users
   has_many :social_event_logs, dependent: :destroy
   has_many :social_fitness_logs, dependent: :destroy
