@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     if !authenticated_user&.admin? && authenticated_user&.member&.suspended?
       session[:auth_token] = nil
 
-      redirect_to signin_url, error: 'Your group has been suspended'
+      redirect_to signin_url, error: 'Your Member organization\'s account has been suspended.'
     end
   end
 
