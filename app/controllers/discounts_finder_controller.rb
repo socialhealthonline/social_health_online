@@ -2,7 +2,7 @@ class DiscountsFinderController < ApplicationController
   before_action :require_authentication
 
   def index
-    @affiliates = Affiliate.where.not(support_notes: [nil, '']).order(city: :asc)
+    @affiliates = Affiliate.where.not(support_notes: [nil, '']).order(name: :asc)
     @affiliates = FindUsersCommunities.new(@affiliates, show_init_scope: false).call(permitted_params)
       unless @affiliates.kind_of?(Array)
         @affiliates = @affiliates.page(params[:page]).per(10)

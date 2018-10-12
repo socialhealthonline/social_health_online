@@ -47,7 +47,7 @@
       .col-12.col-md-9
         %p
           = @member.logo
-        - if @member.url.present?
+        - if @member.url.present? && @member.public_member==false
           %p
             = link_to @member.url, target: '_blank' do
               %i.fas.fa-external-link-alt
@@ -79,7 +79,7 @@
               %li.nav-item
                 %a.nav-link.px-1#events-tab(data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false") Events
             %li.nav-item
-              %a.nav-link.px-1.active#members-tab(data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="false") Users
+              %a.nav-link.px-1.active#users-tab(data-toggle="tab" href="#users" role="tab" aria-controls="users" aria-selected="false") Users
             - if authenticated_user.member_id == @member.id
               %div
                 .dropdown
@@ -137,7 +137,7 @@
                 .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
                   #calendar
 
-    .tab-pane.fade.show.active#members(role="tabpanel" aria-labelledby="members-tab")
+    .tab-pane.fade.show.active#users(role="tabpanel" aria-labelledby="users-tab")
       %div#profile_partial
       .container
         .row.mt-0.mb-2
@@ -193,7 +193,7 @@
           %strong Phone:
           = number_to_phone @member.phone
         %p
-        - if @member.url.present?
+        - if @member.url.present? && @member.public_member==false
           %strong Website:
           = link_to @member.url, @member.url, target: '_blank'
         %p

@@ -53,7 +53,7 @@ class CommunitiesController < ApplicationController
   end
 
   def explore_communities
-    @communities = Member.where.not("name = ? ", authenticated_user.member.name).where(suspended: false).order(city: :asc)
+    @communities = Member.where.not("name = ? ", authenticated_user.member.name).where(suspended: false).order(public_member: :asc)
     @communities = FindUsersCommunities.new(@communities, show_init_scope: false).call(permitted_params)
     unless @communities.kind_of?(Array)
       @communities = @communities.page(params[:page]).per(10)

@@ -18,6 +18,6 @@ class MatchmakersController < ApplicationController
   private
 
     def permitted_params
-      params.permit(:state, :display_name, :city, :zip, :page).reject{|_, v| v.blank?}
+      params.permit(:state, :display_name, :city, :zip, :interest_types, :page).reject{|_, v| v.blank?}
     end
 end
