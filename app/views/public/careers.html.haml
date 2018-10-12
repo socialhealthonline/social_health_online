@@ -12,14 +12,18 @@
 
         .row
           .col
-            %h3.text-center
+            %h3.text-center.pb-2
               %strong Open Positions
 
-        .row
-          .col.my-3
-            %div.pb-2.px-2.career-box{style: "border: 2px solid black; border-radius: 12px;"}
-              %div.mt-2.text-center
-                %h4 Sales Director
+        .card
+          #headingOne.card-header.text-center.border
+            %button.mt-3.mb-2.c-pointer.btn-responsive.btn-outline-info.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-target" => "#collapseOne", "data-toggle" => "collapse"}
+              %h3.text-center Sales Director
+            .text-center.brand-primary
+            %button.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-target" => "#collapseOne", "data-toggle" => "collapse"}
+              %i.fas.fa-chevron-down.fa-2x
+          #collapseOne.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+            .card-body.border
               %div.mt-2
               <strong>Description:</strong> Social Health is seeking a new team member to build and lead its Sales division. The Sales Director will be responsible for crafting, managing, and deploying the company's strategy for
               rapidly building the size of its Member, Affiliate, and User base. As the Sales Director, you will hold an executive position and work alongside the CEO and COO to develop and grow the business and brand.
@@ -41,10 +45,17 @@
               %div.mt-2
               At this time, this is a commission-based position, so do not apply if you require a base salary as well.
               Social Health intends to convert this position into a salary plus commission position in the future if certain business growth milestones are met.
-
               %div.mt-2
               <strong> How to Apply:</strong>
               Submit your resume to&nbsp;
               %a{ href: 'mailto:sales@socialhealthonline.com',
                  title: 'sales@socialhealthonline.com',
                  target: '_blank'}> sales@socialhealthonline.com
+
+.container
+  .row
+    .col.mb-3
+      %p
+        Social Health provides equal employment opportunities to all employees and applicants for employment and prohibits discrimination and harassment of any type without regard to race, color, religion, age, sex, national origin, disability status, genetics, protected veteran status, sexual orientation, gender identity or expression, or any other characteristic protected by federal, state or local laws.
+      %p
+        This policy applies to all terms and conditions of employment, including recruiting, hiring, placement, promotion, termination, layoff, recall, transfer, leaves of absence, compensation and training.

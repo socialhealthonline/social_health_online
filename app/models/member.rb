@@ -2,8 +2,6 @@ class Member < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  acts_as_paranoid
-
   enum payment_method: %i[card ach]
 
   has_one :primary_manager, class_name: 'User', foreign_key: :id, primary_key: :primary_manager_id

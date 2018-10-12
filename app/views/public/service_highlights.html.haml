@@ -1,16 +1,17 @@
 - page_title 'Service Highlights'
 
-.container.service-highlights
+.container
   .row
     .col.py-3
       %h1.text-info Service Highlights
 
   .card
     #headingOne.card-header.text-center.border
-      %button.c-pointer.btn-responsive.btn-outline-info.btn-link.mb-2{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-target" => "#collapseOne", "data-toggle" => "collapse"}
-        %h3 Features
-      .text-center.brand-primary
+      .text-center.brand-primary.pb-3
         %i.fas.fa-clipboard-check.fa-5x
+      %button.c-pointer.btn-responsive.btn-outline-info.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-target" => "#collapseOne", "data-toggle" => "collapse"}
+        %h3 Features
+      %p
       %button.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-target" => "#collapseOne", "data-toggle" => "collapse"}
         %i.fas.fa-chevron-down.fa-2x
     #collapseOne.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
@@ -72,10 +73,11 @@
 
   .card
     #headingTwo.card-header.text-center.border
-      %button.c-pointer.btn-responsive.btn-outline-info.btn-link.mb-2{"aria-controls" => "collapseTwo", "aria-expanded" => "true", "data-target" => "#collapseTwo", "data-toggle" => "collapse"}
-        %h3 Benefits
-      .text-center.brand-primary
+      .text-center.brand-primary.pb-3
         %i.fas.fa-plus-square.fa-5x
+      %button.c-pointer.btn-responsive.btn-outline-info.btn-link{"aria-controls" => "collapseTwo", "aria-expanded" => "true", "data-target" => "#collapseTwo", "data-toggle" => "collapse"}
+        %h3 Benefits
+      %p
       %button.btn.btn-link{"aria-controls" => "collapseTwo", "aria-expanded" => "true", "data-target" => "#collapseTwo", "data-toggle" => "collapse"}
         %i.fas.fa-chevron-down.fa-2x
     #collapseTwo.collapse{"aria-labelledby" => "headingTwo", "data-parent" => "#accordion"}
@@ -93,10 +95,11 @@
 
   .card
     #headingThree.card-header.text-center
+      .text-center.brand-primary.pb-3
+        %i.fas.fa-chart-bar.fa-5x
       %button.c-pointer.btn-responsive.btn-outline-info.btn-link.mb-1{"aria-controls" => "collapseThree", "aria-expanded" => "true", "data-target" => "#collapseThree", "data-toggle" => "collapse"}
         %h3 Data Driven Results
-      .text-center.brand-primary
-        %i.fas.fa-chart-bar.fa-5x
+      %p
       %button.btn.btn-link{"aria-controls" => "collapseThree", "aria-expanded" => "true", "data-target" => "#collapseThree", "data-toggle" => "collapse"}
         %i.fas.fa-chevron-down.fa-2x
     #collapseThree.collapse{"aria-labelledby" => "headingThree", "data-parent" => "#accordion"}
@@ -129,10 +132,11 @@
 
   .card
     #headingFour.card-header.text-center.border
-      %button.c-pointer.btn-responsive.btn-outline-info.btn-link.mb-2{"aria-controls" => "collapseFour", "aria-expanded" => "true", "data-target" => "#collapseFour", "data-toggle" => "collapse"}
-        %h3 Rewards and Incentives
-      .text-center.brand-primary
+      .text-center.brand-primary.pb-3
         %i.fas.fa-dollar-sign.fa-5x
+      %button.c-pointer.btn-responsive.btn-outline-info.btn-link{"aria-controls" => "collapseFour", "aria-expanded" => "true", "data-target" => "#collapseFour", "data-toggle" => "collapse"}
+        %h3 Rewards and Incentives
+      %p
       %button.btn.btn-link{"aria-controls" => "collapseFour", "aria-expanded" => "true", "data-target" => "#collapseFour", "data-toggle" => "collapse"}
         %i.fas.fa-chevron-down.fa-2x
     #collapseFour.collapse{"aria-labelledby" => "headingFour", "data-parent" => "#accordion"}
@@ -154,10 +158,11 @@
 
   .card
     #headingFive.card-header.text-center.border
-      %button.c-pointer.btn-responsive.btn-outline-info.btn-link.mb-2{"aria-controls" => "collapseFive", "aria-expanded" => "true", "data-target" => "#collapseFive", "data-toggle" => "collapse"}
-        %h3 Reporting
-      .text-center.brand-primary
+      .text-center.brand-primary.pb-3
         %i.fas.fa-file-alt.fa-5x
+      %button.c-pointer.btn-responsive.btn-outline-info.btn-link{"aria-controls" => "collapseFive", "aria-expanded" => "true", "data-target" => "#collapseFive", "data-toggle" => "collapse"}
+        %h3 Reporting
+      %p
       %button.btn.btn-link{"aria-controls" => "collapseFive", "aria-expanded" => "true", "data-target" => "#collapseFive", "data-toggle" => "collapse"}
         %i.fas.fa-chevron-down.fa-2x
     #collapseFive.collapse{"aria-labelledby" => "headingFive", "data-parent" => "#accordion"}
@@ -168,16 +173,15 @@
           Online but also it allows us to see how we can improve.
         %p
           Because of this philosophy, Members are given the ability to pull data from the service and
-          observe their Users' level of participation with social events. Also, all Members and Users
-          will receive quarterly User Feedback Reports from Social Health containing the results of
-          anonymous surveys we send to randomly selected Users.
+          observe their Users' level of participation with social events and engagement with the service.
 
   .card
     #headingSix.card-header.text-center.border
-      %button.c-pointer.btn-responsive.btn-outline-info.btn-link.mb-2{"aria-controls" => "collapseSix", "aria-expanded" => "true", "data-target" => "#collapseSix", "data-toggle" => "collapse"}
-        %h3 Privacy, Security, and Fairness
-      .text-center.brand-primary
+      .text-center.brand-primary.pb-3
         %i.fas.fa-lock.fa-5x
+      %button.c-pointer.btn-responsive.btn-outline-info.btn-link{"aria-controls" => "collapseSix", "aria-expanded" => "true", "data-target" => "#collapseSix", "data-toggle" => "collapse"}
+        %h3 Privacy, Security, and Fairness
+      %p
       %button.btn.btn-link{"aria-controls" => "collapseSix", "aria-expanded" => "true", "data-target" => "#collapseSix", "data-toggle" => "collapse"}
         %i.fas.fa-chevron-down.fa-2x
     #collapseSix.collapse{"aria-labelledby" => "headingSix", "data-parent" => "#accordion"}

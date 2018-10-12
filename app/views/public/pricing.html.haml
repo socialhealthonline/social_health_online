@@ -10,7 +10,7 @@
 
   .row.justify-content-center
     .col-md-6.col-lg-4
-      .card.pricing.card-lg
+      .card.pricing.card-lg.mb-3
         .card-body.border
           %h5
           %span.display-3.price-collapse.collapse.show $1
@@ -19,6 +19,9 @@
           %span.text-small Minimum of 5 Users Per Member Account
           %p.py-1
           = link_to 'Get Started', new_members_registration_path, class: 'btn btn-lg btn-info', style: 'border: 1px solid black;'
+  .row.pb-3
+    .col.text-center.font-weight-bold
+      Our Service's Low Early-Adopter Price Is Available for New Members Until 1/1/19
   .row
     .col
       %p

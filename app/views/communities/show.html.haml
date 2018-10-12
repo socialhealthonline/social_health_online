@@ -72,13 +72,14 @@
       .row.font-weight-bold
         .col
           %ul.nav.nav-tabs#communityTabs(role="tablist")
-            %li.nav-item
-              %a.nav-link.px-1.active#announcements-tab(data-toggle="tab" href="#announcements" role="tab" aria-controls="announcements" aria-selected="true") Announcements
+            - if @member.public_member==false
+              %li.nav-item
+                %a.nav-link.px-1#announcements-tab(data-toggle="tab" href="#announcements" role="tab" aria-controls="announcements" aria-selected="true") Announcements
             - if @member.public_member==false
               %li.nav-item
                 %a.nav-link.px-1#events-tab(data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false") Events
             %li.nav-item
-              %a.nav-link.px-1#members-tab(data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="false") Users
+              %a.nav-link.px-1.active#members-tab(data-toggle="tab" href="#members" role="tab" aria-controls="members" aria-selected="false") Users
             - if authenticated_user.member_id == @member.id
               %div
                 .dropdown
@@ -86,14 +87,14 @@
                   .dropdown-menu.dropdown-menu-right.text-center{:style => 'border: 1px solid black; border-radius: 12px;'}
                     = link_to 'User Finder' , user_finder_path, class: 'dropdown-item px-2'
                     = link_to 'Leaderboard' , leaderboard_path, class: 'dropdown-item px-2'
-                    - if @member.hide_challenges==false
+                    - if @member.hide_challenges==false && @member.public_member==false
                       = link_to 'Challenges' , challenge_index_path, class: 'dropdown-item px-2'
 
 - page_title 'Communities'
 
 %section.pt-2.pb-0
   .tab-content.pt-1.pb-0{ :style => "overflow:hidden;" }
-    .tab-pane.fade.show.active#announcements(role="tabpanel" aria-labelledby="announcements-tab")
+    .tab-pane.fade#announcements(role="tabpanel" aria-labelledby="announcements-tab")
       .container
         .row.mt-0.mb-1
           .col
@@ -136,7 +137,7 @@
                 .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
                   #calendar
 
-    .tab-pane.fade#members(role="tabpanel" aria-labelledby="members-tab")
+    .tab-pane.fade.show.active#members(role="tabpanel" aria-labelledby="members-tab")
       %div#profile_partial
       .container
         .row.mt-0.mb-2
