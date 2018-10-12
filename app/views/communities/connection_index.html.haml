@@ -1,0 +1,44 @@
+- page_title 'Community Connections'
+
+.container{:style => "overflow-x:hidden;"}
+  .row
+    .col.py-3
+      %h1.brand-primary.text-center Community Connections
+  .row
+    .col-md-12
+      %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
+        %strong
+          With the links below you can connect to valuable resources and information that will support your social wellness.
+
+.container{:style => "overflow-x:hidden;"}
+  %h3.notification-title.justify-content-center.mb-2
+    %strong Recommended Online Resources
+  .row.justify-content-center
+    .table-responsive.col-10.text-center{ :style => 'border: 2px solid black; border-radius: 12px;' }
+      %table.table.text-center.table-hover
+        %thead
+          %tr
+            %th Connection Site Name
+            %th Connection Description
+            %th Website
+
+        %tbody
+          - @connections.each.with_index(1) do |connection, i|
+            %tr.bg-white
+              %td= connection.name
+              %td= connection.notes
+              %td= link_to "Visit Website", connection.url, target: :_blank
+              %td.text-center
+                = link_to share_link_path(url: connection.url), title: 'Share Link', class: 'btn btn-sm btn-outline-primary', style: 'border: 1px solid black' do
+                  %i.fas.fa-share
+                  Share Link
+            %tr.table-divider
+      %p= paginate @connections
+      - if @connections.none?
+        %p.pb-3.pt-1.text-muted.text-center
+          %em No connections have been created.
+
+  %p.py-3
+    = link_to my_community_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+      %i.fas.fa-arrow-left
+      Back

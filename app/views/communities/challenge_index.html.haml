@@ -26,9 +26,9 @@
             %th Winner
 
         %tbody
-          - @challenges.each.with_index(1) do |challenge, i|
+          - @challenges.each do |challenge|
             %tr.bg-white
-              %td= link_to truncate("#{i}. #{challenge.name}"), manage_challenge_path(challenge)
+              %td= link_to challenge.name, manage_challenge_path(challenge)
               %td= challenge.challenge_type
               %td= short_date(challenge.challenge_start_date)
               %td= short_date(challenge.challenge_end_date)
@@ -38,7 +38,7 @@
       %p= paginate @challenges
       - if @challenges.none?
         %p.pb-3.pt-1.text-muted.text-center
-          %em No challenges have been made.
+          %em No challenges have been created.
 
 .container
   .col-12.py-3

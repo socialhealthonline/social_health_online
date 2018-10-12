@@ -86,6 +86,7 @@ Rails.application.routes.draw do
   get 'challenge_new' => 'communities#challenge_new'
   get 'challenge_index' => 'communities#challenge_index'
   post 'challenge_new' => 'communities#challenge_create'
+  get 'connection_index' => 'communities#connection_index'
 
   # Manage
   namespace :manage do
@@ -99,6 +100,7 @@ Rails.application.routes.draw do
     resources :events
     resources :announcements
     resources :challenges
+    resources :connections
     resources :users do
       collection do
         get 'export_user_csv'

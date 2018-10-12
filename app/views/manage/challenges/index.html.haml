@@ -24,6 +24,9 @@
               = link_to manage_social_tracker_users_path(authenticated_user.member), class: 'dropdown-item' do
                 %i.fas.fa-database
                 Social Tracker
+              = link_to manage_connections_path, class: 'dropdown-item' do
+                %i.fas.fa.fa-plug
+                Connections
               = link_to manage_users_path, class: 'dropdown-item' do
                 %i.fas.fa-user-circle
                 Community Users
@@ -72,5 +75,5 @@
     %p= paginate @challenges
     - if @challenges.none?
       %p.pb-3.pt-1.text-muted.text-center
-        %em No challenges have been made.
+        %em No challenges have been created.
 %br

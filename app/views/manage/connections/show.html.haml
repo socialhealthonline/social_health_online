@@ -1,0 +1,21 @@
+.container{ :style => "overflow:hidden;" }
+  .d-flex.justify-content-center.flex-wrap.flex-md-nowrap.align-items-center.py-3.px-2
+    %h1.brand-primary= @connection.name
+
+.container{ :style => "overflow:hidden;" }
+  .row.justify-content-center
+    .col-lg-8
+      .settings-box.text-center.pb-0{:style => "border-radius: 12px;"}
+        %p
+          %strong Connection Website:
+          = @connection.url
+        %p
+        - if @connection.notes.present?
+          %strong Connection Description:
+          = @connection.notes
+          %p.pb-2
+
+  .my-3
+    = link_to manage_connections_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+      %i.fas.fa-arrow-left
+      Back

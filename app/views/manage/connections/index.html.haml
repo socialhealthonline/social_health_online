@@ -1,9 +1,9 @@
-- page_title 'My Community Announcements'
+- page_title 'My Community Connections'
 
 %br
 .container.pb-3
   .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-top.mb-3
-    %h1.brand-primary My Community Announcements
+    %h1.brand-primary My Community Connections
     %div
       - if authenticated_user.manager?
         %div.float-right.new_manage_user_button
@@ -21,12 +21,12 @@
               = link_to manage_social_tracker_users_path(authenticated_user.member), class: 'dropdown-item' do
                 %i.fas.fa-database
                 Social Tracker
+              = link_to manage_announcements_path, class: 'dropdown-item' do
+                %i.fas.fa.fa-bullhorn
+                Announcements
               = link_to manage_challenges_path, class: 'dropdown-item' do
                 %i.fas.fa.fa-puzzle-piece
                 Challenges
-              = link_to manage_connections_path, class: 'dropdown-item' do
-                %i.fas.fa.fa-plug
-                Connections
               = link_to manage_users_path, class: 'dropdown-item' do
                 %i.fas.fa-user-circle
                 Community Users
@@ -35,37 +35,39 @@
                 Community Home
 
         %div.float-right
-          = link_to new_manage_announcement_path, class: 'btn btn-primary px-1', style: 'border: 1px solid black;' do
+          = link_to new_manage_connection_path, class: 'btn btn-primary px-1', style: 'border: 1px solid black;' do
             %i.fas.fa-plus-circle
-            Add Announcement
+            Add Connection
 
   .table-responsive.text-center{ :style => 'border: 2px solid black; border-radius: 12px;'}
     %table.table.table-borderless.table-hover
       %thead
         %tr
-          %th= sort_link 'title', 'Announcement Title'
-          %th= sort_link 'body', 'Announcement Body Preview'
+          %th= sort_link 'name', 'Connection Site Name'
+          %th= sort_link 'notes', 'Connection Description'
+          %th= sort_link 'url', 'Connection Website'
           %th= sort_link 'created_at', 'Added On'
       %tbody
-        - @announcements.each.with_index(1) do |announcement, i|
+        - @connections.each.with_index(1) do |connection, i|
           %tr.bg-white
-            %td= link_to truncate("#{i}. #{announcement.title}"), manage_announcement_path(announcement)
-            %td= truncate(announcement.body)
-            %td= time_in_cdt(announcement.created_at, '%m/%d/%Y')
+            %td= link_to truncate("#{i}. #{connection.name}"), manage_connection_path(connection)
+            %td= truncate(connection.notes)
+            %td= link_to "Visit Website", connection.url, target: :_blank
+            %td= time_in_cdt(connection.created_at, '%m/%d/%Y')
             %td.w-10.text-right
               .dropdown
-                = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{announcement.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
+                = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{connection.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do
                   %i.fas.fa-ellipsis-h
-                .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{announcement.id}")
-                  = link_to edit_manage_announcement_path(announcement), title: 'Edit', class: 'dropdown-item text-info' do
+                .dropdown-menu.dropdown-menu-sm(aria-labelledby="dropdownMenuLink-#{connection.id}")
+                  = link_to edit_manage_connection_path(connection), title: 'Edit', class: 'dropdown-item text-info' do
                     %i.far.fa-edit
                     Edit
-                  = link_to manage_announcement_path(announcement), title: 'Delete', id: "delete_announcement_#{announcement.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this announcement. Press OK to continue.' } do
+                  = link_to manage_connection_path(connection), title: 'Delete', id: "delete_connection_#{connection.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this connection. Press OK to continue.' } do
                     %i.far.fa-trash-alt
                     Delete
           %tr.table-divider
-    %p= paginate @announcements
-    - if @announcements.none?
+    %p= paginate @connections
+    - if @connections.none?
       %p.pb-3.text-muted.text-center
-        %em No announcements have been created.
+        %em No connections have been created.
 %br

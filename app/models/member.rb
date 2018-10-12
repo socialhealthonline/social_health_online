@@ -9,6 +9,7 @@ class Member < ApplicationRecord
   has_many :events, inverse_of: :member, dependent: :destroy
   has_many :announcements, dependent: :destroy
   has_many :challenges, dependent: :destroy
+  has_many :connections, dependent: :destroy
   has_one_attached :logo
 
   validates :name, :address, :city, :org_type, :state, :zip, :contact_name, :contact_email, :contact_phone, :url, :phone, :service_capacity, presence: true

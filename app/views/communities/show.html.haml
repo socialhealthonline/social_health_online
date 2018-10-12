@@ -40,6 +40,9 @@
                   = link_to manage_challenges_path, class: 'dropdown-item' do
                     %i.fas.fa.fa-puzzle-piece
                     Challenges
+                  = link_to manage_connections_path, class: 'dropdown-item' do
+                    %i.fas.fa.fa-plug
+                    Connections
                   = link_to manage_users_path, class: 'dropdown-item' do
                     %i.fas.fa-user-circle
                     Community Users
@@ -54,7 +57,7 @@
               Visit Website
 
             = link_to share_link_path(:url => @member.url), title: 'Share Link', class: 'btn btn-sm btn-outline-primary', style: 'border: 1px solid black' do
-              %i.fa.fa-link
+              %i.fas.fa-share
               Share Link
         - if @member.events_url.present?
           %p
@@ -63,7 +66,7 @@
               Visit Events Webpage
 
             = link_to share_link_path(:url => @member.events_url), title: 'Share Link', class: 'btn btn-sm btn-outline-primary', style: 'border: 1px solid black' do
-              %i.fa.fa-link
+              %i.fas.fa-share
               Share Link
         - if @member.bio.present?
           %p
@@ -93,10 +96,12 @@
                 .dropdown
                   %a.nav-link.px-1.pt-2#more-tab(data-toggle="dropdown" href="#" role="tab" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") More
                   .dropdown-menu.dropdown-menu-right.text-center{:style => 'border: 1px solid black; border-radius: 12px;'}
-                    = link_to 'User Finder' , user_finder_path, class: 'dropdown-item px-2'
-                    = link_to 'Leaderboard' , leaderboard_path, class: 'dropdown-item px-2'
+                    = link_to 'User Finder', user_finder_path, class: 'dropdown-item px-2'
+                    = link_to 'Leaderboard', leaderboard_path, class: 'dropdown-item px-2'
                     - if @member.hide_challenges==false && @member.public_member==false
-                      = link_to 'Challenges' , challenge_index_path, class: 'dropdown-item px-2'
+                      = link_to 'Challenges', challenge_index_path, class: 'dropdown-item px-2'
+                    - if @member.public_member==false
+                      = link_to 'Connections', connection_index_path, class: 'dropdown-item px-2'
 
 - page_title 'Communities'
 
@@ -125,7 +130,7 @@
                 %p= paginate @announcements
                 - if @announcements.none?
                   %p.text-muted.mt-5.text-center
-                    %em No announcements have been made.
+                    %em No announcements have been created.
 
     - if @member.public_member==false
       .tab-pane.fade#events(role="tabpanel" aria-labelledby="events-tab")

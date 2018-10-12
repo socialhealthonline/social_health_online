@@ -4,6 +4,11 @@
   .row.pt-3
     .col.text-center
       %h1.brand-primary My Settings
+      .row
+    .col-md-12
+      %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
+        %strong
+          Manage your personal settings here to control how you send and receive certain information through the service.
 
       = form_for authenticated_user, url: my_settings_path do |f|
         .row.mb-2
