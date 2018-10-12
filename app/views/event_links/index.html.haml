@@ -52,6 +52,10 @@
               %td
               %td= link_to "Visit Website", resource.url, target: :_blank
               %td
+              %td.text-center
+                = link_to share_link_path(url: resource.url), title: 'Share Link', class: 'btn btn-sm btn-outline-primary', style: 'border: 1px solid black' do
+                  %i.fa.fa-link
+                  Share Link
             %tr.table-divider
         %div.container.pagination.justify-content-center
           %p= paginate @resources unless @resources.empty?

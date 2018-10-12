@@ -37,7 +37,7 @@
               %label(for="event_address") Event Address
               = text_field_tag :address, params[:address], autofocus: true, class: 'form-control', required: true
             .form-group
-              %label(for="event_date") Event Notes (Optional)
+              %label(for="event_notes") Event Notes (Optional)
               = text_area_tag :notes, params[:notes], autofocus: true, class: 'form-control'
             .row.justify-content-center
               = submit_tag 'Send', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }

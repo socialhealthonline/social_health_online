@@ -206,6 +206,10 @@ Rails.application.routes.draw do
   get "event_reminder" => "event_reminder#new"
   post "event_reminder" => "event_reminder#create"
 
+  # Share Link
+  get "share_link" => "share_link#new"
+  post "share_link" => "share_link#create"
+
   # Affiliates
   get "affiliates_search" => "affiliates#index"
 
