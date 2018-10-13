@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_13_124203) do
+ActiveRecord::Schema.define(version: 2018_10_13_133845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -168,6 +168,18 @@ ActiveRecord::Schema.define(version: 2018_10_13_124203) do
     t.index ["member_id"], name: "index_events_on_member_id"
     t.index ["private"], name: "index_events_on_private"
     t.index ["start_at"], name: "index_events_on_start_at"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.string "slug"
+    t.string "url"
+    t.string "name"
+    t.bigint "member_id"
+    t.string "title"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "Favorite_Id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
