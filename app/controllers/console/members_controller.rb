@@ -102,6 +102,7 @@ class Console::MembersController < ConsoleController
       :primary_manager_id,
       :hide_suggest_events,
       :hide_suggest_announcements,
+      :hide_connections,
       :public_member,
       :charity_waiver,
       :org_type

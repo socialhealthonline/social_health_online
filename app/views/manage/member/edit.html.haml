@@ -120,18 +120,25 @@
               = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@member, :bio)}"
               = model_error_display(@member, :bio)
         .row
-          .col-lg-3
+          .col-lg-4
             .card
               .card-body.text-center.px-2
-                .form-check
+                .form-check.mb-0
                   = f.check_box :hide_suggest_announcements, class: 'form-check-input'
                   %label.form-check-label(for="hide_suggest_announcements") Suggest Announcements - Show the Suggest Announcements Button
-          .col-lg-3
+          .col-lg-4
             .card
               .card-body.text-center.px-2
                 .form-check
                   = f.check_box :hide_suggest_events, class: 'form-check-input'
                   %label.form-check-label(for="hide_suggest_events") Suggest Events - Show the Suggest Events Button
+          .col-lg-4
+            .card
+              .card-body.text-center.px-2
+                .form-check
+                  = f.check_box :hide_info_on_locator, class: 'form-check-input'
+                  %label.form-check-label(for="hide_info_on_locator") Member Locator - Hide Info on Member Locator
+        .row.justify-content-center
           .col-lg-3
             .card
               .card-body.text-center.px-2
@@ -142,8 +149,8 @@
             .card
               .card-body.text-center.px-2
                 .form-check
-                  = f.check_box :hide_info_on_locator, class: 'form-check-input'
-                  %label.form-check-label(for="hide_info_on_locator") Member Locator - Hide Info on Member Locator
+                  = f.check_box :hide_connections, class: 'form-check-input'
+                  %label.form-check-label(for="hide_connections") Connections - Hide the Connections Button
         .row
           .col-lg-4
             .form-group#file-field

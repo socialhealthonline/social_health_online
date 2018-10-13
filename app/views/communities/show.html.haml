@@ -100,7 +100,7 @@
                     = link_to 'Leaderboard', leaderboard_path, class: 'dropdown-item px-2'
                     - if @member.hide_challenges==false && @member.public_member==false
                       = link_to 'Challenges', challenge_index_path, class: 'dropdown-item px-2'
-                    - if @member.public_member==false
+                    - if @member.hide_connections==false && @member.public_member==false
                       = link_to 'Connections', connection_index_path, class: 'dropdown-item px-2'
 
 - page_title 'Communities'
