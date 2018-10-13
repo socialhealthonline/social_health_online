@@ -150,17 +150,17 @@
           .row
             .col-lg-6
               .card
-                .card-body.text-center
+                .card-body.text-center.pb-2
                   .form-group
-                    .form-check
-                      #matchmakerCheckboxId.col-xs-2.mt-0
+                    .form-check.pb-1.mb-0
+                      #matchmakerCheckboxId.col-xs-2.pt-2
                         = h.check_box :matchmaker, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.matchmaker) }, '1', '0'
                         %label(for="user_invisible") User Match - Hide My Profile in User Match
             .col-lg-6
-              .card.pb-2
+              .card.pb-1
                 .card-body.pl-4.text-center
                   .form-group
-                    .form-check
+                    .form-check.mt-1.pt-1.mb-1
                       = f.check_box :hide_info_on_user_finder, class: 'form-check-input'
                       %label.form-check-label(for="hide_info_on_user_finder") User Finder - Hide My Profile in Community User Finder
           .row

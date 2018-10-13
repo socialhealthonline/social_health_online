@@ -48,8 +48,8 @@
           %th= sort_link 'challenge_start_date', 'Start Date'
           %th= sort_link 'challenge_end_date', 'End Date'
           %th= sort_link 'verification_code', 'Verification Code'
-          %th= sort_link 'winner', 'Winner'
-          %th= sort_link 'completion_date', 'Winner Selection Date'
+          %th Winner
+          %th Winner Selection Date
       %tbody
         - @challenges.each.with_index(1) do |challenge, i|
           %tr.bg-white

@@ -42,7 +42,7 @@ class Manage::ConnectionsController < ApplicationController
   private
 
   def sortable_columns
-    %w[name url notes created_at]
+    %w[name notes url created_at]
   end
 
   def sort_column

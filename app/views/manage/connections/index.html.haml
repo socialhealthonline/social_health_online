@@ -44,14 +44,12 @@
       %thead
         %tr
           %th= sort_link 'name', 'Connection Site Name'
-          %th= sort_link 'notes', 'Connection Description'
           %th= sort_link 'url', 'Connection Website'
           %th= sort_link 'created_at', 'Added On'
       %tbody
         - @connections.each.with_index(1) do |connection, i|
           %tr.bg-white
             %td= link_to truncate("#{i}. #{connection.name}"), manage_connection_path(connection)
-            %td= truncate(connection.notes)
             %td= link_to "Visit Website", connection.url, target: :_blank
             %td= time_in_cdt(connection.created_at, '%m/%d/%Y')
             %td.w-10.text-right

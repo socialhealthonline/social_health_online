@@ -42,7 +42,7 @@ class Manage::ChallengesController < ApplicationController
   private
 
   def sortable_columns
-    %w[name challenge_type challenge_start_date challenge_end_date prize verification_code winner created_at]
+    %w[name challenge_type challenge_start_date challenge_end_date prize verification_code winner completion_date created_at]
   end
 
   def sort_column

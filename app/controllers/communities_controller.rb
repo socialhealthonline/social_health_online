@@ -31,7 +31,7 @@ class CommunitiesController < ApplicationController
   end
 
   def challenge_index
-    @challenges = Challenge.where(member_id: authenticated_user.member_id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+    @challenges = Challenge.where(member_id: authenticated_user.member_id).order(challenge_start_date: :asc).page(params[:page]).per(10)
   end
 
   def connection_index

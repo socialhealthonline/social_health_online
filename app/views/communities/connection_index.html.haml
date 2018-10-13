@@ -12,7 +12,7 @@
 
 .container{:style => "overflow-x:hidden;"}
   %h3.notification-title.justify-content-center.mb-2
-    %strong Recommended Online Resources
+    %strong Recommended Resources
   .row.justify-content-center
     .table-responsive.col-10.text-center{ :style => 'border: 2px solid black; border-radius: 12px;' }
       %table.table.text-center.table-hover
@@ -26,7 +26,7 @@
           - @connections.each.with_index(1) do |connection, i|
             %tr.bg-white
               %td= connection.name
-              %td= connection.notes
+              %td= connection.notes.presence || 'N/A'
               %td= link_to "Visit Website", connection.url, target: :_blank
               %td.text-center
                 = link_to share_link_path(url: connection.url), title: 'Share Link', class: 'btn btn-sm btn-outline-primary', style: 'border: 1px solid black' do
