@@ -14,7 +14,7 @@ class EventLinksController < ApplicationController
   private
 
     def permitted_params
-      params.permit(:name, :city, :state, :url, :event_type, :page).reject{|_, v| v.blank?}
+      params.permit(:name, :city, :state, :url, :notes, :member_id, :event_type, :page).reject{|_, v| v.blank?}
     end
 
     def sortable_columns

@@ -64,7 +64,6 @@ Rails.application.routes.draw do
   # Bulletin Board
   get 'bulletins' => 'bulletins#bulletins'
 
-
   # Verify ACH account
   resource :ach, controller: 'ach', only: [:edit, :update]
 
@@ -122,7 +121,6 @@ Rails.application.routes.draw do
     post "log" => "fitness#create"
     get "history" => "fitness#index"
     get "history/:id" => "fitness#show"
-    get "assets" => "fitness#assets"
     get "plan" => "fitness#plan"
     get "console/fitness_plans/:id" => "fitness#plan_details", as: :plan_details
   end
@@ -218,7 +216,7 @@ Rails.application.routes.draw do
   # Discounts
   get "discounts_finder" => "discounts_finder#index"
 
-  # Discounts
+  # Event Links
   get "event_links" => "event_links#index"
 
   # Report Issues
@@ -230,9 +228,6 @@ Rails.application.routes.draw do
 
   # My Events
   get "my_events" => "my_events#index"
-
-  # My Favorites
-  get "my_favorites" => "my_favorites#index"
 
   # Sitemap
   get "sitemap" => "sitemap#index"

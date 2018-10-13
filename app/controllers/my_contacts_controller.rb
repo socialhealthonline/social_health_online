@@ -1,5 +1,4 @@
 class MyContactsController < ApplicationController
-helper_method :sort_column, :sort_direction
 before_action :find_contact, only: [:show, :edit, :update, :destroy]
 
 def index
@@ -64,7 +63,7 @@ end
 private
 
   def contact_params
-    params.require(:contact).permit(:name, :notes, :city, :state, :user_id, :display_name)
+    params.require(:contact).permit(:name, :user_id, :display_name)
   end
 
   def find_contact
@@ -72,7 +71,7 @@ private
   end
 
   def sort_column
-    %w[title body created_at].include?(params[:column]) ? params[:column] : 'created_at'
+    %w[created_at display_name].include?(params[:column]) ? params[:column] : 'created_at'
   end
 
   def sort_direction

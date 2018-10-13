@@ -25,9 +25,6 @@ class SocialFitness::FitnessController < ApplicationController
     @log = authenticated_user.social_fitness_logs.find(params[:id])
   end
 
-  def assets
-  end
-
   def plan
     @targets = Target.all.order(created_at: :desc).page(params[:page]).per(10)
   end

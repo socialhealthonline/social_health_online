@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     return if authenticated_user.nil?
     member = authenticated_user.member
     if member.ach? && !member.ach_verified?
-      redirect_to edit_ach_path, warning: 'You should first complete ACH verification with microdeposits to confirm your account.'
+      redirect_to edit_ach_path, warning: 'You should first complete ACH verification with micro-deposits to confirm your account.'
     end
   end
 

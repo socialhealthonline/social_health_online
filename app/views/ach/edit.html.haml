@@ -1,4 +1,4 @@
-- title = 'Verify the bank account with micro-deposits'
+- title = 'Verify the Bank Account with Micro-Deposits'
 - page_title title
 
 .container
@@ -11,12 +11,12 @@
         .row
           .col
             .form-group
-              %label Micro Deposit #1
-              = f.text_field :deposit_1, autofocus: true, required: true, class: 'form-control', placeholder: '0.32'
+              %label Micro-Deposit #1
+              = f.text_field :deposit_1, autofocus: true, required: true, class: 'form-control', placeholder: 'E.g., 0.32'
           .col
             .form-group
-              %label Micro Deposit #2
-              = f.text_field :deposit_2, autofocus: true, required: true, class: 'form-control', placeholder: '0.45'
+              %label Micro-Deposit #2
+              = f.text_field :deposit_2, autofocus: true, required: true, class: 'form-control', placeholder: 'E.g., 0.45'
         .row.justify-content-center.pt-1.pb-3
           = f.submit 'Verify', class: 'btn btn-primary', style: 'border: 1px solid black;',
           data: { disable_with: 'Sending...' }

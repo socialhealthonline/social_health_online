@@ -3,13 +3,13 @@
   .row.justify-content-center
     .col-6
       .form-group
-        %label Challenge Name
+        %label(for="name") Challenge Name
         = f.text_field :name, class: "form-control #{form_error_class(@challenge, :name)}", required: true
         = model_error_display(@challenge, :name)
         .row.justify-content-center
     .col-6
       .form-group
-        %label Challenge Type
+        %label(for="challenge_type") Challenge Type
         = f.text_field :challenge_type, placeholder: 'E.g., Sweepstakes, Contest, Etc.', class: "form-control #{form_error_class(@challenge, :challenge_type)}", required: true
         = model_error_display(@challenge, :challenge_type)
   .row.justify-content-center
@@ -26,18 +26,18 @@
   .row.justify-content-center
     .col-6
       .form-group
-        %label Challenge Location
+        %label(for="location") Challenge Location
         = f.text_field :location, class: "form-control #{form_error_class(@challenge, :location)}", required: true
         = model_error_display(@challenge, :location)
     .col-6
       .form-group
-        %label Challenge Address
+        %label(for="address") Challenge Address
         = f.text_field :address, class: "form-control #{form_error_class(@challenge, :address)}", required: true
         = model_error_display(@challenge, :address)
   .row.justify-content-center
     .col-6
       .form-group
-        %label Challenge City
+        %label(for="city") Challenge City
         = f.text_field :city, class: "form-control #{form_error_class(@challenge, :city)}", required: true
         = model_error_display(@challenge, :city)
     .col-6
@@ -48,24 +48,24 @@
   .row.justify-content-center
     .col-6
       .form-group
-        %label Challenge ZIP Code
+        %label(for="zip") Challenge ZIP Code
         = f.text_field :zip, class: "form-control #{form_error_class(@challenge, :zip)}", required: true
         = model_error_display(@challenge, :zip)
         .row.justify-content-center
     .col-6
       .form-group
-        %label Challenge Prize (Optional)
+        %label(for="prize") Challenge Prize (Optional)
         = f.text_field :prize, class: "form-control #{form_error_class(@challenge, :prize)}"
         = model_error_display(@challenge, :prize)
   .row.justify-content-center
     .col-lg-6
       .form-group
-        %label Challenge Details
+        %label(for="description") Challenge Details
         = f.text_area :description, class: "form-control #{form_error_class(@challenge, :description)}", required: true
         = model_error_display(@challenge, :description)
     .col-6
       .form-group
-        %label Challenge Verification Code (Optional)
+        %label(for="verification_code") Challenge Verification Code (Optional)
         %i.c-pointer.fas.fa-info-circle.fa{ title: 'Optional code to distribute to the Users during a challenge for the purpose of verifying actual challenge completion via its submission by the Users'}
         = f.text_field :verification_code, class: "form-control #{form_error_class(@challenge, :verification_code)}"
         = model_error_display(@challenge, :verification_code)
@@ -74,12 +74,12 @@
   .row.justify-content-center
     .col-6
       .form-group
-        %label Challenge Winner (Optional)
+        %label(for="winner") Challenge Winner (Optional)
         = f.text_field :winner, class: "form-control #{form_error_class(@challenge, :location)}"
         = model_error_display(@challenge, :winner)
     .col-6
       .form-group
-        %label Winner Selection Date (Optional)
+        %label(for="completion_date") Winner Selection Date (Optional)
         = f.text_field :completion_date, class: "flatpickr-date form-control #{form_error_class(@challenge, :completion_date)}"
         = model_error_display(@challenge, :completion_date)
 

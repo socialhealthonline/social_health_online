@@ -54,7 +54,7 @@ class Console::EventLinksController < ConsoleController
   end
 
   def resource_params
-    params.require(:resource).permit(:name, :event_type, :city, :state, :url)
+    params.require(:resource).permit(:name, :event_type, :city, :state, :url, :notes, :member_id, :page)
   end
 
   def find_resource

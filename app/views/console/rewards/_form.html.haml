@@ -7,31 +7,31 @@
           .col-lg-10
             * All fields are required
             .form-group.mt-2
-              %label(for="") Period
+              %label(for="period") Period
               = f.text_field :period, autofocus: true, :placeholder => "E.g., July 30th - August 5th OR August 2018", class: "form-control #{form_error_class(@reward, :period)}", required: true
               = model_error_display(@reward, :period)
         .row.justify-content-center
           .col-lg-10
             .form-group
-              %label(for="") Display Name
+              %label(for="display_name") Display Name
               = f.text_field :display_name, autofocus: true, class: "form-control #{form_error_class(@reward, :display_name)}"
               = model_error_display(@reward, :display_name)
         .row.justify-content-center
           .col-lg-10
             .form-group
-              %label(for="") Member Name
+              %label(for="member_name") Member Name
               = f.text_field :member_name, autofocus: true, class: "form-control #{form_error_class(@reward, :member_name)}"
               = model_error_display(@reward, :member_name)
         .row.justify-content-center
           .col-lg-10
             .form-group
-              %label(for="") State
+              %label(for="state") State
               = f.select :state, US_STATES, { required: true }, { class: "#{form_error_class(@reward, :state)} form-control custom-select" }
               = model_error_display(@reward, :state)
         .row.justify-content-center
           .col-lg-10
             .form-group
-              %label(for="") Prize
+              %label(for="prize") Prize
               = f.text_field :prize, autofocus: true, class: "form-control #{form_error_class(@reward, :prize)}"
               = model_error_display(@reward, :prize)
         .mb-3.text-center

@@ -57,7 +57,7 @@
           .col-lg-10
             .form-group
               %label(for="zip") Event ZIP Code
-              = f.text_field :city, class: "form-control #{form_error_class(@bulletin, :zip)}"
+              = f.text_field :zip, class: "form-control #{form_error_class(@bulletin, :zip)}"
               = model_error_display(@bulletin, :zip)
 
         .row.justify-content-center

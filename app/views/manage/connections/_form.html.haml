@@ -2,19 +2,19 @@
   .row.justify-content-center
     .col-6
       .form-group
-        %label Connection Site Name
+        %label(for="name") Connection Site Name
         = f.text_field :name, class: "form-control #{form_error_class(@connection, :name)}", required: true
         = model_error_display(@connection, :name)
   .row.justify-content-center
     .col-6
       .form-group
-        %label Connection Website
+        %label(for="url") Connection Website
         = f.text_field :url, class: "form-control #{form_error_class(@connection, :url)}", required: true
         = model_error_display(@announcement, :url)
   .row.justify-content-center
     .col-6
       .form-group
-        %label Connection Description (Optional)
+        %label(for="notes") Connection Description (Optional)
         = f.text_area :notes, placeholder: 'E.g., This site contains information on how to find transportation assistance for social events.', rows: 6, class: "form-control #{form_error_class(@connection, :body)}"
         = model_error_display(@connection, :notes)
 
