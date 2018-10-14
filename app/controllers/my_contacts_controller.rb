@@ -1,5 +1,6 @@
 class MyContactsController < ApplicationController
 before_action :find_contact, only: [:show, :edit, :update, :destroy]
+helper_method :sort_column, :sort_direction
 
 def index
   @contacts = Contact.where(user_id: authenticated_user.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)

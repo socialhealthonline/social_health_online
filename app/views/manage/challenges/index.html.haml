@@ -44,17 +44,15 @@
       %thead
         %tr
           %th= sort_link 'name', 'Challenge Name'
-          %th= sort_link 'challenge_type', 'Challenge Type'
           %th= sort_link 'challenge_start_date', 'Start Date'
           %th= sort_link 'challenge_end_date', 'End Date'
           %th= sort_link 'verification_code', 'Verification Code'
-          %th Winner
-          %th Winner Selection Date
+          %th= sort_link 'winner', 'Winner'
+          %th= sort_link 'completion_date', 'Winner Selection Date'
       %tbody
         - @challenges.each.with_index(1) do |challenge, i|
           %tr.bg-white
             %td= link_to truncate("#{i}. #{challenge.name}"), manage_challenge_path(challenge)
-            %td= challenge.challenge_type
             %td= short_date(challenge.challenge_start_date)
             %td= short_date(challenge.challenge_end_date)
             %td= challenge.verification_code.presence || 'N/A'

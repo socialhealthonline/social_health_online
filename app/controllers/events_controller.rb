@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :require_authentication
   before_action :set_member
+  helper_method :sort_column, :sort_direction
 
   def index
     events = []
@@ -24,7 +25,7 @@ class EventsController < ApplicationController
 	           .where("start_at >= ?", Time.zone.now)
 	           .where(state: [@authenticated_user.state])
 	           .where(city: [@authenticated_user.city])
-	           .where(private: false).order(start_at: :desc).page(params[:page]).per(5)
+	           .where(private: false).order("#{sort_column} #{sort_direction}").page(params[:page]).per(5)
     @rsvp_switcher = authenticated_user.rsvps.find_by(event_id: params[:id])
     @event = Event.find(params[:id]).decorate
 
@@ -44,6 +45,21 @@ class EventsController < ApplicationController
 
   def set_member
     @member = Member.friendly.find params[:community_id]
+  end
+
+  def sortable_columns
+    %w[
+      title start_at event_type
+    ]
+  end
+
+  def sort_column
+    logger.debug("SORT:::: #{params[:direction].inspect}")
+    sortable_columns.include?(params[:column]) ? params[:column] : 'title'
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
   end
 
 end

@@ -18,9 +18,9 @@
       %table.table.text-center.table-hover
         %thead
           %tr
-            %th Connection Site Name
-            %th Connection Description
-            %th Website
+            %th= sort_link 'name', 'Connection Site Name'
+            %th= sort_link 'notes', 'Connection Description'
+            %th= sort_link 'url', 'Connection Website'
 
         %tbody
           - @connections.each.with_index(1) do |connection, i|

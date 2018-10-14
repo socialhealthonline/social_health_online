@@ -1,5 +1,5 @@
 .container
-  .row.pt-3.mb-2
+  .row.pt-3
     .col
       .d-flex.justify-content-center.flex-wrap.flex-md-nowrap.align-items-center
         %h1.brand-primary= @event.title
@@ -8,7 +8,7 @@
           = image_tag @event.logo, alt: 'Event Logo', size: '200x200'
 
 .container
-  .row.justify-content-center.text-center
+  .row.justify-content-center.text-center.mt-1
     .col-8
       %p
         %strong Event Type(s):

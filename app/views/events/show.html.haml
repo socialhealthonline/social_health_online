@@ -1,14 +1,13 @@
 %div#profile_partial
 #helper-method
 .container.text-center
-  .row.pt-3.mb-2
+  .row.pt-3
     .col
       %h1.brand-primary.mb-2= @event.title
       = @event.logo
-    %div
   .row
     .col
-      %p
+      %p.mt-1
         %i.c-pointer.fas.fa-portrait{:title => "Event Host"}
         = @event.member.name
       %p
@@ -93,23 +92,21 @@
         %table.table.text-center
           %thead.mdb-color.lighten-4
             %tr
-              %th Event Title
               %th
-              %th Event Date/Time
               %th
-              %th Event City
+              %th= sort_link 'title', 'Event Title'
               %th
-              %th Event State
+              %th= sort_link 'event_type', 'Event Type'
+              %th= sort_link 'start_at', 'Event Date/Time'
           %tbody
           - @events.each do |event|
             %tr.bg-white
+              %td
+              %td
               %td= link_to event.title, community_event_path(authenticated_user.member, event)
               %td
+              %td= event.event_type
               %td= short_date_time(event.start_at, event.time_zone)
-              %td
-              %td= event.city
-              %td
-              %td= event.state
             %tr.table-divider
         %div.container.pagination.justify-content-center
           %p= paginate @events

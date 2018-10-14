@@ -31,7 +31,7 @@
             %tr
               %th Affiliate Name
               %th
-              %th Discount
+              %th Discount Description
               %th
               %th City
               %th
@@ -50,7 +50,6 @@
               %td= affiliate.state
               %td
               %td= link_to "Visit Website", affiliate.url, target: :_blank
-              %td
             %tr.table-divider
         %div.container.pagination.justify-content-center
           %p= paginate @affiliates unless @affiliates.empty?

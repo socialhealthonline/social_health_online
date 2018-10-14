@@ -18,22 +18,24 @@
       %table.table.text-center.table-hover
         %thead
           %tr
-            %th Challenge Name
-            %th Challenge Type
-            %th Start Date
-            %th End Date
-            %th Prize
-            %th Winner
+            %th= sort_link 'name', 'Challenge Name'
+            %th= sort_link 'challenge_start_date', 'Start Date'
+            %th= sort_link 'challenge_end_date', 'End Date'
+            %th= sort_link 'prize', 'Prize'
+            %th= sort_link 'winner', 'Winner'
 
         %tbody
           - @challenges.each do |challenge|
             %tr.bg-white
               %td= link_to challenge.name, manage_challenge_path(challenge)
-              %td= challenge.challenge_type
               %td= short_date(challenge.challenge_start_date)
               %td= short_date(challenge.challenge_end_date)
               %td= challenge.prize.presence || 'N/A'
               %td= challenge.winner.presence || 'N/A'
+              %td.text-center
+                = link_to challenge_new_path(name: challenge.name), title: 'Challenge Completed', class: 'btn btn-sm btn-outline-primary', style: 'border: 1px solid black' do
+                  %i.fas.fa-flag-checkered
+                  Challenge Completed
             %tr.table-divider
       %p= paginate @challenges
       - if @challenges.none?
@@ -41,11 +43,7 @@
           %em No challenges have been created.
 
 .container
-  .col-12.py-3
-    %p.text-center
-      =link_to 'Challenge Completed', challenge_new_path, class: 'btn btn-primary', style: 'border: 1px solid black'
-
-  %p.pb-3
+  %p.py-3
     = link_to my_community_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
       %i.fas.fa-arrow-left
       Back

@@ -31,11 +31,11 @@ class CommunitiesController < ApplicationController
   end
 
   def challenge_index
-    @challenges = Challenge.where(member_id: authenticated_user.member_id).order(challenge_start_date: :asc).page(params[:page]).per(10)
+    @challenges = Challenge.where(member_id: authenticated_user.member_id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
   def connection_index
-    @connections = Connection.where(member_id: authenticated_user.member_id).order(name: :asc).page(params[:page]).per(10)
+    @connections = Connection.where(member_id: authenticated_user.member_id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
   def user_finder
@@ -57,7 +57,7 @@ class CommunitiesController < ApplicationController
   end
 
   def explore_communities
-    @communities = Member.where.not("name = ? ", authenticated_user.member.name).where(suspended: false).order(public_member: :asc)
+    @communities = Member.where.not("name = ? ", authenticated_user.member.name).where(suspended: false).order(name: :asc)
     @communities = FindUsersCommunities.new(@communities, show_init_scope: false).call(permitted_params)
     unless @communities.kind_of?(Array)
       @communities = @communities.page(params[:page]).per(10)
@@ -67,8 +67,8 @@ class CommunitiesController < ApplicationController
   end
 
   def event_search
-    @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :desc)
-    @events = Event.where("start_at between ? and ?", Date.today, 90.days.from_now).where(private: false).order(start_at: :desc)
+    @events = Event.where(member_id: authenticated_user.member_id).order(start_at: :asc)
+    @events = Event.where("start_at between ? and ?", Date.today, 90.days.from_now).where(private: false).order(start_at: :asc)
     @events = FindUsersCommunities.new(@events, show_init_scope: false).call(permitted_params)
     unless @events.kind_of?(Array)
       @events = @events.page(params[:page]).per(10)
@@ -95,7 +95,7 @@ class CommunitiesController < ApplicationController
 
     def sortable_columns
       %w[
-        name city state public_member title start_at display_name challenge_type challenge_end_date challenge_start_date prize winner
+        name city state public_member title start_at display_name challenge_type challenge_end_date challenge_start_date prize winner notes url
       ]
     end
 

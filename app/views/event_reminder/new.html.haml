@@ -20,7 +20,7 @@
           = form_with url: event_reminder_url, method: :post, local: true do
             .form-group.mt-2
               %label(for="email") Event Reminder Email Address
-              = email_field_tag :email, params[:email], class: 'form-control', required: true
+              = email_field_tag :email, params[:email], placeholder: 'E.g., patsmith@gmail.com', class: 'form-control', required: true
             .form-group
               %label(for="event_title") Event Title
               = text_field_tag :title, params[:title], autofocus: true, class: 'form-control', required: true

@@ -51,16 +51,14 @@
         %table.table
           %thead.mdb-color.lighten-4.text-center
             %tr
-              %th Event Title
-              %th Event Date/Time
-              %th
+              %th= sort_link 'title', 'Event Title'
+              %th= sort_link 'start_at', 'Event Date/Time'
               %th RSVP
           %tbody
           - @events.each do |event|
             %tr.text-center.bg-white
               %td= link_to "#{event.title}", community_event_path(authenticated_user.member, event)
               %td= short_date_time(event.start_at, event.time_zone)
-              %td
               %td= home_events_status(event.status)
               %td.text-center
                 = link_to event_reminder_path(title: event.title, type: event.event_type, :location => event.location, :address => event.location_display, :start_at => (short_date_time(event.start_at, event.time_zone))), title: 'Event Reminder', class: 'btn btn-sm btn-outline-primary', style: 'border: 1px solid black' do

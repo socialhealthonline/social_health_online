@@ -20,10 +20,10 @@
           = form_with url: share_link_url, method: :post, local: true do
             .form-group.mt-2
               %label(for="email") Shared Link Email Address
-              = email_field_tag :email, params[:email], class: 'form-control', required: true
+              = email_field_tag :email, params[:email], placeholder: 'E.g., patsmith@gmail.com', class: 'form-control', required: true
             .form-group
               %label(for="shared_url") Shared Link URL
-              = text_field_tag :url, params[:url], autofocus: true, class: 'form-control', required: true
+              = text_field_tag :url, params[:url], placeholder: 'E.g., www.google.com', autofocus: true, class: 'form-control', required: true
             .form-group
               %label(for="shared_notes") Shared Link Notes (Optional)
               = text_area_tag :notes, params[:notes], autofocus: true, class: 'form-control'
