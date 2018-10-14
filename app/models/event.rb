@@ -44,7 +44,7 @@ class Event < ApplicationRecord
   def validate_rsvp_limit
     return true unless rsvp_limit
     if rsvp_limit < rsvps.yes.count
-      errors[:rsvp_limit] << "Caution - RSVP attendee limit cannot be less than the number of recorded 'Yes' responses."
+      errors[:rsvp_limit] << "Caution - RSVP attendee limit cannot be less than the number of recorded 'Yes' responses"
     end
   end
 end

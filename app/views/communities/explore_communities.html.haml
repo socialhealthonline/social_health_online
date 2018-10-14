@@ -35,7 +35,6 @@
               %th
               %th State
               %th
-              %th Guest User Community
           %tbody
           - @communities.each do |community|
             %tr.bg-white
@@ -44,8 +43,6 @@
               %td= community.city
               %td
               %td= community.state
-              %td
-              %td= community.public_member? ? 'Yes' : 'No'
               %td
             %tr.table-divider
         %div.container.pagination.justify-content-center

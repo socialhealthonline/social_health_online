@@ -1,9 +1,9 @@
 .container
-  .row.pt-3
+  .row.pt-3.mb-2
     .col
-      .d-flex.justify-content-center.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3
+      .d-flex.justify-content-center.flex-wrap.flex-md-nowrap.align-items-center
         %h1.brand-primary= @event.title
-      %p.text-center
+      %p.text-center.mt-2
         -if @event.logo.attached? && @event.logo.attachment.valid?
           = image_tag @event.logo, alt: 'Event Logo', size: '200x200'
 
@@ -46,8 +46,10 @@
     .col
       %p
         %strong RSVP List
-      %div.table-wrapper-2.table-hover{ :style => "border-radius: 12px;" }
-        %table.table.table-borderless.text-left.mb-2
+  .row.text-center.mt-2
+    .col-sm-4.offset-sm-4
+      .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
+        %table.table.text-left.mb-2.table-hover
           %thead.mdb-color.lighten-4
             %tr
               %th
@@ -69,3 +71,6 @@
     = link_to manage_events_path(@event.id), class: 'btn btn-outline-primary mr-1', style: 'border: 1px solid black;' do
       %i.fas.fa-arrow-left
       Back
+    = link_to event_reminder_path(:title => @event.title, :type => @event.event_type, :location => @event.location, :address => @event.location_display, :start_at => (short_date_time(@event.start_at, @event.time_zone))), title: 'Event Reminder', class: 'btn btn-outline-primary', style: 'border: 1px solid black' do
+      %i.fa.fa-exclamation-circle
+      Event Reminder

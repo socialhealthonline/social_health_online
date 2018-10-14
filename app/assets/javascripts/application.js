@@ -51,7 +51,7 @@ $(document).ready(function() {
                               + "<button aria-label='Close' class='close' data-dismiss='alert' type='button'>"
                                 + "<span aria-hidden='true'>×</span>"
                               + "</button>"
-                                + "This event is currently at full capacity so you may not RSVP at this time."
+                                + "This event is currently at full capacity so you may not RSVP 'Yes' at this time."
                               + "</div>");
   });
 

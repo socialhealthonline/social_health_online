@@ -3,7 +3,7 @@
 .container.text-center
   .row.pt-3.mb-2
     .col
-      %h1.brand-primary= @event.title
+      %h1.brand-primary.mb-2= @event.title
       = @event.logo
     %div
   .row
@@ -45,14 +45,16 @@
       %p
         %strong RSVP List
         .dropdown
-          %a.btn.btn-primary.mb-1.dropdown-toggle{style: 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+          %a.btn.btn-primary.mb-3.dropdown-toggle{style: 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
             %i.fas.fa-hand-point-right
             RSVP
           .dropdown-menu.dropdown-menu-right#rsvp-dropdown
             - Rsvp.rsvp_statuses.keys.each do |value|
               = @event.link_or_span(value, @rsvp_switcher)
-      %div.table-wrapper-2.table-hover{ :style => "border-radius: 12px;" }
-        %table.table.table-borderless.text-left.mb-2
+  .row.text-center
+    .col-sm-4.offset-sm-4
+      .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
+        %table.table.text-left.mb-2.table-hover
           %thead.mdb-color.lighten-4
             %tr
               %th
@@ -76,6 +78,10 @@
         = link_to 'javascript:history.back()', class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
           %i.fas.fa-arrow-left
           Back
+        &nbsp
+        = link_to event_reminder_path(:title => @event.title, :type => @event.event_type, :location => @event.location, :address => @event.location_display, :start_at => (short_date_time(@event.start_at, @event.time_zone))), title: 'Event Reminder', class: 'btn btn-outline-primary', style: 'border: 1px solid black' do
+          %i.fa.fa-exclamation-circle
+          Event Reminder
 
 .container.text-center
   .col.mt-3
@@ -94,9 +100,6 @@
               %th Event City
               %th
               %th Event State
-              %th
-              %th Hosted By
-              %th
           %tbody
           - @events.each do |event|
             %tr.bg-white
@@ -107,9 +110,9 @@
               %td= event.city
               %td
               %td= event.state
-              %td
-              %td= event.member.name
-              %td
             %tr.table-divider
         %div.container.pagination.justify-content-center
           %p= paginate @events
+          - if @events.none?
+            %p.text-muted.mb-3.text-center
+              %em No other publicly-accessible Community events are scheduled near your city.

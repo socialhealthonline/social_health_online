@@ -24,7 +24,7 @@ class EventsController < ApplicationController
 	           .where("start_at >= ?", Time.zone.now)
 	           .where(state: [@authenticated_user.state])
 	           .where(city: [@authenticated_user.city])
-	           .where(private: false).order(start_at: :desc).page(params[:page]).per(3)
+	           .where(private: false).order(start_at: :desc).page(params[:page]).per(5)
     @rsvp_switcher = authenticated_user.rsvps.find_by(event_id: params[:id])
     @event = Event.find(params[:id]).decorate
 
@@ -35,7 +35,7 @@ class EventsController < ApplicationController
 
   def create_or_switch_rsvp
     unless UserEventRsvpAnswerService.new(params, authenticated_user).call
-      flash[:error] = 'The RSVP attendee limit for this event is reached'
+      flash[:error] = 'The RSVP attendee limit for this event has been reached!'
     end
     redirect_to community_event_path(@member, params[:id])
   end

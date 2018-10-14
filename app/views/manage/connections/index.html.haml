@@ -63,6 +63,9 @@
                   = link_to manage_connection_path(connection), title: 'Delete', id: "delete_connection_#{connection.id}", class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Please confirm that you wish to delete this connection. Press OK to continue.' } do
                     %i.far.fa-trash-alt
                     Delete
+                  = link_to share_link_path(:url => connection.url), title: 'Share Link', class: 'dropdown-item text-info' do
+                    %i.fas.fa-share
+                    Share Link
           %tr.table-divider
     %p= paginate @connections
     - if @connections.none?

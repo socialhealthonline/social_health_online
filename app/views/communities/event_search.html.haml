@@ -36,8 +36,6 @@
               %th Event City
               %th
               %th Event State
-              %th
-              %th Hosted By
           %tbody
           - @events.each do |event|
             %tr.bg-white
@@ -48,9 +46,6 @@
               %td= event.city
               %td
               %td= event.state
-              %td
-              %td= event.member.name
-              %td
             %tr.table-divider
         %div.container.pagination.justify-content-center
           %p= paginate @events unless @events.empty?
