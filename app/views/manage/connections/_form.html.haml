@@ -3,7 +3,7 @@
     .col-6
       .form-group
         %label(for="name") Connection Site Name
-        = f.text_field :name, placeholder: 'Free Local Transport', class: "form-control #{form_error_class(@connection, :name)}", required: true
+        = f.text_field :name, placeholder: 'E.g., Free Local Transport', class: "form-control #{form_error_class(@connection, :name)}", required: true
         = model_error_display(@connection, :name)
   .row.justify-content-center
     .col-6
