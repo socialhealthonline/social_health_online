@@ -17,7 +17,7 @@ class RewardsController < ApplicationController
   end
 
   def sort_column
-    %w[period display_name member_name state prize].include?(params[:column]) ? params[:column] : 'period'
+    %w[period display_name member_name state prize].include?(params[:column]) ? params[:column] : 'created_at'
   end
 
   def sort_direction

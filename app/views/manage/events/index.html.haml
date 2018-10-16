@@ -43,18 +43,18 @@
               %th= sort_link 'title', 'Event Title'
               %th= sort_link 'event_type', 'Event Type(s)'
               %th= sort_link 'start_at', 'Event Date/Time'
-              %th= sort_link 'location', 'Event Location'
               %th= sort_link 'city', 'Event City'
               %th= sort_link 'state', 'Event State'
+              %th= sort_link 'featured_event', 'Showcased Event'
           %tbody
             - @events.each.with_index(1) do |event, i|
               %tr.bg-white
                 %th= link_to "#{i}. #{event.title}" , manage_event_path(event)
                 %td= event.event_type
                 %td= short_date_time(event.start_at, event.time_zone)
-                %td= event.location
                 %td= event.city
                 %td= event.state
+                %td= event.featured_event? ? 'Yes' : 'No'
                 %td.w-10.text-right
                   .dropdown
                     = link_to '#', class: 'btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow', id: "dropdownMenuLink-#{event.id}", data: { toggle: 'dropdown' }, 'aria-haspopup' => 'true', 'aria-expanded' => 'false' do

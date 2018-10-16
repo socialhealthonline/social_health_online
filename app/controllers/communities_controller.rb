@@ -18,6 +18,10 @@ class CommunitiesController < ApplicationController
     else
       @users = Kaminari.paginate_array(@users).page(params[:user_page]).per(25)
     end
+    @events = Event.where(member_id: @member.id)
+             .where("start_at >= ?", Time.zone.now)
+             .where(featured_event: true)
+             .where(private: false).order(start_at: :asc).page(params[:page]).per(5)
   end
 
   def leaderboard
@@ -101,7 +105,7 @@ class CommunitiesController < ApplicationController
 
     def sort_column
       logger.debug("SORT:::: #{params[:direction].inspect}")
-      sortable_columns.include?(params[:column]) ? params[:column] : 'name'
+      sortable_columns.include?(params[:column]) ? params[:column] : 'created_at'
     end
 
     def sort_direction

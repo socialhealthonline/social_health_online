@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_14_140441) do
+ActiveRecord::Schema.define(version: 2018_10_15_233909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -164,6 +164,7 @@ ActiveRecord::Schema.define(version: 2018_10_14_140441) do
     t.datetime "updated_at", null: false
     t.string "address"
     t.string "zip"
+    t.boolean "featured_event", default: false
     t.index ["event_type"], name: "index_events_on_event_type"
     t.index ["member_id"], name: "index_events_on_member_id"
     t.index ["private"], name: "index_events_on_private"

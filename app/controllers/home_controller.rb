@@ -24,7 +24,7 @@ class HomeController < ApplicationController
 
   def sort_column
     logger.debug("SORT:::: #{params[:direction].inspect}")
-    sortable_columns.include?(params[:column]) ? params[:column] : 'title'
+    sortable_columns.include?(params[:column]) ? params[:column] : 'created_at'
   end
 
   def sort_direction

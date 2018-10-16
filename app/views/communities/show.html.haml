@@ -145,11 +145,43 @@
               =link_to 'Suggest Events', event_suggestions_path, class: 'btn btn-primary', style: 'border: 1px solid black'
         .container
           .row
-            .col-12.pb-4
+            .col-12.pb-0
               .card
                 .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
                   #calendar
-
+        .container.text-center
+          .col.mt-3
+            %div.form-row.pb-4
+              %div.col-12
+                %h3.notification-title.justify-content-center
+                  %strong Showcased Events
+              %div.table-wrapper-2.mb-3.table-hover#events-feed{:style => "border-radius: 12px;"}
+                %table.table.text-center
+                  %thead.mdb-color.lighten-4
+                    %tr
+                      %th
+                      %th Event Title
+                      %th
+                      %th Event Type
+                      %th Event Date/Time
+                  %tbody
+                  - @events.each do |event|
+                    %tr.bg-white
+                      %td
+                      %td= link_to event.title, community_event_path(authenticated_user.member, event)
+                      %td
+                      %td= event.event_type
+                      %td= short_date_time(event.start_at, event.time_zone)
+                      %td.text-center
+                        = link_to event_reminder_path(title: event.title, type: event.event_type, :location => event.location, :address => event.location_display, :start_at => (short_date_time(event.start_at, event.time_zone))), title: 'Event Reminder', class: 'btn btn-sm btn-outline-primary', style: 'border: 1px solid black' do
+                          %i.fa.fa-exclamation-circle
+                          Event Reminder
+                    %tr.table-divider
+                %div.container.pagination.justify-content-center
+                  %p= paginate @events
+                  - if @events.none?
+                    %p.text-muted.mb-3.text-center
+                      %em No showcased events to display.
     .tab-pane.fade.show.active#users(role="tabpanel" aria-labelledby="users-tab")
       %div#profile_partial
       .container

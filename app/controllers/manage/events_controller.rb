@@ -65,13 +65,14 @@ class Manage::EventsController < ApplicationController
       :private,
       :rsvp_limit,
       :address,
-      :zip
+      :zip,
+      :featured_event
     )
   end
 
   def sortable_columns
     %w[
-      title event_type start_at location city state
+      title event_type start_at location city state featured_event  
     ]
   end
 

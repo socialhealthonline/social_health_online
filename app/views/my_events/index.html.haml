@@ -23,6 +23,7 @@
               %th= sort_link 'title', 'Event Title'
               %th= sort_link 'start_at', 'Event Date/Time'
               %th RSVP
+              %th
           %tbody
           - @events.each do |event|
             %tr.text-center.bg-white

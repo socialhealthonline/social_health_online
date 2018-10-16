@@ -20,8 +20,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @events = Event.where(member_id: authenticated_user.member_id)
-	    	   .where("id != ?", params[:id])
+    @events = Event.where("id != ?", params[:id])
 	           .where("start_at >= ?", Time.zone.now)
 	           .where(state: [@authenticated_user.state])
 	           .where(city: [@authenticated_user.city])
@@ -55,7 +54,7 @@ class EventsController < ApplicationController
 
   def sort_column
     logger.debug("SORT:::: #{params[:direction].inspect}")
-    sortable_columns.include?(params[:column]) ? params[:column] : 'title'
+    sortable_columns.include?(params[:column]) ? params[:column] : 'created_at'
   end
 
   def sort_direction

@@ -3,11 +3,12 @@
 .container.text-center
   .row.pt-3
     .col
-      %h1.brand-primary.mb-2= @event.title
-      = @event.logo
+      %h1.brand-primary.mb-3= @event.title
+      -if @event.logo.present?
+        %p.pb-1= @event.logo
   .row
     .col
-      %p.mt-1
+      %p
         %i.c-pointer.fas.fa-portrait{:title => "Event Host"}
         = @event.member.name
       %p
@@ -93,7 +94,6 @@
           %thead.mdb-color.lighten-4
             %tr
               %th
-              %th
               %th= sort_link 'title', 'Event Title'
               %th
               %th= sort_link 'event_type', 'Event Type'
@@ -101,7 +101,6 @@
           %tbody
           - @events.each do |event|
             %tr.bg-white
-              %td
               %td
               %td= link_to event.title, community_event_path(authenticated_user.member, event)
               %td

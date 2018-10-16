@@ -6,7 +6,7 @@ class Event < ApplicationRecord
   has_one_attached :logo, dependent: :destroy
 
   validates :title, :start_at, :event_type, :location, :city, :state, :address, :zip, presence: true
-  validates :address, :city, :zip, presence: false
+  validates :featured_event, presence: true, allow_blank: true
   validates :event_type, inclusion: EVENT_TYPES
   validates :state, inclusion: US_STATES.values, allow_blank: true
   validate :validate_rsvp_limit, on: :update

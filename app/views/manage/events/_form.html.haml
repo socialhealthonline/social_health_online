@@ -74,6 +74,12 @@
           {},
           { class: "form-control #{form_error_class(@event, :private)}"})
         = model_error_display(@event, :private)
+    .col-lg-3
+      .card
+        .card-body.text-center.px-2
+          .form-check.mb-0
+            = f.check_box :featured_event, class: 'form-check-input'
+            %label.form-check-label(for="featured_event") Showcased Event - Showcase the Public Event in Your Community
   .row
     .col-lg-4
       .form-group#file-field

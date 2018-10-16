@@ -1,9 +1,8 @@
 class MyContactsController < ApplicationController
 before_action :find_contact, only: [:show, :edit, :update, :destroy]
-helper_method :sort_column, :sort_direction
 
 def index
-  @contacts = Contact.where(user_id: authenticated_user.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+  @contacts = Contact.where(user_id: authenticated_user.id).page(params[:page]).per(10)
 end
 
 def show
@@ -16,13 +15,10 @@ def new
     redirect_to my_contacts_path
   else
     contact = Contact.new
-
     user = User.find(params[:contact_id])
-
     contact.user_id = authenticated_user.id
     contact.contact_id = user.id
     contact.save
-
     redirect_to my_contacts_path, success: 'The contact was successfully created!'
   end
 
@@ -70,13 +66,4 @@ private
   def find_contact
     @contact = Contact.find(params[:id])
   end
-
-  def sort_column
-    %w[created_at display_name].include?(params[:column]) ? params[:column] : 'created_at'
-  end
-
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
-  end
-
 end
