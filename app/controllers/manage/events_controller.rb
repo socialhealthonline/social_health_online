@@ -72,7 +72,7 @@ class Manage::EventsController < ApplicationController
 
   def sortable_columns
     %w[
-      title event_type start_at location city state featured_event  
+      title event_type start_at location city state private featured_event
     ]
   end
 

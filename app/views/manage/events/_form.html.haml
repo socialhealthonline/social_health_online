@@ -57,6 +57,7 @@
     .col-lg-3
       .form-group
         %label(for="event_rsvp_limit") RSVP Attendee Limit
+        %i.c-pointer.fas.fa-info-circle.fa{:title => 'This field must be blank if you do not want to establish an RSVP Attendee Limit'}
         = f.text_field :rsvp_limit, class: "form-control #{form_error_class(@event, :rsvp_limit)}"
         = model_error_display(@event, :rsvp_limit)
   .row
@@ -69,6 +70,7 @@
     .col-lg-3
       .form-group
         %label(for="private") Event Access *
+        %i.c-pointer.fas.fa-info-circle.fa{:title => '"Public" events can be seen by any User in Social Health Online and "Private" events can only be seen by the Users you host'}
         = f.select(:private,
           options_for_select([['Private', 'true'], ['Public', 'false']], @event.private),
           {},

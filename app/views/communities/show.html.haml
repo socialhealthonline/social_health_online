@@ -144,16 +144,16 @@
             .col.text-center.mt-1.mb-3
               =link_to 'Suggest Events', event_suggestions_path, class: 'btn btn-primary', style: 'border: 1px solid black'
         .container
-          .row
-            .col-12.pb-0
+          .row.justify-content-center
+            .col-10.pb-0.px-1
               .card
-                .card-body{ :style => "border: 2px solid black; border-radius: 12px;" }
+                .card-body.px-1{ :style => "border: 2px solid black; border-radius: 12px;" }
                   #calendar
         .container.text-center
           .col.mt-3
             %div.form-row.pb-4
               %div.col-12
-                %h3.notification-title.justify-content-center
+                %h3.notification-title.justify-content-center.mb-2
                   %strong Showcased Events
               %div.table-wrapper-2.mb-3.table-hover#events-feed{:style => "border-radius: 12px;"}
                 %table.table.text-center
