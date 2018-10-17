@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get "cities/:state", to: "application#cities"
 
-  # Public pages
+  # Public Pages
   get "about-us" => "public#about"
   get "careers" => "public#careers"
   get "join" => "public#join"
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get "affiliates_registration" => "affiliates_registration#new"
   post "affiliates_registration" => "affiliates_registration#create"
 
-  #Stripe webhooks
+  #Stripe Webhooks
   mount StripeEvent::Engine, at: '/stripe_events'
 
   # Contact
@@ -50,11 +50,13 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
 
-  # My profile
+  # My Profile
   get "my-profile" => "profile#edit", as: "profile"
   patch "profile" => "profile#update", as: "update_profile"
+  get 'request_deactivation' => 'profile#new'
+  post 'request_deactivation' => 'profile#create'
 
-  # My settings
+  # My Settings
   resource :my_settings, only: [:show, :update]
 
   # Matchmaker

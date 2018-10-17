@@ -2,6 +2,15 @@ class ProfileController < ApplicationController
   before_action :require_authentication
   skip_before_action :pending_user
 
+
+  def new
+  end
+
+  def create
+    RequestDeactivationMailer.notify(params, authenticated_user).deliver_now
+    redirect_to home_url, success: "Your account deactivation request has been submitted."
+  end
+
   def edit
     @user = authenticated_user
     HiddenField.find_or_create_by(user_id: @user.id) # move logic of creation then user is creating

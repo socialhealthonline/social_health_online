@@ -191,3 +191,5 @@
                 = model_error_display(@user, :password_confirmation)
           .row.justify-content-center.pt-1.pb-3
             = f.submit 'Update', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Updating...' }
+          .row.justify-content-center.pb-3
+            = link_to 'Request Deactivation', request_deactivation_path, class: 'btn btn-danger', style: 'border: 1px solid black;'

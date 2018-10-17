@@ -1,0 +1,28 @@
+- page_title 'Request Deactivation'
+
+.container
+  .row
+    .col.py-3
+      %h1.text-info.text-center Request Deactivation
+
+  .row
+    .col-md-12
+      %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
+        %strong
+          Submit this form to request the deactivation of your User account.
+
+    .col-md-3
+    .col-md-6.justify-content-center
+      .card
+        .card-body.text-center.pt-1
+          = form_with url: request_deactivation_url, method: :post, local: true do
+            .form-group.mt-1.text-left
+              %label.mb-2(for="request_details") Reason for the Deactivation Request (Optional)
+              = text_area_tag :request_details, params[:request_details], rows: '6', class: 'form-control'
+            .row.justify-content-center
+              = submit_tag 'Send', class: 'btn btn-primary mb-1', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
+
+  %p.pb-3
+    = link_to profile_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+      %i.fas.fa-arrow-left
+      Back

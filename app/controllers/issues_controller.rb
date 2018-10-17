@@ -6,6 +6,6 @@ class IssuesController < ApplicationController
 
   def create
       IssuesMailer.notify(params, authenticated_user).deliver_now
-      redirect_to issues_url, success: "Thank you for your submission. We'll be in touch!"
+      redirect_to home_url, success: "Thank you for your submission. We'll be in touch!"
   end
 end

@@ -17,7 +17,7 @@
         %p.px-3.py-2.mb-0 Issue
         .card-body.text-center.pt-0
           = form_with url: issues_url, method: :post, local: true do
-            = hidden_field_tag :subject, ''
             .form-group
               = text_area_tag :message, params[:message], rows: '6', class: 'form-control', required: true
-            = submit_tag 'Send', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
+            .row.justify-content-center
+              = submit_tag 'Send', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
