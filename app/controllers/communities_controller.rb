@@ -11,12 +11,12 @@ class CommunitiesController < ApplicationController
   def show
     @member = Member.friendly.find(params[:id]).decorate
     @announcements = @member.announcements.order(created_at: :desc).page(params[:page]).per(10)
-    @users = @member.users.order("#{sort_column} #{sort_direction}").enabled.page(params[:user_page]).per(25)
+    @users = @member.users.order("#{sort_column} #{sort_direction}").enabled.page(params[:user_page]).per(50)
     @users = FindUsersCommunities.new(@users, show_init_scope: true).call(permitted_params)
     unless @users.kind_of?(Array)
-      @users = @users.page(params[:user_page]).per(25)
+      @users = @users.page(params[:user_page]).per(50)
     else
-      @users = Kaminari.paginate_array(@users).page(params[:user_page]).per(25)
+      @users = Kaminari.paginate_array(@users).page(params[:user_page]).per(50)
     end
     @events = Event.where(member_id: @member.id)
              .where("start_at >= ?", Time.zone.now)
@@ -43,12 +43,12 @@ class CommunitiesController < ApplicationController
   end
 
   def user_finder
-    @users = User.where(member_id: authenticated_user.member_id, user_status: :enabled, hide_info_on_user_finder: false).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
+    @users = User.where(member_id: authenticated_user.member_id, user_status: :enabled, hide_info_on_user_finder: false).order("#{sort_column} #{sort_direction}").page(params[:page]).per(50)
     @users = FindUsersCommunities.new(@users, show_init_scope: true).call(permitted_params)
     unless @users.kind_of?(Array)
-      @users = @users.page(params[:page]).per(25)
+      @users = @users.page(params[:page]).per(50)
     else
-      @users = Kaminari.paginate_array(@users).page(params[:page]).per(25)
+      @users = Kaminari.paginate_array(@users).page(params[:page]).per(50)
     end
   end
 

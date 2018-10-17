@@ -15,8 +15,8 @@
 
 .row
   .col-12.col-md-4.col-lg-6
-    %h5.mb-0.brand-primary Filter - By Name
-    <p class ="font-weight-bold under_label_text brand-primary">(note: full name required and case sensitive)</p>
+    %h5.mb-0 Filter - By Name
+    <p class ="font-weight-bold under_label_text">(note: full name required and case sensitive)</p>
     .col-12.col.md-4.col-lg-6.justify-content-center
       = form_with url: console_member_users_path(@member.id), method: :get, local: true do |f|
         .form-group.form-inline.justify-content-center#explore_communities_form

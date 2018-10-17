@@ -4,9 +4,9 @@ class MatchmakersController < ApplicationController
   def index
     @users = FindUsersCommunities.new(User.joins(:hidden_field).matchmaker(authenticated_user), show_init_scope: false).call(permitted_params)
     unless @users.kind_of?(Array)
-      @users = @users.order(interest_types: :asc).page(params[:page]).per(10)
+      @users = @users.order(interest_types: :asc).page(params[:page]).per(50)
     else
-      @users = Kaminari.paginate_array(@users).page(params[:page]).per(10)
+      @users = Kaminari.paginate_array(@users).page(params[:page]).per(50)
     end
   end
 

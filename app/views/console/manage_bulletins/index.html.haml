@@ -11,7 +11,7 @@
 .container{:style => "overflow-x:hidden;"}
   .row.mt-2
     .col-12.col-md-4.col-lg-6
-      %h5.pt-1.mb-0.brand-primary Filter - By State
+      %h5.pt-1.mb-0 Filter - By State
       .col-12.col.md-4.col-lg-6.justify-content-center
         = form_with url: [:console_manage_bulletins], method: :get, local: true do |f|
           .form-group.form-inline.justify-content-center#explore_communities_form
