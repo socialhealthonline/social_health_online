@@ -4,7 +4,7 @@ class RequestDeactivationMailer < ApplicationMailer
     @authenticated_user = authenticated_user
 
     mail :to => authenticated_user.member.primary_manager.email,
-         subject: 'Deactivation Request - Social Health Online',
+         subject: 'Account Deactivation Request - Social Health Online',
          from: "#{authenticated_user.name} <#{authenticated_user.email}>"
   end
 end
