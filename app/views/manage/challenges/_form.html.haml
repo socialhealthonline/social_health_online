@@ -63,7 +63,7 @@
         %label(for="description") Challenge Details
         = f.text_area :description, class: "form-control #{form_error_class(@challenge, :description)}", required: true
         = model_error_display(@challenge, :description)
-    .col-6
+    .col-lg-6
       .form-group
         %label(for="verification_code") Challenge Verification Code (Optional)
         %i.c-pointer.fas.fa-info-circle.fa{ title: 'Optional code to distribute to the Users during a challenge for the purpose of verifying actual challenge completion via its submission by the Users'}
