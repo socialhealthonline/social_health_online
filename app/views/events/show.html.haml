@@ -5,7 +5,7 @@
     .col
       %h1.brand-primary.mb-3= @event.title
       -if @event.logo.present?
-        %p.pb-1= @event.logo
+        %p.pb-2= @event.logo
   .row
     .col
       %p
@@ -41,6 +41,9 @@
         %i.c-pointer.fas.fa-exclamation-triangle{:title => "RSVP Attendee Limit"}
         = @event.rsvp_limit
         Attendees Allowed
+      %p
+      %p
+        = image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@event.location_display}&zoom=13&size=350x350&maptype=roadmap&markers=#{@event.location_display}&key=AIzaSyAQdTwAWt-2vg0uGcunHq9IRGOABI9ZJUE", class: 'img-fluid', style: 'border: 2px solid black; border-radius: 12px;'
       %p
       %p
         %strong RSVP List
