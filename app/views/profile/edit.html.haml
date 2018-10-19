@@ -24,7 +24,7 @@
                 = f.text_field :display_name, class: "form-control #{form_error_class(@user, :display_name)}"
                 = model_error_display(@user, :display_name)
           .row
-            .col-lg-6
+            .col
               .form-group
                 %label(for="user_email") Email *
                 = f.email_field :email, required: true, class: "form-control #{form_error_class(@user, :email)}"
