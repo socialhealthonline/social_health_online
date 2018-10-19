@@ -105,7 +105,10 @@ class Console::MembersController < ConsoleController
       :hide_connections,
       :public_member,
       :charity_waiver,
-      :org_type
+      :org_type,
+      :social_media_url_one,
+      :social_media_url_two,
+      :social_media_url_three
     )
   end
 

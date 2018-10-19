@@ -39,7 +39,10 @@ class Manage::MemberController < ApplicationController
       :hide_suggest_announcements,
       :hide_connections,
       :org_type,
-      :contact_phone_extension
+      :contact_phone_extension,
+      :social_media_url_one,
+      :social_media_url_two,
+      :social_media_url_three
     )
   end
 

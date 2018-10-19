@@ -13,7 +13,7 @@ class Member < ApplicationRecord
   has_one_attached :logo
 
   validates :name, :address, :city, :org_type, :state, :zip, :contact_name, :contact_email, :contact_phone, :url, :phone, :service_capacity, presence: true
-  validates :hide_challenges, :hide_suggest_announcements, :hide_suggest_events, :hide_connections, :charity_waiver, :public_member, presence: true, allow_blank: true
+  validates :social_media_url_one, :social_media_url_two, :social_media_url_three, :hide_challenges, :hide_suggest_announcements, :hide_suggest_events, :hide_connections, :charity_waiver, :public_member, presence: true, allow_blank: true
   validates_uniqueness_of :name, case_sensitive: false
   validates :state, inclusion: US_STATES.values
   validates :org_type, inclusion: ORG_TYPES
@@ -123,5 +123,8 @@ class Member < ApplicationRecord
   def add_protocol_to_url
     self.url = "http://#{url}" if url.present? && url !~ /\Ahttp/
     self.events_url = "http://#{events_url}" if events_url.present? && events_url !~ /\Ahttp/
+    self.social_media_url_one = "http://#{social_media_url_one}" if social_media_url_one.present? && social_media_url_one !~ /\Ahttp/
+    self.social_media_url_two = "http://#{social_media_url_two}" if social_media_url_two?.present? && social_media_url_two !~ /\Ahttp/
+    self.social_media_url_three = "http://#{social_media_url_three}" if social_media_url_three.present? && social_media_url_three !~ /\Ahttp/
   end
 end

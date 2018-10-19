@@ -113,6 +113,21 @@
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'This User performs as your organization\'s principal Community Manager in Social Health Online'}
               = f.select :primary_manager_id, options_from_collection_for_select(@managers, 'id', 'name', @member.primary_manager_id), { include_blank: false }, { class: 'form-control custom-select' }
               = model_error_display(@member, :primary_manager_id)
+          .col-lg-3
+            .form-group
+              %label(for="social_media_url_one") Facebook Link (Optional)
+              = f.text_field :social_media_url_one, class: "form-control #{form_error_class(@member, :social_media_url_one)}"
+              = model_error_display(@member, :social_media_url_one)
+          .col-lg-3
+            .form-group
+              %label(for="social_media_url_two") Instagram Link (Optional)
+              = f.text_field :social_media_url_two, class: "form-control #{form_error_class(@member, :social_media_url_two)}"
+              = model_error_display(@member, :social_media_url_two)
+          .col-lg-3
+            .form-group
+              %label(for="social_media_url_three") Twitter Link (Optional)
+              = f.text_field :social_media_url_three, class: "form-control #{form_error_class(@member, :social_media_url_three)}"
+              = model_error_display(@member, :social_media_url_three)
         .row
           .col
             .form-group

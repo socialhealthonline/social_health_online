@@ -104,6 +104,22 @@
       = f.label @member.status, class: "form-control disabled readonly #{form_error_class(@member, :status)}"
       = model_error_display(@member, :status)
 .row
+  .col-lg-4
+    .form-group
+      %label(for="social_media_url_one") Facebook Link (Optional)
+      = f.text_field :social_media_url_one, class: "form-control #{form_error_class(@member, :social_media_url_one)}"
+      = model_error_display(@member, :social_media_url_one)
+  .col-lg-4
+    .form-group
+      %label(for="social_media_url_two") Instagram Link (Optional)
+      = f.text_field :social_media_url_two, class: "form-control #{form_error_class(@member, :social_media_url_two)}"
+      = model_error_display(@member, :social_media_url_two)
+  .col-lg-4
+    .form-group
+      %label(for="social_media_url_three") Twitter Link (Optional)
+      = f.text_field :social_media_url_three, class: "form-control #{form_error_class(@member, :social_media_url_three)}"
+      = model_error_display(@member, :social_media_url_three)
+.row
   .col
     .form-group
       %label(for="member_bio") Bio (Optional)
