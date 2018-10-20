@@ -55,11 +55,11 @@
         - if @member.social_media_url_one.present?
           = link_to @member.social_media_url_one, target: '_blank' do
             %i.fa.fa-facebook-square.fa-3x{:title => 'Facebook'}
-        %p
+        %div
         - if @member.social_media_url_two.present?
           = link_to @member.social_media_url_two, target: '_blank' do
             %i.fa.fa-instagram.fa-3x{:title => 'Instagram'}
-        %p
+        %div
         - if @member.social_media_url_three.present?
           = link_to @member.social_media_url_three, target: '_blank' do
             %i.fa.fa-twitter-square.fa-3x{:title => 'Twitter'}
@@ -161,7 +161,13 @@
           .row.justify-content-center
             .col-10.pb-0.px-1
               .card
-                .card-body.px-1{ :style => "border: 2px solid black; border-radius: 12px;" }
+                .card-body.text-center.px-1{ :style => "border: 2px solid black; border-radius: 12px;" }
+                  %strong Legend
+                  %p
+                  %strong{:style => "color: #17a2b8;"}Public Events = Accessible to All Users
+                  %p
+                  %strong{:style => "color: #c9302c;"} Private Events = Only Accessible to This Community's Users
+                  %p
                   #calendar
         .container.text-center
           .col.mt-3

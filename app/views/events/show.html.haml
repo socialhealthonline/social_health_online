@@ -3,7 +3,10 @@
 .container.text-center
   .row.pt-3
     .col
-      %h1.brand-primary.mb-3= @event.title
+      -if @event.private == true
+        %h1.mb-3{:style => "color: #c9302c;"}= @event.title
+      -if @event.private == false
+        %h1.brand-primary.mb-3= @event.title
       -if @event.logo.present?
         %p.pb-2= @event.logo
   .row
@@ -51,7 +54,7 @@
           %a.btn.btn-primary.mb-3.dropdown-toggle{style: 'border: 1px solid black;'}(href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
             %i.fas.fa-hand-point-right
             RSVP
-          .dropdown-menu.dropdown-menu-right#rsvp-dropdown
+          .dropdown-menu.text-center.dropdown-menu-right#rsvp-dropdown{style: 'border: 1px solid black;'}
             - Rsvp.rsvp_statuses.keys.each do |value|
               = @event.link_or_span(value, @rsvp_switcher)
   .row.text-center
@@ -117,5 +120,5 @@
         %div.container.pagination.justify-content-center
           %p= paginate @events
           - if @events.none?
-            %p.text-muted.mb-3.text-center
+            %p.text-muted.mb-3.pl-2.text-center
               %em No other publicly-accessible Community events are scheduled near your city.
