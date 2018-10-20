@@ -128,7 +128,7 @@
             .form-group
               %label(for="group") Group
               %i.c-pointer.fas.fa-info-circle.fa{:title => 'Use this field to manage large groups of Users through categorization'}
-              = f.text_field :group, placeholder: 'E.g., Sales Team, White Hall Dormitory, Alpha, etc.', class: "form-control #{form_error_class(@user, :group)}"
+              = f.text_field :group, placeholder: 'E.g., Sales Team, Volunteer, White Hall Dormitory, Alpha, etc.', class: "form-control #{form_error_class(@user, :group)}"
               = model_error_display(@user, :group)
           .col-6
             .form-group
