@@ -196,6 +196,7 @@ Rails.application.routes.draw do
   # Help
   get "help" => "help#index"
   get 'service_support' => 'help#new'
+  post 'service_support' => 'help#create'
 
   # My Bulletins
   resources :my_bulletins
