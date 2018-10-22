@@ -25,21 +25,21 @@ class CommunitiesController < ApplicationController
   end
 
   def leaderboard
-    @users = User.where(member_id: authenticated_user.member_id, user_status: :enabled, hide_info_on_leaderboard: false).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
+    @users = User.where(member_id: authenticated_user.member_id, user_status: :enabled, hide_info_on_leaderboard: false).order("#{sort_column} #{sort_direction}").page(params[:page]).per(50)
     @users = FindUsersCommunities.new(@users, show_init_scope: true).call(permitted_params)
     unless @users.kind_of?(Array)
-      @users = @users.page(params[:page]).per(25)
+      @users = @users.page(params[:page]).per(50)
     else
-      @users = Kaminari.paginate_array(@users).page(params[:page]).per(25)
+      @users = Kaminari.paginate_array(@users).page(params[:page]).per(50)
     end
   end
 
   def challenge_index
-    @challenges = Challenge.where(member_id: authenticated_user.member_id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+    @challenges = Challenge.where(member_id: authenticated_user.member_id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def connection_index
-    @connections = Connection.where(member_id: authenticated_user.member_id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+    @connections = Connection.where(member_id: authenticated_user.member_id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def user_finder
@@ -64,9 +64,9 @@ class CommunitiesController < ApplicationController
     @communities = Member.where.not("name = ? ", authenticated_user.member.name).where(suspended: false).order(name: :asc)
     @communities = FindUsersCommunities.new(@communities, show_init_scope: false).call(permitted_params)
     unless @communities.kind_of?(Array)
-      @communities = @communities.page(params[:page]).per(10)
+      @communities = @communities.page(params[:page]).per(25)
     else
-      @communities = Kaminari.paginate_array(@communities).page(params[:page]).per(10)
+      @communities = Kaminari.paginate_array(@communities).page(params[:page]).per(25)
     end
   end
 
@@ -75,9 +75,9 @@ class CommunitiesController < ApplicationController
     @events = Event.where("start_at between ? and ?", Date.today, 90.days.from_now).where(private: false).order(start_at: :asc)
     @events = FindUsersCommunities.new(@events, show_init_scope: false).call(permitted_params)
     unless @events.kind_of?(Array)
-      @events = @events.page(params[:page]).per(10)
+      @events = @events.page(params[:page]).per(25)
     else
-      @events = Kaminari.paginate_array(@events).page(params[:page]).per(10)
+      @events = Kaminari.paginate_array(@events).page(params[:page]).per(25)
     end
   end
 

@@ -3,7 +3,7 @@ class MyBulletinsController < ApplicationController
   before_action :find_bulletin, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bulletins = Bulletin.where(user_id: authenticated_user.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+    @bulletins = Bulletin.where(user_id: authenticated_user.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def show

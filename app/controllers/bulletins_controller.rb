@@ -5,9 +5,9 @@ class BulletinsController < ApplicationController
     @bulletins = Bulletin.where('start_at > ?', Date.today).all.order(start_at: :desc).page(params[:page])
     @bulletins = FindUsersCommunities.new(@bulletins, show_init_scope: false).call(permitted_params)
     unless @bulletins.kind_of?(Array)
-      @bulletins = @bulletins.page(params[:page]).per(10)
+      @bulletins = @bulletins.page(params[:page]).per(25)
     else
-      @bulletins = Kaminari.paginate_array(@bulletins).page(params[:page]).per(10)
+      @bulletins = Kaminari.paginate_array(@bulletins).page(params[:page]).per(25)
     end
   end
 

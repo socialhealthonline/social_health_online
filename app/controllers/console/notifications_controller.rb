@@ -4,7 +4,7 @@ class Console::NotificationsController < ConsoleController
   before_action :require_admin
 
   def index
-    @notifications = Notification.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+    @notifications = Notification.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def show; end

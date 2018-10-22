@@ -1,0 +1,29 @@
+- page_title 'Service Support Request'
+
+.container
+  .row
+    .col.py-3
+      %h1.text-info.text-center Service Support Request
+
+  .row
+    .col-md-12
+      %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
+        %strong
+          If you have any questions about how to access or use features in the service submit a support request below to receive help.
+
+    .col-md-3
+    .col-md-6.justify-content-center
+      .card
+        %p.px-3.py-2.mb-0 
+        .card-body.py-0
+          = form_with url: service_support_url, method: :post, local: true do
+            .form-group
+              %label(for="notes") Support Request Details
+              = text_area_tag :notes, params[:notes], rows: '6', class: 'form-control', required: true
+            .row.justify-content-center
+              = submit_tag 'Send', class: 'btn btn-primary mb-1', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }
+
+  %p.pb-3
+    = link_to help_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
+      %i.fas.fa-arrow-left
+      Back

@@ -4,7 +4,7 @@ class Console::RewardsController < ConsoleController
   before_action :require_admin, only: [:index, :new, :create, :edit, :update, :destroy]
 
   def index
-    @rewards = Reward.all.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+    @rewards = Reward.all.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def show

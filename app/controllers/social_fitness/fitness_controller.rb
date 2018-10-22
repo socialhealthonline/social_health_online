@@ -26,7 +26,7 @@ class SocialFitness::FitnessController < ApplicationController
   end
 
   def plan
-    @targets = Target.all.order(created_at: :desc).page(params[:page]).per(10)
+    @targets = Target.all.order(created_at: :desc).page(params[:page]).per(25)
   end
 
   def plan_details

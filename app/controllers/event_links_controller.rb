@@ -5,9 +5,9 @@ class EventLinksController < ApplicationController
     @resources = Resource.all.order(city: :asc)
     @resources = FindUsersCommunities.new(@resources, show_init_scope: false).call(permitted_params)
       unless @resources.kind_of?(Array)
-        @resources = @resources.page(params[:page]).per(10)
+        @resources = @resources.page(params[:page]).per(25)
       else
-        @resources = Kaminari.paginate_array(@resources).page(params[:page]).per(10)
+        @resources = Kaminari.paginate_array(@resources).page(params[:page]).per(25)
       end
     end
 

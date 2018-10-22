@@ -3,7 +3,7 @@ class RewardsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @rewards = Reward.all.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+    @rewards = Reward.all.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   private

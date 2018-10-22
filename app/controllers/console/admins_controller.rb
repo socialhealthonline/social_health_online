@@ -5,7 +5,7 @@ class Console::AdminsController < ConsoleController
 
   def index
     @admins = User.where(admin: true)
-    @admins = @admins.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+    @admins = @admins.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def show

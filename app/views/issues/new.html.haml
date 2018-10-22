@@ -14,10 +14,11 @@
     .col-md-3
     .col-md-6.justify-content-center
       .card
-        %p.px-3.py-2.mb-0 Issue
-        .card-body.text-center.pt-0
+        %p.px-3.py-2.mb-0
+        .card-body.text-left.pt-0
           = form_with url: issues_url, method: :post, local: true do
             .form-group
+              %label(for="message") Issue Details
               = text_area_tag :message, params[:message], rows: '6', class: 'form-control', required: true
             .row.justify-content-center
               = submit_tag 'Send', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Please wait...' }

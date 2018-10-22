@@ -193,6 +193,10 @@ Rails.application.routes.draw do
   # Media Center
   get "media_center" => "media_center#index"
 
+  # Help
+  get "help" => "help#index"
+  get 'service_support' => 'help#new'
+
   # My Bulletins
   resources :my_bulletins
 

@@ -7,9 +7,9 @@ class Console::EventLinksController < ConsoleController
     @resources = Resource.all.order("#{sort_column} #{sort_direction}")
     @resources = FindUsersCommunities.new(@resources, show_init_scope: true).call(permitted_params)
     unless @resources.kind_of?(Array)
-      @resources = @resources.page(params[:page]).per(10)
+      @resources = @resources.page(params[:page]).per(25)
     else
-      @resources = Kaminari.paginate_array(@resources).page(params[:page]).per(10)
+      @resources = Kaminari.paginate_array(@resources).page(params[:page]).per(25)
     end
   end
 

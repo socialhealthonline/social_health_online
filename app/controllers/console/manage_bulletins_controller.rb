@@ -7,9 +7,9 @@ class Console::ManageBulletinsController < ConsoleController
     @bulletins = Bulletin.all.order("#{sort_column} #{sort_direction}")
     @bulletins = FindUsersCommunities.new(@bulletins, show_init_scope: true).call(permitted_params)
     unless @bulletins.kind_of?(Array)
-      @bulletins = @bulletins.page(params[:page]).per(10)
+      @bulletins = @bulletins.page(params[:page]).per(25)
     else
-      @bulletins = Kaminari.paginate_array(@bulletins).page(params[:page]).per(10)
+      @bulletins = Kaminari.paginate_array(@bulletins).page(params[:page]).per(25)
     end
   end
 

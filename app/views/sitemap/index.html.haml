@@ -68,15 +68,19 @@
               %i.fas.fa-th.fa-2x.pt-2{:title => 'Sitemap'}
               <p class ="under_label_text">Sitemap</p>
             %span.px-1
+            = link_to invite_guests_path do
+              %i.fas.fa-paper-plane.fa-2x.pt-2{:title => 'Invite Guests'}
+              <p class ="under_label_text">Invite Guests</p>
+            %span.px-1
             = link_to issues_path do
               %i.fas.fa-flag.fa-2x.pt-2{:title => 'Report Issues'}
               <p class ="under_label_text">Report Issues</p>
             %span.px-1
-            = link_to invite_guests_path do
-              %i.fas.fa-share-square.fa-2x.pt-2{:title => 'Invite Guests'}
-              <p class ="under_label_text">Invite Guests</p>
-            %span.px-1
           .row.justify-content-center.text-center.font-weight-bold.pt-3
+            = link_to help_path do
+              %i.fas.fa-question-circle.fa-2x.pt-2{:title => 'Help'}
+              <p class ="under_label_text">Help</p>
+            %span.px-1
             = link_to profile_path do
               %i.fas.fa-user.fa-2x.pt-2{:title => 'My Profile'}
               <p class ="under_label_text">My Profile</p>
@@ -88,11 +92,11 @@
             = link_to my_contacts_path do
               %i.fas.fa-address-book.fa-2x.pt-2{:title => 'My Contacts'}
               <p class ="under_label_text">My Contacts</p>
-            %span.px-1
+          .row.justify-content-center.text-center.font-weight-bold.pt-3
             = link_to my_events_path do
               %i.fas.fa-calendar.fa-2x.pt-2{:title => 'My Events'}
               <p class ="under_label_text">My Events</p>
-          .row.justify-content-center.text-center.font-weight-bold.pt-3
+            %span.px-1
             = link_to my_settings_path do
               %i.fas.fa-wrench.fa-2x.pt-2{:title => 'My Settings'}
               <p class ="under_label_text">My Settings</p>

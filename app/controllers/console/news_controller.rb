@@ -4,7 +4,7 @@ class Console::NewsController < ConsoleController
   before_action :require_admin
 
   def index
-    @news = News.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+    @news = News.order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def show; end

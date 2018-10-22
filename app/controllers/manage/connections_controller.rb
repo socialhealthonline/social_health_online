@@ -4,7 +4,7 @@ class Manage::ConnectionsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @connections = Connection.where(member_id: authenticated_user.member.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+    @connections = Connection.where(member_id: authenticated_user.member.id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
   end
 
   def show; end

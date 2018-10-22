@@ -2,7 +2,7 @@ class MyContactsController < ApplicationController
 before_action :find_contact, only: [:show, :edit, :update, :destroy]
 
 def index
-  @contacts = Contact.where(user_id: authenticated_user.id).page(params[:page]).per(10)
+  @contacts = Contact.where(user_id: authenticated_user.id).page(params[:page]).per(50)
 end
 
 def show

@@ -5,7 +5,7 @@ class Manage::EventsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @events = Event.where(member_id: authenticated_user.member_id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
+    @events = Event.where(member_id: authenticated_user.member_id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
     @member = authenticated_user.member_id
   end
 
