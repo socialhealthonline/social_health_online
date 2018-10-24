@@ -42,7 +42,7 @@
                     %div
                       %i.fas.fa-link
                       Event Links
-                  = link_to console_rewards_path, class: 'list-group-item d-flex justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
+                  = link_to console_rewards_path, class: 'list-group-item d-flex px-1 justify-content-center bg-primary text-white', :style => 'border: 1px solid black;' do
                     %div
                       %i.fas.fa-dollar-sign
                       Rewards Winners
@@ -56,7 +56,7 @@
                       Notifications
               .card.card-sm.mb-0
                 .list-group.list-group-flush
-                %a.nav-link.text-center.font-weight-bold.dropdown-toggle{href: '/service_logs', :style => 'border: 1px solid black;', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
+                %a.nav-link.text-center.px-4.font-weight-bold.dropdown-toggle{href: '/service_logs', :style => 'border: 1px solid black;', 'aria-haspopup' => true, 'aria-expanded' => false, 'data-toggle' => 'dropdown'}
                   = 'Service Logs'
                 .dropdown-menu.py-0.dropdown-menu-right{:style => 'border: 1px solid black;', 'aria-labelledby' => 'communitiesDropdownMenuLink'}
                   = link_to console_social_tracker_members_path, class: 'list-group-item d-flex justify-content-center px-1 bg-primary text-white', :style => 'border: 1px solid black;' do
