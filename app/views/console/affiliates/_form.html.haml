@@ -1,4 +1,5 @@
 = form_with model: @affiliate, url: [:console, @affiliate], local: true do |f|
+  %h5 Account Information
   .row
     .col-lg-6
       .form-group
@@ -79,6 +80,8 @@
         %label(for="affiliate_support_notes") Support Notes (Optional)
         = f.text_area :support_notes, class: "form-control #{form_error_class(@affiliate, :support_notes)}"
         = model_error_display(@affiliate, :support_notes)
+  .row.border-top
+    %h5.my-2 Settings
   .row
     .col-lg-6
       .card

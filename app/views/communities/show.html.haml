@@ -97,10 +97,10 @@
       .row.font-weight-bold
         .col
           %ul.nav.nav-tabs#communityTabs(role="tablist")
-            - if @member.public_member==false
+            - if @member.public_member==false && @member.hide_announcements==false
               %li.nav-item
                 %a.nav-link.px-1#announcements-tab(data-toggle="tab" href="#announcements" role="tab" aria-controls="announcements" aria-selected="true") Announcements
-            - if @member.public_member==false
+            - if @member.public_member==false  && @member.hide_events==false
               %li.nav-item
                 %a.nav-link.px-1#events-tab(data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false") Events
             %li.nav-item
@@ -111,7 +111,8 @@
                   %a.nav-link.px-1.pt-2#more-tab(data-toggle="dropdown" href="#" role="tab" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") More
                   .dropdown-menu.dropdown-menu-right.text-center{:style => 'border: 1px solid black; border-radius: 12px;'}
                     = link_to 'User Finder', user_finder_path, class: 'dropdown-item px-2'
-                    = link_to 'Leaderboard', leaderboard_path, class: 'dropdown-item px-2'
+                    - if @member.hide_leaderboard==false
+                      = link_to 'Leaderboard', leaderboard_path, class: 'dropdown-item px-2'
                     - if @member.hide_challenges==false && @member.public_member==false
                       = link_to 'Challenges', challenge_index_path, class: 'dropdown-item px-2'
                     - if @member.hide_connections==false && @member.public_member==false
@@ -128,7 +129,7 @@
             %h3.notification-title.pb-1
               %strong
                 Community Announcements
-        - if @member.hide_suggest_announcements?
+        - if @member.hide_suggest_announcements==true
           .row
             .col.text-center.mt-1.mb-2.pb-1
               =link_to 'Suggest Announcements', announcement_suggestions_path, class: 'btn btn-primary', style: 'border: 1px solid black'
@@ -153,7 +154,7 @@
             %h3.notification-title.pb-1
               %strong
                 Community Events Calendar
-        - if @member.hide_suggest_events?
+        - if @member.hide_suggest_events==true
           .row
             .col.text-center.mt-1.mb-3
               =link_to 'Suggest Events', event_suggestions_path, class: 'btn btn-primary', style: 'border: 1px solid black'

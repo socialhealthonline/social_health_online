@@ -18,11 +18,12 @@
                 .form-check
                   = f.check_box :receive_email, class: 'form-check-input'
                   %label.form-check-label.pl-1(for="receive_email") Email Notifications - Allow Email Notifications for My Messages
-            .col
-              .form-group
-                .form-check
-                  = f.check_box :hide_info_on_leaderboard, class: 'form-check-input'
-                  %label.form-check-label.pl-1(for="hide_info_on_leaderboard") Leaderboard - Hide My Total Events Logged on Community Leaderboard
+            - if authenticated_user.member.hide_leaderboard== false
+              .col
+                .form-group
+                  .form-check
+                    = f.check_box :hide_info_on_leaderboard, class: 'form-check-input'
+                    %label.form-check-label.pl-1(for="hide_info_on_leaderboard") Leaderboard - Hide My Total Events Logged on My Community Leaderboard
 
         .row.justify-content-center.pt-1.pb-3
           = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }

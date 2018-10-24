@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_19_151412) do
+ActiveRecord::Schema.define(version: 2018_10_24_190723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -288,6 +288,9 @@ ActiveRecord::Schema.define(version: 2018_10_19_151412) do
     t.string "social_media_url_one"
     t.string "social_media_url_two"
     t.string "social_media_url_three"
+    t.boolean "hide_announcements", default: false
+    t.boolean "hide_events", default: false
+    t.boolean "hide_leaderboard", default: false
     t.index ["period"], name: "index_members_on_period"
     t.index ["slug"], name: "index_members_on_slug", unique: true
   end

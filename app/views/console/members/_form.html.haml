@@ -1,3 +1,4 @@
+%h5 Account Information
 .row
   .col-lg-6
     .form-group
@@ -125,7 +126,16 @@
       %label(for="member_bio") Bio (Optional)
       = f.text_area :bio, rows: 4, class: "form-control #{form_error_class(@member, :bio)}"
       = model_error_display(@member, :bio)
+.row.border-top
+  %h5.my-2 Settings
 .row
+  .col-lg-4
+    .card
+      .card-body.text-center.px-4
+        .form-group
+          .form-check
+            = f.check_box :public_member, class: 'form-check-input'
+            %label.form-check-label(for="public_member") Public Member - List as Public Member
   .col-lg-4
     .card
       .card-body.text-center.px-1
@@ -140,46 +150,60 @@
           .form-check.mb-3
             = f.check_box :hide_info_on_locator, class: 'form-check-input'
             %label.form-check-label(for="hide_info_on_locator") Member Locator - Hide Info on Member Locator
-  .col-lg-4
-    .card
-      .card-body.text-center.px-1
-        .form-group
-          .form-check
-            = f.check_box :public_member, class: 'form-check-input'
-            %label.form-check-label(for="public_member") Public Member - List as Public Member
 .row
-  .col-lg-4
+  .col-lg-3
     .card
-      .card-body.text-center.px-1
+      .card-body.text-center.px-3
         .form-group
           .form-check
             = f.check_box :charity_waiver, class: 'form-check-input'
             %label.form-check-label(for="charity_waiver") Service Fee Waiver - Charitable Org
-  .col-lg-4
+  .col-lg-3
     .card
-      .card-body.text-center.px-1
+      .card-body.text-center.px-3
         .form-group
           .form-check
             = f.check_box :hide_suggest_events, class: 'form-check-input'
             %label.form-check-label(for="hide_suggest_events") Suggest Events - Show Suggest Events Button
-  .col-lg-4
+  .col-lg-3
     .card
       .card-body.text-center.px-1
         .form-group
           .form-check
             = f.check_box :hide_suggest_announcements, class: 'form-check-input'
             %label.form-check-label(for="hide_suggest_announcements") Suggest Announcements - Show Suggest Announcements Button
-.row
-  .col-lg-4
+  .col-lg-3
     .card
-      .card-body.text-center
+      .card-body.text-center.px-3
+        .form-group
+          .form-check
+            = f.check_box :hide_leaderboard, class: 'form-check-input'
+            %label.form-check-label(for="hide_leaderboard") Leaderboard - Hide the Leaderboard Button
+.row
+  .col-lg-3
+    .card
+      .card-body.text-center.px-1
+        .form-group
+          .form-check
+            = f.check_box :hide_announcements, class: 'form-check-input'
+            %label.form-check-label(for="hide_announcements") Announcements - Hide the Announcements Button
+  .col-lg-3
+    .card
+      .card-body.text-center.px-4
+        .form-group
+          .form-check
+            = f.check_box :hide_events, class: 'form-check-input'
+            %label.form-check-label(for="hide_events") Events - Hide the Events Button
+  .col-lg-3
+    .card
+      .card-body.text-center.px-3
         .form-group
           .form-check
             = f.check_box :hide_challenges, class: 'form-check-input'
             %label.form-check-label(for="hide_challenges") Challenges - Hide the Challenges Button
-  .col-lg-4
+  .col-lg-3
     .card
-      .card-body.text-center
+      .card-body.text-center.px-2
         .form-group
           .form-check
             = f.check_box :hide_connections, class: 'form-check-input'
