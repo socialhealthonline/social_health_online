@@ -83,7 +83,11 @@ class Console::AdminsController < ConsoleController
       :password_confirmation,
       :interest_types,
       :group,
-      :admin
+      :admin,
+      :hide_info_on_user_finder,
+      :hide_info_on_leaderboard,
+      :hide_my_social_events,
+      :hide_my_social_health
     )
   end
 

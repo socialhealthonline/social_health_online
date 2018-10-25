@@ -74,6 +74,7 @@ class Manage::UsersController < ApplicationController
       :ethnicity,
       :relationship_status,
       :education_level,
+      :last_sign_in_at,
       :occupation,
       :languages,
       :hobbies,
@@ -84,9 +85,7 @@ class Manage::UsersController < ApplicationController
       :password_confirmation,
       :manager,
       :user_status,
-      :interest_types,
-      :hide_info_on_user_finder,
-      :hide_info_on_leaderboard
+      :interest_types
     )
   end
 

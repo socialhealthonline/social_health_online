@@ -103,6 +103,10 @@ class Console::UsersController < ConsoleController
       :password,
       :password_confirmation,
       :interest_types,
+      :hide_info_on_user_finder,
+      :hide_info_on_leaderboard,
+      :hide_my_social_events,
+      :hide_my_social_health
     )
   end
 

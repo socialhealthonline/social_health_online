@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_24_190723) do
+ActiveRecord::Schema.define(version: 2018_10_24_233013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -430,6 +430,8 @@ ActiveRecord::Schema.define(version: 2018_10_24_190723) do
     t.string "interest_types"
     t.boolean "hide_info_on_user_finder", default: false
     t.datetime "deleted_at"
+    t.boolean "hide_my_social_health", default: false
+    t.boolean "hide_my_social_events", default: false
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email"

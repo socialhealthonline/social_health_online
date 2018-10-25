@@ -18,6 +18,16 @@
                 .form-check
                   = f.check_box :receive_email, class: 'form-check-input'
                   %label.form-check-label.pl-1(for="receive_email") Email Notifications - Allow Email Notifications for My Messages
+            .col
+              .form-group
+                .form-check
+                  = f.check_box :hide_my_social_health, class: 'form-check-input'
+                  %label.form-check-label(for="hide_my_social_health") My Social Health - Hide My Social Health on Home
+            .col
+              .form-group
+                .form-check
+                  = f.check_box :hide_my_social_events, class: 'form-check-input'
+                  %label.form-check-label(for="hide_my_social_events") My Social Events - Hide My Social Events on Home
             - if authenticated_user.member.hide_leaderboard== false
               .col
                 .form-group
