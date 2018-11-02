@@ -94,7 +94,7 @@ class CommunitiesController < ApplicationController
   private
 
     def permitted_params
-      params.permit(:name, :display_name, :interest_types, :url, :notes, :completion_date, :state, :city, :location, :created_at, :address, :winner, :prize, :description, :verification_code, :zip, :social_event_logs, :public_member, :challenge_type, :challenge_start_date, :challenge_end_date, :page).reject{|_, v| v.blank?}
+      params.permit(:name, :display_name, :logo, :interest_types, :url, :notes, :completion_date, :state, :city, :location, :created_at, :address, :winner, :prize, :description, :verification_code, :zip, :social_event_logs, :public_member, :challenge_type, :challenge_start_date, :challenge_end_date, :page).reject{|_, v| v.blank?}
     end
 
     def sortable_columns
