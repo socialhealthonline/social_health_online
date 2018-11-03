@@ -90,10 +90,11 @@
         = model_error_display(@event, :logo)
   .row
     .col-lg-4
-      %p.text-muted Logo Preview:
+      %p.text-muted Event Logo Preview:
       -if @event.logo.attached? && @event.logo.attachment.valid?
         = image_tag @event.logo, alt: 'Event Logo', size: '200x200'
-
+      -else
+        = image_tag 'noimage.png', alt: 'Event Logo', size: '200x200'
   .my-3.text-center
     = f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' }, style: 'border: 1px solid black;'
     - if @event.persisted?

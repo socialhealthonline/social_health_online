@@ -216,10 +216,11 @@
       = model_error_display(@member, :logo)
 
   .col-lg-6
-    %p.text-muted Logo Preview:
+    %p.text-muted Member Logo Preview:
     -if @member.logo.attached? && @member.logo.attachment.valid?
       = image_tag @member.logo, alt: 'Member Logo', size: '200x200'
-
+    -else
+      = image_tag 'noimage.png', alt: 'Member Logo', size: '200x200'
 .row
 .text-center.py-3
   = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }

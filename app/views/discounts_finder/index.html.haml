@@ -29,6 +29,7 @@
         %table.table.text-center
           %thead.mdb-color.lighten-4
             %tr
+              %th
               %th Affiliate Name
               %th
               %th Discount Description
@@ -41,6 +42,11 @@
           %tbody
           - @affiliates.each do |affiliate|
             %tr.bg-white
+              %td.c-pointer{:title => affiliate.name}
+                - if affiliate.logo.attached?
+                  = image_tag affiliate.logo, size: '50x50'
+                - else
+                  = image_tag 'noimage.png', size: '50x50'
               %td= affiliate.name
               %td
               %td= affiliate.support_notes

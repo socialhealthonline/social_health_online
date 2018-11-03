@@ -171,10 +171,11 @@
                 = model_error_display(@user, :avatar)
           .row
             .col.mb-3
-              %p.text-muted Avatar Preview:
+              %p.text-muted User Avatar Preview:
               -if @user.avatar.attached? && @user.avatar.attachment.valid?
-                = image_tag @user.avatar, alt: 'User avatar', size: '200x200'
-
+                = image_tag @user.avatar, alt: 'User Avatar', size: '200x200'
+              -else
+                = image_tag 'noavatar.png', alt: 'User Avatar', size: '200x200'
           .row.pt-2.border-top
             .col
               %p.text-muted Change Your Password (note: at least 8 characters long and contain numbers and letters)

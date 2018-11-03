@@ -20,6 +20,7 @@
         %table.table
           %thead.mdb-color.lighten-4.text-center
             %tr
+              %th
               %th= sort_link 'title', 'Event Title'
               %th= sort_link 'start_at', 'Event Date/Time'
               %th RSVP
@@ -27,7 +28,12 @@
           %tbody
           - @events.each do |event|
             %tr.text-center.bg-white
-              %td= link_to "#{event.title}", community_event_path(authenticated_user.member, event)
+              %td.c-pointer{:title => event.title}
+                - if event.logo.attached?
+                  = link_to (image_tag event.logo, size: '50x50'), community_event_path(authenticated_user.member, event)
+                - else
+                  = link_to (image_tag 'noimage.png', size: '50x50'), community_event_path(authenticated_user.member, event)
+              %td.c-pointer{:title => event.title}= link_to "#{event.title}", community_event_path(authenticated_user.member, event)
               %td= short_date_time(event.start_at, event.time_zone)
               %td= home_events_status(event.status)
               %td.text-center

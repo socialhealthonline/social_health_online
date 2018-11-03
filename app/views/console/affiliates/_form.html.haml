@@ -98,10 +98,11 @@
         = model_error_display(@affiliate, :logo)
 
     .col-lg-6
-      %p.text-muted Logo Preview:
+      %p.text-muted Affiliate Logo Preview:
       -if @affiliate.logo.attached? && @affiliate.logo.attachment.valid?
         = image_tag @affiliate.logo, alt: 'Affiliate Logo', size: '200x200'
-
+      -else
+        = image_tag 'noimage.png', alt: 'Affiliate Logo', size: '200x200'
   .text-center.py-3
     = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }
     - if @affiliate.persisted?

@@ -22,12 +22,12 @@
               .form-group
                 .form-check
                   = f.check_box :hide_my_social_health, class: 'form-check-input'
-                  %label.form-check-label(for="hide_my_social_health") My Social Health - Hide My Social Health on Home
+                  %label.form-check-label(for="hide_my_social_health") My Social Health - Hide My Social Health on Home Page
             .col
               .form-group
                 .form-check
                   = f.check_box :hide_my_social_events, class: 'form-check-input'
-                  %label.form-check-label(for="hide_my_social_events") My Social Events - Hide My Social Events on Home
+                  %label.form-check-label(for="hide_my_social_events") My Social Events - Hide My Social Events on Home Page
             - if authenticated_user.member.hide_leaderboard== false
               .col
                 .form-group
