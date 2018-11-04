@@ -5,7 +5,7 @@
     .col.py-3
       %h1.text-info.text-center Fitness Plans
 
-  .row.mb-3
+  .row
     .col
       %p.text-center.p-2{style: "border: 1px solid black;"}
         %strong
@@ -13,13 +13,16 @@
           These fitness plans act as general guides with weekly social targets for improving
           your wellness with others.
 
+      %h3.text-center.mb-2
+        %strong Monthly Plans
+
   .row.text-center.mb-3
     .col-sm-4.offset-sm-4
       .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
         %table.table.align-items-center.text-center.table-hover.table-sm
           %thead.mdb-color.lighten-4
             %tr
-              %th Monthly Plans
+              %th Period
           %tbody
           - @targets.each do |target|
             %tr.bg-white

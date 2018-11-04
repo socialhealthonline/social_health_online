@@ -40,14 +40,14 @@
             - @users.each do |user|
               %tr.bg-white
                 %td
-                  %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                  %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button', title: user.display_name,
                       data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: user }" } }
                     - if user.avatar.attached?
                       = image_tag user.avatar, size: '50x50'
                     - else
                       = image_tag 'noavatar.png', size: '50x50'
                 %td
-                  %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                  %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button', title: user.display_name,
                       data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: user }" } }
                     =user.display_name
                 %td= user.name

@@ -7,7 +7,7 @@
 
   .row
     .col-md-12
-      %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
+      %p.text-center.mb-2.p-2{style: "border: 1px solid black;"}
         %strong
           Make purchases with your User Discount Card or the applicable coupon codes to take advantage of the discounts listed here.
 
@@ -57,7 +57,7 @@
               %td
               %td= link_to "Visit Website", affiliate.url, target: :_blank
             %tr.table-divider
-        %div.container.pagination.justify-content-center
+        %div.container.pagination.justify-content-center.pl-2
           %p= paginate @affiliates unless @affiliates.empty?
           - if @affiliates.none?
             %p.text-muted.mb-3.text-center

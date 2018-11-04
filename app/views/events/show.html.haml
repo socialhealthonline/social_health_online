@@ -70,8 +70,14 @@
           - @event.rsvps.each do |rsvp|
             %tr
               %td
+                %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button', title: rsvp.user.display_name,
+                  data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user: rsvp.user }" } }
+                  - if rsvp.user.avatar.attached?
+                    = image_tag rsvp.user.avatar, size: '50x50'
+                  - else
+                    = image_tag 'noavatar.png', size: '50x50'
               %td
-                %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button', title: rsvp.user.display_name,
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: rsvp.user }" } }
                   =rsvp.user.display_name
               %td.text-center.pr-3= rsvp&.rsvp_status.capitalize
@@ -94,20 +100,24 @@
     %div.form-row
       %div.col-12
         %h3.notification-title.justify-content-center.py-2.border-top
-          %strong Other Events Nearby
+          %strong Other Events Near You
       %div.table-wrapper-2.mb-3.table-hover#events-feed{:style => "border-radius: 12px;"}
         %table.table.text-center
           %thead.mdb-color.lighten-4
             %tr
               %th
-              %th= sort_link 'title', 'Event Title'
+              %th Event Title
               %th
-              %th= sort_link 'event_type', 'Event Type'
-              %th= sort_link 'start_at', 'Event Date/Time'
+              %th Event Type
+              %th Event Date/Time
           %tbody
           - @events.each do |event|
             %tr.bg-white
-              %td
+              %td.c-pointer{:title => event.title}
+                - if event.logo.attached?
+                  = link_to (image_tag event.logo, size: '50x50'), community_event_path(authenticated_user.member, event)
+                - else
+                  = link_to (image_tag 'noimage.png', size: '50x50'), community_event_path(authenticated_user.member, event)
               %td= link_to event.title, community_event_path(authenticated_user.member, event)
               %td
               %td= event.event_type
@@ -117,7 +127,7 @@
                   %i.fa.fa-exclamation-circle
                   Event Reminder
             %tr.table-divider
-        %div.container.pagination.justify-content-center
+        %div.container.pagination.justify-content-center.pl-2
           %p= paginate @events
           - if @events.none?
             %p.text-muted.mb-3.pl-2.text-center

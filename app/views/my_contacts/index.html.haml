@@ -12,6 +12,8 @@
         %strong
           Manage your contacts here to easily communicate and coordinate activities with the Users you have connected with.
 
+      %h3.text-center.mb-2
+        %strong Contact List
 
   .row.mb-3.justify-content-center
     .col-md-4
@@ -25,14 +27,14 @@
           - @contacts.each do |contact|
             %tr.bg-white
               %td
-                %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button', title: contact.contact.display_name,
                   data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user: contact.contact }" } }
                   - if contact.contact.avatar.attached?
                     = image_tag contact.contact.avatar, size: '50x50'
                   - else
                     = image_tag 'noavatar.png', size: '50x50'
               %td
-                %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button', title: contact.contact.display_name,
                   data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user: contact.contact }" } }
                   =contact.contact.display_name
               %td.text-center

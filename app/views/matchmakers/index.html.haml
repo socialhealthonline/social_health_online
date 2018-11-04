@@ -7,9 +7,9 @@
 
   .row.pt-3
     .col
-      %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
+      %p.text-center.mb-2.p-2{style: "border: 1px solid black;"}
         %strong
-          Search for Users in your area who have common interests, become acquainted with them, and plan activities together with this feature.
+          Search for Users in your area who have common interests, become acquainted, and plan activities together with this feature.
 
   .row.my-3
     .col
@@ -41,14 +41,14 @@
           - @users.each do |user|
             %tr
               %td
-                %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button', title: user.display_name,
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render 'links_in_popover',  user: user }" } }
                   - if user.avatar.attached?
-                    = image_tag user.user_avatar, size: '50x50'
+                    = image_tag user.avatar, size: '50x50'
                   - else
                     = image_tag 'noavatar.png', size: '50x50'
               %td
-                %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button', title: user.display_name,
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render 'links_in_popover',  user: user }" } }
                   =user.display_name
               %td
@@ -57,7 +57,7 @@
               %td= user.state
               %td
               %td= user.interest_types
-        %div.container.pagination.justify-content-center
+        %div.container.pagination.justify-content-center.pl-2
           %p= paginate @users unless @users.empty?
           - if @users.none?
             %p.text-muted.mb-3.text-center

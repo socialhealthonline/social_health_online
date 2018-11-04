@@ -2,22 +2,29 @@
 
 .container
   .row
-    .col.py-3
+    .col.pt-3.pb-2
       %h1.text-info.text-center Fitness History
-      .row.text-center
-        .col-sm-4.offset-sm-4
-          .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
-            %table.table.align-items-center.text-center.table-hover.table-sm
-              %thead.row-borderless
-                %tr
-                  %th
-                    Log Date
-              %tbody.bg-white
-                - @social_fitness_logs.each do |log|
-                  %tr
-                    %td= link_to short_date(log.created_at), social_fitness_path(log), class: 'text-info'
-                  %tr.table-divider
-            = paginate @social_fitness_logs
-            - if @social_fitness_logs.none?
-              %p.text-muted.text-center.mb-3
-                %em No social fitness entries have been logged.
+      %p.text-center.p-2{style: "border: 1px solid black;"}
+        %strong
+          Review your logged fitness entries below to ensure you're nurturing all aspects of your social wellness.
+
+      %h3.text-center
+        %strong Fitness Entries
+
+  .row.text-center
+    .col-sm-4.offset-sm-4
+      .table-responsive{ :style => 'border: 2px solid black; border-radius: 12px;' }
+        %table.table.align-items-center.text-center.table-hover.table-sm
+          %thead.row-borderless
+            %tr
+              %th
+                Log Date
+          %tbody.bg-white
+            - @social_fitness_logs.each do |log|
+              %tr
+                %td= link_to short_date(log.created_at), social_fitness_path(log), class: 'text-info'
+              %tr.table-divider
+        = paginate @social_fitness_logs
+        - if @social_fitness_logs.none?
+          %p.text-muted.text-center.mb-3
+            %em No social fitness entries have been logged.

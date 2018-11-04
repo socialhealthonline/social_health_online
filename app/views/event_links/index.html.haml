@@ -7,7 +7,7 @@
 
   .row
     .col-md-12
-      %p.text-center.mb-3.p-2{style: "border: 1px solid black;"}
+      %p.text-center.mb-2.p-2{style: "border: 1px solid black;"}
         %strong
           The links below go to websites that have been vetted and listed for Users to find more local activities to participate in.
 
@@ -57,7 +57,7 @@
                   %i.fas.fa-share
                   Share Link
             %tr.table-divider
-        %div.container.pagination.justify-content-center
+        %div.container.pagination.justify-content-center.pl-2
           %p= paginate @resources unless @resources.empty?
           - if @resources.none?
             %p.text-muted.mb-3.text-center
