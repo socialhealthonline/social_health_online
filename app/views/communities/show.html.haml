@@ -136,7 +136,7 @@
         .container
           .row.mt-4
             .col.pt-3.pb-1
-              #scroll-box-announcements{ :style => "border: 2px solid black; border-radius: 12px;" }
+              #scroll-box-announcements.px-2{ :style => "border: 2px solid black; border-radius: 12px;" }
                 - @announcements.each do |announcement|
                   .mb-3.text-center
                     %h5= announcement.title
@@ -163,7 +163,7 @@
             .col-10.pb-0.px-1
               .card
                 .card-body.text-center.px-1{ :style => "border: 2px solid black; border-radius: 12px;" }
-                  %strong Legend
+                  %strong Events Legend
                   %p
                   %strong{:style => "color: #17a2b8;"}Public Events - Accessible to All Users
                   %p
@@ -225,16 +225,25 @@
                 %p
                 = f.button "Filter", class: "form-control btn btn-primary mb-2", style: "border: 1px solid black"
                 = link_to "Undo Filter", {:onclick => "history.go(0)" }, class: 'form-control btn btn-primary mb-3', style: 'border: 1px solid black'
-        .row.justify-content-center
+        .row.justify-content-center.text-center
           .col-7.pt-3.pb-1
             #scroll-box-announcements{ style: "border: 2px solid black; border-radius: 12px; width: 100%;" }
               %h5.notification-title.border-bottom.mb-2
                 %th= sort_link 'display_name', 'Display Name'
               - @users.each do |user|
                 .mb-3.bg-white.text-center
-                  %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
-                    data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: user }" } }
-                    =user.display_name
+                  %td
+                    %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                      data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: user }" } }
+                      - if user.avatar.attached?
+                        = image_tag user.avatar, size: '50x50'
+                      - else
+                        = image_tag 'noavatar.png', size: '50x50'
+                  &nbsp
+                  %td
+                    %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
+                      data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: user }" } }
+                      =user.display_name
               %p= paginate @users, param_name: :user_page
               - if @users.none?
                 %p.text-muted.mt-5.text-center

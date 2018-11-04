@@ -198,14 +198,6 @@
       "<p>" +
       (row.url || "No Website")
       "</p>" +
-      "<h6>Support Type:</h6>" +
-      "<p>" +
-      row.support_type +
-      "</p>" +
-      "<h6>Support Notes:</h6>" +
-      "<p>" +
-      (row.support_notes || "No Support Notes") +
-      "</p>" +
       "</div>";
 
     var infowindow = new google.maps.InfoWindow({
