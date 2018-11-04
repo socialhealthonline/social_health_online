@@ -9,7 +9,7 @@
     .col
       %h3.notification-title.mb-2
         %strong Notifications
-      #scroll-box{:style => "border-radius: 12px;"}
+      #scroll-box.px-2{:style => "border-radius: 12px;"}
         - @notifications.each do |notification|
           .mb-3.text-center
             %h5= notification.title
