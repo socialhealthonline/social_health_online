@@ -57,7 +57,7 @@
           %p= paginate @users unless @users.empty?
           - if @users.none?
             %p.pb-5.text-muted.text-center
-              %em No User progress is available.
+              %em No logged events information is available.
 
   %p.pb-3
     = link_to my_community_path, class: 'btn btn-outline-primary', style: 'border: 1px solid black;' do
