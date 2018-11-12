@@ -14,7 +14,7 @@ feature 'User manage messages', type: :feature, js: true do
     find('.select2-results li:not(.loading-results):nth-child(1)').click
     fill_in 'conversation_subject', with: 'Some subject'
     fill_in 'conversation_body', with: 'Some text'
-    click_button 'Send Message'
+    click_button 'Send'
   end
 
   it 'redirect to index page after user creates new conversation' do

@@ -5,11 +5,13 @@
     .col.pb-4
       %h1.brand-primary.text-center My Profile
   .row
+  * Indicates required field
+  .row.mt-2
     .col
-      * Indicates required field
       = form_with model: @user, url: update_profile_url, method: :patch, local: true do |f|
         = f.fields_for :hidden_field do |h|
-          .row.pt-2
+          %label User Characteristics
+          .row
             .col
               .form-group
                 %label(for="user_name") Name *
@@ -149,36 +151,30 @@
                 = model_error_display(@user, :bio)
           .row
             .col-lg-6
+              %label Profile Visibility
               .card
-                .card-body.text-center.pb-2
+                .card-body.text-center.pb-2.px-1
                   .form-group
                     .form-check.pb-1.mb-0
                       #matchmakerCheckboxId.col-xs-2.pt-2
                         = h.check_box :matchmaker, { checked: ActiveModel::Type::Boolean.new.cast(@user.hidden_field&.matchmaker) }, '1', '0'
                         %label(for="user_invisible") User Match - Hide My Profile in User Match
-            .col-lg-6
-              .card.pb-1
-                .card-body.pl-4.text-center
-                  .form-group
-                    .form-check.mt-1.pt-1.mb-1
-                      = f.check_box :hide_info_on_user_finder, class: 'form-check-input'
-                      %label.form-check-label(for="hide_info_on_user_finder") User Finder - Hide My Profile in Community User Finder
           .row
-            .col-8.col-sm-6.col-lg-6.col-xl-6
+            .col-lg-4
               .form-group#file-field
-                %label(for="profile_avatar") User Avatar (note: maximum file size is 10 MB)
+                %p User Avatar (note: max file size is 10 MB)
                 = f.file_field :avatar, class: "form-control #{form_error_class(@user, :avatar)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 10.megabytes }
                 = model_error_display(@user, :avatar)
           .row
             .col.mb-3
-              %p.text-muted User Avatar Preview:
+              %p User Avatar Preview:
               -if @user.avatar.attached? && @user.avatar.attachment.valid?
                 = image_tag @user.avatar, alt: 'User Avatar', size: '200x200'
               -else
                 = image_tag 'noavatar.png', alt: 'User Avatar', size: '200x200'
           .row.pt-2.border-top
             .col
-              %p.text-muted Change Your Password (note: at least 8 characters long and contain numbers and letters)
+              %p Change Your Password (note: at least 8 characters long and contain numbers and letters)
           .row
             .col
               .form-group

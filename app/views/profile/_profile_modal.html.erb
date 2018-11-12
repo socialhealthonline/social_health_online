@@ -6,10 +6,11 @@
       <div class='modal-header' id="userHeader">
         <button class='close' data-dismiss="modal">×</button>
         <h3 class= "modal-title"><%= user.display_name %>&nbsp<%= user.user_manager %></h3>
-        <%= user.user_avatar %>
       </div>
       <!-- Modal body -->
       <div class='modal-body'>
+        <%= user.user_avatar %>
+        <p></p>
         <%= user.profile_name %>
         <%= user.profile_email %>
         <%= user.profile_phone %>
@@ -28,6 +29,9 @@
         <%= user.profile_hobbies %>
         <%= user.profile_pet_peeves %>
         <%= user.profile_bio %>
+        <% unless authenticated_user.display_name == user.display_name %>
+        <center><%= link_to 'Contact User', new_conversation_path(recipient_id: user.id), target: '_blank', class: 'btn btn-primary', style: 'border: 1px solid black' %></center>
+        <% end %>
       </div>
       <!-- Modal footer -->
     </div>

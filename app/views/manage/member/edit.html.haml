@@ -190,12 +190,12 @@
         .row
           .col-lg-4
             .form-group#file-field
-              %label(for="member_logo") Member Logo (note: maximum file size is 10 MB)
+              %p Member Logo (note: max file size is 10 MB)
               = f.file_field :logo, class: "form-control #{form_error_class(@member, :logo)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 10.megabytes }
               = model_error_display(@member, :logo)
         .row
           .col-lg-4
-            %p.text-muted Member Logo Preview:
+            %p Member Logo Preview:
             -if @member.logo.attached? && @member.logo.attachment.valid?
               = image_tag @member.logo, alt: 'Member Logo', size: '200x200'
             -else

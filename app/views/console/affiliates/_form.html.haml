@@ -93,12 +93,12 @@
   .row
     .col-lg-6
       .form-group#file-field
-        %label(for="affiliate_logo") Affiliate Logo (note: maximum file size is 10 MB)
+        %p Affiliate Logo (note: max file size is 10 MB)
         = f.file_field :logo, class: "form-control #{form_error_class(@affiliate, :logo)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 10.megabytes }
         = model_error_display(@affiliate, :logo)
 
     .col-lg-6
-      %p.text-muted Affiliate Logo Preview:
+      %p Affiliate Logo Preview:
       -if @affiliate.logo.attached? && @affiliate.logo.attachment.valid?
         = image_tag @affiliate.logo, alt: 'Affiliate Logo', size: '200x200'
       -else

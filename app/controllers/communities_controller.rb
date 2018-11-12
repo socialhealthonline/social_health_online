@@ -26,12 +26,6 @@ class CommunitiesController < ApplicationController
 
   def leaderboard
     @users = User.where(member_id: authenticated_user.member_id, user_status: :enabled, hide_info_on_leaderboard: false).order("#{sort_column} #{sort_direction}").page(params[:page]).per(50)
-    @users = FindUsersCommunities.new(@users, show_init_scope: true).call(permitted_params)
-    unless @users.kind_of?(Array)
-      @users = @users.page(params[:page]).per(50)
-    else
-      @users = Kaminari.paginate_array(@users).page(params[:page]).per(50)
-    end
   end
 
   def challenge_index
@@ -40,16 +34,6 @@ class CommunitiesController < ApplicationController
 
   def connection_index
     @connections = Connection.where(member_id: authenticated_user.member_id).order("#{sort_column} #{sort_direction}").page(params[:page]).per(25)
-  end
-
-  def user_finder
-    @users = User.where(member_id: authenticated_user.member_id, user_status: :enabled, hide_info_on_user_finder: false).order("#{sort_column} #{sort_direction}").page(params[:page]).per(50)
-    @users = FindUsersCommunities.new(@users, show_init_scope: true).call(permitted_params)
-    unless @users.kind_of?(Array)
-      @users = @users.page(params[:page]).per(50)
-    else
-      @users = Kaminari.paginate_array(@users).page(params[:page]).per(50)
-    end
   end
 
   def challenge_new

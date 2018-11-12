@@ -83,13 +83,11 @@
           = link_to share_link_path(:url => @member.events_url), title: 'Share Link', class: 'btn btn-sm btn-outline-primary', style: 'border: 1px solid black' do
             %i.fas.fa-share
             Share Link
+
         - if @member.bio.present?
           %p
             %h5 Bio
             = @member.bio
-      .col-12.pt-3
-        %p.text-center
-          =link_to 'Contact Manager', new_conversation_path(recipient_id: @member.primary_manager&.id), target: '_blank', class: 'btn btn-primary', style: 'border: 1px solid black'
 
 %section.flush-with-above.space-0
   %div
@@ -110,7 +108,6 @@
                 .dropdown
                   %a.nav-link.px-1.pt-2#more-tab(data-toggle="dropdown" href="#" role="tab" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") More
                   .dropdown-menu.dropdown-menu-right.text-center{:style => 'border: 1px solid black; border-radius: 12px;'}
-                    = link_to 'User Finder', user_finder_path, class: 'dropdown-item px-2'
                     - if @member.hide_leaderboard==false
                       = link_to 'Leaderboard', leaderboard_path, class: 'dropdown-item px-2'
                     - if @member.hide_challenges==false && @member.public_member==false
@@ -221,7 +218,7 @@
             .col-md-12.justify-content-center
               = form_with url: "/communities/#{@member.slug}/", method: :get, local: true do |f|
                 .form-group.form-inline.justify-content-center#explore_communities_form
-                  = f.select(:interest_types, INTEREST_TYPES, {include_blank: true}, class: "form-control find_by_interest_types", style: "width: 100%;")
+                  = f.select(:interest_types, INTEREST_TYPES, {prompt: "Select Primary Interest"}, class: "form-control find_by_interest_types", style: "width: 100%;")
                 %p
                 = f.button "Filter", class: "form-control btn btn-primary mb-2", style: "border: 1px solid black"
                 = link_to "Undo Filter", {:onclick => "history.go(0)" }, class: 'form-control btn btn-primary mb-3', style: 'border: 1px solid black'
@@ -233,7 +230,7 @@
               - @users.each do |user|
                 .mb-3.bg-white.text-center
                   %td
-                    %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button', title: user.display_name,
+                    %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
                       data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: user }" } }
                       - if user.avatar.attached?
                         = image_tag user.avatar, size: '50x50'
@@ -241,7 +238,7 @@
                         = image_tag 'noavatar.png', size: '50x50'
                   &nbsp
                   %td
-                    %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button', title: user.display_name,
+                    %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
                       data: { toggle: 'popover', trigger: 'focus', content: "#{render '/matchmakers/links_in_popover',  user: user }" } }
                       =user.display_name
               %p= paginate @users, param_name: :user_page
@@ -256,6 +253,8 @@
         %button.close{ 'aria-label' => 'Close', 'data-dismiss' => 'modal', type: 'button' }
           %span{ 'aria-hidden' => 'true' } ×
       .modal-body
+        %p
+          = @member.logo
         %p
           %strong Address:
           = @member.address
@@ -295,3 +294,6 @@
         %p
           %strong Primary Manager Email:
           = @member.primary_manager&.email
+        - unless @member.primary_manager&.display_name == authenticated_user.display_name
+          %p.text-center
+            =link_to 'Contact Manager', new_conversation_path(recipient_id: @member.primary_manager&.id), target: '_blank', class: 'btn btn-primary', style: 'border: 1px solid black'
