@@ -10,7 +10,7 @@
     .col
       = form_with model: @user, url: update_profile_url, method: :patch, local: true do |f|
         = f.fields_for :hidden_field do |h|
-          %label User Characteristics
+          %h5 User Characteristics
           .row
             .col
               .form-group
@@ -167,7 +167,7 @@
                 = model_error_display(@user, :avatar)
           .row
             .col.mb-3
-              %p User Avatar Preview:
+              %p User Avatar Preview
               -if @user.avatar.attached? && @user.avatar.attachment.valid?
                 = image_tag @user.avatar, alt: 'User Avatar', size: '200x200'
               -else

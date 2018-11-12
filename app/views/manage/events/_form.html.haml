@@ -1,6 +1,8 @@
 = form_with model: @event, url: [:manage, @event], local: true do |f|
   * Indicates required field
   .row.mt-2
+  %h5 Event Information
+  .row.mt-2
     .col-lg-6
       .form-group
         %label(for="event_title") Event Title *
@@ -69,14 +71,16 @@
   .row
     .col-lg-3
       .form-group
-        %label(for="private") Event Access *
+        %label(for="event_access") Event Access *
         %i.c-pointer.fas.fa-info-circle.fa{:title => '"Public" events can be seen on your Community Events Calendar by any User in Social Health Online and "Private" events can only be seen by the Users you host'}
         = f.select(:private,
           options_for_select([['Private', 'true'], ['Public', 'false']], @event.private),
           {},
           { class: "form-control #{form_error_class(@event, :private)}"})
         = model_error_display(@event, :private)
-    .col-lg-3
+  .row
+    .col-lg-4
+      %label Event Visibility
       .card
         .card-body.text-center.px-2
           .form-check.mb-0
@@ -85,12 +89,12 @@
   .row
     .col-lg-4
       .form-group#file-field
-        %label(for="event_logo") Event Logo (note: max file size is 10 MB)
+        %p Event Logo (note: max file size is 10 MB)
         = f.file_field :logo, class: "form-control #{form_error_class(@event, :logo)}", accept: 'image/png,image/gif,image/jpeg', data: { max_file_size: 10.megabytes }
         = model_error_display(@event, :logo)
   .row
     .col-lg-4
-      %p.text-muted Event Logo Preview:
+      %p Event Logo Preview
       -if @event.logo.attached? && @event.logo.attachment.valid?
         = image_tag @event.logo, alt: 'Event Logo', size: '200x200'
       -else

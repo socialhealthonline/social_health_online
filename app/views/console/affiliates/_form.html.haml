@@ -98,7 +98,7 @@
         = model_error_display(@affiliate, :logo)
 
     .col-lg-6
-      %p Affiliate Logo Preview:
+      %p Affiliate Logo Preview
       -if @affiliate.logo.attached? && @affiliate.logo.attachment.valid?
         = image_tag @affiliate.logo, alt: 'Affiliate Logo', size: '200x200'
       -else

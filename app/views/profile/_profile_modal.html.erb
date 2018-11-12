@@ -9,8 +9,10 @@
       </div>
       <!-- Modal body -->
       <div class='modal-body'>
+        <% if user.user_avatar.present? %>
         <%= user.user_avatar %>
         <p></p>
+        <% end %>
         <%= user.profile_name %>
         <%= user.profile_email %>
         <%= user.profile_phone %>

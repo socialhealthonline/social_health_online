@@ -195,7 +195,7 @@
               = model_error_display(@member, :logo)
         .row
           .col-lg-4
-            %p Member Logo Preview:
+            %p Member Logo Preview
             -if @member.logo.attached? && @member.logo.attachment.valid?
               = image_tag @member.logo, alt: 'Member Logo', size: '200x200'
             -else
