@@ -23,6 +23,7 @@
             %tr
               %th
               %th Display Name
+              %th
           %tbody
           - @contacts.each do |contact|
             %tr.bg-white
@@ -44,5 +45,5 @@
                 %tr.table-divider
         %p= paginate @contacts
         - if @contacts.none?
-          %div.text-muted.pb-3.text-center
+          %div.text-muted.pb-4.text-center
             %em No contacts were found.

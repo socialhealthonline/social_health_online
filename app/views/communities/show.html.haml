@@ -249,7 +249,7 @@
   .modal-dialog{ role: 'document' }
     .modal-content
       .modal-header
-        %h3#CommunityProfileModalLabel.modal-title= @member.name
+        %h1#CommunityProfileModalLabel.modal-title.font-weight-bold= @member.name
         %button.close{ 'aria-label' => 'Close', 'data-dismiss' => 'modal', type: 'button' }
           %span{ 'aria-hidden' => 'true' } ×
       .modal-body
