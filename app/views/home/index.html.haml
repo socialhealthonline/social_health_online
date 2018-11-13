@@ -13,8 +13,10 @@
         - @notifications.each do |notification|
           .mb-3.text-center
             %h5= notification.title
-            .notification-date.mb-2.border-bottom= time_in_cdt(notification.updated_at, '%m/%d/%Y')
-            .notification-text.text-left.pb-2= simple_format(notification.body)
+            .notification-date= time_in_cdt(notification.updated_at, '%m/%d/%Y')
+            - if notification.special_notification==true
+              %i.fas.fa-exclamation-triangle
+            .notification-text.text-left.pt-2.pb-2.border-top= simple_format(notification.body)
         %p= paginate @notifications
         - if @notifications.none?
           %p.mt-4.text-muted.text-center
@@ -71,7 +73,7 @@
                 %td= home_events_status(event.status)
                 %td.text-center
                   = link_to event_reminder_path(title: event.title, type: event.event_type, :location => event.location, :address => event.location_display, :start_at => (short_date_time(event.start_at, event.time_zone))), title: 'Event Reminder', class: 'btn btn-sm btn-outline-primary', style: 'border: 1px solid black' do
-                    %i.fa.fa-exclamation-circle
+                    %i.fa.fa-bell
                     Event Reminder
               %tr.table-divider
           %p= paginate @events, param_name: :event_page

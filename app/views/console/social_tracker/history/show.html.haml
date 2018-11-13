@@ -10,9 +10,10 @@
 
 .container
   .row
-    .col.py-4
+    .col.py-2
+      %h3.text-info.text-center Event Log
       .row
-        .col-lg-6.mb-2.text-center
+        .col-lg-6.mb-2.text-center.px-1
           %p
             %strong Event Date:
           %p= short_date(@log.event_date)
@@ -25,7 +26,7 @@
           %p
             %strong Event Type(s):
           %p= @log.event_type
-        .col-lg-6.text-center
+        .col-lg-6.text-center.px-1
           %p
             %strong Event Source:
           %p= SocialEventLog::EVENT_SOURCES.key(@log.source)

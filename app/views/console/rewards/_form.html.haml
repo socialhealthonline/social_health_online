@@ -6,6 +6,8 @@
         .row.justify-content-center
           .col-lg-10
             * All fields are required
+            .row.mt-2
+            %h5 Rewards Winner Information
             .form-group.mt-2
               %label(for="period") Period
               = f.text_field :period, autofocus: true, :placeholder => "E.g., July 30th - August 5th OR August 2018", class: "form-control #{form_error_class(@reward, :period)}", required: true

@@ -1,18 +1,27 @@
 = form_with(model: @notification, url: [:console, @notification], local: true) do |f|
   .row
-    * All fields are required
+  * Indicates required field
+  .row.mt-2
+  %h5 Notification Information
   .row.mt-2
     .col
       .form-group
-        %label Notification Title
+        %label Notification Title *
         = f.text_field :title, class: "form-control #{form_error_class(@notification, :title)}", required: true
         = model_error_display(@notification, :title)
   .row
     .col
       .form-group
-        %label Notification Body
+        %label Notification Body *
         = f.text_area :body, rows: 12, class: "form-control #{form_error_class(@notification, :body)}", required: true
         = model_error_display(@notification, :body)
+  .row
+    .col-lg-6
+      .card
+        .card-body.text-center.px-2
+          .form-check
+            = f.check_box :special_notification, class: 'form-check-input'
+            %label.form-check-label(for="special_notification") Special Notification - Spotlight the Notification for Users
 
   .mb-3.text-center
     = f.submit 'Save', class: 'btn btn-primary', :style => 'border: 1px solid black;', data: { disable_with: 'Saving...' }

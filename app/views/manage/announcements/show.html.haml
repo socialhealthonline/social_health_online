@@ -4,9 +4,10 @@
     %h1.brand-primary= @announcement.title
   .row.text-center
     .col
-      .announcements-date.mb-2.border-bottom= time_in_cdt(@announcement.updated_at, '%m/%d/%Y')
-
-  %p
+      .announcements-date= time_in_cdt(@announcement.updated_at, '%m/%d/%Y')
+      - if @announcement.special_announcement==true
+        %i.fas.fa-exclamation-triangle
+  %p.border-top
     = simple_format(@announcement.body)
 
   .mb-3

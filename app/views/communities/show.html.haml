@@ -137,8 +137,10 @@
                 - @announcements.each do |announcement|
                   .mb-3.text-center
                     %h5= announcement.title
-                    .announcements-date.mb-2.border-bottom= time_in_cdt(announcement.updated_at, '%m/%d/%Y')
-                    .announcements-text.text-left.pb-2= simple_format(announcement.body)
+                    .announcements-date= time_in_cdt(announcement.updated_at, '%m/%d/%Y')
+                    - if announcement.special_announcement==true
+                      %i.fas.fa-exclamation-triangle
+                    .announcements-text.text-left.pt-2.pb-2.border-top= simple_format(announcement.body)
                 %p= paginate @announcements
                 - if @announcements.none?
                   %p.text-muted.mt-5.text-center
@@ -196,7 +198,7 @@
                       %td= short_date_time(event.start_at, event.time_zone)
                       %td.text-center
                         = link_to event_reminder_path(title: event.title, type: event.event_type, :location => event.location, :address => event.location_display, :start_at => (short_date_time(event.start_at, event.time_zone))), title: 'Event Reminder', class: 'btn btn-sm btn-outline-primary', style: 'border: 1px solid black' do
-                          %i.fa.fa-exclamation-circle
+                          %i.fa.fa-bell
                           Event Reminder
                     %tr.table-divider
                 %div.container.pagination.justify-content-center.pl-2

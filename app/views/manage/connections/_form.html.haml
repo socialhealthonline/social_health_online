@@ -1,18 +1,20 @@
 = form_with(model: @connection, url: [:manage, @connection], local: true) do |f|
   .row.justify-content-center
-    .col-6
-      .form-group
+    .col-9
+      .row.mt-2
+      %h5 Connection Information
+      .form-group.mt-2
         %label(for="name") Connection Site Name
         = f.text_field :name, placeholder: 'E.g., Free Local Transport', class: "form-control #{form_error_class(@connection, :name)}", required: true
         = model_error_display(@connection, :name)
   .row.justify-content-center
-    .col-6
+    .col-9
       .form-group
         %label(for="url") Connection Website
         = f.text_field :url, placeholder: 'E.g., www.freelocaltransport.com', class: "form-control #{form_error_class(@connection, :url)}", required: true
         = model_error_display(@announcement, :url)
   .row.justify-content-center
-    .col-6
+    .col-9
       .form-group
         %label(for="notes") Connection Description (Optional)
         = f.text_area :notes, placeholder: 'E.g., This site contains information on how to find transportation assistance for local social events.', rows: 6, class: "form-control #{form_error_class(@connection, :body)}"

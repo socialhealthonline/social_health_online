@@ -46,7 +46,7 @@ class Console::NotificationsController < ConsoleController
     end
 
     def notification_params
-      params.require(:notification).permit(:title, :body)
+      params.require(:notification).permit(:title, :body, :special_notification, :created_at)
     end
 
     def sort_column

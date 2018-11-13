@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_24_233013) do
+ActiveRecord::Schema.define(version: 2018_11_13_180520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2018_10_24_233013) do
     t.bigint "member_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "special_announcement", default: false
     t.index ["member_id"], name: "index_announcements_on_member_id"
   end
 
@@ -307,6 +308,7 @@ ActiveRecord::Schema.define(version: 2018_10_24_233013) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "special_notification", default: false
   end
 
   create_table "resources", force: :cascade do |t|

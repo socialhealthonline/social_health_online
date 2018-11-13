@@ -94,7 +94,7 @@
           Back
         &nbsp
         = link_to event_reminder_path(:title => @event.title, :type => @event.event_type, :location => @event.location, :address => @event.location_display, :start_at => (short_date_time(@event.start_at, @event.time_zone))), title: 'Event Reminder', class: 'btn btn-outline-primary', style: 'border: 1px solid black' do
-          %i.fa.fa-exclamation-circle
+          %i.fa.fa-bell
           Event Reminder
 
 .container.text-center
@@ -126,7 +126,7 @@
               %td= short_date_time(event.start_at, event.time_zone)
               %td.text-center
                 = link_to event_reminder_path(title: event.title, type: event.event_type, :location => event.location, :address => event.location_display, :start_at => (short_date_time(event.start_at, event.time_zone))), title: 'Event Reminder', class: 'btn btn-sm btn-outline-primary', style: 'border: 1px solid black' do
-                  %i.fa.fa-exclamation-circle
+                  %i.fa.fa-bell
                   Event Reminder
             %tr.table-divider
         %div.container.pagination.justify-content-center.pl-2

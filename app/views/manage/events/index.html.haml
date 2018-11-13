@@ -67,7 +67,7 @@
                         %i.far.fa-trash-alt
                         Delete
                       = link_to event_reminder_path(title: event.title, type: event.event_type, :location => event.location, :address => event.location_display, :start_at => (short_date_time(event.start_at, event.time_zone))), title: 'Event Reminder', class: 'dropdown-item text-info' do
-                        %i.fa.fa-exclamation-circle
+                        %i.fa.fa-bell
                         Event Reminder
               %tr.table-divider
         %p= paginate @events

@@ -41,14 +41,6 @@ class Manage::AnnouncementsController < ApplicationController
 
   private
 
-  def announcement_params
-    params.require(:announcement).permit(
-      :title,
-      :body,
-      :created_at
-    )
-  end
-
   def sortable_columns
     %w[title body created_at]
   end
@@ -67,6 +59,6 @@ class Manage::AnnouncementsController < ApplicationController
   end
 
   def announcement_params
-    params.require(:announcement).permit(:title, :body).merge(member_id: authenticated_user.member.id)
+    params.require(:announcement).permit(:title, :body, :created_at, :special_announcement).merge(member_id: authenticated_user.member.id)
   end
 end

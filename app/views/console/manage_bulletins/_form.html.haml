@@ -6,6 +6,8 @@
         .row.justify-content-center
           .col-lg-10
             * Indicates required field
+            .row.mt-2
+            %h5 Bulletin Information
             .form-group.mt-2
               %label(for="title") Bulletin Title *
               = f.text_field :title, autofocus: true, class: "form-control #{form_error_class(@bulletin, :title)}", required: true
