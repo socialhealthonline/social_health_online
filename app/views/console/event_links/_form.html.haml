@@ -7,7 +7,7 @@
           .col-lg-10
             * All fields are required
             .row.mt-2
-            %h5 Events Link Information
+            %h5 Event Link Information
             .form-group.mt-2
               %label(for="name") Event Site Name
               = f.text_field :name, autofocus: true, class: "form-control #{form_error_class(@resource, :name)}", required: true
