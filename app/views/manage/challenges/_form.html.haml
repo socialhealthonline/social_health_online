@@ -74,7 +74,7 @@
   .row.justify-content-center
     .col-6
       .form-group
-        %label(for="winner") Challenge Winner (Optional)
+        %label(for="winner") Challenge Winner Display Name (Optional)
         = f.text_field :winner, placeholder: 'E.g., Trucker72', class: "form-control #{form_error_class(@challenge, :location)}"
         = model_error_display(@challenge, :winner)
     .col-6
