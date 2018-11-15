@@ -75,7 +75,7 @@
     .col-6
       .form-group
         %label(for="winner") Challenge Winner (Optional)
-        = f.text_field :winner, class: "form-control #{form_error_class(@challenge, :location)}"
+        = f.text_field :winner, placeholder: 'E.g., Trucker72', class: "form-control #{form_error_class(@challenge, :location)}"
         = model_error_display(@challenge, :winner)
     .col-6
       .form-group
