@@ -50,7 +50,7 @@ class Console::NotificationsController < ConsoleController
     end
 
     def sort_column
-      %w[title body created_at].include?(params[:column]) ? params[:column] : 'created_at'
+      %w[title body special_notification created_at].include?(params[:column]) ? params[:column] : 'created_at'
     end
 
     def sort_direction

@@ -52,7 +52,7 @@
       %tbody
         - @challenges.each.with_index(1) do |challenge, i|
           %tr.bg-white
-            %td= link_to truncate("#{i}. #{challenge.name}"), manage_challenge_path(challenge)
+            %td.font-weight-bold= link_to truncate("#{i}. #{challenge.name}"), manage_challenge_path(challenge)
             %td= short_date(challenge.challenge_start_date)
             %td= short_date(challenge.challenge_end_date)
             %td= challenge.verification_code.presence || 'N/A'

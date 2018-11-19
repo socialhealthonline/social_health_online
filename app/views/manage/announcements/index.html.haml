@@ -45,12 +45,14 @@
         %tr
           %th= sort_link 'title', 'Announcement Title'
           %th= sort_link 'body', 'Announcement Body Preview'
+          %th= sort_link 'special_announcement', 'Special Announcement'
           %th= sort_link 'created_at', 'Added On'
       %tbody
         - @announcements.each.with_index(1) do |announcement, i|
           %tr.bg-white
-            %td= link_to truncate("#{i}. #{announcement.title}"), manage_announcement_path(announcement)
+            %td.font-weight-bold= link_to truncate("#{i}. #{announcement.title}"), manage_announcement_path(announcement)
             %td= truncate(announcement.body)
+            %td= announcement.special_announcement? ? 'Yes' : 'No'
             %td= time_in_cdt(announcement.created_at, '%m/%d/%Y')
             %td.w-10.text-right
               .dropdown

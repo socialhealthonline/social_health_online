@@ -49,7 +49,7 @@
       %tbody
         - @connections.each.with_index(1) do |connection, i|
           %tr.bg-white
-            %td= link_to truncate("#{i}. #{connection.name}"), manage_connection_path(connection)
+            %td.font-weight-bold= link_to truncate("#{i}. #{connection.name}"), manage_connection_path(connection)
             %td= link_to "Visit Website", connection.url, target: :_blank
             %td= time_in_cdt(connection.created_at, '%m/%d/%Y')
             %td.w-10.text-right

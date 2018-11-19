@@ -45,8 +45,8 @@
             %tbody
             - @users.each.with_index(1) do |user, i|
               %tr.bg-white
-                %td= link_to "#{i}. #{user.name}" , [:manage,:social_tracker,@member, user]
-                %td
+                %td.font-weight-bold= link_to "#{i}. #{user.name}" , [:manage,:social_tracker,@member, user]
+                %td.font-weight-bold
                   %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
                       data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: user }" } }
                     =user.display_name

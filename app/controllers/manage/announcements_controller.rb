@@ -42,7 +42,7 @@ class Manage::AnnouncementsController < ApplicationController
   private
 
   def sortable_columns
-    %w[title body created_at]
+    %w[title body special_announcement created_at]
   end
 
   def sort_column

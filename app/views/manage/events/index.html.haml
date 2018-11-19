@@ -49,7 +49,7 @@
           %tbody
             - @events.each.with_index(1) do |event, i|
               %tr.bg-white
-                %th= link_to "#{i}. #{event.title}" , manage_event_path(event)
+                %th.font-weight-bold= link_to "#{i}. #{event.title}" , manage_event_path(event)
                 %td= short_date_time(event.start_at, event.time_zone)
                 %td= event.city
                 %td= event.state

@@ -78,7 +78,7 @@
                     = image_tag rsvp.user.avatar, size: '50x50'
                   - else
                     = image_tag 'noavatar.png', size: '50x50'
-              %td
+              %td.font-weight-bold
                 %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
                     data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover',  user: rsvp.user }" } }
                   =rsvp.user.display_name
@@ -120,7 +120,7 @@
                   = link_to (image_tag event.logo, size: '50x50'), community_event_path(authenticated_user.member, event)
                 - else
                   = link_to (image_tag 'noimage.png', size: '50x50'), community_event_path(authenticated_user.member, event)
-              %td= link_to event.title, community_event_path(authenticated_user.member, event)
+              %td.font-weight-bold= link_to event.title, community_event_path(authenticated_user.member, event)
               %td
               %td= event.event_type
               %td= short_date_time(event.start_at, event.time_zone)

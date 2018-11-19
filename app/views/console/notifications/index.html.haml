@@ -14,12 +14,14 @@
         %tr
           %th= sort_link 'title', 'Notification Title'
           %th= sort_link 'body', 'Notification Body Preview'
+          %th= sort_link 'special_notification', 'Special Notification'
           %th= sort_link 'created_at', 'Added On'
       %tbody
         - @notifications.each.with_index(1) do |notification, i|
           %tr.bg-white
             %td= link_to truncate("#{i}. #{notification.title}"), console_notification_path(notification)
             %td= truncate(notification.body)
+            %td= notification.special_notification? ? 'Yes' : 'No'
             %td= time_in_cdt(notification.created_at, '%m/%d/%Y, %I:%M %p %Z')
             %td.w-10.text-right
               .dropdown

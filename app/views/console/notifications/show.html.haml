@@ -8,8 +8,6 @@
 .row.text-left
   .col
     .announcements-date= time_in_cdt(@notification.updated_at, '%m/%d/%Y')
-    - if @notification.special_notification==true
-      %i.fas.fa-exclamation-triangle
 %p.border-top
   = simple_format(@notification.body)
 
