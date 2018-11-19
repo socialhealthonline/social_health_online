@@ -24,7 +24,7 @@
           %tbody.bg-white
             - @social_event_logs.each do |log|
               %tr
-                %td= link_to short_date(log.created_at), social_tracker_path(log), class: 'text-info'
+                %td.font-weight-bold= link_to short_date(log.created_at), social_tracker_path(log), class: 'text-info'
                 %td= short_date(log.event_date)
                 %td= truncate(log.venue, :length => 30)
                 %td= RATINGS.key(log.rating)

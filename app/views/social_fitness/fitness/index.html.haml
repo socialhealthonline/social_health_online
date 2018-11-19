@@ -22,7 +22,7 @@
           %tbody.bg-white
             - @social_fitness_logs.each do |log|
               %tr
-                %td= link_to short_date(log.created_at), social_fitness_path(log), class: 'text-info'
+                %td.font-weight-bold= link_to short_date(log.created_at), social_fitness_path(log), class: 'text-info'
               %tr.table-divider
         = paginate @social_fitness_logs
         - if @social_fitness_logs.none?

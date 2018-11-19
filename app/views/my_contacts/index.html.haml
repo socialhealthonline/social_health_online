@@ -34,7 +34,7 @@
                     = image_tag contact.contact.avatar, size: '50x50'
                   - else
                     = image_tag 'noavatar.png', size: '50x50'
-              %td
+              %td.font-weight-bold
                 %a{ class: 'matchmaker_popover c-pointer', tabindex: '0', role: 'button',
                   data: { toggle: 'popover', trigger: 'focus', content: "#{render 'matchmakers/links_in_popover', user: contact.contact }" } }
                   =contact.contact.display_name

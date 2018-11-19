@@ -55,7 +55,7 @@
               %td
               %td= affiliate.state
               %td
-              %td= link_to "Visit Website", affiliate.url, target: :_blank
+              %td.font-weight-bold= link_to "Visit Website", affiliate.url, target: :_blank
             %tr.table-divider
         %div.container.pagination.justify-content-center.pl-2
           %p= paginate @affiliates unless @affiliates.empty?

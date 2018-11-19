@@ -27,7 +27,7 @@
         %tbody
           - @challenges.each do |challenge|
             %tr.bg-white
-              %td= link_to challenge.name, manage_challenge_path(challenge)
+              %td.font-weight-bold= link_to challenge.name, manage_challenge_path(challenge)
               %td= short_date(challenge.challenge_start_date)
               %td= short_date(challenge.challenge_end_date)
               %td= challenge.prize.presence || 'N/A'
